@@ -4,41 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VARUX - Yeni Nesil Siber Güvenlik Çözümleri</title>
-    <meta name="description" content="VARUX, proaktif siber güvenlik hizmetleri sunan yeni nesil bir teknoloji firmasıdır. Red Team, OSINT, Mobil Güvenlik ve Danışmanlık.">
+    <meta name="description" content="VARUX, Selman Vural tarafından kurulmuş proaktif siber güvenlik hizmetleri sunan yeni nesil bir teknoloji firmasıdır.">
     <meta name="keywords" content="siber güvenlik, red team, OSINT, penetrasyon testi, mobil güvenlik, siber danışmanlık, Selman Vural">
     <meta name="author" content="VARUX - Selman Vural">
-    <meta name="robots" content="index, follow">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="VARUX - Yeni Nesil Siber Güvenlik Çözümleri">
-    <meta property="og:description" content="VARUX, Selman Vural'ın vizyonuyla kurulmuş, proaktif siber güvenlik hizmetleri sunan yeni nesil bir teknoloji firmasıdır.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://varux.com">
-    <meta property="og:image" content="https://varux.com/images/og-image.jpg">
-    <meta property="og:site_name" content="VARUX">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VARUX - Yeni Nesil Siber Güvenlik Çözümleri">
-    <meta name="twitter:description" content="Siber güvenliğe felsefi ve teknik derinlikle yaklaşan yeni nesil teknoloji oluşumu.">
-    <meta name="twitter:image" content="https://varux.com/images/twitter-image.jpg">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://varux.com">
-    
-    <!-- Google Fonts: Poppins & Share Tech Mono -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
-    <!-- Boxicons (for icons) -->
+    <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <style>
-        /*=============== CSS VARIABLES ===============*/
         :root {
           --header-height: 3.5rem;
           --bg-color: #0A0F14;
@@ -63,7 +44,6 @@
           --z-modal: 1000;
         }
 
-        /*=============== BASE ===============*/
         * { box-sizing: border-box; padding: 0; margin: 0; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
@@ -73,7 +53,6 @@
         button { cursor: pointer; border: none; outline: none; }
         img { max-width: 100%; height: auto; }
 
-        /*=============== REUSABLE CSS ===============*/
         .container { max-width: 1024px; margin-left: 1.5rem; margin-right: 1.5rem; }
         .section { padding: 4.5rem 0 2rem; }
         .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
@@ -81,14 +60,14 @@
         .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .visible { opacity: 1; transform: translateY(0); }
 
-        /*=============== LOADER ===============*/
+        /* LOADER */
         .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
         .loader.hidden { opacity: 0; visibility: hidden; }
         .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /*=============== HEADER & NAV ===============*/
-        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        /* HEADER */
+        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
         .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
@@ -97,23 +76,17 @@
         .nav__list { display: flex; column-gap: 2.5rem; align-items: center; }
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
-        .nav__dropdown { position: relative; }
-        .nav__dropdown-menu { position: absolute; top: 150%; left: -20px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0; width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: var(--z-tooltip); }
-        .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .nav__dropdown-link { display: block; padding: 0.75rem 1.5rem; color: var(--text-color); transition: background-color 0.3s, color 0.3s, padding-left 0.3s; }
-        .nav__dropdown-link:hover { background-color: var(--secondary-color); color: var(--bg-color); padding-left: 1.75rem; }
         .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
 
-        /*=============== HERO SECTION ===============*/
+        /* HERO */
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: var(--z-background); }
         .hero__container { position: relative; z-index: 1; }
         .hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); display: inline-block; }
         .hero__title .cursor { display: inline-block; background-color: var(--secondary-color); width: 10px; height: 2.5rem; margin-left: 8px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; animation: fadeIn 2s ease-in-out 2s forwards; opacity: 0; }
-        @keyframes fadeIn { to { opacity: 1; } }
+        .hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; }
         .hero__buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .hero__button { padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; }
         .hero__button--primary { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; }
@@ -123,26 +96,37 @@
         .hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-color-light); font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
-        /*=============== ABOUT SECTION ===============*/
+        /* ABOUT */
         .about__content { max-width: 800px; margin: 0 auto; text-align: center; }
         .about__stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
         .stat__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; }
         .stat__card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
         .stat__number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
+        .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
 
-        /*=============== SERVICES SECTION ===============*/
+        /* SERVICES */
         .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .service__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); padding: 2rem; border-radius: 12px; text-align: center; position: relative; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
-        .service__card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0, rgba(88, 166, 255, 0.15), transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
         .service__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
-        .service__card:hover::before { opacity: 1; }
-        .service__card:hover .service__icon { transform: translateY(-5px) scale(1.1); color: var(--secondary-color); }
         .service__icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; transition: transform 0.4s ease, color 0.4s ease; }
+        .service__card:hover .service__icon { transform: translateY(-5px) scale(1.1); color: var(--secondary-color); }
         .service__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .service__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; }
 
-        /*=============== PROJECTS SECTION ===============*/
+        /* PRICING */
+        .pricing__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pricing__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
+        .pricing__card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+        .pricing__card.popular { border-color: var(--secondary-color); transform: scale(1.05); }
+        .pricing__card.popular::before { content: 'POPÜLER'; position: absolute; top: 20px; right: -30px; background: var(--secondary-color); color: var(--bg-color); padding: 5px 30px; transform: rotate(45deg); font-size: 0.75rem; font-weight: bold; }
+        .pricing__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1rem; }
+        .pricing__price { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1.5rem; font-weight: 700; }
+        .pricing__features { margin-bottom: 2rem; text-align: left; }
+        .pricing__feature { margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pricing__feature i { color: var(--secondary-color); }
+
+        /* PROJECTS */
         .projects__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .project__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
         .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
@@ -155,7 +139,16 @@
         .project__link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
         .project__link:hover { gap: 0.75rem; }
 
-        /*=============== TESTIMONIALS SECTION ===============*/
+        /* FAQ */
+        .faq__container { max-width: 800px; margin: 0 auto; }
+        .faq__item { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
+        .faq__question { padding: 1.5rem; background-color: rgba(22, 27, 34, 0.6); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; }
+        .faq__question:hover { background-color: rgba(22, 27, 34, 0.8); }
+        .faq__answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq__item.active .faq__answer { padding: 1.5rem; max-height: 500px; }
+        .faq__item.active .faq__question i { transform: rotate(180deg); }
+
+        /* TESTIMONIALS */
         .testimonials__container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; }
         .testimonials__track { display: flex; transition: transform 0.5s ease; }
         .testimonial__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); padding: 2rem; border-radius: 12px; min-width: 100%; text-align: center; }
@@ -171,19 +164,23 @@
         .testimonial__nav-btn { background-color: var(--bg-color-light); border: 1px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
         .testimonial__nav-btn:hover { background-color: var(--primary-color); color: var(--bg-color); }
 
-        /*=============== CONTACT SECTION ===============*/
-        .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
-        .button { display: inline-block; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 1rem 2.5rem; border-radius: 8px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s; margin: 0 auto; display: table; border: none; background-size: 200% 100%; cursor: pointer; }
-        .button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 242, 161, 0.4); background-position: right center; }
+        /* PARTNERS */
+        .partners__grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
+        .partner__logo { width: 120px; height: 60px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-color-light); transition: all 0.3s ease; }
+        .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
 
-        /*=============== CONTACT MODAL ===============*/
+        /* CONTACT */
+        .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
+        .button { display: inline-block; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 1rem 2.5rem; border-radius: 8px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; margin: 0 auto; display: table; border: none; cursor: pointer; }
+        .button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 242, 161, 0.4); }
+
+        /* MODAL */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: var(--z-modal); background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal.active { display: flex; opacity: 1; }
         .modal__content { position: relative; background-color: var(--bg-color-light); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 500px; text-align: center; transform: scale(0.95); transition: transform 0.3s ease; }
         .modal.active .modal__content { transform: scale(1); }
         .modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; }
         .modal__close:hover { color: var(--secondary-color); }
-        .modal__content h2 { font-size: var(--h2-font-size); color: var(--secondary-color); margin-bottom: 1.5rem; }
         .form__group { margin-bottom: 1rem; text-align: left; }
         .form__group label { display: block; margin-bottom: 0.5rem; font-weight: var(--font-semi-bold); color: var(--text-color-light); }
         .form__group input, .form__group select, .form__group textarea { width: 100%; padding: 0.75rem; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-family: var(--body-font); font-size: var(--normal-font-size); transition: border-color 0.3s, box-shadow 0.3s; }
@@ -192,12 +189,12 @@
         .modal__direct-contact p { margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .modal__direct-contact i { color: var(--secondary-color); font-size: 1.2rem; }
 
-        /*=============== TOAST NOTIFICATION ===============*/
+        /* TOAST */
         .toast { position: fixed; bottom: 2rem; right: 2rem; background-color: var(--bg-color-light); color: var(--secondary-color); padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: calc(var(--z-modal) + 1); display: flex; align-items: center; gap: 0.5rem; transform: translateX(calc(100% + 2rem)); transition: transform 0.5s ease-in-out; }
         .toast.show { transform: translateX(0); }
         .toast i { font-size: 1.5rem; }
 
-        /*=============== FOOTER ===============*/
+        /* FOOTER */
         .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
         .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
         .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
@@ -210,142 +207,32 @@
         .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
         .footer__link:hover { color: var(--secondary-color); }
         .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
-        .footer__bottom p { margin-bottom: 0.5rem; }
 
-        /*=============== NEW FEATURES ===============*/
-        
-        /* SECURITY BADGE */
-        .security-badge { position: fixed; bottom: 2rem; left: 2rem; width: 60px; height: 60px; background: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary-color); font-size: 1.5rem; z-index: var(--z-tooltip); box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer; }
-        .security-badge:hover { transform: scale(1.1); color: var(--primary-color); }
-        
-        /* LIVE CHAT */
-        .live-chat { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.5rem; z-index: var(--z-tooltip); box-shadow: 0 5px 15px rgba(0, 242, 161, 0.4); transition: all 0.3s ease; cursor: pointer; }
-        .live-chat:hover { transform: scale(1.1); }
-        
-        /* PROGRESS BAR */
-        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); width: 0%; z-index: var(--z-modal); transition: width 0.3s ease; }
-        
-        /* DARK MODE TOGGLE */
-        .theme-toggle { position: fixed; top: 1rem; left: 1rem; width: 40px; height: 40px; background: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-color); font-size: 1.2rem; z-index: var(--z-tooltip); cursor: pointer; transition: all 0.3s ease; }
-        .theme-toggle:hover { color: var(--secondary-color); }
-        
-        /* ENHANCED SECURITY FEATURES */
-        .security-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .security-feature { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .security-feature:hover { transform: translateY(-5px); border-color: var(--primary-color); }
-        .security-feature i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
-        .security-feature h3 { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
-        .security-feature p { font-size: var(--small-font-size); color: var(--text-color-light); }
-        
-        /* TEAM SECTION */
-        .team__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .team__member { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .team__member:hover { transform: translateY(-5px); border-color: var(--primary-color); }
-        .team__member-img { height: 200px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); }
-        .team__member-content { padding: 1.5rem; }
-        .team__member-name { font-size: var(--h3-font-size); margin-bottom: 0.5rem; color: var(--title-color); }
-        .team__member-role { font-size: var(--small-font-size); color: var(--secondary-color); margin-bottom: 1rem; }
-        .team__member-bio { font-size: var(--small-font-size); color: var(--text-color-light); margin-bottom: 1rem; }
-        .team__member-social { display: flex; justify-content: center; gap: 0.75rem; }
-        .team__member-social a { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
-        .team__member-social a:hover { background-color: var(--primary-color); color: var(--bg-color); }
-        
-        /* BLOG SECTION */
-        .blog__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .blog__post { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .blog__post:hover { transform: translateY(-5px); border-color: var(--primary-color); }
-        .blog__post-img { height: 180px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); }
-        .blog__post-content { padding: 1.5rem; }
-        .blog__post-date { font-size: 0.75rem; color: var(--text-color-light); margin-bottom: 0.5rem; }
-        .blog__post-title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
-        .blog__post-excerpt { font-size: var(--small-font-size); color: var(--text-color-light); margin-bottom: 1rem; line-height: 1.6; }
-        .blog__post-link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
-        .blog__post-link:hover { gap: 0.75rem; }
-        
-        /* PARTNERS SECTION */
-        .partners__grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
-        .partner__logo { width: 120px; height: 60px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-color-light); transition: all 0.3s ease; }
-        .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
-
-        /* ENHANCED FEATURES */
-        .section__container { max-width: 1024px; margin: 0 auto; }
-        
-        /* ANIMATED COUNTERS */
-        .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
-        
-        /* TIMELINE */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
-        .timeline-item:nth-child(odd) { left: 0; }
-        .timeline-item:nth-child(even) { left: 50%; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: var(--primary-color); border-radius: 50%; top: 15px; z-index: 1; }
-        .timeline-item:nth-child(odd)::after { right: -10px; }
-        .timeline-item:nth-child(even)::after { left: -10px; }
-        .timeline-content { padding: 20px; background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 8px; position: relative; }
-        .timeline-content h3 { color: var(--title-color); margin-bottom: 0.5rem; }
-        
-        /* PRICING TABLES */
-        .pricing__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .pricing__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
-        .pricing__card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
-        .pricing__card.popular { border-color: var(--secondary-color); transform: scale(1.05); }
-        .pricing__card.popular::before { content: 'POPÜLER'; position: absolute; top: 20px; right: -30px; background: var(--secondary-color); color: var(--bg-color); padding: 5px 30px; transform: rotate(45deg); font-size: 0.75rem; font-weight: bold; }
-        .pricing__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1rem; }
-        .pricing__price { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1.5rem; font-weight: 700; }
-        .pricing__features { margin-bottom: 2rem; text-align: left; }
-        .pricing__feature { margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-        .pricing__feature i { color: var(--secondary-color); }
-        
-        /* FAQ SECTION */
-        .faq__container { max-width: 800px; margin: 0 auto; }
-        .faq__item { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
-        .faq__question { padding: 1.5rem; background-color: rgba(22, 27, 34, 0.6); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; }
-        .faq__question:hover { background-color: rgba(22, 27, 34, 0.8); }
-        .faq__answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
-        .faq__item.active .faq__answer { padding: 1.5rem; max-height: 500px; }
-        .faq__item.active .faq__question i { transform: rotate(180deg); }
-        
-        /* BACK TO TOP BUTTON */
+        /* BACK TO TOP */
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background-color: var(--primary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; opacity: 0; visibility: hidden; z-index: var(--z-tooltip); }
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
 
-        /* LIGHT THEME */
-        body.light-theme {
-          --bg-color: #f8f9fa;
-          --bg-color-light: #ffffff;
-          --border-color: #e1e5e9;
-          --text-color: #2d333a;
-          --text-color-light: #6e7781;
-          --title-color: #0d1117;
-        }
-
-        /* BREAKPOINTS */
+        /* RESPONSIVE */
         @media screen and (max-width: 768px) {
           .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
           .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
           .nav__toggle, .nav__close { display: block; color: var(--title-color); }
           .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
           .show-menu { right: 0; }
-          .nav__dropdown { width: 100%; }
-          .nav__dropdown .nav__link { display: flex; justify-content: space-between; align-items: center; }
-          .nav__dropdown-menu { position: static; background-color: transparent; border: none; box-shadow: none; width: 100%; padding: 0.5rem 0 0 1rem; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-          .nav__dropdown:hover .nav__dropdown-menu { max-height: 0; }
-          .dropdown-active .nav__dropdown-menu { max-height: 500px; }
-          .dropdown-active i { transform: rotate(180deg); }
           .hero__buttons { flex-direction: column; align-items: center; }
           .hero__button { width: 100%; max-width: 250px; }
-          .security-badge, .live-chat { bottom: 1rem; }
-          .security-badge { left: 1rem; }
-          .live-chat { right: 1rem; }
+          .pricing__grid { grid-template-columns: 1fr; }
+          .pricing__card.popular { transform: none; }
         }
+
         @media screen and (max-width: 350px) {
           .container { margin-left: 1rem; margin-right: 1rem; }
           .hero__title { font-size: 2rem; }
           .hero__title .cursor { height: 2rem; }
           .services__grid, .projects__grid { grid-template-columns: 1fr; }
         }
+
         @media screen and (min-width: 1040px) {
           .container { margin-left: auto; margin-right: auto; }
           :root { --h1-font-size: 3.5rem; --h2-font-size: 2.25rem; --h3-font-size: 1.5rem; --normal-font-size: 1.1rem; }
@@ -359,31 +246,10 @@
         <div class="loader__spinner"></div>
     </div>
 
-    <!-- PROGRESS BAR -->
-    <div class="progress-bar" id="progress-bar"></div>
-
-    <!-- THEME TOGGLE -->
-    <div class="theme-toggle" id="theme-toggle">
-        <i class='bx bx-moon'></i>
-    </div>
-
-    <!-- SECURITY BADGE -->
-    <div class="security-badge" id="security-badge">
-        <i class='bx bx-lock-alt'></i>
-    </div>
-
-    <!-- LIVE CHAT -->
-    <div class="live-chat" id="live-chat">
-        <i class='bx bx-message-rounded-dots'></i>
-    </div>
-
     <!-- BACK TO TOP BUTTON -->
     <div class="back-to-top" id="back-to-top">
         <i class='bx bx-chevron-up'></i>
     </div>
-
-    <!-- PARTICLES BACKGROUND -->
-    <div id="particles-js"></div>
 
     <!-- HEADER -->
     <header class="header" id="header">
@@ -393,20 +259,12 @@
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
                     <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
-                    <li class="nav__item nav__dropdown">
-                        <a href="#" class="nav__link">Eğitimler <i class='bx bx-chevron-down'></i></a>
-                        <ul class="nav__dropdown-menu">
-                            <li><a href="/trainings/basic-security.html" class="nav__dropdown-link">Temel Siber Güvenlik</a></li>
-                            <li><a href="/trainings/osint.html" class="nav__dropdown-link">OSINT & Bilgi Toplama</a></li>
-                            <li><a href="/trainings/web-xss.html" class="nav__dropdown-link">Web Güvenliği & XSS</a></li>
-                            <li><a href="/trainings/mobile.html" class="nav__dropdown-link">Mobil Güvenlik</a></li>
-                            <li><a href="/trainings/redteam.html" class="nav__dropdown-link">Red Team Operasyonları</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Fiyatlandırma</a></li>
                     <li class="nav__item"><a href="#projects" class="nav__link">Projelerimiz</a></li>
-                    <li class="nav__item"><a href="#team" class="nav__link">Ekibimiz</a></li>
-                    <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link" id="contact-link">İletişim</a></li>
+                    <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
+                    <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__cta">Ücretsiz Danışmanlık</a></li>
                 </ul>
                 <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
             </div>
@@ -417,6 +275,7 @@
     <main>
         <!-- HERO SECTION -->
         <section class="hero">
+            <div id="particles-js"></div>
             <div class="hero__container container">
                 <h1 class="hero__title" id="hero-title"></h1>
                 <p class="hero__subtitle">Dijital dünyanın karmaşıklığında, güvenliğiniz bizimle netlik kazanır.</p>
@@ -430,10 +289,10 @@
 
         <!-- ABOUT SECTION -->
         <section class="section" id="about">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Biz Kimiz?</h2>
                 <div class="about__content">
-                    <p>VARUX, siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan, yeni nesil bir teknoloji oluşumudur. Selman Vural'ın vizyonuyla kurulan firmamız, standart çözümlerin ötesine geçerek, her müşterinin benzersiz dijital kimliğine özel savunma stratejileri geliştirir. Bizim için siber güvenlik, sadece bir dizi kural değil, sürekli evrilen bir sanat ve bilimdir. Bu yolda, minimalizm ve kararlılıkla en karmaşık sorunlara dahi sade ve etkili çözümler sunarız.</p>
+                    <p>VARUX, Selman Vural tarafından kurulan, siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan yeni nesil bir teknoloji oluşumudur. Standart çözümlerin ötesine geçerek, her müşterinin benzersiz dijital kimliğine özel savunma stratejileri geliştirir. Bizim için siber güvenlik, sadece bir dizi kural değil, sürekli evrilen bir sanat ve bilimdir.</p>
                 </div>
                 <div class="about__stats">
                     <div class="stat__card">
@@ -441,64 +300,16 @@
                         <div class="stat__label">Tamamlanan Proje</div>
                     </div>
                     <div class="stat__card">
-                        <div class="counter" data-count="98">0%</div>
+                        <div class="counter" data-count="98">0</div>
                         <div class="stat__label">Müşteri Memnuniyeti</div>
                     </div>
                     <div class="stat__card">
-                        <div class="counter" data-count="24">0/7</div>
-                        <div class="stat__label">Destek Hizmeti</div>
+                        <div class="counter" data-count="24">0</div>
+                        <div class="stat__label">7/24 Destek</div>
                     </div>
                     <div class="stat__card">
-                        <div class="counter" data-count="5">0</div>
-                        <div class="stat__label">Uzman Ekip Üyesi</div>
-                    </div>
-                </div>
-                
-                <!-- SECURITY FEATURES -->
-                <h2 class="section__title" style="margin-top: 4rem;">Güvenlik Özelliklerimiz</h2>
-                <div class="security-features">
-                    <div class="security-feature">
-                        <i class='bx bx-shield-alt'></i>
-                        <h3>Proaktif Tehdit Avı</h3>
-                        <p>Saldırı gerçekleşmeden önce sistemlerinizdeki zafiyetleri tespit ediyoruz.</p>
-                    </div>
-                    <div class="security-feature">
-                        <i class='bx bx-data'></i>
-                        <h3>Veri Şifreleme</h3>
-                        <p>En güçlü şifreleme algoritmalarıyla verilerinizi koruma altına alıyoruz.</p>
-                    </div>
-                    <div class="security-feature">
-                        <i class='bx bx-user-check'></i>
-                        <h3>Çok Faktörlü Kimlik Doğrulama</h3>
-                        <p>Hesaplarınızı ek güvenlik katmanlarıyla koruyoruz.</p>
-                    </div>
-                    <div class="security-feature">
-                        <i class='bx bx-trending-up'></i>
-                        <h3>Sürekli İzleme</h3>
-                        <p>Sistemlerinizi 7/24 izleyerek anormal aktiviteleri tespit ediyoruz.</p>
-                    </div>
-                </div>
-
-                <!-- TIMELINE -->
-                <h2 class="section__title" style="margin-top: 4rem;">Şirket Geçmişimiz</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>2022 - Kuruluş</h3>
-                            <p>VARUX, Selman Vural tarafından kuruldu.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>2023 - İlk Büyük Proje</h3>
-                            <p>Finans sektöründe ilk büyük penetrasyon testi projesi tamamlandı.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>2024 - Genişleme</h3>
-                            <p>Ekip 5 uzmana genişletildi ve OSINT hizmetleri başlatıldı.</p>
-                        </div>
+                        <div class="counter" data-count="3">0</div>
+                        <div class="stat__label">Yıl Deneyim</div>
                     </div>
                 </div>
             </div>
@@ -506,22 +317,46 @@
 
         <!-- SERVICES SECTION -->
         <section class="section" id="services">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Hizmetlerimiz</h2>
                 <div class="services__grid">
-                    <div class="service__card"><i class='bx bx-shield-quarter service__icon'></i><h3 class="service__title">Offensive Security</h3><p class="service__description">Dijital kalenizin duvarlarını, onu yıkmaya çalışanların gözünden test ediyoruz. Proaktif zafiyet analizi ve sızma testleri ile potansiyel tehditleri, size zarar vermeden önce tespit ve neutralize ediyoruz.</p></div>
-                    <div class="service__card"><i class='bx bx-user-voice service__icon'></i><h3 class="service__title">Red Team Hizmetleri</h3><p class="service__description">Sadece bilinen zafiyetleri değil, insan, süreç ve teknoloji katmanlarınızdaki en zayıf halkayı bulmak için gerçek dünya saldırı senaryolarını simüle ediyoruz. Bu, bir denetimden fazlası; bu bir tatbikat.</p></div>
-                    <div class="service__card"><i class='bx bx-mobile-alt service__icon'></i><h3 class="service__title">Mobil Uygulama Güvenliği</h3><p class="service__description">Milyonların cebindeki uygulamanızın, kötü niyetli aktörler için bir giriş kapısı olmasını engelliyoruz. Koddan altyapıya, tüm mobil ekosisteminizi güvence altına alıyoruz.</p></div>
-                    <div class="service__card"><i class='bx bx-search-alt service__icon'></i><h3 class="service__title">OSINT & Threat Intelligence</h3><p class="service__description">Saldırganlar sizi hedef almadan önce biz onları hedef alıyoruz. Açık kaynak istihbaratı ile size yönelik potansiyel riskleri proaktif olarak belirliyor ve savunma stratejinizi güçlendiriyoruz.</p></div>
-                    <div class="service__card"><i class='bx bx-briefcase-alt-2 service__icon'></i><h3 class="service__title">Siber Güvenlik Danışmanlığı</h3><p class="service__description">Teknik çözümler kadar strateji de önemlidir. Güvenlik politikalarınızın oluşturulmasından ekibinizin yetkinliğini artırmaya kadar, siber dayanıklılığınızı bir bütün olarak inşa etmenize rehberlik ediyoruz.</p></div>
-                    <div class="service__card"><i class='bx bx-code-alt service__icon'></i><h3 class="service__title">Güvenli Yazılım Geliştirme</h3><p class="service__description">SDLC'nin her aşamasına güvenlik perspektifi entegre ediyoruz. Kod incelemeleri, güvenli kodlama eğitimleri ve otomatize güvenlik testleriyle, yazılımlarınızın doğuştan güvenli olmasını sağlıyoruz.</p></div>
+                    <div class="service__card">
+                        <i class='bx bx-shield-quarter service__icon'></i>
+                        <h3 class="service__title">Penetrasyon Testi</h3>
+                        <p class="service__description">Sistemlerinizin güvenlik açıklarını tespit ediyor, proaktif zafiyet analizi ve sızma testleri ile potansiyel tehditleri önceden tespit ediyoruz.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class='bx bx-user-voice service__icon'></i>
+                        <h3 class="service__title">Red Team Hizmetleri</h3>
+                        <p class="service__description">Gerçek dünya saldırı senaryolarını simüle ederek insan, süreç ve teknoloji katmanlarınızdaki zayıf noktaları tespit ediyoruz.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class='bx bx-mobile-alt service__icon'></i>
+                        <h3 class="service__title">Mobil Uygulama Güvenliği</h3>
+                        <p class="service__description">Mobil uygulamalarınızın güvenliğini koddan altyapıya kadar tüm ekosistemde güvence altına alıyoruz.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class='bx bx-search-alt service__icon'></i>
+                        <h3 class="service__title">OSINT & Threat Intelligence</h3>
+                        <p class="service__description">Açık kaynak istihbaratı ile size yönelik potansiyel riskleri proaktif olarak belirliyor ve savunma stratejinizi güçlendiriyoruz.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class='bx bx-briefcase-alt-2 service__icon'></i>
+                        <h3 class="service__title">Siber Güvenlik Danışmanlığı</h3>
+                        <p class="service__description">Güvenlik politikalarınızın oluşturulmasından ekibinizin yetkinliğini artırmaya kadar siber dayanıklılığınızı bir bütün olarak inşa etmenize rehberlik ediyoruz.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class='bx bx-code-alt service__icon'></i>
+                        <h3 class="service__title">Güvenli Yazılım Geliştirme</h3>
+                        <p class="service__description">SDLC'nin her aşamasına güvenlik perspektifi entegre ediyor, yazılımlarınızın doğuştan güvenli olmasını sağlıyoruz.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- PRICING SECTION -->
         <section class="section" id="pricing">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Fiyatlandırma</h2>
                 <div class="pricing__grid">
                     <div class="pricing__card">
@@ -563,7 +398,7 @@
 
         <!-- PROJECTS SECTION -->
         <section class="section" id="projects">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Projelerimiz</h2>
                 <div class="projects__grid">
                     <div class="project__card">
@@ -606,70 +441,9 @@
             </div>
         </section>
 
-        <!-- TEAM SECTION -->
-        <section class="section" id="team">
-            <div class="section__container container">
-                <h2 class="section__title">Ekibimiz</h2>
-                <div class="team__grid">
-                    <div class="team__member">
-                        <div class="team__member-img"><i class='bx bx-user' style="font-size: 4rem;"></i></div>
-                        <div class="team__member-content">
-                            <h3 class="team__member-name">Selman Vural</h3>
-                            <p class="team__member-role">Kurucu & CEO</p>
-                            <p class="team__member-bio">Siber güvenlik tutkunu, 5 yıllık deneyim ile Red Team operasyonları ve OSINT uzmanı. Genç girişimci olarak VARUX'u kurdu.</p>
-                            <div class="team__member-social">
-                                <a href="#"><i class='bx bxl-linkedin'></i></a>
-                                <a href="#"><i class='bx bxl-twitter'></i></a>
-                                <a href="#"><i class='bx bxl-github'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team__member">
-                        <div class="team__member-img"><i class='bx bx-user' style="font-size: 4rem;"></i></div>
-                        <div class="team__member-content">
-                            <h3 class="team__member-name">Mehmet Kaya</h3>
-                            <p class="team__member-role">CTO</p>
-                            <p class="team__member-bio">10 yıllık siber güvenlik deneyimi, penetrasyon testi ve güvenli yazılım geliştirme uzmanı.</p>
-                            <div class="team__member-social">
-                                <a href="#"><i class='bx bxl-linkedin'></i></a>
-                                <a href="#"><i class='bx bxl-twitter'></i></a>
-                                <a href="#"><i class='bx bxl-github'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team__member">
-                        <div class="team__member-img"><i class='bx bx-user' style="font-size: 4rem;"></i></div>
-                        <div class="team__member-content">
-                            <h3 class="team__member-name">Ayşe Demir</h3>
-                            <p class="team__member-role">Siber Güvenlik Uzmanı</p>
-                            <p class="team__member-bio">Mobil uygulama güvenliği ve tehdit istihbaratı konusunda uzmanlaşmış, 6 yıllık deneyim.</p>
-                            <div class="team__member-social">
-                                <a href="#"><i class='bx bxl-linkedin'></i></a>
-                                <a href="#"><i class='bx bxl-twitter'></i></a>
-                                <a href="#"><i class='bx bxl-github'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team__member">
-                        <div class="team__member-img"><i class='bx bx-user' style="font-size: 4rem;"></i></div>
-                        <div class="team__member-content">
-                            <h3 class="team__member-name">Zeynep Şahin</h3>
-                            <p class="team__member-role">OSINT Araştırmacısı</p>
-                            <p class="team__member-bio">Açık kaynak istihbaratı ve dijital ayak izi analizi konusunda uzman, 4 yıllık deneyim.</p>
-                            <div class="team__member-social">
-                                <a href="#"><i class='bx bxl-linkedin'></i></a>
-                                <a href="#"><i class='bx bxl-twitter'></i></a>
-                                <a href="#"><i class='bx bxl-github'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- FAQ SECTION -->
         <section class="section" id="faq">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Sıkça Sorulan Sorular</h2>
                 <div class="faq__container">
                     <div class="faq__item">
@@ -684,13 +458,17 @@
                         <div class="faq__question">Acil durumlarda nasıl destek alabilirim? <i class='bx bx-chevron-down'></i></div>
                         <div class="faq__answer">Acil durumlarda 7/24 destek hattımızdan (224 544 25 25) bize ulaşabilirsiniz.</div>
                     </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Hangi güvenlik standartlarına uyuyorsunuz? <i class='bx bx-chevron-down'></i></div>
+                        <div class="faq__answer">ISO 27001, NIST, OWASP gibi uluslararası güvenlik standartlarına uygun hizmet vermekteyiz.</div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- TESTIMONIALS SECTION -->
         <section class="section" id="testimonials">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">Müşteri Görüşleri</h2>
                 <div class="testimonials__container">
                     <div class="testimonials__track" id="testimonials-track">
@@ -709,7 +487,7 @@
                             <div class="testimonial__author">
                                 <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
                                 <div class="testimonial__info">
-                                    <h4>Umut Berk TÜMAY</h4>
+                                    <h4>Ayşe Demir</h4>
                                     <p>Product Manager, Teknoloji Startup'ı</p>
                                 </div>
                             </div>
@@ -719,7 +497,7 @@
                             <div class="testimonial__author">
                                 <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
                                 <div class="testimonial__info">
-                                    <h4>Aslı Kaya</h4>
+                                    <h4>Mehmet Kaya</h4>
                                     <p>Siber Güvenlik Müdürü, Perakende Zinciri</p>
                                 </div>
                             </div>
@@ -733,45 +511,9 @@
             </div>
         </section>
 
-        <!-- BLOG SECTION -->
-        <section class="section" id="blog">
-            <div class="section__container container">
-                <h2 class="section__title">Blog</h2>
-                <div class="blog__grid">
-                    <div class="blog__post">
-                        <div class="blog__post-img"><i class='bx bx-news' style="font-size: 3rem;"></i></div>
-                        <div class="blog__post-content">
-                            <p class="blog__post-date">15 Ekim 2024</p>
-                            <h3 class="blog__post-title">Siber Güvenlikte Yapay Zeka Kullanımı</h3>
-                            <p class="blog__post-excerpt">Yapay zeka teknolojileri siber güvenlik alanında nasıl devrim yaratıyor? Gelişmiş tehdit tespiti ve önleme sistemleri hakkında detaylı bilgi.</p>
-                            <a href="#" class="blog__post-link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
-                        </div>
-                    </div>
-                    <div class="blog__post">
-                        <div class="blog__post-img"><i class='bx bx-news' style="font-size: 3rem;"></i></div>
-                        <div class="blog__post-content">
-                            <p class="blog__post-date">8 Ekim 2024</p>
-                            <h3 class="blog__post-title">OSINT: Dijital Dünyada Bilgi Toplama Sanatı</h3>
-                            <p class="blog__post-excerpt">Açık kaynak istihbaratı nedir ve nasıl etkili şekilde kullanılır? Kurumlar için OSINT stratejileri ve araçları.</p>
-                            <a href="#" class="blog__post-link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
-                        </div>
-                    </div>
-                    <div class="blog__post">
-                        <div class="blog__post-img"><i class='bx bx-news' style="font-size: 3rem;"></i></div>
-                        <div class="blog__post-content">
-                            <p class="blog__post-date">1 Ekim 2024</p>
-                            <h3 class="blog__post-title">Red Team Operasyonları: Saldırganın Gözünden Savunma</h3>
-                            <p class="blog__post-excerpt">Red Team operasyonları ile kurumsal güvenlik nasıl test edilir? Gerçek dünya senaryoları ve başarılı uygulama örnekleri.</p>
-                            <a href="#" class="blog__post-link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- PARTNERS SECTION -->
         <section class="section" id="partners">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">İş Ortaklarımız</h2>
                 <div class="partners__grid">
                     <div class="partner__logo"><i class='bx bxl-microsoft' style="font-size: 2rem;"></i></div>
@@ -785,7 +527,7 @@
 
         <!-- CONTACT SECTION -->
         <section class="section" id="contact">
-            <div class="section__container container">
+            <div class="container">
                 <h2 class="section__title">İletişime Geçin</h2>
                 <p class="contact__text">Projeleriniz, danışmanlık ihtiyaçlarınız veya sadece bir kahve eşliğinde siber güvenliği konuşmak için bize ulaşın.</p>
                 <button class="button" id="open-modal-btn">Form Doldur</button>
@@ -803,7 +545,6 @@
                     <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
                     <a href="#" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
                     <a href="#" class="footer__social-link"><i class='bx bxl-github'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
                 </div>
             </div>
             <div class="footer__col">
@@ -812,13 +553,13 @@
                     <a href="#about" class="footer__link">Hakkımızda</a>
                     <a href="#services" class="footer__link">Hizmetler</a>
                     <a href="#projects" class="footer__link">Projeler</a>
-                    <a href="#team" class="footer__link">Ekibimiz</a>
+                    <a href="#faq" class="footer__link">SSS</a>
                 </div>
             </div>
             <div class="footer__col">
                 <h3 class="footer__title">Hizmetlerimiz</h3>
                 <div class="footer__links">
-                    <a href="#" class="footer__link">Offensive Security</a>
+                    <a href="#" class="footer__link">Penetrasyon Testi</a>
                     <a href="#" class="footer__link">Red Team Hizmetleri</a>
                     <a href="#" class="footer__link">Mobil Güvenlik</a>
                     <a href="#" class="footer__link">OSINT & Threat Intelligence</a>
@@ -828,13 +569,13 @@
                 <h3 class="footer__title">İletişim</h3>
                 <div class="footer__links">
                     <a href="mailto:varuxinfo@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
-                    <a href="tel:+902245442525" class="footer__link">+90 200 500 23 31</a>
+                    <a href="tel:+902245442525" class="footer__link">+90 224 544 25 25</a>
                     <a href="#" class="footer__link">Bursa, Türkiye</a>
                 </div>
             </div>
             <div class="footer__bottom">
                 <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
-                <p>Selman Vural'ın emeğiyle.</p>
+                <p>Selman Vural</p>
             </div>
         </div>
     </footer>
@@ -875,7 +616,7 @@
             </form>
             <div class="modal__direct-contact">
                 <p><i class='bx bx-envelope'></i> varuxinfo@gmail.com</p>
-                <p><i class='bx bx-phone'></i> +90 200 500 25 35</p>
+                <p><i class='bx bx-phone'></i> +90 224 544 25 25</p>
                 <p><i class='bx bx-map'></i> Bursa, Türkiye</p>
             </div>
         </div>
@@ -891,7 +632,9 @@
         // Loader
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
-            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
         });
 
         // Header scroll effect
@@ -979,8 +722,7 @@
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just show a success message
+            // Form submission logic would go here
             modal.classList.remove('active');
             toastMessage.textContent = 'Mesajınız başarıyla gönderildi!';
             toast.classList.add('show');
@@ -989,7 +731,6 @@
                 toast.classList.remove('show');
             }, 3000);
             
-            // Reset form
             contactForm.reset();
         });
 
@@ -1006,29 +747,6 @@
         
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Progress bar
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progress-bar').style.width = scrolled + '%';
-        });
-
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            if (document.body.classList.contains('light-theme')) {
-                themeIcon.classList.remove('bx-moon');
-                themeIcon.classList.add('bx-sun');
-            } else {
-                themeIcon.classList.remove('bx-sun');
-                themeIcon.classList.add('bx-moon');
-            }
         });
 
         // FAQ accordion
@@ -1117,30 +835,13 @@
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize particles.js
         particlesJS('particles-js', {
             particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#58A6FF'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#58A6FF' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
@@ -1154,35 +855,16 @@
                     direction: 'none',
                     random: true,
                     straight: false,
-                    out_mode: 'out',
-                    bounce: false
+                    out_mode: 'out'
                 }
             },
             interactivity: {
                 detect_on: 'canvas',
                 events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    }
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' }
                 }
-            },
-            retina_detect: true
+            }
         });
     </script>
 </body>
