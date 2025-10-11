@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VARUX - Gizlilik Politikası</title>
     <meta name="description" content="VARUX Gizlilik Politikası - Kişisel verilerinizin korunması ve işlenmesi hakkında detaylı bilgi. KVKK ve GDPR uyumlu.">
-    <meta name="keywords" content="gizlilik politikası, kişisel veriler, KVKK, GDPR, siber güvenlik, VARUX, Selman Vural">
-    <meta name="author" content="VARUX - Selman Vural">
+    <meta name="keywords" content="gizlilik politikası, kişisel veriler, KVKK, GDPR, siber güvenlik, VARUX">
+    <meta name="author" content="VARUX">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -100,6 +100,12 @@
         .policy__contact-info { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
         .policy__contact-item { display: flex; align-items: center; gap: 0.5rem; }
         .policy__contact-item i { color: var(--secondary-color); }
+        .policy__toc { background-color: rgba(22, 27, 34, 0.8); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+        .policy__toc h3 { color: var(--secondary-color); margin-bottom: 1rem; font-size: 1.2rem; }
+        .policy__toc ul { margin-left: 0; }
+        .policy__toc li { margin-bottom: 0.5rem; }
+        .policy__toc a { color: var(--text-color-light); transition: color 0.3s; }
+        .policy__toc a:hover { color: var(--secondary-color); }
 
         /* FOOTER */
         .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
@@ -181,7 +187,22 @@
             <div class="container">
                 <h1 class="section__title">Gizlilik Politikası</h1>
                 <div class="policy__content">
-                    <div class="policy__section">
+                    <div class="policy__toc">
+                        <h3>İçindekiler</h3>
+                        <ul>
+                            <li><a href="#section1">1. Giriş ve Genel Bilgiler</a></li>
+                            <li><a href="#section2">2. Toplanan Bilgiler ve Toplama Yöntemleri</a></li>
+                            <li><a href="#section3">3. Bilgilerin Kullanım Amaçları</a></li>
+                            <li><a href="#section4">4. Bilgilerin Paylaşılması ve Aktarılması</a></li>
+                            <li><a href="#section5">5. Veri Güvenliği ve Saklama</a></li>
+                            <li><a href="#section6">6. KVKK ve GDPR Kapsamında Haklarınız</a></li>
+                            <li><a href="#section7">7. Çerezler ve İzleme Teknolojileri</a></li>
+                            <li><a href="#section8">8. Politika Değişiklikleri</a></li>
+                            <li><a href="#section9">9. İletişim ve Veri Sorumlusu</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="policy__section" id="section1">
                         <h2>1. Giriş ve Genel Bilgiler</h2>
                         <p>VARUX Siber Güvenlik Danışmanlığı ("Şirket", "biz", "bizim" veya "bize" olarak anılacaktır), müşterilerimizin ve web sitemiz ziyaretçilerinin gizliliğine büyük önem vermektedir. Bu Gizlilik Politikası, web sitemizi (varux.com) ziyaret ettiğinizde, hizmetlerimizi satın aldığınızda veya bizimle iletişime geçtiğinizde topladığımız, kullandığımız, açıkladığımız ve koruduğumuz bilgileri açıklamaktadır.</p>
                         <p>Bu politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) dahil olmak üzere geçerli veri koruma mevzuatına uygun olarak hazırlanmıştır.</p>
@@ -190,28 +211,27 @@
                         </div>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section2">
                         <h2>2. Toplanan Bilgiler ve Toplama Yöntemleri</h2>
                         <p>Hizmetlerimizi sağlamak, iyileştirmek ve yasal yükümlülüklerimizi yerine getirmek amacıyla aşağıdaki türden bilgileri toplayabiliriz:</p>
                         
                         <h3>2.1. Doğrudan Sizden Toplanan Bilgiler</h3>
                         <ul>
-                            <li><strong>Kimlik Bilgileri:</strong> Adınız, soyadınız, T.C. kimlik numarası (yasal zorunluluk olmadıkça talep edilmez)</li>
-                            <li><strong>İletişim Bilgileri:</strong> E-posta adresiniz, telefon numaranız, adresiniz</li>
-                            <li><strong>Profesyonel Bilgiler:</strong> Çalıştığınız şirket, pozisyonunuz, iş unvanınız</li>
-                            <li><strong>Finansal Bilgiler:</strong> Fatura bilgileri, ödeme detayları (güvenli ödeme sistemleri üzerinden)</li>
+                            <li><strong>Kimlik Bilgileri:</strong> Adınız, soyadınız</li>
+                            <li><strong>İletişim Bilgileri:</strong> E-posta adresiniz, telefon numaranız</li>
+                            <li><strong>Profesyonel Bilgiler:</strong> Çalıştığınız şirket, pozisyonunuz</li>
                             <li><strong>İletişim İçeriği:</strong> Bizimle iletişime geçtiğinizde sağladığınız mesajlar, talepler ve geri bildirimler</li>
                         </ul>
                         
                         <h3>2.2. Otomatik Olarak Toplanan Bilgiler</h3>
                         <ul>
                             <li><strong>Teknik Bilgiler:</strong> IP adresiniz, tarayıcı türü ve versiyonu, işletim sistemi, cihaz bilgileri</li>
-                            <li><strong>Kullanım Bilgileri:</strong> Web sitemizde geçirdiğiniz zaman, ziyaret ettiğiniz sayfalar, tıklama davranışları</li>
-                            <li><strong>Çerezler ve Benzer Teknolojiler:</strong> Web sitemizin işlevselliğini geliştirmek ve kullanıcı deneyiminizi iyileştirmek için çerezler ve benzer izleme teknolojileri kullanıyoruz</li>
+                            <li><strong>Kullanım Bilgileri:</strong> Web sitemizde geçirdiğiniz zaman, ziyaret ettiğiniz sayfalar</li>
+                            <li><strong>Çerezler ve Benzer Teknolojiler:</strong> Web sitemizin işlevselliğini geliştirmek için çerezler kullanıyoruz</li>
                         </ul>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section3">
                         <h2>3. Bilgilerin Kullanım Amaçları</h2>
                         <p>Topladığımız bilgileri aşağıdaki amaçlarla kullanıyoruz:</p>
                         <table class="policy__table">
@@ -246,121 +266,83 @@
                                     <td>Yasal yükümlülüklerimizi yerine getirmek</td>
                                     <td>Yasal yükümlülük</td>
                                 </tr>
-                                <tr>
-                                    <td>Güvenlik ve dolandırıcılık önleme</td>
-                                    <td>Yasal yükümlülük, Meşru menfaat</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section4">
                         <h2>4. Bilgilerin Paylaşılması ve Aktarılması</h2>
                         <p>Kişisel bilgilerinizi aşağıdaki durumlar dışında üçüncü şahıslarla paylaşmıyoruz:</p>
                         <ul>
-                            <li><strong>Hizmet Sağlayıcılar:</strong> Hizmetlerimizi sağlamamıza yardımcı olan güvenilir üçüncü taraf hizmet sağlayıcılar (örneğin, barındırma, analitik, ödeme işleme). Bu hizmet sağlayıcılar, verilerinizi yalnızca bizim talimatlarımız doğrultusunda işler ve uygun güvenlik önlemlerini uygular.</li>
+                            <li><strong>Hizmet Sağlayıcılar:</strong> Hizmetlerimizi sağlamamıza yardımcı olan güvenilir üçüncü taraf hizmet sağlayıcılar (örneğin, barındırma, analitik). Bu hizmet sağlayıcılar, verilerinizi yalnızca bizim talimatlarımız doğrultusunda işler.</li>
                             <li><strong>Yasal Zorunluluklar:</strong> Kanun, düzenleme, mahkeme emri veya diğer yasal işlemler gereği.</li>
-                            <li><strong>İş Transferleri:</strong> Bir birleşme, satın alma veya varlık satışı durumunda.</li>
                             <li><strong>Koruma:</strong> VARUX'un haklarını, mülkiyetini veya güvenliğini, müşterilerimizin veya başkalarının güvenliğini korumak için.</li>
                         </ul>
-                        
-                        <h3>4.1. Uluslararası Veri Transferi</h3>
-                        <p>Verileriniz, genellikle Türkiye'deki sunucularımızda saklanır. Ancak, bazı hizmet sağlayıcılarımız farklı ülkelerde bulunabilir. Bu durumda, veri transferinin yasalara uygun şekilde gerçekleşmesini sağlamak için gerekli önlemleri alırız (GDPR uyumlu olarak yeterli koruma sağlayan ülkeler veya uygun garantiler).</p>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section5">
                         <h2>5. Veri Güvenliği ve Saklama</h2>
                         <h3>5.1. Güvenlik Önlemleri</h3>
                         <p>Kişisel bilgilerinizin güvenliğini sağlamak için uygun fiziksel, teknik ve idari önlemler alıyoruz:</p>
                         <ul>
-                            <li><strong>Şifreleme:</strong> Hassas verilerin iletimi ve depolanması için endüstri standardı şifreleme yöntemleri kullanıyoruz.</li>
-                            <li><strong>Erişim Kontrolleri:</strong> Verilere erişimi sınırlandırıyor ve yalnızca yetkili personelin erişimine izin veriyoruz.</li>
-                            <li><strong>Ağ Güvenliği:</strong> Güvenlik duvarları, saldırı tespit sistemleri ve düzenli güvenlik denetimleri uyguluyoruz.</li>
-                            <li><strong>Personel Eğitimi:</strong> Çalışanlarımızı veri gizliliği ve güvenliği konusunda düzenli olarak eğitiyoruz.</li>
+                            <li><strong>Şifreleme:</strong> Hassas verilerin iletimi ve depolanması için endüstri standardı şifreleme yöntemleri</li>
+                            <li><strong>Erişim Kontrolleri:</strong> Verilere erişimi sınırlandırma ve yalnızca yetkili personelin erişimine izin verme</li>
+                            <li><strong>Ağ Güvenliği:</strong> Güvenlik duvarları ve düzenli güvenlik denetimleri</li>
                         </ul>
                         
                         <div class="policy__highlight">
-                            <p><strong>Siber Güvenlik Uzmanı Olarak:</strong> VARUX olarak, siber güvenlik alanında uzmanlaşmış bir şirket olarak, müşteri verilerinin korunmasına en üst düzeyde önem veriyoruz. Verileriniz, sektör standartlarının üzerinde güvenlik önlemleri ile korunmaktadır ve düzenli penetrasyon testlerine tabi tutulmaktadır.</p>
+                            <p><strong>Siber Güvenlik Uzmanı Olarak:</strong> VARUX olarak, siber güvenlik alanında uzmanlaşmış bir şirket olarak, müşteri verilerinin korunmasına en üst düzeyde önem veriyoruz. Verileriniz, sektör standartlarının üzerinde güvenlik önlemleri ile korunmaktadır.</p>
                         </div>
                         
                         <h3>5.2. Veri Saklama Süreleri</h3>
-                        <p>Kişisel verilerinizi, toplama amaçları doğrultusunda gerekli olan süre boyunca saklıyoruz. Saklama süreleri aşağıdaki faktörlere bağlıdır:</p>
-                        <ul>
-                            <li>Hizmet sağlama sürecinin devam etmesi</li>
-                            <li>Yasal yükümlülüklerimiz (örneğin, vergi kanunları uyarınca saklama zorunlulukları)</li>
-                            <li>Potansiyel hukuki taleplerin varlığı</li>
-                            <li>Veri koruma otoritelerinin tavsiyeleri</li>
-                        </ul>
-                        <p>Veri saklama süreleri dolduğunda veya veri işleme amacı ortadan kalktığında, kişisel verilerinizi güvenli bir şekilde siler, yok eder veya anonim hale getiririz.</p>
+                        <p>Kişisel verilerinizi, toplama amaçları doğrultusunda gerekli olan süre boyunca saklıyoruz. Veri saklama süreleri dolduğunda veya veri işleme amacı ortadan kalktığında, kişisel verilerinizi güvenli bir şekilde siler veya anonim hale getiririz.</p>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section6">
                         <h2>6. KVKK ve GDPR Kapsamında Haklarınız</h2>
                         <p>KVKK ve GDPR kapsamında, kişisel verilerinizle ilgili olarak aşağıdaki haklara sahipsiniz:</p>
                         <ul>
-                            <li><strong>Bilgi Edinme Hakkı:</strong> Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme.</li>
-                            <li><strong>Erişim Hakkı:</strong> Kişisel verilerinize erişim sağlama ve kopyalarını alma.</li>
-                            <li><strong>Düzeltme Hakkı:</strong> Kişisel verilerinizin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme.</li>
-                            <li><strong>Silme Hakkı (Unutulma Hakkı):</strong> Kişisel verilerinizin silinmesini veya yok edilmesini isteme.</li>
-                            <li><strong>İşleme Sınırlama Hakkı:</strong> Belirli durumlarda verilerinizin işlenmesinin sınırlandırılmasını isteme.</li>
-                            <li><strong>İtiraz Hakkı:</strong> İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme.</li>
-                            <li><strong>Veri Taşınabilirliği Hakkı:</strong> Verilerinizin yapılandırılmış, yaygın kullanılan ve makine tarafından okunabilir bir formatta size veya başka bir veri sorumlusuna iletilmesini talep etme.</li>
-                            <li><strong>Rızayı Geri Çekme Hakkı:</strong> Açık rızanıza dayalı işlemelerde rızanızı her zaman geri çekme.</li>
-                            <li><strong>Şikayette Bulunma Hakkı:</strong> Kişisel verilerinizin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız halinde Kişisel Verileri Koruma Kurumu'na veya ilgili veri koruma otoritesine şikayette bulunma.</li>
+                            <li><strong>Bilgi Edinme Hakkı:</strong> Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+                            <li><strong>Erişim Hakkı:</strong> Kişisel verilerinize erişim sağlama</li>
+                            <li><strong>Düzeltme Hakkı:</strong> Kişisel verilerinizin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme</li>
+                            <li><strong>Silme Hakkı (Unutulma Hakkı):</strong> Kişisel verilerinizin silinmesini isteme</li>
+                            <li><strong>İşleme Sınırlama Hakkı:</strong> Belirli durumlarda verilerinizin işlenmesinin sınırlandırılmasını isteme</li>
+                            <li><strong>İtiraz Hakkı:</strong> Verilerinizin işlenmesine itiraz etme</li>
+                            <li><strong>Veri Taşınabilirliği Hakkı:</strong> Verilerinizin başka bir veri sorumlusuna iletilmesini talep etme</li>
+                            <li><strong>Şikayette Bulunma Hakkı:</strong> Kişisel Verileri Koruma Kurumu'na şikayette bulunma</li>
                         </ul>
                         
-                        <p>Haklarınızı kullanmak için bizimle <a href="mailto:vuralselman00@gmail.com">vuralselman00@gmail.com</a> adresinden iletişime geçebilirsiniz. Talebinizi en geç 30 gün içinde yanıtlayacağız.</p>
+                        <p>Haklarınızı kullanmak için bizimle <a href="mailto:varuxinfo@gmail.com">varuxinfo@gmail.com</a> adresinden iletişime geçebilirsiniz. Talebinizi en geç 30 gün içinde yanıtlayacağız.</p>
                     </div>
 
-                    <div class="policy__section">
+                    <div class="policy__section" id="section7">
                         <h2>7. Çerezler ve İzleme Teknolojileri</h2>
-                        <p>Web sitemiz, kullanıcı deneyiminizi iyileştirmek için çerezler ve benzer izleme teknolojileri kullanmaktadır. Çerezler, web sitesi tarafından tarayıcınıza gönderilen küçük metin dosyalarıdır ve cihazınızda saklanır.</p>
+                        <p>Web sitemiz, kullanıcı deneyiminizi iyileştirmek için çerezler kullanmaktadır. Çerezler, web sitesi tarafından tarayıcınıza gönderilen küçük metin dosyalarıdır.</p>
                         
                         <h3>7.1. Kullandığımız Çerez Türleri</h3>
                         <ul>
-                            <li><strong>Gerekli Çerezler:</strong> Web sitesinin temel işlevlerini çalıştırmak için gereklidir. Bu çerezler olmadan web sitemiz düzgün çalışmaz.</li>
-                            <li><strong>Performans Çerezleri:</strong> Web sitesinin performansını analiz etmemize ve iyileştirmemize yardımcı olur.</li>
-                            <li><strong>İşlevsellik Çerezleri:</strong> Tercihlerinizi hatırlayarak gelişmiş işlevsellik ve kişiselleştirilmiş deneyim sunar.</li>
-                            <li><strong>Hedefleme/İzleme Çerezleri:</strong> İlgi alanlarınıza göre reklam ve içerik sunmak için kullanılır.</li>
+                            <li><strong>Gerekli Çerezler:</strong> Web sitesinin temel işlevlerini çalıştırmak için gereklidir.</li>
+                            <li><strong>Performans Çerezleri:</strong> Web sitesinin performansını analiz etmemize yardımcı olur.</li>
+                            <li><strong>İşlevsellik Çerezleri:</strong> Tercihlerinizi hatırlayarak gelişmiş işlevsellik sunar.</li>
                         </ul>
                         
                         <h3>7.2. Çerez Yönetimi</h3>
-                        <p>Tarayıcı ayarlarınızı değiştirerek çerezleri reddedebilir veya çerez kullanımını kontrol edebilirsiniz. Ancak bu, web sitemizin bazı bölümlerinin düzgün çalışmamasına neden olabilir. Çoğu tarayıcı, çerezleri otomatik olarak kabul edecek şekilde ayarlanmıştır, ancak genellikle tarayıcınızın "Yardım" bölümünden çerez ayarlarınızı değiştirebilirsiniz.</p>
+                        <p>Tarayıcı ayarlarınızı değiştirerek çerezleri reddedebilir veya çerez kullanımını kontrol edebilirsiniz. Ancak bu, web sitemizin bazı bölümlerinin düzgün çalışmamasına neden olabilir.</p>
                     </div>
 
-                    <div class="policy__section">
-                        <h2>8. Üçüncü Taraf Web Siteleri ve Hizmetler</h2>
-                        <p>Web sitemiz, kendi gizlilik politikalarına tabi olan üçüncü taraf web sitelerine bağlantılar içerebilir. Bu üçüncü taraf sitelerin içeriği, gizlilik uygulamaları veya politikaları üzerinde herhangi bir kontrolümüz yoktur ve bunlardan sorumlu değiliz. Bu web sitelerini ziyaret etmeden önce gizlilik politikalarını okumanızı öneririz.</p>
+                    <div class="policy__section" id="section8">
+                        <h2>8. Politika Değişiklikleri</h2>
+                        <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklik yaptığımızda, güncellenmiş politikayı web sitemizde yayınlayarak ve revizyon tarihini güncelleyerek sizi bilgilendireceğiz. Değişikliklerin yayınlanmasından sonra web sitemizi kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
                     </div>
 
-                    <div class="policy__section">
-                        <h2>9. Çocukların Gizliliği</h2>
-                        <p>Hizmetlerimiz 18 yaşın altındaki kişilere yönelik değildir ve bilerek 18 yaşın altındaki kişilerden kişisel bilgi toplamıyoruz. Ebeveyn veya veli iseniz ve çocuğunuzun bize kişisel bilgiler sağladığını düşünüyorsanız, lütfen bizimle iletişime geçin. Böyle bir durumu tespit edersek, çocuğun kişisel bilgilerini derhal silmek için makul adımlar atacağız.</p>
-                    </div>
-
-                    <div class="policy__section">
-                        <h2>10. Politika Değişiklikleri ve Güncellemeler</h2>
-                        <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklik yaptığımızda, güncellenmiş politikayı web sitemizde yayınlayarak ve revizyon tarihini güncelleyerek sizi bilgilendireceğiz. Önemli değişiklikler durumunda, mümkün olduğunda doğrudan sizi bilgilendireceğiz. Değişikliklerin yayınlanmasından sonra web sitemizi kullanmaya veya hizmetlerimizden yararlanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
-                        
-                        <p>Bu politikanın önceki versiyonlarını talep etme hakkınız saklıdır.</p>
-                    </div>
-
-                    <div class="policy__section">
-                        <h2>11. İletişim ve Veri Sorumlusu</h2>
+                    <div class="policy__section" id="section9">
+                        <h2>9. İletişim ve Veri Sorumlusu</h2>
                         <p>Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, kişisel verilerinizle ilgili haklarınızı kullanmak istiyorsanız veya bir veri ihlali şüphesi varsa, lütfen bizimle iletişime geçin:</p>
                         
                         <div class="policy__contact-info">
                             <div class="policy__contact-item">
                                 <i class='bx bx-envelope'></i>
-                                <span><strong>E-posta:</strong> vuralselman00@gmail.com</span>
-                            </div>
-                            <div class="policy__contact-item">
-                                <i class='bx bx-phone'></i>
-                                <span><strong>Telefon:</strong> +90 544 25</span>
-                            </div>
-                            <div class="policy__contact-item">
-                                <i class='bx bx-map'></i>
-                                <span><strong>Adres:</strong> Bursa, Türkiye</span>
+                                <span><strong>E-posta:</strong> varuxinfo@gmail.com</span>
                             </div>
                             <div class="policy__contact-item">
                                 <i class='bx bx-time'></i>
@@ -368,12 +350,12 @@
                             </div>
                         </div>
                         
-                        <p><strong>Veri Sorumlusu:</strong> Selman Vural - VARUX Siber Güvenlik Danışmanlığı</p>
+                        <p><strong>Veri Sorumlusu:</strong> VARUX Siber Güvenlik Danışmanlığı</p>
+                        <p><strong>Veri Sorumlusu Temsilcisi:</strong> Selman Vural</p>
                     </div>
 
                     <div class="policy__update">
                         <p><strong>Son Güncelleme:</strong> 1 Ocak 2024</p>
-                        <p><strong>Bir önceki güncelleme:</strong> 15 Haziran 2023</p>
                     </div>
                 </div>
             </div>
@@ -412,8 +394,7 @@
             <div class="footer__col">
                 <h3 class="footer__title">İletişim</h3>
                 <div class="footer__links">
-                    <a href="mailto:vuralselman00@gmail.com" class="footer__link">vuralselman00@gmail.com</a>
-                    <a href="tel:+9022425" class="footer__link">+90 544 25</a>
+                    <a href="mailto:varuxinfo@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
                     <a href="#" class="footer__link">Bursa, Türkiye</a>
                 </div>
             </div>
@@ -499,61 +480,18 @@
             sectionObserver.observe(section);
         });
 
-        // Add table of contents functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const headings = document.querySelectorAll('.policy__section h2');
-            if (headings.length > 0) {
-                const toc = document.createElement('div');
-                toc.className = 'policy__toc';
-                toc.innerHTML = '<h3>İçindekiler</h3><ul></ul>';
+        // Smooth scroll for table of contents
+        document.querySelectorAll('.policy__toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
                 
-                const tocList = toc.querySelector('ul');
-                
-                headings.forEach((heading, index) => {
-                    const id = 'section-' + (index + 1);
-                    heading.id = id;
-                    
-                    const listItem = document.createElement('li');
-                    const link = document.createElement('a');
-                    link.href = '#' + id;
-                    link.textContent = heading.textContent;
-                    listItem.appendChild(link);
-                    tocList.appendChild(listItem);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
                 });
-                
-                document.querySelector('.policy__content').insertBefore(toc, document.querySelector('.policy__section'));
-                
-                // Add styles for TOC
-                const style = document.createElement('style');
-                style.textContent = `
-                    .policy__toc {
-                        background-color: rgba(22, 27, 34, 0.8);
-                        border: 1px solid var(--border-color);
-                        border-radius: 8px;
-                        padding: 1.5rem;
-                        margin-bottom: 2rem;
-                    }
-                    .policy__toc h3 {
-                        color: var(--secondary-color);
-                        margin-bottom: 1rem;
-                        font-size: 1.2rem;
-                    }
-                    .policy__toc ul {
-                        margin-left: 0;
-                    }
-                    .policy__toc li {
-                        margin-bottom: 0.5rem;
-                    }
-                    .policy__toc a {
-                        color: var(--text-color-light);
-                        transition: color 0.3s;
-                    }
-                    .policy__toc a:hover {
-                        color: var(--secondary-color);
-                    }
-                `;
-                document.head.appendChild(style);
-            }
+            });
         });
     </script>
 </body>
