@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX - Projelerimiz</title>
+    <meta name="description" content="VARUX'un tamamladığı siber güvenlik projeleri. Finans, e-ticaret, sağlık ve daha birçok sektörde gerçekleştirdiğimiz başarılı projeler.">
+    <meta name="keywords" content="siber güvenlik projeleri, penetrasyon testi, red team, OSINT, mobil güvenlik, finans güvenliği">
+    <meta name="author" content="VARUX - Selman Vural">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="VARUX - Projelerimiz">
+    <meta property="og:description" content="VARUX'un tamamladığı siber güvenlik projeleri. Finans, e-ticaret, sağlık ve daha birçok sektörde gerçekleştirdiğimiz başarılı projeler.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://varux.com/projects.html">
+    <meta property="og:image" content="https://varux.com/images/og-image.jpg">
+    <meta property="og:site_name" content="VARUX">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VARUX - Projelerimiz">
+    <meta name="twitter:description" content="VARUX'un tamamladığı siber güvenlik projeleri.">
+    <meta name="twitter:image" content="https://varux.com/images/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://varux.com/projects.html">
+    
+    <!-- Google Fonts: Poppins & Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons (for icons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        /*=============== CSS VARIABLES ===============*/
+        :root {
+          --header-height: 3.5rem;
+          --bg-color: #0A0F14;
+          --bg-color-light: #161B22;
+          --border-color: #30363D;
+          --primary-color: #58A6FF;
+          --secondary-color: #00f2a1;
+          --text-color: #C9D1D9;
+          --text-color-light: #8B949E;
+          --title-color: #F0F6FC;
+          --body-font: 'Poppins', sans-serif;
+          --title-font: 'Share Tech Mono', monospace;
+          --h1-font-size: 2.75rem;
+          --h2-font-size: 1.75rem;
+          --h3-font-size: 1.25rem;
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --font-semi-bold: 600;
+          --z-background: -1;
+          --z-tooltip: 10;
+          --z-fixed: 100;
+          --z-modal: 1000;
+        }
+
+        /*=============== BASE ===============*/
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; outline: none; }
+        img { max-width: 100%; height: auto; }
+
+        /*=============== REUSABLE CSS ===============*/
+        .container { max-width: 1024px; margin-left: 1.5rem; margin-right: 1.5rem; }
+        .section { padding: 4.5rem 0 2rem; }
+        .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
+        .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+        .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        /*=============== LOADER ===============*/
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /*=============== HEADER & NAV ===============*/
+        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
+        .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+        .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
+        .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
+        .nav__list { display: flex; column-gap: 2.5rem; align-items: center; }
+        .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
+        .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
+        .nav__dropdown { position: relative; }
+        .nav__dropdown-menu { position: absolute; top: 150%; left: -20px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0; width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: var(--z-tooltip); }
+        .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav__dropdown-link { display: block; padding: 0.75rem 1.5rem; color: var(--text-color); transition: background-color 0.3s, color 0.3s, padding-left 0.3s; }
+        .nav__dropdown-link:hover { background-color: var(--secondary-color); color: var(--bg-color); padding-left: 1.75rem; }
+        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+
+        /*=============== PROJECTS HERO SECTION ===============*/
+        .projects-hero { height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+        .projects-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(0, 242, 161, 0.05) 100%); z-index: 1; }
+        .projects-hero__container { position: relative; z-index: 2; }
+        .projects-hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); }
+        .projects-hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /*=============== PROJECTS SECTION ===============*/
+        .projects__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+        .project__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .project__image { height: 200px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); position: relative; overflow: hidden; }
+        .project__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project__card:hover .project__image img { transform: scale(1.05); }
+        .project__image i { font-size: 3rem; }
+        .project__content { padding: 1.5rem; }
+        .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
+        .project__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
+        .project__details { margin-bottom: 1rem; }
+        .project__detail { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: var(--small-font-size); color: var(--text-color-light); }
+        .project__detail i { color: var(--primary-color); }
+        .project__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .project__tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
+        .project__actions { display: flex; gap: 1rem; }
+        .project__button { padding: 0.5rem 1rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; font-size: var(--small-font-size); }
+        .project__button--primary { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; }
+        .project__button--primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 161, 0.3); }
+        .project__button--secondary { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); }
+        .project__button--secondary:hover { background-color: rgba(88, 166, 255, 0.1); transform: translateY(-3px); }
+
+        /*=============== PROJECT FILTER ===============*/
+        .projects-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+        .filter-button { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1.5rem; border-radius: 30px; transition: all 0.3s ease; font-weight: var(--font-semi-bold); }
+        .filter-button:hover, .filter-button.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
+
+        /*=============== PROJECT MODAL ===============*/
+        .project-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: var(--z-modal); background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
+        .project-modal.active { display: flex; opacity: 1; }
+        .project-modal__content { position: relative; background-color: var(--bg-color-light); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; transform: scale(0.95); transition: transform 0.3s ease; }
+        .project-modal.active .project-modal__content { transform: scale(1); }
+        .project-modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; z-index: 1; }
+        .project-modal__close:hover { color: var(--secondary-color); }
+        .project-modal__title { font-size: var(--h2-font-size); color: var(--secondary-color); margin-bottom: 1.5rem; }
+        .project-modal__image { width: 100%; height: 300px; background-color: var(--bg-color); border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .project-modal__image img { width: 100%; height: 100%; object-fit: cover; }
+        .project-modal__image i { font-size: 4rem; color: var(--text-color-light); }
+        .project-modal__details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .project-modal__detail { background-color: rgba(22, 27, 34, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); }
+        .project-modal__detail h4 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: var(--small-font-size); }
+        .project-modal__detail p { color: var(--text-color); font-size: var(--small-font-size); }
+        .project-modal__description { margin-bottom: 1.5rem; }
+        .project-modal__description h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__description p { color: var(--text-color); line-height: 1.6; }
+        .project-modal__challenges { margin-bottom: 1.5rem; }
+        .project-modal__challenges h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__challenges ul { padding-left: 1.5rem; }
+        .project-modal__challenges li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; }
+        .project-modal__challenges li::before { content: '•'; color: var(--secondary-color); position: absolute; left: -1rem; }
+        .project-modal__results { margin-bottom: 1.5rem; }
+        .project-modal__results h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__results ul { padding-left: 1.5rem; }
+        .project-modal__results li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; }
+        .project-modal__results li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: -1rem; }
+        .project-modal__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .project-modal__tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
+
+        /*=============== FOOTER ===============*/
+        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
+        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
+        .footer__description { color: var(--text-color-light); font-size: var(--small-font-size); margin-bottom: 1.5rem; max-width: 300px; }
+        .footer__social { display: flex; gap: 1rem; }
+        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
+        .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
+        .footer__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1.5rem; }
+        .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
+        .footer__link:hover { color: var(--secondary-color); }
+        .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
+        .footer__bottom p { margin-bottom: 0.5rem; }
+
+        /* BREAKPOINTS */
+        @media screen and (max-width: 768px) {
+          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
+          .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
+          .nav__toggle, .nav__close { display: block; color: var(--title-color); }
+          .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
+          .show-menu { right: 0; }
+          .nav__dropdown { width: 100%; }
+          .nav__dropdown .nav__link { display: flex; justify-content: space-between; align-items: center; }
+          .nav__dropdown-menu { position: static; background-color: transparent; border: none; box-shadow: none; width: 100%; padding: 0.5rem 0 0 1rem; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+          .nav__dropdown:hover .nav__dropdown-menu { max-height: 0; }
+          .dropdown-active .nav__dropdown-menu { max-height: 500px; }
+          .dropdown-active i { transform: rotate(180deg); }
+          .projects-hero { height: 50vh; }
+          .projects__grid { grid-template-columns: 1fr; }
+          .project-modal__content { padding: 1.5rem; }
+          .project-modal__details { grid-template-columns: 1fr; }
+        }
+        @media screen and (max-width: 350px) {
+          .container { margin-left: 1rem; margin-right: 1rem; }
+          .projects-hero__title { font-size: 2rem; }
+        }
+        @media screen and (min-width: 1040px) {
+          .container { margin-left: auto; margin-right: auto; }
+          :root { --h1-font-size: 3.5rem; --h2-font-size: 2.25rem; --h3-font-size: 1.5rem; --normal-font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader__spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i>VARUX</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">Hakkımızda</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">Hizmetler</a></li>
+                    <li class="nav__item nav__dropdown">
+                        <a href="#" class="nav__link">Eğitimler <i class='bx bx-chevron-down'></i></a>
+                        <ul class="nav__dropdown-menu">
+                            <li><a href="/trainings/basic-security.html" class="nav__dropdown-link">Temel Siber Güvenlik</a></li>
+                            <li><a href="/trainings/osint.html" class="nav__dropdown-link">OSINT & Bilgi Toplama</a></li>
+                            <li><a href="/trainings/web-xss.html" class="nav__dropdown-link">Web Güvenliği & XSS</a></li>
+                            <li><a href="/trainings/mobile.html" class="nav__dropdown-link">Mobil Güvenlik</a></li>
+                            <li><a href="/trainings/redteam.html" class="nav__dropdown-link">Red Team Operasyonları</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projelerimiz</a></li>
+                    <li class="nav__item"><a href="index.html#team" class="nav__link">Ekibimiz</a></li>
+                    <li class="nav__item"><a href="index.html#blog" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link" id="contact-link">İletişim</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- PROJECTS HERO SECTION -->
+        <section class="projects-hero">
+            <div class="projects-hero__container container">
+                <h1 class="projects-hero__title">Projelerimiz</h1>
+                <p class="projects-hero__subtitle">VARUX olarak, farklı sektörlerdeki müşterilerimiz için gerçekleştirdiğimiz başarılı siber güvenlik projelerimizi keşfedin.</p>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="section" id="projects">
+            <div class="section__container container">
+                <h2 class="section__title">Tamamlanan Projeler</h2>
+                
+                <!-- PROJECT FILTER -->
+                <div class="projects-filter">
+                    <button class="filter-button active" data-filter="all">Tümü</button>
+                    <button class="filter-button" data-filter="red-team">Red Team</button>
+                    <button class="filter-button" data-filter="web-app">Web App Security</button>
+                    <button class="filter-button" data-filter="mobile">Mobil Security</button>
+                    <button class="filter-button" data-filter="osint">OSINT</button>
+                    <button class="filter-button" data-filter="pentest">Penetrasyon Testi</button>
+                </div>
+                
+                <div class="projects__grid">
+                    <!-- Project 1 -->
+                    <div class="project__card" data-category="red-team,pentest">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Finans Sektörü Red Team Operasyonu">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Finans Sektörü Red Team Operasyonu</h3>
+                            <p class="project__description">Türkiye'nin önde gelen bankalarından biri için kapsamlı Red Team operasyonu gerçekleştirildi. Fiziksel ve dijital güvenlik kontrollerinin etkinliği test edildi.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Haziran 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 6 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Özel Banka A.Ş.</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">Red Team</span>
+                                <span class="project__tag">Penetrasyon Testi</span>
+                                <span class="project__tag">Sosyal Mühendislik</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="1">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="1-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project__card" data-category="mobile,web-app">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobil E-Ticaret Güvenliği">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Mobil E-Ticaret Güvenliği</h3>
+                            <p class="project__description">Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının iOS ve Android sürümlerinin güvenlik açıklarını tespit ve iyileştirme projesi.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mayıs 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 4 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: E-Ticaret Şirketi B</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">Mobil Security</span>
+                                <span class="project__tag">iOS/Android</span>
+                                <span class="project__tag">API Güvenliği</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="2">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="2-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project__card" data-category="osint">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kurumsal OSINT Çalışması">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Kurumsal OSINT Çalışması</h3>
+                            <p class="project__description">Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi. Üst düzey yöneticiler için kişisel güvenlik danışmanlığı sağlandı.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Nisan 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Holding C</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">OSINT</span>
+                                <span class="project__tag">Threat Intelligence</span>
+                                <span class="project__tag">Dijital Ayak İzi</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="3">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="3-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project__card" data-category="web-app,pentest">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sağlık Sektörü Web Uygulaması Güvenlik Testi">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Sağlık Sektörü Web Uygulaması Güvenlik Testi</h3>
+                            <p class="project__description">Hasta verileri işleyen bir sağlık kuruluşunun web uygulaması için kapsamlı güvenlik denetimi ve penetrasyon testi gerçekleştirildi.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mart 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 5 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Sağlık Kuruluşu D</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">Web App Security</span>
+                                <span class="project__tag">Penetrasyon Testi</span>
+                                <span class="project__tag">Veri Güvenliği</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="4">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="4-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project__card" data-category="red-team">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1562774053-701939b585eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Eğitim Sektörü Fiziksel Güvenlik Testi">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Eğitim Sektörü Fiziksel Güvenlik Testi</h3>
+                            <p class="project__description">Bir üniversite kampüsü için fiziksel güvenlik kontrollerinin etkinliğini değerlendirmek amacıyla Red Team operasyonu gerçekleştirildi.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Şubat 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 4 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Üniversite E</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">Red Team</span>
+                                <span class="project__tag">Fiziksel Güvenlik</span>
+                                <span class="project__tag">Sosyal Mühendislik</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="5">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="5-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project__card" data-category="mobile,web-app">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Finans Teknolojisi API Güvenliği">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">Finans Teknolojisi API Güvenliği</h3>
+                            <p class="project__description">Finansal işlemler gerçekleştiren bir mobil uygulamanın backend API'ları için güvenlik denetimi ve güvenli kodlama danışmanlığı sağlandı.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Ocak 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 6 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: FinTech Şirketi F</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">API Güvenliği</span>
+                                <span class="project__tag">Mobil Security</span>
+                                <span class="project__tag">Güvenli Kodlama</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--primary" data-project="6">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="6-case">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__col">
+                <a href="index.html" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                <p class="footer__description">Siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan, yeni nesil bir teknoloji oluşumu.</p>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Hızlı Bağlantılar</h3>
+                <div class="footer__links">
+                    <a href="index.html#about" class="footer__link">Hakkımızda</a>
+                    <a href="index.html#services" class="footer__link">Hizmetler</a>
+                    <a href="projects.html" class="footer__link">Projeler</a>
+                    <a href="index.html#team" class="footer__link">Ekibimiz</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Hizmetlerimiz</h3>
+                <div class="footer__links">
+                    <a href="#" class="footer__link">Offensive Security</a>
+                    <a href="#" class="footer__link">Red Team Hizmetleri</a>
+                    <a href="#" class="footer__link">Mobil Güvenlik</a>
+                    <a href="#" class="footer__link">OSINT & Threat Intelligence</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">İletişim</h3>
+                <div class="footer__links">
+                    <a href="mailto:varuxinfo@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
+                    <a href="tel:+902245442525" class="footer__link">+90 224 544 25 25</a>
+                    <a href="#" class="footer__link">Bursa, Türkiye</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
+                <p>Selman Vural'ın emeğiyle.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" class="project-modal">
+        <div class="project-modal__content">
+            <span class="project-modal__close" id="close-project-modal">&times;</span>
+            <h2 class="project-modal__title" id="modal-title">Proje Başlığı</h2>
+            <div class="project-modal__image" id="modal-image">
+                <img src="" alt="Proje Görseli" id="modal-image-src">
+            </div>
+            <div class="project-modal__details" id="modal-details">
+                <!-- Details will be populated by JavaScript -->
+            </div>
+            <div class="project-modal__description" id="modal-description">
+                <!-- Description will be populated by JavaScript -->
+            </div>
+            <div class="project-modal__challenges" id="modal-challenges">
+                <!-- Challenges will be populated by JavaScript -->
+            </div>
+            <div class="project-modal__results" id="modal-results">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+            <div class="project-modal__tags" id="modal-tags">
+                <!-- Tags will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        });
+
+        // Project Filter
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const projectCards = document.querySelectorAll('.project__card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.getAttribute('data-category').split(',');
+                        if (categories.includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Project Modal
+        const projectModal = document.getElementById('project-modal');
+        const closeProjectModal = document.getElementById('close-project-modal');
+        const projectButtons = document.querySelectorAll('.project__button');
+        
+        // Project data
+        const projects = {
+            1: {
+                title: "Finans Sektörü Red Team Operasyonu",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Haziran 2024" },
+                    { label: "Proje Süresi", value: "6 Hafta" },
+                    { label: "Müşteri", value: "Özel Banka A.Ş." },
+                    { label: "Sektör", value: "Finans" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Türkiye'nin önde gelen bankalarından biri için kapsamlı Red Team operasyonu gerçekleştirildi. Fiziksel ve dijital güvenlik kontrollerinin etkinliği test edildi. Operasyon kapsamında sosyal mühendislik, fiziksel sızma testleri ve ağ penetrasyon testleri gerçekleştirildi. Proje, müşterinin güvenlik zafiyetlerini tespit etmek ve iyileştirmek amacıyla gerçekleştirildi."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Yüksek güvenlik seviyesine sahip fiziksel tesislere erişim",
+                        "Gelişmiş ağ güvenlik önlemlerini aşma",
+                        "Çalışanların güvenlik farkındalığını test etme",
+                        "Gerçek zamanlı tespit sistemlerinden kaçınma"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "3 kritik güvenlik açığı tespit edildi",
+                        "Fiziksel güvenlik protokollerinde iyileştirmeler yapıldı",
+                        "Çalışan güvenlik farkındalığı %40 arttı",
+                        "Müşteri memnuniyeti: %98",
+                        "Güvenlik olayı müdahale süresi %50 azaldı"
+                    ]
+                },
+                tags: ["Red Team", "Penetrasyon Testi", "Sosyal Mühendislik", "Fiziksel Güvenlik", "Finans"]
+            },
+            2: {
+                title: "Mobil E-Ticaret Güvenliği",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Mayıs 2024" },
+                    { label: "Proje Süresi", value: "4 Hafta" },
+                    { label: "Müşteri", value: "E-Ticaret Şirketi B" },
+                    { label: "Sektör", value: "E-Ticaret" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının iOS ve Android sürümlerinin güvenlik açıklarını tespit ve iyileştirme projesi. Uygulamanın kod incelemesi, API güvenlik testleri ve veri depolama güvenliği analiz edildi. Proje kapsamında uygulamanın güvenli kodlama prensiplerine uygunluğu değerlendirildi ve iyileştirme önerileri sunuldu."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Çoklu platform (iOS/Android) uyumluluğu",
+                        "Yüksek trafikli canlı sistemde test yapma",
+                        "Kullanıcı verilerinin güvenliğini sağlama",
+                        "Mobil cihaz çeşitliliği ve farklı işletim sistemi versiyonları"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "5 yüksek öncelikli güvenlik açığı kapatıldı",
+                        "API güvenliği %95 oranında iyileştirildi",
+                        "Uygulama güvenlik skoru %30 arttı",
+                        "Müşteri memnuniyeti: %96",
+                        "Kullanıcı veri sızıntısı riski %80 azaldı"
+                    ]
+                },
+                tags: ["Mobil Security", "iOS/Android", "API Güvenliği", "E-Ticaret", "Güvenli Kodlama"]
+            },
+            3: {
+                title: "Kurumsal OSINT Çalışması",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Nisan 2024" },
+                    { label: "Proje Süresi", value: "3 Hafta" },
+                    { label: "Müşteri", value: "Holding C" },
+                    { label: "Sektör", value: "Çoklu Sektör" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi. Üst düzey yöneticiler için kişisel güvenlik danışmanlığı sağlandı. Açık kaynak istihbarat teknikleri kullanılarak şirket ve çalışanlar hakkında toplanan bilgiler analiz edildi. Proje kapsamında şirketin dijital varlıkları haritalandırıldı ve potansiyel saldırı vektörleri belirlendi."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Geniş dijital ayak izinin analizi",
+                        "Yöneticilerin kişisel bilgilerinin korunması",
+                        "Yasal ve etik sınırlar içinde çalışma",
+                        "Doğru ve güncel bilgiye ulaşma"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "12 potansiyel güvenlik tehdidi tespit edildi",
+                        "Dijital ayak izi %60 azaltıldı",
+                        "Yöneticiler için kişisel güvenlik rehberi hazırlandı",
+                        "Müşteri memnuniyeti: %94",
+                        "Şirket itibar riski %40 azaldı"
+                    ]
+                },
+                tags: ["OSINT", "Threat Intelligence", "Dijital Ayak İzi", "Kişisel Güvenlik", "Kurumsal Güvenlik"]
+            },
+            4: {
+                title: "Sağlık Sektörü Web Uygulaması Güvenlik Testi",
+                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Mart 2024" },
+                    { label: "Proje Süresi", value: "5 Hafta" },
+                    { label: "Müşteri", value: "Sağlık Kuruluşu D" },
+                    { label: "Sektör", value: "Sağlık" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Hasta verileri işleyen bir sağlık kuruluşunun web uygulaması için kapsamlı güvenlik denetimi ve penetrasyon testi gerçekleştirildi. Proje kapsamında uygulamanın güvenlik açıkları tespit edildi ve iyileştirme önerileri sunuldu. Hasta verilerinin güvenliği ve mahremiyeti ön planda tutularak testler gerçekleştirildi."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Hasta verilerinin gizliliğini koruma",
+                        "HIPAA uyumluluğu gereksinimleri",
+                        "Karmaşık veri akışı ve entegrasyon noktaları",
+                        "7/24 çalışan sistemde test yapma"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "4 kritik güvenlik açığı tespit edildi",
+                        "Veri ihlali riski %75 azaldı",
+                        "HIPAA uyumluluğu sağlandı",
+                        "Müşteri memnuniyeti: %97",
+                        "Sistem güvenlik skoru %35 arttı"
+                    ]
+                },
+                tags: ["Web App Security", "Penetrasyon Testi", "Veri Güvenliği", "Sağlık", "HIPAA"]
+            },
+            5: {
+                title: "Eğitim Sektörü Fiziksel Güvenlik Testi",
+                image: "https://images.unsplash.com/photo-1562774053-701939b585eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Şubat 2024" },
+                    { label: "Proje Süresi", value: "4 Hafta" },
+                    { label: "Müşteri", value: "Üniversite E" },
+                    { label: "Sektör", value: "Eğitim" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Bir üniversite kampüsü için fiziksel güvenlik kontrollerinin etkinliğini değerlendirmek amacıyla Red Team operasyonu gerçekleştirildi. Proje kapsamında kampüsün farklı bölgelerine sızma girişimlerinde bulunuldu ve güvenlik personelinin tepkileri gözlemlendi. Öğrenci ve personel güvenliği ön planda tutularak testler gerçekleştirildi."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Geniş kampüs alanında operasyon yürütme",
+                        "Öğrenci ve personel güvenliğini riske atmama",
+                        "Güvenlik personelinin farkındalık seviyesini test etme",
+                        "Kampüs içi hareketlilik ve yoğunluk"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "7 fiziksel güvenlik zafiyeti tespit edildi",
+                        "Güvenlik personeli eğitimi gerçekleştirildi",
+                        "Kampüs güvenlik protokolleri güncellendi",
+                        "Müşteri memnuniyeti: %95",
+                        "Fiziksel güvenlik olaylarına müdahale süresi %40 azaldı"
+                    ]
+                },
+                tags: ["Red Team", "Fiziksel Güvenlik", "Sosyal Mühendislik", "Eğitim", "Kampüs Güvenliği"]
+            },
+            6: {
+                title: "Finans Teknolojisi API Güvenliği",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Ocak 2024" },
+                    { label: "Proje Süresi", value: "6 Hafta" },
+                    { label: "Müşteri", value: "FinTech Şirketi F" },
+                    { label: "Sektör", value: "Finans Teknolojisi" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "Finansal işlemler gerçekleştiren bir mobil uygulamanın backend API'ları için güvenlik denetimi ve güvenli kodlama danışmanlığı sağlandı. Proje kapsamında API uç noktalarının güvenliği test edildi, kimlik doğrulama ve yetkilendirme mekanizmaları incelendi. Finansal verilerin güvenliği ve işlem bütünlüğü ön planda tutularak testler gerçekleştirildi."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Finansal işlemlerin güvenliğini sağlama",
+                        "Yüksek hacimli API trafiğinde test yapma",
+                        "Çok katmanlı kimlik doğrulama sistemleri",
+                        "Mevzuata uygunluk gereksinimleri"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "6 yüksek öncelikli API güvenlik açığı kapatıldı",
+                        "API güvenlik skoru %40 arttı",
+                        "Güvenli kodlama eğitimi verildi",
+                        "Müşteri memnuniyeti: %96",
+                        "Finansal işlem güvenliği %90 iyileştirildi"
+                    ]
+                },
+                tags: ["API Güvenliği", "Mobil Security", "Güvenli Kodlama", "FinTech", "Finansal Güvenlik"]
+            }
+        };
+
+        // Open project modal
+        projectButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-project').replace('-case', '');
+                const isCaseStudy = button.getAttribute('data-project').includes('-case');
+                
+                if (projects[projectId]) {
+                    const project = projects[projectId];
+                    
+                    // Set modal title
+                    document.getElementById('modal-title').textContent = 
+                        isCaseStudy ? `${project.title} - Vaka Çalışması` : project.title;
+                    
+                    // Set modal image
+                    const modalImage = document.getElementById('modal-image-src');
+                    modalImage.src = project.image;
+                    modalImage.alt = project.title;
+                    
+                    // Set modal details
+                    const modalDetails = document.getElementById('modal-details');
+                    modalDetails.innerHTML = '';
+                    project.details.forEach(detail => {
+                        const detailElement = document.createElement('div');
+                        detailElement.className = 'project-modal__detail';
+                        detailElement.innerHTML = `
+                            <h4>${detail.label}</h4>
+                            <p>${detail.value}</p>
+                        `;
+                        modalDetails.appendChild(detailElement);
+                    });
+                    
+                    // Set modal description
+                    const modalDescription = document.getElementById('modal-description');
+                    modalDescription.innerHTML = `
+                        <h3>${project.description.title}</h3>
+                        <p>${project.description.content}</p>
+                    `;
+                    
+                    // Set modal challenges
+                    const modalChallenges = document.getElementById('modal-challenges');
+                    if (isCaseStudy) {
+                        modalChallenges.innerHTML = `
+                            <h3>${project.challenges.title}</h3>
+                            <ul>
+                                ${project.challenges.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        `;
+                    } else {
+                        modalChallenges.innerHTML = '';
+                    }
+                    
+                    // Set modal results
+                    const modalResults = document.getElementById('modal-results');
+                    modalResults.innerHTML = `
+                        <h3>${project.results.title}</h3>
+                        <ul>
+                            ${project.results.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    `;
+                    
+                    // Set modal tags
+                    const modalTags = document.getElementById('modal-tags');
+                    modalTags.innerHTML = '';
+                    project.tags.forEach(tag => {
+                        const tagElement = document.createElement('span');
+                        tagElement.className = 'project-modal__tag';
+                        tagElement.textContent = tag;
+                        modalTags.appendChild(tagElement);
+                    });
+                    
+                    // Show modal
+                    projectModal.classList.add('active');
+                }
+            });
+        });
+
+        // Close project modal
+        closeProjectModal.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+            }
+        });
+
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('.section');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
