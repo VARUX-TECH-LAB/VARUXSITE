@@ -264,8 +264,8 @@
                     <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
                     <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
-                    <!-- DÜZENLENMİŞ NAVBAR BUTONU -->
-                    <li class="nav__item"><a href="javascript:void(0);" class="nav__cta" id="nav-cta-button">Ücretsiz Danışmanlık</a></li>
+                    <!-- DÜZELTİLMİŞ NAVBAR BUTONU -->
+                    <li class="nav__item"><button class="nav__cta" id="nav-cta-button">Ücretsiz Danışmanlık</button></li>
                 </ul>
                 <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
             </div>
@@ -282,8 +282,8 @@
                 <p class="hero__subtitle">Dijital dünyanın karmaşıklığında, güvenliğiniz bizimle netlik kazanır.</p>
                 <div class="hero__buttons">
                     <a href="#services" class="hero__button hero__button--primary">Hizmetlerimizi Keşfedin</a>
-                    <!-- DÜZENLENMİŞ HERO BUTONU -->
-                    <a href="javascript:void(0);" class="hero__button hero__button--secondary" id="hero-cta-button">Ücretsiz Danışmanlık</a>
+                    <!-- DÜZELTİLMİŞ HERO BUTONU -->
+                    <button class="hero__button hero__button--secondary" id="hero-cta-button">Ücretsiz Danışmanlık</button>
                 </div>
             </div>
             <div class="hero__scroll" id="hero-scroll"><i class='bx bx-chevron-down'></i></div>
@@ -370,7 +370,6 @@
                             <div class="pricing__feature"><i class='bx bx-check'></i> Haftalık Raporlama</div>
                             <div class="pricing__feature"><i class='bx bx-x'></i> 7/24 Destek</div>
                         </div>
-                        <!-- DÜZENLENMİŞ FİYATLANDIRMA BUTONU -->
                         <a href="varuxfiyat.html" class="button">Paketi Seç</a>
                     </div>
                     <div class="pricing__card popular">
@@ -413,7 +412,6 @@
                                 <span class="project__tag">Web App Security</span>
                             </div>
                             <p class="project__description">Türkiye'nin önde gelen bankalarından biri için kapsamlı penetrasyon testi ve güvenlik denetimi gerçekleştirildi.</p>
-                            <!-- DÜZENLENMİŞ PROJE LİNKİ -->
                             <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
@@ -572,7 +570,7 @@
             <div class="footer__col">
                 <h3 class="footer__title">İletişim</h3>
                 <div class="footer__links">
-                    <a href="mailto:varuxinfo@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
+                    <a href="mailto:vuralselman00@gmail.com" class="footer__link">vuralselman00@gmail.com</a>
                     <a href="tel:+902245442525" class="footer__link">+90 224 544 25 25</a>
                     <a href="#" class="footer__link">Bursa, Türkiye</a>
                 </div>
@@ -589,7 +587,7 @@
         <div class="modal__content">
             <span class="modal__close" id="close-modal-btn">&times;</span>
             <h2>Bize Ulaşın</h2>
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/xjvqjvjg" method="POST">
                 <div class="form__group">
                     <label for="name">Ad Soyad</label>
                     <input type="text" id="name" name="name" required>
@@ -619,7 +617,7 @@
                 <button type="submit" class="button">Gönder</button>
             </form>
             <div class="modal__direct-contact">
-                <p><i class='bx bx-envelope'></i> varuxinfo@gmail.com</p>
+                <p><i class='bx bx-envelope'></i> vuralselman00@gmail.com</p>
                 <p><i class='bx bx-phone'></i> +90 224 544 25 25</p>
                 <p><i class='bx bx-map'></i> Bursa, Türkiye</p>
             </div>
@@ -741,16 +739,49 @@
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Form submission logic would go here
-            modal.classList.remove('active');
-            toastMessage.textContent = 'Mesajınız başarıyla gönderildi!';
-            toast.classList.add('show');
             
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            // Formspree ile form gönderimi
+            const formData = new FormData(contactForm);
             
-            contactForm.reset();
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    modal.classList.remove('active');
+                    toastMessage.textContent = 'Mesajınız başarıyla gönderildi!';
+                    toast.classList.add('show');
+                    
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+                    
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            toastMessage.textContent = 'Hata: ' + data.errors.map(error => error.message).join(', ');
+                        } else {
+                            toastMessage.textContent = 'Bir hata oluştu, lütfen tekrar deneyin.';
+                        }
+                        toast.classList.add('show');
+                        
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 3000);
+                    });
+                }
+            }).catch(error => {
+                toastMessage.textContent = 'Bir hata oluştu, lütfen tekrar deneyin.';
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            });
         });
 
         // Back to top button
