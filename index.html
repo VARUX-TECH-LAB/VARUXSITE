@@ -264,7 +264,8 @@
                     <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
                     <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__cta">Ücretsiz Danışmanlık</a></li>
+                    <!-- DÜZENLENMİŞ NAVBAR BUTONU -->
+                    <li class="nav__item"><a href="javascript:void(0);" class="nav__cta" id="nav-cta-button">Ücretsiz Danışmanlık</a></li>
                 </ul>
                 <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
             </div>
@@ -281,7 +282,8 @@
                 <p class="hero__subtitle">Dijital dünyanın karmaşıklığında, güvenliğiniz bizimle netlik kazanır.</p>
                 <div class="hero__buttons">
                     <a href="#services" class="hero__button hero__button--primary">Hizmetlerimizi Keşfedin</a>
-                    <a href="#contact" class="hero__button hero__button--secondary">Ücretsiz Danışmanlık</a>
+                    <!-- DÜZENLENMİŞ HERO BUTONU -->
+                    <a href="javascript:void(0);" class="hero__button hero__button--secondary" id="hero-cta-button">Ücretsiz Danışmanlık</a>
                 </div>
             </div>
             <div class="hero__scroll" id="hero-scroll"><i class='bx bx-chevron-down'></i></div>
@@ -368,7 +370,8 @@
                             <div class="pricing__feature"><i class='bx bx-check'></i> Haftalık Raporlama</div>
                             <div class="pricing__feature"><i class='bx bx-x'></i> 7/24 Destek</div>
                         </div>
-                        <button class="button">Paketi Seç</button>
+                        <!-- DÜZENLENMİŞ FİYATLANDIRMA BUTONU -->
+                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
                     </div>
                     <div class="pricing__card popular">
                         <h3 class="pricing__title">Profesyonel</h3>
@@ -379,7 +382,7 @@
                             <div class="pricing__feature"><i class='bx bx-check'></i> Günlük Raporlama</div>
                             <div class="pricing__feature"><i class='bx bx-check'></i> 7/24 Destek</div>
                         </div>
-                        <button class="button">Paketi Seç</button>
+                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
                     </div>
                     <div class="pricing__card">
                         <h3 class="pricing__title">Kurumsal</h3>
@@ -390,7 +393,7 @@
                             <div class="pricing__feature"><i class='bx bx-check'></i> Gerçek Zamanlı İzleme</div>
                             <div class="pricing__feature"><i class='bx bx-check'></i> Özel Danışmanlık</div>
                         </div>
-                        <button class="button">Paketi Seç</button>
+                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
                     </div>
                 </div>
             </div>
@@ -410,7 +413,8 @@
                                 <span class="project__tag">Web App Security</span>
                             </div>
                             <p class="project__description">Türkiye'nin önde gelen bankalarından biri için kapsamlı penetrasyon testi ve güvenlik denetimi gerçekleştirildi.</p>
-                            <a href="#" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <!-- DÜZENLENMİŞ PROJE LİNKİ -->
+                            <a href="varuxblog.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                     <div class="project__card">
@@ -422,7 +426,7 @@
                                 <span class="project__tag">iOS/Android</span>
                             </div>
                             <p class="project__description">Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının güvenlik açıklarını tespit ve iyileştirme projesi.</p>
-                            <a href="#" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <a href="varuxblog.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                     <div class="project__card">
@@ -434,7 +438,7 @@
                                 <span class="project__tag">Threat Intelligence</span>
                             </div>
                             <p class="project__description">Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi.</p>
-                            <a href="#" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <a href="varuxblog.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                 </div>
@@ -699,6 +703,8 @@
         const openModalBtn = document.getElementById('open-modal-btn');
         const closeModalBtn = document.getElementById('close-modal-btn');
         const modal = document.getElementById('contact-modal');
+        const navCtaButton = document.getElementById('nav-cta-button');
+        const heroCtaButton = document.getElementById('hero-cta-button');
 
         openModalBtn.addEventListener('click', () => {
             modal.classList.add('active');
@@ -707,6 +713,19 @@
         closeModalBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
+
+        // Navbar ve Hero'daki Ücretsiz Danışmanlık butonları için modal açma
+        if (navCtaButton) {
+            navCtaButton.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        }
+
+        if (heroCtaButton) {
+            heroCtaButton.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        }
 
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
