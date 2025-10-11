@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX Blog - Siber Güvenlikte Güncel Bilgiler ve Analizler</title>
+    <meta name="description" content="VARUX Blog - Siber güvenlik dünyasından en son haberler, derin analizler, güvenlik açıkları ve çözüm önerileri.">
+    <meta name="keywords" content="siber güvenlik blog, güvenlik açıkları, penetrasyon testi, OSINT, red team, siber tehditler">
+    <meta name="author" content="VARUX - Selman Vural">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="VARUX Blog - Siber Güvenlikte Güncel Bilgiler ve Analizler">
+    <meta property="og:description" content="Siber güvenlik dünyasından en son haberler, derin analizler, güvenlik açıkları ve çözüm önerileri.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://varux.com/blog">
+    <meta property="og:image" content="https://varux.com/images/blog-og-image.jpg">
+    <meta property="og:site_name" content="VARUX Blog">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VARUX Blog - Siber Güvenlikte Güncel Bilgiler ve Analizler">
+    <meta name="twitter:description" content="Siber güvenlik dünyasından en son haberler, derin analizler, güvenlik açıkları ve çözüm önerileri.">
+    <meta name="twitter:image" content="https://varux.com/images/blog-twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://varux.com/blog">
+    
+    <!-- Google Fonts: Poppins & Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons (for icons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        /*=============== CSS VARIABLES ===============*/
+        :root {
+          --header-height: 3.5rem;
+          --bg-color: #0A0F14;
+          --bg-color-light: #161B22;
+          --border-color: #30363D;
+          --primary-color: #58A6FF;
+          --secondary-color: #00f2a1;
+          --text-color: #C9D1D9;
+          --text-color-light: #8B949E;
+          --title-color: #F0F6FC;
+          --body-font: 'Poppins', sans-serif;
+          --title-font: 'Share Tech Mono', monospace;
+          --h1-font-size: 2.75rem;
+          --h2-font-size: 1.75rem;
+          --h3-font-size: 1.25rem;
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --font-semi-bold: 600;
+          --z-background: -1;
+          --z-tooltip: 10;
+          --z-fixed: 100;
+          --z-modal: 1000;
+        }
+
+        /*=============== BASE ===============*/
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; outline: none; }
+        img { max-width: 100%; height: auto; }
+
+        /*=============== REUSABLE CSS ===============*/
+        .container { max-width: 1024px; margin-left: 1.5rem; margin-right: 1.5rem; }
+        .section { padding: 4.5rem 0 2rem; }
+        .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
+        .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+        .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        /*=============== LOADER ===============*/
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /*=============== HEADER & NAV ===============*/
+        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
+        .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+        .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
+        .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
+        .nav__list { display: flex; column-gap: 2.5rem; align-items: center; }
+        .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
+        .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
+        .nav__dropdown { position: relative; }
+        .nav__dropdown-menu { position: absolute; top: 150%; left: -20px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0; width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: var(--z-tooltip); }
+        .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav__dropdown-link { display: block; padding: 0.75rem 1.5rem; color: var(--text-color); transition: background-color 0.3s, color 0.3s, padding-left 0.3s; }
+        .nav__dropdown-link:hover { background-color: var(--secondary-color); color: var(--bg-color); padding-left: 1.75rem; }
+        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+
+        /*=============== BLOG HERO SECTION ===============*/
+        .blog-hero { height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; margin-top: var(--header-height); }
+        .blog-hero__container { position: relative; z-index: 1; }
+        .blog-hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); }
+        .blog-hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; }
+
+        /*=============== BLOG CONTENT ===============*/
+        .blog-content { padding: 4rem 0; }
+        .blog-container { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+        
+        /* Blog Posts */
+        .blog-posts { display: flex; flex-direction: column; gap: 2.5rem; }
+        .blog-post { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-post:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .blog-post__image { height: 250px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); overflow: hidden; }
+        .blog-post__image img { width: 100%; height: 100%; object-fit: cover; }
+        .blog-post__content { padding: 2rem; }
+        .blog-post__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-size: var(--small-font-size); color: var(--text-color-light); }
+        .blog-post__category { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
+        .blog-post__date { display: flex; align-items: center; gap: 0.5rem; }
+        .blog-post__author { display: flex; align-items: center; gap: 0.5rem; }
+        .blog-post__title { font-size: var(--h2-font-size); margin-bottom: 1rem; color: var(--title-color); }
+        .blog-post__excerpt { margin-bottom: 1.5rem; color: var(--text-color-light); line-height: 1.7; }
+        .blog-post__footer { display: flex; justify-content: space-between; align-items: center; }
+        .blog-post__read-more { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
+        .blog-post__read-more:hover { gap: 0.75rem; }
+        .blog-post__stats { display: flex; gap: 1rem; font-size: var(--small-font-size); color: var(--text-color-light); }
+        .blog-post__stat { display: flex; align-items: center; gap: 0.25rem; }
+        
+        /* Blog Sidebar */
+        .blog-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+        .sidebar-widget { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
+        .widget-title { font-size: var(--h3-font-size); margin-bottom: 1.5rem; color: var(--title-color); padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); }
+        
+        /* Search Widget */
+        .search-form { position: relative; }
+        .search-input { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-family: var(--body-font); font-size: var(--normal-font-size); transition: border-color 0.3s, box-shadow 0.3s; }
+        .search-input:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(88, 166, 255, 0.2); outline: none; }
+        .search-button { position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); background: none; color: var(--text-color-light); font-size: 1.25rem; }
+        
+        /* Categories Widget */
+        .categories-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .category-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); transition: color 0.3s; }
+        .category-item:last-child { border-bottom: none; }
+        .category-item:hover { color: var(--secondary-color); }
+        .category-count { background-color: var(--bg-color); color: var(--text-color-light); padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.75rem; }
+        
+        /* Recent Posts Widget */
+        .recent-posts { display: flex; flex-direction: column; gap: 1rem; }
+        .recent-post { display: flex; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+        .recent-post:last-child { border-bottom: none; padding-bottom: 0; }
+        .recent-post__image { width: 70px; height: 70px; border-radius: 8px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); overflow: hidden; }
+        .recent-post__image img { width: 100%; height: 100%; object-fit: cover; }
+        .recent-post__content { flex: 1; }
+        .recent-post__title { font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--title-color); line-height: 1.4; }
+        .recent-post__date { font-size: 0.75rem; color: var(--text-color-light); }
+        
+        /* Tags Widget */
+        .tags-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.5rem 0.75rem; border-radius: 20px; font-size: 0.75rem; transition: background-color 0.3s, color 0.3s; }
+        .tag:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        
+        /* Newsletter Widget */
+        .newsletter-form { display: flex; flex-direction: column; gap: 1rem; }
+        .newsletter-input { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-family: var(--body-font); font-size: var(--normal-font-size); }
+        .newsletter-button { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .newsletter-button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+        
+        /* Pagination */
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 3rem; }
+        .pagination-item { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); transition: all 0.3s ease; }
+        .pagination-item:hover, .pagination-item.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
+        .pagination-item.disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /*=============== FOOTER ===============*/
+        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
+        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
+        .footer__description { color: var(--text-color-light); font-size: var(--small-font-size); margin-bottom: 1.5rem; max-width: 300px; }
+        .footer__social { display: flex; gap: 1rem; }
+        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
+        .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
+        .footer__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1.5rem; }
+        .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
+        .footer__link:hover { color: var(--secondary-color); }
+        .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
+        .footer__bottom p { margin-bottom: 0.5rem; }
+        
+        /*=============== BACK TO TOP BUTTON ===============*/
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background-color: var(--primary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; opacity: 0; visibility: hidden; z-index: var(--z-tooltip); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
+
+        /*=============== BREAKPOINTS ===============*/
+        @media screen and (max-width: 768px) {
+          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
+          .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
+          .nav__toggle, .nav__close { display: block; color: var(--title-color); }
+          .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
+          .show-menu { right: 0; }
+          .nav__dropdown { width: 100%; }
+          .nav__dropdown .nav__link { display: flex; justify-content: space-between; align-items: center; }
+          .nav__dropdown-menu { position: static; background-color: transparent; border: none; box-shadow: none; width: 100%; padding: 0.5rem 0 0 1rem; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+          .nav__dropdown:hover .nav__dropdown-menu { max-height: 0; }
+          .dropdown-active .nav__dropdown-menu { max-height: 500px; }
+          .dropdown-active i { transform: rotate(180deg); }
+          .blog-container { grid-template-columns: 1fr; }
+        }
+        @media screen and (max-width: 350px) {
+          .container { margin-left: 1rem; margin-right: 1rem; }
+          .blog-hero__title { font-size: 2rem; }
+        }
+        @media screen and (min-width: 1040px) {
+          .container { margin-left: auto; margin-right: auto; }
+          :root { --h1-font-size: 3.5rem; --h2-font-size: 2.25rem; --h3-font-size: 1.5rem; --normal-font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader__spinner"></div>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="back-to-top">
+        <i class='bx bx-chevron-up'></i>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i>VARUX</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">Hakkımızda</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">Hizmetler</a></li>
+                    <li class="nav__item nav__dropdown">
+                        <a href="#" class="nav__link">Eğitimler <i class='bx bx-chevron-down'></i></a>
+                        <ul class="nav__dropdown-menu">
+                            <li><a href="/trainings/basic-security.html" class="nav__dropdown-link">Temel Siber Güvenlik</a></li>
+                            <li><a href="/trainings/osint.html" class="nav__dropdown-link">OSINT & Bilgi Toplama</a></li>
+                            <li><a href="/trainings/web-xss.html" class="nav__dropdown-link">Web Güvenliği & XSS</a></li>
+                            <li><a href="/trainings/mobile.html" class="nav__dropdown-link">Mobil Güvenlik</a></li>
+                            <li><a href="/trainings/redteam.html" class="nav__dropdown-link">Red Team Operasyonları</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="index.html#projects" class="nav__link">Projelerimiz</a></li>
+                    <li class="nav__item"><a href="index.html#team" class="nav__link">Ekibimiz</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link">İletişim</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- BLOG HERO SECTION -->
+        <section class="blog-hero">
+            <div class="blog-hero__container container">
+                <h1 class="blog-hero__title">VARUX Blog</h1>
+                <p class="blog-hero__subtitle">Siber güvenlik dünyasından en son haberler, derin analizler ve çözüm önerileri</p>
+            </div>
+        </section>
+
+        <!-- BLOG CONTENT SECTION -->
+        <section class="blog-content section">
+            <div class="container blog-container">
+                <!-- Blog Posts -->
+                <div class="blog-posts">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-post">
+                        <div class="blog-post__image">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Siber Güvenlikte Yapay Zeka">
+                        </div>
+                        <div class="blog-post__content">
+                            <div class="blog-post__meta">
+                                <span class="blog-post__category">Yapay Zeka</span>
+                                <span class="blog-post__date"><i class='bx bx-calendar'></i> 15 Ekim 2024</span>
+                                <span class="blog-post__author"><i class='bx bx-user'></i> Selman Vural</span>
+                            </div>
+                            <h2 class="blog-post__title">Siber Güvenlikte Yapay Zeka Kullanımı ve Geleceği</h2>
+                            <p class="blog-post__excerpt">Yapay zeka teknolojileri siber güvenlik alanında nasıl devrim yaratıyor? Gelişmiş tehdit tespiti ve önleme sistemleri hakkında detaylı bilgi. Makine öğrenmesi algoritmalarının zararlı yazılım tespitinden anomali tespitine kadar geniş bir kullanım alanı bulunuyor. Bu yazıda, yapay zeka destekli güvenlik çözümlerinin avantajları ve sınırlılıkları ele alınıyor.</p>
+                            <div class="blog-post__footer">
+                                <a href="blog-post-1.html" class="blog-post__read-more">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                                <div class="blog-post__stats">
+                                    <span class="blog-post__stat"><i class='bx bx-show'></i> 1.2K</span>
+                                    <span class="blog-post__stat"><i class='bx bx-message-rounded'></i> 24</span>
+                                    <span class="blog-post__stat"><i class='bx bx-time-five'></i> 5 dk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-post">
+                        <div class="blog-post__image">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80" alt="OSINT Araştırması">
+                        </div>
+                        <div class="blog-post__content">
+                            <div class="blog-post__meta">
+                                <span class="blog-post__category">OSINT</span>
+                                <span class="blog-post__date"><i class='bx bx-calendar'></i> 8 Ekim 2024</span>
+                                <span class="blog-post__author"><i class='bx bx-user'></i> Zeynep Şahin</span>
+                            </div>
+                            <h2 class="blog-post__title">OSINT: Dijital Dünyada Bilgi Toplama Sanatı</h2>
+                            <p class="blog-post__excerpt">Açık kaynak istihbaratı nedir ve nasıl etkili şekilde kullanılır? Kurumlar için OSINT stratejileri ve araçları. Bu yazıda, OSINT'in temel prensiplerinden başlayarak ileri seviye tekniklere kadar geniş bir yelpazede bilgi sunuyoruz. Dijital ayak izi analizi, sosyal medya araştırmaları ve veri doğrulama yöntemleri hakkında pratik bilgiler içeriyor.</p>
+                            <div class="blog-post__footer">
+                                <a href="blog-post-2.html" class="blog-post__read-more">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                                <div class="blog-post__stats">
+                                    <span class="blog-post__stat"><i class='bx bx-show'></i> 987</span>
+                                    <span class="blog-post__stat"><i class='bx bx-message-rounded'></i> 18</span>
+                                    <span class="blog-post__stat"><i class='bx bx-time-five'></i> 7 dk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-post">
+                        <div class="blog-post__image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Red Team Operasyonları">
+                        </div>
+                        <div class="blog-post__content">
+                            <div class="blog-post__meta">
+                                <span class="blog-post__category">Red Team</span>
+                                <span class="blog-post__date"><i class='bx bx-calendar'></i> 1 Ekim 2024</span>
+                                <span class="blog-post__author"><i class='bx bx-user'></i> Mehmet Kaya</span>
+                            </div>
+                            <h2 class="blog-post__title">Red Team Operasyonları: Saldırganın Gözünden Savunma</h2>
+                            <p class="blog-post__excerpt">Red Team operasyonları ile kurumsal güvenlik nasıl test edilir? Gerçek dünya senaryoları ve başarılı uygulama örnekleri. Bu makalede, bir Red Team operasyonunun planlanmasından yürütülmesine ve sonuçların raporlanmasına kadar tüm süreçleri detaylandırıyoruz. Ayrıca, Blue Team ile koordineli çalışmanın önemini vurguluyoruz.</p>
+                            <div class="blog-post__footer">
+                                <a href="blog-post-3.html" class="blog-post__read-more">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                                <div class="blog-post__stats">
+                                    <span class="blog-post__stat"><i class='bx bx-show'></i> 1.5K</span>
+                                    <span class="blog-post__stat"><i class='bx bx-message-rounded'></i> 32</span>
+                                    <span class="blog-post__stat"><i class='bx bx-time-five'></i> 8 dk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-post">
+                        <div class="blog-post__image">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Mobil Güvenlik">
+                        </div>
+                        <div class="blog-post__content">
+                            <div class="blog-post__meta">
+                                <span class="blog-post__category">Mobil Güvenlik</span>
+                                <span class="blog-post__date"><i class='bx bx-calendar'></i> 24 Eylül 2024</span>
+                                <span class="blog-post__author"><i class='bx bx-user'></i> Ayşe Demir</span>
+                            </div>
+                            <h2 class="blog-post__title">Mobil Uygulama Güvenliği: En Yaygın 10 Zafiyet ve Çözümleri</h2>
+                            <p class="blog-post__excerpt">Mobil uygulamalarda karşılaşılan en yaygın güvenlik zafiyetleri ve bunların nasıl önlenebileceği hakkında kapsamlı bir rehber. OWASP Mobile Top 10 listesini temel alarak, her bir zafiyetin teknik detaylarını, risklerini ve etkili çözüm önerilerini paylaşıyoruz. Geliştiriciler ve güvenlik uzmanları için pratik ipuçları içeriyor.</p>
+                            <div class="blog-post__footer">
+                                <a href="blog-post-4.html" class="blog-post__read-more">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                                <div class="blog-post__stats">
+                                    <span class="blog-post__stat"><i class='bx bx-show'></i> 1.1K</span>
+                                    <span class="blog-post__stat"><i class='bx bx-message-rounded'></i> 21</span>
+                                    <span class="blog-post__stat"><i class='bx bx-time-five'></i> 6 dk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-post">
+                        <div class="blog-post__image">
+                            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sıfır Güven Mimarisi">
+                        </div>
+                        <div class="blog-post__content">
+                            <div class="blog-post__meta">
+                                <span class="blog-post__category">Güvenlik Mimarisi</span>
+                                <span class="blog-post__date"><i class='bx bx-calendar'></i> 17 Eylül 2024</span>
+                                <span class="blog-post__author"><i class='bx bx-user'></i> Selman Vural</span>
+                            </div>
+                            <h2 class="blog-post__title">Sıfır Güven Mimarisi: Geleneksel Güvenlik Anlayışının Sonu Mu?</h2>
+                            <p class="blog-post__excerpt">Sıfır Güven mimarisi, "hiçbir şeye güvenme, her şeyi doğrula" prensibi üzerine kurulu modern bir güvenlik yaklaşımıdır. Bu yazıda, Sıfır Güven'in temel bileşenlerini, uygulama adımlarını ve kurumsal faydalarını inceliyoruz. Ayrıca, geleneksel güvenlik modelleriyle karşılaştırmalı olarak avantajlarını ve dezavantajlarını ele alıyoruz.</p>
+                            <div class="blog-post__footer">
+                                <a href="blog-post-5.html" class="blog-post__read-more">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                                <div class="blog-post__stats">
+                                    <span class="blog-post__stat"><i class='bx bx-show'></i> 876</span>
+                                    <span class="blog-post__stat"><i class='bx bx-message-rounded'></i> 15</span>
+                                    <span class="blog-post__stat"><i class='bx bx-time-five'></i> 9 dk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Arama</h3>
+                        <form class="search-form">
+                            <input type="text" class="search-input" placeholder="Blogda ara...">
+                            <button type="submit" class="search-button"><i class='bx bx-search'></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Kategoriler</h3>
+                        <div class="categories-list">
+                            <a href="#" class="category-item">
+                                <span>Red Team</span>
+                                <span class="category-count">12</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>OSINT</span>
+                                <span class="category-count">8</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>Mobil Güvenlik</span>
+                                <span class="category-count">6</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>Web Güvenliği</span>
+                                <span class="category-count">10</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>Yapay Zeka</span>
+                                <span class="category-count">5</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>Tehdit İstihbaratı</span>
+                                <span class="category-count">7</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Son Yazılar</h3>
+                        <div class="recent-posts">
+                            <div class="recent-post">
+                                <div class="recent-post__image">
+                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Siber Güvenlikte Yapay Zeka">
+                                </div>
+                                <div class="recent-post__content">
+                                    <h4 class="recent-post__title">Siber Güvenlikte Yapay Zeka Kullanımı ve Geleceği</h4>
+                                    <span class="recent-post__date">15 Ekim 2024</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <div class="recent-post__image">
+                                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="OSINT Araştırması">
+                                </div>
+                                <div class="recent-post__content">
+                                    <h4 class="recent-post__title">OSINT: Dijital Dünyada Bilgi Toplama Sanatı</h4>
+                                    <span class="recent-post__date">8 Ekim 2024</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <div class="recent-post__image">
+                                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Red Team Operasyonları">
+                                </div>
+                                <div class="recent-post__content">
+                                    <h4 class="recent-post__title">Red Team Operasyonları: Saldırganın Gözünden Savunma</h4>
+                                    <span class="recent-post__date">1 Ekim 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Etiketler</h3>
+                        <div class="tags-list">
+                            <a href="#" class="tag">Penetrasyon Testi</a>
+                            <a href="#" class="tag">Sızma Testi</a>
+                            <a href="#" class="tag">Güvenlik Açığı</a>
+                            <a href="#" class="tag">Tehdit Analizi</a>
+                            <a href="#" class="tag">Veri İhlali</a>
+                            <a href="#" class="tag">Kriptografi</a>
+                            <a href="#" class="tag">DDoS</a>
+                            <a href="#" class="tag">SOC</a>
+                            <a href="#" class="tag">SIEM</a>
+                            <a href="#" class="tag">GDPR</a>
+                            <a href="#" class="tag">KVKK</a>
+                            <a href="#" class="tag">Bulut Güvenliği</a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Bültenimize Abone Olun</h3>
+                        <p style="margin-bottom: 1rem; color: var(--text-color-light); font-size: var(--small-font-size);">Siber güvenlik dünyasındaki en güncel gelişmelerden haberdar olun.</p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="E-posta adresiniz" required>
+                            <button type="submit" class="newsletter-button">Abone Ol</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="pagination-item disabled"><i class='bx bx-chevron-left'></i></a>
+                <a href="#" class="pagination-item active">1</a>
+                <a href="#" class="pagination-item">2</a>
+                <a href="#" class="pagination-item">3</a>
+                <a href="#" class="pagination-item"><i class='bx bx-chevron-right'></i></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__col">
+                <a href="index.html" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                <p class="footer__description">Siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan, yeni nesil bir teknoloji oluşumu.</p>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Hızlı Bağlantılar</h3>
+                <div class="footer__links">
+                    <a href="index.html#about" class="footer__link">Hakkımızda</a>
+                    <a href="index.html#services" class="footer__link">Hizmetler</a>
+                    <a href="index.html#projects" class="footer__link">Projeler</a>
+                    <a href="index.html#team" class="footer__link">Ekibimiz</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Hizmetlerimiz</h3>
+                <div class="footer__links">
+                    <a href="#" class="footer__link">Offensive Security</a>
+                    <a href="#" class="footer__link">Red Team Hizmetleri</a>
+                    <a href="#" class="footer__link">Mobil Güvenlik</a>
+                    <a href="#" class="footer__link">OSINT & Threat Intelligence</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">İletişim</h3>
+                <div class="footer__links">
+                    <a href="mailto:varuxinfo@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
+                    <a href="tel:+902245442525" class="footer__link">+90 224 544 25 25</a>
+                    <a href="#" class="footer__link">Bursa, Türkiye</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
+                <p>Selman Vural'ın emeğiyle.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.classList.add('hidden');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('.section');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            sectionObserver.observe(section);
+        });
+
+        // Mobile dropdown menu functionality
+        const dropdownLinks = document.querySelectorAll('.nav__dropdown .nav__link');
+        
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = link.parentElement;
+                    dropdown.classList.toggle('dropdown-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
