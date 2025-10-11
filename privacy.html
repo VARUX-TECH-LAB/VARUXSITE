@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX - Gizlilik Politikası</title>
+    <meta name="description" content="VARUX Gizlilik Politikası - Kişisel verilerinizin korunması ve işlenmesi hakkında detaylı bilgi. KVKK ve GDPR uyumlu.">
+    <meta name="keywords" content="gizlilik politikası, kişisel veriler, KVKK, GDPR, siber güvenlik, VARUX, Selman Vural">
+    <meta name="author" content="VARUX - Selman Vural">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+          --header-height: 3.5rem;
+          --bg-color: #0A0F14;
+          --bg-color-light: #161B22;
+          --border-color: #30363D;
+          --primary-color: #58A6FF;
+          --secondary-color: #00f2a1;
+          --text-color: #C9D1D9;
+          --text-color-light: #8B949E;
+          --title-color: #F0F6FC;
+          --body-font: 'Poppins', sans-serif;
+          --title-font: 'Share Tech Mono', monospace;
+          --h1-font-size: 2.75rem;
+          --h2-font-size: 1.75rem;
+          --h3-font-size: 1.25rem;
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --font-semi-bold: 600;
+          --z-background: -1;
+          --z-tooltip: 10;
+          --z-fixed: 100;
+          --z-modal: 1000;
+        }
+
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; outline: none; }
+        img { max-width: 100%; height: auto; }
+
+        .container { max-width: 1024px; margin-left: 1.5rem; margin-right: 1.5rem; }
+        .section { padding: 4.5rem 0 2rem; }
+        .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
+        .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+        .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        /* LOADER */
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* HEADER */
+        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
+        .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+        .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
+        .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
+        .nav__list { display: flex; column-gap: 2.5rem; align-items: center; }
+        .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
+        .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
+        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+
+        /* POLICY CONTENT */
+        .policy__content { max-width: 900px; margin: 0 auto; background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem; }
+        .policy__section { margin-bottom: 2.5rem; }
+        .policy__section:last-child { margin-bottom: 0; }
+        .policy__section h2 { color: var(--secondary-color); font-size: var(--h3-font-size); margin-bottom: 1rem; }
+        .policy__section h3 { color: var(--primary-color); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; }
+        .policy__section p { margin-bottom: 1rem; color: var(--text-color-light); }
+        .policy__section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .policy__section li { color: var(--text-color-light); margin-bottom: 0.5rem; position: relative; padding-left: 1rem; }
+        .policy__section li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 6px; height: 6px; background-color: var(--primary-color); border-radius: 50%; }
+        .policy__highlight { background-color: rgba(88, 166, 255, 0.1); border-left: 3px solid var(--primary-color); padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .policy__highlight p { margin-bottom: 0; }
+        .policy__update { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
+        .policy__table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .policy__table th, .policy__table td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
+        .policy__table th { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); }
+        .policy__table td { color: var(--text-color-light); }
+        .policy__contact-info { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+        .policy__contact-item { display: flex; align-items: center; gap: 0.5rem; }
+        .policy__contact-item i { color: var(--secondary-color); }
+
+        /* FOOTER */
+        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
+        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
+        .footer__description { color: var(--text-color-light); font-size: var(--small-font-size); margin-bottom: 1.5rem; max-width: 300px; }
+        .footer__social { display: flex; gap: 1rem; }
+        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
+        .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
+        .footer__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1.5rem; }
+        .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
+        .footer__link:hover { color: var(--secondary-color); }
+        .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
+
+        /* BACK TO TOP */
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background-color: var(--primary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; opacity: 0; visibility: hidden; z-index: var(--z-tooltip); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
+          .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
+          .nav__toggle, .nav__close { display: block; color: var(--title-color); }
+          .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
+          .show-menu { right: 0; }
+          .policy__content { padding: 1.5rem; }
+          .footer__container { grid-template-columns: 1fr 1fr; }
+          .policy__table { display: block; overflow-x: auto; }
+        }
+
+        @media screen and (max-width: 350px) {
+          .container { margin-left: 1rem; margin-right: 1rem; }
+          .policy__content { padding: 1rem; }
+          .footer__container { grid-template-columns: 1fr; }
+        }
+
+        @media screen and (min-width: 1040px) {
+          .container { margin-left: auto; margin-right: auto; }
+          :root { --h1-font-size: 3.5rem; --h2-font-size: 2.25rem; --h3-font-size: 1.5rem; --normal-font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader__spinner"></div>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="back-to-top">
+        <i class='bx bx-chevron-up'></i>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i>VARUX</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Ana Sayfa</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">Hakkımızda</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">Hizmetler</a></li>
+                    <li class="nav__item"><a href="index.html#projects" class="nav__link">Projelerimiz</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link">İletişim</a></li>
+                    <!-- DÜZELTİLMİŞ NAVBAR BUTONU -->
+                    <li class="nav__item"><a href="index.html#contact" class="nav__cta">Ücretsiz Danışmanlık</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- POLICY SECTION -->
+        <section class="section" id="policy">
+            <div class="container">
+                <h1 class="section__title">Gizlilik Politikası</h1>
+                <div class="policy__content">
+                    <div class="policy__section">
+                        <h2>1. Giriş ve Genel Bilgiler</h2>
+                        <p>VARUX Siber Güvenlik Danışmanlığı ("Şirket", "biz", "bizim" veya "bize" olarak anılacaktır), müşterilerimizin ve web sitemiz ziyaretçilerinin gizliliğine büyük önem vermektedir. Bu Gizlilik Politikası, web sitemizi (varux.com) ziyaret ettiğinizde, hizmetlerimizi satın aldığınızda veya bizimle iletişime geçtiğinizde topladığımız, kullandığımız, açıkladığımız ve koruduğumuz bilgileri açıklamaktadır.</p>
+                        <p>Bu politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) dahil olmak üzere geçerli veri koruma mevzuatına uygun olarak hazırlanmıştır.</p>
+                        <div class="policy__highlight">
+                            <p><strong>Önemli Not:</strong> Siber güvenlik alanında uzman bir şirket olarak, veri güvenliği ve gizliliği bizim için en yüksek önceliğe sahiptir. Bu politika, müşterilerimizin ve ziyaretçilerimizin kişisel verilerinin nasıl korunduğunu ve işlendiğini şeffaf bir şekilde açıklamayı amaçlamaktadır.</p>
+                        </div>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>2. Toplanan Bilgiler ve Toplama Yöntemleri</h2>
+                        <p>Hizmetlerimizi sağlamak, iyileştirmek ve yasal yükümlülüklerimizi yerine getirmek amacıyla aşağıdaki türden bilgileri toplayabiliriz:</p>
+                        
+                        <h3>2.1. Doğrudan Sizden Toplanan Bilgiler</h3>
+                        <ul>
+                            <li><strong>Kimlik Bilgileri:</strong> Adınız, soyadınız, T.C. kimlik numarası (yasal zorunluluk olmadıkça talep edilmez)</li>
+                            <li><strong>İletişim Bilgileri:</strong> E-posta adresiniz, telefon numaranız, adresiniz</li>
+                            <li><strong>Profesyonel Bilgiler:</strong> Çalıştığınız şirket, pozisyonunuz, iş unvanınız</li>
+                            <li><strong>Finansal Bilgiler:</strong> Fatura bilgileri, ödeme detayları (güvenli ödeme sistemleri üzerinden)</li>
+                            <li><strong>İletişim İçeriği:</strong> Bizimle iletişime geçtiğinizde sağladığınız mesajlar, talepler ve geri bildirimler</li>
+                        </ul>
+                        
+                        <h3>2.2. Otomatik Olarak Toplanan Bilgiler</h3>
+                        <ul>
+                            <li><strong>Teknik Bilgiler:</strong> IP adresiniz, tarayıcı türü ve versiyonu, işletim sistemi, cihaz bilgileri</li>
+                            <li><strong>Kullanım Bilgileri:</strong> Web sitemizde geçirdiğiniz zaman, ziyaret ettiğiniz sayfalar, tıklama davranışları</li>
+                            <li><strong>Çerezler ve Benzer Teknolojiler:</strong> Web sitemizin işlevselliğini geliştirmek ve kullanıcı deneyiminizi iyileştirmek için çerezler ve benzer izleme teknolojileri kullanıyoruz</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>3. Bilgilerin Kullanım Amaçları</h2>
+                        <p>Topladığımız bilgileri aşağıdaki amaçlarla kullanıyoruz:</p>
+                        <table class="policy__table">
+                            <thead>
+                                <tr>
+                                    <th>Kullanım Amacı</th>
+                                    <th>Yasal Dayanak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hizmetlerimizi sağlamak ve sürdürmek</td>
+                                    <td>Sözleşmenin yerine getirilmesi</td>
+                                </tr>
+                                <tr>
+                                    <td>Müşteri hizmetleri ve teknik destek sunmak</td>
+                                    <td>Sözleşmenin yerine getirilmesi, Meşru menfaat</td>
+                                </tr>
+                                <tr>
+                                    <td>Web sitemizi ve hizmetlerimizi iyileştirmek</td>
+                                    <td>Meşru menfaat</td>
+                                </tr>
+                                <tr>
+                                    <td>Yeni ürün ve hizmetler geliştirmek</td>
+                                    <td>Meşru menfaat</td>
+                                </tr>
+                                <tr>
+                                    <td>İletişim ve pazarlama faaliyetleri yürütmek</td>
+                                    <td>Açık rıza, Meşru menfaat</td>
+                                </tr>
+                                <tr>
+                                    <td>Yasal yükümlülüklerimizi yerine getirmek</td>
+                                    <td>Yasal yükümlülük</td>
+                                </tr>
+                                <tr>
+                                    <td>Güvenlik ve dolandırıcılık önleme</td>
+                                    <td>Yasal yükümlülük, Meşru menfaat</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>4. Bilgilerin Paylaşılması ve Aktarılması</h2>
+                        <p>Kişisel bilgilerinizi aşağıdaki durumlar dışında üçüncü şahıslarla paylaşmıyoruz:</p>
+                        <ul>
+                            <li><strong>Hizmet Sağlayıcılar:</strong> Hizmetlerimizi sağlamamıza yardımcı olan güvenilir üçüncü taraf hizmet sağlayıcılar (örneğin, barındırma, analitik, ödeme işleme). Bu hizmet sağlayıcılar, verilerinizi yalnızca bizim talimatlarımız doğrultusunda işler ve uygun güvenlik önlemlerini uygular.</li>
+                            <li><strong>Yasal Zorunluluklar:</strong> Kanun, düzenleme, mahkeme emri veya diğer yasal işlemler gereği.</li>
+                            <li><strong>İş Transferleri:</strong> Bir birleşme, satın alma veya varlık satışı durumunda.</li>
+                            <li><strong>Koruma:</strong> VARUX'un haklarını, mülkiyetini veya güvenliğini, müşterilerimizin veya başkalarının güvenliğini korumak için.</li>
+                        </ul>
+                        
+                        <h3>4.1. Uluslararası Veri Transferi</h3>
+                        <p>Verileriniz, genellikle Türkiye'deki sunucularımızda saklanır. Ancak, bazı hizmet sağlayıcılarımız farklı ülkelerde bulunabilir. Bu durumda, veri transferinin yasalara uygun şekilde gerçekleşmesini sağlamak için gerekli önlemleri alırız (GDPR uyumlu olarak yeterli koruma sağlayan ülkeler veya uygun garantiler).</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>5. Veri Güvenliği ve Saklama</h2>
+                        <h3>5.1. Güvenlik Önlemleri</h3>
+                        <p>Kişisel bilgilerinizin güvenliğini sağlamak için uygun fiziksel, teknik ve idari önlemler alıyoruz:</p>
+                        <ul>
+                            <li><strong>Şifreleme:</strong> Hassas verilerin iletimi ve depolanması için endüstri standardı şifreleme yöntemleri kullanıyoruz.</li>
+                            <li><strong>Erişim Kontrolleri:</strong> Verilere erişimi sınırlandırıyor ve yalnızca yetkili personelin erişimine izin veriyoruz.</li>
+                            <li><strong>Ağ Güvenliği:</strong> Güvenlik duvarları, saldırı tespit sistemleri ve düzenli güvenlik denetimleri uyguluyoruz.</li>
+                            <li><strong>Personel Eğitimi:</strong> Çalışanlarımızı veri gizliliği ve güvenliği konusunda düzenli olarak eğitiyoruz.</li>
+                        </ul>
+                        
+                        <div class="policy__highlight">
+                            <p><strong>Siber Güvenlik Uzmanı Olarak:</strong> VARUX olarak, siber güvenlik alanında uzmanlaşmış bir şirket olarak, müşteri verilerinin korunmasına en üst düzeyde önem veriyoruz. Verileriniz, sektör standartlarının üzerinde güvenlik önlemleri ile korunmaktadır ve düzenli penetrasyon testlerine tabi tutulmaktadır.</p>
+                        </div>
+                        
+                        <h3>5.2. Veri Saklama Süreleri</h3>
+                        <p>Kişisel verilerinizi, toplama amaçları doğrultusunda gerekli olan süre boyunca saklıyoruz. Saklama süreleri aşağıdaki faktörlere bağlıdır:</p>
+                        <ul>
+                            <li>Hizmet sağlama sürecinin devam etmesi</li>
+                            <li>Yasal yükümlülüklerimiz (örneğin, vergi kanunları uyarınca saklama zorunlulukları)</li>
+                            <li>Potansiyel hukuki taleplerin varlığı</li>
+                            <li>Veri koruma otoritelerinin tavsiyeleri</li>
+                        </ul>
+                        <p>Veri saklama süreleri dolduğunda veya veri işleme amacı ortadan kalktığında, kişisel verilerinizi güvenli bir şekilde siler, yok eder veya anonim hale getiririz.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>6. KVKK ve GDPR Kapsamında Haklarınız</h2>
+                        <p>KVKK ve GDPR kapsamında, kişisel verilerinizle ilgili olarak aşağıdaki haklara sahipsiniz:</p>
+                        <ul>
+                            <li><strong>Bilgi Edinme Hakkı:</strong> Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme.</li>
+                            <li><strong>Erişim Hakkı:</strong> Kişisel verilerinize erişim sağlama ve kopyalarını alma.</li>
+                            <li><strong>Düzeltme Hakkı:</strong> Kişisel verilerinizin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme.</li>
+                            <li><strong>Silme Hakkı (Unutulma Hakkı):</strong> Kişisel verilerinizin silinmesini veya yok edilmesini isteme.</li>
+                            <li><strong>İşleme Sınırlama Hakkı:</strong> Belirli durumlarda verilerinizin işlenmesinin sınırlandırılmasını isteme.</li>
+                            <li><strong>İtiraz Hakkı:</strong> İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme.</li>
+                            <li><strong>Veri Taşınabilirliği Hakkı:</strong> Verilerinizin yapılandırılmış, yaygın kullanılan ve makine tarafından okunabilir bir formatta size veya başka bir veri sorumlusuna iletilmesini talep etme.</li>
+                            <li><strong>Rızayı Geri Çekme Hakkı:</strong> Açık rızanıza dayalı işlemelerde rızanızı her zaman geri çekme.</li>
+                            <li><strong>Şikayette Bulunma Hakkı:</strong> Kişisel verilerinizin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız halinde Kişisel Verileri Koruma Kurumu'na veya ilgili veri koruma otoritesine şikayette bulunma.</li>
+                        </ul>
+                        
+                        <p>Haklarınızı kullanmak için bizimle <a href="mailto:vuralselman00@gmail.com">vuralselman00@gmail.com</a> adresinden iletişime geçebilirsiniz. Talebinizi en geç 30 gün içinde yanıtlayacağız.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>7. Çerezler ve İzleme Teknolojileri</h2>
+                        <p>Web sitemiz, kullanıcı deneyiminizi iyileştirmek için çerezler ve benzer izleme teknolojileri kullanmaktadır. Çerezler, web sitesi tarafından tarayıcınıza gönderilen küçük metin dosyalarıdır ve cihazınızda saklanır.</p>
+                        
+                        <h3>7.1. Kullandığımız Çerez Türleri</h3>
+                        <ul>
+                            <li><strong>Gerekli Çerezler:</strong> Web sitesinin temel işlevlerini çalıştırmak için gereklidir. Bu çerezler olmadan web sitemiz düzgün çalışmaz.</li>
+                            <li><strong>Performans Çerezleri:</strong> Web sitesinin performansını analiz etmemize ve iyileştirmemize yardımcı olur.</li>
+                            <li><strong>İşlevsellik Çerezleri:</strong> Tercihlerinizi hatırlayarak gelişmiş işlevsellik ve kişiselleştirilmiş deneyim sunar.</li>
+                            <li><strong>Hedefleme/İzleme Çerezleri:</strong> İlgi alanlarınıza göre reklam ve içerik sunmak için kullanılır.</li>
+                        </ul>
+                        
+                        <h3>7.2. Çerez Yönetimi</h3>
+                        <p>Tarayıcı ayarlarınızı değiştirerek çerezleri reddedebilir veya çerez kullanımını kontrol edebilirsiniz. Ancak bu, web sitemizin bazı bölümlerinin düzgün çalışmamasına neden olabilir. Çoğu tarayıcı, çerezleri otomatik olarak kabul edecek şekilde ayarlanmıştır, ancak genellikle tarayıcınızın "Yardım" bölümünden çerez ayarlarınızı değiştirebilirsiniz.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>8. Üçüncü Taraf Web Siteleri ve Hizmetler</h2>
+                        <p>Web sitemiz, kendi gizlilik politikalarına tabi olan üçüncü taraf web sitelerine bağlantılar içerebilir. Bu üçüncü taraf sitelerin içeriği, gizlilik uygulamaları veya politikaları üzerinde herhangi bir kontrolümüz yoktur ve bunlardan sorumlu değiliz. Bu web sitelerini ziyaret etmeden önce gizlilik politikalarını okumanızı öneririz.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>9. Çocukların Gizliliği</h2>
+                        <p>Hizmetlerimiz 18 yaşın altındaki kişilere yönelik değildir ve bilerek 18 yaşın altındaki kişilerden kişisel bilgi toplamıyoruz. Ebeveyn veya veli iseniz ve çocuğunuzun bize kişisel bilgiler sağladığını düşünüyorsanız, lütfen bizimle iletişime geçin. Böyle bir durumu tespit edersek, çocuğun kişisel bilgilerini derhal silmek için makul adımlar atacağız.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>10. Politika Değişiklikleri ve Güncellemeler</h2>
+                        <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklik yaptığımızda, güncellenmiş politikayı web sitemizde yayınlayarak ve revizyon tarihini güncelleyerek sizi bilgilendireceğiz. Önemli değişiklikler durumunda, mümkün olduğunda doğrudan sizi bilgilendireceğiz. Değişikliklerin yayınlanmasından sonra web sitemizi kullanmaya veya hizmetlerimizden yararlanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
+                        
+                        <p>Bu politikanın önceki versiyonlarını talep etme hakkınız saklıdır.</p>
+                    </div>
+
+                    <div class="policy__section">
+                        <h2>11. İletişim ve Veri Sorumlusu</h2>
+                        <p>Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, kişisel verilerinizle ilgili haklarınızı kullanmak istiyorsanız veya bir veri ihlali şüphesi varsa, lütfen bizimle iletişime geçin:</p>
+                        
+                        <div class="policy__contact-info">
+                            <div class="policy__contact-item">
+                                <i class='bx bx-envelope'></i>
+                                <span><strong>E-posta:</strong> vuralselman00@gmail.com</span>
+                            </div>
+                            <div class="policy__contact-item">
+                                <i class='bx bx-phone'></i>
+                                <span><strong>Telefon:</strong> +90 544 25</span>
+                            </div>
+                            <div class="policy__contact-item">
+                                <i class='bx bx-map'></i>
+                                <span><strong>Adres:</strong> Bursa, Türkiye</span>
+                            </div>
+                            <div class="policy__contact-item">
+                                <i class='bx bx-time'></i>
+                                <span><strong>Yanıt Süresi:</strong> Taleplerinizi en geç 30 gün içinde yanıtlayacağız</span>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Veri Sorumlusu:</strong> Selman Vural - VARUX Siber Güvenlik Danışmanlığı</p>
+                    </div>
+
+                    <div class="policy__update">
+                        <p><strong>Son Güncelleme:</strong> 1 Ocak 2024</p>
+                        <p><strong>Bir önceki güncelleme:</strong> 15 Haziran 2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__col">
+                <a href="index.html" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                <p class="footer__description">Siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan, yeni nesil bir teknoloji oluşumu.</p>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Hızlı Bağlantılar</h3>
+                <div class="footer__links">
+                    <a href="index.html#about" class="footer__link">Hakkımızda</a>
+                    <a href="index.html#services" class="footer__link">Hizmetler</a>
+                    <a href="index.html#projects" class="footer__link">Projeler</a>
+                    <a href="index.html#faq" class="footer__link">SSS</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">Yasal</h3>
+                <div class="footer__links">
+                    <a href="privacy.html" class="footer__link">Gizlilik Politikası</a>
+                    <a href="terms.html" class="footer__link">Kullanım Şartları</a>
+                    <a href="cookies.html" class="footer__link">Çerez Politikası</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__title">İletişim</h3>
+                <div class="footer__links">
+                    <a href="mailto:vuralselman00@gmail.com" class="footer__link">vuralselman00@gmail.com</a>
+                    <a href="tel:+9022425" class="footer__link">+90 544 25</a>
+                    <a href="#" class="footer__link">Bursa, Türkiye</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
+                <p>Selman Vural</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('.section');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            sectionObserver.observe(section);
+        });
+
+        // Add table of contents functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const headings = document.querySelectorAll('.policy__section h2');
+            if (headings.length > 0) {
+                const toc = document.createElement('div');
+                toc.className = 'policy__toc';
+                toc.innerHTML = '<h3>İçindekiler</h3><ul></ul>';
+                
+                const tocList = toc.querySelector('ul');
+                
+                headings.forEach((heading, index) => {
+                    const id = 'section-' + (index + 1);
+                    heading.id = id;
+                    
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = '#' + id;
+                    link.textContent = heading.textContent;
+                    listItem.appendChild(link);
+                    tocList.appendChild(listItem);
+                });
+                
+                document.querySelector('.policy__content').insertBefore(toc, document.querySelector('.policy__section'));
+                
+                // Add styles for TOC
+                const style = document.createElement('style');
+                style.textContent = `
+                    .policy__toc {
+                        background-color: rgba(22, 27, 34, 0.8);
+                        border: 1px solid var(--border-color);
+                        border-radius: 8px;
+                        padding: 1.5rem;
+                        margin-bottom: 2rem;
+                    }
+                    .policy__toc h3 {
+                        color: var(--secondary-color);
+                        margin-bottom: 1rem;
+                        font-size: 1.2rem;
+                    }
+                    .policy__toc ul {
+                        margin-left: 0;
+                    }
+                    .policy__toc li {
+                        margin-bottom: 0.5rem;
+                    }
+                    .policy__toc a {
+                        color: var(--text-color-light);
+                        transition: color 0.3s;
+                    }
+                    .policy__toc a:hover {
+                        color: var(--secondary-color);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        });
+    </script>
+</body>
+</html>
