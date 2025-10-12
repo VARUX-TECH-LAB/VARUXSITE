@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VARUX - Yeni Nesil Siber Güvenlik Çözümleri</title>
-    <meta name="description" content="VARUX, Selman Vural tarafından kurulmuş proaktif siber güvenlik hizmetleri sunan yeni nesil bir teknoloji firmasıdır.">
-    <meta name="keywords" content="siber güvenlik, red team, OSINT, penetrasyon testi, mobil güvenlik, siber danışmanlık, Selman Vural">
+    <title>VARUX - KOBİ ve Fabrika Ağ Güvenliği Çözümleri</title>
+    <meta name="description" content="VARUX, KOBİ ve fabrikalar için ağ güvenliği ve iç tehdit denetimi konusunda uzmanlaşmış siber güvenlik firmasıdır.">
+    <meta name="keywords" content="ağ güvenliği, iç tehdit denetimi, KOBİ siber güvenlik, fabrika ağ güvenliği, ağ izleme, güvenlik duvarı yönetimi">
     <meta name="author" content="VARUX - Selman Vural">
     
     <!-- Favicon -->
@@ -66,6 +66,12 @@
         .loader.hidden { opacity: 0; visibility: hidden; }
         .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* LANGUAGE TOGGLE */
+        .language-toggle { display: flex; align-items: center; margin-left: 1rem; }
+        .language-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .language-btn:hover { background-color: rgba(88, 166, 255, 0.1); border-color: var(--primary-color); }
+        .language-btn.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 
         /* HEADER */
         .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
@@ -226,6 +232,7 @@
           .pricing__grid { grid-template-columns: 1fr; }
           .pricing__card.popular { transform: none; }
           .footer__container { grid-template-columns: 1fr 1fr; }
+          .language-toggle { margin-left: 0; margin-top: 1rem; }
         }
 
         @media screen and (max-width: 350px) {
@@ -260,15 +267,21 @@
             <a href="#" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i>VARUX</a>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
-                    <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
-                    <li class="nav__item"><a href="#pricing" class="nav__link">Fiyatlandırma</a></li>
-                    <li class="nav__item"><a href="#projects" class="nav__link">Projelerimiz</a></li>
-                    <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
-                    <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link" data-key="about">Hakkımızda</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link" data-key="services">Hizmetler</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link" data-key="pricing">Fiyatlandırma</a></li>
+                    <li class="nav__item"><a href="#projects" class="nav__link" data-key="projects">Projelerimiz</a></li>
+                    <li class="nav__item"><a href="#faq" class="nav__link" data-key="faq">SSS</a></li>
+                    <li class="nav__item"><a href="#testimonials" class="nav__link" data-key="testimonials">Referanslar</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link" data-key="contact">İletişim</a></li>
                     <!-- DÜZELTİLMİŞ NAVBAR BUTONU -->
-                    <li class="nav__item"><button class="nav__cta" id="nav-cta-button">Ücretsiz Danışmanlık</button></li>
+                    <li class="nav__item"><button class="nav__cta" id="nav-cta-button" data-key="consultation">Ücretsiz Danışmanlık</button></li>
+                    <li class="nav__item">
+                        <div class="language-toggle">
+                            <button class="language-btn active" id="lang-tr">TR</button>
+                            <button class="language-btn" id="lang-en">EN</button>
+                        </div>
+                    </li>
                 </ul>
                 <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
             </div>
@@ -282,11 +295,11 @@
             <div id="particles-js"></div>
             <div class="hero__container container">
                 <h1 class="hero__title" id="hero-title"></h1>
-                <p class="hero__subtitle">Dijital dünyanın karmaşıklığında, güvenliğiniz bizimle netlik kazanır.</p>
+                <p class="hero__subtitle" data-key="hero-subtitle">KOBİ ve fabrikalar için özel ağ güvenliği çözümleri. İç tehditlere karşı proaktif savunma.</p>
                 <div class="hero__buttons">
-                    <a href="#services" class="hero__button hero__button--primary">Hizmetlerimizi Keşfedin</a>
+                    <a href="#services" class="hero__button hero__button--primary" data-key="services-button">Hizmetlerimizi Keşfedin</a>
                     <!-- DÜZELTİLMİŞ HERO BUTONU -->
-                    <button class="hero__button hero__button--secondary" id="hero-cta-button">Ücretsiz Danışmanlık</button>
+                    <button class="hero__button hero__button--secondary" id="hero-cta-button" data-key="consultation">Ücretsiz Danışmanlık</button>
                 </div>
             </div>
             <div class="hero__scroll" id="hero-scroll"><i class='bx bx-chevron-down'></i></div>
@@ -295,26 +308,26 @@
         <!-- ABOUT SECTION -->
         <section class="section" id="about">
             <div class="container">
-                <h2 class="section__title">Biz Kimiz?</h2>
+                <h2 class="section__title" data-key="about-title">Biz Kimiz?</h2>
                 <div class="about__content">
-                    <p>VARUX, Selman Vural tarafından kurulan, siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan yeni nesil bir teknoloji oluşumudur. Standart çözümlerin ötesine geçerek, her müşterinin benzersiz dijital kimliğine özel savunma stratejileri geliştirir. Bizim için siber güvenlik, sadece bir dizi kural değil, sürekli evrilen bir sanat ve bilimdir.</p>
+                    <p data-key="about-text">VARUX, KOBİ'ler ve fabrikalar için özelleştirilmiş ağ güvenliği çözümleri sunan uzman bir siber güvenlik firmasıdır. İç tehdit denetimleri, ağ izleme ve güvenlik duvarı yönetimi konularında uzmanlaşmış ekibimiz, işletmenizin dijital altyapısını güçlendirmek için buradayız. Modern siber tehditlere karşı proaktif bir savunma sağlıyor, sürekli izleme ve gelişmiş analitiklerle güvenliğinizi garanti altına alıyoruz.</p>
                 </div>
                 <div class="about__stats">
                     <div class="stat__card">
-                        <div class="counter" data-count="50">0</div>
-                        <div class="stat__label">Tamamlanan Proje</div>
+                        <div class="counter" data-count="75">0</div>
+                        <div class="stat__label" data-key="projects-completed">Tamamlanan Proje</div>
                     </div>
                     <div class="stat__card">
-                        <div class="counter" data-count="98">0</div>
-                        <div class="stat__label">Müşteri Memnuniyeti</div>
+                        <div class="counter" data-count="99">0</div>
+                        <div class="stat__label" data-key="customer-satisfaction">Müşteri Memnuniyeti</div>
                     </div>
                     <div class="stat__card">
                         <div class="counter" data-count="24">0</div>
-                        <div class="stat__label">7/24 Destek</div>
+                        <div class="stat__label" data-key="support">7/24 Destek</div>
                     </div>
                     <div class="stat__card">
-                        <div class="counter" data-count="3">0</div>
-                        <div class="stat__label">Yıl Deneyim</div>
+                        <div class="counter" data-count="5">0</div>
+                        <div class="stat__label" data-key="years-experience">Yıl Deneyim</div>
                     </div>
                 </div>
             </div>
@@ -323,37 +336,37 @@
         <!-- SERVICES SECTION -->
         <section class="section" id="services">
             <div class="container">
-                <h2 class="section__title">Hizmetlerimiz</h2>
+                <h2 class="section__title" data-key="services-title">Hizmetlerimiz</h2>
                 <div class="services__grid">
                     <div class="service__card">
-                        <i class='bx bx-shield-quarter service__icon'></i>
-                        <h3 class="service__title">Penetrasyon Testi</h3>
-                        <p class="service__description">Sistemlerinizin güvenlik açıklarını tespit ediyor, proaktif zafiyet analizi ve sızma testleri ile potansiyel tehditleri önceden tespit ediyoruz.</p>
+                        <i class='bx bx-network-chart service__icon'></i>
+                        <h3 class="service__title" data-key="service1-title">Ağ Güvenlik Denetimi</h3>
+                        <p class="service__description" data-key="service1-desc">Kurumsal ağ altyapınızın kapsamlı güvenlik değerlendirmesi. Zafiyet taraması, yapılandırma denetimi ve güvenlik açığı analizi.</p>
                     </div>
                     <div class="service__card">
-                        <i class='bx bx-user-voice service__icon'></i>
-                        <h3 class="service__title">Red Team Hizmetleri</h3>
-                        <p class="service__description">Gerçek dünya saldırı senaryolarını simüle ederek insan, süreç ve teknoloji katmanlarınızdaki zayıf noktaları tespit ediyoruz.</p>
+                        <i class='bx bx-user-check service__icon'></i>
+                        <h3 class="service__title" data-key="service2-title">İç Tehdit Denetimi</h3>
+                        <p class="service__description" data-key="service2-desc">Çalışan kaynaklı siber riskleri tespit edin. Kullanıcı davranış analizi, erişim denetimi ve izinsiz aktivite tespiti.</p>
                     </div>
                     <div class="service__card">
-                        <i class='bx bx-mobile-alt service__icon'></i>
-                        <h3 class="service__title">Mobil Uygulama Güvenliği</h3>
-                        <p class="service__description">Mobil uygulamalarınızın güvenliğini koddan altyapıya kadar tüm ekosistemde güvence altına alıyoruz.</p>
+                        <i class='bx bx-shield-alt service__icon'></i>
+                        <h3 class="service__title" data-key="service3-title">Güvenlik Duvarı Yönetimi</h3>
+                        <p class="service__description" data-key="service3-desc">Güvenlik duvarı kurulumu, yapılandırması ve sürekli optimizasyonu. Kuralların denetimi ve güncel tehditlere karşı koruma.</p>
                     </div>
                     <div class="service__card">
-                        <i class='bx bx-search-alt service__icon'></i>
-                        <h3 class="service__title">OSINT & Threat Intelligence</h3>
-                        <p class="service__description">Açık kaynak istihbaratı ile size yönelik potansiyel riskleri proaktif olarak belirliyor ve savunma stratejinizi güçlendiriyoruz.</p>
+                        <i class='bx bx-trending-up service__icon'></i>
+                        <h3 class="service__title" data-key="service4-title">Ağ İzleme ve Analiz</h3>
+                        <p class="service__description" data-key="service4-desc">7/24 ağ trafiği izleme, anormal aktivite tespiti ve gerçek zamanlı tehdit analizi. Proaktif güvenlik yaklaşımı.</p>
                     </div>
                     <div class="service__card">
-                        <i class='bx bx-briefcase-alt-2 service__icon'></i>
-                        <h3 class="service__title">Siber Güvenlik Danışmanlığı</h3>
-                        <p class="service__description">Güvenlik politikalarınızın oluşturulmasından ekibinizin yetkinliğini artırmaya kadar siber dayanıklılığınızı bir bütün olarak inşa etmenize rehberlik ediyoruz.</p>
+                        <i class='bx bx-lock-alt service__icon'></i>
+                        <h3 class="service__title" data-key="service5-title">KOBİ Ağ Güvenliği</h3>
+                        <p class="service__description" data-key="service5-desc">Küçük ve orta ölçekli işletmeler için özelleştirilmiş ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.</p>
                     </div>
                     <div class="service__card">
-                        <i class='bx bx-code-alt service__icon'></i>
-                        <h3 class="service__title">Güvenli Yazılım Geliştirme</h3>
-                        <p class="service__description">SDLC'nin her aşamasına güvenlik perspektifi entegre ediyor, yazılımlarınızın doğuştan güvenli olmasını sağlıyoruz.</p>
+                        <i class='bx bx-factory service__icon'></i>
+                        <h3 class="service__title" data-key="service6-title">Fabrika Ağ Güvenliği</h3>
+                        <p class="service__description" data-key="service6-desc">Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.</p>
                     </div>
                 </div>
             </div>
@@ -362,40 +375,40 @@
         <!-- PRICING SECTION -->
         <section class="section" id="pricing">
             <div class="container">
-                <h2 class="section__title">Fiyatlandırma</h2>
+                <h2 class="section__title" data-key="pricing-title">Fiyatlandırma</h2>
                 <div class="pricing__grid">
                     <div class="pricing__card">
-                        <h3 class="pricing__title">Başlangıç</h3>
-                        <div class="pricing__price">₺2,499<span>/ay</span></div>
+                        <h3 class="pricing__title" data-key="plan1-title">Temel</h3>
+                        <div class="pricing__price">₺1,999<span data-key="monthly">/ay</span></div>
                         <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Temel Güvenlik Denetimi</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Zafiyet Taraması</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Haftalık Raporlama</div>
-                            <div class="pricing__feature"><i class='bx bx-x'></i> 7/24 Destek</div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan1-feature1">Temel Ağ Denetimi</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan1-feature2">Zafiyet Taraması</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan1-feature3">Aylık Raporlama</span></div>
+                            <div class="pricing__feature"><i class='bx bx-x'></i> <span data-key="plan1-feature4">7/24 Destek</span></div>
                         </div>
-                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
+                        <a href="varuxfiyat.html" class="button" data-key="select-plan">Paketi Seç</a>
                     </div>
                     <div class="pricing__card popular">
-                        <h3 class="pricing__title">Profesyonel</h3>
-                        <div class="pricing__price">₺4,999<span>/ay</span></div>
+                        <h3 class="pricing__title" data-key="plan2-title">Profesyonel</h3>
+                        <div class="pricing__price">₺4,499<span data-key="monthly">/ay</span></div>
                         <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Kapsamlı Penetrasyon Testi</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> OSINT Analizi</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Günlük Raporlama</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> 7/24 Destek</div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan2-feature1">Kapsamlı Ağ Denetimi</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan2-feature2">İç Tehdit Analizi</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan2-feature3">Haftalık Raporlama</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan2-feature4">7/24 Destek</span></div>
                         </div>
-                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
+                        <a href="varuxfiyat.html" class="button" data-key="select-plan">Paketi Seç</a>
                     </div>
                     <div class="pricing__card">
-                        <h3 class="pricing__title">Kurumsal</h3>
-                        <div class="pricing__price">₺9,999<span>/ay</span></div>
+                        <h3 class="pricing__title" data-key="plan3-title">Kurumsal</h3>
+                        <div class="pricing__price">₺8,999<span data-key="monthly">/ay</span></div>
                         <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Red Team Operasyonları</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Tehdit İstihbaratı</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Gerçek Zamanlı İzleme</div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> Özel Danışmanlık</div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan3-feature1">Tam Ağ Güvenliği</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan3-feature2">Gelişmiş Tehdit Analizi</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan3-feature3">Gerçek Zamanlı İzleme</span></div>
+                            <div class="pricing__feature"><i class='bx bx-check'></i> <span data-key="plan3-feature4">Özel Danışmanlık</span></div>
                         </div>
-                        <a href="varuxfiyat.html" class="button">Paketi Seç</a>
+                        <a href="varuxfiyat.html" class="button" data-key="select-plan">Paketi Seç</a>
                     </div>
                 </div>
             </div>
@@ -404,42 +417,42 @@
         <!-- PROJECTS SECTION -->
         <section class="section" id="projects">
             <div class="container">
-                <h2 class="section__title">Projelerimiz</h2>
+                <h2 class="section__title" data-key="projects-title">Projelerimiz</h2>
                 <div class="projects__grid">
                     <div class="project__card">
-                        <div class="project__image"><i class='bx bx-bank' style="font-size: 3rem;"></i></div>
+                        <div class="project__image"><i class='bx bx-factory' style="font-size: 3rem;"></i></div>
                         <div class="project__content">
-                            <h3 class="project__title">Finans Sektörü Penetrasyon Testi</h3>
+                            <h3 class="project__title" data-key="project1-title">Otomotiv Fabrikası Ağ Güvenliği</h3>
                             <div class="project__tags">
-                                <span class="project__tag">Red Team</span>
-                                <span class="project__tag">Web App Security</span>
+                                <span class="project__tag" data-key="project1-tag1">Ağ Güvenliği</span>
+                                <span class="project__tag" data-key="project1-tag2">ICS/SCADA</span>
                             </div>
-                            <p class="project__description">Türkiye'nin önde gelen bankalarından biri için kapsamlı penetrasyon testi ve güvenlik denetimi gerçekleştirildi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="project__description" data-key="project1-desc">Türkiye'nin önde gelen otomotiv fabrikalarından biri için endüstriyel ağ güvenliği ve iç tehdit denetimi projesi.</p>
+                            <a href="varuxprojeler.html" class="project__link" data-key="details">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                     <div class="project__card">
-                        <div class="project__image"><i class='bx bx-mobile' style="font-size: 3rem;"></i></div>
+                        <div class="project__image"><i class='bx bx-store' style="font-size: 3rem;"></i></div>
                         <div class="project__content">
-                            <h3 class="project__title">Mobil E-Ticaret Güvenliği</h3>
+                            <h3 class="project__title" data-key="project2-title">Perakende Zinciri Ağ Denetimi</h3>
                             <div class="project__tags">
-                                <span class="project__tag">Mobil Security</span>
-                                <span class="project__tag">iOS/Android</span>
+                                <span class="project__tag" data-key="project2-tag1">İç Tehdit</span>
+                                <span class="project__tag" data-key="project2-tag2">Ağ İzleme</span>
                             </div>
-                            <p class="project__description">Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının güvenlik açıklarını tespit ve iyileştirme projesi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="project__description" data-key="project2-desc">50+ mağazası bulunan bir perakende zinciri için kapsamlı ağ güvenliği denetimi ve iç tehdit analizi.</p>
+                            <a href="varuxprojeler.html" class="project__link" data-key="details">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                     <div class="project__card">
-                        <div class="project__image"><i class='bx bx-shield' style="font-size: 3rem;"></i></div>
+                        <div class="project__image"><i class='bx bx-chip' style="font-size: 3rem;"></i></div>
                         <div class="project__content">
-                            <h3 class="project__title">Kurumsal OSINT Çalışması</h3>
+                            <h3 class="project__title" data-key="project3-title">Teknoloji KOBİ'si Güvenlik Çözümü</h3>
                             <div class="project__tags">
-                                <span class="project__tag">OSINT</span>
-                                <span class="project__tag">Threat Intelligence</span>
+                                <span class="project__tag" data-key="project3-tag1">KOBİ Güvenlik</span>
+                                <span class="project__tag" data-key="project3-tag2">Güvenlik Duvarı</span>
                             </div>
-                            <p class="project__description">Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="project__description" data-key="project3-desc">Hızlı büyüyen bir teknoloji KOBİ'si için ölçeklenebilir ağ güvenliği altyapısı ve güvenlik duvarı yönetimi.</p>
+                            <a href="varuxprojeler.html" class="project__link" data-key="details">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                         </div>
                     </div>
                 </div>
@@ -449,23 +462,23 @@
         <!-- FAQ SECTION -->
         <section class="section" id="faq">
             <div class="container">
-                <h2 class="section__title">Sıkça Sorulan Sorular</h2>
+                <h2 class="section__title" data-key="faq-title">Sıkça Sorulan Sorular</h2>
                 <div class="faq__container">
                     <div class="faq__item">
-                        <div class="faq__question">Hizmetleriniz hangi sektörler için uygun? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">Hizmetlerimiz finans, sağlık, e-ticaret, teknoloji ve daha birçok sektördeki kuruluşlar için uygundur. İhtiyaçlarınıza özel çözümler sunuyoruz.</div>
+                        <div class="faq__question" data-key="faq1-question">Ağ güvenliği denetimi ne kadar sürer? <i class='bx bx-chevron-down'></i></div>
+                        <div class="faq__answer" data-key="faq1-answer">Ağ büyüklüğüne ve karmaşıklığına bağlı olarak denetim süreci 1-4 hafta arasında değişmektedir. Detaylı bilgi için iletişime geçebilirsiniz.</div>
                     </div>
                     <div class="faq__item">
-                        <div class="faq__question">Proje süreçleri ne kadar sürüyor? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">Proje kapsamına bağlı olarak süreçler 2 hafta ile 3 ay arasında değişmektedir. Detaylı bilgi için iletişime geçebilirsiniz.</div>
+                        <div class="faq__question" data-key="faq2-question">İç tehdit denetimi nasıl çalışır? <i class='bx bx-chevron-down'></i></div>
+                        <div class="faq__answer" data-key="faq2-answer">İç tehdit denetimimiz, kullanıcı davranış analizi, erişim logları incelemesi ve anormal aktivite tespiti yöntemlerini kullanır. Personel farkındalığı ve sistem izleme ile bütünleşik çalışır.</div>
                     </div>
                     <div class="faq__item">
-                        <div class="faq__question">Acil durumlarda nasıl destek alabilirim? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">Acil durumlarda 7/24 destek hattımızdan (224  5 25) bize ulaşabilirsiniz.</div>
+                        <div class="faq__question" data-key="faq3-question">Acil durumlarda nasıl destek alabilirim? <i class='bx bx-chevron-down'></i></div>
+                        <div class="faq__answer" data-key="faq3-answer">Acil durumlarda 7/24 destek hattımızdan (224 5 25) bize ulaşabilirsiniz. Kritik güvenlik olaylarında 2 saat içinde müdahale garantisi veriyoruz.</div>
                     </div>
                     <div class="faq__item">
-                        <div class="faq__question">Hangi güvenlik standartlarına uyuyorsunuz? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">ISO 27001, NIST, OWASP gibi uluslararası güvenlik standartlarına uygun hizmet vermekteyiz.</div>
+                        <div class="faq__question" data-key="faq4-question">KOBİ'ler için özel çözümleriniz neler? <i class='bx bx-chevron-down'></i></div>
+                        <div class="faq__answer" data-key="faq4-answer">KOBİ'ler için bütçe dostu, ölçeklenebilir ağ güvenliği paketleri sunuyoruz. Bulut tabanlı çözümlerimizle küçük işletmeler enterprise seviye güvenlikten faydalanabilir.</div>
                     </div>
                 </div>
             </div>
@@ -474,36 +487,36 @@
         <!-- TESTIMONIALS SECTION -->
         <section class="section" id="testimonials">
             <div class="container">
-                <h2 class="section__title">Müşteri Görüşleri</h2>
+                <h2 class="section__title" data-key="testimonials-title">Müşteri Görüşleri</h2>
                 <div class="testimonials__container">
                     <div class="testimonials__track" id="testimonials-track">
                         <div class="testimonial__card">
-                            <p class="testimonial__quote">VARUX ekibi, şirketimizin siber güvenlik altyapısını baştan aşağı yeniledi. Profesyonel yaklaşımları ve teknik derinlikleri gerçekten etkileyici. Kesinlikle tavsiye ediyorum.</p>
+                            <p class="testimonial__quote" data-key="testimonial1">"VARUX ekibi, fabrikamızın endüstriyel ağ güvenliğini baştan aşağı yeniledi. OT/ICS sistemlerimiz için özel çözümleri ve 7/24 destekleriyle üretim sürekliliğimizi garanti altına aldılar."</p>
                             <div class="testimonial__author">
                                 <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
                                 <div class="testimonial__info">
-                                    <h4>Umut Berk TÜMAY</h4>
-                                    <p>CTO, Finans Teknolojileri A.Ş.</p>
+                                    <h4 data-key="testimonial1-name">Ahmet Yılmaz</h4>
+                                    <p data-key="testimonial1-position">IT Müdürü, Otomotiv Fabrikası</p>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial__card">
-                            <p class="testimonial__quote">Mobil uygulamamızın güvenlik testleri için VARUX ile çalıştık. Tespit ettikleri kritik açıklar ve sundukları çözüm önerileri ile uygulamamızın güvenliğini üst seviyeye taşıdılar.</p>
+                            <p class="testimonial__quote" data-key="testimonial2">"KOBİ'miz için ağ güvenliği konusunda VARUX ile çalıştık. Sundukları bütçe dostu çözüm ve proaktif yaklaşımla işletmemizin siber güvenliğini üst seviyeye taşıdılar."</p>
                             <div class="testimonial__author">
                                 <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
                                 <div class="testimonial__info">
-                                    <h4>Ayşe Demir</h4>
-                                    <p>Product Manager, Teknoloji Startup'ı</p>
+                                    <h4 data-key="testimonial2-name">Zeynep Kaya</h4>
+                                    <p data-key="testimonial2-position">CEO, Teknoloji Startup'ı</p>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial__card">
-                            <p class="testimonial__quote">Red Team operasyonları konusunda beklentilerimizin çok üzerinde bir hizmet aldık. Ekibimizin güvenlik farkındalığı VARUX sayesinde önemli ölçüde arttı.</p>
+                            <p class="testimonial__quote" data-key="testimonial3">"İç tehdit denetimi ve ağ izleme hizmetleri konusunda beklentilerimizin çok üzerinde bir hizmet aldık. Ekibimizin güvenlik farkındalığı VARUX sayesinde önemli ölçüde arttı."</p>
                             <div class="testimonial__author">
                                 <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
                                 <div class="testimonial__info">
-                                    <h4>Mehmet Kaya</h4>
-                                    <p>Siber Güvenlik Müdürü, Perakende Zinciri</p>
+                                    <h4 data-key="testimonial3-name">Mehmet Demir</h4>
+                                    <p data-key="testimonial3-position">Siber Güvenlik Müdürü, Perakende Zinciri</p>
                                 </div>
                             </div>
                         </div>
@@ -519,13 +532,13 @@
         <!-- PARTNERS SECTION -->
         <section class="section" id="partners">
             <div class="container">
-                <h2 class="section__title">İş Ortaklarımız</h2>
+                <h2 class="section__title" data-key="partners-title">İş Ortaklarımız</h2>
                 <div class="partners__grid">
                     <div class="partner__logo"><i class='bx bxl-microsoft' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-google-cloud' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-amazon' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-digitalocean' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-visual-studio' style="font-size: 2rem;"></i></div>
+                    <div class="partner__logo"><i class='bx bxl-cisco' style="font-size: 2rem;"></i></div>
+                    <div class="partner__logo"><i class='bx bxl-paloalto' style="font-size: 2rem;"></i></div>
+                    <div class="partner__logo"><i class='bx bxl-fortinet' style="font-size: 2rem;"></i></div>
+                    <div class="partner__logo"><i class='bx bx-cloud' style="font-size: 2rem;"></i></div>
                 </div>
             </div>
         </section>
@@ -533,9 +546,9 @@
         <!-- CONTACT SECTION -->
         <section class="section" id="contact">
             <div class="container">
-                <h2 class="section__title">İletişime Geçin</h2>
-                <p class="contact__text">Projeleriniz, danışmanlık ihtiyaçlarınız veya sadece bir kahve eşliğinde siber güvenliği konuşmak için bize ulaşın.</p>
-                <button class="button" id="open-modal-btn">Form Doldur</button>
+                <h2 class="section__title" data-key="contact-title">İletişime Geçin</h2>
+                <p class="contact__text" data-key="contact-text">KOBİ veya fabrika ağ güvenliği ihtiyaçlarınız için bize ulaşın. Ücretsiz danışmanlık ve ağ güvenliği değerlendirmesi sunuyoruz.</p>
+                <button class="button" id="open-modal-btn" data-key="contact-button">Form Doldur</button>
             </div>
         </section>
     </main>
@@ -545,7 +558,7 @@
         <div class="footer__container container">
             <div class="footer__col">
                 <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
-                <p class="footer__description">Siber güvenliğe felsefi ve teknik bir derinlikle yaklaşan, yeni nesil bir teknoloji oluşumu.</p>
+                <p class="footer__description" data-key="footer-description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
                 <div class="footer__social">
                     <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
                     <a href="https://www.linkedin.com/company/varux/?viewAsMember=true" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
@@ -553,24 +566,24 @@
                 </div>
             </div>
             <div class="footer__col">
-                <h3 class="footer__title">Hızlı Bağlantılar</h3>
+                <h3 class="footer__title" data-key="footer-links">Hızlı Bağlantılar</h3>
                 <div class="footer__links">
-                    <a href="#about" class="footer__link">Hakkımızda</a>
-                    <a href="#services" class="footer__link">Hizmetler</a>
-                    <a href="#projects" class="footer__link">Projeler</a>
-                    <a href="privacy.html" class="footer__link">Yasal</a>
+                    <a href="#about" class="footer__link" data-key="about">Hakkımızda</a>
+                    <a href="#services" class="footer__link" data-key="services">Hizmetler</a>
+                    <a href="#projects" class="footer__link" data-key="projects">Projeler</a>
+                    <a href="privacy.html" class="footer__link" data-key="legal">Yasal</a>
                 </div>
             </div>
             <div class="footer__col">
-                <h3 class="footer__title">İletişim</h3>
+                <h3 class="footer__title" data-key="footer-contact">İletişim</h3>
                 <div class="footer__links">
                     <a href="mailto:vuralselman00@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
-                    <a href="tel:+9022425" class="footer__link">+90  544  25</a>
+                    <a href="tel:+9022425" class="footer__link">+90 544 25</a>
                     <a href="#" class="footer__link">Bursa, Türkiye</a>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
+                <p>&copy; 2024 VARUX. <span data-key="rights">Tüm hakları saklıdır.</span></p>
                 <p>Selman Vural</p>
             </div>
         </div>
@@ -580,21 +593,25 @@
     <div id="contact-modal" class="modal">
         <div class="modal__content">
             <span class="modal__close" id="close-modal-btn">&times;</span>
-            <h2>Bize Ulaşın</h2>
+            <h2 data-key="modal-title">Bize Ulaşın</h2>
             <form id="contact-form" action="https://formspree.io/f/mdkwwypg" method="POST">
                 <div class="form__group">
-                    <label for="name">Ad Soyad</label>
+                    <label for="name" data-key="name-label">Ad Soyad</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form__group">
-                    <label for="email">Email</label>
+                    <label for="email" data-key="email-label">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form__group">
-                    <label for="message">Mesajınız</label>
+                    <label for="company" data-key="company-label">Şirket</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form__group">
+                    <label for="message" data-key="message-label">Mesajınız</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="button">Gönder</button>
+                <button type="submit" class="button" data-key="send-button">Gönder</button>
             </form>
             <div class="modal__direct-contact">
                 <p><i class='bx bx-envelope'></i> vuralselman00@gmail.com</p>
@@ -607,10 +624,296 @@
     <!-- TOAST NOTIFICATION -->
     <div class="toast" id="toast">
         <i class='bx bx-check-circle'></i>
-        <span id="toast-message">Mesajınız başarıyla gönderildi!</span>
+        <span id="toast-message" data-key="toast-message">Mesajınız başarıyla gönderildi!</span>
     </div>
 
     <script>
+        // Language content
+        const content = {
+            tr: {
+                // Navigation
+                "about": "Hakkımızda",
+                "services": "Hizmetler",
+                "pricing": "Fiyatlandırma",
+                "projects": "Projelerimiz",
+                "faq": "SSS",
+                "testimonials": "Referanslar",
+                "contact": "İletişim",
+                "consultation": "Ücretsiz Danışmanlık",
+                
+                // Hero
+                "hero-subtitle": "KOBİ ve fabrikalar için özel ağ güvenliği çözümleri. İç tehditlere karşı proaktif savunma.",
+                "services-button": "Hizmetlerimizi Keşfedin",
+                
+                // About
+                "about-title": "Biz Kimiz?",
+                "about-text": "VARUX, KOBİ'ler ve fabrikalar için özelleştirilmiş ağ güvenliği çözümleri sunan uzman bir siber güvenlik firmasıdır. İç tehdit denetimleri, ağ izleme ve güvenlik duvarı yönetimi konularında uzmanlaşmış ekibimiz, işletmenizin dijital altyapısını güçlendirmek için buradayız. Modern siber tehditlere karşı proaktif bir savunma sağlıyor, sürekli izleme ve gelişmiş analitiklerle güvenliğinizi garanti altına alıyoruz.",
+                "projects-completed": "Tamamlanan Proje",
+                "customer-satisfaction": "Müşteri Memnuniyeti",
+                "support": "7/24 Destek",
+                "years-experience": "Yıl Deneyim",
+                
+                // Services
+                "services-title": "Hizmetlerimiz",
+                "service1-title": "Ağ Güvenlik Denetimi",
+                "service1-desc": "Kurumsal ağ altyapınızın kapsamlı güvenlik değerlendirmesi. Zafiyet taraması, yapılandırma denetimi ve güvenlik açığı analizi.",
+                "service2-title": "İç Tehdit Denetimi",
+                "service2-desc": "Çalışan kaynaklı siber riskleri tespit edin. Kullanıcı davranış analizi, erişim denetimi ve izinsiz aktivite tespiti.",
+                "service3-title": "Güvenlik Duvarı Yönetimi",
+                "service3-desc": "Güvenlik duvarı kurulumu, yapılandırması ve sürekli optimizasyonu. Kuralların denetimi ve güncel tehditlere karşı koruma.",
+                "service4-title": "Ağ İzleme ve Analiz",
+                "service4-desc": "7/24 ağ trafiği izleme, anormal aktivite tespiti ve gerçek zamanlı tehdit analizi. Proaktif güvenlik yaklaşımı.",
+                "service5-title": "KOBİ Ağ Güvenliği",
+                "service5-desc": "Küçük ve orta ölçekli işletmeler için özelleştirilmiş ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.",
+                "service6-title": "Fabrika Ağ Güvenliği",
+                "service6-desc": "Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.",
+                
+                // Pricing
+                "pricing-title": "Fiyatlandırma",
+                "plan1-title": "Temel",
+                "monthly": "/ay",
+                "plan1-feature1": "Temel Ağ Denetimi",
+                "plan1-feature2": "Zafiyet Taraması",
+                "plan1-feature3": "Aylık Raporlama",
+                "plan1-feature4": "7/24 Destek",
+                "plan2-title": "Profesyonel",
+                "plan2-feature1": "Kapsamlı Ağ Denetimi",
+                "plan2-feature2": "İç Tehdit Analizi",
+                "plan2-feature3": "Haftalık Raporlama",
+                "plan2-feature4": "7/24 Destek",
+                "plan3-title": "Kurumsal",
+                "plan3-feature1": "Tam Ağ Güvenliği",
+                "plan3-feature2": "Gelişmiş Tehdit Analizi",
+                "plan3-feature3": "Gerçek Zamanlı İzleme",
+                "plan3-feature4": "Özel Danışmanlık",
+                "select-plan": "Paketi Seç",
+                
+                // Projects
+                "projects-title": "Projelerimiz",
+                "project1-title": "Otomotiv Fabrikası Ağ Güvenliği",
+                "project1-tag1": "Ağ Güvenliği",
+                "project1-tag2": "ICS/SCADA",
+                "project1-desc": "Türkiye'nin önde gelen otomotiv fabrikalarından biri için endüstriyel ağ güvenliği ve iç tehdit denetimi projesi.",
+                "project2-title": "Perakende Zinciri Ağ Denetimi",
+                "project2-tag1": "İç Tehdit",
+                "project2-tag2": "Ağ İzleme",
+                "project2-desc": "50+ mağazası bulunan bir perakende zinciri için kapsamlı ağ güvenliği denetimi ve iç tehdit analizi.",
+                "project3-title": "Teknoloji KOBİ'si Güvenlik Çözümü",
+                "project3-tag1": "KOBİ Güvenlik",
+                "project3-tag2": "Güvenlik Duvarı",
+                "project3-desc": "Hızlı büyüyen bir teknoloji KOBİ'si için ölçeklenebilir ağ güvenliği altyapısı ve güvenlik duvarı yönetimi.",
+                "details": "Detaylı Bilgi",
+                
+                // FAQ
+                "faq-title": "Sıkça Sorulan Sorular",
+                "faq1-question": "Ağ güvenliği denetimi ne kadar sürer?",
+                "faq1-answer": "Ağ büyüklüğüne ve karmaşıklığına bağlı olarak denetim süreci 1-4 hafta arasında değişmektedir. Detaylı bilgi için iletişime geçebilirsiniz.",
+                "faq2-question": "İç tehdit denetimi nasıl çalışır?",
+                "faq2-answer": "İç tehdit denetimimiz, kullanıcı davranış analizi, erişim logları incelemesi ve anormal aktivite tespiti yöntemlerini kullanır. Personel farkındalığı ve sistem izleme ile bütünleşik çalışır.",
+                "faq3-question": "Acil durumlarda nasıl destek alabilirim?",
+                "faq3-answer": "Acil durumlarda 7/24 destek hattımızdan (224 5 25) bize ulaşabilirsiniz. Kritik güvenlik olaylarında 2 saat içinde müdahale garantisi veriyoruz.",
+                "faq4-question": "KOBİ'ler için özel çözümleriniz neler?",
+                "faq4-answer": "KOBİ'ler için bütçe dostu, ölçeklenebilir ağ güvenliği paketleri sunuyoruz. Bulut tabanlı çözümlerimizle küçük işletmeler enterprise seviye güvenlikten faydalanabilir.",
+                
+                // Testimonials
+                "testimonials-title": "Müşteri Görüşleri",
+                "testimonial1": "\"VARUX ekibi, fabrikamızın endüstriyel ağ güvenliğini baştan aşağı yeniledi. OT/ICS sistemlerimiz için özel çözümleri ve 7/24 destekleriyle üretim sürekliliğimizi garanti altına aldılar.\"",
+                "testimonial1-name": "Ahmet Yılmaz",
+                "testimonial1-position": "IT Müdürü, Otomotiv Fabrikası",
+                "testimonial2": "\"KOBİ'miz için ağ güvenliği konusunda VARUX ile çalıştık. Sundukları bütçe dostu çözüm ve proaktif yaklaşımla işletmemizin siber güvenliğini üst seviyeye taşıdılar.\"",
+                "testimonial2-name": "Zeynep Kaya",
+                "testimonial2-position": "CEO, Teknoloji Startup'ı",
+                "testimonial3": "\"İç tehdit denetimi ve ağ izleme hizmetleri konusunda beklentilerimizin çok üzerinde bir hizmet aldık. Ekibimizin güvenlik farkındalığı VARUX sayesinde önemli ölçüde arttı.\"",
+                "testimonial3-name": "Mehmet Demir",
+                "testimonial3-position": "Siber Güvenlik Müdürü, Perakende Zinciri",
+                
+                // Partners
+                "partners-title": "İş Ortaklarımız",
+                
+                // Contact
+                "contact-title": "İletişime Geçin",
+                "contact-text": "KOBİ veya fabrika ağ güvenliği ihtiyaçlarınız için bize ulaşın. Ücretsiz danışmanlık ve ağ güvenliği değerlendirmesi sunuyoruz.",
+                "contact-button": "Form Doldur",
+                
+                // Modal
+                "modal-title": "Bize Ulaşın",
+                "name-label": "Ad Soyad",
+                "email-label": "Email",
+                "company-label": "Şirket",
+                "message-label": "Mesajınız",
+                "send-button": "Gönder",
+                
+                // Toast
+                "toast-message": "Mesajınız başarıyla gönderildi!",
+                
+                // Footer
+                "footer-description": "KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.",
+                "footer-links": "Hızlı Bağlantılar",
+                "footer-contact": "İletişim",
+                "legal": "Yasal",
+                "rights": "Tüm hakları saklıdır."
+            },
+            en: {
+                // Navigation
+                "about": "About Us",
+                "services": "Services",
+                "pricing": "Pricing",
+                "projects": "Our Projects",
+                "faq": "FAQ",
+                "testimonials": "Testimonials",
+                "contact": "Contact",
+                "consultation": "Free Consultation",
+                
+                // Hero
+                "hero-subtitle": "Custom network security solutions for SMEs and factories. Proactive defense against internal threats.",
+                "services-button": "Explore Our Services",
+                
+                // About
+                "about-title": "Who We Are",
+                "about-text": "VARUX is a specialized cybersecurity firm providing customized network security solutions for SMEs and factories. Our team specializes in internal threat audits, network monitoring, and firewall management to strengthen your business's digital infrastructure. We provide proactive defense against modern cyber threats, ensuring your security through continuous monitoring and advanced analytics.",
+                "projects-completed": "Projects Completed",
+                "customer-satisfaction": "Customer Satisfaction",
+                "support": "24/7 Support",
+                "years-experience": "Years Experience",
+                
+                // Services
+                "services-title": "Our Services",
+                "service1-title": "Network Security Audit",
+                "service1-desc": "Comprehensive security assessment of your corporate network infrastructure. Vulnerability scanning, configuration audit, and security gap analysis.",
+                "service2-title": "Internal Threat Audit",
+                "service2-desc": "Detect employee-related cyber risks. User behavior analysis, access control, and unauthorized activity detection.",
+                "service3-title": "Firewall Management",
+                "service3-desc": "Firewall installation, configuration, and continuous optimization. Rule auditing and protection against current threats.",
+                "service4-title": "Network Monitoring & Analysis",
+                "service4-desc": "24/7 network traffic monitoring, abnormal activity detection, and real-time threat analysis. Proactive security approach.",
+                "service5-title": "SME Network Security",
+                "service5-desc": "Customized network security solutions for small and medium-sized businesses. Budget-friendly and effective protection.",
+                "service6-title": "Factory Network Security",
+                "service6-desc": "Special security solutions for industrial networks and OT/ICS systems. Security measures that protect production continuity.",
+                
+                // Pricing
+                "pricing-title": "Pricing",
+                "plan1-title": "Basic",
+                "monthly": "/month",
+                "plan1-feature1": "Basic Network Audit",
+                "plan1-feature2": "Vulnerability Scan",
+                "plan1-feature3": "Monthly Reporting",
+                "plan1-feature4": "24/7 Support",
+                "plan2-title": "Professional",
+                "plan2-feature1": "Comprehensive Network Audit",
+                "plan2-feature2": "Internal Threat Analysis",
+                "plan2-feature3": "Weekly Reporting",
+                "plan2-feature4": "24/7 Support",
+                "plan3-title": "Enterprise",
+                "plan3-feature1": "Full Network Security",
+                "plan3-feature2": "Advanced Threat Analysis",
+                "plan3-feature3": "Real-time Monitoring",
+                "plan3-feature4": "Custom Consulting",
+                "select-plan": "Select Plan",
+                
+                // Projects
+                "projects-title": "Our Projects",
+                "project1-title": "Automotive Factory Network Security",
+                "project1-tag1": "Network Security",
+                "project1-tag2": "ICS/SCADA",
+                "project1-desc": "Industrial network security and internal threat audit project for one of Turkey's leading automotive factories.",
+                "project2-title": "Retail Chain Network Audit",
+                "project2-tag1": "Internal Threat",
+                "project2-tag2": "Network Monitoring",
+                "project2-desc": "Comprehensive network security audit and internal threat analysis for a retail chain with 50+ stores.",
+                "project3-title": "Technology SME Security Solution",
+                "project3-tag1": "SME Security",
+                "project3-tag2": "Firewall",
+                "project3-desc": "Scalable network security infrastructure and firewall management for a fast-growing technology SME.",
+                "details": "Details",
+                
+                // FAQ
+                "faq-title": "Frequently Asked Questions",
+                "faq1-question": "How long does a network security audit take?",
+                "faq1-answer": "The audit process takes 1-4 weeks depending on the size and complexity of the network. Contact us for detailed information.",
+                "faq2-question": "How does internal threat audit work?",
+                "faq2-answer": "Our internal threat audit uses user behavior analysis, access log review, and abnormal activity detection methods. It works integrated with staff awareness and system monitoring.",
+                "faq3-question": "How can I get support in case of emergency?",
+                "faq3-answer": "In emergencies, you can reach us through our 24/7 support line (224 5 25). We guarantee intervention within 2 hours for critical security incidents.",
+                "faq4-question": "What are your special solutions for SMEs?",
+                "faq4-answer": "We offer budget-friendly, scalable network security packages for SMEs. With our cloud-based solutions, small businesses can benefit from enterprise-level security.",
+                
+                // Testimonials
+                "testimonials-title": "Customer Testimonials",
+                "testimonial1": "\"The VARUX team completely renewed our factory's industrial network security. With their specialized solutions for OT/ICS systems and 24/7 support, they guaranteed our production continuity.\"",
+                "testimonial1-name": "Ahmet Yılmaz",
+                "testimonial1-position": "IT Manager, Automotive Factory",
+                "testimonial2": "\"We worked with VARUX for our SME's network security. With their budget-friendly solution and proactive approach, they took our business's cybersecurity to the next level.\"",
+                "testimonial2-name": "Zeynep Kaya",
+                "testimonial2-position": "CEO, Technology Startup",
+                "testimonial3": "\"We received service far beyond our expectations in internal threat audits and network monitoring services. Our team's security awareness increased significantly thanks to VARUX.\"",
+                "testimonial3-name": "Mehmet Demir",
+                "testimonial3-position": "Cybersecurity Manager, Retail Chain",
+                
+                // Partners
+                "partners-title": "Our Partners",
+                
+                // Contact
+                "contact-title": "Contact Us",
+                "contact-text": "Contact us for your SME or factory network security needs. We offer free consultation and network security assessment.",
+                "contact-button": "Fill Form",
+                
+                // Modal
+                "modal-title": "Contact Us",
+                "name-label": "Full Name",
+                "email-label": "Email",
+                "company-label": "Company",
+                "message-label": "Your Message",
+                "send-button": "Send",
+                
+                // Toast
+                "toast-message": "Your message has been sent successfully!",
+                
+                // Footer
+                "footer-description": "Custom network security and internal threat audit solutions for SMEs and factories.",
+                "footer-links": "Quick Links",
+                "footer-contact": "Contact",
+                "legal": "Legal",
+                "rights": "All rights reserved."
+            }
+        };
+
+        // Language toggle functionality
+        let currentLang = 'tr';
+        const langTrBtn = document.getElementById('lang-tr');
+        const langEnBtn = document.getElementById('lang-en');
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            if (lang === 'tr') {
+                langTrBtn.classList.add('active');
+                langEnBtn.classList.remove('active');
+            } else {
+                langEnBtn.classList.add('active');
+                langTrBtn.classList.remove('active');
+            }
+            
+            // Update all elements with data-key attribute
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (content[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = content[lang][key];
+                    } else {
+                        element.textContent = content[lang][key];
+                    }
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        langTrBtn.addEventListener('click', () => updateLanguage('tr'));
+        langEnBtn.addEventListener('click', () => updateLanguage('en'));
+
         // Loader
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
@@ -732,7 +1035,7 @@
             }).then(response => {
                 if (response.ok) {
                     modal.classList.remove('active');
-                    toastMessage.textContent = 'Mesajınız başarıyla gönderildi!';
+                    toastMessage.textContent = currentLang === 'tr' ? 'Mesajınız başarıyla gönderildi!' : 'Your message has been sent successfully!';
                     toast.classList.add('show');
                     
                     setTimeout(() => {
@@ -743,9 +1046,9 @@
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
-                            toastMessage.textContent = 'Hata: ' + data.errors.map(error => error.message).join(', ');
+                            toastMessage.textContent = currentLang === 'tr' ? 'Hata: ' + data.errors.map(error => error.message).join(', ') : 'Error: ' + data.errors.map(error => error.message).join(', ');
                         } else {
-                            toastMessage.textContent = 'Bir hata oluştu, lütfen tekrar deneyin.';
+                            toastMessage.textContent = currentLang === 'tr' ? 'Bir hata oluştu, lütfen tekrar deneyin.' : 'An error occurred, please try again.';
                         }
                         toast.classList.add('show');
                         
@@ -755,7 +1058,7 @@
                     });
                 }
             }).catch(error => {
-                toastMessage.textContent = 'Bir hata oluştu, lütfen tekrar deneyin.';
+                toastMessage.textContent = currentLang === 'tr' ? 'Bir hata oluştu, lütfen tekrar deneyin.' : 'An error occurred, please try again.';
                 toast.classList.add('show');
                 
                 setTimeout(() => {
