@@ -47,15 +47,38 @@
 
         * { box-sizing: border-box; padding: 0; margin: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        body { 
+            font-family: var(--body-font); 
+            font-size: var(--normal-font-size); 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.6; 
+            position: relative;
+        }
         h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
         button { cursor: pointer; border: none; outline: none; }
         img { max-width: 100%; height: auto; }
 
-        .container { max-width: 1024px; margin-left: 1.5rem; margin-right: 1.5rem; }
-        .section { padding: 4.5rem 0 2rem; }
+        /* Particles Background - Tüm Sayfa */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: var(--z-background);
+        }
+
+        /* İçerik Katmanı - Particles'ın Üzerinde */
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container { max-width: 1024px; margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
+        .section { padding: 4.5rem 0 2rem; position: relative; }
         .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
         .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
         .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -68,39 +91,200 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* HEADER */
-        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        .header { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: var(--z-fixed); 
+            background-color: rgba(13, 17, 23, 0.7); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid transparent; 
+            transition: border-color 0.3s, background-color 0.3s; 
+        }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
-        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem; }
+        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
         .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
         .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
         .nav__list { display: flex; column-gap: 2rem; align-items: center; }
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
-        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+        
+        /* KÜÇÜLTÜLMÜŞ AERO CAM STİLİ BUTON - NAVBAR */
+        .nav__cta { 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--title-color); 
+            padding: 0.5rem 1.2rem; 
+            border-radius: 8px; 
+            font-weight: var(--font-semi-bold); 
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+        .nav__cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.7s;
+        }
+        .nav__cta:hover::before {
+            left: 100%;
+        }
+        .nav__cta:hover { 
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .nav__cta:active {
+            transform: translateY(0);
+        }
+        .nav__cta i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        .nav__cta:hover i {
+            transform: translateX(2px);
+        }
 
         /* HERO */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: var(--z-background); }
-        .hero__container { position: relative; z-index: 1; }
-        .hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); display: inline-block; }
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .hero__container { 
+            position: relative; 
+            z-index: 1; 
+            width: 100%; 
+            max-width: 800px; 
+            padding: 0 1.5rem; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero__title { 
+            font-size: var(--h1-font-size); 
+            font-weight: 700; 
+            margin-bottom: 1.5rem; 
+            color: var(--title-color); 
+            display: inline-block; 
+            text-align: center;
+            width: 100%;
+        }
         .hero__title .cursor { display: inline-block; background-color: var(--secondary-color); width: 10px; height: 2.5rem; margin-left: 8px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; }
-        .hero__buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .hero__button { padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; }
-        .hero__button--primary { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; }
-        .hero__button--primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 161, 0.3); }
-        .hero__button--secondary { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); }
-        .hero__button--secondary:hover { background-color: rgba(88, 166, 255, 0.1); transform: translateY(-3px); }
+        .hero__subtitle { 
+            color: var(--text-color-light); 
+            font-size: var(--normal-font-size); 
+            margin-bottom: 2.5rem; 
+            line-height: 1.7;
+            text-align: center;
+            max-width: 650px;
+        }
+        .hero__buttons { 
+            display: flex; 
+            gap: 1rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            width: 100%;
+        }
+        
+        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - HERO */
+        .hero__button { 
+            padding: 0.7rem 1.5rem; 
+            border-radius: 10px; 
+            font-weight: var(--font-semi-bold); 
+            transition: all 0.3s ease; 
+            min-width: 180px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--title-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .hero__button--primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.7s;
+        }
+        .hero__button--primary:hover::before {
+            left: 100%;
+        }
+        .hero__button:hover { 
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .hero__button i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .hero__button:hover i {
+            transform: translateX(2px);
+        }
         .hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-color-light); font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
         /* ABOUT */
         .about__content { max-width: 800px; margin: 0 auto; text-align: center; }
-        .about__stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .stat__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .about__stats { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            justify-items: center;
+            align-items: center;
+        }
+        .stat__card { 
+            background-color: rgba(22, 27, 34, 0.6); 
+            border: 1px solid var(--border-color); 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            text-align: center; 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+            width: 100%; 
+            max-width: 200px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .stat__card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
         .stat__number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
@@ -128,6 +312,56 @@
         .pricing__feature { margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
         .pricing__feature i { color: var(--secondary-color); }
         .pricing__delivery { font-size: var(--small-font-size); color: var(--text-color-light); margin-bottom: 1.5rem; }
+        
+        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - PRICING */
+        .pricing__button { 
+            display: inline-block; 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--title-color); 
+            padding: 0.8rem 2rem; 
+            border-radius: 10px; 
+            font-weight: var(--font-semi-bold); 
+            transition: all 0.3s ease; 
+            margin: 0 auto; 
+            display: table; 
+            cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing__button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.7s;
+        }
+        .pricing__button:hover::before {
+            left: 100%;
+        }
+        .pricing__button:hover { 
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: scale(1.03); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .pricing__button i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .pricing__button:hover i {
+            transform: translateX(2px);
+        }
 
         /* PROJECTS */
         .projects__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
@@ -171,11 +405,60 @@
         .partners__grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
         .partner__logo { width: 120px; height: 60px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-color-light); transition: all 0.3s ease; }
         .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
+        .partner__logo i { font-size: 2rem; color: var(--primary-color); }
 
         /* CONTACT */
         .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
-        .button { display: inline-block; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 1rem 2.5rem; border-radius: 8px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; margin: 0 auto; display: table; border: none; cursor: pointer; }
-        .button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 242, 161, 0.4); }
+        
+        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - CONTACT */
+        .contact__button { 
+            display: inline-block; 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--title-color); 
+            padding: 0.8rem 2rem; 
+            border-radius: 10px; 
+            font-weight: var(--font-semi-bold); 
+            transition: all 0.3s ease; 
+            margin: 0 auto; 
+            display: table; 
+            cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact__button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.7s;
+        }
+        .contact__button:hover::before {
+            left: 100%;
+        }
+        .contact__button:hover { 
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: scale(1.03); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .contact__button i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .contact__button:hover i {
+            transform: translateX(2px);
+        }
 
         /* MODAL */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: var(--z-modal); background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
@@ -188,6 +471,59 @@
         .form__group label { display: block; margin-bottom: 0.5rem; font-weight: var(--font-semi-bold); color: var(--text-color-light); }
         .form__group input, .form__group select, .form__group textarea { width: 100%; padding: 0.75rem; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-family: var(--body-font); font-size: var(--normal-font-size); transition: border-color 0.3s, box-shadow 0.3s; }
         .form__group input:focus, .form__group select:focus, .form__group textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(88, 166, 255, 0.2); outline: none; }
+        
+        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - MODAL FORM */
+        .modal__submit { 
+            display: inline-block; 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--title-color); 
+            padding: 0.8rem 2rem; 
+            border-radius: 10px; 
+            font-weight: var(--font-semi-bold); 
+            transition: all 0.3s ease; 
+            margin: 0 auto; 
+            display: table; 
+            cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            justify-content: center;
+        }
+        .modal__submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.7s;
+        }
+        .modal__submit:hover::before {
+            left: 100%;
+        }
+        .modal__submit:hover { 
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: scale(1.03); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .modal__submit i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .modal__submit:hover i {
+            transform: translateX(2px);
+        }
+        
         .modal__direct-contact { margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; color: var(--text-color-light); }
         .modal__direct-contact p { margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .modal__direct-contact i { color: var(--secondary-color); font-size: 1.2rem; }
@@ -198,18 +534,100 @@
         .toast i { font-size: 1.5rem; }
 
         /* FOOTER */
-        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
-        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
-        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
-        .footer__description { color: var(--text-color-light); font-size: var(--small-font-size); margin-bottom: 1.5rem; max-width: 300px; }
-        .footer__social { display: flex; gap: 1rem; }
-        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
+        .footer { 
+            border-top: 1px solid var(--border-color); 
+            padding: 3rem 0 2rem; 
+            margin-top: 2rem; 
+        }
+        .footer__container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2.5rem; 
+            justify-items: center; 
+            text-align: center; 
+            align-items: start;
+        }
+        .footer__col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 300px;
+        }
+        .footer__logo { 
+            font-family: var(--title-font); 
+            color: var(--title-color); 
+            font-weight: 700; 
+            font-size: 1.5rem; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 5px var(--primary-color); 
+            margin-bottom: 1.2rem; 
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer__logo i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        .footer__description { 
+            color: var(--text-color-light); 
+            font-size: var(--small-font-size); 
+            margin-bottom: 1.5rem; 
+            max-width: 300px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .footer__social { 
+            display: flex; 
+            gap: 1rem; 
+            justify-content: center; 
+            width: 100%;
+        }
+        .footer__social-link { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 42px; 
+            height: 42px; 
+            background-color: var(--bg-color); 
+            border: 1px solid var(--border-color); 
+            border-radius: 50%; 
+            color: var(--text-color); 
+            transition: all 0.3s ease; 
+        }
         .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
-        .footer__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1.5rem; }
-        .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
-        .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
+        .footer__title { 
+            font-size: var(--h3-font-size); 
+            color: var(--title-color); 
+            margin-bottom: 1.5rem; 
+            text-align: center;
+            width: 100%;
+        }
+        .footer__links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.75rem; 
+            align-items: center;
+            width: 100%;
+        }
+        .footer__link { 
+            color: var(--text-color-light); 
+            transition: color 0.3s ease; 
+            text-align: center;
+        }
         .footer__link:hover { color: var(--secondary-color); }
-        .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
+        .footer__bottom { 
+            grid-column: 1 / -1; 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-color-light); 
+            font-size: var(--small-font-size); 
+            width: 100%; 
+            margin-top: 1rem;
+        }
 
         /* BACK TO TOP */
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background-color: var(--primary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; opacity: 0; visibility: hidden; z-index: var(--z-tooltip); }
@@ -227,11 +645,12 @@
           .hero__button { width: 100%; max-width: 250px; }
           .pricing__grid { grid-template-columns: 1fr; }
           .pricing__card.popular { transform: none; }
-          .footer__container { grid-template-columns: 1fr 1fr; }
+          .footer__container { grid-template-columns: 1fr; gap: 2rem; }
+          .footer__col { max-width: 100%; }
         }
 
         @media screen and (max-width: 350px) {
-          .container { margin-left: 1rem; margin-right: 1rem; }
+          .container { padding: 0 1rem; }
           .hero__title { font-size: 2rem; }
           .hero__title .cursor { height: 2rem; }
           .services__grid, .projects__grid { grid-template-columns: 1fr; }
@@ -246,6 +665,9 @@
     </style>
 </head>
 <body>
+    <!-- PARTICLE BACKGROUND - TÜM SAYFA -->
+    <div id="particles-js"></div>
+
     <!-- LOADER -->
     <div class="loader" id="loader">
         <div class="loader__spinner"></div>
@@ -256,369 +678,371 @@
         <i class='bx bx-chevron-up'></i>
     </div>
 
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <nav class="nav container">
-
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
-                    <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
-                    <li class="nav__item"><a href="#pricing" class="nav__link">Fiyatlandırma</a></li>
-                    <li class="nav__item"><a href="#projects" class="nav__link">Projelerimiz</a></li>
-                    <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
-                    <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
-                    <li class="nav__item"><button class="nav__cta" id="nav-cta-button">Ücretsiz Danışmanlık</button></li>
-                </ul>
-                <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
-            </div>
-            <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div id="particles-js"></div>
-            <div class="hero__container container">
-                <h1 class="hero__title" id="hero-title"></h1>
-                <p class="hero__subtitle">KOBİ ve fabrikalar için özel ağ güvenliği çözümleri. İç tehditlere karşı proaktif savunma.</p>
-                <div class="hero__buttons">
-                    <a href="#services" class="hero__button hero__button--primary">Hizmetlerimizi Keşfedin</a>
-                    <button class="hero__button hero__button--secondary" id="hero-cta-button">Ücretsiz Danışmanlık</button>
+    <!-- CONTENT LAYER - PARTICLES'IN ÜZERİNDE -->
+    <div class="content-layer">
+        <!-- HEADER -->
+        <header class="header" id="header">
+            <nav class="nav container">
+              
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
+                        <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
+                        <li class="nav__item"><a href="#pricing" class="nav__link">Fiyatlandırma</a></li>
+                        <li class="nav__item"><a href="#projects" class="nav__link">Projelerimiz</a></li>
+                        <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
+                        <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+                        <li class="nav__item"><button class="nav__cta" id="nav-cta-button"><i class='bx bx-phone'></i> Ücretsiz Danışmanlık</button></li>
+                    </ul>
+                    <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
                 </div>
-            </div>
-            <div class="hero__scroll" id="hero-scroll"><i class='bx bx-chevron-down'></i></div>
-        </section>
+                <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+            </nav>
+        </header>
 
-        <!-- ABOUT SECTION -->
-        <section class="section" id="about">
-            <div class="container">
-                <h2 class="section__title">Biz Kimiz?</h2>
-                <div class="about__content">
-                    <p>VARUX, KOBİ'ler ve fabrikalar için özelleştirilmiş ağ güvenliği çözümleri sunan uzman bir siber güvenlik firmasıdır. İç tehdit denetimleri, ağ izleme ve güvenlik duvarı yönetimi konularında uzmanlaşmış ekibimiz, işletmenizin dijital altyapısını güçlendirmek için buradayız. Modern siber tehditlere karşı proaktif bir savunma sağlıyor, sürekli izleme ve gelişmiş analitiklerle güvenliğinizi garanti altına alıyoruz.</p>
-                </div>
-                <div class="about__stats">
-                    <div class="stat__card">
-                        <div class="counter" data-count="75">0</div>
-                        <div class="stat__label">Tamamlanan Proje</div>
-                    </div>
-                    <div class="stat__card">
-                        <div class="counter" data-count="99">0</div>
-                        <div class="stat__label">Müşteri Memnuniyeti</div>
-                    </div>
-                    <div class="stat__card">
-                        <div class="counter" data-count="24">0</div>
-                        <div class="stat__label">7/24 Destek</div>
-                    </div>
-                    <div class="stat__card">
-                        <div class="counter" data-count="5">0</div>
-                        <div class="stat__label">Yıl Deneyim</div>
+        <main>
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <div class="hero__container container">
+                    <h1 class="hero__title" id="hero-title"></h1>
+                    <p class="hero__subtitle">KOBİ ve fabrikalar için özel ağ güvenliği çözümleri. İç tehditlere karşı proaktif savunma.</p>
+                    <div class="hero__buttons">
+                        <a href="#services" class="hero__button hero__button--primary"><i class='bx bx-chevron-right'></i> Hizmetlerimizi Keşfedin</a>
+                        <button class="hero__button hero__button--primary" id="hero-cta-button"><i class='bx bx-phone'></i> Ücretsiz Danışmanlık</button>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="hero__scroll" id="hero-scroll"><i class='bx bx-chevron-down'></i></div>
+            </section>
 
-        <!-- SERVICES SECTION -->
-        <section class="section" id="services">
-            <div class="container">
-                <h2 class="section__title">Hizmetlerimiz</h2>
-                <div class="services__grid">
-                    <div class="service__card">
-                        <i class='bx bx-network-chart service__icon'></i>
-                        <h3 class="service__title">Ağ Güvenlik Denetimi</h3>
-                        <p class="service__description">Kurumsal ağ altyapınızın kapsamlı güvenlik değerlendirmesi. Zafiyet taraması, yapılandırma denetimi ve güvenlik açığı analizi.</p>
+            <!-- ABOUT SECTION -->
+            <section class="section" id="about">
+                <div class="container">
+                    <h2 class="section__title">Biz Kimiz?</h2>
+                    <div class="about__content">
+                        <p>VARUX, KOBİ'ler ve fabrikalar için özelleştirilmiş ağ güvenliği çözümleri sunan uzman bir siber güvenlik firmasıdır. İç tehdit denetimleri, ağ izleme ve güvenlik duvarı yönetimi konularında uzmanlaşmış ekibimiz, işletmenizin dijital altyapısını güçlendirmek için buradayız. Modern siber tehditlere karşı proaktif bir savunma sağlıyor, sürekli izleme ve gelişmiş analitiklerle güvenliğinizi garanti altına alıyoruz.</p>
                     </div>
-                    <div class="service__card">
-                        <i class='bx bx-user-check service__icon'></i>
-                        <h3 class="service__title">İç Tehdit Denetimi</h3>
-                        <p class="service__description">Çalışan kaynaklı siber riskleri tespit edin. Kullanıcı davranış analizi, erişim denetimi ve izinsiz aktivite tespiti.</p>
-                    </div>
-                    <div class="service__card">
-                        <i class='bx bx-shield-alt service__icon'></i>
-                        <h3 class="service__title">Güvenlik Duvarı Yönetimi</h3>
-                        <p class="service__description">Güvenlik duvarı kurulumu, yapılandırması ve sürekli optimizasyonu. Kuralların denetimi ve güncel tehditlere karşı koruma.</p>
-                    </div>
-                    <div class="service__card">
-                        <i class='bx bx-trending-up service__icon'></i>
-                        <h3 class="service__title">Ağ İzleme ve Analiz</h3>
-                        <p class="service__description">7/24 ağ trafiği izleme, anormal aktivite tespiti ve gerçek zamanlı tehdit analizi. Proaktif güvenlik yaklaşımı.</p>
-                    </div>
-                    <div class="service__card">
-                        <i class='bx bx-lock-alt service__icon'></i>
-                        <h3 class="service__title">KOBİ Ağ Güvenliği</h3>
-                        <p class="service__description">Küçük ve orta ölçekli işletmeler için özelleştirilmiş ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.</p>
-                    </div>
-                    <div class="service__card">
-                        <i class='bx bx-factory service__icon'></i>
-                        <h3 class="service__title">Fabrika Ağ Güvenliği</h3>
-                        <p class="service__description">Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRICING SECTION -->
-        <section class="section" id="pricing">
-            <div class="container">
-                <h2 class="section__title">Fiyatlandırma</h2>
-                <div class="pricing__grid">
-                    <div class="pricing__card">
-                        <h3 class="pricing__title">VARUX BASE</h3>
-                        <div class="pricing__price">3.500₺ – 5.000₺</div>
-                        <p class="pricing__description">Küçük işletmeler için temel ağ güvenliği paketi</p>
-                        <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Ağ taraması ve zafiyet tespiti</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Şifre politikası ve erişim denetimi kontrolü</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>1 günlük uzaktan veya yerinde inceleme</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Standart PDF raporu teslimi</span></div>
+                    <div class="about__stats">
+                        <div class="stat__card">
+                            <div class="counter" data-count="75">0</div>
+                            <div class="stat__label">Tamamlanan Proje</div>
                         </div>
-                        <p class="pricing__delivery">Teslim süresi: 1 iş günü</p>
-                        <button class="button">Teklif Al</button>
-                    </div>
-                    <div class="pricing__card popular">
-                        <h3 class="pricing__title">VARUX SHIELD</h3>
-                        <div class="pricing__price">8.000₺ – 12.000₺</div>
-                        <p class="pricing__description">KOBİ'ler için kapsamlı ağ ve iç tehdit analizi</p>
-                        <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Tam ağ denetimi + iç tehdit analizi</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Firewall, VLAN ve kullanıcı erişim testi</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Sosyal mühendislik farkındalık mini testi</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>7 günlük izleme + PoC (Pilot Test) raporu</span></div>
+                        <div class="stat__card">
+                            <div class="counter" data-count="99">0</div>
+                            <div class="stat__label">Müşteri Memnuniyeti</div>
                         </div>
-                        <p class="pricing__delivery">Teslim süresi: 3–5 iş günü</p>
-                        <button class="button">Teklif Al</button>
-                    </div>
-                    <div class="pricing__card">
-                        <h3 class="pricing__title">VARUX FORTRESS</h3>
-                        <div class="pricing__price">20.000₺ – 25.000₺</div>
-                        <p class="pricing__description">Fabrikalar ve üretim tesisleri için ileri düzey koruma</p>
-                        <div class="pricing__features">
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>OT (endüstriyel ağ) güvenliği denetimi</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>IDS/IPS yapılandırma önerileri</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>Günlük log analizi ve yönetim raporu</span></div>
-                            <div class="pricing__feature"><i class='bx bx-check'></i> <span>30 günlük gözlem ve uzaktan müdahale desteği</span></div>
+                        <div class="stat__card">
+                            <div class="counter" data-count="24">0</div>
+                            <div class="stat__label">7/24 Destek</div>
                         </div>
-                        <p class="pricing__delivery">Teslim süresi: 15–30 iş günü</p>
-                        <button class="button">Teklif Al</button>
+                        <div class="stat__card">
+                            <div class="counter" data-count="5">0</div>
+                            <div class="stat__label">Yıl Deneyim</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- PROJECTS SECTION -->
-        <section class="section" id="projects">
-            <div class="container">
-                <h2 class="section__title">Projelerimiz</h2>
-                <div class="projects__grid">
-                    <div class="project__card">
-                        <div class="project__image"><i class='bx bx-factory' style="font-size: 3rem;"></i></div>
-                        <div class="project__content">
-                            <h3 class="project__title">Otomotiv Fabrikası Ağ Güvenliği</h3>
-                            <div class="project__tags">
-                                <span class="project__tag">Ağ Güvenliği</span>
-                                <span class="project__tag">ICS/SCADA</span>
+            <!-- SERVICES SECTION -->
+            <section class="section" id="services">
+                <div class="container">
+                    <h2 class="section__title">Hizmetlerimiz</h2>
+                    <div class="services__grid">
+                        <div class="service__card">
+                            <i class='bx bx-network-chart service__icon'></i>
+                            <h3 class="service__title">Ağ Güvenlik Denetimi</h3>
+                            <p class="service__description">Kurumsal ağ altyapınızın kapsamlı güvenlik değerlendirmesi. Zafiyet taraması, yapılandırma denetimi ve güvenlik açığı analizi.</p>
+                        </div>
+                        <div class="service__card">
+                            <i class='bx bx-user-check service__icon'></i>
+                            <h3 class="service__title">İç Tehdit Denetimi</h3>
+                            <p class="service__description">Çalışan kaynaklı siber riskleri tespit edin. Kullanıcı davranış analizi, erişim denetimi ve izinsiz aktivite tespiti.</p>
+                        </div>
+                        <div class="service__card">
+                            <i class='bx bx-shield-alt service__icon'></i>
+                            <h3 class="service__title">Güvenlik Duvarı Yönetimi</h3>
+                            <p class="service__description">Güvenlik duvarı kurulumu, yapılandırması ve sürekli optimizasyonu. Kuralların denetimi ve güncel tehditlere karşı koruma.</p>
+                        </div>
+                        <div class="service__card">
+                            <i class='bx bx-trending-up service__icon'></i>
+                            <h3 class="service__title">Ağ İzleme ve Analiz</h3>
+                            <p class="service__description">7/24 ağ trafiği izleme, anormal aktivite tespiti ve gerçek zamanlı tehdit analizi. Proaktif güvenlik yaklaşımı.</p>
+                        </div>
+                        <div class="service__card">
+                            <i class='bx bx-lock-alt service__icon'></i>
+                            <h3 class="service__title">KOBİ Ağ Güvenliği</h3>
+                            <p class="service__description">Küçük ve orta ölçekli işletmeler için özelleştirilmiş ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.</p>
+                        </div>
+                        <div class="service__card">
+                            <i class='bx bx-factory service__icon'></i>
+                            <h3 class="service__title">Fabrika Ağ Güvenliği</h3>
+                            <p class="service__description">Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRICING SECTION -->
+            <section class="section" id="pricing">
+                <div class="container">
+                    <h2 class="section__title">Fiyatlandırma</h2>
+                    <div class="pricing__grid">
+                        <div class="pricing__card">
+                            <h3 class="pricing__title">VARUX BASE</h3>
+                            <div class="pricing__price">3.500₺ – 5.000₺</div>
+                            <p class="pricing__description">Küçük işletmeler için temel ağ güvenliği paketi</p>
+                            <div class="pricing__features">
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Ağ taraması ve zafiyet tespiti</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Şifre politikası ve erişim denetimi kontrolü</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>1 günlük uzaktan veya yerinde inceleme</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Standart PDF raporu teslimi</span></div>
                             </div>
-                            <p class="project__description">Türkiye'nin önde gelen otomotiv fabrikalarından biri için endüstriyel ağ güvenliği ve iç tehdit denetimi projesi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="pricing__delivery">Teslim süresi: 1 iş günü</p>
+                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
                         </div>
-                    </div>
-                    <div class="project__card">
-                        <div class="project__image"><i class='bx bx-store' style="font-size: 3rem;"></i></div>
-                        <div class="project__content">
-                            <h3 class="project__title">Perakende Zinciri Ağ Denetimi</h3>
-                            <div class="project__tags">
-                                <span class="project__tag">İç Tehdit</span>
-                                <span class="project__tag">Ağ İzleme</span>
+                        <div class="pricing__card popular">
+                            <h3 class="pricing__title">VARUX SHIELD</h3>
+                            <div class="pricing__price">8.000₺ – 12.000₺</div>
+                            <p class="pricing__description">KOBİ'ler için kapsamlı ağ ve iç tehdit analizi</p>
+                            <div class="pricing__features">
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Tam ağ denetimi + iç tehdit analizi</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Firewall, VLAN ve kullanıcı erişim testi</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Sosyal mühendislik farkındalık mini testi</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>7 günlük izleme + PoC (Pilot Test) raporu</span></div>
                             </div>
-                            <p class="project__description">50+ mağazası bulunan bir perakende zinciri için kapsamlı ağ güvenliği denetimi ve iç tehdit analizi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="pricing__delivery">Teslim süresi: 3–5 iş günü</p>
+                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
                         </div>
-                    </div>
-                    <div class="project__card">
-                        <div class="project__image"><i class='bx bx-chip' style="font-size: 3rem;"></i></div>
-                        <div class="project__content">
-                            <h3 class="project__title">Teknoloji KOBİ'si Güvenlik Çözümü</h3>
-                            <div class="project__tags">
-                                <span class="project__tag">KOBİ Güvenlik</span>
-                                <span class="project__tag">Güvenlik Duvarı</span>
+                        <div class="pricing__card">
+                            <h3 class="pricing__title">VARUX FORTRESS</h3>
+                            <div class="pricing__price">20.000₺ – 25.000₺</div>
+                            <p class="pricing__description">Fabrikalar ve üretim tesisleri için ileri düzey koruma</p>
+                            <div class="pricing__features">
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>OT (endüstriyel ağ) güvenliği denetimi</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>IDS/IPS yapılandırma önerileri</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Günlük log analizi ve yönetim raporu</span></div>
+                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>30 günlük gözlem ve uzaktan müdahale desteği</span></div>
                             </div>
-                            <p class="project__description">Hızlı büyüyen bir teknoloji KOBİ'si için ölçeklenebilir ağ güvenliği altyapısı ve güvenlik duvarı yönetimi.</p>
-                            <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            <p class="pricing__delivery">Teslim süresi: 15–30 iş günü</p>
+                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- FAQ SECTION -->
-        <section class="section" id="faq">
-            <div class="container">
-                <h2 class="section__title">Sıkça Sorulan Sorular</h2>
-                <div class="faq__container">
-                    <div class="faq__item">
-                        <div class="faq__question">Ağ güvenliği denetimi ne kadar sürer? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">Ağ büyüklüğüne ve karmaşıklığına bağlı olarak denetim süreci 1-4 hafta arasında değişmektedir. Detaylı bilgi için iletişime geçebilirsiniz.</div>
-                    </div>
-                    <div class="faq__item">
-                        <div class="faq__question">İç tehdit denetimi nasıl çalışır? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">İç tehdit denetimimiz, kullanıcı davranış analizi, erişim logları incelemesi ve anormal aktivite tespiti yöntemlerini kullanır. Personel farkındalığı ve sistem izleme ile bütünleşik çalışır.</div>
-                    </div>
-                    <div class="faq__item">
-                        <div class="faq__question">Acil durumlarda nasıl destek alabilirim? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">Acil durumlarda 7/24 destek hattımızdan (224 5 25) bize ulaşabilirsiniz. Kritik güvenlik olaylarında 2 saat içinde müdahale garantisi veriyoruz.</div>
-                    </div>
-                    <div class="faq__item">
-                        <div class="faq__question">KOBİ'ler için özel çözümleriniz neler? <i class='bx bx-chevron-down'></i></div>
-                        <div class="faq__answer">KOBİ'ler için bütçe dostu, ölçeklenebilir ağ güvenliği paketleri sunuyoruz. Bulut tabanlı çözümlerimizle küçük işletmeler enterprise seviye güvenlikten faydalanabilir.</div>
+            <!-- PROJECTS SECTION -->
+            <section class="section" id="projects">
+                <div class="container">
+                    <h2 class="section__title">Projelerimiz</h2>
+                    <div class="projects__grid">
+                        <div class="project__card">
+                            <div class="project__image"><i class='bx bx-factory' style="font-size: 3rem;"></i></div>
+                            <div class="project__content">
+                                <h3 class="project__title">Otomotiv Fabrikası Ağ Güvenliği</h3>
+                                <div class="project__tags">
+                                    <span class="project__tag">Ağ Güvenliği</span>
+                                    <span class="project__tag">ICS/SCADA</span>
+                                </div>
+                                <p class="project__description">Türkiye'nin önde gelen otomotiv fabrikalarından biri için endüstriyel ağ güvenliği ve iç tehdit denetimi projesi.</p>
+                                <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            </div>
+                        </div>
+                        <div class="project__card">
+                            <div class="project__image"><i class='bx bx-store' style="font-size: 3rem;"></i></div>
+                            <div class="project__content">
+                                <h3 class="project__title">Perakende Zinciri Ağ Denetimi</h3>
+                                <div class="project__tags">
+                                    <span class="project__tag">İç Tehdit</span>
+                                    <span class="project__tag">Ağ İzleme</span>
+                                </div>
+                                <p class="project__description">50+ mağazası bulunan bir perakende zinciri için kapsamlı ağ güvenliği denetimi ve iç tehdit analizi.</p>
+                                <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            </div>
+                        </div>
+                        <div class="project__card">
+                            <div class="project__image"><i class='bx bx-chip' style="font-size: 3rem;"></i></div>
+                            <div class="project__content">
+                                <h3 class="project__title">Teknoloji KOBİ'si Güvenlik Çözümü</h3>
+                                <div class="project__tags">
+                                    <span class="project__tag">KOBİ Güvenlik</span>
+                                    <span class="project__tag">Güvenlik Duvarı</span>
+                                </div>
+                                <p class="project__description">Hızlı büyüyen bir teknoloji KOBİ'si için ölçeklenebilir ağ güvenliği altyapısı ve güvenlik duvarı yönetimi.</p>
+                                <a href="varuxprojeler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- TESTIMONIALS SECTION -->
-        <section class="section" id="testimonials">
-            <div class="container">
-                <h2 class="section__title">Müşteri Görüşleri</h2>
-                <div class="testimonials__container">
-                    <div class="testimonials__track" id="testimonials-track">
-                        <div class="testimonial__card">
-                            <p class="testimonial__quote">"VARUX ekibi, fabrikamızın endüstriyel ağ güvenliğini baştan aşağı yeniledi. OT/ICS sistemlerimiz için özel çözümleri ve 7/24 destekleriyle üretim sürekliliğimizi garanti altına aldılar."</p>
-                            <div class="testimonial__author">
-                                <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
-                                <div class="testimonial__info">
-                                    <h4>Ahmet Yılmaz</h4>
-                                    <p>IT Müdürü, Otomotiv Fabrikası</p>
+            <!-- FAQ SECTION -->
+            <section class="section" id="faq">
+                <div class="container">
+                    <h2 class="section__title">Sıkça Sorulan Sorular</h2>
+                    <div class="faq__container">
+                        <div class="faq__item">
+                            <div class="faq__question">Ağ güvenliği denetimi ne kadar sürer? <i class='bx bx-chevron-down'></i></div>
+                            <div class="faq__answer">Ağ büyüklüğüne ve karmaşıklığına bağlı olarak denetim süreci 1-4 hafta arasında değişmektedir. Detaylı bilgi için iletişime geçebilirsiniz.</div>
+                        </div>
+                        <div class="faq__item">
+                            <div class="faq__question">İç tehdit denetimi nasıl çalışır? <i class='bx bx-chevron-down'></i></div>
+                            <div class="faq__answer">İç tehdit denetimimiz, kullanıcı davranış analizi, erişim logları incelemesi ve anormal aktivite tespiti yöntemlerini kullanır. Personel farkındalığı ve sistem izleme ile bütünleşik çalışır.</div>
+                        </div>
+                        <div class="faq__item">
+                            <div class="faq__question">Acil durumlarda nasıl destek alabilirim? <i class='bx bx-chevron-down'></i></div>
+                            <div class="faq__answer">Acil durumlarda 7/24 destek hattımızdan (224 5 25) bize ulaşabilirsiniz. Kritik güvenlik olaylarında 2 saat içinde müdahale garantisi veriyoruz.</div>
+                        </div>
+                        <div class="faq__item">
+                            <div class="faq__question">KOBİ'ler için özel çözümleriniz neler? <i class='bx bx-chevron-down'></i></div>
+                            <div class="faq__answer">KOBİ'ler için bütçe dostu, ölçeklenebilir ağ güvenliği paketleri sunuyoruz. Bulut tabanlı çözümlerimizle küçük işletmeler enterprise seviye güvenlikten faydalanabilir.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS SECTION -->
+            <section class="section" id="testimonials">
+                <div class="container">
+                    <h2 class="section__title">Müşteri Görüşleri</h2>
+                    <div class="testimonials__container">
+                        <div class="testimonials__track" id="testimonials-track">
+                            <div class="testimonial__card">
+                                <p class="testimonial__quote">"VARUX ekibi, fabrikamızın endüstriyel ağ güvenliğini baştan aşağı yeniledi. OT/ICS sistemlerimiz için özel çözümleri ve 7/24 destekleriyle üretim sürekliliğimizi garanti altına aldılar."</p>
+                                <div class="testimonial__author">
+                                    <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
+                                    <div class="testimonial__info">
+                                        <h4>Ahmet Yılmaz</h4>
+                                        <p>IT Müdürü, Otomotiv Fabrikası</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial__card">
+                                <p class="testimonial__quote">"KOBİ'miz için ağ güvenliği konusunda VARUX ile çalıştık. Sundukları bütçe dostu çözüm ve proaktif yaklaşımla işletmemizin siber güvenliğini üst seviyeye taşıdılar."</p>
+                                <div class="testimonial__author">
+                                    <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
+                                    <div class="testimonial__info">
+                                        <h4>Zeynep Kaya</h4>
+                                        <p>CEO, Teknoloji Startup'ı</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial__card">
+                                <p class="testimonial__quote">"İç tehdit denetimi ve ağ izleme hizmetleri konusunda beklentilerimizin çok üzerinde bir hizmet aldık. Ekibimizin güvenlik farkındalığı VARUX sayesinde önemli ölçüde arttı."</p>
+                                <div class="testimonial__author">
+                                    <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
+                                    <div class="testimonial__info">
+                                        <h4>Mehmet Demir</h4>
+                                        <p>Siber Güvenlik Müdürü, Perakende Zinciri</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial__card">
-                            <p class="testimonial__quote">"KOBİ'miz için ağ güvenliği konusunda VARUX ile çalıştık. Sundukları bütçe dostu çözüm ve proaktif yaklaşımla işletmemizin siber güvenliğini üst seviyeye taşıdılar."</p>
-                            <div class="testimonial__author">
-                                <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
-                                <div class="testimonial__info">
-                                    <h4>Zeynep Kaya</h4>
-                                    <p>CEO, Teknoloji Startup'ı</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial__card">
-                            <p class="testimonial__quote">"İç tehdit denetimi ve ağ izleme hizmetleri konusunda beklentilerimizin çok üzerinde bir hizmet aldık. Ekibimizin güvenlik farkındalığı VARUX sayesinde önemli ölçüde arttı."</p>
-                            <div class="testimonial__author">
-                                <div class="testimonial__avatar"><i class='bx bx-user'></i></div>
-                                <div class="testimonial__info">
-                                    <h4>Mehmet Demir</h4>
-                                    <p>Siber Güvenlik Müdürü, Perakende Zinciri</p>
-                                </div>
-                            </div>
+                        <div class="testimonials__nav">
+                            <button class="testimonial__nav-btn" id="testimonial-prev"><i class='bx bx-chevron-left'></i></button>
+                            <button class="testimonial__nav-btn" id="testimonial-next"><i class='bx bx-chevron-right'></i></button>
                         </div>
                     </div>
-                    <div class="testimonials__nav">
-                        <button class="testimonial__nav-btn" id="testimonial-prev"><i class='bx bx-chevron-left'></i></button>
-                        <button class="testimonial__nav-btn" id="testimonial-next"><i class='bx bx-chevron-right'></i></button>
+                </div>
+            </section>
+
+            <!-- PARTNERS SECTION -->
+            <section class="section" id="partners">
+                <div class="container">
+                    <h2 class="section__title">İş Ortaklarımız</h2>
+                    <div class="partners__grid">
+                        <div class="partner__logo"><i class='bx bxl-microsoft'></i></div>
+                        <div class="partner__logo"><i class='bx bxl-cisco'></i></div>
+                        <div class="partner__logo"><i class='bx bx-shield-alt'></i></div>
+                        <div class="partner__logo"><i class='bx bxl-amazon'></i></div>
+                        <div class="partner__logo"><i class='bx bx-cloud'></i></div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- PARTNERS SECTION -->
-        <section class="section" id="partners">
-            <div class="container">
-                <h2 class="section__title">İş Ortaklarımız</h2>
-                <div class="partners__grid">
-                    <div class="partner__logo"><i class='bx bxl-microsoft' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-cisco' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-paloalto' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bxl-fortinet' style="font-size: 2rem;"></i></div>
-                    <div class="partner__logo"><i class='bx bx-cloud' style="font-size: 2rem;"></i></div>
+            <!-- CONTACT SECTION -->
+            <section class="section" id="contact">
+                <div class="container">
+                    <h2 class="section__title">İletişime Geçin</h2>
+                    <p class="contact__text">KOBİ veya fabrika ağ güvenliği ihtiyaçlarınız için bize ulaşın. Ücretsiz danışmanlık ve ağ güvenliği değerlendirmesi sunuyoruz.</p>
+                    <button class="contact__button" id="open-modal-btn"><i class='bx bx-envelope'></i> Form Doldur</button>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
-        <!-- CONTACT SECTION -->
-        <section class="section" id="contact">
-            <div class="container">
-                <h2 class="section__title">İletişime Geçin</h2>
-                <p class="contact__text">KOBİ veya fabrika ağ güvenliği ihtiyaçlarınız için bize ulaşın. Ücretsiz danışmanlık ve ağ güvenliği değerlendirmesi sunuyoruz.</p>
-                <button class="button" id="open-modal-btn">Form Doldur</button>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer__container container">
+                <div class="footer__col">
+                    <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                    <p class="footer__description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://www.linkedin.com/company/varux/?viewAsMember=true" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://github.com/VARUX-TECH-LAB" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h3 class="footer__title">Hızlı Bağlantılar</h3>
+                    <div class="footer__links">
+                        <a href="#about" class="footer__link">Hakkımızda</a>
+                        <a href="#services" class="footer__link">Hizmetler</a>
+                        <a href="#projects" class="footer__link">Projeler</a>
+                        <a href="privacy.html" class="footer__link">Yasal</a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h3 class="footer__title">İletişim</h3>
+                    <div class="footer__links">
+                        <a href="mailto:vuralselman00@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
+                        <a href="tel:+9022425" class="footer__link">+90 544 25</a>
+                        <a href="#" class="footer__link">Bursa, Türkiye</a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
+                    <p>Selman Vural</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer__container container">
-            <div class="footer__col">
-                <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
-                <p class="footer__description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
-                <div class="footer__social">
-                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
-                    <a href="https://www.linkedin.com/company/varux/?viewAsMember=true" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/VARUX-TECH-LAB" class="footer__social-link"><i class='bx bxl-github'></i></a>
+        <!-- CONTACT MODAL -->
+        <div id="contact-modal" class="modal">
+            <div class="modal__content">
+                <span class="modal__close" id="close-modal-btn">&times;</span>
+                <h2>Bize Ulaşın</h2>
+                <form id="contact-form" action="https://formspree.io/f/mdkwwypg" method="POST">
+                    <div class="form__group">
+                        <label for="name">Ad Soyad</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="company">Şirket</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form__group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="modal__submit"><i class='bx bx-send'></i> Gönder</button>
+                </form>
+                <div class="modal__direct-contact">
+                    <p><i class='bx bx-envelope'></i> vuralselman00@gmail.com</p>
+                    <p><i class='bx bx-phone'></i> +90 25 25</p>
+                    <p><i class='bx bx-map'></i> Bursa, Türkiye</p>
                 </div>
-            </div>
-            <div class="footer__col">
-                <h3 class="footer__title">Hızlı Bağlantılar</h3>
-                <div class="footer__links">
-                    <a href="#about" class="footer__link">Hakkımızda</a>
-                    <a href="#services" class="footer__link">Hizmetler</a>
-                    <a href="#projects" class="footer__link">Projeler</a>
-                    <a href="privacy.html" class="footer__link">Yasal</a>
-                </div>
-            </div>
-            <div class="footer__col">
-                <h3 class="footer__title">İletişim</h3>
-                <div class="footer__links">
-                    <a href="mailto:vuralselman00@gmail.com" class="footer__link">varuxinfo@gmail.com</a>
-                    <a href="tel:+9022425" class="footer__link">+90 544 25</a>
-                    <a href="#" class="footer__link">Bursa, Türkiye</a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2024 VARUX. Tüm hakları saklıdır.</p>
-                <p>Selman Vural</p>
             </div>
         </div>
-    </footer>
 
-    <!-- CONTACT MODAL -->
-    <div id="contact-modal" class="modal">
-        <div class="modal__content">
-            <span class="modal__close" id="close-modal-btn">&times;</span>
-            <h2>Bize Ulaşın</h2>
-            <form id="contact-form" action="https://formspree.io/f/mdkwwypg" method="POST">
-                <div class="form__group">
-                    <label for="name">Ad Soyad</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form__group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form__group">
-                    <label for="company">Şirket</label>
-                    <input type="text" id="company" name="company">
-                </div>
-                <div class="form__group">
-                    <label for="message">Mesajınız</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="button">Gönder</button>
-            </form>
-            <div class="modal__direct-contact">
-                <p><i class='bx bx-envelope'></i> vuralselman00@gmail.com</p>
-                <p><i class='bx bx-phone'></i> +90 25 25</p>
-                <p><i class='bx bx-map'></i> Bursa, Türkiye</p>
-            </div>
+        <!-- TOAST NOTIFICATION -->
+        <div class="toast" id="toast">
+            <i class='bx bx-check-circle'></i>
+            <span id="toast-message">Mesajınız başarıyla gönderildi!</span>
         </div>
-    </div>
-
-    <!-- TOAST NOTIFICATION -->
-    <div class="toast" id="toast">
-        <i class='bx bx-check-circle'></i>
-        <span id="toast-message">Mesajınız başarıyla gönderildi!</span>
-    </div>
+    </div> <!-- End of content-layer -->
 
     <script>
         // Loader
