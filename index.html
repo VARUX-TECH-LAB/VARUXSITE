@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>VARUX | KOBİ ve Fabrikalar İçin Ağ Güvenliği ve İç Tehdit Denetimi</title>
     <meta name="description" content="VARUX, KOBİ ve fabrikalar için uzman ağ güvenliği, iç tehdit denetimi, güvenlik duvarı yönetimi ve siber güvenlik çözümleri sunar. 7/24 destek ve profesyonel danışmanlık.">
     <meta name="keywords" content="ağ güvenliği, iç tehdit denetimi, KOBİ siber güvenlik, fabrika ağ güvenliği, ağ izleme, güvenlik duvarı yönetimi, siber güvenlik firması, Bursa siber güvenlik, endüstriyel ağ güvenliği, OT güvenliği, ICS güvenliği">
@@ -14,26 +14,23 @@
     <meta property="og:url" content="https://varuxcyber.com/">
     <meta property="og:title" content="VARUX | KOBİ ve Fabrikalar İçin Ağ Güvenliği ve İç Tehdit Denetimi">
     <meta property="og:description" content="KOBİ ve fabrikalar için uzman ağ güvenliği, iç tehdit denetimi ve siber güvenlik çözümleri. 7/24 destek ve profesyonel danışmanlık.">
-    <meta property="og:image" content="https://varux.com/images/varux-og-image.png">
+    <meta property="og:image" content="https://varuxcyber.com/images/varux-og-image.png">
     <meta property="og:site_name" content="VARUX">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://varux.com/">
+    <meta property="twitter:url" content="https://varuxcyber.com/">
     <meta property="twitter:title" content="VARUX | KOBİ ve Fabrikalar İçin Ağ Güvenliği ve İç Tehdit Denetimi">
     <meta property="twitter:description" content="KOBİ ve fabrikalar için uzman ağ güvenliği, iç tehdit denetimi ve siber güvenlik çözümleri. 7/24 destek ve profesyonel danışmanlık.">
-    <meta property="twitter:image" content="https://varux.com/images/varux-twitter-image.png">
+    <meta property="twitter:image" content="https://varuxcyber.com/images/varux-twitter-image.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://varuxcyber.com/">
     
-    <!-- Favicon --> 
     <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-  
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,8 +46,8 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "VARUX",
-      "url": "https://varux.com/",
-      "logo": "https://varux.com/images/varux-logo.png",
+      "url": "https://varuxcyber.com/",
+      "logo": "https://varuxcyber.com/images/varux-logo.png",
       "description": "KOBİ ve fabrikalar için uzman ağ güvenliği, iç tehdit denetimi ve siber güvenlik çözümleri sunan şirket.",
       "address": {
         "@type": "PostalAddress",
@@ -148,11 +145,15 @@
             position: relative;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
         }
         h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
-        button { cursor: pointer; border: none; outline: none; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
         img { max-width: 100%; height: auto; display: block; }
 
         /* SEO İyileştirmeleri için Görünmez Başlıklar */
@@ -168,7 +169,7 @@
             border: 0;
         }
 
-        /* Theme Toggle Button */
+        /* Theme Toggle Button - Android/Tablet Uyumlu */
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -177,6 +178,7 @@
             height: 50px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color);
             border-radius: 50%;
@@ -189,6 +191,7 @@
             opacity: 0.9;
             z-index: var(--z-tooltip);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            touch-action: manipulation;
         }
         .theme-toggle:hover {
             transform: translateY(-3px);
@@ -199,7 +202,7 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* GELİŞMİŞ KAYDIRMA ÇUBUĞU TASARIMI */
+        /* GELİŞMİŞ KAYDIRMA ÇUBUĞU TASARIMI - Android/Tablet Uyumlu */
         ::-webkit-scrollbar {
             width: 14px;
         }
@@ -252,7 +255,7 @@
             }
         }
 
-        /* Particles Background - Tüm Sayfa */
+        /* Particles Background - Tüm Sayfa - Android/Tablet Uyumlu */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -270,6 +273,7 @@
         .content-layer {
             position: relative;
             z-index: 1;
+            min-height: 100vh;
         }
 
         .container { max-width: 1024px; margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
@@ -279,13 +283,13 @@
         .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .visible { opacity: 1; transform: translateY(0); }
 
-        /* LOADER */
+        /* LOADER - Android/Tablet Uyumlu */
         .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
         .loader.hidden { opacity: 0; visibility: hidden; }
         .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* HEADER */
+        /* HEADER - Android/Tablet Uyumlu */
         .header { 
             width: 100%; 
             position: fixed; 
@@ -294,6 +298,7 @@
             z-index: var(--z-fixed); 
             background-color: rgba(13, 17, 23, 0.7); 
             backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid transparent; 
             transition: border-color 0.3s, background-color 0.3s; 
         }
@@ -312,10 +317,11 @@
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
         
-        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - NAVBAR */
+        /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - NAVBAR - Android/Tablet Uyumlu */
         .nav__cta { 
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color); 
             padding: 0.5rem 1.2rem; 
@@ -331,6 +337,7 @@
             align-items: center;
             gap: 0.4rem;
             font-size: 0.8rem;
+            touch-action: manipulation;
         }
         [data-theme="light"] .nav__cta {
             background: rgba(0, 0, 0, 0.05);
@@ -376,7 +383,7 @@
             transform: translateX(2px);
         }
 
-        /* HERO */
+        /* HERO - Android/Tablet Uyumlu */
         .hero { 
             height: 100vh; 
             display: flex; 
@@ -385,6 +392,7 @@
             text-align: center; 
             position: relative; 
             overflow: hidden; 
+            min-height: 600px;
         }
         .hero__container { 
             position: relative; 
@@ -424,7 +432,7 @@
             width: 100%;
         }
         
-        /* GELİŞMİŞ AERO CAM STİLİ BUTON - HERO */
+        /* GELİŞMİŞ AERO CAM STİLİ BUTON - HERO - Android/Tablet Uyumlu */
         .hero__button { 
             padding: 0.7rem 1.5rem; 
             border-radius: 10px; 
@@ -440,10 +448,12 @@
             overflow: hidden;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            touch-action: manipulation;
         }
         [data-theme="light"] .hero__button {
             background: rgba(0, 0, 0, 0.05);
@@ -485,10 +495,10 @@
         .hero__button:hover i {
             transform: translateX(2px);
         }
-        .hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-color-light); font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; }
+        .hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-color-light); font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; touch-action: manipulation; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
-        /* ABOUT */
+        /* ABOUT - Android/Tablet Uyumlu */
         .about__content { max-width: 800px; margin: 0 auto; text-align: center; }
         .about__stats { 
             display: grid; 
@@ -501,6 +511,7 @@
         .stat__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 1.5rem; 
             border-radius: 12px; 
@@ -523,11 +534,12 @@
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
         .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
 
-        /* SERVICES */
+        /* SERVICES - Android/Tablet Uyumlu */
         .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .service__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 2rem; 
             border-radius: 12px; 
@@ -547,11 +559,12 @@
         .service__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .service__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; }
 
-        /* PRICING */
+        /* PRICING - Android/Tablet Uyumlu */
         .pricing__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .pricing__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 12px; 
             padding: 2rem; 
@@ -576,11 +589,12 @@
         .pricing__feature i { color: var(--secondary-color); }
         .pricing__delivery { font-size: var(--small-font-size); color: var(--text-color-light); margin-bottom: 1.5rem; }
         
-        /* GELİŞMİŞ AERO CAM STİLİ BUTON - PRICING */
+        /* GELİŞMİŞ AERO CAM STİLİ BUTON - PRICING - Android/Tablet Uyumlu */
         .pricing__button { 
             display: inline-block; 
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color); 
             padding: 0.8rem 2rem; 
@@ -597,6 +611,7 @@
             gap: 0.4rem;
             position: relative;
             overflow: hidden;
+            touch-action: manipulation;
         }
         [data-theme="light"] .pricing__button {
             background: rgba(0, 0, 0, 0.05);
@@ -639,11 +654,12 @@
             transform: translateX(2px);
         }
 
-        /* PROJECTS */
+        /* PROJECTS - Android/Tablet Uyumlu */
         .projects__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .project__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 12px; 
             overflow: hidden; 
@@ -667,7 +683,7 @@
         .project__link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
         .project__link:hover { gap: 0.75rem; }
 
-        /* FAQ */
+        /* FAQ - Android/Tablet Uyumlu */
         .faq__container { max-width: 800px; margin: 0 auto; }
         .faq__item { 
             margin-bottom: 1rem; 
@@ -676,12 +692,13 @@
             overflow: hidden; 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         [data-theme="light"] .faq__item {
             background: rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.08);
         }
-        .faq__question { padding: 1.5rem; background-color: transparent; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; }
+        .faq__question { padding: 1.5rem; background-color: transparent; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; touch-action: manipulation; }
         .faq__question:hover { background-color: rgba(255, 255, 255, 0.05); }
         [data-theme="light"] .faq__question:hover {
             background-color: rgba(0, 0, 0, 0.03);
@@ -690,12 +707,13 @@
         .faq__item.active .faq__answer { padding: 1.5rem; max-height: 500px; }
         .faq__item.active .faq__question i { transform: rotate(180deg); }
 
-        /* TESTIMONIALS */
+        /* TESTIMONIALS - Android/Tablet Uyumlu */
         .testimonials__container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; }
         .testimonials__track { display: flex; transition: transform 0.5s ease; }
         .testimonial__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 2rem; 
             border-radius: 12px; 
@@ -722,6 +740,7 @@
         .testimonial__nav-btn { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             color: var(--text-color); 
             width: 40px; 
@@ -733,6 +752,7 @@
             cursor: pointer; 
             transition: all 0.3s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            touch-action: manipulation;
         }
         [data-theme="light"] .testimonial__nav-btn {
             background: rgba(0, 0, 0, 0.03);
@@ -740,13 +760,14 @@
         }
         .testimonial__nav-btn:hover { background-color: var(--primary-color); color: var(--bg-color); }
 
-        /* PARTNERS */
+        /* PARTNERS - Android/Tablet Uyumlu */
         .partners__grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
         .partner__logo { 
             width: 120px; 
             height: 60px; 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 8px; 
             display: flex; 
@@ -763,14 +784,15 @@
         .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
         .partner__logo i { font-size: 2rem; color: var(--primary-color); }
 
-        /* CONTACT */
+        /* CONTACT - Android/Tablet Uyumlu */
         .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
         
-        /* GELİŞMİŞ AERO CAM STİLİ BUTON - CONTACT */
+        /* GELİŞMİŞ AERO CAM STİLİ BUTON - CONTACT - Android/Tablet Uyumlu */
         .contact__button { 
             display: inline-block; 
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color); 
             padding: 0.8rem 2rem; 
@@ -787,6 +809,7 @@
             gap: 0.4rem;
             position: relative;
             overflow: hidden;
+            touch-action: manipulation;
         }
         [data-theme="light"] .contact__button {
             background: rgba(0, 0, 0, 0.05);
@@ -829,7 +852,7 @@
             transform: translateX(2px);
         }
 
-        /* MODAL */
+        /* MODAL - Android/Tablet Uyumlu */
         .modal { 
             position: fixed; 
             top: 0; 
@@ -839,17 +862,21 @@
             z-index: var(--z-modal); 
             background-color: rgba(0, 0, 0, 0.7); 
             backdrop-filter: blur(5px); 
+            -webkit-backdrop-filter: blur(5px);
             display: none; 
             align-items: center; 
             justify-content: center; 
             opacity: 0; 
             transition: opacity 0.3s ease; 
+            padding: 1rem;
+            box-sizing: border-box;
         }
         .modal.active { display: flex; opacity: 1; }
         .modal__content { 
             position: relative; 
             background: rgba(22, 27, 34, 0.8);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             padding: 2.5rem; 
             border-radius: 12px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -859,13 +886,15 @@
             transform: scale(0.95); 
             transition: transform 0.3s ease; 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         [data-theme="light"] .modal__content {
             background: rgba(245, 247, 250, 0.9);
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
         .modal.active .modal__content { transform: scale(1); }
-        .modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; }
+        .modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; touch-action: manipulation; }
         .modal__close:hover { color: var(--secondary-color); }
         .form__group { margin-bottom: 1rem; text-align: left; }
         .form__group label { display: block; margin-bottom: 0.5rem; font-weight: var(--font-semi-bold); color: var(--text-color-light); }
@@ -874,6 +903,7 @@
             padding: 0.75rem; 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 8px; 
             color: var(--text-color); 
@@ -890,11 +920,12 @@
         }
         .form__group input:focus, .form__group select:focus, .form__group textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(88, 166, 255, 0.2); outline: none; }
         
-        /* GELİŞMİŞ AERO CAM STİLİ BUTON - MODAL FORM */
+        /* GELİŞMİŞ AERO CAM STİLİ BUTON - MODAL FORM - Android/Tablet Uyumlu */
         .modal__submit { 
             display: inline-block; 
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color); 
             padding: 0.8rem 2rem; 
@@ -913,6 +944,7 @@
             overflow: hidden;
             width: 100%;
             justify-content: center;
+            touch-action: manipulation;
         }
         [data-theme="light"] .modal__submit {
             background: rgba(0, 0, 0, 0.05);
@@ -962,13 +994,14 @@
         .modal__direct-contact p { margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .modal__direct-contact i { color: var(--secondary-color); font-size: 1.2rem; }
 
-        /* TOAST */
+        /* TOAST - Android/Tablet Uyumlu */
         .toast { 
             position: fixed; 
             bottom: 2rem; 
             right: 2rem; 
             background: rgba(22, 27, 34, 0.8);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             color: var(--secondary-color); 
             padding: 1rem 1.5rem; 
             border-radius: 8px; 
@@ -981,6 +1014,7 @@
             transform: translateX(calc(100% + 2rem)); 
             transition: transform 0.5s ease-in-out; 
             border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 300px;
         }
         [data-theme="light"] .toast {
             background: rgba(245, 247, 250, 0.9);
@@ -989,7 +1023,7 @@
         .toast.show { transform: translateX(0); }
         .toast i { font-size: 1.5rem; }
 
-        /* FOOTER */
+        /* FOOTER - Android/Tablet Uyumlu */
         .footer { 
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 3rem 0 2rem; 
@@ -1052,6 +1086,7 @@
             height: 42px; 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 50%; 
             color: var(--text-color); 
@@ -1097,7 +1132,7 @@
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* BACK TO TOP */
+        /* BACK TO TOP - Android/Tablet Uyumlu */
         .back-to-top { 
             position: fixed; 
             bottom: 2rem; 
@@ -1106,6 +1141,7 @@
             height: 50px; 
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--title-color); 
             border-radius: 50%; 
@@ -1119,6 +1155,7 @@
             visibility: hidden; 
             z-index: var(--z-tooltip); 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            touch-action: manipulation;
         }
         [data-theme="light"] .back-to-top {
             background: rgba(0, 0, 0, 0.05);
@@ -1127,9 +1164,9 @@
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE - Android/Tablet Optimizasyonları */
         @media screen and (max-width: 768px) {
-          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background: rgba(22, 27, 34, 0.9); backdrop-filter: blur(15px); border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
+          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background: rgba(22, 27, 34, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
           [data-theme="light"] .nav__menu {
             background: rgba(245, 247, 250, 0.9);
             border-left: 1px solid rgba(0, 0, 0, 0.1);
@@ -1147,6 +1184,10 @@
           .theme-toggle {
             bottom: 6rem;
           }
+          .hero { min-height: 100vh; }
+          .modal__content { padding: 1.5rem; }
+          .section { padding: 3rem 0 1.5rem; }
+          .hero__title { font-size: 2.25rem; }
         }
 
         @media screen and (max-width: 350px) {
@@ -1155,12 +1196,39 @@
           .hero__title .cursor { height: 2rem; }
           .services__grid, .projects__grid { grid-template-columns: 1fr; }
           .footer__container { grid-template-columns: 1fr; }
+          .modal__content { padding: 1rem; }
         }
 
         @media screen and (min-width: 1040px) {
           .container { margin-left: auto; margin-right: auto; }
           :root { --h1-font-size: 3.5rem; --h2-font-size: 2.25rem; --h3-font-size: 1.5rem; --normal-font-size: 1.1rem; }
           .hero__title .cursor { height: 3.5rem; }
+        }
+
+        /* Android/Tablet için ek iyileştirmeler */
+        @media (hover: none) and (pointer: coarse) {
+            /* Mobil cihazlar için hover efektlerini kaldır */
+            .nav__cta:hover, .hero__button:hover, .pricing__button:hover, .contact__button:hover, .modal__submit:hover {
+                transform: none;
+            }
+            
+            /* Mobil cihazlar için hover animasyonlarını optimize et */
+            .service__card:hover, .project__card:hover, .stat__card:hover {
+                transform: none;
+            }
+            
+            /* Mobil cihazlarda tıklanabilir öğeler için daha iyi dokunma deneyimi */
+            .nav__link, .faq__question, button, a {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
+        /* iOS Safari için özel stiller */
+        @supports (-webkit-touch-callout: none) {
+            .hero { 
+                height: -webkit-fill-available; 
+                min-height: -webkit-fill-available;
+            }
         }
     </style>
 </head>
@@ -1800,7 +1868,7 @@
             sectionObserver.observe(section);
         });
 
-        // Theme Toggle Functionality
+        // Theme Toggle Functionality - Android/Tablet Uyumlu
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const body = document.body;
@@ -1826,7 +1894,47 @@
                 themeIcon.classList.remove('bx-sun');
                 themeIcon.classList.add('bx-moon');
             }
+            
+            // Android/Tablet için ek güvenlik önlemi
+            document.documentElement.style.setProperty('--bg-color', theme === 'light' ? '#F5F7FA' : '#0A0F14');
+            document.documentElement.style.setProperty('--bg-color-light', theme === 'light' ? '#FFFFFF' : '#161B22');
+            document.documentElement.style.setProperty('--border-color', theme === 'light' ? '#E1E5E9' : '#30363D');
+            document.documentElement.style.setProperty('--text-color', theme === 'light' ? '#3C4043' : '#C9D1D9');
+            document.documentElement.style.setProperty('--text-color-light', theme === 'light' ? '#5F6368' : '#8B949E');
+            document.documentElement.style.setProperty('--title-color', theme === 'light' ? '#202124' : '#F0F6FC');
         }
+
+        // Android/Tablet için ek iyileştirmeler
+        // Touch event optimizasyonları
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Backdrop filter destek kontrolü
+        function checkBackdropFilterSupport() {
+            const testElement = document.createElement('div');
+            testElement.style.backdropFilter = 'blur(10px)';
+            testElement.style.webkitBackdropFilter = 'blur(10px)';
+            document.body.appendChild(testElement);
+            const hasBackdropFilter = getComputedStyle(testElement).backdropFilter !== 'none' || 
+                                     getComputedStyle(testElement).webkitBackdropFilter !== 'none';
+            document.body.removeChild(testElement);
+            
+            if (!hasBackdropFilter) {
+                // Backdrop filter desteklenmiyorsa fallback
+                document.querySelectorAll('.nav__cta, .hero__button, .pricing__button, .contact__button, .modal__submit, .theme-toggle, .back-to-top, .footer__social-link, .testimonial__nav-btn').forEach(el => {
+                    el.style.backdropFilter = 'none';
+                    el.style.webkitBackdropFilter = 'none';
+                    el.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                });
+                
+                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .pricing__card, .project__card, .faq__item, .testimonial__card, .partner__logo, .modal__content, .toast').forEach(el => {
+                    el.style.backdropFilter = 'none';
+                    el.style.webkitBackdropFilter = 'none';
+                    el.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                });
+            }
+        }
+        
+        window.addEventListener('load', checkBackdropFilterSupport);
     </script>
 
     <!-- Particles.js -->
