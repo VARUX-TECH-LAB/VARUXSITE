@@ -122,18 +122,6 @@
           --z-modal: 1000;
         }
 
-        /* Light Mode Variables */
-        [data-theme="light"] {
-          --bg-color: #F5F7FA;
-          --bg-color-light: #FFFFFF;
-          --border-color: #E1E5E9;
-          --primary-color: #1A73E8;
-          --secondary-color: #0D8B68;
-          --text-color: #3C4043;
-          --text-color-light: #5F6368;
-          --title-color: #202124;
-        }
-
         * { box-sizing: border-box; padding: 0; margin: 0; }
         html { scroll-behavior: smooth; }
         body { 
@@ -169,39 +157,6 @@
             border: 0;
         }
 
-        /* Theme Toggle Button - Android/Tablet Uyumlu */
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--title-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0.9;
-            z-index: var(--z-tooltip);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            touch-action: manipulation;
-        }
-        .theme-toggle:hover {
-            transform: translateY(-3px);
-            opacity: 1;
-        }
-        [data-theme="light"] .theme-toggle {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
         /* GELİŞMİŞ KAYDIRMA ÇUBUĞU TASARIMI - Android/Tablet Uyumlu */
         ::-webkit-scrollbar {
             width: 14px;
@@ -214,21 +169,12 @@
             box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
 
-        [data-theme="light"] ::-webkit-scrollbar-track {
-            background: rgba(245, 247, 250, 0.8);
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        }
-
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             border-radius: 10px;
             border: 2px solid rgba(10, 15, 20, 0.9);
             box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
             transition: all 0.3s ease;
-        }
-
-        [data-theme="light"] ::-webkit-scrollbar-thumb {
-            border: 2px solid rgba(245, 247, 250, 0.9);
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -265,10 +211,6 @@
             z-index: var(--z-background);
         }
 
-        [data-theme="light"] #particles-js {
-            opacity: 0.7;
-        }
-
         /* İçerik Katmanı - Particles'ın Üzerinde */
         .content-layer {
             position: relative;
@@ -302,13 +244,7 @@
             border-bottom: 1px solid transparent; 
             transition: border-color 0.3s, background-color 0.3s; 
         }
-        [data-theme="light"] .header {
-            background-color: rgba(245, 247, 250, 0.7);
-        }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
-        [data-theme="light"] .header.scrolled {
-            background-color: rgba(245, 247, 250, 0.9);
-        }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
         .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
         .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
@@ -339,12 +275,6 @@
             font-size: 0.8rem;
             touch-action: manipulation;
         }
-        [data-theme="light"] .nav__cta {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
         .nav__cta::before {
             content: '';
             position: absolute;
@@ -355,9 +285,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.7s;
         }
-        [data-theme="light"] .nav__cta::before {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
-        }
         .nav__cta:hover::before {
             left: 100%;
         }
@@ -367,10 +294,6 @@
             transform: translateY(-2px); 
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
                         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        [data-theme="light"] .nav__cta:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.2);
         }
         .nav__cta:active {
             transform: translateY(0);
@@ -455,12 +378,6 @@
                         inset 0 1px 0 rgba(255, 255, 255, 0.1);
             touch-action: manipulation;
         }
-        [data-theme="light"] .hero__button {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
         .hero__button::before {
             content: '';
             position: absolute;
@@ -471,9 +388,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.7s;
         }
-        [data-theme="light"] .hero__button::before {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
-        }
         .hero__button:hover::before {
             left: 100%;
         }
@@ -483,10 +397,6 @@
             transform: translateY(-2px); 
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
                         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        [data-theme="light"] .hero__button:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.2);
         }
         .hero__button i {
             font-size: 1.1rem;
@@ -525,10 +435,6 @@
             justify-content: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        [data-theme="light"] .stat__card {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .stat__card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
         .stat__number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
@@ -548,10 +454,6 @@
             overflow: hidden; 
             transition: transform 0.4s ease, box-shadow 0.4s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .service__card {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .service__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
         .service__icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; transition: transform 0.4s ease, color 0.4s ease; }
@@ -573,10 +475,6 @@
             position: relative; 
             overflow: hidden; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .pricing__card {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .pricing__card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
         .pricing__card.popular { border-color: var(--secondary-color); transform: scale(1.05); }
@@ -613,12 +511,6 @@
             overflow: hidden;
             touch-action: manipulation;
         }
-        [data-theme="light"] .pricing__button {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
         .pricing__button::before {
             content: '';
             position: absolute;
@@ -629,9 +521,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.7s;
         }
-        [data-theme="light"] .pricing__button::before {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
-        }
         .pricing__button:hover::before {
             left: 100%;
         }
@@ -641,10 +530,6 @@
             transform: scale(1.03); 
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
                         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        [data-theme="light"] .pricing__button:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.2);
         }
         .pricing__button i {
             font-size: 1.1rem;
@@ -666,15 +551,8 @@
             transition: transform 0.4s ease, box-shadow 0.4s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        [data-theme="light"] .project__card {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
         .project__image { height: 200px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); }
-        [data-theme="light"] .project__image {
-            background: rgba(0, 0, 0, 0.03);
-        }
         .project__content { padding: 1.5rem; }
         .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .project__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
@@ -694,15 +572,8 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        [data-theme="light"] .faq__item {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .faq__question { padding: 1.5rem; background-color: transparent; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; touch-action: manipulation; }
         .faq__question:hover { background-color: rgba(255, 255, 255, 0.05); }
-        [data-theme="light"] .faq__question:hover {
-            background-color: rgba(0, 0, 0, 0.03);
-        }
         .faq__answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
         .faq__item.active .faq__answer { padding: 1.5rem; max-height: 500px; }
         .faq__item.active .faq__question i { transform: rotate(180deg); }
@@ -721,19 +592,12 @@
             text-align: center; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        [data-theme="light"] .testimonial__card {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .testimonial__quote { font-style: italic; margin-bottom: 1.5rem; color: var(--text-color); position: relative; }
         .testimonial__quote::before, .testimonial__quote::after { content: '"'; font-size: 2rem; color: var(--secondary-color); position: absolute; }
         .testimonial__quote::before { top: -10px; left: -10px; }
         .testimonial__quote::after { bottom: -20px; right: -10px; }
         .testimonial__author { display: flex; align-items: center; justify-content: center; gap: 1rem; }
         .testimonial__avatar { width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); }
-        [data-theme="light"] .testimonial__avatar {
-            background: rgba(0, 0, 0, 0.03);
-        }
         .testimonial__info h4 { color: var(--title-color); margin-bottom: 0.25rem; }
         .testimonial__info p { color: var(--text-color-light); font-size: var(--small-font-size); }
         .testimonials__nav { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
@@ -754,10 +618,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             touch-action: manipulation;
         }
-        [data-theme="light"] .testimonial__nav-btn {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .testimonial__nav-btn:hover { background-color: var(--primary-color); color: var(--bg-color); }
 
         /* PARTNERS - Android/Tablet Uyumlu */
@@ -776,10 +636,6 @@
             color: var(--text-color-light); 
             transition: all 0.3s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .partner__logo {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
         .partner__logo i { font-size: 2rem; color: var(--primary-color); }
@@ -811,12 +667,6 @@
             overflow: hidden;
             touch-action: manipulation;
         }
-        [data-theme="light"] .contact__button {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
         .contact__button::before {
             content: '';
             position: absolute;
@@ -827,9 +677,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.7s;
         }
-        [data-theme="light"] .contact__button::before {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
-        }
         .contact__button:hover::before {
             left: 100%;
         }
@@ -839,10 +686,6 @@
             transform: scale(1.03); 
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
                         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        [data-theme="light"] .contact__button:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.2);
         }
         .contact__button i {
             font-size: 1.1rem;
@@ -889,10 +732,6 @@
             max-height: 90vh;
             overflow-y: auto;
         }
-        [data-theme="light"] .modal__content {
-            background: rgba(245, 247, 250, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
         .modal.active .modal__content { transform: scale(1); }
         .modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; touch-action: manipulation; }
         .modal__close:hover { color: var(--secondary-color); }
@@ -911,12 +750,6 @@
             font-size: var(--normal-font-size); 
             transition: border-color 0.3s, box-shadow 0.3s; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .form__group input, 
-        [data-theme="light"] .form__group select, 
-        [data-theme="light"] .form__group textarea {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         .form__group input:focus, .form__group select:focus, .form__group textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(88, 166, 255, 0.2); outline: none; }
         
@@ -946,12 +779,6 @@
             justify-content: center;
             touch-action: manipulation;
         }
-        [data-theme="light"] .modal__submit {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
         .modal__submit::before {
             content: '';
             position: absolute;
@@ -961,9 +788,6 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.7s;
-        }
-        [data-theme="light"] .modal__submit::before {
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
         }
         .modal__submit:hover::before {
             left: 100%;
@@ -975,10 +799,6 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
                         inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
-        [data-theme="light"] .modal__submit:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.2);
-        }
         .modal__submit i {
             font-size: 1.1rem;
             transition: transform 0.3s ease;
@@ -988,9 +808,6 @@
         }
         
         .modal__direct-contact { margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; color: var(--text-color-light); }
-        [data-theme="light"] .modal__direct-contact {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
         .modal__direct-contact p { margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .modal__direct-contact i { color: var(--secondary-color); font-size: 1.2rem; }
 
@@ -1016,10 +833,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 300px;
         }
-        [data-theme="light"] .toast {
-            background: rgba(245, 247, 250, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
         .toast.show { transform: translateX(0); }
         .toast i { font-size: 1.5rem; }
 
@@ -1028,9 +841,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 3rem 0 2rem; 
             margin-top: 2rem; 
-        }
-        [data-theme="light"] .footer {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         .footer__container { 
             display: grid; 
@@ -1093,10 +903,6 @@
             transition: all 0.3s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        [data-theme="light"] .footer__social-link {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
         .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
         .footer__title { 
             font-size: var(--h3-font-size); 
@@ -1128,9 +934,6 @@
             width: 100%; 
             margin-top: 1rem;
         }
-        [data-theme="light"] .footer__bottom {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
 
         /* BACK TO TOP - Android/Tablet Uyumlu */
         .back-to-top { 
@@ -1157,20 +960,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             touch-action: manipulation;
         }
-        [data-theme="light"] .back-to-top {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
 
         /* RESPONSIVE - Android/Tablet Optimizasyonları */
         @media screen and (max-width: 768px) {
           .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background: rgba(22, 27, 34, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
-          [data-theme="light"] .nav__menu {
-            background: rgba(245, 247, 250, 0.9);
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
-          }
           .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
           .nav__toggle, .nav__close { display: block; color: var(--title-color); }
           .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
@@ -1181,9 +976,6 @@
           .pricing__card.popular { transform: none; }
           .footer__container { grid-template-columns: 1fr; gap: 2rem; }
           .footer__col { max-width: 100%; }
-          .theme-toggle {
-            bottom: 6rem;
-          }
           .hero { min-height: 100vh; }
           .modal__content { padding: 1.5rem; }
           .section { padding: 3rem 0 1.5rem; }
@@ -1241,11 +1033,6 @@
         <div class="loader__spinner"></div>
     </div>
 
-    <!-- THEME TOGGLE BUTTON -->
-    <div class="theme-toggle" id="theme-toggle">
-        <i class='bx bx-moon' id="theme-icon"></i>
-    </div>
-
     <!-- BACK TO TOP BUTTON -->
     <div class="back-to-top" id="back-to-top">
         <i class='bx bx-chevron-up'></i>
@@ -1256,7 +1043,7 @@
         <!-- HEADER -->
         <header class="header" id="header">
             <nav class="nav container">
-            
+                <a href="#" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i> VARUX</a>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
@@ -1546,7 +1333,7 @@
         <footer class="footer">
             <div class="footer__container container">
                 <div class="footer__col">
-                    <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                 
                     <p class="footer__description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
                     <div class="footer__social">
                         <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
@@ -1868,42 +1655,6 @@
             sectionObserver.observe(section);
         });
 
-        // Theme Toggle Functionality - Android/Tablet Uyumlu
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        // Check for saved theme preference or respect OS preference
-        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        setTheme(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
-
-        function setTheme(theme) {
-            body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            
-            if (theme === 'light') {
-                themeIcon.classList.remove('bx-moon');
-                themeIcon.classList.add('bx-sun');
-            } else {
-                themeIcon.classList.remove('bx-sun');
-                themeIcon.classList.add('bx-moon');
-            }
-            
-            // Android/Tablet için ek güvenlik önlemi
-            document.documentElement.style.setProperty('--bg-color', theme === 'light' ? '#F5F7FA' : '#0A0F14');
-            document.documentElement.style.setProperty('--bg-color-light', theme === 'light' ? '#FFFFFF' : '#161B22');
-            document.documentElement.style.setProperty('--border-color', theme === 'light' ? '#E1E5E9' : '#30363D');
-            document.documentElement.style.setProperty('--text-color', theme === 'light' ? '#3C4043' : '#C9D1D9');
-            document.documentElement.style.setProperty('--text-color-light', theme === 'light' ? '#5F6368' : '#8B949E');
-            document.documentElement.style.setProperty('--title-color', theme === 'light' ? '#202124' : '#F0F6FC');
-        }
-
         // Android/Tablet için ek iyileştirmeler
         // Touch event optimizasyonları
         document.addEventListener('touchstart', function() {}, {passive: true});
@@ -1920,7 +1671,7 @@
             
             if (!hasBackdropFilter) {
                 // Backdrop filter desteklenmiyorsa fallback
-                document.querySelectorAll('.nav__cta, .hero__button, .pricing__button, .contact__button, .modal__submit, .theme-toggle, .back-to-top, .footer__social-link, .testimonial__nav-btn').forEach(el => {
+                document.querySelectorAll('.nav__cta, .hero__button, .pricing__button, .contact__button, .modal__submit, .back-to-top, .footer__social-link, .testimonial__nav-btn').forEach(el => {
                     el.style.backdropFilter = 'none';
                     el.style.webkitBackdropFilter = 'none';
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
@@ -1942,7 +1693,7 @@
     <script>
         particlesJS('particles-js', {
             particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
+                number: { value: 60, density: { enable: true, value_area: 800 } },
                 color: { value: '#58A6FF' },
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: true },
@@ -1956,7 +1707,7 @@
                 },
                 move: {
                     enable: true,
-                    speed: 2,
+                    speed: 1, // Yavaşlatılmış hız
                     direction: 'none',
                     random: true,
                     straight: false,
