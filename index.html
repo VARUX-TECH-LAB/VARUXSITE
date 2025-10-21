@@ -27,10 +27,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://varuxcyber.com/">
     
-    <!-- Favicon -->
+    <!-- Favicon - DÜZELTİLDİ -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,10 +246,21 @@
         }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
-        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+        .nav__logo { 
+            font-family: var(--title-font); 
+            color: var(--title-color); 
+            font-weight: 700; 
+            font-size: 1.75rem; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 5px var(--primary-color); 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem;
+            margin-right: 2rem; /* Logo ile menü arasına daha fazla boşluk */
+        }
         .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
         .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
-        .nav__list { display: flex; column-gap: 2rem; align-items: center; }
+        .nav__list { display: flex; column-gap: 2.5rem; align-items: center; } /* Gap artırıldı */
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
         
@@ -274,6 +285,7 @@
             gap: 0.4rem;
             font-size: 0.8rem;
             touch-action: manipulation;
+            margin-left: 1rem; /* Buton ile menü arasına boşluk */
         }
         .nav__cta::before {
             content: '';
@@ -980,6 +992,7 @@
           .modal__content { padding: 1.5rem; }
           .section { padding: 3rem 0 1.5rem; }
           .hero__title { font-size: 2.25rem; }
+          .nav__logo { margin-right: 0; } /* Mobilde logo margin'ini sıfırla */
         }
 
         @media screen and (max-width: 350px) {
@@ -1333,7 +1346,7 @@
         <footer class="footer">
             <div class="footer__container container">
                 <div class="footer__col">
-                 
+                    <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
                     <p class="footer__description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
                     <div class="footer__social">
                         <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
