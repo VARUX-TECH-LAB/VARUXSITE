@@ -1,0 +1,92 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "KOBİ'ler İçin Temel Ağ Güvenliği Önlemleri",
+      "excerpt": "Küçük ve orta ölçekli işletmelerin siber güvenlik bütçeleri sınırlı olsa da, alabilecekleri temel önlemlerle büyük riskleri önleyebilirler. İşte KOBİ'ler için uygulanabilir 10 kritik ağ güvenliği önlemi...",
+      "date": "15 Ekim 2024",
+      "readTime": "5 dk okuma",
+      "category": "Ağ Güvenliği",
+      "tags": ["KOBİ", "Ağ Güvenliği", "Temel Önlemler"],
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-kobi-temel-guvenlik.html"
+    },
+    {
+      "id": 2,
+      "title": "İç Tehditleri Tespit Etmek İçin 7 İşaret",
+      "excerpt": "Siber güvenlik tehditlerinin %60'ından fazlası iç kaynaklıdır. Çalışanlarınızın farkında olmadan veya kasıtlı olarak oluşturabileceği riskleri nasıl tespit edebilirsiniz? İşte iç tehditleri erken tespit etmek için 7 kritik işaret...",
+      "date": "8 Ekim 2024",
+      "readTime": "7 dk okuma",
+      "category": "İç Tehdit",
+      "tags": ["İç Tehdit", "Tespit", "İşaretler"],
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-ic-tehdit-isaretler.html"
+    },
+    {
+      "id": 3,
+      "title": "Endüstriyel Ağlarda (OT) Güvenlik Duvarı Yönetimi",
+      "excerpt": "Fabrika ve üretim tesislerindeki endüstriyel ağlar (OT/ICS) için güvenlik duvarı yönetimi, IT ağlarından farklı yaklaşımlar gerektirir. OT ortamlarına özel güvenlik duvarı kuralları ve en iyi uygulamalar...",
+      "date": "1 Ekim 2024",
+      "readTime": "8 dk okuma",
+      "category": "OT/ICS Güvenliği",
+      "tags": ["OT Güvenliği", "ICS", "Güvenlik Duvarı"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-ot-guvenlik-duvari.html"
+    },
+    {
+      "id": 4,
+      "title": "7/24 Ağ İzleme: Neden Önemli ve Nasıl Yapılır?",
+      "excerpt": "Sürekli ağ izleme, modern siber güvenlik stratejisinin temel taşıdır. Ancak etkili bir izleme sistemi kurmak ve yönetmek karmaşık olabilir. İşte 7/24 ağ izleme sistemleri için kapsamlı bir rehber...",
+      "date": "24 Eylül 2024",
+      "readTime": "6 dk okuma",
+      "category": "Ağ İzleme",
+      "tags": ["Ağ İzleme", "7/24", "Sistem Yönetimi"],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-7-24-ag-izleme.html"
+    },
+    {
+      "id": 5,
+      "title": "Şifre Politikaları: Güvenlik ve Kullanıcı Deneyimi Dengesi",
+      "excerpt": "Aşırı karmaşık şifre politikaları kullanıcıları güvenlik önlemlerinden soğutabilir. Peki güvenlik ve kullanılabilirlik arasında ideal denge nasıl kurulur? Modern şifre yönetimi için en iyi uygulamalar...",
+      "date": "17 Eylül 2024",
+      "readTime": "5 dk okuma",
+      "category": "Güvenlik Politikaları",
+      "tags": ["Şifre Politikaları", "Güvenlik", "Kullanıcı Deneyimi"],
+      "image": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-sifre-politikalari.html"
+    },
+    {
+      "id": 6,
+      "title": "2024'ün En Önemli 5 Siber Güvenlik Trendi",
+      "excerpt": "Yapay zeka destekli saldırılar, sıfır güven mimarisi ve bulut güvenliği - 2024'te KOBİ'lerin ve fabrikaların dikkat etmesi gereken en kritik siber güvenlik trendlerini analiz ediyoruz...",
+      "date": "10 Eylül 2024",
+      "readTime": "7 dk okuma",
+      "category": "Siber Güvenlik Trendleri",
+      "tags": ["Trendler", "2024", "Siber Güvenlik"],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-2024-trendler.html"
+    },
+    {
+      "id": 7,
+      "title": "Yapay Zeka ve Siber Güvenlik: Fırsatlar ve Tehditler",
+      "excerpt": "Yapay zeka siber güvenlik dünyasını hem iyileştiriyor hem de yeni tehditler oluşturuyor. Bu yazıda, yapay zekanın siber güvenlikte nasıl kullanıldığını ve ortaya çıkardığı riskleri inceliyoruz...",
+      "date": "3 Eylül 2024",
+      "readTime": "8 dk okuma",
+      "category": "Siber Güvenlik Trendleri",
+      "tags": ["Yapay Zeka", "Siber Güvenlik", "Tehditler"],
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-yapay-zeka-guvenlik.html"
+    },
+    {
+      "id": 8,
+      "title": "Bulut Güvenliği: KOBİ'ler İçin En İyi Uygulamalar",
+      "excerpt": "Bulut bilişim KOBİ'ler için büyük fırsatlar sunarken, güvenlik risklerini de beraberinde getiriyor. İşte KOBİ'lerin bulut güvenliğini sağlamak için uygulayabileceği en iyi uygulamalar...",
+      "date": "27 Ağustos 2024",
+      "readTime": "6 dk okuma",
+      "category": "Ağ Güvenliği",
+      "tags": ["Bulut Güvenliği", "KOBİ", "En İyi Uygulamalar"],
+      "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "link": "blog-bulut-guvenligi.html"
+    }
+  ]
+}
