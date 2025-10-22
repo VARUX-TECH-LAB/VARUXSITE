@@ -27,10 +27,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://varuxcyber.com/">
     
-    <!-- Favicon - DÜZELTİLDİ -->
-  <link rel="icon" type="image/png" href="/favicon.png?v=2">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png?v=2">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -245,29 +245,21 @@
             transition: border-color 0.3s, background-color 0.3s; 
         }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
-        .nav { height: var(--header-height); display: flex; justify-content: flex-start; align-items: center; } /* Değiştirildi: space-between -> flex-start */
-        .nav__logo { 
-            font-family: var(--title-font); 
-            color: var(--title-color); 
-            font-weight: 700; 
-            font-size: 1.75rem; 
-            letter-spacing: 2px; 
-            text-shadow: 0 0 5px var(--primary-color); 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem;
-            margin-right: 2.5rem; /* Artırıldı: 2rem -> 2.5rem */
-            flex-shrink: 0; /* Logo boyutunun korunması için eklendi */
+        .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Logo kaldırıldı - yerine boş div */
+        .nav__logo-placeholder {
+            width: 1px; /* Görünmez ama yer kaplıyor */
+            visibility: hidden;
         }
-        .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
+        
         .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
         .nav__list { 
             display: flex; 
-            column-gap: 2rem; /* Azaltıldı: 2.5rem -> 2rem */
+            column-gap: 1.5rem; 
             align-items: center; 
-            justify-content: center; /* Eklendi: Menü öğelerini ortalar */
-            flex-grow: 1; /* Eklendi: Kalan alanı kaplar */
-            margin-right: 2rem; /* Eklendi: Buton için boşluk */
+            flex-grow: 1; 
+            justify-content: center;
         }
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
@@ -293,7 +285,7 @@
             gap: 0.4rem;
             font-size: 0.8rem;
             touch-action: manipulation;
-            flex-shrink: 0; /* Buton boyutunun korunması için eklendi */
+            flex-shrink: 0;
         }
         .nav__cta::before {
             content: '';
@@ -481,6 +473,29 @@
         .service__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .service__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; }
 
+        /* BLOG SECTION - YENİ EKLENDİ */
+        .blog__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .blog__card { 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .blog__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .blog__image { height: 200px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); position: relative; overflow: hidden; }
+        .blog__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .blog__card:hover .blog__image img { transform: scale(1.05); }
+        .blog__date { position: absolute; top: 1rem; left: 1rem; background: rgba(0, 0, 0, 0.7); color: white; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.8rem; }
+        .blog__content { padding: 1.5rem; }
+        .blog__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
+        .blog__excerpt { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
+        .blog__link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
+        .blog__link:hover { gap: 0.75rem; }
+
         /* PRICING - Android/Tablet Uyumlu */
         .pricing__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .pricing__card { 
@@ -640,25 +655,88 @@
         }
         .testimonial__nav-btn:hover { background-color: var(--primary-color); color: var(--bg-color); }
 
-        /* PARTNERS - Android/Tablet Uyumlu */
-        .partners__grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
-        .partner__logo { 
-            width: 120px; 
-            height: 60px; 
+        /* PARTNERS - Android/Tablet Uyumlu - YENİLENDİ */
+        .partners__grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+        }
+        .partner__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 8px; 
+            border-radius: 12px; 
+            padding: 2rem; 
+            text-align: center; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .partner__card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--primary-color); 
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); 
+        }
+        .partner__logo { 
+            width: 80px; 
+            height: 80px; 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: var(--text-color-light); 
+            margin-bottom: 1.5rem; 
             transition: all 0.3s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-size: 2.5rem;
+            color: var(--primary-color);
         }
-        .partner__logo:hover { border-color: var(--primary-color); transform: translateY(-3px); }
-        .partner__logo i { font-size: 2rem; color: var(--primary-color); }
+        .partner__card:hover .partner__logo {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        .partner__name { 
+            font-size: var(--h3-font-size); 
+            color: var(--title-color); 
+            margin-bottom: 0.5rem; 
+            font-weight: var(--font-semi-bold);
+        }
+        .partner__category { 
+            font-size: var(--small-font-size); 
+            color: var(--text-color-light); 
+            margin-bottom: 1rem;
+            background: rgba(88, 166, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+        .partner__description { 
+            font-size: var(--small-font-size); 
+            color: var(--text-color-light); 
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .partner__badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-color);
+            color: var(--bg-color);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: var(--font-semi-bold);
+        }
 
         /* CONTACT - Android/Tablet Uyumlu */
         .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
@@ -831,6 +909,103 @@
         .modal__direct-contact p { margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .modal__direct-contact i { color: var(--secondary-color); font-size: 1.2rem; }
 
+        /* PARTNER MODAL - YENİ EKLENDİ */
+        .partner-modal__content {
+            position: relative;
+            background: rgba(22, 27, 34, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .partner-modal__logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        .partner-modal__name {
+            font-size: var(--h2-font-size);
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+            font-weight: var(--font-semi-bold);
+        }
+        .partner-modal__category {
+            font-size: var(--normal-font-size);
+            color: var(--text-color-light);
+            margin-bottom: 1.5rem;
+            background: rgba(88, 166, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .partner-modal__description {
+            font-size: var(--normal-font-size);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .partner-modal__details {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .partner-modal__details-title {
+            font-size: var(--h3-font-size);
+            color: var(--title-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .partner-modal__details-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .partner-modal__details-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .partner-modal__details-item i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        .partner-modal__status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 242, 161, 0.1);
+            border: 1px solid rgba(0, 242, 161, 0.2);
+            border-radius: 8px;
+            color: var(--secondary-color);
+            font-size: var(--small-font-size);
+        }
+
         /* TOAST - Android/Tablet Uyumlu */
         .toast { 
             position: fixed; 
@@ -998,18 +1173,22 @@
           .footer__col { max-width: 100%; }
           .hero { min-height: 100vh; }
           .modal__content { padding: 1.5rem; }
+          .partner-modal__content { padding: 1.5rem; }
           .section { padding: 3rem 0 1.5rem; }
           .hero__title { font-size: 2.25rem; }
-          .nav__logo { margin-right: 0; } /* Mobilde logo margin'ini sıfırla */
+          .nav__logo-placeholder { display: none; }
+          .partners__grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
         }
 
         @media screen and (max-width: 350px) {
           .container { padding: 0 1rem; }
           .hero__title { font-size: 2rem; }
           .hero__title .cursor { height: 2rem; }
-          .services__grid, .projects__grid { grid-template-columns: 1fr; }
+          .services__grid, .projects__grid, .blog__grid { grid-template-columns: 1fr; }
           .footer__container { grid-template-columns: 1fr; }
           .modal__content { padding: 1rem; }
+          .partner-modal__content { padding: 1rem; }
+          .partners__grid { grid-template-columns: 1fr; }
         }
 
         @media screen and (min-width: 1040px) {
@@ -1026,7 +1205,7 @@
             }
             
             /* Mobil cihazlar için hover animasyonlarını optimize et */
-            .service__card:hover, .project__card:hover, .stat__card:hover {
+            .service__card:hover, .project__card:hover, .stat__card:hover, .blog__card:hover, .partner__card:hover {
                 transform: none;
             }
             
@@ -1064,12 +1243,13 @@
         <!-- HEADER -->
         <header class="header" id="header">
             <nav class="nav container">
-                <a href="#" class="nav__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i> VARUX</a>
+                <!-- Logo kaldırıldı - yerine boş placeholder -->
+                <div class="nav__logo-placeholder"></div>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
                         <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
-                        <li class="nav__item"><a href="#pricing" class="nav__link">Fiyatlandırma</a></li>
+                        <li class="nav__item"><a href="varuxblog.html" class="nav__link">Blog</a></li>
                         <li class="nav__item"><a href="#projects" class="nav__link">Projelerimiz</a></li>
                         <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
                         <li class="nav__item"><a href="#testimonials" class="nav__link">Referanslar</a></li>
@@ -1158,6 +1338,48 @@
                             <i class='bx bx-factory service__icon'></i>
                             <h3 class="service__title">Fabrika Ağ Güvenliği</h3>
                             <p class="service__description">Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOG SECTION - YENİ EKLENDİ -->
+            <section class="section" id="blog">
+                <div class="container">
+                    <h2 class="section__title">Blog</h2>
+                    <div class="blog__grid">
+                        <div class="blog__card">
+                            <div class="blog__image">
+                                <div class="blog__date">15 Eki 2024</div>
+                                <i class='bx bx-lock-alt' style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="blog__content">
+                                <h3 class="blog__title">KOBİ'ler için Siber Güvenlik Stratejileri</h3>
+                                <p class="blog__excerpt">Küçük ve orta ölçekli işletmelerin uygulayabileceği etkili siber güvenlik stratejileri ve bütçe dostu çözümler...</p>
+                                <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                            </div>
+                        </div>
+                        <div class="blog__card">
+                            <div class="blog__image">
+                                <div class="blog__date">10 Eki 2024</div>
+                                <i class='bx bx-network-chart' style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="blog__content">
+                                <h3 class="blog__title">Endüstriyel Ağ Güvenliği: OT/ICS Tehditleri</h3>
+                                <p class="blog__excerpt">Fabrika ve üretim tesislerindeki endüstriyel ağların karşılaştığı tehditler ve korunma yöntemleri hakkında detaylı rehber...</p>
+                                <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                            </div>
+                        </div>
+                        <div class="blog__card">
+                            <div class="blog__image">
+                                <div class="blog__date">5 Eki 2024</div>
+                                <i class='bx bx-user-check' style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="blog__content">
+                                <h3 class="blog__title">İç Tehdit Yönetimi: En İyi Uygulamalar</h3>
+                                <p class="blog__excerpt">Kurum içi tehditleri tespit etmek ve yönetmek için kanıtlanmış stratejiler ve araçlar. Çalışan farkındalığını artırma yöntemleri...</p>
+                                <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1326,16 +1548,47 @@
                 </div>
             </section>
 
-            <!-- PARTNERS SECTION -->
+            <!-- PARTNERS SECTION - YENİLENDİ -->
             <section class="section" id="partners">
                 <div class="container">
-                    <h2 class="section__title">İş Ortaklarımız</h2>
+                    <h2 class="section__title">İş Ortaklarımız & Gelecek İş Birlikleri</h2>
                     <div class="partners__grid">
-                        <div class="partner__logo"><i class='bx bxl-microsoft'></i></div>
-                        <div class="partner__logo"><i class='bx bxl-cisco'></i></div>
-                        <div class="partner__logo"><i class='bx bx-shield-alt'></i></div>
-                        <div class="partner__logo"><i class='bx bxl-amazon'></i></div>
-                        <div class="partner__logo"><i class='bx bx-cloud'></i></div>
+                        <div class="partner__card" 
+                             data-name="Areltech" 
+                             data-category="Endüstriyel Otomasyon" 
+                             data-description="Areltech ile planlanan iş birliği, endüstriyel otomasyon sistemleri ve sensör teknolojileri üzerine odaklanmaktadır. Bu ortaklık, fabrika ve üretim tesislerinde kullanılan endüstriyel ağların güvenliğini artırmayı hedeflemektedir."
+                             data-details='["OT hatlarında sensör telemetrisi güvenli aktarım","VLAN segmentasyonu ve zafiyet taraması entegrasyonu","Pilot PoC ile 7 günlük izleme"]'>
+                            <div class="partner__logo"><i class='bx bx-factory'></i></div>
+                            <h3 class="partner__name">Areltech</h3>
+                            <div class="partner__category">Endüstriyel Otomasyon</div>
+                            <p class="partner__description">Endüstriyel otomasyon ve sensör sistemleri üzerine planlanan iş birliği.</p>
+                            <div class="partner__badge">Planlanan</div>
+                        </div>
+                        <div class="partner__card" 
+                             data-name="DataNet Global" 
+                             data-category="Ağ Güvenliği Yazılımları" 
+                             data-description="DataNet Global ile planlanan iş birliği, kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyonu kapsamaktadır. Bu ortaklık, müşterilerimize daha kapsamlı ağ güvenliği çözümleri sunmamızı sağlayacaktır."
+                             data-details='["Syslog + NetFlow toplanması","Anomali tespiti için kural setleri","Dashboard ve alarm eşikleri"]'>
+                            <div class="partner__logo"><i class='bx bx-network-chart'></i></div>
+                            <h3 class="partner__name">DataNet Global</h3>
+                            <div class="partner__category">Ağ Güvenliği Yazılımları</div>
+                            <p class="partner__description">Kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyon.</p>
+                            <div class="partner__badge">Planlanan</div>
+                        </div>
+                        <div class="partner__card" 
+                             data-name="CyberOne" 
+                             data-category="OT/ICS Laboratuvarı" 
+                             data-description="CyberOne ile planlanan iş birliği, OT/ICS sistemleri için ortak test laboratuvarı ve güvenlik çözümleri geliştirme projesini kapsamaktadır. Bu ortaklık, endüstriyel sistemlerin siber güvenliğini artırmayı hedeflemektedir."
+                             data-details='["Modbus/TCP ve MQTT senaryoları","Endüstriyel firewall kural sertifikasyonu","Raporlama ve hardening checklist"]'>
+                            <div class="partner__logo"><i class='bx bx-chip'></i></div>
+                            <h3 class="partner__name">CyberOne</h3>
+                            <div class="partner__category">OT/ICS Laboratuvarı</div>
+                            <p class="partner__description">OT/ICS sistemleri için ortak test laboratuvarı projesi.</p>
+                            <div class="partner__badge">Planlanan</div>
+                        </div>
+                    </div>
+                    <div class="partners__note">
+                        <p>VARUX, yerli ve global teknoloji sağlayıcılarıyla yeni iş birlikleri üzerinde çalışmaktadır.</p>
                     </div>
                 </div>
             </section>
@@ -1354,7 +1607,7 @@
         <footer class="footer">
             <div class="footer__container container">
                 <div class="footer__col">
-                    <a href="#" class="footer__logo"><i class='bx bx-shield-quarter'></i> VARUX</a>
+                    <!-- Footer logo kaldırıldı -->
                     <p class="footer__description">KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri.</p>
                     <div class="footer__social">
                         <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
@@ -1367,6 +1620,7 @@
                     <div class="footer__links">
                         <a href="#about" class="footer__link">Hakkımızda</a>
                         <a href="#services" class="footer__link">Hizmetler</a>
+                        <a href="varuxblog.html" class="footer__link">Blog</a>
                         <a href="#projects" class="footer__link">Projeler</a>
                         <a href="privacy.html" class="footer__link">Yasal</a>
                     </div>
@@ -1414,6 +1668,26 @@
                     <p><i class='bx bx-envelope'></i> varuxinfo@gmail.com </p>
                     <p><i class='bx bx-phone'></i> +90 25 25</p>
                     <p><i class='bx bx-map'></i> Bursa, Türkiye</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTNER MODAL - YENİ EKLENDİ -->
+        <div id="partner-modal" class="modal" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="partner-modal-name">
+            <div class="partner-modal__content">
+                <span class="modal__close" id="close-partner-modal-btn" tabindex="0" aria-label="Partner modalını kapat">&times;</span>
+                <div class="partner-modal__logo" id="partner-modal-logo"></div>
+                <h2 class="partner-modal__name" id="partner-modal-name"></h2>
+                <div class="partner-modal__category" id="partner-modal-category"></div>
+                <p class="partner-modal__description" id="partner-modal-description"></p>
+                <div class="partner-modal__details">
+                    <h3 class="partner-modal__details-title">İş Birliği Detayları</h3>
+                    <ul class="partner-modal__details-list" id="partner-modal-details">
+                        <!-- Details will be populated by JavaScript -->
+                    </ul>
+                </div>
+                <div class="partner-modal__status" id="partner-modal-status">
+                    <i class='bx bx-info-circle'></i> Bu iş birliği planlama aşamasındadır. Detaylar yakında açıklanacaktır.
                 </div>
             </div>
         </div>
@@ -1676,6 +1950,132 @@
             sectionObserver.observe(section);
         });
 
+        // Partner Modal Functionality - YENİ EKLENDİ
+        const partnerModal = document.getElementById('partner-modal');
+        const closePartnerModalBtn = document.getElementById('close-partner-modal-btn');
+        const partnerCards = document.querySelectorAll('.partner__card');
+        
+        // Partner note animation
+        const partnerNote = document.querySelector('.partners__note p');
+        if (partnerNote) {
+            partnerNote.addEventListener('mouseenter', () => {
+                partnerNote.style.color = 'var(--secondary-color)';
+                partnerNote.style.transition = 'color 0.3s ease';
+            });
+            
+            partnerNote.addEventListener('mouseleave', () => {
+                partnerNote.style.color = 'var(--text-color-light)';
+            });
+        }
+
+        // Focus trap for modal
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            e.preventDefault();
+                            lastFocusableElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            e.preventDefault();
+                            firstFocusableElement.focus();
+                        }
+                    }
+                }
+            });
+        }
+
+        // Open partner modal
+        function openPartnerModal(card) {
+            const name = card.getAttribute('data-name');
+            const category = card.getAttribute('data-category');
+            const description = card.getAttribute('data-description');
+            const details = JSON.parse(card.getAttribute('data-details'));
+            const logo = card.querySelector('.partner__logo').innerHTML;
+            
+            document.getElementById('partner-modal-logo').innerHTML = logo;
+            document.getElementById('partner-modal-name').textContent = name;
+            document.getElementById('partner-modal-category').textContent = category;
+            document.getElementById('partner-modal-description').textContent = description;
+            
+            const detailsList = document.getElementById('partner-modal-details');
+            detailsList.innerHTML = '';
+            
+            details.forEach(detail => {
+                const listItem = document.createElement('li');
+                listItem.className = 'partner-modal__details-item';
+                listItem.innerHTML = `<i class='bx bx-check'></i> <span>${detail}</span>`;
+                detailsList.appendChild(listItem);
+            });
+            
+            partnerModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            partnerModal.classList.add('active');
+            
+            // Focus management
+            closePartnerModalBtn.focus();
+            
+            // Trap focus inside modal
+            trapFocus(partnerModal);
+        }
+
+        // Close partner modal
+        function closePartnerModal() {
+            partnerModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            partnerModal.classList.remove('active');
+            
+            // Return focus to the card that opened the modal
+            if (lastFocusedCard) {
+                lastFocusedCard.focus();
+            }
+        }
+
+        let lastFocusedCard = null;
+
+        // Partner card click event
+        partnerCards.forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `${card.getAttribute('data-name')} - ${card.getAttribute('data-category')}. Detayları görüntülemek için tıklayın.`);
+            
+            card.addEventListener('click', (e) => {
+                lastFocusedCard = card;
+                openPartnerModal(card);
+            });
+            
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    lastFocusedCard = card;
+                    openPartnerModal(card);
+                }
+            });
+        });
+
+        // Close partner modal
+        closePartnerModalBtn.addEventListener('click', closePartnerModal);
+
+        // Close partner modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === partnerModal) {
+                closePartnerModal();
+            }
+        });
+
+        // Close partner modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && partnerModal.classList.contains('active')) {
+                closePartnerModal();
+            }
+        });
+
         // Android/Tablet için ek iyileştirmeler
         // Touch event optimizasyonları
         document.addEventListener('touchstart', function() {}, {passive: true});
@@ -1698,7 +2098,7 @@
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
                 });
                 
-                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .pricing__card, .project__card, .faq__item, .testimonial__card, .partner__logo, .modal__content, .toast').forEach(el => {
+                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .pricing__card, .project__card, .blog__card, .faq__item, .testimonial__card, .partner__card, .modal__content, .partner-modal__content, .toast').forEach(el => {
                     el.style.backdropFilter = 'none';
                     el.style.webkitBackdropFilter = 'none';
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
