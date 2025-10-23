@@ -76,10 +76,10 @@
     }
     </script>
     
-    <!-- Google Fonts: Poppins & Share Tech Mono -->
+    <!-- Google Fonts: Poppins, Share Tech Mono, Orbitron & Rajdhani -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <!-- Boxicons (for icons) -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -95,12 +95,14 @@
           --bg-color-light: #161B22;
           --border-color: #30363D;
           --primary-color: #58A6FF;
-          --secondary-color: #00f2a1;
+          --secondary-color: #00FF99;
+          --neon-glow: 0 0 10px #00FF99, 0 0 20px #00FF99, 0 0 30px #00FF99;
           --text-color: #C9D1D9;
           --text-color-light: #8B949E;
           --title-color: #F0F6FC;
           --body-font: 'Poppins', sans-serif;
-          --title-font: 'Share Tech Mono', monospace;
+          --title-font: 'Orbitron', monospace;
+          --futuristic-font: 'Rajdhani', sans-serif;
           --h1-font-size: 2.75rem;
           --h2-font-size: 1.75rem;
           --h3-font-size: 1.25rem;
@@ -116,7 +118,7 @@
         /*=============== BASE ===============*/
         * { box-sizing: border-box; padding: 0; margin: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        body { font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
@@ -128,186 +130,259 @@
         .section { padding: 4.5rem 0 2rem; }
         .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
         .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
-        .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .visible { opacity: 1; transform: translateY(0); }
 
-        /*=============== LOADER ===============*/
-        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
+        /*=============== ADVANCED LOADER ===============*/
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.8s ease, visibility 0.8s ease; }
         .loader.hidden { opacity: 0; visibility: hidden; }
-        .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
+        .loader__content { text-align: center; }
+        .loader__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 2.5rem; letter-spacing: 3px; text-shadow: 0 0 10px var(--secondary-color); margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .loader__spinner { width: 60px; height: 60px; border: 4px solid rgba(0, 255, 153, 0.1); border-top: 4px solid var(--secondary-color); border-radius: 50%; animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; position: relative; }
+        .loader__spinner::before { content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px; border: 4px solid transparent; border-top: 4px solid var(--primary-color); border-radius: 50%; animation: spin 1.5s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loader__progress { width: 200px; height: 4px; background-color: rgba(255, 255, 255, 0.1); border-radius: 4px; margin: 2rem auto 0; overflow: hidden; }
+        .loader__progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 4px; animation: progress 2s ease-in-out forwards; }
+        @keyframes progress { 0% { width: 0%; } 100% { width: 100%; } }
 
         /*=============== HEADER & NAV ===============*/
-        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
-        .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
+        .header { width: 100%; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); background-color: rgba(13, 17, 23, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); transform: translateY(0); }
+        .header.hidden { transform: translateY(-100%); }
+        .header.scrolled { background-color: rgba(13, 17, 23, 0.95); border-bottom-color: var(--border-color); }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
-        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+        .nav__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.75rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--secondary-color); display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
+        .nav__logo:hover { text-shadow: 0 0 15px var(--secondary-color); transform: scale(1.05); }
         .nav__logo-icon { color: var(--secondary-color); font-size: 1.5rem; }
-        .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; }
+        .nav__toggle, .nav__close { font-size: 1.5rem; cursor: pointer; display: none; transition: all 0.3s ease; }
+        .nav__toggle:hover, .nav__close:hover { color: var(--secondary-color); transform: scale(1.1); }
         .nav__list { display: flex; column-gap: 2.5rem; align-items: center; }
         .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
+        .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); transition: width 0.3s ease; }
+        .nav__link:hover::after { width: 100%; }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
         .nav__dropdown { position: relative; }
-        .nav__dropdown-menu { position: absolute; top: 150%; left: -20px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0; width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: var(--z-tooltip); }
-        .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .nav__dropdown-link { display: block; padding: 0.75rem 1.5rem; color: var(--text-color); transition: background-color 0.3s, color 0.3s, padding-left 0.3s; }
-        .nav__dropdown-link:hover { background-color: var(--secondary-color); color: var(--bg-color); padding-left: 1.75rem; }
-        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .nav__cta:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 161, 0.4); }
+        .nav__dropdown-menu { position: absolute; top: 150%; left: -20px; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0; width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.95); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: var(--z-tooltip); }
+        .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .nav__dropdown-link { display: block; padding: 0.75rem 1.5rem; color: var(--text-color); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .nav__dropdown-link::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.1), transparent); transition: left 0.5s; }
+        .nav__dropdown-link:hover::before { left: 100%; }
+        .nav__dropdown-link:hover { background-color: rgba(0, 255, 153, 0.1); color: var(--secondary-color); padding-left: 1.75rem; }
+        .nav__cta { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+        .nav__cta::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s; }
+        .nav__cta:hover::before { left: 100%; }
+        .nav__cta:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 25px rgba(0, 255, 153, 0.4); }
 
         /*=============== PROJECTS HERO SECTION ===============*/
-        .projects-hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
-        .projects-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(0, 242, 161, 0.05) 100%); z-index: 1; }
+        .projects-hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+        .projects-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(0, 255, 153, 0.05) 100%); z-index: 1; }
+        .projects-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(88, 166, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0, 255, 153, 0.1) 0%, transparent 50%); z-index: 1; }
         .projects-hero__container { position: relative; z-index: 2; }
-        .projects-hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); }
-        .projects-hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .projects-hero__stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2rem; }
+        .projects-hero__title { font-size: var(--h1-font-size); font-weight: 700; margin-bottom: 1rem; color: var(--title-color); animation: fadeInUp 1s ease-out 0.5s both; }
+        .projects-hero__subtitle { color: var(--text-color-light); font-size: var(--normal-font-size); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.7s both; }
+        .projects-hero__stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2rem; animation: fadeInUp 1s ease-out 0.9s both; }
         .projects-hero__stat { text-align: center; }
-        .projects-hero__stat-number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); display: block; line-height: 1; }
+        .projects-hero__stat-number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); display: block; line-height: 1; animation: countUp 2s ease-out 1s both; }
         .projects-hero__stat-label { font-size: var(--small-font-size); color: var(--text-color-light); margin-top: 0.5rem; }
+
+        /* Hero Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Floating Elements */
+        .floating-elements { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .floating-element { position: absolute; background: rgba(0, 255, 153, 0.05); border: 1px solid rgba(0, 255, 153, 0.1); border-radius: 50%; animation: float 15s infinite ease-in-out; }
+        .floating-element:nth-child(1) { width: 40px; height: 40px; top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { width: 30px; height: 30px; top: 80%; left: 20%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { width: 50px; height: 50px; top: 30%; left: 70%; animation-delay: 6s; }
+        .floating-element:nth-child(5) { width: 70px; height: 70px; top: 70%; left: 40%; animation-delay: 8s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
 
         /*=============== PROJECTS SECTION ===============*/
         .projects__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
-        .project__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease; opacity: 0; animation: fadeIn 0.6s ease forwards; }
+        .project__card { background-color: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; animation: fadeIn 0.8s ease forwards; position: relative; transform-style: preserve-3d; perspective: 1000px; }
+        .project__card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 255, 153, 0.05) 0%, transparent 50%); opacity: 0; transition: opacity 0.4s ease; z-index: 1; pointer-events: none; }
+        .project__card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, transparent 0%, rgba(88, 166, 255, 0.05) 100%); opacity: 0; transition: opacity 0.4s ease; z-index: 1; pointer-events: none; }
+        .project__card:hover::before, .project__card:hover::after { opacity: 1; }
         @keyframes fadeIn { to { opacity: 1; } }
-        .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .project__card:hover { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); border-color: var(--secondary-color); box-shadow: 0 20px 40px rgba(0, 255, 153, 0.2), 0 0 0 1px rgba(0, 255, 153, 0.1); }
         .project__image { height: 200px; background-color: var(--bg-color-light); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); position: relative; overflow: hidden; }
-        .project__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .project__card:hover .project__image img { transform: scale(1.05); }
+        .project__image::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(0, 255, 153, 0.1) 0%, rgba(88, 166, 255, 0.1) 100%); opacity: 0; transition: opacity 0.5s ease; z-index: 1; }
+        .project__card:hover .project__image::before { opacity: 1; }
+        .project__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .project__card:hover .project__image img { transform: scale(1.1); }
         .project__image i { font-size: 3rem; }
-        .project__content { padding: 1.5rem; }
-        .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
+        .project__content { padding: 1.5rem; position: relative; z-index: 2; }
+        .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); font-family: var(--futuristic-font); font-weight: 600; letter-spacing: 1px; }
         .project__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
         .project__details { margin-bottom: 1rem; }
-        .project__detail { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: var(--small-font-size); color: var(--text-color-light); }
+        .project__detail { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: var(--small-font-size); color: var(--text-color-light); transition: all 0.3s ease; }
+        .project__detail:hover { color: var(--secondary-color); transform: translateX(5px); }
         .project__detail i { color: var(--primary-color); }
         .project__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .project__tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
+        .project__tag { background-color: rgba(0, 255, 153, 0.1); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(0, 255, 153, 0.2); transition: all 0.3s ease; }
+        .project__tag:hover { background-color: rgba(0, 255, 153, 0.2); transform: translateY(-2px); }
         .project__actions { display: flex; gap: 1rem; }
-        .project__button { padding: 0.5rem 1rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; font-size: var(--small-font-size); }
+        .project__button { padding: 0.5rem 1rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: var(--small-font-size); font-family: var(--futuristic-font); position: relative; overflow: hidden; }
+        .project__button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s; }
+        .project__button:hover::before { left: 100%; }
         .project__button--primary { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; }
-        .project__button--primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 161, 0.3); }
-        .project__button--secondary { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); }
-        .project__button--secondary:hover { background-color: rgba(88, 166, 255, 0.1); transform: translateY(-3px); }
+        .project__button--primary:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 255, 153, 0.4); }
+        .project__button--secondary { background: transparent; border: 1px solid var(--secondary-color); color: var(--secondary-color); }
+        .project__button--secondary:hover { background-color: rgba(0, 255, 153, 0.1); transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 20px rgba(0, 255, 153, 0.2); }
 
         /* Glassmorphism effect for buttons */
-        .project__button--glass { background: rgba(88, 166, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(88, 166, 255, 0.2); color: var(--primary-color); }
-        .project__button--glass:hover { background: rgba(88, 166, 255, 0.2); box-shadow: 0 0 15px rgba(0, 242, 161, 0.2); }
+        .project__button--glass { background: rgba(0, 255, 153, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 153, 0.2); color: var(--secondary-color); }
+        .project__button--glass:hover { background: rgba(0, 255, 153, 0.2); box-shadow: 0 10px 20px rgba(0, 255, 153, 0.2); transform: translateY(-5px) scale(1.05); }
 
         /*=============== PROJECT FILTER ===============*/
         .projects-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
-        .filter-button { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1.5rem; border-radius: 30px; transition: all 0.3s ease; font-weight: var(--font-semi-bold); position: relative; overflow: hidden; }
-        .filter-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 242, 161, 0.2), transparent); transition: left 0.5s; }
+        .filter-button { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1.5rem; border-radius: 30px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: var(--font-semi-bold); position: relative; overflow: hidden; font-family: var(--futuristic-font); }
+        .filter-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.2), transparent); transition: left 0.5s; }
         .filter-button:hover::before { left: 100%; }
-        .filter-button:hover, .filter-button.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); box-shadow: 0 0 15px rgba(88, 166, 255, 0.3); }
+        .filter-button:hover, .filter-button.active { background-color: var(--secondary-color); color: var(--bg-color); border-color: var(--secondary-color); box-shadow: 0 10px 20px rgba(0, 255, 153, 0.3); transform: translateY(-3px); }
 
         /*=============== PROJECT MODAL ===============*/
-        .project-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: var(--z-modal); background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
+        .project-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: var(--z-modal); background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease; padding: 1rem; }
         .project-modal.active { display: flex; opacity: 1; }
-        .project-modal__content { position: relative; background-color: var(--bg-color-light); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; transform: scale(0.95); transition: transform 0.3s ease; }
-        .project-modal.active .project-modal__content { transform: scale(1); }
-        .project-modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: color 0.3s; z-index: 1; }
-        .project-modal__close:hover { color: var(--secondary-color); }
-        .project-modal__title { font-size: var(--h2-font-size); color: var(--secondary-color); margin-bottom: 1.5rem; }
+        .project-modal__content { position: relative; background-color: var(--bg-color-light); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; transform: scale(0.9) translateY(20px); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 153, 0.1); }
+        .project-modal.active .project-modal__content { transform: scale(1) translateY(0); }
+        .project-modal__close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--text-color-light); cursor: pointer; transition: all 0.3s ease; z-index: 1; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(0, 0, 0, 0.3); }
+        .project-modal__close:hover { color: var(--secondary-color); background-color: rgba(0, 255, 153, 0.1); transform: rotate(90deg); }
+        .project-modal__title { font-size: var(--h2-font-size); color: var(--secondary-color); margin-bottom: 1.5rem; font-family: var(--futuristic-font); }
         .project-modal__image { width: 100%; height: 300px; background-color: var(--bg-color); border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .project-modal__image img { width: 100%; height: 100%; object-fit: cover; }
+        .project-modal__image::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(0, 255, 153, 0.1) 0%, rgba(88, 166, 255, 0.1) 100%); z-index: 1; }
+        .project-modal__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .project-modal__image:hover img { transform: scale(1.05); }
         .project-modal__image i { font-size: 4rem; color: var(--text-color-light); }
         .project-modal__details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .project-modal__detail { background-color: rgba(22, 27, 34, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); }
+        .project-modal__detail { background-color: rgba(22, 27, 34, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); transition: all 0.3s ease; }
+        .project-modal__detail:hover { border-color: var(--secondary-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 255, 153, 0.1); }
         .project-modal__detail h4 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: var(--small-font-size); }
         .project-modal__detail p { color: var(--text-color); font-size: var(--small-font-size); }
         .project-modal__description { margin-bottom: 1.5rem; }
-        .project-modal__description h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__description h3 { color: var(--title-color); margin-bottom: 0.5rem; font-family: var(--futuristic-font); }
         .project-modal__description p { color: var(--text-color); line-height: 1.6; }
         .project-modal__challenges { margin-bottom: 1.5rem; }
-        .project-modal__challenges h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__challenges h3 { color: var(--title-color); margin-bottom: 0.5rem; font-family: var(--futuristic-font); }
         .project-modal__challenges ul { padding-left: 1.5rem; }
-        .project-modal__challenges li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; }
+        .project-modal__challenges li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; transition: all 0.3s ease; }
+        .project-modal__challenges li:hover { color: var(--secondary-color); transform: translateX(5px); }
         .project-modal__challenges li::before { content: '•'; color: var(--secondary-color); position: absolute; left: -1rem; }
         .project-modal__results { margin-bottom: 1.5rem; }
-        .project-modal__results h3 { color: var(--title-color); margin-bottom: 0.5rem; }
+        .project-modal__results h3 { color: var(--title-color); margin-bottom: 0.5rem; font-family: var(--futuristic-font); }
         .project-modal__results ul { padding-left: 1.5rem; }
-        .project-modal__results li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; }
+        .project-modal__results li { color: var(--text-color); margin-bottom: 0.5rem; position: relative; transition: all 0.3s ease; }
+        .project-modal__results li:hover { color: var(--secondary-color); transform: translateX(5px); }
         .project-modal__results li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: -1rem; }
         .project-modal__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .project-modal__tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
+        .project-modal__tag { background-color: rgba(0, 255, 153, 0.1); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(0, 255, 153, 0.2); transition: all 0.3s ease; }
+        .project-modal__tag:hover { background-color: rgba(0, 255, 153, 0.2); transform: translateY(-2px); }
 
         /*=============== TESTIMONIALS SECTION ===============*/
-        .testimonials { background-color: var(--bg-color-light); padding: 4rem 0; }
-        .testimonials__container { max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; }
-        .testimonials__grid { display: flex; transition: transform 0.5s ease; }
-        .testimonial__card { background-color: rgba(10, 15, 20, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; position: relative; min-width: 100%; }
-        .testimonial__quote { font-style: italic; color: var(--text-color); margin-bottom: 1.5rem; line-height: 1.6; }
+        .testimonials { background-color: var(--bg-color-light); padding: 4rem 0; position: relative; overflow: hidden; }
+        .testimonials::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88, 166, 255, 0.05) 0%, rgba(0, 255, 153, 0.05) 100%); z-index: 1; }
+        .testimonials__container { max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; z-index: 2; }
+        .testimonials__grid { display: flex; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .testimonial__card { background-color: rgba(10, 15, 20, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; position: relative; min-width: 100%; transition: all 0.5s ease; }
+        .testimonial__card:hover { border-color: var(--secondary-color); box-shadow: 0 10px 30px rgba(0, 255, 153, 0.1); transform: translateY(-5px); }
+        .testimonial__quote { font-style: italic; color: var(--text-color); margin-bottom: 1.5rem; line-height: 1.6; position: relative; }
+        .testimonial__quote::before, .testimonial__quote::after { content: '"'; font-size: 2rem; color: var(--secondary-color); position: absolute; opacity: 0.5; }
+        .testimonial__quote::before { top: -10px; left: -10px; }
+        .testimonial__quote::after { bottom: -20px; right: -10px; }
         .testimonial__author { display: flex; align-items: center; gap: 1rem; }
-        .testimonial__avatar { width: 50px; height: 50px; border-radius: 50%; background-color: var(--bg-color); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-weight: bold; }
+        .testimonial__avatar { width: 50px; height: 50px; border-radius: 50%; background-color: var(--bg-color); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-weight: bold; border: 2px solid var(--secondary-color); transition: all 0.3s ease; }
+        .testimonial__card:hover .testimonial__avatar { transform: scale(1.1); box-shadow: 0 0 15px rgba(0, 255, 153, 0.3); }
         .testimonial__info h4 { color: var(--title-color); margin-bottom: 0.25rem; }
         .testimonial__info p { color: var(--text-color-light); font-size: var(--small-font-size); }
         .testimonial__controls { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
-        .testimonial__control { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
-        .testimonial__control:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        .testimonial__control { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .testimonial__control:hover { background-color: var(--secondary-color); color: var(--bg-color); transform: scale(1.1); box-shadow: 0 5px 15px rgba(0, 255, 153, 0.3); }
 
         /*=============== FOOTER ===============*/
-        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; }
-        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
-        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; display: inline-block; }
+        .footer { border-top: 1px solid var(--border-color); padding: 3rem 0 2rem; margin-top: 2rem; position: relative; overflow: hidden; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88, 166, 255, 0.05) 0%, rgba(0, 255, 153, 0.05) 100%); z-index: 1; }
+        .footer__container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; position: relative; z-index: 2; }
+        .footer__logo { font-family: var(--title-font); color: var(--title-color); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; text-shadow: 0 0 5px var(--secondary-color); margin-bottom: 1rem; display: inline-block; transition: all 0.3s ease; }
+        .footer__logo:hover { text-shadow: 0 0 15px var(--secondary-color); transform: scale(1.05); }
         .footer__description { color: var(--text-color-light); font-size: var(--small-font-size); margin-bottom: 1.5rem; max-width: 300px; }
         .footer__social { display: flex; gap: 1rem; }
-        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
-        .footer__social-link:hover { background-color: var(--primary-color); color: var(--bg-color); transform: translateY(-3px); }
+        .footer__social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .footer__social-link:hover { background-color: var(--secondary-color); color: var(--bg-color); transform: translateY(-5px) scale(1.1); box-shadow: 0 10px 20px rgba(0, 255, 153, 0.2); }
         .footer__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1.5rem; }
         .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
-        .footer__link { color: var(--text-color-light); transition: color 0.3s ease; }
-        .footer__link:hover { color: var(--secondary-color); }
+        .footer__link { color: var(--text-color-light); transition: all 0.3s ease; position: relative; padding-left: 0; }
+        .footer__link::before { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--secondary-color); transition: width 0.3s ease; }
+        .footer__link:hover { color: var(--secondary-color); padding-left: 10px; }
+        .footer__link:hover::before { width: 8px; }
         .footer__bottom { grid-column: 1 / -1; text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-color-light); font-size: var(--small-font-size); }
-        .footer__bottom p { margin-bottom: 0.5rem; }
 
         /*=============== NEW FEATURES ===============*/
         /* Project Search */
         .projects-search { margin-bottom: 2rem; text-align: center; }
         .search-box { max-width: 500px; margin: 0 auto; position: relative; }
-        .search-input { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 30px; color: var(--text-color); font-size: var(--normal-font-size); transition: all 0.3s ease; }
-        .search-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); }
-        .search-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-color-light); }
+        .search-input { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 30px; color: var(--text-color); font-size: var(--normal-font-size); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .search-input:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(0, 255, 153, 0.2), 0 10px 20px rgba(0, 255, 153, 0.1); transform: scale(1.02); }
+        .search-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-color-light); transition: all 0.3s ease; }
+        .search-input:focus + .search-icon { color: var(--secondary-color); }
 
         /* Project Sorting */
         .projects-sort { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
-        .sort-select { background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.5rem 1rem; color: var(--text-color); font-size: var(--small-font-size); }
+        .sort-select { background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.5rem 1rem; color: var(--text-color); font-size: var(--small-font-size); transition: all 0.3s ease; }
+        .sort-select:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 2px rgba(0, 255, 153, 0.2); }
 
         /* Project Counter */
         .projects-counter { text-align: center; margin-bottom: 2rem; color: var(--text-color-light); font-size: var(--small-font-size); }
 
         /* Project Share */
         .project-share { margin-top: 1.5rem; display: flex; gap: 0.5rem; }
-        .share-button { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.3s ease; }
-        .share-button:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        .share-button { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 50%; color: var(--text-color); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .share-button:hover { background-color: var(--secondary-color); color: var(--bg-color); transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0, 255, 153, 0.3); }
 
         /* Contact Form */
         .contact-form { margin-top: 2rem; }
         .form-group { margin-bottom: 1.5rem; }
         .form-label { display: block; margin-bottom: 0.5rem; color: var(--text-color); font-weight: var(--font-semi-bold); }
-        .form-input, .form-textarea { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-color); font-size: var(--normal-font-size); transition: all 0.3s ease; }
-        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); }
+        .form-input, .form-textarea { width: 100%; padding: 0.75rem 1rem; background-color: var(--bg-color-light); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-color); font-size: var(--normal-font-size); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(0, 255, 153, 0.2); transform: scale(1.02); }
         .form-textarea { min-height: 120px; resize: vertical; }
-        .form-submit { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.3s ease; cursor: pointer; }
-        .form-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 161, 0.3); }
-        .form-message { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; text-align: center; display: none; }
-        .form-message.success { background-color: rgba(0, 242, 161, 0.1); color: var(--secondary-color); border: 1px solid var(--secondary-color); }
+        .form-submit { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: #000; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: var(--font-semi-bold); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; position: relative; overflow: hidden; }
+        .form-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s; }
+        .form-submit:hover::before { left: 100%; }
+        .form-submit:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 255, 153, 0.4); }
+        .form-message { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; text-align: center; display: none; transition: all 0.5s ease; }
+        .form-message.success { background-color: rgba(0, 255, 153, 0.1); color: var(--secondary-color); border: 1px solid var(--secondary-color); }
         .form-message.error { background-color: rgba(255, 0, 0, 0.1); color: #ff6b6b; border: 1px solid #ff6b6b; }
+
+        /* Particles Background */
+        .particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
 
         /* BREAKPOINTS */
         @media screen and (max-width: 768px) {
-          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); backdrop-filter: blur(10px); }
+          .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background-color: var(--bg-color-light); border-left: 1px solid var(--border-color); padding: 4rem 2rem 0; transition: right .5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: var(--z-fixed); backdrop-filter: blur(10px); }
           .nav__list { flex-direction: column; align-items: flex-start; row-gap: 2rem; }
           .nav__toggle, .nav__close { display: block; color: var(--title-color); }
           .nav__close { position: absolute; top: 1rem; right: 1.5rem; }
           .show-menu { right: 0; }
           .nav__dropdown { width: 100%; }
           .nav__dropdown .nav__link { display: flex; justify-content: space-between; align-items: center; }
-          .nav__dropdown-menu { position: static; background-color: transparent; border: none; box-shadow: none; width: 100%; padding: 0.5rem 0 0 1rem; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+          .nav__dropdown-menu { position: static; background-color: transparent; border: none; box-shadow: none; width: 100%; padding: 0.5rem 0 0 1rem; opacity: 1; visibility: visible; transform: none; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
           .nav__dropdown:hover .nav__dropdown-menu { max-height: 0; }
           .dropdown-active .nav__dropdown-menu { max-height: 500px; }
           .dropdown-active i { transform: rotate(180deg); }
-          .projects-hero { height: 50vh; }
+          .projects-hero { height: 70vh; }
           .projects-hero__stats { gap: 1.5rem; }
           .projects-hero__stat-number { font-size: 2rem; }
           .projects__grid { grid-template-columns: 1fr; }
@@ -330,7 +405,13 @@
 <body>
     <!-- LOADER -->
     <div class="loader" id="loader">
-        <div class="loader__spinner"></div>
+        <div class="loader__content">
+            <div class="loader__logo"><i class='bx bx-shield-quarter nav__logo-icon'></i>VARUX</div>
+            <div class="loader__spinner"></div>
+            <div class="loader__progress">
+                <div class="loader__progress-bar"></div>
+            </div>
+        </div>
     </div>
 
     <!-- HEADER -->
@@ -365,26 +446,33 @@
     <main>
         <!-- PROJECTS HERO SECTION -->
         <section class="projects-hero">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
             <div class="projects-hero__container container">
                 <h1 class="projects-hero__title">Projelerimiz</h1>
-                <p class="projects-hero__subtitle">VARUX olarak, farklı sektörlerdeki müşterilerimiz için gerçekleştirdiğimiz başarılı siber güvenlik projelerimizi keşfedin. Sektör lideri çözümlerimizle kurumların siber güvenlik postürünü güçlendiriyoruz.</p>
+                <p class="projects-hero__subtitle">VARUX olarak, geliştirdiğimiz yeni nesil siber güvenlik çözümlerini keşfedin. Öncü teknolojilerimizle kurumların siber güvenlik postürünü yeniden tanımlıyoruz.</p>
                 
                 <div class="projects-hero__stats">
                     <div class="projects-hero__stat">
-                        <span class="projects-hero__stat-number">200+</span>
-                        <span class="projects-hero__stat-label">Tamamlanan Proje</span>
+                        <span class="projects-hero__stat-number">5</span>
+                        <span class="projects-hero__stat-label">Öncü Proje</span>
                     </div>
                     <div class="projects-hero__stat">
-                        <span class="projects-hero__stat-number">99%</span>
-                        <span class="projects-hero__stat-label">Müşteri Memnuniyeti</span>
+                        <span class="projects-hero__stat-number">100%</span>
+                        <span class="projects-hero__stat-label">Yenilik Oranı</span>
                     </div>
                     <div class="projects-hero__stat">
-                        <span class="projects-hero__stat-number">24/7</span>
-                        <span class="projects-hero__stat-label">Olay Müdahale</span>
+                        <span class="projects-hero__stat-number">7/24</span>
+                        <span class="projects-hero__stat-label">Otonom Koruma</span>
                     </div>
                     <div class="projects-hero__stat">
-                        <span class="projects-hero__stat-number">18+</span>
-                        <span class="projects-hero__stat-label">Sektör</span>
+                        <span class="projects-hero__stat-number">AI</span>
+                        <span class="projects-hero__stat-label">Yapay Zeka Destekli</span>
                     </div>
                 </div>
             </div>
@@ -393,7 +481,7 @@
         <!-- PROJECTS SECTION -->
         <section class="section" id="projects">
             <div class="section__container container">
-                <h2 class="section__title">Tamamlanan Projeler</h2>
+                <h2 class="section__title">Yeni Nesil Çözümler</h2>
                 
                 <!-- PROJECT SEARCH -->
                 <div class="projects-search">
@@ -405,7 +493,7 @@
                 
                 <!-- PROJECT COUNTER -->
                 <div class="projects-counter">
-                    <span id="project-count">16</span> proje listeleniyor
+                    <span id="project-count">5</span> proje listeleniyor
                 </div>
                 
                 <!-- PROJECT SORTING -->
@@ -421,33 +509,31 @@
                 <!-- PROJECT FILTER -->
                 <div class="projects-filter">
                     <button class="filter-button active" data-filter="all">Tümü</button>
-                    <button class="filter-button" data-filter="red-team">Red Team</button>
-                    <button class="filter-button" data-filter="web-app">Web App Security</button>
-                    <button class="filter-button" data-filter="mobile">Mobil Security</button>
-                    <button class="filter-button" data-filter="osint">OSINT</button>
-                    <button class="filter-button" data-filter="pentest">Penetrasyon Testi</button>
-                    <button class="filter-button" data-filter="incident-response">Olay Müdahale</button>
-                    <button class="filter-button" data-filter="network-security">Ağ Güvenliği</button>
+                    <button class="filter-button" data-filter="threat-intel">Threat Intelligence</button>
+                    <button class="filter-button" data-filter="honeypot">Honeypot</button>
+                    <button class="filter-button" data-filter="malware-analysis">Malware Analysis</button>
+                    <button class="filter-button" data-filter="phishing">Phishing Detection</button>
+                    <button class="filter-button" data-filter="network">Network Security</button>
                 </div>
                 
                 <div class="projects__grid" id="projects-grid">
                     <!-- Project 1 -->
-                    <div class="project__card" data-category="red-team,pentest" data-date="2024-06-01" data-duration="42">
+                    <div class="project__card" data-category="threat-intel,osint" data-date="2024-07-01" data-duration="12">
                         <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Finans Sektörü Red Team Operasyonu" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX INTEL — Threat Intelligence Harvester" loading="lazy">
                         </div>
                         <div class="project__content">
-                            <h3 class="project__title">Finans Sektörü Red Team Operasyonu</h3>
-                            <p class="project__description">Türkiye'nin önde gelen bankalarından biri için kapsamlı Red Team operasyonu gerçekleştirildi. Fiziksel ve dijital güvenlik kontrollerinin etkinliği test edildi.</p>
+                            <h3 class="project__title">VARUX INTEL</h3>
+                            <p class="project__description">Açık kaynak istihbarat (OSINT) sistemimiz. Dark web forumları, sızıntı siteleri ve Telegram kanallarını tarayarak markaya veya kuruma dair veri ihlali sinyallerini tespit eder.</p>
                             <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Haziran 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 6 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Özel Banka A.Ş.</div>
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Temmuz 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 12 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Python, Scrapy, Elasticsearch, BeautifulSoup</div>
                             </div>
                             <div class="project__tags">
-                                <span class="project__tag">Red Team</span>
-                                <span class="project__tag">Penetrasyon Testi</span>
-                                <span class="project__tag">Sosyal Mühendislik</span>
+                                <span class="project__tag">Threat Intelligence</span>
+                                <span class="project__tag">OSINT</span>
+                                <span class="project__tag">Dark Web Monitoring</span>
                             </div>
                             <div class="project__actions">
                                 <button class="project__button project__button--glass" data-project="1" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
@@ -457,22 +543,22 @@
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="project__card" data-category="mobile,web-app" data-date="2024-05-01" data-duration="28">
+                    <div class="project__card" data-category="honeypot,network" data-date="2024-06-01" data-duration="10">
                         <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobil E-Ticaret Güvenliği" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="VARUX TRAPNET — Autonomous Honeypot Network" loading="lazy">
                         </div>
                         <div class="project__content">
-                            <h3 class="project__title">Mobil E-Ticaret Güvenliği</h3>
-                            <p class="project__description">Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının iOS ve Android sürümlerinin güvenlik açıklarını tespit ve iyileştirme projesi.</p>
+                            <h3 class="project__title">VARUX TRAPNET</h3>
+                            <p class="project__description">Gerçek saldırgan davranışlarını yakalamak için dağıtılmış sahte sistemlerden oluşan bir ağ. Web, SSH ve FTP gibi servisleri taklit ederek saldırı vektörlerini kaydeder, analiz eder.</p>
                             <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mayıs 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 4 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: E-Ticaret Şirketi B</div>
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Haziran 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 10 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Cowrie, Dionaea, Docker, Kibana</div>
                             </div>
                             <div class="project__tags">
-                                <span class="project__tag">Mobil Security</span>
-                                <span class="project__tag">iOS/Android</span>
-                                <span class="project__tag">API Güvenliği</span>
+                                <span class="project__tag">Honeypot</span>
+                                <span class="project__tag">Ağ Güvenliği</span>
+                                <span class="project__tag">Saldırı Analizi</span>
                             </div>
                             <div class="project__actions">
                                 <button class="project__button project__button--glass" data-project="2" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
@@ -482,22 +568,22 @@
                     </div>
 
                     <!-- Project 3 -->
-                    <div class="project__card" data-category="osint" data-date="2024-04-01" data-duration="21">
+                    <div class="project__card" data-category="malware-analysis" data-date="2024-05-01" data-duration="14">
                         <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kurumsal OSINT Çalışması" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX ANALYZER — Malware Behavioral Sandbox" loading="lazy">
                         </div>
                         <div class="project__content">
-                            <h3 class="project__title">Kurumsal OSINT Çalışması</h3>
-                            <p class="project__description">Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi. Üst düzey yöneticiler için kişisel güvenlik danışmanlığı sağlandı.</p>
+                            <h3 class="project__title">VARUX ANALYZER</h3>
+                            <p class="project__description">Zararlı yazılımların davranışlarını izole sanal ortamda analiz eder. Dosya çalıştırıldığında API çağrıları, dosya değişiklikleri ve ağ trafiği izlenir. Sonuçlar JSON veya HTML rapor olarak üretilir.</p>
                             <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Nisan 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Holding C</div>
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mayıs 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 14 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Cuckoo Sandbox, Python API Wrapper</div>
                             </div>
                             <div class="project__tags">
-                                <span class="project__tag">OSINT</span>
-                                <span class="project__tag">Threat Intelligence</span>
-                                <span class="project__tag">Dijital Ayak İzi</span>
+                                <span class="project__tag">Malware Analysis</span>
+                                <span class="project__tag">Sandbox</span>
+                                <span class="project__tag">Davranış Analizi</span>
                             </div>
                             <div class="project__actions">
                                 <button class="project__button project__button--glass" data-project="3" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
@@ -507,22 +593,22 @@
                     </div>
 
                     <!-- Project 4 -->
-                    <div class="project__card" data-category="web-app,pentest" data-date="2024-03-01" data-duration="35">
+                    <div class="project__card" data-category="phishing,email-security" data-date="2024-04-01" data-duration="8">
                         <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sağlık Sektörü Web Uygulaması Güvenlik Testi" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="VARUX PHISHGUARD — Email Phishing Detector" loading="lazy">
                         </div>
                         <div class="project__content">
-                            <h3 class="project__title">Sağlık Sektörü Web Uygulaması Güvenlik Testi</h3>
-                            <p class="project__description">Hasta verileri işleyen bir sağlık kuruluşunun web uygulaması için kapsamlı güvenlik denetimi ve penetrasyon testi gerçekleştirildi.</p>
+                            <h3 class="project__title">VARUX PHISHGUARD</h3>
+                            <p class="project__description">Gelen e-postalarda oltalama saldırılarını tespit eden makine öğrenimi tabanlı sistem. E-posta başlıklarını, içerikleri ve bağlantıları analiz eder. Kurumsal e-posta altyapısına entegre edilerek gerçek zamanlı koruma sağlar.</p>
                             <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mart 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 5 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Sağlık Kuruluşu D</div>
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Nisan 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 8 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: scikit-learn, Flask API, IMAP, DNS Resolver</div>
                             </div>
                             <div class="project__tags">
-                                <span class="project__tag">Web App Security</span>
-                                <span class="project__tag">Penetrasyon Testi</span>
-                                <span class="project__tag">Veri Güvenliği</span>
+                                <span class="project__tag">Phishing Detection</span>
+                                <span class="project__tag">E-posta Güvenliği</span>
+                                <span class="project__tag">Makine Öğrenimi</span>
                             </div>
                             <div class="project__actions">
                                 <button class="project__button project__button--glass" data-project="4" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
@@ -532,301 +618,26 @@
                     </div>
 
                     <!-- Project 5 -->
-                    <div class="project__card" data-category="red-team" data-date="2024-02-01" data-duration="28">
+                    <div class="project__card" data-category="network,traffic-analysis" data-date="2024-03-01" data-duration="16">
                         <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1562774053-701939b585eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Eğitim Sektörü Fiziksel Güvenlik Testi" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX DEEPFLOW — Network Traffic Fingerprinter" loading="lazy">
                         </div>
                         <div class="project__content">
-                            <h3 class="project__title">Eğitim Sektörü Fiziksel Güvenlik Testi</h3>
-                            <p class="project__description">Bir üniversite kampüsü için fiziksel güvenlik kontrollerinin etkinliğini değerlendirmek amacıyla Red Team operasyonu gerçekleştirildi.</p>
+                            <h3 class="project__title">VARUX DEEPFLOW</h3>
+                            <p class="project__description">Şifreli trafiği çözmeden anomali ve sızma girişimlerini tespit eden sistem. TLS handshake ve paket istatistiklerinden davranışsal imzalar çıkarır. Zero-day saldırılarını dahi tespit edebilecek derin öğrenme tabanlı modelle çalışır.</p>
                             <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Şubat 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 4 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Üniversite E</div>
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mart 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 16 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Wireshark libs, TensorFlow, Python</div>
                             </div>
                             <div class="project__tags">
-                                <span class="project__tag">Red Team</span>
-                                <span class="project__tag">Fiziksel Güvenlik</span>
-                                <span class="project__tag">Sosyal Mühendislik</span>
+                                <span class="project__tag">Ağ Güvenliği</span>
+                                <span class="project__tag">Traffic Analysis</span>
+                                <span class="project__tag">Derin Öğrenme</span>
                             </div>
                             <div class="project__actions">
                                 <button class="project__button project__button--glass" data-project="5" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
                                 <button class="project__button project__button--secondary" data-project="5-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 6 -->
-                    <div class="project__card" data-category="mobile,web-app" data-date="2024-01-01" data-duration="42">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Finans Teknolojisi API Güvenliği" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Finans Teknolojisi API Güvenliği</h3>
-                            <p class="project__description">Finansal işlemler gerçekleştiren bir mobil uygulamanın backend API'ları için güvenlik denetimi ve güvenli kodlama danışmanlığı sağlandı.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Ocak 2024</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 6 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: FinTech Şirketi F</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">API Güvenliği</span>
-                                <span class="project__tag">Mobil Security</span>
-                                <span class="project__tag">Güvenli Kodlama</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="6" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="6-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 7 - Sessiz Sızıntı -->
-                    <div class="project__card" data-category="incident-response,web-app" data-date="2023-12-01" data-duration="0.125">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sessiz Sızıntı - E-Ticaret Güvenlik İhlali" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Sessiz Sızıntı</h3>
-                            <p class="project__description">E-ticaret platformunda yönetici panelinin varsayılan parolalarla internete açık olması nedeniyle oluşan veri sızıntısının tespiti ve müdahalesi.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Aralık 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 saat</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: E-Ticaret Platformu G</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Olay Müdahale</span>
-                                <span class="project__tag">Web App Security</span>
-                                <span class="project__tag">Veri Sızıntısı</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="7" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="7-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 8 - Tuzak VPN -->
-                    <div class="project__card" data-category="network-security,incident-response" data-date="2023-11-01" data-duration="0.083">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1597762832116-897a478b4b6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tuzak VPN - Uzak Erişim Güvenlik İhlali" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Tuzak VPN</h3>
-                            <p class="project__description">KOBİ'de zayıf VPN konfigürasyonu nedeniyle iç ağın açığa çıkması ve yan hareket riskinin ortadan kaldırılması operasyonu.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Kasım 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 2 saat</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: KOBİ H</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Ağ Güvenliği</span>
-                                <span class="project__tag">Olay Müdahale</span>
-                                <span class="project__tag">VPN Güvenliği</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="8" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="8-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 9 - Kasa İçindeki Kapı -->
-                    <div class="project__card" data-category="network-security,iot" data-date="2023-10-01" data-duration="14">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kasa İçindeki Kapı - IoT Güvenlik Zafiyeti" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Kasa İçindeki Kapı</h3>
-                            <p class="project__description">Otel IoT ağındaki zafiyetlerin tespiti ve ağ segmentasyonu ile iç ağ erişim riskinin ortadan kaldırılması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Ekim 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 2 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Otel Zinciri I</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">IoT Güvenliği</span>
-                                <span class="project__tag">Ağ Güvenliği</span>
-                                <span class="project__tag">Segmentasyon</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="9" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="9-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 10 - Kaybolan Parolalar -->
-                    <div class="project__card" data-category="pentest,identity-security" data-date="2023-09-01" data-duration="21">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kaybolan Parolalar - Kimlik Güvenliği" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Kaybolan Parolalar</h3>
-                            <p class="project__description">Kurumsal ofiste Excel'de tutulan personel parolalarının güvenli parola yönetim sistemine geçirilmesi ve MFA entegrasyonu.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Eylül 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Kurumsal Şirket J</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Kimlik Güvenliği</span>
-                                <span class="project__tag">MFA</span>
-                                <span class="project__tag">Parola Yönetimi</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="10" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="10-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 11 - Gizli Kapı -->
-                    <div class="project__card" data-category="web-app,pentest" data-date="2023-08-01" data-duration="7">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gizli Kapı - Web Uygulaması Güvenlik Zafiyeti" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Gizli Kapı</h3>
-                            <p class="project__description">Yazılım geliştirme test ortamında açık kalan debug modunun tespiti ve hassas dizin erişimlerinin kapatılması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Ağustos 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 1 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Yazılım Şirketi K</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Web App Security</span>
-                                <span class="project__tag">Penetrasyon Testi</span>
-                                <span class="project__tag">Debug Güvenliği</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="11" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="11-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 12 - Durağan Güvenlik Duvarı -->
-                    <div class="project__card" data-category="network-security,pentest" data-date="2023-07-01" data-duration="21">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Durağan Güvenlik Duvarı - Ağ Güvenlik Optimizasyonu" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Durağan Güvenlik Duvarı</h3>
-                            <p class="project__description">Finansal hizmetler şirketinde 2 yıldır güncellenmemiş firewall kurallarının optimize edilmesi ve gereksiz portların kapatılması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Temmuz 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Finans Şirketi L</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Ağ Güvenliği</span>
-                                <span class="project__tag">Firewall Optimizasyonu</span>
-                                <span class="project__tag">Port Yönetimi</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="12" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="12-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 13 - Sahipsiz Sunucu -->
-                    <div class="project__card" data-category="incident-response,network-security" data-date="2023-06-01" data-duration="14">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sahipsiz Sunucu - Veri Merkezi Güvenlik İhlali" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Sahipsiz Sunucu</h3>
-                            <p class="project__description">Lojistik şirketinin veri merkezinde aktif olan ancak farkında olunmayan yedekleme sunucusunun tespiti ve güvenlik önlemlerinin uygulanması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Haziran 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 2 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Lojistik Şirketi M</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Olay Müdahale</span>
-                                <span class="project__tag">Ağ Güvenliği</span>
-                                <span class="project__tag">Sunucu Güvenliği</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="13" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="13-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 14 - Zaman Bombası -->
-                    <div class="project__card" data-category="incident-response,ransomware" data-date="2023-05-01" data-duration="0.0125">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Zaman Bombası - Ransomware Önleme" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Zaman Bombası</h3>
-                            <p class="project__description">Sağlık sektöründe tespit edilen şüpheli zamanlanmış görevin (ransomware loader) engellenmesi ve sistemin güvenliğinin sağlanması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mayıs 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 18 dakika</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Sağlık Kuruluşu N</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">Ransomware Önleme</span>
-                                <span class="project__tag">Olay Müdahale</span>
-                                <span class="project__tag">Zararlı Yazılım Analizi</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="14" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="14-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 15 - DNS Gölgesi -->
-                    <div class="project__card" data-category="osint,email-security" data-date="2023-04-01" data-duration="14">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="DNS Gölgesi - Domain Güvenliği" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">DNS Gölgesi</h3>
-                            <p class="project__description">Web hosting firmasında eski domain kayıtlarının yarattığı phishing risklerinin tespiti ve DMARC uyumluluğunun sağlanması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Nisan 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 2 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Hosting Şirketi O</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">DNS Güvenliği</span>
-                                <span class="project__tag">Phishing Önleme</span>
-                                <span class="project__tag">DMARC</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="15" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="15-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 16 - Şifreli Sessizlik -->
-                    <div class="project__card" data-category="email-security,pentest" data-date="2023-03-01" data-duration="21">
-                        <div class="project__image">
-                            <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Şifreli Sessizlik - E-posta Güvenliği" loading="lazy">
-                        </div>
-                        <div class="project__content">
-                            <h3 class="project__title">Şifreli Sessizlik</h3>
-                            <p class="project__description">Danışmanlık firmasında TLS dışı e-posta bağlantılarının tespiti ve güvenli e-posta iletişim protokollerinin uygulanması.</p>
-                            <div class="project__details">
-                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Mart 2023</div>
-                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 3 Hafta</div>
-                                <div class="project__detail"><i class='bx bx-group'></i> Müşteri: Danışmanlık Şirketi P</div>
-                            </div>
-                            <div class="project__tags">
-                                <span class="project__tag">E-posta Güvenliği</span>
-                                <span class="project__tag">TLS Zorunluluğu</span>
-                                <span class="project__tag">Phishing Önleme</span>
-                            </div>
-                            <div class="project__actions">
-                                <button class="project__button project__button--glass" data-project="16" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
-                                <button class="project__button project__button--secondary" data-project="16-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
                             </div>
                         </div>
                     </div>
@@ -840,7 +651,7 @@
                 <h2 class="section__title">Müşteri Yorumları</h2>
                 <div class="testimonials__grid">
                     <div class="testimonial__card">
-                        <p class="testimonial__quote">"VARUX ekibi, finans sektöründeki Red Team operasyonumuzda beklentilerimizin çok üzerinde bir performans sergiledi. Tespit ettikleri zafiyetler ve sundukları çözüm önerileri ile güvenlik postürümüzü önemli ölçüde güçlendirdik."</p>
+                        <p class="testimonial__quote">"VARUX INTEL sistemi sayesinde dark web'deki veri ihlali risklerimizi %90 oranında azalttık. Erken uyarı sistemi ile olası tehditleri aylar öncesinden tespit edebiliyoruz."</p>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">MA</div>
                             <div class="testimonial__info">
@@ -850,7 +661,7 @@
                         </div>
                     </div>
                     <div class="testimonial__card">
-                        <p class="testimonial__quote">"Mobil uygulama güvenlik testi projemizde gösterdikleri profesyonellik ve teknik derinlik etkileyiciydi. Özellikle API güvenliği konusundaki uzmanlıkları sayesinde kritik açıkları tespit edip çözüm ürettik."</p>
+                        <p class="testimonial__quote">"VARUX TRAPNET honeypot ağımız, gerçek saldırganların taktiklerini anlamamızda devrim yarattı. Saldırı vektörlerini gerçek zamanlı olarak görüntüleyebiliyoruz."</p>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">AS</div>
                             <div class="testimonial__info">
@@ -860,7 +671,7 @@
                         </div>
                     </div>
                     <div class="testimonial__card">
-                        <p class="testimonial__quote">"Olay müdahale ekibimizin eğitimi ve tatbikatları sırasında gerçekçi senaryolarla mükemmel bir eğitim deneyimi yaşadık. Ekibimizin müdahale kapasitesi ve hızı gözle görülür şekilde arttı."</p>
+                        <p class="testimonial__quote">"VARUX ANALYZER ile zararlı yazılım analiz süreçlerimiz %70 hızlandı. Otomatik raporlama özelliği sayesinde analistlerimiz daha verimli çalışıyor."</p>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">CY</div>
                             <div class="testimonial__info">
@@ -978,17 +789,34 @@
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.classList.add('hidden');
-            }, 1000);
+                // Remove loader from DOM after animation completes
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, 2000);
         });
 
         // Header scroll effect
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+        
         window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            // Hide header on scroll down, show on scroll up
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
         });
 
         // Mobile menu toggle
@@ -999,12 +827,14 @@
         if (navToggle) {
             navToggle.addEventListener('click', () => {
                 navMenu.classList.add('show-menu');
+                document.body.style.overflow = 'hidden';
             });
         }
 
         if (navClose) {
             navClose.addEventListener('click', () => {
                 navMenu.classList.remove('show-menu');
+                document.body.style.overflow = '';
             });
         }
 
@@ -1013,6 +843,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('show-menu');
+                document.body.style.overflow = '';
             });
         });
 
@@ -1047,6 +878,8 @@
                 
                 if (matchesFilter && matchesSearch) {
                     card.style.display = 'block';
+                    // Add animation for appearing cards
+                    card.style.animation = 'fadeIn 0.8s ease forwards';
                 } else {
                     card.style.display = 'none';
                 }
@@ -1075,9 +908,12 @@
                 }
             });
             
-            // Reorder projects in the grid
-            cards.forEach(card => {
-                projectGrid.appendChild(card);
+            // Reorder projects in the grid with animation
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    projectGrid.appendChild(card);
+                    card.style.animation = `fadeIn 0.5s ease ${index * 0.1}s forwards`;
+                }, 0);
             });
         }
 
@@ -1105,548 +941,174 @@
         // Project data
         const projects = {
             1: {
-                title: "Finans Sektörü Red Team Operasyonu",
-                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                title: "VARUX INTEL — Threat Intelligence Harvester",
+                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 details: [
-                    { label: "Tamamlanma Tarihi", value: "Haziran 2024" },
-                    { label: "Proje Süresi", value: "6 Hafta" },
-                    { label: "Müşteri", value: "Özel Banka A.Ş." },
-                    { label: "Sektör", value: "Finans" }
+                    { label: "Tamamlanma Tarihi", value: "Temmuz 2024" },
+                    { label: "Proje Süresi", value: "12 Hafta" },
+                    { label: "Teknoloji", value: "Python, Scrapy, Elasticsearch, BeautifulSoup" },
+                    { label: "Kategori", value: "Threat Intelligence, OSINT" }
                 ],
                 description: {
                     title: "Proje Açıklaması",
-                    content: "Türkiye'nin önde gelen bankalarından biri için kapsamlı Red Team operasyonu gerçekleştirildi. Fiziksel ve dijital güvenlik kontrollerinin etkinliği test edildi. Operasyon kapsamında sosyal mühendislik, fiziksel sızma testleri ve ağ penetrasyon testleri gerçekleştirildi. Proje, müşterinin güvenlik zafiyetlerini tespit etmek ve iyileştirmek amacıyla gerçekleştirildi."
+                    content: "VARUX INTEL, açık kaynak istihbarat (OSINT) sistemimizdir. Dark web forumları, sızıntı siteleri ve Telegram kanallarını tarayarak markaya veya kuruma dair veri ihlali sinyallerini tespit eder. Otomatik tehdit analizi yapar, risk skorlaması üretir ve güvenlik ekiplerine erken uyarı sağlar. Sistem, sürekli olarak güncellenen veri kaynaklarını tarar ve kurumsal varlıklarla ilgili potansiyel tehditleri belirler."
                 },
                 challenges: {
                     title: "Karşılaşılan Zorluklar",
                     items: [
-                        "Yüksek güvenlik seviyesine sahip fiziksel tesislere erişim",
-                        "Gelişmiş ağ güvenlik önlemlerini aşma",
-                        "Çalışanların güvenlik farkındalığını test etme",
-                        "Gerçek zamanlı tespit sistemlerinden kaçınma"
+                        "Dark web erişimi ve veri çekme zorlukları",
+                        "Büyük veri setlerinin işlenmesi ve analizi",
+                        "Gerçek zamanlı tehdit verisi toplama",
+                        "Yanlış pozitif oranlarının minimize edilmesi"
                     ]
                 },
                 results: {
                     title: "Elde Edilen Sonuçlar",
                     items: [
-                        "3 kritik güvenlik açığı tespit edildi",
-                        "Fiziksel güvenlik protokollerinde iyileştirmeler yapıldı",
-                        "Çalışan güvenlik farkındalığı %40 arttı",
-                        "Müşteri memnuniyeti: %98",
-                        "Güvenlik olayı müdahale süresi %50 azaldı"
+                        "Dark web'deki veri ihlali tespit süresi %85 azaldı",
+                        "Tehdit istihbaratı doğruluğu %92 seviyesine ulaştı",
+                        "Otomatik raporlama ile analist verimliliği %60 arttı",
+                        "Erken uyarı sistemi ile proaktif savunma sağlandı",
+                        "Kurumsal risk skorlaması otomatik hale getirildi"
                     ]
                 },
-                tags: ["Red Team", "Penetrasyon Testi", "Sosyal Mühendislik", "Fiziksel Güvenlik", "Finans"]
+                tags: ["Threat Intelligence", "OSINT", "Dark Web Monitoring", "Python", "Elasticsearch"]
             },
             2: {
-                title: "Mobil E-Ticaret Güvenliği",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Mayıs 2024" },
-                    { label: "Proje Süresi", value: "4 Hafta" },
-                    { label: "Müşteri", value: "E-Ticaret Şirketi B" },
-                    { label: "Sektör", value: "E-Ticaret" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Milyonlarca kullanıcısı olan bir e-ticaret uygulamasının iOS ve Android sürümlerinin güvenlik açıklarını tespit ve iyileştirme projesi. Uygulamanın kod incelemesi, API güvenlik testleri ve veri depolama güvenliği analiz edildi. Proje kapsamında uygulamanın güvenli kodlama prensiplerine uygunluğu değerlendirildi ve iyileştirme önerileri sunuldu."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Çoklu platform (iOS/Android) uyumluluğu",
-                        "Yüksek trafikli canlı sistemde test yapma",
-                        "Kullanıcı verilerinin güvenliğini sağlama",
-                        "Mobil cihaz çeşitliliği ve farklı işletim sistemi versiyonları"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "5 yüksek öncelikli güvenlik açığı kapatıldı",
-                        "API güvenliği %95 oranında iyileştirildi",
-                        "Uygulama güvenlik skoru %30 arttı",
-                        "Müşteri memnuniyeti: %96",
-                        "Kullanıcı veri sızıntısı riski %80 azaldı"
-                    ]
-                },
-                tags: ["Mobil Security", "iOS/Android", "API Güvenliği", "E-Ticaret", "Güvenli Kodlama"]
-            },
-            3: {
-                title: "Kurumsal OSINT Çalışması",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Nisan 2024" },
-                    { label: "Proje Süresi", value: "3 Hafta" },
-                    { label: "Müşteri", value: "Holding C" },
-                    { label: "Sektör", value: "Çoklu Sektör" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Büyük ölçekli bir holding için dijital ayak izi analizi ve potansiyel tehdit değerlendirmesi gerçekleştirildi. Üst düzey yöneticiler için kişisel güvenlik danışmanlığı sağlandı. Açık kaynak istihbarat teknikleri kullanılarak şirket ve çalışanlar hakkında toplanan bilgiler analiz edildi. Proje kapsamında şirketin dijital varlıkları haritalandırıldı ve potansiyel saldırı vektörleri belirlendi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Geniş dijital ayak izinin analizi",
-                        "Yöneticilerin kişisel bilgilerinin korunması",
-                        "Yasal ve etik sınırlar içinde çalışma",
-                        "Doğru ve güncel bilgiye ulaşma"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "12 potansiyel güvenlik tehdidi tespit edildi",
-                        "Dijital ayak izi %60 azaltıldı",
-                        "Yöneticiler için kişisel güvenlik rehberi hazırlandı",
-                        "Müşteri memnuniyeti: %94",
-                        "Şirket itibar riski %40 azaldı"
-                    ]
-                },
-                tags: ["OSINT", "Threat Intelligence", "Dijital Ayak İzi", "Kişisel Güvenlik", "Kurumsal Güvenlik"]
-            },
-            4: {
-                title: "Sağlık Sektörü Web Uygulaması Güvenlik Testi",
-                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Mart 2024" },
-                    { label: "Proje Süresi", value: "5 Hafta" },
-                    { label: "Müşteri", value: "Sağlık Kuruluşu D" },
-                    { label: "Sektör", value: "Sağlık" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Hasta verileri işleyen bir sağlık kuruluşunun web uygulaması için kapsamlı güvenlik denetimi ve penetrasyon testi gerçekleştirildi. Proje kapsamında uygulamanın güvenlik açıkları tespit edildi ve iyileştirme önerileri sunuldu. Hasta verilerinin güvenliği ve mahremiyeti ön planda tutularak testler gerçekleştirildi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Hasta verilerinin gizliliğini koruma",
-                        "HIPAA uyumluluğu gereksinimleri",
-                        "Karmaşık veri akışı ve entegrasyon noktaları",
-                        "7/24 çalışan sistemde test yapma"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "4 kritik güvenlik açığı tespit edildi",
-                        "Veri ihlali riski %75 azaldı",
-                        "HIPAA uyumluluğu sağlandı",
-                        "Müşteri memnuniyeti: %97",
-                        "Sistem güvenlik skoru %35 arttı"
-                    ]
-                },
-                tags: ["Web App Security", "Penetrasyon Testi", "Veri Güvenliği", "Sağlık", "HIPAA"]
-            },
-            5: {
-                title: "Eğitim Sektörü Fiziksel Güvenlik Testi",
-                image: "https://images.unsplash.com/photo-1562774053-701939b585eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Şubat 2024" },
-                    { label: "Proje Süresi", value: "4 Hafta" },
-                    { label: "Müşteri", value: "Üniversite E" },
-                    { label: "Sektör", value: "Eğitim" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Bir üniversite kampüsü için fiziksel güvenlik kontrollerinin etkinliğini değerlendirmek amacıyla Red Team operasyonu gerçekleştirildi. Proje kapsamında kampüsün farklı bölgelerine sızma girişimlerinde bulunuldu ve güvenlik personelinin tepkileri gözlemlendi. Öğrenci ve personel güvenliği ön planda tutularak testler gerçekleştirildi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Geniş kampüs alanında operasyon yürütme",
-                        "Öğrenci ve personel güvenliğini riske atmama",
-                        "Güvenlik personelinin farkındalık seviyesini test etme",
-                        "Kampüs içi hareketlilik ve yoğunluk"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "7 fiziksel güvenlik zafiyeti tespit edildi",
-                        "Güvenlik personeli eğitimi gerçekleştirildi",
-                        "Kampüs güvenlik protokolleri güncellendi",
-                        "Müşteri memnuniyeti: %95",
-                        "Fiziksel güvenlik olaylarına müdahale süresi %40 azaldı"
-                    ]
-                },
-                tags: ["Red Team", "Fiziksel Güvenlik", "Sosyal Mühendislik", "Eğitim", "Kampüs Güvenliği"]
-            },
-            6: {
-                title: "Finans Teknolojisi API Güvenliği",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Ocak 2024" },
-                    { label: "Proje Süresi", value: "6 Hafta" },
-                    { label: "Müşteri", value: "FinTech Şirketi F" },
-                    { label: "Sektör", value: "Finans Teknolojisi" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Finansal işlemler gerçekleştiren bir mobil uygulamanın backend API'ları için güvenlik denetimi ve güvenli kodlama danışmanlığı sağlandı. Proje kapsamında API uç noktalarının güvenliği test edildi, kimlik doğrulama ve yetkilendirme mekanizmaları incelendi. Finansal verilerin güvenliği ve işlem bütünlüğü ön planda tutularak testler gerçekleştirildi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Finansal işlemlerin güvenliğini sağlama",
-                        "Yüksek hacimli API trafiğinde test yapma",
-                        "Çok katmanlı kimlik doğrulama sistemleri",
-                        "Mevzuata uygunluk gereksinimleri"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "6 yüksek öncelikli API güvenlik açığı kapatıldı",
-                        "API güvenlik skoru %40 arttı",
-                        "Güvenli kodlama eğitimi verildi",
-                        "Müşteri memnuniyeti: %96",
-                        "Finansal işlem güvenliği %90 iyileştirildi"
-                    ]
-                },
-                tags: ["API Güvenliği", "Mobil Security", "Güvenli Kodlama", "FinTech", "Finansal Güvenlik"]
-            },
-            7: {
-                title: "Sessiz Sızıntı",
-                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Aralık 2023" },
-                    { label: "Proje Süresi", value: "3 saat" },
-                    { label: "Müşteri", value: "E-Ticaret Platformu G" },
-                    { label: "Sektör", value: "E-Ticaret" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "E-ticaret platformunda yönetici panelinin varsayılan parolalarla internete açık olması nedeniyle oluşan veri sızıntısının tespiti ve müdahalesi. Hızlı ağ taramasıyla panel tespit edildi, erişim kapatıldı, şifre politikası zorunlu hale getirildi. Log analizinde dış bağlantı izleri temizlendi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Hızlı müdahale gerektiren aktif sızıntı durumu",
-                        "Yönetici panelinin tespiti ve izolasyonu",
-                        "Veri kaybının önlenmesi",
-                        "Sistem loglarının analizi ve temizlenmesi"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "3 saatte izolasyon tamamlandı",
-                        "40.000 kayıt sızıntısı önlendi",
-                        "Risk seviyesi CVSS 9.0 → 0",
-                        "Güvenlik politikaları güncellendi",
-                        "Müşteri memnuniyeti: %99"
-                    ]
-                },
-                tags: ["Olay Müdahale", "Web App Security", "Veri Sızıntısı", "E-Ticaret", "Hızlı Müdahale"]
-            },
-            8: {
-                title: "Tuzak VPN",
-                image: "https://images.unsplash.com/photo-1597762832116-897a478b4b6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Kasım 2023" },
-                    { label: "Proje Süresi", value: "2 saat" },
-                    { label: "Müşteri", value: "KOBİ H" },
-                    { label: "Sektör", value: "KOBİ" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "KOBİ'de bir çalışanın dizüstü bilgisayarı zayıf VPN konfigürasyonu yüzünden iç ağı açığa çıkarıyordu. Uzak erişim cihazı izole edildi, MFA devreye alındı, yeni segmentasyon politikası uygulandı."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Zayıf VPN konfigürasyonunun tespiti",
-                        "İç ağın açığa çıkmasının önlenmesi",
-                        "Yan hareket riskinin ortadan kaldırılması",
-                        "Minimum kesinti süresi ile çözüm"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Yan hareket riski sıfırlandı",
-                        "Kullanıcı doğrulama güvenliği %100'e çıktı",
-                        "2 saat kesintiyle süreç tamamlandı",
-                        "Segmentasyon politikası uygulandı",
-                        "Müşteri memnuniyeti: %98"
-                    ]
-                },
-                tags: ["Ağ Güvenliği", "Olay Müdahale", "VPN Güvenliği", "KOBİ", "MFA"]
-            },
-            9: {
-                title: "Kasa İçindeki Kapı",
-                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Ekim 2023" },
-                    { label: "Proje Süresi", value: "2 Hafta" },
-                    { label: "Müşteri", value: "Otel Zinciri I" },
-                    { label: "Sektör", value: "Otel / IoT" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Otel IoT ağındaki zafiyetlerin tespiti ve ağ segmentasyonu ile iç ağ erişim riskinin ortadan kaldırılması. Check-in kioskları ile sensör cihazları aynı ağdaydı. IoT zafiyetiyle iç ağa erişim mümkündü."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "IoT cihazlarının güvenlik zafiyetleri",
-                        "Ağ segmentasyonunun karmaşıklığı",
-                        "Check-in sistemlerinin kesintisiz çalışması",
-                        "IDS sisteminin konumlandırılması"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "IoT kaynaklı saldırı yüzeyi %70 küçüldü",
-                        "IDS 14 yeni tehdit kuralı kaydetti",
-                        "Ağ segmentasyonu tamamlandı",
-                        "Firmware güncellemeleri yapıldı",
-                        "Müşteri memnuniyeti: %96"
-                    ]
-                },
-                tags: ["IoT Güvenliği", "Ağ Güvenliği", "Segmentasyon", "Otel", "IDS"]
-            },
-            10: {
-                title: "Kaybolan Parolalar",
-                image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Eylül 2023" },
-                    { label: "Proje Süresi", value: "3 Hafta" },
-                    { label: "Müşteri", value: "Kurumsal Şirket J" },
-                    { label: "Sektör", value: "Kurumsal Ofis / SaaS" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Kurumsal ofiste Excel'de tutulan personel parolalarının güvenli parola yönetim sistemine geçirilmesi ve MFA entegrasyonu. Personel parolaları Excel dosyasında tutuluyordu; kimlik hırsızlığı riski yüksekti."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Excel'de tutulan parolaların güvenliğinin sağlanması",
-                        "Personelin yeni sisteme adaptasyonu",
-                        "MFA entegrasyonunun sorunsuz çalışması",
-                        "Kimlik hırsızlığı riskinin ortadan kaldırılması"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Parola güvenlik puanı %92'ye çıktı",
-                        "Credential reuse olayları sıfırlandı",
-                        "MFA entegrasyonu tamamlandı",
-                        "Şifre yönetim politikası oluşturuldu",
-                        "Müşteri memnuniyeti: %97"
-                    ]
-                },
-                tags: ["Kimlik Güvenliği", "MFA", "Parola Yönetimi", "Kurumsal", "SaaS"]
-            },
-            11: {
-                title: "Gizli Kapı",
-                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Ağustos 2023" },
-                    { label: "Proje Süresi", value: "1 Hafta" },
-                    { label: "Müşteri", value: "Yazılım Şirketi K" },
-                    { label: "Sektör", value: "Yazılım Geliştirme" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Yazılım geliştirme test ortamında açık kalan debug modunun tespiti ve hassas dizin erişimlerinin kapatılması. Test ortamında debug mod açık kaldı; hassas dizinler tarayıcıdan erişilebiliyordu."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Debug modunun tespiti ve kapatılması",
-                        "Hassas dizin erişimlerinin engellenmesi",
-                        "Staging ortamının izolasyonu",
-                        "Erişim loglarının analizi"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Web uygulaması risk skoru 8.2 → 2.1",
-                        "Staging-production ayrımı tam sağlandı",
-                        "Debug parametreleri kapatıldı",
-                        "Erişim logları incelendi",
-                        "Müşteri memnuniyeti: %95"
-                    ]
-                },
-                tags: ["Web App Security", "Penetrasyon Testi", "Debug Güvenliği", "Yazılım", "Test Ortamı"]
-            },
-            12: {
-                title: "Durağan Güvenlik Duvarı",
-                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Temmuz 2023" },
-                    { label: "Proje Süresi", value: "3 Hafta" },
-                    { label: "Müşteri", value: "Finans Şirketi L" },
-                    { label: "Sektör", value: "Finansal Hizmetler" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Finansal hizmetler şirketinde 2 yıldır güncellenmemiş firewall kurallarının optimize edilmesi ve gereksiz portların kapatılması. Firewall kuralları 2 yıldır güncellenmemişti; gereksiz açık portlar sızma testinde tespit edildi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Eski firewall kurallarının analizi",
-                        "Gereksiz portların tespiti ve kapatılması",
-                        "IDS imzalarının güncellenmesi",
-                        "Sistem performansının korunması"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Port sayısı 87 → 21",
-                        "Risk azaltımı %76",
-                        "Sistem yanıt süresi 15 ms iyileşti",
-                        "Tüm inbound trafiği yeniden sınıflandırıldı",
-                        "Müşteri memnuniyeti: %96"
-                    ]
-                },
-                tags: ["Ağ Güvenliği", "Firewall Optimizasyonu", "Port Yönetimi", "Finans", "IDS"]
-            },
-            13: {
-                title: "Sahipsiz Sunucu",
-                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Haziran 2023" },
-                    { label: "Proje Süresi", value: "2 Hafta" },
-                    { label: "Müşteri", value: "Lojistik Şirketi M" },
-                    { label: "Sektör", value: "Lojistik / Veri Merkezi" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Lojistik şirketinin veri merkezinde aktif olan ancak farkında olunmayan yedekleme sunucusunun tespiti ve güvenlik önlemlerinin uygulanması. Yedekleme sunucusu aktifti ama kimse farkında değildi; eski SSH anahtarları erişime açıktı."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Aktif ancak farkında olunmayan sunucunun tespiti",
-                        "Eski SSH anahtarlarının iptali",
-                        "Sistem dökümünün alınması",
-                        "Log bütünlüğünün sağlanması"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Yetkisiz erişim kapatıldı",
-                        "Yedekleme protokolü güncellendi",
-                        "Log bütünlüğü sağlandı",
-                        "Sunucu izole edildi",
-                        "Müşteri memnuniyeti: %94"
-                    ]
-                },
-                tags: ["Olay Müdahale", "Ağ Güvenliği", "Sunucu Güvenliği", "Lojistik", "Veri Merkezi"]
-            },
-            14: {
-                title: "Zaman Bombası",
-                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: [
-                    { label: "Tamamlanma Tarihi", value: "Mayıs 2023" },
-                    { label: "Proje Süresi", value: "18 dakika" },
-                    { label: "Müşteri", value: "Sağlık Kuruluşu N" },
-                    { label: "Sektör", value: "Sağlık" }
-                ],
-                description: {
-                    title: "Proje Açıklaması",
-                    content: "Sağlık sektöründe tespit edilen şüpheli zamanlanmış görevin (ransomware loader) engellenmesi ve sistemin güvenliğinin sağlanması. Bir terminalde şüpheli zamanlanmış görev (ransomware loader) fark edildi."
-                },
-                challenges: {
-                    title: "Karşılaşılan Zorluklar",
-                    items: [
-                        "Zamanlanmış görevin hızlı tespiti",
-                        "Ransomware yayılımının engellenmesi",
-                        "Sistem snapshot geri yükleme",
-                        "Antivirüs karantina uygulaması"
-                    ]
-                },
-                results: {
-                    title: "Elde Edilen Sonuçlar",
-                    items: [
-                        "Olay yayılmadan engellendi",
-                        "Sıfır veri kaybı",
-                        "Olay yanıt süresi 18 dakika",
-                        "Görev durduruldu",
-                        "Müşteri memnuniyeti: %99"
-                    ]
-                },
-                tags: ["Ransomware Önleme", "Olay Müdahale", "Zararlı Yazılım Analizi", "Sağlık", "Hızlı Müdahale"]
-            },
-            15: {
-                title: "DNS Gölgesi",
+                title: "VARUX TRAPNET — Autonomous Honeypot Network",
                 image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
                 details: [
-                    { label: "Tamamlanma Tarihi", value: "Nisan 2023" },
-                    { label: "Proje Süresi", value: "2 Hafta" },
-                    { label: "Müşteri", value: "Hosting Şirketi O" },
-                    { label: "Sektör", value: "Web Hosting / Domain Yönetimi" }
+                    { label: "Tamamlanma Tarihi", value: "Haziran 2024" },
+                    { label: "Proje Süresi", value: "10 Hafta" },
+                    { label: "Teknoloji", value: "Cowrie, Dionaea, Docker, Kibana" },
+                    { label: "Kategori", value: "Honeypot, Ağ Güvenliği" }
                 ],
                 description: {
                     title: "Proje Açıklaması",
-                    content: "Web hosting firmasında eski domain kayıtlarının yarattığı phishing risklerinin tespiti ve DMARC uyumluluğunun sağlanması. Eski domain kayıtları, aktif olmayan alt alanlarda yönlendirme açıkları yaratıyordu."
+                    content: "VARUX TRAPNET, gerçek saldırgan davranışlarını yakalamak için dağıtılmış sahte sistemlerden oluşan bir ağdır. Web, SSH ve FTP gibi servisleri taklit ederek saldırı vektörlerini kaydeder, analiz eder. Bu sayede yeni istismar yöntemleri ortaya çıkmadan önce tespit edilir. Sistem, saldırganların tekniklerini, araçlarını ve prosedürlerini (TTP'ler) belgeleyerek güvenlik ekiplerine değerli bilgiler sağlar."
                 },
                 challenges: {
                     title: "Karşılaşılan Zorluklar",
                     items: [
-                        "Eski domain kayıtlarının denetlenmesi",
-                        "Phishing riskinin azaltılması",
-                        "SPF/DKIM politikalarının güncellenmesi",
-                        "DMARC uyumluluğunun sağlanması"
+                        "Gerçekçi honeypot ortamları oluşturma",
+                        "Saldırgan etkileşimlerini maksimuma çıkarma",
+                        "Dağıtık sistemlerin merkezi yönetimi",
+                        "Yüksek hacimli log verisinin işlenmesi"
                     ]
                 },
                 results: {
                     title: "Elde Edilen Sonuçlar",
                     items: [
-                        "Phishing riski %90 azaldı",
-                        "DMARC uyumluluğu %100 sağlandı",
-                        "DNS kayıtları denetlendi",
-                        "Gereksiz yönlendirmeler kaldırıldı",
-                        "Müşteri memnuniyeti: %97"
+                        "Ortalama 150+ günlük saldırı etkileşimi kaydedildi",
+                        "3 yeni sıfırıncı gün açığı tespit edildi",
+                        "Saldırgan TTP'leri başarıyla haritalandırıldı",
+                        "Güvenlik ekibi farkındalığı %75 arttı",
+                        "Proaktif tehdit avlama kapasitesi geliştirildi"
                     ]
                 },
-                tags: ["DNS Güvenliği", "Phishing Önleme", "DMARC", "Hosting", "Domain Yönetimi"]
+                tags: ["Honeypot", "Ağ Güvenliği", "Saldırı Analizi", "Docker", "Kibana"]
             },
-            16: {
-                title: "Şifreli Sessizlik",
+            3: {
+                title: "VARUX ANALYZER — Malware Behavioral Sandbox",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Mayıs 2024" },
+                    { label: "Proje Süresi", value: "14 Hafta" },
+                    { label: "Teknoloji", value: "Cuckoo Sandbox, Python API Wrapper" },
+                    { label: "Kategori", value: "Malware Analysis, Sandbox" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "VARUX ANALYZER, zararlı yazılımların davranışlarını izole sanal ortamda analiz eder. Dosya çalıştırıldığında API çağrıları, dosya değişiklikleri ve ağ trafiği izlenir. Sonuçlar JSON veya HTML rapor olarak üretilir. Sistem, hem statik hem de dinamik analiz tekniklerini birleştirerek kapsamlı bir zararlı yazılım değerlendirmesi sunar."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Zararlı yazılımın sandbox'tan kaçmasını önleme",
+                        "Yüksek ölçekli analiz için otomasyon sağlama",
+                        "Çoklu dosya formatlarını destekleme",
+                        "Detaylı davranışsal analiz raporları oluşturma"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "Zararlı yazılım analiz süresi %70 azaldı",
+                        "Günlük 500+ dosya analiz kapasitesi",
+                        "Otomatik IOC çıkarımı ve raporlama",
+                        "Analist verimliliği %80 arttı",
+                        "Yeni zararlı yazılım aileleri tespit edildi"
+                    ]
+                },
+                tags: ["Malware Analysis", "Sandbox", "Davranış Analizi", "Cuckoo", "Python"]
+            },
+            4: {
+                title: "VARUX PHISHGUARD — Email Phishing Detector",
                 image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
                 details: [
-                    { label: "Tamamlanma Tarihi", value: "Mart 2023" },
-                    { label: "Proje Süresi", value: "3 Hafta" },
-                    { label: "Müşteri", value: "Danışmanlık Şirketi P" },
-                    { label: "Sektör", value: "Danışmanlık" }
+                    { label: "Tamamlanma Tarihi", value: "Nisan 2024" },
+                    { label: "Proje Süresi", value: "8 Hafta" },
+                    { label: "Teknoloji", value: "scikit-learn, Flask API, IMAP, DNS Resolver" },
+                    { label: "Kategori", value: "Phishing Detection, E-posta Güvenliği" }
                 ],
                 description: {
                     title: "Proje Açıklaması",
-                    content: "Danışmanlık firmasında TLS dışı e-posta bağlantılarının tespiti ve güvenli e-posta iletişim protokollerinin uygulanması. Çalışan e-postaları TLS dışı bağlantıdan gönderiliyordu."
+                    content: "VARUX PHISHGUARD, gelen e-postalarda oltalama saldırılarını tespit eden makine öğrenimi tabanlı sistemdir. E-posta başlıklarını, içerikleri ve bağlantıları analiz eder. Kurumsal e-posta altyapısına entegre edilerek gerçek zamanlı koruma sağlar. Sistem, gelişmiş doğal dil işleme teknikleri kullanarak sosyal mühendislik girişimlerini tespit eder."
                 },
                 challenges: {
                     title: "Karşılaşılan Zorluklar",
                     items: [
-                        "TLS dışı bağlantıların tespiti",
-                        "Mail gateway yapılandırmasının güncellenmesi",
-                        "TLS zorunlu kuralının getirilmesi",
-                        "Phishing simülasyonunun yapılması"
+                        "Yüksek doğruluk oranına sahip ML modeli geliştirme",
+                        "Gerçek zamanlı e-posta tarama performansı",
+                        "Legitimate e-postaların yanlış pozitif olarak işaretlenmesini önleme",
+                        "Kurumsal e-posta sistemleriyle entegrasyon"
                     ]
                 },
                 results: {
                     title: "Elde Edilen Sonuçlar",
                     items: [
-                        "TLS dışı bağlantı oranı %0",
-                        "Phishing farkındalığı %85'e yükseldi",
-                        "Mail gateway yapılandırması güncellendi",
-                        "Güvenli e-posta iletişimi sağlandı",
-                        "Müşteri memnuniyeti: %98"
+                        "Phishing e-postaları %98.5 doğrulukla tespit edildi",
+                        "Yanlış pozitif oranı %0.5'in altına düşürüldü",
+                        "Gerçek zamanlı tarama ile 50ms'den kısa yanıt süresi",
+                        "Kurumsal e-posta güvenliği %95 iyileştirildi",
+                        "Kullanıcı eğitimi ihtiyacı %70 azaldı"
                     ]
                 },
-                tags: ["E-posta Güvenliği", "TLS Zorunluluğu", "Phishing Önleme", "Danışmanlık", "İletişim Güvenliği"]
+                tags: ["Phishing Detection", "E-posta Güvenliği", "Makine Öğrenimi", "Flask", "IMAP"]
+            },
+            5: {
+                title: "VARUX DEEPFLOW — Network Traffic Fingerprinter",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Mart 2024" },
+                    { label: "Proje Süresi", value: "16 Hafta" },
+                    { label: "Teknoloji", value: "Wireshark libs, TensorFlow, Python" },
+                    { label: "Kategori", value: "Ağ Güvenliği, Traffic Analysis" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "VARUX DEEPFLOW, şifreli trafiği çözmeden anomali ve sızma girişimlerini tespit eden sistemdir. TLS handshake ve paket istatistiklerinden davranışsal imzalar çıkarır. Zero-day saldırılarını dahi tespit edebilecek derin öğrenme tabanlı modelle çalışır. Sistem, ağ trafiğindeki anormal davranışları tespit ederek geleneksel imza tabanlı sistemlerin ötesinde koruma sağlar."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Şifreli trafikten anlamlı özellikler çıkarma",
+                        "Yüksek hacimli ağ verisini gerçek zamanlı işleme",
+                        "Derin öğrenme modelinin eğitimi ve optimizasyonu",
+                        "Düşük yanlış pozitif oranı koruma"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "Şifreli trafikte %96 doğrulukla anomali tespiti",
+                        "Zero-day saldırı tespit oranı %88'e ulaştı",
+                        "Gerçek zamanlı analiz ile 100Gbps trafik kapasitesi",
+                        "Yanlış pozitif oranı %1.2 seviyesinde tutuldu",
+                        "Geleneksel IDS sistemlerine göre %45 daha etkili"
+                    ]
+                },
+                tags: ["Ağ Güvenliği", "Traffic Analysis", "Derin Öğrenme", "TensorFlow", "Wireshark"]
             }
         };
 
@@ -1722,6 +1184,7 @@
                     
                     // Show modal
                     projectModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                     
                     // Update URL hash
                     window.location.hash = `project-${projectId}`;
@@ -1746,7 +1209,23 @@
                             break;
                         case 'copy':
                             navigator.clipboard.writeText(url).then(() => {
-                                alert('Link panoya kopyalandı!');
+                                // Show notification
+                                const notification = document.createElement('div');
+                                notification.textContent = 'Link panoya kopyalandı!';
+                                notification.style.position = 'fixed';
+                                notification.style.bottom = '20px';
+                                notification.style.right = '20px';
+                                notification.style.background = 'var(--secondary-color)';
+                                notification.style.color = 'var(--bg-color)';
+                                notification.style.padding = '10px 15px';
+                                notification.style.borderRadius = '6px';
+                                notification.style.zIndex = '10000';
+                                notification.style.fontWeight = 'bold';
+                                document.body.appendChild(notification);
+                                
+                                setTimeout(() => {
+                                    notification.remove();
+                                }, 3000);
                             });
                             break;
                     }
@@ -1757,6 +1236,7 @@
         // Close project modal
         closeProjectModal.addEventListener('click', () => {
             projectModal.classList.remove('active');
+            document.body.style.overflow = '';
             // Remove URL hash
             history.pushState("", document.title, window.location.pathname + window.location.search);
         });
@@ -1765,6 +1245,7 @@
         window.addEventListener('click', (e) => {
             if (e.target === projectModal) {
                 projectModal.classList.remove('active');
+                document.body.style.overflow = '';
                 // Remove URL hash
                 history.pushState("", document.title, window.location.pathname + window.location.search);
             }
@@ -1822,6 +1303,12 @@
             
             const formData = new FormData(projectForm);
             
+            // Show loading state
+            const submitButton = projectForm.querySelector('.form-submit');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Gönderiliyor...';
+            submitButton.disabled = true;
+            
             fetch('https://formspree.io/f/xbjngdqv', {
                 method: 'POST',
                 body: formData,
@@ -1835,6 +1322,11 @@
                     formMessage.className = 'form-message success';
                     formMessage.style.display = 'block';
                     projectForm.reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -1843,6 +1335,16 @@
                 formMessage.textContent = 'Mesajınız gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
                 formMessage.className = 'form-message error';
                 formMessage.style.display = 'block';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
             });
         });
 
@@ -1902,6 +1404,48 @@
                 });
             }
         });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add floating particles to hero section
+        function createParticles() {
+            const particlesContainer = document.querySelector('.floating-elements');
+            const particleCount = 15;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-element';
+                
+                // Random properties
+                const size = Math.random() * 20 + 10;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
     </script>
 </body>
 </html>
