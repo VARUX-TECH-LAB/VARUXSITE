@@ -157,6 +157,79 @@
             border: 0;
         }
 
+        /* YENİ ANİMASYONLAR */
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); }
+          70% { box-shadow: 0 0 0 15px rgba(88, 166, 255, 0); }
+        }
+
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+
+        @keyframes slideInFromLeft {
+          0% { transform: translateX(-100px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+          0% { transform: translateX(100px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromBottom {
+          0% { transform: translateY(100px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+
+        @keyframes rotate3d {
+          0% { transform: rotateY(0deg); }
+          100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes glow {
+          0%, 100% { text-shadow: 0 0 5px var(--primary-color); }
+          50% { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+        }
+
+        @keyframes wave {
+          0% { transform: rotate(0deg); }
+          10% { transform: rotate(14deg); }
+          20% { transform: rotate(-8deg); }
+          30% { transform: rotate(14deg); }
+          40% { transform: rotate(-4deg); }
+          50% { transform: rotate(10deg); }
+          60% { transform: rotate(0deg); }
+          100% { transform: rotate(0deg); }
+        }
+
+        /* Animasyon sınıfları */
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-shimmer { 
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite linear;
+        }
+        .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
+        .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
+        .animate-slide-bottom { animation: slideInFromBottom 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-rotate3d { animation: rotate3d 2s linear infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite alternate; }
+        .animate-wave { animation: wave 2.5s infinite; transform-origin: 70% 70%; }
+
         /* GELİŞMİŞ KAYDIRMA ÇUBUĞU TASARIMI - Android/Tablet Uyumlu */
         ::-webkit-scrollbar {
             width: 14px;
@@ -220,16 +293,89 @@
 
         .container { max-width: 1024px; margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
         .section { padding: 4.5rem 0 2rem; position: relative; }
-        .section__title { font-size: var(--h2-font-size); text-align: center; margin-bottom: 2.5rem; position: relative; padding-bottom: 0.5rem; color: var(--secondary-color); }
-        .section__title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+        .section__title { 
+            font-size: var(--h2-font-size); 
+            text-align: center; 
+            margin-bottom: 2.5rem; 
+            position: relative; 
+            padding-bottom: 0.5rem; 
+            color: var(--secondary-color); 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .section__title.visible { opacity: 1; transform: translateY(0); }
+        .section__title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 70px; 
+            height: 3px; 
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); 
+            border-radius: 3px; 
+        }
         .hidden { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .visible { opacity: 1; transform: translateY(0); }
 
         /* LOADER - Android/Tablet Uyumlu */
-        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: var(--bg-color); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: var(--z-modal); 
+            transition: opacity 0.5s ease, visibility 0.5s ease; 
+        }
         .loader.hidden { opacity: 0; visibility: hidden; }
-        .loader__spinner { width: 50px; height: 50px; border: 5px solid rgba(88, 166, 255, 0.2); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loader__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .loader__spinner { 
+            width: 80px; 
+            height: 80px; 
+            border: 5px solid rgba(88, 166, 255, 0.2); 
+            border-top: 5px solid var(--primary-color); 
+            border-radius: 50%; 
+            animation: spin 1s linear infinite, pulse 2s infinite;
+            position: relative;
+        }
+        .loader__spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-top: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        .loader__text {
+            font-family: var(--title-font);
+            color: var(--title-color);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
 
         /* HEADER - Android/Tablet Uyumlu - GÜNCELLENDİ */
         .header { 
@@ -243,7 +389,10 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid transparent; 
             transition: border-color 0.3s, background-color 0.3s; 
+            transform: translateY(0);
+            transition: transform 0.5s ease, background-color 0.3s, border-color 0.3s;
         }
+        .header.hidden { transform: translateY(-100%); }
         .header.scrolled { background-color: rgba(13, 17, 23, 0.9); border-bottom-color: var(--border-color); }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
         
@@ -261,7 +410,27 @@
             flex-grow: 1; 
             justify-content: center;
         }
-        .nav__link { color: var(--text-color); font-weight: var(--font-semi-bold); transition: color .3s, text-shadow .3s; position: relative; padding-bottom: 0.25rem; }
+        .nav__link { 
+            color: var(--text-color); 
+            font-weight: var(--font-semi-bold); 
+            transition: color .3s, text-shadow .3s; 
+            position: relative; 
+            padding-bottom: 0.25rem; 
+            overflow: hidden;
+        }
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        .nav__link:hover::after {
+            width: 100%;
+        }
         .nav__link:hover { color: var(--secondary-color); text-shadow: 0 0 8px var(--secondary-color); }
         
         /* İYİLEŞTİRİLMİŞ AERO CAM STİLİ BUTON - NAVBAR - Android/Tablet Uyumlu */
@@ -348,8 +517,19 @@
             display: inline-block; 
             text-align: center;
             width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .hero__title .cursor { display: inline-block; background-color: var(--secondary-color); width: 10px; height: 2.5rem; margin-left: 8px; animation: blink 1s infinite; }
+        .hero__title.visible { opacity: 1; transform: translateY(0); }
+        .hero__title .cursor { 
+            display: inline-block; 
+            background-color: var(--secondary-color); 
+            width: 10px; 
+            height: 2.5rem; 
+            margin-left: 8px; 
+            animation: blink 1s infinite; 
+        }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .hero__subtitle { 
             color: var(--text-color-light); 
@@ -358,14 +538,22 @@
             line-height: 1.7;
             text-align: center;
             max-width: 650px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
         }
+        .hero__subtitle.visible { opacity: 1; transform: translateY(0); }
         .hero__buttons { 
             display: flex; 
             gap: 1rem; 
             justify-content: center; 
             flex-wrap: wrap; 
             width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
         }
+        .hero__buttons.visible { opacity: 1; transform: translateY(0); }
         
         /* GELİŞMİŞ AERO CAM STİLİ BUTON - HERO - Android/Tablet Uyumlu */
         .hero__button { 
@@ -417,11 +605,32 @@
         .hero__button:hover i {
             transform: translateX(2px);
         }
-        .hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-color-light); font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; touch-action: manipulation; }
+        .hero__scroll { 
+            position: absolute; 
+            bottom: 2rem; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--text-color-light); 
+            font-size: 2rem; 
+            animation: bounce 2s infinite; 
+            cursor: pointer; 
+            touch-action: manipulation; 
+            opacity: 0;
+            transition: opacity 0.8s ease 1s;
+        }
+        .hero__scroll.visible { opacity: 1; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
         /* ABOUT - Android/Tablet Uyumlu */
-        .about__content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about__content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .about__content.visible { opacity: 1; transform: translateY(0); }
         .about__stats { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
@@ -446,14 +655,22 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease;
         }
-        .stat__card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .stat__card.visible { opacity: 1; transform: translateY(0); }
+        .stat__card:hover { transform: translateY(-5px) scale(1.05); border-color: var(--primary-color); }
         .stat__number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
         .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
 
         /* SERVICES - Android/Tablet Uyumlu */
-        .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .services__grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
         .service__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -466,15 +683,28 @@
             overflow: hidden; 
             transition: transform 0.4s ease, box-shadow 0.4s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
         }
+        .service__card.visible { opacity: 1; transform: translateY(0); }
         .service__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
-        .service__icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; transition: transform 0.4s ease, color 0.4s ease; }
+        .service__icon { 
+            font-size: 3rem; 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            transition: transform 0.4s ease, color 0.4s ease; 
+        }
         .service__card:hover .service__icon { transform: translateY(-5px) scale(1.1); color: var(--secondary-color); }
         .service__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .service__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; }
 
         /* BLOG SECTION - YENİ EKLENDİ */
-        .blog__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .blog__grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
         .blog__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -484,12 +714,34 @@
             overflow: hidden; 
             transition: transform 0.4s ease, box-shadow 0.4s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
         }
+        .blog__card.visible { opacity: 1; transform: translateY(0); }
         .blog__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
-        .blog__image { height: 200px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); position: relative; overflow: hidden; }
+        .blog__image { 
+            height: 200px; 
+            background: rgba(255, 255, 255, 0.05); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--text-color-light); 
+            position: relative; 
+            overflow: hidden; 
+        }
         .blog__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
         .blog__card:hover .blog__image img { transform: scale(1.05); }
-        .blog__date { position: absolute; top: 1rem; left: 1rem; background: rgba(0, 0, 0, 0.7); color: white; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.8rem; }
+        .blog__date { 
+            position: absolute; 
+            top: 1rem; 
+            left: 1rem; 
+            background: rgba(0, 0, 0, 0.7); 
+            color: white; 
+            padding: 0.3rem 0.7rem; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+        }
         .blog__content { padding: 1.5rem; }
         .blog__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .blog__excerpt { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
@@ -497,7 +749,12 @@
         .blog__link:hover { gap: 0.75rem; }
 
         /* PRICING - Android/Tablet Uyumlu */
-        .pricing__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pricing__grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
         .pricing__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -510,10 +767,25 @@
             position: relative; 
             overflow: hidden; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease;
         }
+        .pricing__card.visible { opacity: 1; transform: translateY(0); }
         .pricing__card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
         .pricing__card.popular { border-color: var(--secondary-color); transform: scale(1.05); }
-        .pricing__card.popular::before { content: 'POPÜLER'; position: absolute; top: 20px; right: -30px; background: var(--secondary-color); color: var(--bg-color); padding: 5px 30px; transform: rotate(45deg); font-size: 0.75rem; font-weight: bold; }
+        .pricing__card.popular::before { 
+            content: 'POPÜLER'; 
+            position: absolute; 
+            top: 20px; 
+            right: -30px; 
+            background: var(--secondary-color); 
+            color: var(--bg-color); 
+            padding: 5px 30px; 
+            transform: rotate(45deg); 
+            font-size: 0.75rem; 
+            font-weight: bold; 
+        }
         .pricing__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1rem; }
         .pricing__price { font-size: 1.75rem; color: var(--secondary-color); margin-bottom: 1rem; font-weight: 700; }
         .pricing__description { color: var(--text-color-light); margin-bottom: 1.5rem; font-size: var(--small-font-size); }
@@ -575,7 +847,11 @@
         }
 
         /* PROJECTS - Android/Tablet Uyumlu */
-        .projects__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .projects__grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
         .project__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -585,9 +861,20 @@
             overflow: hidden; 
             transition: transform 0.4s ease, box-shadow 0.4s ease; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
         }
+        .project__card.visible { opacity: 1; transform: translateY(0); }
         .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
-        .project__image { height: 200px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-color-light); }
+        .project__image { 
+            height: 200px; 
+            background: rgba(255, 255, 255, 0.05); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--text-color-light); 
+        }
         .project__content { padding: 1.5rem; }
         .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
         .project__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
@@ -597,7 +884,10 @@
         .project__link:hover { gap: 0.75rem; }
 
         /* FAQ - Android/Tablet Uyumlu */
-        .faq__container { max-width: 800px; margin: 0 auto; }
+        .faq__container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
         .faq__item { 
             margin-bottom: 1rem; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -606,16 +896,38 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .faq__question { padding: 1.5rem; background-color: transparent; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: var(--font-semi-bold); transition: background-color 0.3s; touch-action: manipulation; }
+        .faq__item.visible { opacity: 1; transform: translateY(0); }
+        .faq__question { 
+            padding: 1.5rem; 
+            background-color: transparent; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: var(--font-semi-bold); 
+            transition: background-color 0.3s; 
+            touch-action: manipulation; 
+        }
         .faq__question:hover { background-color: rgba(255, 255, 255, 0.05); }
         .faq__answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
         .faq__item.active .faq__answer { padding: 1.5rem; max-height: 500px; }
         .faq__item.active .faq__question i { transform: rotate(180deg); }
 
         /* TESTIMONIALS - Android/Tablet Uyumlu */
-        .testimonials__container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; }
-        .testimonials__track { display: flex; transition: transform 0.5s ease; }
+        .testimonials__container { 
+            position: relative; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            overflow: hidden; 
+        }
+        .testimonials__track { 
+            display: flex; 
+            transition: transform 0.5s ease; 
+        }
         .testimonial__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -626,7 +938,11 @@
             min-width: 100%; 
             text-align: center; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
+        .testimonial__card.visible { opacity: 1; transform: translateY(0); }
         .testimonial__quote { font-style: italic; margin-bottom: 1.5rem; color: var(--text-color); position: relative; }
         .testimonial__quote::before, .testimonial__quote::after { content: '"'; font-size: 2rem; color: var(--secondary-color); position: absolute; }
         .testimonial__quote::before { top: -10px; left: -10px; }
@@ -679,7 +995,11 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
         }
+        .partner__card.visible { opacity: 1; transform: translateY(0); }
         .partner__card:hover { 
             transform: translateY(-5px); 
             border-color: var(--primary-color); 
@@ -739,7 +1059,16 @@
         }
 
         /* CONTACT - Android/Tablet Uyumlu */
-        .contact__text { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-color-light); }
+        .contact__text { 
+            text-align: center; 
+            max-width: 600px; 
+            margin: 0 auto 2rem auto; 
+            color: var(--text-color-light); 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .contact__text.visible { opacity: 1; transform: translateY(0); }
         
         /* GELİŞMİŞ AERO CAM STİLİ BUTON - CONTACT - Android/Tablet Uyumlu */
         .contact__button { 
@@ -764,7 +1093,11 @@
             position: relative;
             overflow: hidden;
             touch-action: manipulation;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
+        .contact__button.visible { opacity: 1; transform: translateY(0); }
         .contact__button::before {
             content: '';
             position: absolute;
@@ -1230,7 +1563,10 @@
 
     <!-- LOADER -->
     <div class="loader" id="loader">
-        <div class="loader__spinner"></div>
+        <div class="loader__content">
+            <div class="loader__spinner"></div>
+            <div class="loader__text">VARUX</div>
+        </div>
     </div>
 
     <!-- BACK TO TOP BUTTON -->
@@ -1705,17 +2041,28 @@
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.classList.add('hidden');
-            }, 1000);
+            }, 2000);
         });
 
         // Header scroll effect
+        let lastScrollY = window.scrollY;
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
+            
+            // Header scroll effect
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            // Hide header on scroll down, show on scroll up
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
         });
 
         // Mobile menu toggle
@@ -1755,6 +2102,13 @@
                 setTimeout(typeWriter, 150);
             } else {
                 heroTitle.innerHTML += '<span class="cursor"></span>';
+                // Add visible class after typing animation
+                setTimeout(() => {
+                    heroTitle.classList.add('visible');
+                    document.querySelector('.hero__subtitle').classList.add('visible');
+                    document.querySelector('.hero__buttons').classList.add('visible');
+                    document.querySelector('.hero__scroll').classList.add('visible');
+                }, 300);
             }
         }
 
@@ -1935,7 +2289,18 @@
         });
 
         // Scroll animation for sections
-        const sections = document.querySelectorAll('.section');
+        const sectionTitles = document.querySelectorAll('.section__title');
+        const aboutContent = document.querySelector('.about__content');
+        const statCards = document.querySelectorAll('.stat__card');
+        const serviceCards = document.querySelectorAll('.service__card');
+        const blogCards = document.querySelectorAll('.blog__card');
+        const pricingCards = document.querySelectorAll('.pricing__card');
+        const projectCards = document.querySelectorAll('.project__card');
+        const faqItemsAnimated = document.querySelectorAll('.faq__item');
+        const testimonialCards = document.querySelectorAll('.testimonial__card');
+        const partnerCards = document.querySelectorAll('.partner__card');
+        const contactText = document.querySelector('.contact__text');
+        const contactButton = document.querySelector('.contact__button');
         
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1945,15 +2310,28 @@
             });
         }, { threshold: 0.1 });
         
-        sections.forEach(section => {
-            section.classList.add('hidden');
-            sectionObserver.observe(section);
+        // Observe section titles
+        sectionTitles.forEach(title => {
+            sectionObserver.observe(title);
         });
+        
+        // Observe about section
+        if (aboutContent) sectionObserver.observe(aboutContent);
+        statCards.forEach(card => sectionObserver.observe(card));
+        serviceCards.forEach(card => sectionObserver.observe(card));
+        blogCards.forEach(card => sectionObserver.observe(card));
+        pricingCards.forEach(card => sectionObserver.observe(card));
+        projectCards.forEach(card => sectionObserver.observe(card));
+        faqItemsAnimated.forEach(item => sectionObserver.observe(item));
+        testimonialCards.forEach(card => sectionObserver.observe(card));
+        partnerCards.forEach(card => sectionObserver.observe(card));
+        if (contactText) sectionObserver.observe(contactText);
+        if (contactButton) sectionObserver.observe(contactButton);
 
         // Partner Modal Functionality - YENİ EKLENDİ
         const partnerModal = document.getElementById('partner-modal');
         const closePartnerModalBtn = document.getElementById('close-partner-modal-btn');
-        const partnerCards = document.querySelectorAll('.partner__card');
+        const partnerCardElements = document.querySelectorAll('.partner__card');
         
         // Partner note animation
         const partnerNote = document.querySelector('.partners__note p');
@@ -2040,7 +2418,7 @@
         let lastFocusedCard = null;
 
         // Partner card click event
-        partnerCards.forEach(card => {
+        partnerCardElements.forEach(card => {
             card.setAttribute('tabindex', '0');
             card.setAttribute('role', 'button');
             card.setAttribute('aria-label', `${card.getAttribute('data-name')} - ${card.getAttribute('data-category')}. Detayları görüntülemek için tıklayın.`);
@@ -2107,6 +2485,21 @@
         }
         
         window.addEventListener('load', checkBackdropFilterSupport);
+
+        // Add floating animation to some elements
+        function addFloatingAnimation() {
+            const serviceIcons = document.querySelectorAll('.service__icon');
+            serviceIcons.forEach(icon => {
+                icon.classList.add('animate-float');
+            });
+            
+            const partnerLogos = document.querySelectorAll('.partner__logo');
+            partnerLogos.forEach(logo => {
+                logo.classList.add('animate-float');
+            });
+        }
+        
+        window.addEventListener('load', addFloatingAnimation);
     </script>
 
     <!-- Particles.js -->
@@ -2114,7 +2507,7 @@
     <script>
         particlesJS('particles-js', {
             particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
+                number: { value: 80, density: { enable: true, value_area: 800 } },
                 color: { value: '#58A6FF' },
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: true },
