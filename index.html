@@ -740,14 +740,14 @@
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
         .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
 
-        /* GELİŞMİŞ SERVICES - Android/Tablet Uyumlu */
+        /* GELİŞMİŞ SERVICES - Android/Tablet Uyumlu - OPTİMİZE EDİLDİ */
         .services__grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 1.5rem; 
         }
         .service__card { 
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08); /* %8 arttırıldı */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -761,18 +761,49 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
         }
         .service__card.visible { opacity: 1; transform: translateY(0); }
-        .service__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .service__card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary-color); 
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3); /* Neon glow efekti */
+        }
         .service__icon { 
             font-size: 3rem; 
             color: var(--primary-color); 
             margin-bottom: 1rem; 
             transition: transform 0.4s ease, color 0.4s ease; 
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .service__card:hover .service__icon { transform: translateY(-5px) scale(1.1); color: var(--secondary-color); }
-        .service__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
-        .service__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; }
+        .service__card:hover .service__icon { 
+            transform: translateY(-5px) scale(1.1); 
+            color: var(--secondary-color); 
+            text-shadow: 0 0 15px var(--secondary-color); /* Neon glow efekti */
+        }
+        .service__title { 
+            font-size: var(--h3-font-size); 
+            margin-bottom: 0.75rem; 
+            color: var(--title-color); 
+            font-weight: 600; /* Font kalınlığı eşitlendi */
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .service__description { 
+            font-size: var(--small-font-size); 
+            color: var(--text-color-light); 
+            line-height: 1.6; 
+            flex-grow: 1;
+        }
 
         /* GELİŞMİŞ BLOG SECTION - YENİ EKLENDİ */
         .blog__grid { 
@@ -921,7 +952,7 @@
             transform: translateX(2px);
         }
 
-        /* GELİŞMİŞ PROJECTS - Android/Tablet Uyumlu */
+        /* GELİŞMİŞ PROJECTS - Android/Tablet Uyumlu - OPTİMİZE EDİLDİ */
         .projects__grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -939,9 +970,17 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
         }
         .project__card.visible { opacity: 1; transform: translateY(0); }
-        .project__card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); }
+        .project__card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary-color); 
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); 
+        }
         .project__image { 
             height: 200px; 
             background: rgba(255, 255, 255, 0.05); 
@@ -949,13 +988,64 @@
             align-items: center; 
             justify-content: center; 
             color: var(--text-color-light); 
+            position: relative;
+            overflow: hidden;
         }
-        .project__content { padding: 1.5rem; }
-        .project__title { font-size: var(--h3-font-size); margin-bottom: 0.75rem; color: var(--title-color); }
-        .project__description { font-size: var(--small-font-size); color: var(--text-color-light); line-height: 1.6; margin-bottom: 1rem; }
-        .project__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .project__tag { background-color: rgba(88, 166, 255, 0.1); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
-        .project__link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
+        .project__image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(0, 242, 161, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .project__card:hover .project__image::after {
+            opacity: 1;
+        }
+        .project__content { 
+            padding: 1.5rem; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project__title { 
+            font-size: var(--h3-font-size); 
+            margin-bottom: 0.75rem; 
+            color: var(--title-color); 
+        }
+        .project__description { 
+            font-size: var(--small-font-size); 
+            color: var(--text-color-light); 
+            line-height: 1.6; 
+            margin-bottom: 1rem; 
+            flex-grow: 1;
+        }
+        .project__tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 0.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .project__tag { 
+            background-color: rgba(88, 166, 255, 0.1); 
+            color: var(--primary-color); 
+            padding: 0.25rem 0.75rem; 
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+        }
+        .project__link { 
+            color: var(--secondary-color); 
+            font-weight: var(--font-semi-bold); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            transition: gap 0.3s ease; 
+            margin-top: auto;
+            padding: 0.5rem 0;
+        }
         .project__link:hover { gap: 0.75rem; }
 
         /* GELİŞMİŞ FAQ - Android/Tablet Uyumlu */
@@ -1046,7 +1136,7 @@
         }
         .testimonial__nav-btn:hover { background-color: var(--primary-color); color: var(--bg-color); }
 
-        /* GELİŞMİŞ PARTNERS - Android/Tablet Uyumlu - YENİLENDİ */
+        /* GELİŞMİŞ PARTNERS - Android/Tablet Uyumlu - YENİLENDİ ve OPTİMİZE EDİLDİ */
         .partners__grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
@@ -1061,7 +1151,7 @@
             border-radius: 12px; 
             padding: 2rem; 
             text-align: center; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, rotate 0.3s ease; 
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -1072,17 +1162,17 @@
             overflow: hidden;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease, rotate 0.3s ease;
         }
         .partner__card.visible { opacity: 1; transform: translateY(0); }
         .partner__card:hover { 
-            transform: translateY(-5px); 
+            transform: translateY(-5px) rotate(2deg); /* Hafif döndürme efekti */
             border-color: var(--primary-color); 
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); 
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2), 0 0 0 0.5px rgba(88, 166, 255, 0.5); /* Neon parlama efekti */
         }
         .partner__logo { 
-            width: 80px; 
-            height: 80px; 
+            width: 100px; /* Normalize edildi */
+            height: 100px; /* Normalize edildi */
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1096,6 +1186,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             font-size: 2.5rem;
             color: var(--primary-color);
+            overflow: hidden;
+        }
+        .partner__logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
         }
         .partner__card:hover .partner__logo {
             border-color: var(--secondary-color);
@@ -1126,11 +1222,12 @@
             top: 1rem;
             right: 1rem;
             background: var(--secondary-color);
-            color: var(--bg-color);
+            color: #0A0F14; /* Kontrast artırıldı */
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: var(--font-semi-bold);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         /* GELİŞMİŞ CONTACT - Android/Tablet Uyumlu */
@@ -1586,6 +1683,7 @@
           .hero__title { font-size: 2.25rem; }
           .nav__logo-placeholder { display: none; }
           .partners__grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+          .service__title { min-height: auto; }
         }
 
         @media screen and (max-width: 350px) {
@@ -1850,7 +1948,12 @@
                     <h2 class="section__title animate-slide-top">Projelerimiz</h2>
                     <div class="projects__grid">
                         <div class="project__card animate-flip-in-y">
-                            <div class="project__image"><i class='bx bx-factory' style="font-size: 3rem;"></i></div>
+                            <div class="project__image">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
                             <div class="project__content">
                                 <h3 class="project__title">Otomotiv Fabrikası Ağ Güvenliği</h3>
                                 <div class="project__tags">
@@ -1862,7 +1965,16 @@
                             </div>
                         </div>
                         <div class="project__card animate-flip-in-y">
-                            <div class="project__image"><i class='bx bx-store' style="font-size: 3rem;"></i></div>
+                            <div class="project__image">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                                    <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                                    <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
                             <div class="project__content">
                                 <h3 class="project__title">Perakende Zinciri Ağ Denetimi</h3>
                                 <div class="project__tags">
@@ -1874,7 +1986,13 @@
                             </div>
                         </div>
                         <div class="project__card animate-flip-in-y">
-                            <div class="project__image"><i class='bx bx-chip' style="font-size: 3rem;"></i></div>
+                            <div class="project__image">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
                             <div class="project__content">
                                 <h3 class="project__title">Teknoloji KOBİ'si Güvenlik Çözümü</h3>
                                 <div class="project__tags">
@@ -1969,7 +2087,13 @@
                              data-category="Endüstriyel Otomasyon" 
                              data-description="Areltech ile planlanan iş birliği, endüstriyel otomasyon sistemleri ve sensör teknolojileri üzerine odaklanmaktadır. Bu ortaklık, fabrika ve üretim tesislerinde kullanılan endüstriyel ağların güvenliğini artırmayı hedeflemektedir."
                              data-details='["OT hatlarında sensör telemetrisi güvenli aktarım","VLAN segmentasyonu ve zafiyet taraması entegrasyonu","Pilot PoC ile 7 günlük izleme"]'>
-                            <div class="partner__logo"><i class='bx bx-factory'></i></div>
+                            <div class="partner__logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </div>
                             <h3 class="partner__name">Areltech</h3>
                             <div class="partner__category">Endüstriyel Otomasyon</div>
                             <p class="partner__description">Endüstriyel otomasyon ve sensör sistemleri üzerine planlanan iş birliği.</p>
@@ -1980,7 +2104,15 @@
                              data-category="Ağ Güvenliği Yazılımları" 
                              data-description="DataNet Global ile planlanan iş birliği, kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyonu kapsamaktadır. Bu ortaklık, müşterilerimize daha kapsamlı ağ güvenliği çözümleri sunmamızı sağlayacaktır."
                              data-details='["Syslog + NetFlow toplanması","Anomali tespiti için kural setleri","Dashboard ve alarm eşikleri"]'>
-                            <div class="partner__logo"><i class='bx bx-network-chart'></i></div>
+                            <div class="partner__logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                                    <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                                    <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                                    <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="8.5"></line>
+                                </svg>
+                            </div>
                             <h3 class="partner__name">DataNet Global</h3>
                             <div class="partner__category">Ağ Güvenliği Yazılımları</div>
                             <p class="partner__description">Kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyon.</p>
@@ -1991,7 +2123,13 @@
                              data-category="OT/ICS Laboratuvarı" 
                              data-description="CyberOne ile planlanan iş birliği, OT/ICS sistemleri için ortak test laboratuvarı ve güvenlik çözümleri geliştirme projesini kapsamaktadır. Bu ortaklık, endüstriyel sistemlerin siber güvenliğini artırmayı hedeflemektedir."
                              data-details='["Modbus/TCP ve MQTT senaryoları","Endüstriyel firewall kural sertifikasyonu","Raporlama ve hardening checklist"]'>
-                            <div class="partner__logo"><i class='bx bx-chip'></i></div>
+                            <div class="partner__logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <path d="M12 8v4"></path>
+                                    <path d="M12 16h.01"></path>
+                                </svg>
+                            </div>
                             <h3 class="partner__name">CyberOne</h3>
                             <div class="partner__category">OT/ICS Laboratuvarı</div>
                             <p class="partner__description">OT/ICS sistemleri için ortak test laboratuvarı projesi.</p>
@@ -2575,42 +2713,107 @@
         }
         
         window.addEventListener('load', addFloatingAnimation);
-    </script>
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#58A6FF' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#58A6FF',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1, // Yavaşlatılmış hız
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out'
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'grab' },
-                    onclick: { enable: true, mode: 'push' }
-                }
+        // Add parallax effect to project images
+        function addParallaxEffect() {
+            const projectImages = document.querySelectorAll('.project__image');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                projectImages.forEach(image => {
+                    const rate = scrolled * -0.2;
+                    image.style.transform = `translateY(${rate}px)`;
+                });
+            });
+        }
+        
+        // Check if user is on a mobile device
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        // Only add parallax effect on desktop
+        if (!isMobileDevice()) {
+            window.addEventListener('load', addParallaxEffect);
+        }
+
+        // Enhanced hover effects for desktop
+        function enhanceHoverEffects() {
+            if (!isMobileDevice()) {
+                // Add glow effect on hover for service cards
+                const serviceCards = document.querySelectorAll('.service__card');
+                serviceCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.boxShadow = '0 0 25px rgba(88, 166, 255, 0.3)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                    });
+                });
+                
+                // Add glow effect on hover for partner cards
+                const partnerCards = document.querySelectorAll('.partner__card');
+                partnerCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.boxShadow = '0 0 25px rgba(88, 166, 255, 0.2), 0 0 0 0.5px rgba(88, 166, 255, 0.5)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                    });
+                });
             }
-        });
+        }
+        
+        window.addEventListener('load', enhanceHoverEffects);
+
+        // Initialize particles.js
+        function initParticles() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#58a6ff" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#58a6ff",
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" },
+                            resize: true
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        }
+
+        // Load particles.js and initialize
+        const particlesScript = document.createElement('script');
+        particlesScript.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+        particlesScript.onload = initParticles;
+        document.head.appendChild(particlesScript);
     </script>
 </body>
 </html>
