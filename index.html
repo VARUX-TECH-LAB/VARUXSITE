@@ -2718,58 +2718,25 @@
 
         // Add parallax effect to project images
         function addParallaxEffect() {
-            const projectImages = document.querySelectorAll('.project__image');
+            const projectCards = document.querySelectorAll('.project__card');
             
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
+            projectCards.forEach(card => {
+                const image = card.querySelector('.project__image');
                 
-                projectImages.forEach(image => {
-                    const rate = scrolled * -0.2;
-                    image.style.transform = `translateY(${rate}px)`;
+                card.addEventListener('mousemove', (e) => {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    
+                    image.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    image.style.transform = 'translate(0, 0)';
                 });
             });
         }
         
-        // Check if user is on a mobile device
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-        
-        // Only add parallax effect on desktop
-        if (!isMobileDevice()) {
-            window.addEventListener('load', addParallaxEffect);
-        }
-
-        // Enhanced hover effects for desktop
-        function enhanceHoverEffects() {
-            if (!isMobileDevice()) {
-                // Add glow effect on hover for service cards
-                const serviceCards = document.querySelectorAll('.service__card');
-                serviceCards.forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        card.style.boxShadow = '0 0 25px rgba(88, 166, 255, 0.3)';
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-                    });
-                });
-                
-                // Add glow effect on hover for partner cards
-                const partnerCards = document.querySelectorAll('.partner__card');
-                partnerCards.forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        card.style.boxShadow = '0 0 25px rgba(88, 166, 255, 0.2), 0 0 0 0.5px rgba(88, 166, 255, 0.5)';
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-                    });
-                });
-            }
-        }
-        
-        window.addEventListener('load', enhanceHoverEffects);
+        window.addEventListener('load', addParallaxEffect);
 
         // Initialize particles.js
         function initParticles() {
@@ -2785,7 +2752,7 @@
                             enable: true,
                             distance: 150,
                             color: "#58a6ff",
-                            opacity: 0.2,
+                            opacity: 0.4,
                             width: 1
                         },
                         move: {
@@ -2811,11 +2778,15 @@
             }
         }
 
-        // Load particles.js and initialize
-        const particlesScript = document.createElement('script');
-        particlesScript.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
-        particlesScript.onload = initParticles;
-        document.head.appendChild(particlesScript);
+        // Load particles.js dynamically
+        function loadParticlesJS() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+            script.onload = initParticles;
+            document.head.appendChild(script);
+        }
+
+        window.addEventListener('load', loadParticlesJS);
     </script>
 </body>
 </html>
