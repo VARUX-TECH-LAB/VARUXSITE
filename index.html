@@ -854,104 +854,6 @@
         .blog__link { color: var(--secondary-color); font-weight: var(--font-semi-bold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
         .blog__link:hover { gap: 0.75rem; }
 
-        /* GELİŞMİŞ PRICING - Android/Tablet Uyumlu */
-        .pricing__grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 2rem; 
-            margin-top: 3rem; 
-        }
-        .pricing__card { 
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 12px; 
-            padding: 2rem; 
-            text-align: center; 
-            transition: transform 0.3s ease, border-color 0.3s ease; 
-            position: relative; 
-            overflow: hidden; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease;
-        }
-        .pricing__card.visible { opacity: 1; transform: translateY(0); }
-        .pricing__card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
-        .pricing__card.popular { border-color: var(--secondary-color); transform: scale(1.05); }
-        .pricing__card.popular::before { 
-            content: 'POPÜLER'; 
-            position: absolute; 
-            top: 20px; 
-            right: -30px; 
-            background: var(--secondary-color); 
-            color: var(--bg-color); 
-            padding: 5px 30px; 
-            transform: rotate(45deg); 
-            font-size: 0.75rem; 
-            font-weight: bold; 
-        }
-        .pricing__title { font-size: var(--h3-font-size); color: var(--title-color); margin-bottom: 1rem; }
-        .pricing__price { font-size: 1.75rem; color: var(--secondary-color); margin-bottom: 1rem; font-weight: 700; }
-        .pricing__description { color: var(--text-color-light); margin-bottom: 1.5rem; font-size: var(--small-font-size); }
-        .pricing__features { margin-bottom: 2rem; text-align: left; }
-        .pricing__feature { margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-        .pricing__feature i { color: var(--secondary-color); }
-        .pricing__delivery { font-size: var(--small-font-size); color: var(--text-color-light); margin-bottom: 1.5rem; }
-        
-        /* GELİŞMİŞ AERO CAM STİLİ BUTON - PRICING - Android/Tablet Uyumlu */
-        .pricing__button { 
-            display: inline-block; 
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--title-color); 
-            padding: 0.8rem 2rem; 
-            border-radius: 10px; 
-            font-weight: var(--font-semi-bold); 
-            transition: all 0.3s ease; 
-            margin: 0 auto; 
-            display: table; 
-            cursor: pointer; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            position: relative;
-            overflow: hidden;
-            touch-action: manipulation;
-        }
-        .pricing__button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transition: left 0.7s;
-        }
-        .pricing__button:hover::before {
-            left: 100%;
-        }
-        .pricing__button:hover { 
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            transform: scale(1.03); 
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        .pricing__button i {
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-        .pricing__button:hover i {
-            transform: translateX(2px);
-        }
-
         /* GELİŞMİŞ PROJECTS - Android/Tablet Uyumlu - OPTİMİZE EDİLDİ */
         .projects__grid { 
             display: grid; 
@@ -1672,8 +1574,6 @@
           .show-menu { right: 0; }
           .hero__buttons { flex-direction: column; align-items: center; }
           .hero__button { width: 100%; max-width: 250px; }
-          .pricing__grid { grid-template-columns: 1fr; }
-          .pricing__card.popular { transform: none; }
           .footer__container { grid-template-columns: 1fr; gap: 2rem; }
           .footer__col { max-width: 100%; }
           .hero { min-height: 100vh; }
@@ -1706,7 +1606,7 @@
         /* Android/Tablet için ek iyileştirmeler */
         @media (hover: none) and (pointer: coarse) {
             /* Mobil cihazlar için hover efektlerini kaldır */
-            .nav__cta:hover, .hero__button:hover, .pricing__button:hover, .contact__button:hover, .modal__submit:hover {
+            .nav__cta:hover, .hero__button:hover, .contact__button:hover, .modal__submit:hover {
                 transform: none;
             }
             
@@ -1889,54 +1789,6 @@
                                 <p class="blog__excerpt">Kurum içi tehditleri tespit etmek ve yönetmek için kanıtlanmış stratejiler ve araçlar. Çalışan farkındalığını artırma yöntemleri...</p>
                                 <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PRICING SECTION -->
-            <section class="section" id="pricing">
-                <div class="container">
-                    <h2 class="section__title animate-slide-top">Fiyatlandırma</h2>
-                    <div class="pricing__grid">
-                        <div class="pricing__card animate-slide-left">
-                            <h3 class="pricing__title">VARUX BASE</h3>
-                            <div class="pricing__price">3.500₺ – 5.000₺</div>
-                            <p class="pricing__description">Küçük işletmeler için temel ağ güvenliği paketi</p>
-                            <div class="pricing__features">
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Ağ taraması ve zafiyet tespiti</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Şifre politikası ve erişim denetimi kontrolü</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>1 günlük uzaktan veya yerinde inceleme</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Standart PDF raporu teslimi</span></div>
-                            </div>
-                            <p class="pricing__delivery">Teslim süresi: 1 iş günü</p>
-                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
-                        </div>
-                        <div class="pricing__card popular animate-bounce-in">
-                            <h3 class="pricing__title">VARUX SHIELD</h3>
-                            <div class="pricing__price">8.000₺ – 12.000₺</div>
-                            <p class="pricing__description">KOBİ'ler için kapsamlı ağ ve iç tehdit analizi</p>
-                            <div class="pricing__features">
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Tam ağ denetimi + iç tehdit analizi</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Firewall, VLAN ve kullanıcı erişim testi</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Sosyal mühendislik farkındalık mini testi</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>7 günlük izleme + PoC (Pilot Test) raporu</span></div>
-                            </div>
-                            <p class="pricing__delivery">Teslim süresi: 3–5 iş günü</p>
-                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
-                        </div>
-                        <div class="pricing__card animate-slide-right">
-                            <h3 class="pricing__title">VARUX FORTRESS</h3>
-                            <div class="pricing__price">20.000₺ – 25.000₺</div>
-                            <p class="pricing__description">Fabrikalar ve üretim tesisleri için ileri düzey koruma</p>
-                            <div class="pricing__features">
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>OT (endüstriyel ağ) güvenliği denetimi</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>IDS/IPS yapılandırma önerileri</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>Günlük log analizi ve yönetim raporu</span></div>
-                                <div class="pricing__feature"><i class='bx bx-check'></i> <span>30 günlük gözlem ve uzaktan müdahale desteği</span></div>
-                            </div>
-                            <p class="pricing__delivery">Teslim süresi: 15–30 iş günü</p>
-                            <button class="pricing__button"><i class='bx bx-envelope'></i> Teklif Al</button>
                         </div>
                     </div>
                 </div>
@@ -2509,7 +2361,6 @@
         const statCards = document.querySelectorAll('.stat__card');
         const serviceCards = document.querySelectorAll('.service__card');
         const blogCards = document.querySelectorAll('.blog__card');
-        const pricingCards = document.querySelectorAll('.pricing__card');
         const projectCards = document.querySelectorAll('.project__card');
         const faqItemsAnimated = document.querySelectorAll('.faq__item');
         const testimonialCards = document.querySelectorAll('.testimonial__card');
@@ -2535,7 +2386,6 @@
         statCards.forEach(card => sectionObserver.observe(card));
         serviceCards.forEach(card => sectionObserver.observe(card));
         blogCards.forEach(card => sectionObserver.observe(card));
-        pricingCards.forEach(card => sectionObserver.observe(card));
         projectCards.forEach(card => sectionObserver.observe(card));
         faqItemsAnimated.forEach(item => sectionObserver.observe(item));
         testimonialCards.forEach(card => sectionObserver.observe(card));
@@ -2685,13 +2535,13 @@
             
             if (!hasBackdropFilter) {
                 // Backdrop filter desteklenmiyorsa fallback
-                document.querySelectorAll('.nav__cta, .hero__button, .pricing__button, .contact__button, .modal__submit, .back-to-top, .footer__social-link, .testimonial__nav-btn').forEach(el => {
+                document.querySelectorAll('.nav__cta, .hero__button, .contact__button, .modal__submit, .back-to-top, .footer__social-link, .testimonial__nav-btn').forEach(el => {
                     el.style.backdropFilter = 'none';
                     el.style.webkitBackdropFilter = 'none';
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
                 });
                 
-                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .pricing__card, .project__card, .blog__card, .faq__item, .testimonial__card, .partner__card, .modal__content, .partner-modal__content, .toast').forEach(el => {
+                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .project__card, .blog__card, .faq__item, .testimonial__card, .partner__card, .modal__content, .partner-modal__content, .toast').forEach(el => {
                     el.style.backdropFilter = 'none';
                     el.style.webkitBackdropFilter = 'none';
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
