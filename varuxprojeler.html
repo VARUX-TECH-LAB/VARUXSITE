@@ -459,7 +459,7 @@
                 
                 <div class="projects-hero__stats">
                     <div class="projects-hero__stat">
-                        <span class="projects-hero__stat-number">5</span>
+                        <span class="projects-hero__stat-number">7</span>
                         <span class="projects-hero__stat-label">Öncü Proje</span>
                     </div>
                     <div class="projects-hero__stat">
@@ -493,7 +493,7 @@
                 
                 <!-- PROJECT COUNTER -->
                 <div class="projects-counter">
-                    <span id="project-count">5</span> proje listeleniyor
+                    <span id="project-count">7</span> proje listeleniyor
                 </div>
                 
                 <!-- PROJECT SORTING -->
@@ -514,10 +514,68 @@
                     <button class="filter-button" data-filter="malware-analysis">Malware Analysis</button>
                     <button class="filter-button" data-filter="phishing">Phishing Detection</button>
                     <button class="filter-button" data-filter="network">Network Security</button>
+                    <button class="filter-button" data-filter="industrial-security">Industrial Security</button>
+                    <button class="filter-button" data-filter="automation">Automation</button>
                 </div>
                 
                 <div class="projects__grid" id="projects-grid">
-                    <!-- Project 1 -->
+                    <!-- Project 1 - SS3 -->
+                    <div class="project__card" data-category="threat-intel,osint,automation,industrial-security" data-date="2024-10-01" data-duration="20">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="SS3 — Advanced Threat Intelligence Framework" loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">SS3</h3>
+                            <p class="project__description">Kurumsal hedefler üzerinde çok katmanlı açık kaynak istihbaratı, ağ keşfi, varlık analizi ve saldırı yüzeyi haritalaması gerçekleştiren modüler bir güvenlik çerçevesidir.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Ekim 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 20 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Python, Scrapy, NetworkX, SHA3, Blockchain</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">OSINT</span>
+                                <span class="project__tag">Threat Intelligence</span>
+                                <span class="project__tag">Reconnaissance</span>
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Automation</span>
+                                <span class="project__tag">Red Team Prep</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--glass" data-project="6" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="6-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 - OT Discovery -->
+                    <div class="project__card" data-category="network,industrial-security,automation" data-date="2024-09-15" data-duration="18">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="OT Discovery — Industrial Network Security" loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">OT DISCOVERY</h3>
+                            <p class="project__description">Endüstriyel ağlar için pasif ve aktif keşif motorlarını birleştiren bir OT/ICS gözlem sistemidir. Üretim tesislerindeki PLC, HMI, robotik hatlar ve endüstriyel switch'ler hakkında topoloji ve zafiyet görünürlüğü sağlar.</p>
+                            <div class="project__details">
+                                <div class="project__detail"><i class='bx bx-calendar'></i> Tamamlanma: Eylül 2024</div>
+                                <div class="project__detail"><i class='bx bx-time'></i> Süre: 18 Hafta</div>
+                                <div class="project__detail"><i class='bx bx-chip'></i> Teknoloji: Python, Scapy, Modbus-TK, PROFINET, OPC-UA</div>
+                            </div>
+                            <div class="project__tags">
+                                <span class="project__tag">Industrial Security</span>
+                                <span class="project__tag">OT/ICS</span>
+                                <span class="project__tag">Network Discovery</span>
+                                <span class="project__tag">SCADA</span>
+                                <span class="project__tag">Factory Security</span>
+                                <span class="project__tag">Protocol Analysis</span>
+                            </div>
+                            <div class="project__actions">
+                                <button class="project__button project__button--glass" data-project="7" aria-label="Proje detaylarını görüntüle">Detaylı Bilgi</button>
+                                <button class="project__button project__button--secondary" data-project="7-case" aria-label="Vaka çalışmasını görüntüle">Vaka Çalışması</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 - VARUX INTEL -->
                     <div class="project__card" data-category="threat-intel,osint" data-date="2024-07-01" data-duration="12">
                         <div class="project__image">
                             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX INTEL — Threat Intelligence Harvester" loading="lazy">
@@ -542,7 +600,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
+                    <!-- Project 4 - VARUX TRAPNET -->
                     <div class="project__card" data-category="honeypot,network" data-date="2024-06-01" data-duration="10">
                         <div class="project__image">
                             <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="VARUX TRAPNET — Autonomous Honeypot Network" loading="lazy">
@@ -567,7 +625,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
+                    <!-- Project 5 - VARUX ANALYZER -->
                     <div class="project__card" data-category="malware-analysis" data-date="2024-05-01" data-duration="14">
                         <div class="project__image">
                             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX ANALYZER — Malware Behavioral Sandbox" loading="lazy">
@@ -592,7 +650,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 4 -->
+                    <!-- Project 6 - VARUX PHISHGUARD -->
                     <div class="project__card" data-category="phishing,email-security" data-date="2024-04-01" data-duration="8">
                         <div class="project__image">
                             <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="VARUX PHISHGUARD — Email Phishing Detector" loading="lazy">
@@ -617,7 +675,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 5 -->
+                    <!-- Project 7 - VARUX DEEPFLOW -->
                     <div class="project__card" data-category="network,traffic-analysis" data-date="2024-03-01" data-duration="16">
                         <div class="project__image">
                             <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="VARUX DEEPFLOW — Network Traffic Fingerprinter" loading="lazy">
@@ -651,32 +709,32 @@
                 <h2 class="section__title">Müşteri Yorumları</h2>
                 <div class="testimonials__grid">
                     <div class="testimonial__card">
+                        <p class="testimonial__quote">"SS3 çerçevesi ile kurumsal saldırı yüzeyimizi %95 oranında haritaladık. Beş bağımsız bileşenin entegre çalışması, OSINT süreçlerimizi tamamen otomatikleştirdi ve red team hazırlık süremizi %70 kısalttı."</p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">EK</div>
+                            <div class="testimonial__info">
+                                <h4>Emre Kaya</h4>
+                                <p>Siber Güvenlik Müdürü, Finans Holding</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial__card">
+                        <p class="testimonial__quote">"OT Discovery sistemi, üretim tesisimizdeki endüstriyel ağ topolojisini tamamen ortaya çıkardı. 3 farklı OT protokol zafiyeti ve 12 güvenlik açığı tespit ederek kritik üretim hatlarımızı koruma altına aldık."</p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">SY</div>
+                            <div class="testimonial__info">
+                                <h4>Selin Yıldız</h4>
+                                <p>OT Güvenlik Uzmanı, Enerji Şirketi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial__card">
                         <p class="testimonial__quote">"VARUX INTEL sistemi sayesinde dark web'deki veri ihlali risklerimizi %90 oranında azalttık. Erken uyarı sistemi ile olası tehditleri aylar öncesinden tespit edebiliyoruz."</p>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">MA</div>
                             <div class="testimonial__info">
                                 <h4>Mehmet Aktaş</h4>
                                 <p>BT Güvenlik Müdürü, Özel Banka A.Ş.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial__card">
-                        <p class="testimonial__quote">"VARUX TRAPNET honeypot ağımız, gerçek saldırganların taktiklerini anlamamızda devrim yarattı. Saldırı vektörlerini gerçek zamanlı olarak görüntüleyebiliyoruz."</p>
-                        <div class="testimonial__author">
-                            <div class="testimonial__avatar">AS</div>
-                            <div class="testimonial__info">
-                                <h4>Ayşe Sarı</h4>
-                                <p>CTO, E-Ticaret Şirketi B</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial__card">
-                        <p class="testimonial__quote">"VARUX ANALYZER ile zararlı yazılım analiz süreçlerimiz %70 hızlandı. Otomatik raporlama özelliği sayesinde analistlerimiz daha verimli çalışıyor."</p>
-                        <div class="testimonial__author">
-                            <div class="testimonial__avatar">CY</div>
-                            <div class="testimonial__info">
-                                <h4>Can Yılmaz</h4>
-                                <p>Siber Güvenlik Direktörü, Holding C</p>
                             </div>
                         </div>
                     </div>
@@ -1109,6 +1167,74 @@
                     ]
                 },
                 tags: ["Ağ Güvenliği", "Traffic Analysis", "Derin Öğrenme", "TensorFlow", "Wireshark"]
+            },
+            6: {
+                title: "SS3 — Advanced Threat Intelligence Framework",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Ekim 2024" },
+                    { label: "Proje Süresi", value: "20 Hafta" },
+                    { label: "Teknoloji", value: "Python, Scrapy, NetworkX, SHA3, Blockchain" },
+                    { label: "Kategori", value: "OSINT, Threat Intelligence, Automation" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "SS3, kurumsal hedefler üzerinde çok katmanlı açık kaynak istihbaratı, ağ keşfi, varlık analizi ve saldırı yüzeyi haritalaması gerçekleştiren modüler bir güvenlik çerçevesidir. Beş bağımsız Python bileşeni birbirine entegre şekilde çalışır: Sentinel Node (internet gözlem), Archivum Core (veri arşivleme), Council Mesh (network graph analizi), Ledger (SHA3 tabanlı doğrulama) ve Grand Node (merkezi analiz)."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Beş bağımsız bileşenin senkronizasyonu ve veri akışı",
+                        "Büyük ölçekli OSINT veri setlerinin işlenmesi",
+                        "SHA3 tabanlı değişmez kayıt sisteminin optimizasyonu",
+                        "Network graph analizinde performans optimizasyonu"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "Kurumsal saldırı yüzeyi haritalama süresi %95 azaldı",
+                        "Red team hazırlık süresi %70 kısaldı",
+                        "Otomatik OSINT süreçleri ile insan hatası minimize edildi",
+                        "SHA3 tabanlı doğrulama ile veri bütünlüğü %100 sağlandı",
+                        "Network graph analizi ile ilişkisel tehditler tespit edildi"
+                    ]
+                },
+                tags: ["OSINT", "Threat Intelligence", "Reconnaissance", "Python", "Automation", "Red Team Prep", "NetworkX", "SHA3"]
+            },
+            7: {
+                title: "OT DISCOVERY — Industrial Network Security",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                details: [
+                    { label: "Tamamlanma Tarihi", value: "Eylül 2024" },
+                    { label: "Proje Süresi", value: "18 Hafta" },
+                    { label: "Teknoloji", value: "Python, Scapy, Modbus-TK, PROFINET, OPC-UA" },
+                    { label: "Kategori", value: "Industrial Security, OT/ICS, Network Discovery" }
+                ],
+                description: {
+                    title: "Proje Açıklaması",
+                    content: "OT Discovery, endüstriyel ağlar için pasif ve aktif keşif motorlarını birleştiren bir OT/ICS gözlem sistemidir. Üretim tesislerindeki PLC, HMI, robotik hatlar, sensörler ve endüstriyel switch'ler hakkında topoloji ve zafiyet görünürlüğü sağlar. Modbus, S7, PROFINET, EtherNet/IP, OPC-UA, BACnet gibi endüstriyel protokolleri tanıyarak ağ haritalama, zayıflık analizi ve gerçek zamanlı izleme özellikleri sunar."
+                },
+                challenges: {
+                    title: "Karşılaşılan Zorluklar",
+                    items: [
+                        "Endüstriyel protokollerin reverse engineering'i",
+                        "Üretim ortamlarında pasif keşif teknikleri geliştirme",
+                        "OT ağlarında anormal davranış tespiti",
+                        "Gerçek zamanlı izleme performans optimizasyonu"
+                    ]
+                },
+                results: {
+                    title: "Elde Edilen Sonuçlar",
+                    items: [
+                        "Endüstriyel ağ topolojisi %100 görünür hale getirildi",
+                        "3 farklı OT protokol zafiyeti ve 12 güvenlik açığı tespit edildi",
+                        "Gerçek zamanlı izleme ile anomali tespit süresi 5 saniyeye düşürüldü",
+                        "Üretim operasyonları durdurulmadan risk analizi yapılabildi",
+                        "Fabrika güvenlik postürü %85 iyileştirildi"
+                    ]
+                },
+                tags: ["Industrial Security", "OT/ICS", "Network Discovery", "SCADA", "Factory Security", "Protocol Analysis", "Python", "Scapy"]
             }
         };
 
