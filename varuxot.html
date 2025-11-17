@@ -992,6 +992,168 @@
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
 
+        /* DEMO MODAL STYLES */
+        .demo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .demo-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .demo-modal__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 20, 0.85);
+            z-index: 1;
+        }
+
+        .demo-modal__content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+            margin: 1rem;
+        }
+
+        .demo-modal.active .demo-modal__content {
+            transform: translateY(0);
+        }
+
+        .demo-modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .demo-modal__title {
+            font-size: 1.75rem;
+            color: var(--secondary-color);
+            font-family: var(--title-font);
+            letter-spacing: 1px;
+        }
+
+        .demo-modal__close {
+            background: none;
+            color: var(--text-color-light);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-modal__close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        .demo-modal__form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .demo-modal__form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .demo-modal__label {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        .demo-modal__input, .demo-modal__textarea {
+            background: var(--bg-color-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--text-color);
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            transition: all 0.3s ease;
+        }
+
+        .demo-modal__input:focus, .demo-modal__textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
+        }
+
+        .demo-modal__textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .demo-modal__submit {
+            background: var(--secondary-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            font-weight: var(--font-semi-bold);
+            font-size: var(--normal-font-size);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 0 15px rgba(0, 242, 161, 0.4);
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+
+        .demo-modal__submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 242, 161, 0.6);
+        }
+
+        .demo-modal__submit i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .demo-modal__submit:hover i {
+            transform: translateX(3px);
+        }
+
         /* GELİŞMİŞ RESPONSIVE - Ana siteyle uyumlu */
         @media screen and (max-width: 768px) {
           .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100%; background: rgba(22, 27, 34, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem 2rem 0; transition: right .4s ease-in-out; z-index: var(--z-fixed); }
@@ -1013,6 +1175,10 @@
           }
           .architecture-steps:before {
               display: none;
+          }
+          .demo-modal__content {
+              padding: 2rem 1.5rem;
+              margin: 1rem;
           }
         }
 
@@ -1059,6 +1225,44 @@
     <!-- PARTICLE BACKGROUND - TÜM SAYFA -->
     <div id="particles-js"></div>
 
+    <!-- DEMO MODAL -->
+    <div class="demo-modal" id="demo-modal">
+        <div class="demo-modal__overlay" id="demo-modal-overlay"></div>
+        <div class="demo-modal__content">
+            <div class="demo-modal__header">
+                <h2 class="demo-modal__title">Demo Talep Et</h2>
+                <button class="demo-modal__close" id="demo-modal-close">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <form class="demo-modal__form" action="https://formspree.io/f/xwpadnpe" method="POST">
+                <div class="demo-modal__form-group">
+                    <label for="name" class="demo-modal__label">Ad Soyad</label>
+                    <input type="text" id="name" name="name" class="demo-modal__input" required>
+                </div>
+                <div class="demo-modal__form-group">
+                    <label for="company" class="demo-modal__label">Şirket</label>
+                    <input type="text" id="company" name="company" class="demo-modal__input" required>
+                </div>
+                <div class="demo-modal__form-group">
+                    <label for="email" class="demo-modal__label">E-posta</label>
+                    <input type="email" id="email" name="email" class="demo-modal__input" required>
+                </div>
+                <div class="demo-modal__form-group">
+                    <label for="phone" class="demo-modal__label">Telefon</label>
+                    <input type="tel" id="phone" name="phone" class="demo-modal__input" required>
+                </div>
+                <div class="demo-modal__form-group">
+                    <label for="message" class="demo-modal__label">Mesaj</label>
+                    <textarea id="message" name="message" class="demo-modal__textarea" placeholder="Demo talebinizle ilgili ek bilgiler..."></textarea>
+                </div>
+                <button type="submit" class="demo-modal__submit">
+                    <i class='bx bx-send'></i> Demo Talebini Gönder
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- BACK TO TOP BUTTON -->
     <div class="back-to-top" id="back-to-top">
         <i class='bx bx-chevron-up'></i>
@@ -1094,7 +1298,7 @@
                     <h1 class="hero__title">VARUX OT Discovery Framework</h1>
                     <p class="hero__subtitle">Endüstriyel ağlarda pasif, güvenli, derin görünürlük</p>
                     <div class="hero__buttons">
-                        <a href="https://formspree.io/f/xwpadnpe" class="hero__button animate-slide-left"><i class='bx bx-desktop'></i> Demo Talep Et</a>
+                        <button class="hero__button animate-slide-left" id="hero-demo-button"><i class='bx bx-desktop'></i> Demo Talep Et</button>
                         <a href="#features" class="hero__button animate-slide-right"><i class='bx bx-chevron-right'></i> Özellikleri Keşfet</a>
                     </div>
                 </div>
@@ -1232,7 +1436,7 @@
                     <div class="cta">
                         <h2 class="cta__title">Endüstriyel güvenliği bir üst seviyeye taşıyın</h2>
                         <p class="cta__description">VARUX OT Discovery Framework ile endüstriyel ağlarınızda tam görünürlük sağlayın ve olası tehditleri proaktif olarak tespit edin.</p>
-                        <a href="https://formspree.io/f/xwpadnpe" class="hero__button"><i class='bx bx-desktop'></i> Kurumsal Demo Talep Et</a>
+                        <button class="hero__button" id="cta-demo-button"><i class='bx bx-desktop'></i> Kurumsal Demo Talep Et</button>
                     </div>
                 </div>
             </section>
@@ -1528,12 +1732,83 @@
 
         window.addEventListener('load', loadParticlesJS);
 
-        // Navbar ve Hero'daki Demo Talep Et butonları için modal açma
+        // Demo Modal Functionality
+        const demoModal = document.getElementById('demo-modal');
+        const demoModalOverlay = document.getElementById('demo-modal-overlay');
+        const demoModalClose = document.getElementById('demo-modal-close');
         const navCtaButton = document.getElementById('nav-cta-button');
-        
+        const heroDemoButton = document.getElementById('hero-demo-button');
+        const ctaDemoButton = document.getElementById('cta-demo-button');
+
+        // Function to open modal
+        function openDemoModal() {
+            demoModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        // Function to close modal
+        function closeDemoModal() {
+            demoModal.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+
+        // Event listeners for opening modal
         if (navCtaButton) {
-            navCtaButton.addEventListener('click', () => {
-                window.open('https://formspree.io/f/xwpadnpe', '_blank');
+            navCtaButton.addEventListener('click', openDemoModal);
+        }
+        if (heroDemoButton) {
+            heroDemoButton.addEventListener('click', openDemoModal);
+        }
+        if (ctaDemoButton) {
+            ctaDemoButton.addEventListener('click', openDemoModal);
+        }
+
+        // Event listeners for closing modal
+        if (demoModalOverlay) {
+            demoModalOverlay.addEventListener('click', closeDemoModal);
+        }
+        if (demoModalClose) {
+            demoModalClose.addEventListener('click', closeDemoModal);
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && demoModal.classList.contains('active')) {
+                closeDemoModal();
+            }
+        });
+
+        // Form submission handling
+        const demoForm = document.querySelector('.demo-modal__form');
+        if (demoForm) {
+            demoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Send form data using fetch
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        alert('Demo talebiniz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
+                        closeDemoModal();
+                        this.reset(); // Reset form
+                    } else {
+                        alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                });
             });
         }
     </script>
