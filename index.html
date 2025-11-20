@@ -245,91 +245,12 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: 100%;
-            cursor: none; /* Varsayılan imleci gizle */
         }
         h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
         button { cursor: pointer; border: none; outline: none; font-family: inherit; }
         img { max-width: 100%; height: auto; display: block; }
-
-        /* ÖZEL İMLEÇ TASARIMI - KUSURSUZ VE BÜYÜLEYİCİ */
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(88, 166, 255, 0.7);
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease, background 0.3s ease, width 0.3s ease, height 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 242, 161, 0.4);
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease, border-color 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            width: 30px;
-            height: 30px;
-            background: rgba(0, 242, 161, 0.8);
-            box-shadow: 0 0 20px rgba(0, 242, 161, 0.7);
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        .cursor-follower.hover {
-            width: 60px;
-            height: 60px;
-            border-color: rgba(88, 166, 255, 0.7);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .cursor.click {
-            transform: translate(-50%, -50%) scale(0.8);
-            background: rgba(255, 65, 108, 0.8);
-            box-shadow: 0 0 25px rgba(255, 65, 108, 0.7);
-        }
-
-        .cursor-follower.click {
-            transform: translate(-50%, -50%) scale(1.3);
-            border-color: rgba(255, 65, 108, 0.7);
-        }
-
-        .cursor.hidden {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-        }
-
-        .cursor-follower.hidden {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-        }
-
-        /* Touch cihazlar için imleç gizleme */
-        @media (hover: none) and (pointer: coarse) {
-            .cursor, .cursor-follower {
-                display: none;
-            }
-            
-            body {
-                cursor: auto;
-            }
-        }
 
         /* SEO İyileştirmeleri için Görünmez Başlıklar */
         .sr-only {
@@ -344,34 +265,29 @@
             border: 0;
         }
 
-        /* YENİ GELİŞMİŞ ANİMASYONLAR */
+        /* OPTİMİZE EDİLMİŞ ANİMASYONLAR */
         @keyframes float {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
+          50% { transform: translateY(-10px); }
         }
 
         @keyframes pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); }
-          70% { box-shadow: 0 0 0 20px rgba(88, 166, 255, 0); }
-        }
-
-        @keyframes shimmer {
-          0% { background-position: -1000px 0; }
-          100% { background-position: 1000px 0; }
+          0%, 100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.3); }
+          70% { box-shadow: 0 0 0 15px rgba(88, 166, 255, 0); }
         }
 
         @keyframes slideInFromLeft {
-          0% { transform: translateX(-100px); opacity: 0; }
+          0% { transform: translateX(-50px); opacity: 0; }
           100% { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes slideInFromRight {
-          0% { transform: translateX(100px); opacity: 0; }
+          0% { transform: translateX(50px); opacity: 0; }
           100% { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes slideInFromBottom {
-          0% { transform: translateY(100px); opacity: 0; }
+          0% { transform: translateY(50px); opacity: 0; }
           100% { transform: translateY(0); opacity: 1; }
         }
 
@@ -387,153 +303,59 @@
 
         @keyframes glow {
           0%, 100% { text-shadow: 0 0 5px var(--primary-color); }
-          50% { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+          50% { text-shadow: 0 0 15px var(--primary-color); }
         }
 
-        @keyframes wave {
-          0% { transform: rotate(0deg); }
-          10% { transform: rotate(14deg); }
-          20% { transform: rotate(-8deg); }
-          30% { transform: rotate(14deg); }
-          40% { transform: rotate(-4deg); }
-          50% { transform: rotate(10deg); }
-          60% { transform: rotate(0deg); }
-          100% { transform: rotate(0deg); }
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 
+          40% { transform: translateX(-50%) translateY(-8px); } 
+          60% { transform: translateX(-50%) translateY(-4px); } 
         }
 
-        @keyframes morph {
-          0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-          50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
         }
 
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        @keyframes textShine {
-          0% { background-position: 0% 50%; }
-          100% { background-position: 100% 50%; }
-        }
-
-        @keyframes slideInFromTop {
-          0% { transform: translateY(-100px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes bounceIn {
-          0% { transform: scale(0.3); opacity: 0; }
-          50% { transform: scale(1.05); }
-          70% { transform: scale(0.9); }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-          0% { transform: scale(0.5); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes flipInX {
-          0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
-          40% { transform: perspective(400px) rotateX(-10deg); }
-          70% { transform: perspective(400px) rotateX(10deg); }
-          100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
-        }
-
-        @keyframes flipInY {
-          0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
-          40% { transform: perspective(400px) rotateY(-10deg); }
-          70% { transform: perspective(400px) rotateY(10deg); }
-          100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
-        }
-
-        @keyframes rubberBand {
-          0% { transform: scale(1); }
-          30% { transform: scaleX(1.25) scaleY(0.75); }
-          40% { transform: scaleX(0.75) scaleY(1.25); }
-          60% { transform: scaleX(1.15) scaleY(0.85); }
-          100% { transform: scale(1); }
-        }
-
-        /* Animasyon sınıfları */
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-pulse { animation: pulse 3s infinite; }
-        .animate-shimmer { 
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-          background-size: 1000px 100%;
-          animation: shimmer 3s infinite linear;
-        }
-        .animate-slide-left { animation: slideInFromLeft 1s ease-out forwards; }
-        .animate-slide-right { animation: slideInFromRight 1s ease-out forwards; }
-        .animate-slide-bottom { animation: slideInFromBottom 1s ease-out forwards; }
-        .animate-slide-top { animation: slideInFromTop 1s ease-out forwards; }
-        .animate-fade-in { animation: fadeIn 1.2s ease-out forwards; }
-        .animate-rotate3d { animation: rotate3d 3s linear infinite; }
-        .animate-glow { animation: glow 2.5s ease-in-out infinite alternate; }
-        .animate-wave { animation: wave 2.5s infinite; transform-origin: 70% 70%; }
-        .animate-morph { animation: morph 8s ease-in-out infinite; }
-        .animate-gradient { 
-          background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), #ee7752, #e73c7e);
-          background-size: 400% 400%;
-          animation: gradient 15s ease infinite;
-        }
-        .animate-text-shine {
-          background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-          background-size: 200% auto;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: textShine 3s linear infinite;
-        }
-        .animate-bounce-in { animation: bounceIn 1s ease-out forwards; }
-        .animate-zoom-in { animation: zoomIn 0.8s ease-out forwards; }
-        .animate-flip-in-x { animation: flipInX 1s ease-out forwards; }
-        .animate-flip-in-y { animation: flipInY 1s ease-out forwards; }
-        .animate-rubber-band { animation: rubberBand 1s ease-out forwards; }
+        /* Optimize edilmiş animasyon sınıfları */
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
+        .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
+        .animate-slide-bottom { animation: slideInFromBottom 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-rotate3d { animation: rotate3d 2s linear infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite alternate; }
 
         /* GELİŞMİŞ KAYDIRMA ÇUBUĞU TASARIMI - Android/Tablet Uyumlu */
         ::-webkit-scrollbar {
-            width: 14px;
+            width: 12px;
         }
 
         ::-webkit-scrollbar-track {
             background: rgba(10, 15, 20, 0.8);
-            border-radius: 10px;
+            border-radius: 8px;
             margin: 5px;
             box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
 
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-            border-radius: 10px;
+            border-radius: 8px;
             border: 2px solid rgba(10, 15, 20, 0.9);
-            box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
             transition: all 0.3s ease;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
-            box-shadow: 0 0 15px rgba(0, 242, 161, 0.5);
-            transform: scale(1.05);
-        }
-
-        ::-webkit-scrollbar-thumb:active {
-            background: linear-gradient(180deg, #00c987, #3d8de3);
+            box-shadow: 0 0 12px rgba(0, 242, 161, 0.5);
         }
 
         /* Firefox için kaydırma çubuğu */
         html {
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--bg-color);
-        }
-
-        /* İnce ayar için Firefox özellikleri */
-        @supports (scrollbar-color: auto) {
-            * {
-                scrollbar-color: var(--primary-color) var(--bg-color);
-                scrollbar-width: thin;
-            }
         }
 
         /* Particles Background - Tüm Sayfa - Android/Tablet Uyumlu */
@@ -608,20 +430,8 @@
             border: 5px solid rgba(88, 166, 255, 0.2); 
             border-top: 5px solid var(--primary-color); 
             border-radius: 50%; 
-            animation: spin 1s linear infinite, pulse 2s infinite;
+            animation: spin 1s linear infinite;
             position: relative;
-        }
-        .loader__spinner::after {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 5px solid transparent;
-            border-top: 5px solid var(--secondary-color);
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite reverse;
         }
         .loader__text {
             font-family: var(--title-font);
@@ -633,10 +443,6 @@
             background-clip: text;
             color: transparent;
             animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes spin { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
         }
 
         /* GELİŞMİŞ HEADER - Android/Tablet Uyumlu */
@@ -881,7 +687,6 @@
             transition: opacity 0.8s ease 1s;
         }
         .hero__scroll.visible { opacity: 1; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
         /* GELİŞMİŞ ABOUT - Android/Tablet Uyumlu */
         .about__content { 
@@ -922,7 +727,7 @@
             transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease;
         }
         .stat__card.visible { opacity: 1; transform: translateY(0); }
-        .stat__card:hover { transform: translateY(-5px) scale(1.05); border-color: var(--primary-color); }
+        .stat__card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
         .stat__number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .stat__label { font-size: var(--small-font-size); color: var(--text-color-light); }
         .counter { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
@@ -934,7 +739,7 @@
             gap: 1.5rem; 
         }
         .service__card { 
-            background: rgba(255, 255, 255, 0.08); /* %8 arttırıldı */
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -957,7 +762,7 @@
         .service__card:hover { 
             transform: translateY(-10px); 
             border-color: var(--primary-color); 
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3); /* Neon glow efekti */
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
         }
         .service__icon { 
             font-size: 3rem; 
@@ -970,15 +775,14 @@
             justify-content: center;
         }
         .service__card:hover .service__icon { 
-            transform: translateY(-5px) scale(1.1); 
+            transform: translateY(-5px); 
             color: var(--secondary-color); 
-            text-shadow: 0 0 15px var(--secondary-color); /* Neon glow efekti */
         }
         .service__title { 
             font-size: var(--h3-font-size); 
             margin-bottom: 0.75rem; 
             color: var(--title-color); 
-            font-weight: 600; /* Font kalınlığı eşitlendi */
+            font-weight: 600;
             min-height: 60px;
             display: flex;
             align-items: center;
@@ -1212,20 +1016,6 @@
         .project__card:hover .project__image img {
             transform: scale(1.05);
         }
-        .project__image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(0, 242, 161, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .project__card:hover .project__image::after {
-            opacity: 1;
-        }
         .project__content { 
             padding: 1.5rem; 
             display: flex;
@@ -1372,7 +1162,7 @@
             border-radius: 12px; 
             padding: 2rem; 
             text-align: center; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease, rotate 0.3s ease; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -1383,17 +1173,17 @@
             overflow: hidden;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease, rotate 0.3s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
         }
         .partner__card.visible { opacity: 1; transform: translateY(0); }
         .partner__card:hover { 
-            transform: translateY(-5px) rotate(2deg); /* Hafif döndürme efekti */
+            transform: translateY(-5px); 
             border-color: var(--primary-color); 
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2), 0 0 0 0.5px rgba(88, 166, 255, 0.5); /* Neon parlama efekti */
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
         }
         .partner__logo { 
-            width: 100px; /* Normalize edildi */
-            height: 100px; /* Normalize edildi */
+            width: 100px;
+            height: 100px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1443,7 +1233,7 @@
             top: 1rem;
             right: 1rem;
             background: var(--secondary-color);
-            color: #0A0F14; /* Kontrast artırıldı */
+            color: #0A0F14;
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
             font-size: 0.7rem;
@@ -1938,15 +1728,6 @@
             .nav__link, .faq__question, button, a {
                 -webkit-tap-highlight-color: transparent;
             }
-            
-            /* Mobil cihazlarda imleç gizle */
-            .cursor, .cursor-follower {
-                display: none;
-            }
-            
-            body {
-                cursor: auto;
-            }
         }
 
         /* iOS Safari için özel stiller */
@@ -1959,10 +1740,6 @@
     </style>
 </head>
 <body>
-    <!-- ÖZEL İMLEÇ ELEMANLARI -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <!-- PARTICLE BACKGROUND - TÜM SAYFA -->
     <div id="particles-js"></div>
 
@@ -2051,33 +1828,33 @@
                 <div class="container">
                     <h2 class="section__title animate-slide-top">Hizmetlerimiz</h2>
                     <div class="services__grid">
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-network-chart service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-network-chart service__icon'></i>
                             <h3 class="service__title">Ağ Güvenlik Denetimi</h3>
                             <p class="service__description">Kurumsal ağ altyapınızın kapsamlı güvenlik değerlendirmesi. Zafiyet taraması, yapılandırma denetimi ve güvenlik açığı analizi.</p>
                         </div>
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-user-check service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-user-check service__icon'></i>
                             <h3 class="service__title">İç Tehdit Denetimi</h3>
                             <p class="service__description">Çalışan kaynaklı siber riskleri tespit edin. Kullanıcı davranış analizi, erişim denetimi ve izinsiz aktivite tespiti.</p>
                         </div>
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-shield-alt service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-shield-alt service__icon'></i>
                             <h3 class="service__title">Güvenlik Duvarı Yönetimi</h3>
                             <p class="service__description">Güvenlik duvarı kurulumu, yapılandırması ve sürekli optimizasyonu. Kuralların denetimi ve güncel tehditlere karşı koruma.</p>
                         </div>
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-trending-up service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-trending-up service__icon'></i>
                             <h3 class="service__title">Ağ İzleme ve Analiz</h3>
                             <p class="service__description">7/24 ağ trafiği izleme, anormal aktivite tespiti ve gerçek zamanlı tehdit analizi. Proaktif güvenlik yaklaşımı.</p>
                         </div>
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-lock-alt service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-lock-alt service__icon'></i>
                             <h3 class="service__title">KOBİ Ağ Güvenliği</h3>
                             <p class="service__description">Küçük ve orta ölçekli işletmeler için özelleştirilmiş ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.</p>
                         </div>
-                        <div class="service__card animate-flip-in-x">
-                            <i class='bx bx-factory service__icon animate-float'></i>
+                        <div class="service__card animate-fade-in">
+                            <i class='bx bx-factory service__icon'></i>
                             <h3 class="service__title">Fabrika Ağ Güvenliği</h3>
                             <p class="service__description">Endüstriyel ağlar ve OT/ICS sistemleri için özel güvenlik çözümleri. Üretim sürekliliğini koruyan güvenlik önlemleri.</p>
                         </div>
@@ -2091,7 +1868,7 @@
                     <h2 class="section__title animate-slide-top">Bizden Hizmet Alın</h2>
                     <p class="contact__text">İşletmenizin ihtiyaçlarına özel hazırlanmış siber güvenlik paketlerimizle güvende kalın. Profesyonel ekibimizle birlikte çalışarak ağ güvenliğinizi en üst seviyeye taşıyın.</p>
                     <div class="packages__grid">
-                        <div class="package__card animate-flip-in-y">
+                        <div class="package__card animate-fade-in">
                             <div class="package__header">
                                 <img src="images/pexels-cookiecutter-17489150.jpg" alt="KOBİ Güvenlik Paketi" class="package__image">
                                 <h3 class="package__title">KOBİ Güvenlik Paketi</h3>
@@ -2114,7 +1891,7 @@
                             </div>
                             <div class="package__badge">Popüler</div>
                         </div>
-                        <div class="package__card animate-flip-in-y">
+                        <div class="package__card animate-fade-in">
                             <div class="package__header">
                                 <img src="images/pexels-cookiecutter-17489160.jpg" alt="Kurumsal Güvenlik Paketi" class="package__image">
                                 <h3 class="package__title">Kurumsal Güvenlik Paketi</h3>
@@ -2136,7 +1913,7 @@
                                 <a href="varuxpaketler.html" class="package__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="package__card animate-flip-in-y">
+                        <div class="package__card animate-fade-in">
                             <div class="package__header">
                                 <img src="images/pexels-sejio42-6466141.jpg" alt="Endüstriyel Güvenlik Paketi" class="package__image">
                                 <h3 class="package__title">Endüstriyel Güvenlik Paketi</h3>
@@ -2168,7 +1945,7 @@
                 <div class="container">
                     <h2 class="section__title animate-slide-top">Blog</h2>
                     <div class="blog__grid">
-                        <div class="blog__card animate-zoom-in">
+                        <div class="blog__card animate-fade-in">
                             <div class="blog__image">
                                 <div class="blog__date">15 Eki 2024</div>
                                 <img src="images/pexels-pixabay-207580.jpg" alt="KOBİ'ler için Siber Güvenlik Stratejileri">
@@ -2179,7 +1956,7 @@
                                 <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="blog__card animate-zoom-in">
+                        <div class="blog__card animate-fade-in">
                             <div class="blog__image">
                                 <div class="blog__date">10 Eki 2024</div>
                                 <img src="images/pexels-tima-miroshnichenko-5380642.jpg" alt="Endüstriyel Ağ Güvenliği: OT/ICS Tehditleri">
@@ -2190,7 +1967,7 @@
                                 <a href="varuxblog.html" class="blog__link">Devamını Oku <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="blog__card animate-zoom-in">
+                        <div class="blog__card animate-fade-in">
                             <div class="blog__image">
                                 <div class="blog__date">5 Eki 2024</div>
                                 <img src="images/pexels-googledeepmind-25630341.jpg" alt="İç Tehdit Yönetimi: En İyi Uygulamalar">
@@ -2210,10 +1987,9 @@
                 <div class="container">
                     <h2 class="section__title animate-slide-top">Ürünlerimiz</h2>
                     <div class="projects__grid">
-                        <div class="project__card animate-flip-in-y">
+                        <div class="project__card animate-fade-in">
                             <div class="project__image">
                               <img src="images/pexels-rahulp9800-1933900.jpg" alt="Otomotiv Fabrikası Ağ Güvenliği">
-
                             </div>
                             <div class="project__content">
                                 <h3 class="project__title">Otomotiv Fabrikası Ağ Güvenliği</h3>
@@ -2225,7 +2001,7 @@
                                 <a href="varuxürünler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="project__card animate-flip-in-y">
+                        <div class="project__card animate-fade-in">
                             <div class="project__image">
                                 <img src="images/pexels-googledeepmind-17483874.jpg" alt="Perakende Zinciri Ağ Denetimi">
                             </div>
@@ -2239,7 +2015,7 @@
                                 <a href="varuxürünler.html" class="project__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="project__card animate-flip-in-y">
+                        <div class="project__card animate-fade-in">
                             <div class="project__image">
                                 <img src="images/pexels-googledeepmind-18069696.jpg" alt="Teknoloji KOBİ'si Güvenlik Çözümü">
                             </div>
@@ -2332,7 +2108,7 @@
                 <div class="container">
                     <h2 class="section__title animate-slide-top">İş Ortaklarımız & Gelecek İş Birlikleri</h2>
                     <div class="partners__grid">
-                        <div class="partner__card animate-rubber-band" 
+                        <div class="partner__card animate-fade-in" 
                              data-name="Areltech" 
                              data-category="Endüstriyel Otomasyon" 
                              data-description="Areltech ile planlanan iş birliği, endüstriyel otomasyon sistemleri ve sensör teknolojileri üzerine odaklanmaktadır. Bu ortaklık, fabrika ve üretim tesislerinde kullanılan endüstriyel ağların güvenliğini artırmayı hedeflemektedir."
@@ -2347,11 +2123,8 @@
                             <h3 class="partner__name">Areltech</h3>
                             <div class="partner__category">Endüstriyel Otomasyon</div>
                             <p class="partner__description">Endüstriyel otomasyon ve sensör sistemleri üzerine planlanan iş birliği.</p>
-                            <div class="partner__badge">
-                                
-                            </div>
                         </div>
-                        <div class="partner__card animate-rubber-band" 
+                        <div class="partner__card animate-fade-in" 
                              data-name="DataNet Global" 
                              data-category="Ağ Güvenliği Yazılımları" 
                              data-description="DataNet Global ile planlanan iş birliği, kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyonu kapsamaktadır. Bu ortaklık, müşterilerimize daha kapsamlı ağ güvenliği çözümleri sunmamızı sağlayacaktır."
@@ -2368,9 +2141,8 @@
                             <h3 class="partner__name">DataNet Global</h3>
                             <div class="partner__category">Ağ Güvenliği Yazılımları</div>
                             <p class="partner__description">Kurumsal ağ güvenliği izleme ve korelasyon yazılımları için entegrasyon.</p>
-                            <div class="partner__badge"></div>
                         </div>
-                        <div class="partner__card animate-rubber-band" 
+                        <div class="partner__card animate-fade-in" 
                              data-name="CyberOne" 
                              data-category="OT/ICS Laboratuvarı" 
                              data-description="CyberOne ile planlanan iş birliği, OT/ICS sistemleri için ortak test laboratuvarı ve güvenlik çözümleri geliştirme projesini kapsamaktadır. Bu ortaklık, endüstriyel sistemlerin siber güvenliğini artırmayı hedeflemektedir."
@@ -2385,11 +2157,7 @@
                             <h3 class="partner__name">CyberOne</h3>
                             <div class="partner__category">OT/ICS Laboratuvarı</div>
                             <p class="partner__description">OT/ICS sistemleri için ortak test laboratuvarı projesi.</p>
-                            <div class="partner__badge"></div>
                         </div>
-                    </div>
-                    <div class="partners__note">
-                      
                     </div>
                 </div>
             </section>
@@ -2399,7 +2167,7 @@
                 <div class="container">
                     <h2 class="section__title animate-slide-top">İletişime Geçin</h2>
                     <p class="contact__text">KOBİ veya fabrika ağ güvenliği ihtiyaçlarınız için bize ulaşın. Ücretsiz danışmanlık ve ağ güvenliği değerlendirmesi sunuyoruz.</p>
-                    <button class="contact__button animate-bounce-in" id="open-modal-btn"><i class='bx bx-envelope'></i> Form Doldur</button>
+                    <button class="contact__button animate-fade-in" id="open-modal-btn"><i class='bx bx-envelope'></i> Form Doldur</button>
                 </div>
             </section>
         </main>
@@ -2503,48 +2271,6 @@
     </div> <!-- End of content-layer -->
 
     <script>
-        // ÖZEL İMLEÇ İŞLEVLERİ - KUSURSUZ VE BÜYÜLEYİCİ
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-        
-        // İmleç pozisyonunu güncelle
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            // Follower için gecikmeli hareket efekti
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 50);
-        });
-        
-        // Hover efektleri
-        const hoverElements = document.querySelectorAll('a, button, .nav__link, .hero__button, .nav__cta, .contact__button, .modal__submit, .testimonial__nav-btn, .service__card, .project__card, .blog__card, .package__card, .partner__card, .faq__question');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                cursorFollower.classList.add('hover');
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                cursorFollower.classList.remove('hover');
-            });
-        });
-        
-        // Tıklama efekti
-        document.addEventListener('mousedown', () => {
-            cursor.classList.add('click');
-            cursorFollower.classList.add('click');
-        });
-        
-        document.addEventListener('mouseup', () => {
-            cursor.classList.remove('click');
-            cursorFollower.classList.remove('click');
-        });
-        
         // Loader
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
@@ -2841,19 +2567,6 @@
         const partnerModal = document.getElementById('partner-modal');
         const closePartnerModalBtn = document.getElementById('close-partner-modal-btn');
         const partnerCardElements = document.querySelectorAll('.partner__card');
-        
-        // Partner note animation
-        const partnerNote = document.querySelector('.partners__note p');
-        if (partnerNote) {
-            partnerNote.addEventListener('mouseenter', () => {
-                partnerNote.style.color = 'var(--secondary-color)';
-                partnerNote.style.transition = 'color 0.3s ease';
-            });
-            
-            partnerNote.addEventListener('mouseleave', () => {
-                partnerNote.style.color = 'var(--text-color-light)';
-            });
-        }
 
         // Focus trap for modal
         function trapFocus(element) {
@@ -2994,48 +2707,6 @@
         }
         
         window.addEventListener('load', checkBackdropFilterSupport);
-
-        // Add floating animation to some elements
-        function addFloatingAnimation() {
-            const serviceIcons = document.querySelectorAll('.service__icon');
-            serviceIcons.forEach(icon => {
-                icon.classList.add('animate-float');
-            });
-            
-            const packageImages = document.querySelectorAll('.package__image');
-            packageImages.forEach(image => {
-                image.classList.add('animate-float');
-            });
-            
-            const partnerLogos = document.querySelectorAll('.partner__logo');
-            partnerLogos.forEach(logo => {
-                logo.classList.add('animate-float');
-            });
-        }
-        
-        window.addEventListener('load', addFloatingAnimation);
-
-        // Add parallax effect to project images
-        function addParallaxEffect() {
-            const projectCards = document.querySelectorAll('.project__card');
-            
-            projectCards.forEach(card => {
-                const image = card.querySelector('.project__image img');
-                
-                card.addEventListener('mousemove', (e) => {
-                    const x = e.clientX / window.innerWidth;
-                    const y = e.clientY / window.innerHeight;
-                    
-                    image.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    image.style.transform = 'translate(0, 0)';
-                });
-            });
-        }
-        
-        window.addEventListener('load', addParallaxEffect);
 
         // Initialize particles.js
         function initParticles() {
