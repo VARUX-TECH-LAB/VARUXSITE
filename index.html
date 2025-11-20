@@ -992,13 +992,13 @@
             flex-grow: 1;
         }
 
-        /* YENİ EKLENDİ: GELİŞMİŞ EĞİTİMLER SECTION - Android/Tablet Uyumlu */
-        .trainings__grid { 
+        /* YENİ EKLENDİ: BİZDEN HİZMET ALIN SECTION - Android/Tablet Uyumlu */
+        .packages__grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 1.5rem; 
         }
-        .training__card { 
+        .package__card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1015,32 +1015,32 @@
             height: 100%;
             position: relative;
         }
-        .training__card.visible { opacity: 1; transform: translateY(0); }
-        .training__card:hover { 
+        .package__card.visible { opacity: 1; transform: translateY(0); }
+        .package__card:hover { 
             transform: translateY(-10px); 
             border-color: var(--primary-color); 
             box-shadow: 0 0 25px rgba(88, 166, 255, 0.2); 
         }
-        .training__header { 
+        .package__header { 
             padding: 1.5rem; 
             background: rgba(88, 166, 255, 0.1); 
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .training__image {
+        .package__image {
             width: 100%;
             height: 180px;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 1rem;
         }
-        .training__title { 
+        .package__title { 
             font-size: var(--h3-font-size); 
             margin-bottom: 0.75rem; 
             color: var(--title-color); 
             font-weight: 600;
         }
-        .training__level { 
+        .package__level { 
             display: inline-block;
             background: rgba(0, 242, 161, 0.1);
             color: var(--secondary-color);
@@ -1049,49 +1049,49 @@
             font-size: 0.8rem;
             font-weight: var(--font-semi-bold);
         }
-        .training__content { 
+        .package__content { 
             padding: 1.5rem; 
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
-        .training__description { 
+        .package__description { 
             font-size: var(--small-font-size); 
             color: var(--text-color-light); 
             line-height: 1.6; 
             margin-bottom: 1rem; 
             flex-grow: 1;
         }
-        .training__details { 
+        .package__details { 
             display: flex; 
             flex-wrap: wrap; 
             gap: 0.5rem; 
             margin-bottom: 1rem; 
         }
-        .training__detail { 
+        .package__detail { 
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 0.8rem;
             color: var(--text-color-light);
         }
-        .training__detail i {
+        .package__detail i {
             color: var(--primary-color);
         }
-        .training__tags { 
+        .package__tags { 
             display: flex; 
             flex-wrap: wrap; 
             gap: 0.5rem; 
             margin-bottom: 1rem; 
         }
-        .training__tag { 
+        .package__tag { 
             background-color: rgba(88, 166, 255, 0.1); 
             color: var(--primary-color); 
             padding: 0.25rem 0.75rem; 
             border-radius: 20px; 
             font-size: 0.75rem; 
         }
-        .training__link { 
+        .package__link { 
             color: var(--secondary-color); 
             font-weight: var(--font-semi-bold); 
             display: inline-flex; 
@@ -1101,8 +1101,8 @@
             margin-top: auto;
             padding: 0.5rem 0;
         }
-        .training__link:hover { gap: 0.75rem; }
-        .training__badge {
+        .package__link:hover { gap: 0.75rem; }
+        .package__badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
@@ -1909,7 +1909,7 @@
           .container { padding: 0 1rem; }
           .hero__title { font-size: 2rem; }
           .hero__title .cursor { height: 2rem; }
-          .services__grid, .projects__grid, .blog__grid, .trainings__grid { grid-template-columns: 1fr; }
+          .services__grid, .projects__grid, .blog__grid, .packages__grid { grid-template-columns: 1fr; }
           .footer__container { grid-template-columns: 1fr; }
           .modal__content { padding: 1rem; }
           .partner-modal__content { padding: 1rem; }
@@ -1930,7 +1930,7 @@
             }
             
             /* Mobil cihazlar için hover animasyonlarını optimize et */
-            .service__card:hover, .project__card:hover, .stat__card:hover, .blog__card:hover, .partner__card:hover, .training__card:hover {
+            .service__card:hover, .project__card:hover, .stat__card:hover, .blog__card:hover, .partner__card:hover, .package__card:hover {
                 transform: none;
             }
             
@@ -1990,7 +1990,7 @@
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#about" class="nav__link">Hakkımızda</a></li>
                         <li class="nav__item"><a href="#services" class="nav__link">Hizmetler</a></li>
-                        <li class="nav__item"><a href="#trainings" class="nav__link">Eğitimler</a></li>
+                        <li class="nav__item"><a href="#packages" class="nav__link">Paketlerimiz</a></li>
                         <li class="nav__item"><a href="varuxblog.html" class="nav__link">Blog</a></li>
                         <li class="nav__item"><a href="#projects" class="nav__link">Ürünlerimiz</a></li>
                         <li class="nav__item"><a href="#faq" class="nav__link">SSS</a></li>
@@ -2085,76 +2085,79 @@
                 </div>
             </section>
 
-            <!-- YENİ EKLENDİ: EĞİTİMLER SECTION - Android/Tablet Uyumlu -->
-            <section class="section" id="trainings">
+            <!-- YENİ EKLENDİ: BİZDEN HİZMET ALIN SECTION - Android/Tablet Uyumlu -->
+            <section class="section" id="packages">
                 <div class="container">
-                    <h2 class="section__title animate-slide-top">Siber Güvenlik Eğitimleri</h2>
-                    <p class="contact__text">Uzman ekibimiz tarafından hazırlanan kapsamlı siber güvenlik eğitimleri ile ekibinizin bilgi seviyesini artırın.</p>
-                    <div class="trainings__grid">
-                        <div class="training__card animate-flip-in-y">
-                            <div class="training__header">
-                                <img src="images/pexels-cookiecutter-17489150.jpg" alt="Siber Güvenlik Temelleri" class="training__image">
-                                <h3 class="training__title">Siber Güvenlik Temelleri</h3>
-                                <div class="training__level">Başlangıç</div>
+                    <h2 class="section__title animate-slide-top">Bizden Hizmet Alın</h2>
+                    <p class="contact__text">İşletmenizin ihtiyaçlarına özel hazırlanmış siber güvenlik paketlerimizle güvende kalın. Profesyonel ekibimizle birlikte çalışarak ağ güvenliğinizi en üst seviyeye taşıyın.</p>
+                    <div class="packages__grid">
+                        <div class="package__card animate-flip-in-y">
+                            <div class="package__header">
+                                <img src="images/pexels-cookiecutter-17489150.jpg" alt="KOBİ Güvenlik Paketi" class="package__image">
+                                <h3 class="package__title">KOBİ Güvenlik Paketi</h3>
+                                <div class="package__level">Başlangıç</div>
                             </div>
-                            <div class="training__content">
-                                <p class="training__description">Siber güvenlik dünyasına giriş yaparak temel kavramları, tehdit türlerini ve korunma yöntemlerini öğrenin.</p>
-                                <div class="training__details">
-                                    <div class="training__detail"><i class='bx bx-time'></i> 2 Gün</div>
-                                    <div class="training__detail"><i class='bx bx-user'></i> 15-25 Kişi</div>
-                                    <div class="training__detail"><i class='bx bx-laptop'></i> Yüz Yüze / Online</div>
+                            <div class="package__content">
+                                <p class="package__description">Küçük ve orta ölçekli işletmeler için temel ağ güvenliği çözümleri. Bütçe dostu ve etkili koruma.</p>
+                                <div class="package__details">
+                                    <div class="package__detail"><i class='bx bx-check'></i> Ağ Güvenlik Denetimi</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> Temel Güvenlik Duvarı Yönetimi</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> 7/24 Ağ İzleme</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> Acil Durum Desteği</div>
                                 </div>
-                                <div class="training__tags">
-                                    <span class="training__tag">Temel Seviye</span>
-                                    <span class="training__tag">KOBİ</span>
-                                    <span class="training__tag">Farkındalık</span>
+                                <div class="package__tags">
+                                    <span class="package__tag">KOBİ</span>
+                                    <span class="package__tag">Bütçe Dostu</span>
+                                    <span class="package__tag">Temel Güvenlik</span>
                                 </div>
-                                <a href="varuxegitimler.html" class="training__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                                <a href="varuxpaketler.html" class="package__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
-                            <div class="training__badge">Popüler</div>
+                            <div class="package__badge">Popüler</div>
                         </div>
-                        <div class="training__card animate-flip-in-y">
-                            <div class="training__header">
-                                <img src="images/pexels-cookiecutter-17489160.jpg" alt="Ağ Güvenliği ve İç Tehdit Yönetimi" class="training__image">
-                                <h3 class="training__title">Ağ Güvenliği ve İç Tehdit Yönetimi</h3>
-                                <div class="training__level">Orta</div>
+                        <div class="package__card animate-flip-in-y">
+                            <div class="package__header">
+                                <img src="images/pexels-cookiecutter-17489160.jpg" alt="Kurumsal Güvenlik Paketi" class="package__image">
+                                <h3 class="package__title">Kurumsal Güvenlik Paketi</h3>
+                                <div class="package__level">Orta</div>
                             </div>
-                            <div class="training__content">
-                                <p class="training__description">Kurumsal ağ güvenliği ve iç tehdit yönetimi konularında derinlemesine bilgi edinin.</p>
-                                <div class="training__details">
-                                    <div class="training__detail"><i class='bx bx-time'></i> 3 Gün</div>
-                                    <div class="training__detail"><i class='bx bx-user'></i> 10-20 Kişi</div>
-                                    <div class="training__detail"><i class='bx bx-laptop'></i> Yüz Yüze / Online</div>
+                            <div class="package__content">
+                                <p class="package__description">Orta ve büyük ölçekli işletmeler için kapsamlı ağ güvenliği ve iç tehdit yönetimi çözümleri.</p>
+                                <div class="package__details">
+                                    <div class="package__detail"><i class='bx bx-check'></i> Kapsamlı Ağ Denetimi</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> İç Tehdit Analizi</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> Gelişmiş Güvenlik Duvarı</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> 7/24 Proaktif İzleme</div>
                                 </div>
-                                <div class="training__tags">
-                                    <span class="training__tag">Ağ Güvenliği</span>
-                                    <span class="training__tag">İç Tehdit</span>
-                                    <span class="training__tag">Kurumsal</span>
+                                <div class="package__tags">
+                                    <span class="package__tag">Kurumsal</span>
+                                    <span class="package__tag">İç Tehdit</span>
+                                    <span class="package__tag">Kapsamlı</span>
                                 </div>
-                                <a href="varuxegitimler.html" class="training__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                                <a href="varuxpaketler.html" class="package__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
                         </div>
-                        <div class="training__card animate-flip-in-y">
-                            <div class="training__header">
-                                <img src="images/pexels-sejio42-6466141.jpg" alt="Endüstriyel Ağ Güvenliği (OT/ICS)" class="training__image">
-                                <h3 class="training__title">Endüstriyel Ağ Güvenliği (OT/ICS)</h3>
-                                <div class="training__level">İleri</div>
+                        <div class="package__card animate-flip-in-y">
+                            <div class="package__header">
+                                <img src="images/pexels-sejio42-6466141.jpg" alt="Endüstriyel Güvenlik Paketi" class="package__image">
+                                <h3 class="package__title">Endüstriyel Güvenlik Paketi</h3>
+                                <div class="package__level">İleri</div>
                             </div>
-                            <div class="training__content">
-                                <p class="training__description">Endüstriyel kontrol sistemleri ve operasyonel teknoloji ağlarının güvenliği üzerine uzmanlaşın.</p>
-                                <div class="training__details">
-                                    <div class="training__detail"><i class='bx bx-time'></i> 4 Gün</div>
-                                    <div class="training__detail"><i class='bx bx-user'></i> 8-15 Kişi</div>
-                                    <div class="training__detail"><i class='bx bx-laptop'></i> Yüz Yüze</div>
+                            <div class="package__content">
+                                <p class="package__description">Fabrika ve üretim tesisleri için özel endüstriyel ağ güvenliği ve OT/ICS sistem koruması.</p>
+                                <div class="package__details">
+                                    <div class="package__detail"><i class='bx bx-check'></i> OT/ICS Güvenlik Denetimi</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> Endüstriyel Ağ İzleme</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> SCADA Sistem Koruma</div>
+                                    <div class="package__detail"><i class='bx bx-check'></i> 7/24 Özel Destek</div>
                                 </div>
-                                <div class="training__tags">
-                                    <span class="training__tag">OT/ICS</span>
-                                    <span class="training__tag">Endüstriyel</span>
-                                    <span class="training__tag">SCADA</span>
+                                <div class="package__tags">
+                                    <span class="package__tag">Endüstriyel</span>
+                                    <span class="package__tag">OT/ICS</span>
+                                    <span class="package__tag">SCADA</span>
                                 </div>
-                                <a href="varuxegitimler.html" class="training__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
+                                <a href="varuxpaketler.html" class="package__link">Detaylı Bilgi <i class='bx bx-chevron-right'></i></a>
                             </div>
-                            <div class="training__badge">Yeni</div>
+                            <div class="package__badge">Premium</div>
                         </div>
                     </div>
                 </div>
@@ -2418,10 +2421,10 @@
                     <div class="footer__links">
                         <a href="#about" class="footer__link">Hakkımızda</a>
                         <a href="#services" class="footer__link">Hizmetler</a>
-                        <a href="#trainings" class="footer__link">Eğitimler</a>
+                        <a href="#packages" class="footer__link">Paketlerimiz</a>
                         <a href="varuxblog.html" class="footer__link">Blog</a>
                         <a href="#projects" class="footer__link">Projeler</a>
-                        <a href="varuxegitimler.html" class="footer__link">Eğitimler</a>
+                        <a href="varuxpaketler.html" class="footer__link">Hizmet Paketleri</a>
                         <a href="privacy.html" class="footer__link">Yasal</a>
                     </div>
                 </div>
@@ -2517,7 +2520,7 @@
         });
         
         // Hover efektleri
-        const hoverElements = document.querySelectorAll('a, button, .nav__link, .hero__button, .nav__cta, .contact__button, .modal__submit, .testimonial__nav-btn, .service__card, .project__card, .blog__card, .training__card, .partner__card, .faq__question');
+        const hoverElements = document.querySelectorAll('a, button, .nav__link, .hero__button, .nav__cta, .contact__button, .modal__submit, .testimonial__nav-btn, .service__card, .project__card, .blog__card, .package__card, .partner__card, .faq__question');
         
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -2799,7 +2802,7 @@
         const aboutContent = document.querySelector('.about__content');
         const statCards = document.querySelectorAll('.stat__card');
         const serviceCards = document.querySelectorAll('.service__card');
-        const trainingCards = document.querySelectorAll('.training__card');
+        const packageCards = document.querySelectorAll('.package__card');
         const blogCards = document.querySelectorAll('.blog__card');
         const projectCards = document.querySelectorAll('.project__card');
         const faqItemsAnimated = document.querySelectorAll('.faq__item');
@@ -2825,7 +2828,7 @@
         if (aboutContent) sectionObserver.observe(aboutContent);
         statCards.forEach(card => sectionObserver.observe(card));
         serviceCards.forEach(card => sectionObserver.observe(card));
-        trainingCards.forEach(card => sectionObserver.observe(card));
+        packageCards.forEach(card => sectionObserver.observe(card));
         blogCards.forEach(card => sectionObserver.observe(card));
         projectCards.forEach(card => sectionObserver.observe(card));
         faqItemsAnimated.forEach(item => sectionObserver.observe(item));
@@ -2982,7 +2985,7 @@
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
                 });
                 
-                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .training__card, .project__card, .blog__card, .faq__item, .testimonial__card, .partner__card, .modal__content, .partner-modal__content, .toast').forEach(el => {
+                document.querySelectorAll('.header, .nav__menu, .stat__card, .service__card, .package__card, .project__card, .blog__card, .faq__item, .testimonial__card, .partner__card, .modal__content, .partner-modal__content, .toast').forEach(el => {
                     el.style.backdropFilter = 'none';
                     el.style.webkitBackdropFilter = 'none';
                     el.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
@@ -2999,8 +3002,8 @@
                 icon.classList.add('animate-float');
             });
             
-            const trainingImages = document.querySelectorAll('.training__image');
-            trainingImages.forEach(image => {
+            const packageImages = document.querySelectorAll('.package__image');
+            packageImages.forEach(image => {
                 image.classList.add('animate-float');
             });
             
