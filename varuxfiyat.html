@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>VΛRUX - Endüstriyel OT Güvenlik Paketleri</title>
-    <meta name="description" content="VΛRUX: KOBİ ve fabrikalar için özel OT güvenlik paketleri. BASIC, PRO ve ENTERPRISE seviyelerinde endüstriyel ağ güvenliği çözümleri.">
-    <meta name="keywords" content="OT güvenliği, endüstriyel siber güvenlik, ICS güvenliği, SCADA güvenliği, PLC güvenliği, fabrika ağ güvenliği, OT keşif paketi, endüstriyel güvenlik değerlendirmesi">
+    <title>VΛRUX - Endüstriyel OT Güvenlik Paketleri | OT Güvenliği, ICS ve SCADA Güvenlik Çözümleri</title>
+    <meta name="description" content="VΛRUX: KOBİ ve fabrikalar için özel OT güvenlik paketleri. BASIC, PRO ve ENTERPRISE seviyelerinde endüstriyel ağ güvenliği çözümleri. OT keşif, ICS güvenlik ve SCADA koruma hizmetleri.">
+    <meta name="keywords" content="OT güvenliği, endüstriyel siber güvenlik, ICS güvenliği, SCADA güvenliği, PLC güvenliği, fabrika ağ güvenliği, OT keşif paketi, endüstriyel güvenlik değerlendirmesi, siber güvenlik danışmanlığı, NIST 800-82, endüstriyel kontrol sistemleri güvenliği">
     <meta name="author" content="VΛRUX - Selman Vural">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://varuxcyber.com/hizmet-paketleri">
@@ -15,9 +16,11 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://varuxcyber.com/hizmet-paketleri">
-    <meta property="og:title" content="VΛRUX - Endüstriyel OT Güvenlik Paketleri">
-    <meta property="og:description" content="VΛRUX: KOBİ ve fabrikalar için özel OT güvenlik paketleri. BASIC, PRO ve ENTERPRISE seviyelerinde endüstriyel ağ güvenliği çözümleri.">
+    <meta property="og:title" content="VΛRUX - Endüstriyel OT Güvenlik Paketleri | OT, ICS ve SCADA Güvenlik Çözümleri">
+    <meta property="og:description" content="KOBİ ve fabrikalar için özel OT güvenlik paketleri. BASIC, PRO ve ENTERPRISE seviyelerinde endüstriyel ağ güvenliği çözümleri.">
     <meta property="og:image" content="https://varuxcyber.com/images/varux-og-image.png">
+    <meta property="og:site_name" content="VΛRUX">
+    <meta property="og:locale" content="tr_TR">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -28,6 +31,57 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VΛRUX",
+      "url": "https://varuxcyber.com",
+      "logo": "https://varuxcyber.com/images/varux-logo.png",
+      "description": "KOBİ ve fabrikalar için özel ağ güvenliği ve iç tehdit denetimi çözümleri",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bursa",
+        "addressCountry": "TR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+90-544-25",
+        "contactType": "customer service",
+        "email": "varuxinfo@gmail.com",
+        "availableLanguage": "Turkish"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/varux/",
+        "https://github.com/varux-tech-lab"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "BASIC OT Keşif Paketi",
+      "description": "OT ağınızın mevcut durumunu hızlıca görünür hale getiren giriş seviyesi analiz paketi",
+      "brand": {
+        "@type": "Brand",
+        "name": "VΛRUX"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "TRY",
+        "price": "Özel Fiyat",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "VΛRUX"
+        }
+      }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,91 +134,12 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: 100%;
-            cursor: none;
         }
-        h1, h2, h3 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--title-font); color: var(--title-color); font-weight: 400; letter-spacing: 1px; }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
         button { cursor: pointer; border: none; outline: none; font-family: inherit; }
         img { max-width: 100%; height: auto; display: block; }
-
-        /* ÖZEL İMLEÇ TASARIMI */
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(88, 166, 255, 0.7);
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease, background 0.3s ease, width 0.3s ease, height 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 242, 161, 0.4);
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease, border-color 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            width: 30px;
-            height: 30px;
-            background: rgba(0, 242, 161, 0.8);
-            box-shadow: 0 0 20px rgba(0, 242, 161, 0.7);
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        .cursor-follower.hover {
-            width: 60px;
-            height: 60px;
-            border-color: rgba(88, 166, 255, 0.7);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .cursor.click {
-            transform: translate(-50%, -50%) scale(0.8);
-            background: rgba(255, 65, 108, 0.8);
-            box-shadow: 0 0 25px rgba(255, 65, 108, 0.7);
-        }
-
-        .cursor-follower.click {
-            transform: translate(-50%, -50%) scale(1.3);
-            border-color: rgba(255, 65, 108, 0.7);
-        }
-
-        .cursor.hidden {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-        }
-
-        .cursor-follower.hidden {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-        }
-
-        /* Touch cihazlar için imleç gizleme */
-        @media (hover: none) and (pointer: coarse) {
-            .cursor, .cursor-follower {
-                display: none;
-            }
-            
-            body {
-                cursor: auto;
-            }
-        }
 
         /* Animasyonlar */
         @keyframes float {
@@ -1117,23 +1092,10 @@
             .nav__link, button, a {
                 -webkit-tap-highlight-color: transparent;
             }
-            
-            /* Mobil cihazlarda imleç gizle */
-            .cursor, .cursor-follower {
-                display: none;
-            }
-            
-            body {
-                cursor: auto;
-            }
         }
     </style>
 </head>
-<body>
-    <!-- ÖZEL İMLEÇ ELEMANLARI -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
+<body itemscope itemtype="https://schema.org/WebPage">
     <!-- PARTICLE BACKGROUND - TÜM SAYFA -->
     <div id="particles-js"></div>
 
@@ -1234,13 +1196,17 @@
                     
                     <div class="packages__grid">
                         <!-- BASIC PAKET -->
-                        <div class="package__card animate-slide-left">
+                        <div class="package__card animate-slide-left" itemscope itemtype="https://schema.org/Product">
+                            <meta itemprop="brand" content="VΛRUX">
                             <div class="package__badge">BASIC</div>
                             <div class="package__header">
                                 <i class='bx bx-radar package__icon animate-float'></i>
-                                <h3 class="package__title">BASIC OT Keşif Paketi</h3>
-                                <p class="package__subtitle">OT ağınızın mevcut durumunu hızlıca görünür hale getiren giriş seviyesi analiz paketi.</p>
-                                <div class="package__price">Özel Fiyat</div>
+                                <h3 class="package__title" itemprop="name">BASIC OT Keşif Paketi</h3>
+                                <p class="package__subtitle" itemprop="description">OT ağınızın mevcut durumunu hızlıca görünür hale getiren giriş seviyesi analiz paketi.</p>
+                                <div class="package__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <span itemprop="price">Özel Fiyat</span>
+                                    <meta itemprop="priceCurrency" content="TRY">
+                                </div>
                                 <div class="package__price-note">*Fiyat ağ büyüklüğüne göre değişir</div>
                             </div>
                             
@@ -1280,13 +1246,17 @@
                         </div>
                         
                         <!-- PRO PAKET -->
-                        <div class="package__card animate-slide-bottom">
+                        <div class="package__card animate-slide-bottom" itemscope itemtype="https://schema.org/Product">
+                            <meta itemprop="brand" content="VΛRUX">
                             <div class="package__badge">PRO</div>
                             <div class="package__header">
                                 <i class='bx bx-shield-alt package__icon animate-float'></i>
-                                <h3 class="package__title">PRO Endüstriyel Güvenlik</h3>
-                                <p class="package__subtitle">OT ağını derinlemesine analiz eden, riskleri belirleyen ve güvenlik seviyesini ölçen profesyonel paket.</p>
-                                <div class="package__price">Özel Fiyat</div>
+                                <h3 class="package__title" itemprop="name">PRO Endüstriyel Güvenlik</h3>
+                                <p class="package__subtitle" itemprop="description">OT ağını derinlemesine analiz eden, riskleri belirleyen ve güvenlik seviyesini ölçen profesyonel paket.</p>
+                                <div class="package__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <span itemprop="price">Özel Fiyat</span>
+                                    <meta itemprop="priceCurrency" content="TRY">
+                                </div>
                                 <div class="package__price-note">*Fiyat ağ karmaşıklığına göre değişir</div>
                             </div>
                             
@@ -1330,13 +1300,17 @@
                         </div>
                         
                         <!-- ENTERPRISE PAKET -->
-                        <div class="package__card animate-slide-right">
+                        <div class="package__card animate-slide-right" itemscope itemtype="https://schema.org/Product">
+                            <meta itemprop="brand" content="VΛRUX">
                             <div class="package__badge">ENTERPRISE</div>
                             <div class="package__header">
                                 <i class='bx bx-trophy package__icon animate-float'></i>
-                                <h3 class="package__title">ENTERPRISE Kurumsal Paket</h3>
-                                <p class="package__subtitle">Büyük ölçekli üretim tesisleri için kapsamlı, uzun soluklu ve derin analiz sunan premium paket.</p>
-                                <div class="package__price">Özel Fiyat</div>
+                                <h3 class="package__title" itemprop="name">ENTERPRISE Kurumsal Paket</h3>
+                                <p class="package__subtitle" itemprop="description">Büyük ölçekli üretim tesisleri için kapsamlı, uzun soluklu ve derin analiz sunan premium paket.</p>
+                                <div class="package__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <span itemprop="price">Özel Fiyat</span>
+                                    <meta itemprop="priceCurrency" content="TRY">
+                                </div>
                                 <div class="package__price-note">*Fiyat tesis büyüklüğüne göre değişir</div>
                             </div>
                             
@@ -1521,48 +1495,6 @@
     </div> <!-- End of content-layer -->
 
     <script>
-        // ÖZEL İMLEÇ İŞLEVLERİ
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-        
-        // İmleç pozisyonunu güncelle
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            // Follower için gecikmeli hareket efekti
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 50);
-        });
-        
-        // Hover efektleri
-        const hoverElements = document.querySelectorAll('a, button, .nav__link, .package__button, .nav__cta, .form-submit');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                cursorFollower.classList.add('hover');
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                cursorFollower.classList.remove('hover');
-            });
-        });
-        
-        // Tıklama efekti
-        document.addEventListener('mousedown', () => {
-            cursor.classList.add('click');
-            cursorFollower.classList.add('click');
-        });
-        
-        document.addEventListener('mouseup', () => {
-            cursor.classList.remove('click');
-            cursorFollower.classList.remove('click');
-        });
-
         // Header scroll effect
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', function() {
