@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 | VARUX Autonomous AI Security Layer</title>
   <link rel="icon" href="assets/favicon.png">
-  <meta name="description" content="VARUX 404 - Aradığınız sayfa mevcut değil. Autonomous AI Security Layer ana sayfasına dönün.">
+  <meta name="description" content="VARUX 404 - The page you are looking for does not exist. Return to the Autonomous AI Security Layer homepage.">
   <meta name="robots" content="noindex, nofollow">
   <style>
     :root {
@@ -40,7 +40,7 @@
       overflow: hidden;
     }
 
-    /* Hafif grid efekti */
+    /* subtle grid */
     .grid-overlay {
       position: absolute;
       inset: 0;
@@ -72,7 +72,7 @@
       gap: 2rem;
     }
 
-    /* Top mini header */
+    /* top mini header */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -141,7 +141,7 @@
       100% { transform: scale(1.8); opacity: 0; }
     }
 
-    /* Ana panel */
+    /* main panel */
     .panel {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -307,7 +307,7 @@
       color: var(--accent);
     }
 
-    /* Sağ taraf - request info / pseudo log */
+    /* right side - request info / pseudo log */
     .side {
       border-radius: 14px;
       background: radial-gradient(circle at top, rgba(0, 255, 153, 0.2), transparent 55%),
@@ -477,32 +477,32 @@
           </div>
         </div>
 
-        <h1 class="title">Aradığınız uç nokta bu ağda yok.</h1>
+        <h1 class="title">The endpoint you're looking for doesn't exist in this network.</h1>
         <p class="message">
-          İstek yaptığınız sayfa artık <strong>aktif değil</strong> veya rota
-          yapılandırmasından kaldırılmış durumda. VARUX çekirdeği çalışmaya devam ediyor,
-          sadece bu URL için bir eşleşme yok.
+          The page you requested is either <strong>no longer active</strong> or removed from the current
+          routing configuration. The VARUX core is still online, there is just no matching route
+          for this URL.
         </p>
 
         <div class="actions">
           <a href="/" class="btn btn-primary">
             <span class="icon">⟲</span>
-            <span>Ana sayfaya dön</span>
+            <span>Back to homepage</span>
           </a>
           <a href="/docs" class="btn btn-secondary">
             <span class="icon">▣</span>
-            <span>Dokümantasyon</span>
+            <span>Open docs</span>
           </a>
           <a href="/contact" class="btn btn-secondary">
             <span class="icon">✉</span>
-            <span>Destek ile iletişime geç</span>
+            <span>Contact support</span>
           </a>
         </div>
       </section>
 
-      <aside class="side" aria-label="İstek ayrıntıları">
+      <aside class="side" aria-label="Request details">
         <div class="side-header">
-          <span class="side-title">Request Telemetry Snapshot</span>
+          <span class="side-title">Request telemetry snapshot</span>
           <div class="side-status">
             <span>status</span>
             <span class="code">404 / not_found</span>
@@ -556,7 +556,7 @@
           pathEl.textContent = window.location.pathname || "/";
         }
         if (methodEl) {
-          // Sunucu tarafında gerçek HTTP methodu bilinmez, bu yüzden varsayılan gösterim:
+          // Client-side fallback method label:
           methodEl.textContent = "GET";
         }
         if (traceEl) {
@@ -564,7 +564,7 @@
           traceEl.textContent = "vx-404-" + rand;
         }
       } catch (e) {
-        // Sessiz geç
+        // silent fail
       }
     })();
   </script>
