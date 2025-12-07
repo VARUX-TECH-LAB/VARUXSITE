@@ -3,7 +3,7 @@
 <head>
   <!-- SEO Meta Etiketleri -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <meta name="description" content="VARUX - Autonomous AI Security Layer for AI agents. Secure your AI systems with behavior monitoring, memory integrity, and permission enforcement for enterprise-grade protection.">
   <meta name="keywords" content="AI security, autonomous agents, memory guard, permission enforcement, behavior monitoring, vector security, AI agent protection, enterprise AI security, AI safety, machine learning security">
   <meta name="author" content="VARUX Technologies">
@@ -91,6 +91,9 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
     }
 
     html, body {
@@ -99,14 +102,17 @@
       padding: 0;
       overflow-x: hidden;
       min-height: 100vh;
+      -webkit-overflow-scrolling: touch;
     }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       line-height: 1.65;
       background: var(--bg-gradient) fixed;
+      touch-action: manipulation;
     }
 
     a {
@@ -128,6 +134,7 @@
       backdrop-filter: blur(20px) saturate(180%);
       background: rgba(5, 8, 12, 0.95);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
 
     .nav-inner {
@@ -1125,6 +1132,7 @@
       padding: 3rem 1.5rem 3.5rem;
       margin-top: auto;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .footer-inner {
@@ -1264,6 +1272,7 @@
       }
     }
 
+    /* Mobil uyumluluk için ek stiller */
     @media (max-width: 960px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -1329,6 +1338,73 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
+      }
+    }
+
+    /* Ekstra küçük ekranlar için (iPhone SE gibi) */
+    @media (max-width: 375px) {
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+      }
+      
+      .hero-body {
+        font-size: 0.95rem;
+      }
+      
+      .hero-panel {
+        padding: 1.4rem 1.2rem 1.2rem;
+      }
+      
+      .hero-grid {
+        gap: 0.6rem;
+        padding: 0.8rem;
+      }
+      
+      .btn-primary, .btn-outline {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+      }
+      
+      .card, .solution-card, .docs-card {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+
+    /* Tablet optimizasyonları */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero {
+        gap: 3rem;
+      }
+      
+      .hero-panel {
+        max-width: 500px;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    /* Samsung ve Xiaomi cihazlar için özel düzeltmeler */
+    @media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px) {
+      .brand-mark {
+        box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
+      }
+      
+      .hero-panel {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    /* iOS Safari için özel stiller */
+    @supports (-webkit-touch-callout: none) {
+      .hero-panel {
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+      }
+      
+      .btn-primary, .btn-outline, .docs-pill {
+        -webkit-appearance: none;
       }
     }
   </style>
@@ -1692,28 +1768,28 @@
         </div>
 
         <div class="docs-grid">
-          <!-- Aktif API Docs Kartı -->
+          <!-- API Docs Kartı -->
           <article class="docs-card">
             <div class="docs-label">API Documentation</div>
-            <h3 class="docs-title"><a href="https://docs.varux.ai/api" target="_blank" rel="noopener noreferrer">API Docs</a></h3>
+            <h3 class="docs-title"><a href="api.html" target="_blank" rel="noopener noreferrer">API Docs</a></h3>
             <p>Official REST and control‑plane API documentation with examples and integration guides.</p>
-            <a href="https://docs.varux.ai/api" target="_blank" rel="noopener noreferrer" class="docs-pill">View API Docs →</a>
+            <a href="api.html" target="_blank" rel="noopener noreferrer" class="docs-pill">View API Docs →</a>
           </article>
 
-          <!-- Aktif SDK Kartı -->
+          <!-- SDK Kartı -->
           <article class="docs-card">
             <div class="docs-label">Developer SDK</div>
-            <h3 class="docs-title"><a href="https://docs.varux.ai/sdk" target="_blank" rel="noopener noreferrer">SDK</a></h3>
+            <h3 class="docs-title"><a href="sdk.html" target="_blank" rel="noopener noreferrer">SDK</a></h3>
             <p>Lightweight SDK for integrating VARUX into agent orchestrators with multiple language support.</p>
-            <a href="https://docs.varux.ai/sdk" target="_blank" rel="noopener noreferrer" class="docs-pill">Get SDK →</a>
+            <a href="sdk.html" target="_blank" rel="noopener noreferrer" class="docs-pill">Get SDK →</a>
           </article>
 
-          <!-- Aktif Integration Guide Kartı -->
+          <!-- Integration Guide Kartı -->
           <article class="docs-card">
             <div class="docs-label">Integration Guide</div>
-            <h3 class="docs-title"><a href="https://docs.varux.ai/integration" target="_blank" rel="noopener noreferrer">Integration Guide</a></h3>
+            <h3 class="docs-title"><a href="IntegrationGuide.html" target="_blank" rel="noopener noreferrer">Integration Guide</a></h3>
             <p>Guides for enterprise agents, automation systems, and LLM platforms with best practices.</p>
-            <a href="https://docs.varux.ai/integration" target="_blank" rel="noopener noreferrer" class="docs-pill">Read Guide →</a>
+            <a href="IntegrationGuide.html" target="_blank" rel="noopener noreferrer" class="docs-pill">Read Guide →</a>
           </article>
         </div>
       </section>
@@ -1781,8 +1857,8 @@
         <div class="footer-links">
           <a href="#top"><span class="dot"></span>Back to top</a>
           <a href="https://twitter.com/varuxai" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="https://linkedin.com/company/varux" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/varux" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/company/varux/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <div class="footer-tagline">
           AI Security · Behavior · Memory · Permissions
@@ -1828,6 +1904,17 @@
           }
         });
       });
+      
+      // Mobil dokunma etkileşimleri için
+      document.querySelectorAll('.card, .solution-card, .docs-card, .btn-primary, .btn-outline').forEach(element => {
+        element.addEventListener('touchstart', function() {
+          this.style.opacity = '0.9';
+        }, {passive: true});
+        
+        element.addEventListener('touchend', function() {
+          this.style.opacity = '';
+        }, {passive: true});
+      });
     });
     
     // SEO için: Sayfa yüklendiğinde performans metriklerini güncelle
@@ -1837,6 +1924,12 @@
         const perfData = window.performance.timing;
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
         console.log('VARUX: Page loaded in', pageLoadTime, 'ms');
+      }
+      
+      // Mobil cihaz kontrolü
+      const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone|Samsung|Xiaomi/i.test(navigator.userAgent);
+      if (isMobile) {
+        document.body.classList.add('mobile-device');
       }
     });
   </script>
