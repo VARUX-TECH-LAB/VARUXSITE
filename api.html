@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VARUX API documentation for REST and control-plane integration with autonomous AI agents. Secure API for autonomous agent behavior and memory control.">
+  <meta name="keywords" content="VARUX, API, REST, control-plane, AI security, agent integration, autonomous agents, AI behavior control, memory management, telemetry, AI policies">
+  <meta property="og:title" content="VARUX API Documentation | Secure AI Agent Control">
+  <meta property="og:description" content="Complete API documentation for VARUX AI security platform. Manage agents, policies, telemetry, and tools through REST API.">
+  <meta property="og:type" content="website">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="VARUX API Documentation">
+  <meta name="robots" content="index, follow, max-snippet:150, max-image-preview:large">
+  <link rel="canonical" href="https://varux.ai/api" />
+  
+  <title>VARUX API Documentation | REST & Control-plane API for AI Security</title>
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #06080d 0%, #0b0f12 100%);
+      --accent: #00ff99;
+      --accent-glow: rgba(0, 255, 153, 0.4);
+      --text-main: #F0F4F8;
+      --text-muted: #8A98A5;
+      --max-width: 1120px;
+      --card-bg: rgba(5, 8, 12, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg-gradient) fixed;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      animation: pageFadeIn 0.8s ease-out forwards;
+    }
+
+    /* Enhanced Animations */
+    @keyframes pageFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #00ffcc 28%, #00ff99 40%, #00c37b 60%, #0B0F12 100%);
+      box-shadow: 0 0 18px rgba(0, 255, 153, 0.55);
+      position: relative;
+      overflow: hidden;
+      animation: glow-pulse 4s ease-in-out infinite, float 6s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 18px rgba(0, 255, 153, 0.55); }
+      50% { box-shadow: 0 0 25px rgba(0, 255, 153, 0.8); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(1deg); }
+      75% { transform: translateY(3px) rotate(-1deg); }
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 20px var(--accent-glow);
+      background: rgba(0, 255, 153, 0.05);
+    }
+
+    .panel, .muted-block {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before, .muted-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.05), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .panel:hover::before, .muted-block:hover::before {
+      left: 100%;
+    }
+
+    .panel:hover, .muted-block:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 255, 153, 0.15);
+      border-color: rgba(0, 255, 153, 0.2);
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      background: rgba(5, 8, 12, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      padding: 4rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--accent), #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta > div {
+      padding: 0.5rem 1rem;
+      background: rgba(0, 255, 153, 0.1);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      color: var(--accent);
+    }
+
+    .hero-panel {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 255, 153, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .code-block {
+      background: #050811;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 10px;
+      padding: 1.25rem;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+      color: #81E6D9;
+      margin: 1rem 0;
+    }
+
+    code {
+      background: rgba(0, 255, 153, 0.1);
+      color: var(--accent);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 0.875rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    footer {
+      background: rgba(5, 8, 12, 0.95);
+      padding: 3rem 1.5rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-brand span:first-child {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-brand span:last-child {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 3rem 1rem;
+      }
+      .section {
+        padding: 3rem 1rem;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-meta {
+        justify-content: center;
+      }
+    }
+
+    /* Schema markup for SEO - hidden */
+    .schema-data {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell" id="top">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-text">
+            <div class="brand-name">VARUX</div>
+            <div class="brand-tagline">AI Security Layer</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#auth">Authentication</a>
+          <a href="#endpoints">Endpoints</a>
+          <a href="#quickstart">Quick Start</a>
+        </nav>
+        <a href="index.html" class="btn-outline">← Back to Main Site</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero fade-in" id="overview">
+        <h1 class="hero-title">VARUX <span>API Documentation</span></h1>
+        <p>Connect AI agents and tools to the VARUX control plane for secure, autonomous agent management and behavioral control.</p>
+        <div class="hero-meta">
+          <div>Stable v1.0</div>
+          <div>JSON over HTTPS</div>
+          <div>Token Authentication</div>
+          <div>Rate Limited</div>
+        </div>
+        
+        <div class="hero-panel">
+          <h3>Quick Start Guide</h3>
+          <p><strong>Base URL:</strong> <code>https://api.varux.ai/v1</code></p>
+          <p><strong>Authentication:</strong> Bearer tokens or API keys in headers</p>
+          <p><strong>Format:</strong> All requests and responses are JSON</p>
+          <p><strong>Rate Limit:</strong> 1000 requests/hour per API key</p>
+        </div>
+      </section>
+
+      <section class="section" id="auth">
+        <h2>Authentication & Security</h2>
+        <p>Secure API access with project keys or agent tokens. All API requests require authentication.</p>
+        
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Authentication Headers</h3>
+            <ul>
+              <li><code>Authorization: Bearer &lt;your_token&gt;</code></li>
+              <li><code>x-api-key: &lt;your_project_key&gt;</code></li>
+              <li><code>Content-Type: application/json</code></li>
+              <li><code>Accept: application/json</code></li>
+            </ul>
+          </div>
+          
+          <div class="panel">
+            <h3>Example Request</h3>
+            <div class="code-block">
+// List all agents
+GET /v1/agents HTTP/1.1
+Host: api.varux.ai
+Authorization: Bearer sk_live_xyz123abc456
+x-api-key: proj_789def012ghi
+Content-Type: application/json
+Accept: application/json
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="endpoints">
+        <h2>Core API Endpoints</h2>
+        <p>Manage agents, policies, telemetry, and tools through our comprehensive REST API.</p>
+        
+        <div class="grid-2">
+          <article class="panel">
+            <h3>Agents Management</h3>
+            <p>Register, list, and manage autonomous AI agents.</p>
+            <ul>
+              <li><code>GET /v1/agents</code> - List all agents</li>
+              <li><code>POST /v1/agents</code> - Register new agent</li>
+              <li><code>GET /v1/agents/{id}</code> - Get agent details</li>
+              <li><code>PUT /v1/agents/{id}</code> - Update agent</li>
+              <li><code>DELETE /v1/agents/{id}</code> - Deactivate agent</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Policy Control</h3>
+            <p>Define and enforce behavior rules for AI agents.</p>
+            <ul>
+              <li><code>GET /v1/policies</code> - List all policies</li>
+              <li><code>POST /v1/policies</code> - Create new policy</li>
+              <li><code>GET /v1/policies/{id}</code> - Get policy details</li>
+              <li><code>PUT /v1/policies/{id}</code> - Update policy</li>
+              <li><code>POST /v1/policies/{id}/apply</code> - Apply to agent</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Telemetry & Monitoring</h3>
+            <p>Stream and analyze agent events and metrics.</p>
+            <ul>
+              <li><code>POST /v1/telemetry</code> - Send agent events</li>
+              <li><code>GET /v1/metrics</code> - View aggregated metrics</li>
+              <li><code>GET /v1/events</code> - Query event logs</li>
+              <li><code>GET /v1/health</code> - System health check</li>
+              <li><code>GET /v1/usage</code> - API usage statistics</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Tools Integration</h3>
+            <p>Manage external tools and integrations.</p>
+            <ul>
+              <li><code>POST /v1/tools</code> - Register new tool</li>
+              <li><code>GET /v1/tools</code> - List all tools</li>
+              <li><code>GET /v1/tools/{id}</code> - Get tool details</li>
+              <li><code>PUT /v1/tools/{id}</code> - Update tool config</li>
+              <li><code>POST /v1/tools/{id}/verify</code> - Verify integration</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="quickstart">
+        <div class="panel">
+          <h2>Quick Start Example</h2>
+          <p>Here's a complete example of registering an agent and applying a policy:</p>
+          <div class="code-block">
+// 1. Register a new agent
+POST /v1/agents
+{
+  "name": "customer-support-agent",
+  "type": "autonomous",
+  "config": {
+    "model": "gpt-4",
+    "max_tokens": 2000,
+    "temperature": 0.7
+  },
+  "metadata": {
+    "environment": "production",
+    "version": "1.2.0"
+  }
+}
+
+// 2. Create a safety policy
+POST /v1/policies
+{
+  "name": "no-sensitive-data",
+  "rules": [
+    {
+      "action": "block",
+      "condition": "contains_sensitive_data"
+    }
+  ],
+  "enabled": true
+}
+
+// 3. Apply policy to agent
+POST /v1/policies/{policy_id}/apply
+{
+  "agent_id": "{agent_id}",
+  "priority": "high"
+}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span>VARUX Technologies</span>
+          <span>© 2025 VARUX. All rights reserved. Secure AI Agent Management</span>
+        </div>
+        <div class="footer-links">
+          <a href="#top">↑ Back to Top</a>
+          <a href="index.html">🏠 Main Site</a>
+          <a href="#api-status">API Status</a>
+          <a href="#support">Support</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Schema.org structured data for SEO -->
+  <script type="application/ld+json" class="schema-data">
+  {
+    "@context": "https://schema.org",
+    "@type": "APIReference",
+    "name": "VARUX API Documentation",
+    "description": "REST API documentation for VARUX AI security platform. Manage autonomous agents, policies, telemetry, and tools.",
+    "url": "https://varux.ai/api",
+    "provider": {
+      "@type": "Organization",
+      "name": "VARUX Technologies",
+      "url": "https://varux.ai",
+      "logo": "https://varux.ai/logo.png"
+    },
+    "isAccessibleForFree": true,
+    "license": "https://varux.ai/terms",
+    "programmingLanguage": "HTTP/REST",
+    "documentation": {
+      "@type": "WebPage",
+      "name": "VARUX API Documentation",
+      "description": "Complete API reference for VARUX platform"
+    }
+  }
+  </script>
+
+  <script>
+    // Enhanced animations on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}ms`;
+            entry.target.classList.add('fade-in');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach((el, index) => {
+        el.dataset.delay = index * 100;
+        fadeObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
