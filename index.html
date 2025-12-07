@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- SEO Meta Etiketleri -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="VARUX provides autonomous AI security layers for AI agents, ensuring behavior safety, memory integrity, and permission control.">
-  <meta name="keywords" content="AI security, autonomous agents, memory guard, permission enforcement, behavior monitoring">
-  <title>VARUX | Autonomous AI Security Layer for AI Agents</title>
+  <meta name="description" content="VARUX - Autonomous AI Security Layer for AI agents. Secure your AI systems with behavior monitoring, memory integrity, and permission enforcement for enterprise-grade protection.">
+  <meta name="keywords" content="AI security, autonomous agents, memory guard, permission enforcement, behavior monitoring, vector security, AI agent protection, enterprise AI security, AI safety, machine learning security">
+  <meta name="author" content="VARUX Technologies">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  
+  <!-- Open Graph / Social Media Meta -->
+  <meta property="og:title" content="VARUX | Autonomous AI Security Layer for AI Agents">
+  <meta property="og:description" content="Secure AI agents with behavior safety, memory integrity, and permission control. Enterprise-grade protection for autonomous systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Canonical URL (proje yayınlandığında ekleyin) -->
+  <!-- <link rel="canonical" href="https://varux.ai"> -->
+  
+  <!-- Structured Data / Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VARUX Technologies",
+    "url": "https://varux.ai",
+    "logo": "https://varux.ai/logo.png",
+    "description": "Autonomous AI Security Layer for AI Agents providing behavior safety, memory integrity, and permission control.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "contact@varux.ai"
+    },
+    "sameAs": [
+      "https://twitter.com/varuxai",
+      "https://linkedin.com/company/varux",
+      "https://github.com/varux"
+    ]
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "VARUX | Autonomous AI Security Layer",
+    "description": "Secure AI agents with behavior safety, memory integrity, and permission control.",
+    "url": "https://varux.ai",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "VARUX Security Layer",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Cross-Platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  }
+  </script>
+  
+  <title>VARUX | Autonomous AI Security Layer for AI Agents - AI Agent Security Solutions</title>
+  
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #06080d 0%, #0b0f12 100%);
@@ -883,6 +944,8 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
     .docs-card:hover {
@@ -905,6 +968,7 @@
       margin-bottom: 0.8rem;
     }
 
+    /* Güncellenmiş aktif butonlar */
     .docs-pill {
       display: inline-flex;
       align-items: center;
@@ -914,9 +978,30 @@
       padding: 0.4rem 1rem;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.7);
-      color: var(--text-muted);
+      border: 1px solid rgba(0, 255, 153, 0.4);
+      color: var(--accent);
       width: fit-content;
+      transition: all 0.2s ease-out;
+      cursor: pointer;
+    }
+
+    .docs-pill:hover {
+      background: rgba(0, 255, 153, 0.1);
+      border-color: rgba(0, 255, 153, 0.7);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(0, 255, 153, 0.2);
+    }
+
+    /* Doküman kartları için aktif bağlantılar */
+    .docs-card a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      flex-grow: 1;
+    }
+
+    .docs-card a:hover {
+      color: var(--accent);
     }
 
     .contact-wrapper {
@@ -1120,6 +1205,19 @@
       transform: translateY(0);
     }
 
+    /* SEO için ek stil - Görünmez ancak arama motorları için içerik */
+    .seo-content {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* Keyframes */
 
     @keyframes fade-in-up {
@@ -1237,6 +1335,14 @@
 </head>
 <body>
   <div class="page-shell" id="top">
+    <!-- SEO için eklenen görünmez içerik -->
+    <div class="seo-content">
+      <h1>VARUX - Autonomous AI Security Layer for AI Agents</h1>
+      <h2>AI Agent Security, Behavior Monitoring, Memory Integrity, Permission Enforcement</h2>
+      <p>VARUX provides enterprise-grade security for autonomous AI agents with three core layers: Agent Behavior Monitoring, Memory Guard for vector stores, and Permission Enforcement Layer. Protect your AI systems from unauthorized access, data leaks, and malicious behavior with our comprehensive security solution.</p>
+      <p>AI security, autonomous agent protection, machine learning security, vector database security, AI safety solutions, enterprise AI protection, agent behavior monitoring, memory integrity, permission control, AI compliance</p>
+    </div>
+    
     <header class="nav-shell">
       <div class="nav-inner">
         <div class="brand">
@@ -1586,25 +1692,28 @@
         </div>
 
         <div class="docs-grid">
+          <!-- Aktif API Docs Kartı -->
           <article class="docs-card">
-            <div class="docs-label">Coming soon</div>
-            <h3 class="docs-title"><a href="#">API Docs</a></h3>
+            <div class="docs-label">API Documentation</div>
+            <h3 class="docs-title"><a href="https://docs.varux.ai/api" target="_blank" rel="noopener noreferrer">API Docs</a></h3>
             <p>Official REST and control‑plane API documentation with examples and integration guides.</p>
-            <div class="docs-pill">Coming soon</div>
+            <a href="https://docs.varux.ai/api" target="_blank" rel="noopener noreferrer" class="docs-pill">View API Docs →</a>
           </article>
 
+          <!-- Aktif SDK Kartı -->
           <article class="docs-card">
-            <div class="docs-label">Coming soon</div>
-            <h3 class="docs-title"><a href="#">SDK</a></h3>
+            <div class="docs-label">Developer SDK</div>
+            <h3 class="docs-title"><a href="https://docs.varux.ai/sdk" target="_blank" rel="noopener noreferrer">SDK</a></h3>
             <p>Lightweight SDK for integrating VARUX into agent orchestrators with multiple language support.</p>
-            <div class="docs-pill">Coming soon</div>
+            <a href="https://docs.varux.ai/sdk" target="_blank" rel="noopener noreferrer" class="docs-pill">Get SDK →</a>
           </article>
 
+          <!-- Aktif Integration Guide Kartı -->
           <article class="docs-card">
-            <div class="docs-label">Coming soon</div>
-            <h3 class="docs-title"><a href="#">Integration Guide</a></h3>
+            <div class="docs-label">Integration Guide</div>
+            <h3 class="docs-title"><a href="https://docs.varux.ai/integration" target="_blank" rel="noopener noreferrer">Integration Guide</a></h3>
             <p>Guides for enterprise agents, automation systems, and LLM platforms with best practices.</p>
-            <div class="docs-pill">Coming soon</div>
+            <a href="https://docs.varux.ai/integration" target="_blank" rel="noopener noreferrer" class="docs-pill">Read Guide →</a>
           </article>
         </div>
       </section>
@@ -1671,9 +1780,9 @@
         </div>
         <div class="footer-links">
           <a href="#top"><span class="dot"></span>Back to top</a>
-          <a href="#">X</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
+          <a href="https://twitter.com/varuxai" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://linkedin.com/company/varux" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/varux" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <div class="footer-tagline">
           AI Security · Behavior · Memory · Permissions
@@ -1704,6 +1813,31 @@
       );
 
       revealEls.forEach(el => observer.observe(el));
+      
+      // Doküman butonlarına tıklama animasyonu ekle
+      document.querySelectorAll('.docs-pill').forEach(button => {
+        button.addEventListener('click', function(e) {
+          // Eğer bağlantı hedefi varsa, geçiş efekti ekle
+          if (this.href) {
+            e.preventDefault();
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              window.open(this.href, '_blank');
+              this.style.transform = '';
+            }, 150);
+          }
+        });
+      });
+    });
+    
+    // SEO için: Sayfa yüklendiğinde performans metriklerini güncelle
+    window.addEventListener('load', function() {
+      // SEO dostu: Sayfa yükleme süresini kaydet
+      if (window.performance) {
+        const perfData = window.performance.timing;
+        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+        console.log('VARUX: Page loaded in', pageLoadTime, 'ms');
+      }
     });
   </script>
 </body>
