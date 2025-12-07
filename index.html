@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- SEO Meta Etiketleri -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <meta name="description" content="VARUX - Autonomous AI Security Layer for AI agents. Secure your AI systems with behavior monitoring, memory integrity, and permission enforcement for enterprise-grade protection.">
   <meta name="keywords" content="AI security, autonomous agents, memory guard, permission enforcement, behavior monitoring, vector security, AI agent protection, enterprise AI security, AI safety, machine learning security">
   <meta name="author" content="VARUX Technologies">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  
-  <!-- Open Graph / Social Media Meta -->
   <meta property="og:title" content="VARUX | Autonomous AI Security Layer for AI Agents">
   <meta property="og:description" content="Secure AI agents with behavior safety, memory integrity, and permission control. Enterprise-grade protection for autonomous systems.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  
-  <!-- Canonical URL (proje yayınlandığında ekleyin) -->
-  <!-- <link rel="canonical" href="https://varux.ai"> -->
-  
-  <!-- Structured Data / Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +35,6 @@
     ]
   }
   </script>
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,9 +55,7 @@
     }
   }
   </script>
-  
   <title>VARUX | Autonomous AI Security Layer for AI Agents - AI Agent Security Solutions</title>
-  
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #06080d 0%, #0b0f12 100%);
@@ -86,7 +75,6 @@
       --card-bg: rgba(255, 255, 255, 0.03);
       --panel-gradient: linear-gradient(135deg, #0d1116 0%, #0a0d10 100%);
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -95,7 +83,6 @@
       -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
     }
-
     html, body {
       background: var(--bg-gradient) fixed;
       margin: 0;
@@ -104,7 +91,6 @@
       min-height: 100vh;
       -webkit-overflow-scrolling: touch;
     }
-
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
       color: var(--text-main);
@@ -114,19 +100,16 @@
       background: var(--bg-gradient) fixed;
       touch-action: manipulation;
     }
-
     a {
       color: inherit;
       text-decoration: none;
     }
-
     .page-shell {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       background: var(--bg-gradient) fixed;
     }
-
     .nav-shell {
       position: sticky;
       top: 0;
@@ -136,7 +119,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
-
     .nav-inner {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -146,13 +128,11 @@
       justify-content: space-between;
       gap: 1.5rem;
     }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-
     .brand-mark {
       width: 34px;
       height: 34px;
@@ -163,7 +143,6 @@
       overflow: hidden;
       animation: glow-pulse 4s ease-in-out infinite;
     }
-
     .brand-mark::after {
       content: "";
       position: absolute;
@@ -172,40 +151,34 @@
       border: 1px solid rgba(0, 0, 0, 0.7);
       box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.7);
     }
-
     .brand-text {
       display: flex;
       flex-direction: column;
       gap: 0.1rem;
     }
-
     .brand-name {
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
-
     .brand-tagline {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--text-muted);
     }
-
     .nav-links {
       display: flex;
       gap: 2rem;
       font-size: 0.9rem;
       color: var(--text-muted);
     }
-
     .nav-links a {
       position: relative;
       padding-bottom: 0.15rem;
       transition: color 0.2s ease;
     }
-
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -216,21 +189,17 @@
       background: var(--accent);
       transition: width 0.3s ease-out;
     }
-
     .nav-links a:hover {
       color: var(--text-main);
     }
-
     .nav-links a:hover::after {
       width: 100%;
     }
-
     .nav-cta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-
     .nav-pill {
       font-size: 0.76rem;
       padding: 0.12rem 0.7rem;
@@ -238,7 +207,6 @@
       border: 1px solid rgba(138, 152, 165, 0.3);
       color: var(--text-muted);
     }
-
     .btn-outline {
       font-size: 0.82rem;
       padding: 0.45rem 1rem;
@@ -252,32 +220,26 @@
       cursor: pointer;
       transition: all 0.2s ease-out;
     }
-
     .btn-outline span.icon {
       font-size: 0.9rem;
       transition: transform 0.2s ease;
     }
-
     .btn-outline:hover {
       background: rgba(0, 255, 153, 0.08);
       border-color: rgba(0, 255, 153, 0.7);
       transform: translateY(-1px);
     }
-
     .btn-outline:hover span.icon {
       transform: translateX(3px);
     }
-
     main {
       flex: 1;
     }
-
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: var(--section-spacing) 1.5rem;
     }
-
     .hero {
       padding-top: 2.5rem;
       padding-bottom: 5rem;
@@ -286,7 +248,6 @@
       gap: 4rem;
       align-items: center;
     }
-
     .hero-kicker {
       display: inline-flex;
       align-items: center;
@@ -302,19 +263,16 @@
       animation: fade-in-up 0.6s ease-out forwards;
       animation-delay: 0.05s;
     }
-
     .hero-kicker-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
       background: var(--accent);
     }
-
     .hero-kicker-label {
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
-
     .hero-title {
       font-size: clamp(2.5rem, 4vw, 3.3rem);
       line-height: 1.05;
@@ -324,12 +282,10 @@
       animation: fade-in-up 0.65s ease-out forwards;
       animation-delay: 0.12s;
     }
-
     .hero-title span.accent {
       color: var(--accent);
       position: relative;
     }
-
     .hero-title span.accent::after {
       content: "";
       position: absolute;
@@ -340,7 +296,6 @@
       background: var(--accent);
       opacity: 0.3;
     }
-
     .hero-body {
       font-size: 1.05rem;
       color: var(--text-muted);
@@ -351,7 +306,6 @@
       animation: fade-in-up 0.7s ease-out forwards;
       animation-delay: 0.2s;
     }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -362,7 +316,6 @@
       animation: fade-in-up 0.7s ease-out forwards;
       animation-delay: 0.28s;
     }
-
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -379,22 +332,18 @@
       color: #020308;
       transition: all 0.2s ease-out;
     }
-
     .btn-primary span.icon {
       font-size: 1rem;
       margin-left: 0.5rem;
       transition: transform 0.2s ease;
     }
-
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(0, 255, 153, 0.4);
     }
-
     .btn-primary:hover span.icon {
       transform: translateY(2px);
     }
-
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
@@ -407,7 +356,6 @@
       animation: fade-in-up 0.7s ease-out forwards;
       animation-delay: 0.36s;
     }
-
     .hero-meta-item span.dot {
       width: 4px;
       height: 4px;
@@ -416,11 +364,9 @@
       display: inline-block;
       margin-right: 0.5rem;
     }
-
     .hero-right {
       position: relative;
     }
-
     .hero-panel {
       border-radius: 28px;
       padding: 2rem 1.8rem 1.8rem;
@@ -433,21 +379,18 @@
       animation: float-soft 12s ease-in-out infinite alternate;
       will-change: transform;
     }
-
     .hero-panel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.5rem;
     }
-
     .hero-panel-title {
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--text-muted);
     }
-
     .hero-panel-status {
       font-size: 0.78rem;
       display: inline-flex;
@@ -458,14 +401,12 @@
       background: rgba(11, 15, 18, 0.9);
       border: 1px solid rgba(0, 255, 153, 0.3);
     }
-
     .status-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
       background: var(--accent);
     }
-
     .hero-grid-labels {
       display: flex;
       justify-content: space-between;
@@ -473,7 +414,6 @@
       color: var(--text-muted);
       margin-bottom: 0.5rem;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -483,14 +423,12 @@
       background: rgba(11, 15, 18, 0.8);
       border: 1px solid rgba(35, 45, 60, 0.5);
     }
-
     .hero-grid-card {
       border-radius: 14px;
       padding: 0.9rem 0.8rem 0.8rem;
       background: var(--card-bg);
       border: 1px solid var(--border-subtle);
     }
-
     .hero-grid-label {
       font-size: 0.72rem;
       text-transform: uppercase;
@@ -498,18 +436,15 @@
       color: var(--text-muted);
       margin-bottom: 0.4rem;
     }
-
     .hero-metric {
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.1rem;
     }
-
     .hero-metric-sub {
       font-size: 0.72rem;
       color: var(--text-muted);
     }
-
     .hero-grid-bar {
       margin-top: 0.5rem;
       position: relative;
@@ -518,7 +453,6 @@
       background: #1E2835;
       overflow: hidden;
     }
-
     .hero-grid-bar span {
       position: absolute;
       inset: 0;
@@ -526,14 +460,12 @@
       background: linear-gradient(90deg, var(--accent), #26ffe4);
       transform-origin: left;
     }
-
     .hero-panel-footer {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 1rem;
       margin-top: 1rem;
     }
-
     .hero-mini-card {
       border-radius: 16px;
       padding: 0.9rem 0.9rem;
@@ -543,7 +475,6 @@
       color: var(--text-muted);
       transition: all 0.2s ease-out;
     }
-
     .hero-mini-card strong {
       display: block;
       font-size: 0.8rem;
@@ -552,20 +483,17 @@
       color: var(--text-main);
       margin-bottom: 0.4rem;
     }
-
     .hero-mini-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
       border-color: rgba(0, 255, 153, 0.2);
     }
-
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
       margin-top: 0.4rem;
     }
-
     .pill {
       padding: 0.15rem 0.6rem;
       border-radius: 999px;
@@ -574,7 +502,6 @@
       color: var(--accent);
       background: rgba(0, 255, 153, 0.05);
     }
-
     .hero-orbit-ring {
       position: absolute;
       inset: -28px;
@@ -585,7 +512,6 @@
       opacity: 0.7;
       animation: orbit-rotate 50s linear infinite;
     }
-
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -595,7 +521,6 @@
       position: relative;
       padding-bottom: 1.5rem;
     }
-
     .section-header::after {
       content: "";
       position: absolute;
@@ -607,7 +532,6 @@
       border-radius: 2px;
       box-shadow: 0 0 8px rgba(0, 255, 153, 0.2);
     }
-
     .section-eyebrow {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -615,7 +539,6 @@
       color: var(--text-muted);
       margin-bottom: 0.5rem;
     }
-
     .section-title {
       font-size: 1.6rem;
       letter-spacing: 0.06em;
@@ -623,20 +546,17 @@
       font-weight: 700;
       position: relative;
     }
-
     .section-subtitle {
       font-size: 1rem;
       color: var(--text-muted);
       max-width: 28rem;
       line-height: 1.6;
     }
-
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.5rem;
     }
-
     .card {
       border-radius: var(--radius-lg);
       padding: 2rem 1.8rem;
@@ -647,13 +567,11 @@
       display: flex;
       flex-direction: column;
     }
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       border-color: rgba(0, 255, 153, 0.2);
     }
-
     .card-label {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -661,13 +579,11 @@
       color: var(--text-muted);
       margin-bottom: 1rem;
     }
-
     .card-title {
       font-size: 1.15rem;
       margin-bottom: 1rem;
       font-weight: 600;
     }
-
     .card-body {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -675,7 +591,6 @@
       margin-bottom: 1.5rem;
       flex-grow: 1;
     }
-
     .card-meta {
       font-size: 0.8rem;
       color: var(--accent);
@@ -683,7 +598,6 @@
       letter-spacing: 0.16em;
       margin-bottom: 1rem;
     }
-
     .card-list {
       list-style: none;
       margin-top: 1rem;
@@ -692,7 +606,6 @@
       font-size: 0.88rem;
       color: var(--text-muted);
     }
-
     .card-list li::before {
       content: "";
       display: inline-block;
@@ -702,14 +615,12 @@
       background: var(--accent);
       margin-right: 0.5rem;
     }
-
     .split {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
       gap: 3rem;
       align-items: flex-start;
     }
-
     .muted-block {
       border-radius: var(--radius-xl);
       padding: 2rem 1.8rem;
@@ -717,19 +628,16 @@
       border: 1px solid var(--border-subtle);
       transition: all 0.25s ease-out;
     }
-
     .muted-block:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 35px rgba(0, 0, 0, 0.65);
     }
-
     .muted-block p {
       font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: 1rem;
     }
-
     .mission-heading {
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -737,20 +645,17 @@
       color: var(--text-muted);
       margin-bottom: 0.8rem;
     }
-
     .mission-text {
       font-size: 1.15rem;
       font-weight: 600;
       margin-bottom: 1.2rem;
     }
-
     .badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
       margin-top: 1.2rem;
     }
-
     .badge {
       font-size: 0.75rem;
       padding: 0.3rem 0.9rem;
@@ -761,14 +666,12 @@
       letter-spacing: 0.16em;
       background: rgba(255, 255, 255, 0.02);
     }
-
     .architecture-grid {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 2.5rem;
       margin-top: 2rem;
     }
-
     .arch-stack {
       border-radius: var(--radius-lg);
       padding: 1.8rem 1.5rem;
@@ -778,19 +681,16 @@
       color: var(--text-muted);
       transition: all 0.25s ease-out;
     }
-
     .arch-stack:hover {
       transform: translateY(-3px);
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
     }
-
     .arch-row {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-bottom: 0.8rem;
     }
-
     .arch-node {
       flex: 1;
       padding: 0.7rem 1rem;
@@ -802,30 +702,25 @@
       text-align: center;
       white-space: nowrap;
     }
-
     .arch-node.accent {
       border-color: rgba(0, 255, 153, 0.5);
       background: radial-gradient(circle at top, rgba(0, 255, 153, 0.15), rgba(12, 14, 22, 0.98));
       color: var(--accent);
     }
-
     .arch-arrow {
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-
     .arch-list {
       margin-top: 1.2rem;
       list-style: none;
       display: grid;
       gap: 0.4rem;
     }
-
     .arch-list li {
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-
     .legend {
       border-radius: var(--radius-lg);
       padding: 1.8rem 1.5rem;
@@ -835,13 +730,11 @@
       color: var(--text-muted);
       line-height: 1.6;
     }
-
     .legend-row {
       display: flex;
       gap: 1rem;
       margin-top: 0.6rem;
     }
-
     .legend-key {
       font-size: 0.85rem;
       text-transform: uppercase;
@@ -849,7 +742,6 @@
       color: var(--text-main);
       margin-bottom: 1rem;
     }
-
     .legend-dot {
       width: 8px;
       height: 8px;
@@ -857,25 +749,20 @@
       margin-top: 0.3rem;
       flex-shrink: 0;
     }
-
     .legend-dot.primary {
       background: var(--accent);
     }
-
     .legend-dot.secondary {
       background: #38bdf8;
     }
-
     .legend-dot.tertiary {
       background: #a855f7;
     }
-
     .solutions-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.5rem;
     }
-
     .solution-card {
       border-radius: var(--radius-lg);
       padding: 2rem 1.8rem;
@@ -886,19 +773,16 @@
       display: flex;
       flex-direction: column;
     }
-
     .solution-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       border-color: rgba(0, 255, 153, 0.2);
     }
-
     .solution-title {
       font-size: 1.1rem;
       margin-bottom: 0.8rem;
       font-weight: 600;
     }
-
     .solution-tag {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -906,7 +790,6 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-
     .solution-list {
       list-style: none;
       display: grid;
@@ -916,7 +799,6 @@
       margin-bottom: 1.2rem;
       flex-grow: 1;
     }
-
     .solution-list li::before {
       content: "";
       display: inline-block;
@@ -926,20 +808,17 @@
       background: var(--accent);
       margin-right: 0.5rem;
     }
-
     .solution-meta {
       font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.14em;
     }
-
     .docs-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.5rem;
     }
-
     .docs-card {
       border-radius: var(--radius-lg);
       padding: 1.8rem 1.6rem;
@@ -954,19 +833,16 @@
       position: relative;
       overflow: hidden;
     }
-
     .docs-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
       border-color: rgba(0, 255, 153, 0.3);
     }
-
     .docs-title {
       font-size: 1rem;
       margin-bottom: 0.6rem;
       font-weight: 600;
     }
-
     .docs-label {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -974,8 +850,6 @@
       color: var(--accent);
       margin-bottom: 0.8rem;
     }
-
-    /* Güncellenmiş aktif butonlar */
     .docs-pill {
       display: inline-flex;
       align-items: center;
@@ -991,47 +865,39 @@
       transition: all 0.2s ease-out;
       cursor: pointer;
     }
-
     .docs-pill:hover {
       background: rgba(0, 255, 153, 0.1);
       border-color: rgba(0, 255, 153, 0.7);
       transform: translateY(-1px);
       box-shadow: 0 5px 15px rgba(0, 255, 153, 0.2);
     }
-
-    /* Doküman kartları için aktif bağlantılar */
     .docs-card a {
       color: inherit;
       text-decoration: none;
       display: block;
       flex-grow: 1;
     }
-
     .docs-card a:hover {
       color: var(--accent);
     }
-
     .contact-wrapper {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 3.5rem;
       align-items: flex-start;
     }
-
     .contact-copy {
       font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: 1.5rem;
     }
-
     .contact-meta {
       display: grid;
       gap: 0.6rem;
       font-size: 0.88rem;
       color: var(--text-muted);
     }
-
     .contact-card {
       border-radius: var(--radius-xl);
       padding: 2rem 1.8rem;
@@ -1039,33 +905,27 @@
       border: 1px solid var(--border-subtle);
       transition: all 0.25s ease-out;
     }
-
     .contact-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       border-color: rgba(0, 255, 153, 0.2);
     }
-
     .form-grid {
       display: grid;
       gap: 1.5rem;
     }
-
     .field {
       display: grid;
       gap: 0.5rem;
     }
-
     .field-label {
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-
     .field-label span {
       color: var(--accent);
       margin-left: 0.15rem;
     }
-
     input[type="text"],
     input[type="email"],
     textarea {
@@ -1079,7 +939,6 @@
       transition: all 0.2s ease-out;
       font-family: inherit;
     }
-
     input[type="text"]:focus,
     input[type="email"]:focus,
     textarea:focus {
@@ -1087,12 +946,10 @@
       box-shadow: 0 0 0 1px rgba(0, 255, 153, 0.15);
       background: rgba(14, 19, 24, 0.9);
     }
-
     textarea {
       resize: vertical;
       min-height: 130px;
     }
-
     .btn-submit {
       margin-top: 0.8rem;
       display: inline-flex;
@@ -1109,23 +966,19 @@
       cursor: pointer;
       transition: all 0.2s ease-out;
     }
-
     .btn-submit span.icon {
       margin-left: 0.5rem;
       font-size: 0.95rem;
       transition: transform 0.2s ease;
     }
-
     .btn-submit:hover {
       background: rgba(0, 255, 153, 0.08);
       border-color: rgba(0, 255, 153, 0.7);
       transform: translateY(-2px);
     }
-
     .btn-submit:hover span.icon {
       transform: translateX(3px);
     }
-
     footer {
       border-top: 1px solid rgba(15, 23, 42, 0.9);
       background: rgba(5, 8, 12, 0.95);
@@ -1134,7 +987,6 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
-
     .footer-inner {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -1146,38 +998,32 @@
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-
     .footer-brand {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
-
     .footer-brand span.name {
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-weight: 600;
     }
-
     .footer-note {
       font-size: 0.85rem;
       color: var(--accent);
       margin-top: 0.3rem;
     }
-
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
       align-items: center;
     }
-
     .footer-links a {
       font-size: 0.85rem;
       color: var(--text-muted);
       transition: color 0.2s ease;
     }
-
     .footer-links a span.dot {
       width: 3px;
       height: 3px;
@@ -1186,11 +1032,9 @@
       display: inline-block;
       margin-right: 0.5rem;
     }
-
     .footer-links a:hover {
       color: var(--accent);
     }
-
     .footer-tagline {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -1199,21 +1043,16 @@
       margin-top: 0.8rem;
       letter-spacing: 0.1em;
     }
-
-    /* Scroll reveal base */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       will-change: opacity, transform;
     }
-
     .reveal.in-view {
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* SEO için ek stil - Görünmez ancak arama motorları için içerik */
     .seo-content {
       position: absolute;
       width: 1px;
@@ -1225,9 +1064,6 @@
       white-space: nowrap;
       border: 0;
     }
-
-    /* Keyframes */
-
     @keyframes fade-in-up {
       from {
         opacity: 0;
@@ -1238,7 +1074,6 @@
         transform: translateY(0);
       }
     }
-
     @keyframes float-soft {
       0% {
         transform: translateY(0px) translateX(0px);
@@ -1250,7 +1085,6 @@
         transform: translateY(-4px) translateX(-2px);
       }
     }
-
     @keyframes glow-pulse {
       0% {
         box-shadow: 0 0 12px rgba(0, 255, 153, 0.4);
@@ -1262,7 +1096,6 @@
         box-shadow: 0 0 12px rgba(0, 255, 153, 0.4);
       }
     }
-
     @keyframes orbit-rotate {
       from {
         transform: rotate(0deg);
@@ -1271,36 +1104,29 @@
         transform: rotate(360deg);
       }
     }
-
-    /* Mobil uyumluluk için ek stiller */
     @media (max-width: 960px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
         gap: 3rem;
       }
-
       .hero-right {
         order: -1;
       }
-
       .hero-panel {
         max-width: 450px;
         margin: 0 auto;
       }
-
       .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
       }
-
       .split,
       .architecture-grid,
       .contact-wrapper {
         grid-template-columns: minmax(0, 1fr);
         gap: 2.5rem;
       }
-
       .solutions-grid,
       .docs-grid,
       .grid-3 {
@@ -1308,101 +1134,78 @@
         gap: 2rem;
       }
     }
-
     @media (max-width: 720px) {
       .nav-inner {
         padding-inline: 1rem;
       }
-
       .nav-links {
         display: none;
       }
-
       .hero,
       .section {
         padding-inline: 1.2rem;
       }
-
       .solutions-grid,
       .docs-grid,
       .grid-3 {
         grid-template-columns: minmax(0, 1fr);
         gap: 1.8rem;
       }
-
       .hero-panel {
         padding: 1.6rem 1.4rem 1.4rem;
       }
-
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
       }
     }
-
-    /* Ekstra küçük ekranlar için (iPhone SE gibi) */
     @media (max-width: 375px) {
       .hero-title {
         font-size: clamp(2rem, 5vw, 2.5rem);
       }
-      
       .hero-body {
         font-size: 0.95rem;
       }
-      
       .hero-panel {
         padding: 1.4rem 1.2rem 1.2rem;
       }
-      
       .hero-grid {
         gap: 0.6rem;
         padding: 0.8rem;
       }
-      
       .btn-primary, .btn-outline {
         padding: 0.6rem 1.2rem;
         font-size: 0.8rem;
       }
-      
       .card, .solution-card, .docs-card {
         padding: 1.5rem 1.2rem;
       }
     }
-
-    /* Tablet optimizasyonları */
     @media (min-width: 768px) and (max-width: 1024px) {
       .hero {
         gap: 3rem;
       }
-      
       .hero-panel {
         max-width: 500px;
       }
-      
       .section {
         padding: 4rem 1.5rem;
       }
     }
-
-    /* Samsung ve Xiaomi cihazlar için özel düzeltmeler */
     @media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px) {
       .brand-mark {
         box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
       }
-      
       .hero-panel {
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
       }
     }
-
-    /* iOS Safari için özel stiller */
     @supports (-webkit-touch-callout: none) {
       .hero-panel {
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0);
       }
-      
       .btn-primary, .btn-outline, .docs-pill {
         -webkit-appearance: none;
       }
@@ -1411,7 +1214,6 @@
 </head>
 <body>
   <div class="page-shell" id="top">
-    <!-- SEO için eklenen görünmez içerik -->
     <div class="seo-content">
       <h1>VARUX - Autonomous AI Security Layer for AI Agents</h1>
       <h2>AI Agent Security, Behavior Monitoring, Memory Integrity, Permission Enforcement</h2>
@@ -1763,33 +1565,30 @@
             <h2 id="docs-title" class="section-title">Documentation roadmap</h2>
           </div>
           <p class="section-subtitle">
-            Documentation is in preparation. Detailed content coming soon.
+            Comprehensive documentation for seamless integration and implementation.
           </p>
         </div>
 
         <div class="docs-grid">
-          <!-- API Docs Kartı -->
           <article class="docs-card">
             <div class="docs-label">API Documentation</div>
-            <h3 class="docs-title"><a href="api.html" target="_blank" rel="noopener noreferrer">API Docs</a></h3>
+            <h3 class="docs-title"><a href="api.html">API Docs</a></h3>
             <p>Official REST and control‑plane API documentation with examples and integration guides.</p>
-            <a href="api.html" target="_blank" rel="noopener noreferrer" class="docs-pill">View API Docs →</a>
+            <a href="api.html" class="docs-pill">View API Docs →</a>
           </article>
 
-          <!-- SDK Kartı -->
           <article class="docs-card">
             <div class="docs-label">Developer SDK</div>
-            <h3 class="docs-title"><a href="sdk.html" target="_blank" rel="noopener noreferrer">SDK</a></h3>
+            <h3 class="docs-title"><a href="sdk.html">SDK</a></h3>
             <p>Lightweight SDK for integrating VARUX into agent orchestrators with multiple language support.</p>
-            <a href="sdk.html" target="_blank" rel="noopener noreferrer" class="docs-pill">Get SDK →</a>
+            <a href="sdk.html" class="docs-pill">Get SDK →</a>
           </article>
 
-          <!-- Integration Guide Kartı -->
           <article class="docs-card">
             <div class="docs-label">Integration Guide</div>
-            <h3 class="docs-title"><a href="IntegrationGuide.html" target="_blank" rel="noopener noreferrer">Integration Guide</a></h3>
+            <h3 class="docs-title"><a href="IntegrationGuide.html">Integration Guide</a></h3>
             <p>Guides for enterprise agents, automation systems, and LLM platforms with best practices.</p>
-            <a href="IntegrationGuide.html" target="_blank" rel="noopener noreferrer" class="docs-pill">Read Guide →</a>
+            <a href="IntegrationGuide.html" class="docs-pill">Read Guide →</a>
           </article>
         </div>
       </section>
@@ -1868,7 +1667,6 @@
   </div>
 
   <script>
-    // Scroll-based reveal
     document.addEventListener('DOMContentLoaded', function () {
       const revealEls = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) {
@@ -1890,22 +1688,6 @@
 
       revealEls.forEach(el => observer.observe(el));
       
-      // Doküman butonlarına tıklama animasyonu ekle
-      document.querySelectorAll('.docs-pill').forEach(button => {
-        button.addEventListener('click', function(e) {
-          // Eğer bağlantı hedefi varsa, geçiş efekti ekle
-          if (this.href) {
-            e.preventDefault();
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              window.open(this.href, '_blank');
-              this.style.transform = '';
-            }, 150);
-          }
-        });
-      });
-      
-      // Mobil dokunma etkileşimleri için
       document.querySelectorAll('.card, .solution-card, .docs-card, .btn-primary, .btn-outline').forEach(element => {
         element.addEventListener('touchstart', function() {
           this.style.opacity = '0.9';
@@ -1917,16 +1699,13 @@
       });
     });
     
-    // SEO için: Sayfa yüklendiğinde performans metriklerini güncelle
     window.addEventListener('load', function() {
-      // SEO dostu: Sayfa yükleme süresini kaydet
       if (window.performance) {
         const perfData = window.performance.timing;
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
         console.log('VARUX: Page loaded in', pageLoadTime, 'ms');
       }
       
-      // Mobil cihaz kontrolü
       const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone|Samsung|Xiaomi/i.test(navigator.userAgent);
       if (isMobile) {
         document.body.classList.add('mobile-device');
