@@ -7,10 +7,19 @@
   <meta name="keywords" content="AI security, autonomous agents, memory guard, permission enforcement, behavior monitoring, vector security, AI agent protection, enterprise AI security, AI safety, machine learning security">
   <meta name="author" content="VARUX Technologies">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://varux.ai" />
   <meta property="og:title" content="VARUX | Autonomous AI Security Layer for AI Agents">
   <meta property="og:description" content="Secure AI agents with behavior safety, memory integrity, and permission control. Enterprise-grade protection for autonomous systems.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://varux.ai">
+  <meta property="og:image" content="https://varux.ai/og-image.png">
   <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VARUX">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VARUX | Autonomous AI Security Layer for AI Agents">
+  <meta name="twitter:description" content="Secure AI agents with behavior safety, memory integrity, and permission control. Enterprise-grade protection for autonomous systems.">
+  <meta name="twitter:image" content="https://varux.ai/twitter-image.png">
+  <meta name="twitter:creator" content="@varuxai">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,7 +83,54 @@
       --section-spacing: 5rem;
       --card-bg: rgba(255, 255, 255, 0.03);
       --panel-gradient: linear-gradient(135deg, #0d1116 0%, #0a0d10 100%);
+      --scrollbar-width: 10px;
     }
+    
+    /* Özel Scrollbar Stilleri */
+    ::-webkit-scrollbar {
+      width: var(--scrollbar-width);
+      height: var(--scrollbar-width);
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(5, 8, 12, 0.95);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent) 0%, #00d68a 100%);
+      border-radius: 10px;
+      border: 2px solid rgba(5, 8, 12, 0.95);
+      transition: all 0.3s ease;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #00ffcc 0%, #00ff99 100%);
+      box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+    }
+    
+    /* Firefox için scrollbar */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) rgba(5, 8, 12, 0.95);
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+    /* Scroll Animasyonu */
+    @keyframes scrollbar-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .scrolling::-webkit-scrollbar-thumb {
+      animation: scrollbar-pulse 2s infinite;
+    }
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -1697,6 +1753,16 @@
           this.style.opacity = '';
         }, {passive: true});
       });
+      
+      // Scroll animasyonu için event listener
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        document.body.classList.add('scrolling');
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+          document.body.classList.remove('scrolling');
+        }, 500);
+      });
     });
     
     window.addEventListener('load', function() {
@@ -1710,6 +1776,13 @@
       if (isMobile) {
         document.body.classList.add('mobile-device');
       }
+      
+      // Sayfa yüklendikten sonra SEO için içerik optimizasyonu
+      setTimeout(function() {
+        document.querySelectorAll('h1, h2, h3').forEach(el => {
+          el.setAttribute('data-seo-optimized', 'true');
+        });
+      }, 1000);
     });
   </script>
 </body>
