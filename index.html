@@ -7,27 +7,39 @@
   <meta name="theme-color" content="#050608" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
   <!-- Advanced SEO Optimization -->
-  <title>VARUX | Enterprise Security Layer for Autonomous AI Agents</title>
-  <meta name="description" content="VARUX provides enterprise-grade security for autonomous AI agents: behavior monitoring, memory integrity, and permission enforcement. Secure your AI workflows with policy-grade control." />
-  <meta name="keywords" content="AI security, autonomous agents, AI monitoring, memory integrity, permission enforcement, AI guardrails, enterprise AI, AI safety, behavior monitoring, VARUX, AI security platform, machine learning security" />
+  <title>VARUX | Otonom AI Ajanlar için Kurumsal Güvenlik Katmanı</title>
+  <meta name="description" content="VARUX, otonom AI ajanlar için kurumsal düzeyde güvenlik sağlar: davranış izleme, bellek bütünlüğü ve izin uygulama. AI iş akışlarınızı politika düzeyinde kontrolle güvence altına alın." />
+  <meta name="keywords" content="AI güvenliği, otonom ajanlar, AI izleme, bellek bütünlüğü, izin uygulama, AI korkulukları, kurumsal AI, AI güvenliği, davranış izleme, VARUX, AI güvenlik platformu, makine öğrenimi güvenliği, Türkçe, güvenlik katmanı" />
   <meta name="author" content="VARUX Technologies" />
   <link rel="canonical" href="https://varuxcyber.com" />
   
+  <!-- Hreflang for Multilingual SEO -->
+  <link rel="alternate" hreflang="en" href="https://varuxcyber.com" />
+  <link rel="alternate" hreflang="tr" href="https://varuxcyber.com/tr/" />
+  <link rel="alternate" hreflang="x-default" href="https://varuxcyber.com" />
+  
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="VARUX | Enterprise Security Layer for Autonomous AI Agents" />
-  <meta property="og:description" content="Secure AI agents with behavior monitoring, memory integrity, and permission enforcement. Policy-grade control for enterprise AI systems." />
+  <meta property="og:title" content="VARUX | Otonom AI Ajanlar için Kurumsal Güvenlik Katmanı" />
+  <meta property="og:description" content="AI ajanlarınızı davranış izleme, bellek bütünlüğü ve izin uygulama ile güvence altına alın. Kurumsal AI sistemleri için politika düzeyinde kontrol." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://varuxcyber.com" />
   <meta property="og:image" content="https://varuxcyber.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="VARUX" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="tr_TR" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VARUX | Security Layer for Autonomous AI Agents" />
-  <meta name="twitter:description" content="Enterprise security for autonomous AI systems. Monitor behavior, enforce permissions, ensure memory integrity." />
+  <meta name="twitter:title" content="VARUX | Otonom AI Ajanlar için Güvenlik Katmanı" />
+  <meta name="twitter:description" content="Otonom AI sistemleri için kurumsal güvenlik. Davranışları izleyin, izinleri uygulayın, bellek bütünlüğünü sağlayın." />
   <meta name="twitter:image" content="https://varuxcyber.com/twitter-image.png" />
   <meta name="twitter:creator" content="@varuxtech" />
   
@@ -42,7 +54,7 @@
       "name": "VARUX Technologies",
       "url": "https://varuxcyber.com",
       "logo": "https://varuxcyber.com/logo.png",
-      "description": "Enterprise security layer for autonomous AI agents",
+      "description": "Otonom AI ajanlar için kurumsal güvenlik katmanı",
       "sameAs": [
         "https://x.com/varuxtech",
         "https://linkedin.com/company/varux",
@@ -55,8 +67,8 @@
       "foundingDate": "2023",
       "makesOffer": [{
         "@type": "Service",
-        "name": "AI Agent Security Platform",
-        "description": "Enterprise-grade security for autonomous AI systems with policy-grade control."
+        "name": "AI Ajan Güvenlik Platformu",
+        "description": "Politika düzeyinde kontrol ile otonom AI sistemleri için kurumsal düzeyde güvenlik."
       }],
       "address": {
         "@type": "PostalAddress",
@@ -381,6 +393,97 @@
     
     nav.primary a:hover::after {
       width: 100%;
+    }
+
+    /* Language Selector */
+    .lang-selector {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: rgba(10, 12, 15, 0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px;
+      min-width: 120px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s var(--ease);
+      z-index: 1000;
+    }
+
+    .lang-selector:hover .lang-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lang-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .lang-dropdown a:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    /* Mobile Language Selector */
+    .mobile-lang-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .mobile-lang-selector a {
+      flex: 1;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      transition: all 0.3s var(--ease);
+    }
+
+    .mobile-lang-selector a:hover,
+    .mobile-lang-selector a.active {
+      background: rgba(255,255,255,0.1);
+      color: white;
     }
 
     /* Enhanced Buttons */
@@ -1665,6 +1768,11 @@
         width: 100%;
         border-radius: 0;
       }
+      
+      /* Hide desktop language selector on mobile */
+      .lang-selector {
+        display: none;
+      }
     }
     
     @media (max-width: 768px) {
@@ -1857,15 +1965,30 @@
       </a>
       
       <nav class="primary" aria-label="Main Navigation">
-        <a href="#layers" class="nav-link">Features</a>
-        <a href="#technology" class="nav-link">Technology</a>
-        <a href="#solutions" class="nav-link">Use Cases</a>
-        <a href="#docs" class="nav-link">Documentation</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#layers" class="nav-link" data-translate="nav.features">Features</a>
+        <a href="#technology" class="nav-link" data-translate="nav.technology">Technology</a>
+        <a href="#solutions" class="nav-link" data-translate="nav.solutions">Use Cases</a>
+        <a href="#docs" class="nav-link" data-translate="nav.docs">Documentation</a>
+        <a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a>
       </nav>
       
       <div style="display: flex; gap: 16px; align-items: center;">
-        <a class="btn primary" href="#contact">Request Demo</a>
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇺🇸</span>
+            <span class="lang-code" id="currentLang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown">
+            <a href="#" data-lang="en" data-flag="🇺🇸">🇺🇸 English</a>
+            <a href="#" data-lang="tr" data-flag="🇹🇷">🇹🇷 Türkçe</a>
+          </div>
+        </div>
+        
+        <a class="btn primary" href="#contact" data-translate="nav.demo">Request Demo</a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
           <span></span>
         </button>
@@ -1875,11 +1998,17 @@
     <!-- Mobile Navigation -->
     <div class="mobile-drawer" id="mobileNav" aria-hidden="true">
       <div class="container">
-        <a href="#layers" class="mobile-nav-link">Features</a>
-        <a href="#technology" class="mobile-nav-link">Technology</a>
-        <a href="#solutions" class="mobile-nav-link">Use Cases</a>
-        <a href="#docs" class="mobile-nav-link">Documentation</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <!-- Mobile Language Selector -->
+        <div class="mobile-lang-selector">
+          <a href="#" data-lang="en" class="active">🇺🇸 English</a>
+          <a href="#" data-lang="tr">🇹🇷 Türkçe</a>
+        </div>
+        
+        <a href="#layers" class="mobile-nav-link" data-translate="nav.features">Features</a>
+        <a href="#technology" class="mobile-nav-link" data-translate="nav.technology">Technology</a>
+        <a href="#solutions" class="mobile-nav-link" data-translate="nav.solutions">Use Cases</a>
+        <a href="#docs" class="mobile-nav-link" data-translate="nav.docs">Documentation</a>
+        <a href="#contact" class="mobile-nav-link" data-translate="nav.contact">Contact</a>
       </div>
     </div>
   </header>
@@ -1907,59 +2036,59 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-            <div class="kicker"><i aria-hidden="true"></i><span>Autonomous Agent Security</span></div>
-            <h1>AI Agent <br><span class="gradient-text">With Policy-Grade Control</span></h1>
-            <p class="lead">
+            <div class="kicker"><i aria-hidden="true"></i><span data-translate="hero.kicker">Autonomous Agent Security</span></div>
+            <h1 data-translate="hero.title1">AI Agent <br><span class="gradient-text" data-translate="hero.title2">With Policy-Grade Control</span></h1>
+            <p class="lead" data-translate="hero.lead">
               Enforce policies. Audit every action. Control agent risk in real time.
             </p>
             
             <ul class="hero-bullets">
-              <li>Continuously monitor agent behavior</li>
-              <li>Enforce least-privilege permissions</li>
-              <li>Audit memory and tool access</li>
+              <li data-translate="hero.bullet1">Continuously monitor agent behavior</li>
+              <li data-translate="hero.bullet2">Enforce least-privilege permissions</li>
+              <li data-translate="hero.bullet3">Audit memory and tool access</li>
             </ul>
             
             <div class="hero-actions">
-              <a class="btn primary" href="#contact">Request Demo</a>
-              <a class="btn" href="#technology">View Architecture</a>
+              <a class="btn primary" href="#contact" data-translate="hero.demoBtn">Request Demo</a>
+              <a class="btn" href="#technology" data-translate="hero.architectureBtn">View Architecture</a>
             </div>
             
             <div class="meta-tags">
-              <span class="meta-tag">Behavior Monitoring</span>
-              <span class="meta-tag">Memory Integrity</span>
-              <span class="meta-tag">Permission Enforcement</span>
-              <span class="meta-tag">Real-time Analytics</span>
+              <span class="meta-tag" data-translate="hero.tag1">Behavior Monitoring</span>
+              <span class="meta-tag" data-translate="hero.tag2">Memory Integrity</span>
+              <span class="meta-tag" data-translate="hero.tag3">Permission Enforcement</span>
+              <span class="meta-tag" data-translate="hero.tag4">Real-time Analytics</span>
             </div>
           </div>
           
           <div class="preview-container">
             <div class="glass-card" aria-label="Product Preview Dashboard">
               <div class="card-header">
-                <div class="title">Live Control Plane</div>
-                <div class="status-badge"><b aria-hidden="true"></b>Policy Enforced</div>
+                <div class="title" data-translate="card.live">Live Control Plane</div>
+                <div class="status-badge"><b aria-hidden="true"></b><span data-translate="card.policy">Policy Enforced</span></div>
               </div>
               
               <div class="stats-grid">
                 <div class="stat-box">
-                  <div class="stat-label">Behavior Score</div>
+                  <div class="stat-label" data-translate="card.behavior">Behavior Score</div>
                   <div class="stat-value">98.7%</div>
                   <div class="progress-track"><div class="progress-fill" style="width: 98.7%"></div></div>
                 </div>
                 <div class="stat-box">
-                  <div class="stat-label">Policy Violations</div>
+                  <div class="stat-label" data-translate="card.violations">Policy Violations</div>
                   <div class="stat-value">12</div>
                   <div class="progress-track"><div class="progress-fill" style="width: 5%; background: #EF4444;"></div></div>
                 </div>
                 <div class="stat-box">
-                  <div class="stat-label">Permissions</div>
+                  <div class="stat-label" data-translate="card.permissions">Permissions</div>
                   <div class="stat-value">742/min</div>
                   <div class="progress-track"><div class="progress-fill" style="width: 82%"></div></div>
                 </div>
               </div>
               
               <div class="info-card">
-                <strong>What It Changes</strong>
-                A single enforcement layer for tool calls, memory access, and agent behavior. Deterministic policies, observable outcomes, enterprise-grade security.
+                <strong data-translate="card.changes">What It Changes</strong>
+                <span data-translate="card.description">A single enforcement layer for tool calls, memory access, and agent behavior. Deterministic policies, observable outcomes, enterprise-grade security.</span>
               </div>
             </div>
           </div>
@@ -1972,40 +2101,40 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Core Technology</div>
-            <h2>Three Layers Around Every Agent</h2>
+            <div class="eyebrow" data-translate="features.eyebrow">Core Technology</div>
+            <h2 data-translate="features.title">Three Layers Around Every Agent</h2>
           </div>
-          <p class="subhead">Behavior monitoring, memory integrity, and permission enforcement. Simple, auditable, and enforceable.</p>
+          <p class="subhead" data-translate="features.subtitle">Behavior monitoring, memory integrity, and permission enforcement. Simple, auditable, and enforceable.</p>
         </div>
         
         <div class="cards" role="list">
           <article class="card" role="listitem">
             <div class="tag">LAYER 01</div>
-            <h3>Behavior Monitoring</h3>
-            <p>Trace tool calls and state transitions with precision. Detect drift, anomalies, and risky trajectories in real-time with machine learning insights.</p>
+            <h3 data-translate="features.layer1.title">Behavior Monitoring</h3>
+            <p data-translate="features.layer1.desc">Trace tool calls and state transitions with precision. Detect drift, anomalies, and risky trajectories in real-time with machine learning insights.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Behavior Monitoring">Explore Monitoring</a>
-              <span class="badge">Real-time</span>
+              <a href="#contact" aria-label="Learn more about Behavior Monitoring" data-translate="features.layer1.link">Explore Monitoring</a>
+              <span class="badge" data-translate="features.layer1.badge">Real-time</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
             <div class="tag">LAYER 02</div>
-            <h3>Memory Integrity</h3>
-            <p>Guard vector stores with scoped access, isolation boundaries, and query-level policy checks. Prevent data leakage and ensure compliance.</p>
+            <h3 data-translate="features.layer2.title">Memory Integrity</h3>
+            <p data-translate="features.layer2.desc">Guard vector stores with scoped access, isolation boundaries, and query-level policy checks. Prevent data leakage and ensure compliance.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Memory Integrity">View Specs</a>
-              <span class="badge">ISO 27001</span>
+              <a href="#contact" aria-label="Learn more about Memory Integrity" data-translate="features.layer2.link">View Specs</a>
+              <span class="badge" data-translate="features.layer2.badge">ISO 27001</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
             <div class="tag">LAYER 03</div>
-            <h3>Permission Gates</h3>
-            <p>Route tools and APIs through least-privilege policies, approvals, and audit-ready logging. Granular control for enterprise environments.</p>
+            <h3 data-translate="features.layer3.title">Permission Gates</h3>
+            <p data-translate="features.layer3.desc">Route tools and APIs through least-privilege policies, approvals, and audit-ready logging. Granular control for enterprise environments.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Permission Enforcement">Read Docs</a>
-              <span class="badge">SOC2 Ready</span>
+              <a href="#contact" aria-label="Learn more about Permission Enforcement" data-translate="features.layer3.link">Read Docs</a>
+              <span class="badge" data-translate="features.layer3.badge">SOC2 Ready</span>
             </div>
           </article>
         </div>
@@ -2019,15 +2148,15 @@
           
           <!-- Left Sticky Content -->
           <div class="stack-info" id="stackInfo">
-            <div class="eyebrow">Architecture</div>
-            <h2>Simplified Security Stack</h2>
-            <p class="subhead">
+            <div class="eyebrow" data-translate="tech.eyebrow">Architecture</div>
+            <h2 data-translate="tech.title">Simplified Security Stack</h2>
+            <p class="subhead" data-translate="tech.subtitle">
               A lightweight enforcement plane that sits between your agents and the world. 
               Scroll down to understand how data flows through the VARUX secure kernel.
             </p>
             <div style="margin-top: 32px; display: flex; gap: 12px;">
-              <span class="btn" style="padding: 10px 20px; font-size: 11px;">SDK Available</span>
-              <span class="btn" style="padding: 10px 20px; font-size: 11px;">API Ready</span>
+              <span class="btn" style="padding: 10px 20px; font-size: 11px;" data-translate="tech.sdk">SDK Available</span>
+              <span class="btn" style="padding: 10px 20px; font-size: 11px;" data-translate="tech.api">API Ready</span>
             </div>
           </div>
 
@@ -2038,12 +2167,12 @@
             <article class="stack-card" style="--index: 1" aria-label="Step 1: Integration">
               <div class="stack-number">01</div>
               <div class="stack-content">
-                <h3>Integration & Ingestion</h3>
-                <p>Deploy as a sidecar or import as an SDK. VARUX intercepts agent actions without requiring architectural rewrites.</p>
+                <h3 data-translate="tech.step1.title">Integration & Ingestion</h3>
+                <p data-translate="tech.step1.desc">Deploy as a sidecar or import as an SDK. VARUX intercepts agent actions without requiring architectural rewrites.</p>
                 <ul class="tech-list">
-                  <li><i aria-hidden="true"></i>Zero-latency proxy mode</li>
-                  <li><i aria-hidden="true"></i>Python & Node.js SDK support</li>
-                  <li><i aria-hidden="true"></i>Compatible with LangChain & AutoGPT</li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step1.item1">Zero-latency proxy mode</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step1.item2">Python & Node.js SDK support</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step1.item3">Compatible with LangChain & AutoGPT</span></li>
                 </ul>
                 <div class="mini-code">
                   import varux<br>
@@ -2056,12 +2185,12 @@
             <article class="stack-card" style="--index: 2" aria-label="Step 2: Analysis">
               <div class="stack-number">02</div>
               <div class="stack-content">
-                <h3>Policy Engine Analysis</h3>
-                <p>Every request is evaluated against deterministic policies in microseconds. No hallucinations, just hard rules.</p>
+                <h3 data-translate="tech.step2.title">Policy Engine Analysis</h3>
+                <p data-translate="tech.step2.desc">Every request is evaluated against deterministic policies in microseconds. No hallucinations, just hard rules.</p>
                 <ul class="tech-list">
-                  <li><i aria-hidden="true"></i>PII Detection & Redaction</li>
-                  <li><i aria-hidden="true"></i>Prompt Injection Filtering</li>
-                  <li><i aria-hidden="true"></i>Context-aware authorization</li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step2.item1">PII Detection & Redaction</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step2.item2">Prompt Injection Filtering</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step2.item3">Context-aware authorization</span></li>
                 </ul>
                 <div class="mini-code">
                   Policy: ALLOW tool_use IF confidence > 0.9
@@ -2073,12 +2202,12 @@
             <article class="stack-card" style="--index: 3" aria-label="Step 3: Enforcement">
               <div class="stack-number">03</div>
               <div class="stack-content">
-                <h3>Real-time Enforcement</h3>
-                <p>Risky actions are blocked instantly. Valid actions are logged and routed to their destination securely.</p>
+                <h3 data-translate="tech.step3.title">Real-time Enforcement</h3>
+                <p data-translate="tech.step3.desc">Risky actions are blocked instantly. Valid actions are logged and routed to their destination securely.</p>
                 <ul class="tech-list">
-                  <li><i aria-hidden="true"></i>Block, Flag, or Redact modes</li>
-                  <li><i aria-hidden="true"></i>Human-in-the-loop triggers</li>
-                  <li><i aria-hidden="true"></i>Comprehensive Audit Logs</li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step3.item1">Block, Flag, or Redact modes</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step3.item2">Human-in-the-loop triggers</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step3.item3">Comprehensive Audit Logs</span></li>
                 </ul>
               </div>
             </article>
@@ -2087,12 +2216,12 @@
             <article class="stack-card" style="--index: 4" aria-label="Step 4: Observability">
               <div class="stack-number">04</div>
               <div class="stack-content">
-                <h3>Global Observability</h3>
-                <p>View aggregate risk scores, trace individual agent sessions, and generate compliance reports from a single dashboard.</p>
+                <h3 data-translate="tech.step4.title">Global Observability</h3>
+                <p data-translate="tech.step4.desc">View aggregate risk scores, trace individual agent sessions, and generate compliance reports from a single dashboard.</p>
                 <ul class="tech-list">
-                  <li><i aria-hidden="true"></i>SOC2 Compliance Ready</li>
-                  <li><i aria-hidden="true"></i>Session Replay</li>
-                  <li><i aria-hidden="true"></i>Anomaly Alerting</li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step4.item1">SOC2 Compliance Ready</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step4.item2">Session Replay</span></li>
+                  <li><i aria-hidden="true"></i><span data-translate="tech.step4.item3">Anomaly Alerting</span></li>
                 </ul>
               </div>
             </article>
@@ -2107,40 +2236,40 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Applications</div>
-            <h2>Security for AI-Native Systems</h2>
+            <div class="eyebrow" data-translate="solutions.eyebrow">Applications</div>
+            <h2 data-translate="solutions.title">Security for AI-Native Systems</h2>
           </div>
-          <p class="subhead">One layer that scales from internal agents to platform-level guardrails.</p>
+          <p class="subhead" data-translate="solutions.subtitle">One layer that scales from internal agents to platform-level guardrails.</p>
         </div>
         
         <div class="cards" role="list">
           <article class="card" role="listitem">
-            <div class="tag">Enterprise</div>
-            <h3>Controlled Autonomy</h3>
-            <p>Enforce policies for CRM, finance, and internal tooling with consistent audit trails and compliance reporting.</p>
+            <div class="tag" data-translate="solutions.case1.tag">Enterprise</div>
+            <h3 data-translate="solutions.case1.title">Controlled Autonomy</h3>
+            <p data-translate="solutions.case1.desc">Enforce policies for CRM, finance, and internal tooling with consistent audit trails and compliance reporting.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Enterprise Security">Explore Enterprise</a>
-              <span class="badge">GDPR Ready</span>
+              <a href="#contact" aria-label="Learn more about Enterprise Security" data-translate="solutions.case1.link">Explore Enterprise</a>
+              <span class="badge" data-translate="solutions.case1.badge">GDPR Ready</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
-            <div class="tag">Automation</div>
-            <h3>Predictable Change</h3>
-            <p>Risk-based actions, approvals for high-impact operations, and rollback discipline for automation workflows.</p>
+            <div class="tag" data-translate="solutions.case2.tag">Automation</div>
+            <h3 data-translate="solutions.case2.title">Predictable Change</h3>
+            <p data-translate="solutions.case2.desc">Risk-based actions, approvals for high-impact operations, and rollback discipline for automation workflows.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Automation Security">View Use Cases</a>
-              <span class="badge">HIPAA</span>
+              <a href="#contact" aria-label="Learn more about Automation Security" data-translate="solutions.case2.link">View Use Cases</a>
+              <span class="badge" data-translate="solutions.case2.badge">HIPAA</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
-            <div class="tag">Platforms</div>
-            <h3>Platform Guardrails</h3>
-            <p>Unified policies across models, injection filtering, and consistent access boundaries for LLM platforms.</p>
+            <div class="tag" data-translate="solutions.case3.tag">Platforms</div>
+            <h3 data-translate="solutions.case3.title">Platform Guardrails</h3>
+            <p data-translate="solutions.case3.desc">Unified policies across models, injection filtering, and consistent access boundaries for LLM platforms.</p>
             <div class="card-footer">
-              <a href="#contact" aria-label="Learn more about Platform Security">Read Docs</a>
-              <span class="badge">Multi-tenant</span>
+              <a href="#contact" aria-label="Learn more about Platform Security" data-translate="solutions.case3.link">Read Docs</a>
+              <span class="badge" data-translate="solutions.case3.badge">Multi-tenant</span>
             </div>
           </article>
         </div>
@@ -2152,40 +2281,40 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Resources</div>
-            <h2>Documentation & Guides</h2>
+            <div class="eyebrow" data-translate="docs.eyebrow">Resources</div>
+            <h2 data-translate="docs.title">Documentation & Guides</h2>
           </div>
-          <p class="subhead">Comprehensive resources to help you integrate and scale with confidence.</p>
+          <p class="subhead" data-translate="docs.subtitle">Comprehensive resources to help you integrate and scale with confidence.</p>
         </div>
         
         <div class="cards" role="list">
           <article class="card" role="listitem">
-            <div class="tag">API</div>
-            <h3>API Documentation</h3>
-            <p>REST and control-plane APIs with examples and integration patterns for seamless implementation.</p>
+            <div class="tag" data-translate="docs.doc1.tag">API</div>
+            <h3 data-translate="docs.doc1.title">API Documentation</h3>
+            <p data-translate="docs.doc1.desc">REST and control-plane APIs with examples and integration patterns for seamless implementation.</p>
             <div class="card-footer">
-              <a href="#" aria-label="View API documentation">View Docs</a>
-              <span class="badge">REST • gRPC</span>
+              <a href="#" aria-label="View API documentation" data-translate="docs.doc1.link">View Docs</a>
+              <span class="badge" data-translate="docs.doc1.badge">REST • gRPC</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
-            <div class="tag">SDK</div>
-            <h3>Development Kits</h3>
-            <p>Lightweight integration for orchestrators across languages including Python, JavaScript, and Go.</p>
+            <div class="tag" data-translate="docs.doc2.tag">SDK</div>
+            <h3 data-translate="docs.doc2.title">Development Kits</h3>
+            <p data-translate="docs.doc2.desc">Lightweight integration for orchestrators across languages including Python, JavaScript, and Go.</p>
             <div class="card-footer">
-              <a href="#" aria-label="View SDK documentation">View SDK</a>
-              <span class="badge">Python • JS • Go</span>
+              <a href="#" aria-label="View SDK documentation" data-translate="docs.doc2.link">View SDK</a>
+              <span class="badge" data-translate="docs.doc2.badge">Python • JS • Go</span>
             </div>
           </article>
           
           <article class="card" role="listitem">
-            <div class="tag">Guide</div>
-            <h3>Integration Guide</h3>
-            <p>Deployment guidance for enterprise, automation, and internal LLM platforms with best practices.</p>
+            <div class="tag" data-translate="docs.doc3.tag">Guide</div>
+            <h3 data-translate="docs.doc3.title">Integration Guide</h3>
+            <p data-translate="docs.doc3.desc">Deployment guidance for enterprise, automation, and internal LLM platforms with best practices.</p>
             <div class="card-footer">
-              <a href="#" aria-label="View integration guide">View Guide</a>
-              <span class="badge">Best Practices</span>
+              <a href="#" aria-label="View integration guide" data-translate="docs.doc3.link">View Guide</a>
+              <span class="badge" data-translate="docs.doc3.badge">Best Practices</span>
             </div>
           </article>
         </div>
@@ -2197,53 +2326,53 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Get Started</div>
-            <h2>Connect With Our Team</h2>
+            <div class="eyebrow" data-translate="contact.eyebrow">Get Started</div>
+            <h2 data-translate="contact.title">Connect With Our Team</h2>
           </div>
-          <p class="subhead">Short context, high signal. Let's discuss how VARUX can secure your AI workflows.</p>
+          <p class="subhead" data-translate="contact.subtitle">Short context, high signal. Let's discuss how VARUX can secure your AI workflows.</p>
         </div>
         
         <div class="grid2">
           <div class="panel">
-            <div class="eyebrow">Our Process</div>
-            <h3>How We Engage</h3>
-            <p class="subhead">Design reviews, integration support, and enforcement strategies for real deployments.</p>
+            <div class="eyebrow" data-translate="contact.process.eyebrow">Our Process</div>
+            <h3 data-translate="contact.process.title">How We Engage</h3>
+            <p class="subhead" data-translate="contact.process.subtitle">Design reviews, integration support, and enforcement strategies for real deployments.</p>
             <ul>
-              <li>Security assessment for agent workflows</li>
-              <li>Policy modeling and integration planning</li>
-              <li>Observability and enforcement tuning</li>
-              <li>Ongoing support and updates</li>
+              <li data-translate="contact.process.item1">Security assessment for agent workflows</li>
+              <li data-translate="contact.process.item2">Policy modeling and integration planning</li>
+              <li data-translate="contact.process.item3">Observability and enforcement tuning</li>
+              <li data-translate="contact.process.item4">Ongoing support and updates</li>
             </ul>
             
             <div class="info-card" style="margin-top: 32px;">
-              <strong>"VARUX gave us the confidence to put agents into production for financial data handling."</strong>
-              <span style="color: white; font-weight: 600; display: block; margin-top: 8px;">— VP Engineering, FinTech Co.</span>
+              <strong data-translate="contact.testimonial">"VARUX gave us the confidence to put agents into production for financial data handling."</strong>
+              <span style="color: white; font-weight: 600; display: block; margin-top: 8px;" data-translate="contact.testimonial.author">— VP Engineering, FinTech Co.</span>
             </div>
           </div>
           
           <div class="panel" aria-label="Contact Form">
             <form id="contactForm" action="https://formspree.io/f/mjkjwqya" method="POST" autocomplete="on">
               <div class="form-group">
-                <label for="name">FULL NAME</label>
+                <label for="name" data-translate="form.name">FULL NAME</label>
                 <input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your full name">
               </div>
               
               <div class="form-group">
-                <label for="email">WORK EMAIL</label>
+                <label for="email" data-translate="form.email">WORK EMAIL</label>
                 <input type="email" id="email" name="email" required aria-required="true" placeholder="name@company.com">
               </div>
               
               <div class="form-group">
-                <label for="company">COMPANY</label>
+                <label for="company" data-translate="form.company">COMPANY</label>
                 <input type="text" id="company" name="company" placeholder="Your company name">
               </div>
               
               <div class="form-group">
-                <label for="message">PROJECT CONTEXT</label>
+                <label for="message" data-translate="form.message">PROJECT CONTEXT</label>
                 <textarea id="message" name="message" required aria-required="true" placeholder="Tell us about your AI agent use case and security requirements..."></textarea>
               </div>
               
-              <button type="submit" class="btn primary">Submit Request</button>
+              <button type="submit" class="btn primary" data-translate="form.submit">Submit Request</button>
             </form>
           </div>
         </div>
@@ -2263,7 +2392,7 @@
               <span>Security Layer</span>
             </span>
           </div>
-          <p>
+          <p data-translate="footer.description">
             Enterprise-grade security for autonomous AI systems.<br>
             Policy-grade control, measurable outcomes.
           </p>
@@ -2294,16 +2423,16 @@
         
         <div style="display: flex; gap: 50px;">
           <div style="display: flex; flex-direction: column; gap: 14px;">
-            <strong style="color: white; font-size: 12.6px;">Product</strong>
-            <a href="#layers" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Features</a>
-            <a href="#technology" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Technology</a>
-            <a href="#solutions" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Use Cases</a>
-            <a href="#docs" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Documentation</a>
+            <strong style="color: white; font-size: 12.6px;" data-translate="footer.product">Product</strong>
+            <a href="#layers" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="nav.features">Features</a>
+            <a href="#technology" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="nav.technology">Technology</a>
+            <a href="#solutions" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="nav.solutions">Use Cases</a>
+            <a href="#docs" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="nav.docs">Documentation</a>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
-            <strong style="color: white; font-size: 12.6px;">Legal</strong>
-            <a href="#" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Privacy Policy</a>
-            <a href="#" style="color: var(--muted); text-decoration: none; font-size: 12.6px;">Terms of Service</a>
+            <strong style="color: white; font-size: 12.6px;" data-translate="footer.legal">Legal</strong>
+            <a href="#" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="footer.privacy">Privacy Policy</a>
+            <a href="#" style="color: var(--muted); text-decoration: none; font-size: 12.6px;" data-translate="footer.terms">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -2311,11 +2440,11 @@
       <div style="margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); color: var(--faint); font-size: var(--text-sm);">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div>
-            <a href="#top" style="margin-right: 16px;">Back to Top</a>
-            <a href="#" style="margin-right: 16px;">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+            <a href="#top" style="margin-right: 16px;" data-translate="footer.top">Back to Top</a>
+            <a href="#" style="margin-right: 16px;" data-translate="footer.privacy">Privacy Policy</a>
+            <a href="#" data-translate="footer.terms">Terms of Service</a>
           </div>
-          <div>
+          <div data-translate="footer.copyright">
             © 2025 VARUX Technologies. All rights reserved. Built with security in mind.
           </div>
         </div>
@@ -2337,6 +2466,444 @@
       const loadingBar = document.getElementById('loadingBar');
       const contactForm = document.getElementById('contactForm');
       const stackInfo = document.getElementById('stackInfo');
+      const langBtn = document.getElementById('langBtn');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      const langDropdown = document.querySelector('.lang-dropdown');
+      const mobileLangSelector = document.querySelector('.mobile-lang-selector');
+      
+      // Translations
+      const translations = {
+        en: {
+          // Navigation
+          'nav.features': 'Features',
+          'nav.technology': 'Technology',
+          'nav.solutions': 'Use Cases',
+          'nav.docs': 'Documentation',
+          'nav.contact': 'Contact',
+          'nav.demo': 'Request Demo',
+          
+          // Hero Section
+          'hero.kicker': 'Autonomous Agent Security',
+          'hero.title1': 'AI Agent',
+          'hero.title2': 'With Policy-Grade Control',
+          'hero.lead': 'Enforce policies. Audit every action. Control agent risk in real time.',
+          'hero.bullet1': 'Continuously monitor agent behavior',
+          'hero.bullet2': 'Enforce least-privilege permissions',
+          'hero.bullet3': 'Audit memory and tool access',
+          'hero.demoBtn': 'Request Demo',
+          'hero.architectureBtn': 'View Architecture',
+          'hero.tag1': 'Behavior Monitoring',
+          'hero.tag2': 'Memory Integrity',
+          'hero.tag3': 'Permission Enforcement',
+          'hero.tag4': 'Real-time Analytics',
+          
+          // Card
+          'card.live': 'Live Control Plane',
+          'card.policy': 'Policy Enforced',
+          'card.behavior': 'Behavior Score',
+          'card.violations': 'Policy Violations',
+          'card.permissions': 'Permissions',
+          'card.changes': 'What It Changes',
+          'card.description': 'A single enforcement layer for tool calls, memory access, and agent behavior. Deterministic policies, observable outcomes, enterprise-grade security.',
+          
+          // Features
+          'features.eyebrow': 'Core Technology',
+          'features.title': 'Three Layers Around Every Agent',
+          'features.subtitle': 'Behavior monitoring, memory integrity, and permission enforcement. Simple, auditable, and enforceable.',
+          'features.layer1.title': 'Behavior Monitoring',
+          'features.layer1.desc': 'Trace tool calls and state transitions with precision. Detect drift, anomalies, and risky trajectories in real-time with machine learning insights.',
+          'features.layer1.link': 'Explore Monitoring',
+          'features.layer1.badge': 'Real-time',
+          'features.layer2.title': 'Memory Integrity',
+          'features.layer2.desc': 'Guard vector stores with scoped access, isolation boundaries, and query-level policy checks. Prevent data leakage and ensure compliance.',
+          'features.layer2.link': 'View Specs',
+          'features.layer2.badge': 'ISO 27001',
+          'features.layer3.title': 'Permission Gates',
+          'features.layer3.desc': 'Route tools and APIs through least-privilege policies, approvals, and audit-ready logging. Granular control for enterprise environments.',
+          'features.layer3.link': 'Read Docs',
+          'features.layer3.badge': 'SOC2 Ready',
+          
+          // Technology
+          'tech.eyebrow': 'Architecture',
+          'tech.title': 'Simplified Security Stack',
+          'tech.subtitle': 'A lightweight enforcement plane that sits between your agents and the world. Scroll down to understand how data flows through the VARUX secure kernel.',
+          'tech.sdk': 'SDK Available',
+          'tech.api': 'API Ready',
+          'tech.step1.title': 'Integration & Ingestion',
+          'tech.step1.desc': 'Deploy as a sidecar or import as an SDK. VARUX intercepts agent actions without requiring architectural rewrites.',
+          'tech.step1.item1': 'Zero-latency proxy mode',
+          'tech.step1.item2': 'Python & Node.js SDK support',
+          'tech.step1.item3': 'Compatible with LangChain & AutoGPT',
+          'tech.step2.title': 'Policy Engine Analysis',
+          'tech.step2.desc': 'Every request is evaluated against deterministic policies in microseconds. No hallucinations, just hard rules.',
+          'tech.step2.item1': 'PII Detection & Redaction',
+          'tech.step2.item2': 'Prompt Injection Filtering',
+          'tech.step2.item3': 'Context-aware authorization',
+          'tech.step3.title': 'Real-time Enforcement',
+          'tech.step3.desc': 'Risky actions are blocked instantly. Valid actions are logged and routed to their destination securely.',
+          'tech.step3.item1': 'Block, Flag, or Redact modes',
+          'tech.step3.item2': 'Human-in-the-loop triggers',
+          'tech.step3.item3': 'Comprehensive Audit Logs',
+          'tech.step4.title': 'Global Observability',
+          'tech.step4.desc': 'View aggregate risk scores, trace individual agent sessions, and generate compliance reports from a single dashboard.',
+          'tech.step4.item1': 'SOC2 Compliance Ready',
+          'tech.step4.item2': 'Session Replay',
+          'tech.step4.item3': 'Anomaly Alerting',
+          
+          // Solutions
+          'solutions.eyebrow': 'Applications',
+          'solutions.title': 'Security for AI-Native Systems',
+          'solutions.subtitle': 'One layer that scales from internal agents to platform-level guardrails.',
+          'solutions.case1.tag': 'Enterprise',
+          'solutions.case1.title': 'Controlled Autonomy',
+          'solutions.case1.desc': 'Enforce policies for CRM, finance, and internal tooling with consistent audit trails and compliance reporting.',
+          'solutions.case1.link': 'Explore Enterprise',
+          'solutions.case1.badge': 'GDPR Ready',
+          'solutions.case2.tag': 'Automation',
+          'solutions.case2.title': 'Predictable Change',
+          'solutions.case2.desc': 'Risk-based actions, approvals for high-impact operations, and rollback discipline for automation workflows.',
+          'solutions.case2.link': 'View Use Cases',
+          'solutions.case2.badge': 'HIPAA',
+          'solutions.case3.tag': 'Platforms',
+          'solutions.case3.title': 'Platform Guardrails',
+          'solutions.case3.desc': 'Unified policies across models, injection filtering, and consistent access boundaries for LLM platforms.',
+          'solutions.case3.link': 'Read Docs',
+          'solutions.case3.badge': 'Multi-tenant',
+          
+          // Documentation
+          'docs.eyebrow': 'Resources',
+          'docs.title': 'Documentation & Guides',
+          'docs.subtitle': 'Comprehensive resources to help you integrate and scale with confidence.',
+          'docs.doc1.tag': 'API',
+          'docs.doc1.title': 'API Documentation',
+          'docs.doc1.desc': 'REST and control-plane APIs with examples and integration patterns for seamless implementation.',
+          'docs.doc1.link': 'View Docs',
+          'docs.doc1.badge': 'REST • gRPC',
+          'docs.doc2.tag': 'SDK',
+          'docs.doc2.title': 'Development Kits',
+          'docs.doc2.desc': 'Lightweight integration for orchestrators across languages including Python, JavaScript, and Go.',
+          'docs.doc2.link': 'View SDK',
+          'docs.doc2.badge': 'Python • JS • Go',
+          'docs.doc3.tag': 'Guide',
+          'docs.doc3.title': 'Integration Guide',
+          'docs.doc3.desc': 'Deployment guidance for enterprise, automation, and internal LLM platforms with best practices.',
+          'docs.doc3.link': 'View Guide',
+          'docs.doc3.badge': 'Best Practices',
+          
+          // Contact
+          'contact.eyebrow': 'Get Started',
+          'contact.title': 'Connect With Our Team',
+          'contact.subtitle': 'Short context, high signal. Let\'s discuss how VARUX can secure your AI workflows.',
+          'contact.process.eyebrow': 'Our Process',
+          'contact.process.title': 'How We Engage',
+          'contact.process.subtitle': 'Design reviews, integration support, and enforcement strategies for real deployments.',
+          'contact.process.item1': 'Security assessment for agent workflows',
+          'contact.process.item2': 'Policy modeling and integration planning',
+          'contact.process.item3': 'Observability and enforcement tuning',
+          'contact.process.item4': 'Ongoing support and updates',
+          'contact.testimonial': '"VARUX gave us the confidence to put agents into production for financial data handling."',
+          'contact.testimonial.author': '— VP Engineering, FinTech Co.',
+          
+          // Form
+          'form.name': 'FULL NAME',
+          'form.email': 'WORK EMAIL',
+          'form.company': 'COMPANY',
+          'form.message': 'PROJECT CONTEXT',
+          'form.submit': 'Submit Request',
+          
+          // Footer
+          'footer.description': 'Enterprise-grade security for autonomous AI systems.<br>Policy-grade control, measurable outcomes.',
+          'footer.product': 'Product',
+          'footer.legal': 'Legal',
+          'footer.privacy': 'Privacy Policy',
+          'footer.terms': 'Terms of Service',
+          'footer.top': 'Back to Top',
+          'footer.copyright': '© 2025 VARUX Technologies. All rights reserved. Built with security in mind.'
+        },
+        tr: {
+          // Navigation
+          'nav.features': 'Özellikler',
+          'nav.technology': 'Teknoloji',
+          'nav.solutions': 'Kullanım Senaryoları',
+          'nav.docs': 'Dokümantasyon',
+          'nav.contact': 'İletişim',
+          'nav.demo': 'Demo Talep Et',
+          
+          // Hero Section
+          'hero.kicker': 'Otonom Ajan Güvenliği',
+          'hero.title1': 'AI Ajan',
+          'hero.title2': 'Politika Tabanlı Kontrol ile',
+          'hero.lead': 'Politikaları uygulayın. Her eylemi denetleyin. Ajan riskini gerçek zamanlı kontrol edin.',
+          'hero.bullet1': 'Ajan davranışını sürekli izleyin',
+          'hero.bullet2': 'En az ayrıcalık izinlerini uygulayın',
+          'hero.bullet3': 'Bellek ve araç erişimini denetleyin',
+          'hero.demoBtn': 'Demo Talep Et',
+          'hero.architectureBtn': 'Mimariyi Görüntüle',
+          'hero.tag1': 'Davranış İzleme',
+          'hero.tag2': 'Bellek Bütünlüğü',
+          'hero.tag3': 'İzin Uygulama',
+          'hero.tag4': 'Gerçek Zamanlı Analitik',
+          
+          // Card
+          'card.live': 'Canlı Kontrol Paneli',
+          'card.policy': 'Politika Uygulandı',
+          'card.behavior': 'Davranış Skoru',
+          'card.violations': 'Politika İhlalleri',
+          'card.permissions': 'İzinler',
+          'card.changes': 'Neler Değişiyor',
+          'card.description': 'Araç çağrıları, bellek erişimi ve ajan davranışı için tek bir uygulama katmanı. Belirleyici politikalar, gözlemlenebilir sonuçlar, kurumsal düzeyde güvenlik.',
+          
+          // Features
+          'features.eyebrow': 'Çekirdek Teknoloji',
+          'features.title': 'Her Ajanın Çevresinde Üç Katman',
+          'features.subtitle': 'Davranış izleme, bellek bütünlüğü ve izin uygulama. Basit, denetlenebilir ve uygulanabilir.',
+          'features.layer1.title': 'Davranış İzleme',
+          'features.layer1.desc': 'Araç çağrılarını ve durum geçişlerini hassasiyetle izleyin. Makine öğrenimi içgörüleriyle sürüklenme, anormallikler ve riskli yörüngeleri gerçek zamanlı tespit edin.',
+          'features.layer1.link': 'İzlemeyi Keşfet',
+          'features.layer1.badge': 'Gerçek Zamanlı',
+          'features.layer2.title': 'Bellek Bütünlüğü',
+          'features.layer2.desc': 'Vektör depolarını kapsamlı erişim, izolasyon sınırları ve sorgu düzeyinde politika kontrolleri ile koruyun. Veri sızıntısını önleyin ve uyumluluğu sağlayın.',
+          'features.layer2.link': 'Spesifikasyonları Gör',
+          'features.layer2.badge': 'ISO 27001',
+          'features.layer3.title': 'İzin Kapıları',
+          'features.layer3.desc': 'Araçları ve API\'leri en az ayrıcalık politikaları, onaylar ve denetime hazır günlükler üzerinden yönlendirin. Kurumsal ortamlar için ayrıntılı kontrol.',
+          'features.layer3.link': 'Dokümanları Oku',
+          'features.layer3.badge': 'SOC2 Hazır',
+          
+          // Technology
+          'tech.eyebrow': 'Mimari',
+          'tech.title': 'Basitleştirilmiş Güvenlik Yığını',
+          'tech.subtitle': 'Ajanlarınız ve dünya arasında oturan hafif bir uygulama düzlemi. VARUX güvenli çekirdeğinden veri akışını anlamak için aşağı kaydırın.',
+          'tech.sdk': 'SDK Mevcut',
+          'tech.api': 'API Hazır',
+          'tech.step1.title': 'Entegrasyon & Alma',
+          'tech.step1.desc': 'Yan konteyner olarak dağıtın veya SDK olarak içe aktarın. VARUX, mimari yeniden yazmalar gerektirmeden ajan eylemlerini keser.',
+          'tech.step1.item1': 'Sıfır gecikmeli proxy modu',
+          'tech.step1.item2': 'Python & Node.js SDK desteği',
+          'tech.step1.item3': 'LangChain & AutoGPT ile uyumlu',
+          'tech.step2.title': 'Politika Motoru Analizi',
+          'tech.step2.desc': 'Her istek, mikrosaniyeler içinde belirleyici politikalara karşı değerlendirilir. Halüsinasyon yok, sadece katı kurallar.',
+          'tech.step2.item1': 'PII Tespiti & Redaksiyon',
+          'tech.step2.item2': 'Prompt Enjeksiyonu Filtreleme',
+          'tech.step2.item3': 'Bağlam duyarlı yetkilendirme',
+          'tech.step3.title': 'Gerçek Zamanlı Uygulama',
+          'tech.step3.desc': 'Riskli eylemler anında engellenir. Geçerli eylemler günlüğe kaydedilir ve hedeflerine güvenli şekilde yönlendirilir.',
+          'tech.step3.item1': 'Engelle, Bayrakla veya Redakte et modları',
+          'tech.step3.item2': 'İnsanın dahil olduğu tetikleyiciler',
+          'tech.step3.item3': 'Kapsamlı Denetim Günlükleri',
+          'tech.step4.title': 'Küresel Gözlemlenebilirlik',
+          'tech.step4.desc': 'Toplam risk skorlarını görüntüleyin, bireysel ajan oturumlarını izleyin ve tek bir panodan uyumluluk raporları oluşturun.',
+          'tech.step4.item1': 'SOC2 Uyumluluğu Hazır',
+          'tech.step4.item2': 'Oturum Tekrarı',
+          'tech.step4.item3': 'Anomali Uyarısı',
+          
+          // Solutions
+          'solutions.eyebrow': 'Uygulamalar',
+          'solutions.title': 'AI-Odaklı Sistemler için Güvenlik',
+          'solutions.subtitle': 'İç ajanlardan platform düzeyindeki korkuluklara kadar ölçeklenen tek katman.',
+          'solutions.case1.tag': 'Kurumsal',
+          'solutions.case1.title': 'Kontrollü Otonomi',
+          'solutions.case1.desc': 'CRM, finans ve dahili araçlar için tutarlı denetim izleri ve uyumluluk raporlaması ile politikaları uygulayın.',
+          'solutions.case1.link': 'Kurumsalı Keşfet',
+          'solutions.case1.badge': 'GDPR Hazır',
+          'solutions.case2.tag': 'Otomasyon',
+          'solutions.case2.title': 'Öngörülebilir Değişim',
+          'solutions.case2.desc': 'Risk tabanlı eylemler, yüksek etkili operasyonlar için onaylar ve otomasyon iş akışları için geri alma disiplini.',
+          'solutions.case2.link': 'Kullanım Senaryolarını Gör',
+          'solutions.case2.badge': 'HIPAA',
+          'solutions.case3.tag': 'Platformlar',
+          'solutions.case3.title': 'Platform Korkulukları',
+          'solutions.case3.desc': 'Modeller arasında birleşik politikalar, enjeksiyon filtreleme ve LLM platformları için tutarlı erişim sınırları.',
+          'solutions.case3.link': 'Dokümanları Oku',
+          'solutions.case3.badge': 'Çok kiracılı',
+          
+          // Documentation
+          'docs.eyebrow': 'Kaynaklar',
+          'docs.title': 'Dokümantasyon & Kılavuzlar',
+          'docs.subtitle': 'Entegre olmanıza ve ölçeklendirmenize güvenle yardımcı olacak kapsamlı kaynaklar.',
+          'docs.doc1.tag': 'API',
+          'docs.doc1.title': 'API Dokümantasyonu',
+          'docs.doc1.desc': 'Sorunsuz uygulama için örnekler ve entegrasyon desenleri ile REST ve kontrol düzlemi API\'ları.',
+          'docs.doc1.link': 'Dokümanları Gör',
+          'docs.doc1.badge': 'REST • gRPC',
+          'docs.doc2.tag': 'SDK',
+          'docs.doc2.title': 'Geliştirme Kiti',
+          'docs.doc2.desc': 'Python, JavaScript ve Go dahil olmak üzere diller arasında orkestratörler için hafif entegrasyon.',
+          'docs.doc2.link': 'SDK\'yı Gör',
+          'docs.doc2.badge': 'Python • JS • Go',
+          'docs.doc3.tag': 'Kılavuz',
+          'docs.doc3.title': 'Entegrasyon Kılavuzu',
+          'docs.doc3.desc': 'Kurumsal, otomasyon ve dahili LLM platformları için en iyi uygulamalarla dağıtım rehberliği.',
+          'docs.doc3.link': 'Kılavuzu Gör',
+          'docs.doc3.badge': 'En İyi Uygulamalar',
+          
+          // Contact
+          'contact.eyebrow': 'Başlayın',
+          'contact.title': 'Ekibimizle İletişime Geçin',
+          'contact.subtitle': 'Kısa bağlam, yüksek sinyal. VARUX\'un AI iş akışlarınızı nasıl güvence altına alabileceğini tartışalım.',
+          'contact.process.eyebrow': 'Sürecimiz',
+          'contact.process.title': 'Nasıl Çalışıyoruz',
+          'contact.process.subtitle': 'Gerçek dağıtımlar için tasarım incelemeleri, entegrasyon desteği ve uygulama stratejileri.',
+          'contact.process.item1': 'Ajan iş akışları için güvenlik değerlendirmesi',
+          'contact.process.item2': 'Politika modelleme ve entegrasyon planlaması',
+          'contact.process.item3': 'Gözlemlenebilirlik ve uygulama ayarı',
+          'contact.process.item4': 'Devam eden destek ve güncellemeler',
+          'contact.testimonial': '"VARUX, finansal veri işleme için ajanları üretime koyma konusunda bize güven verdi."',
+          'contact.testimonial.author': '— VP Mühendislik, FinTech Şirketi',
+          
+          // Form
+          'form.name': 'TAM AD',
+          'form.email': 'İŞ E-POSTASI',
+          'form.company': 'ŞİRKET',
+          'form.message': 'PROJE BAĞLAMI',
+          'form.submit': 'İstek Gönder',
+          
+          // Footer
+          'footer.description': 'Otonom AI sistemleri için kurumsal düzeyde güvenlik.<br>Politika düzeyinde kontrol, ölçülebilir sonuçlar.',
+          'footer.product': 'Ürün',
+          'footer.legal': 'Yasal',
+          'footer.privacy': 'Gizlilik Politikası',
+          'footer.terms': 'Hizmet Şartları',
+          'footer.top': 'Başa Dön',
+          'footer.copyright': '© 2025 VARUX Technologies. Tüm hakları saklıdır. Güvenlik düşünülerek inşa edilmiştir.'
+        }
+      };
+
+      // Current language
+      let currentLanguage = localStorage.getItem('language') || 'en';
+      
+      // Initialize language
+      function initLanguage() {
+        // Set HTML lang attribute
+        document.documentElement.lang = currentLanguage;
+        
+        // Update UI
+        updateLanguageUI();
+        
+        // Apply translations
+        applyTranslations(currentLanguage);
+      }
+      
+      // Update language UI
+      function updateLanguageUI() {
+        const flag = currentLanguage === 'en' ? '🇺🇸' : '🇹🇷';
+        const langCode = currentLanguage === 'en' ? 'EN' : 'TR';
+        
+        if (currentFlag) currentFlag.textContent = flag;
+        if (currentLang) currentLang.textContent = langCode;
+        
+        // Update mobile language selector
+        if (mobileLangSelector) {
+          const mobileLinks = mobileLangSelector.querySelectorAll('a');
+          mobileLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-lang') === currentLanguage) {
+              link.classList.add('active');
+            }
+          });
+        }
+      }
+      
+      // Apply translations
+      function applyTranslations(lang) {
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+          const key = element.getAttribute('data-translate');
+          if (translations[lang] && translations[lang][key]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+              element.setAttribute('placeholder', translations[lang][key]);
+            } else if (element.hasAttribute('aria-label')) {
+              element.setAttribute('aria-label', translations[lang][key]);
+            } else {
+              element.innerHTML = translations[lang][key];
+            }
+          }
+        });
+      }
+      
+      // Language switcher
+      function setupLanguageSwitcher() {
+        // Desktop dropdown
+        const langLinks = document.querySelectorAll('.lang-dropdown a');
+        langLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            const flag = this.getAttribute('data-flag');
+            
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update UI
+            currentFlag.textContent = flag;
+            currentLang.textContent = lang.toUpperCase();
+            
+            // Apply translations
+            applyTranslations(lang);
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Close dropdown
+            langDropdown.style.opacity = '0';
+            langDropdown.style.visibility = 'hidden';
+          });
+        });
+        
+        // Mobile language selector
+        if (mobileLangSelector) {
+          const mobileLangLinks = mobileLangSelector.querySelectorAll('a');
+          mobileLangLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const lang = this.getAttribute('data-lang');
+              
+              currentLanguage = lang;
+              localStorage.setItem('language', lang);
+              
+              // Update UI
+              updateLanguageUI();
+              
+              // Apply translations
+              applyTranslations(lang);
+              
+              // Update HTML lang attribute
+              document.documentElement.lang = lang;
+              
+              // Update active state
+              mobileLangLinks.forEach(l => l.classList.remove('active'));
+              this.classList.add('active');
+            });
+          });
+        }
+        
+        // Hover effect for desktop dropdown
+        if (langBtn && langDropdown) {
+          langBtn.addEventListener('mouseenter', () => {
+            langDropdown.style.opacity = '1';
+            langDropdown.style.visibility = 'visible';
+          });
+          
+          langBtn.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+              if (!langDropdown.matches(':hover')) {
+                langDropdown.style.opacity = '0';
+                langDropdown.style.visibility = 'hidden';
+              }
+            }, 100);
+          });
+          
+          langDropdown.addEventListener('mouseleave', () => {
+            langDropdown.style.opacity = '0';
+            langDropdown.style.visibility = 'hidden';
+          });
+        }
+      }
+      
+      // Initialize language system
+      initLanguage();
+      setupLanguageSwitcher();
       
       // Page Load Progress
       window.addEventListener('load', () => {
@@ -2478,7 +3045,7 @@
           const originalText = submitBtn.textContent;
           
           // Show loading state
-          submitBtn.textContent = 'Sending...';
+          submitBtn.textContent = currentLanguage === 'en' ? 'Sending...' : 'Gönderiliyor...';
           submitBtn.disabled = true;
           
           try {
@@ -2492,7 +3059,7 @@
             });
             
             if (response.ok) {
-              submitBtn.textContent = 'Message Sent!';
+              submitBtn.textContent = currentLanguage === 'en' ? 'Message Sent!' : 'Mesaj Gönderildi!';
               contactForm.reset();
               
               // Show success message
@@ -2509,7 +3076,9 @@
                 z-index: 10000;
                 animation: slideIn 0.3s ease;
               `;
-              successMsg.textContent = 'Message sent successfully!';
+              successMsg.textContent = currentLanguage === 'en' 
+                ? 'Message sent successfully!' 
+                : 'Mesaj başarıyla gönderildi!';
               document.body.appendChild(successMsg);
               
               setTimeout(() => {
@@ -2520,7 +3089,9 @@
               throw new Error('Form submission failed');
             }
           } catch (error) {
-            submitBtn.textContent = 'Error - Try Again';
+            submitBtn.textContent = currentLanguage === 'en' 
+              ? 'Error - Try Again' 
+              : 'Hata - Tekrar Deneyin';
           } finally {
             setTimeout(() => {
               submitBtn.textContent = originalText;
