@@ -434,6 +434,139 @@
       opacity: 0.5;
     }
 
+    /* 4K HDR VARUX Logo Splash Screen */
+    .varux-splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .varux-splash.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .varux-logo-4k {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    
+    .varux-text-4k {
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(230, 230, 230, 1) 25%,
+        rgba(192, 192, 192, 0.95) 50%,
+        rgba(230, 230, 230, 1) 75%,
+        rgba(255, 255, 255, 1) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 200%;
+      animation: hdrShimmer 4s ease-in-out infinite;
+      text-shadow: 
+        0 0 60px rgba(255, 255, 255, 0.2),
+        0 0 120px rgba(255, 255, 255, 0.1),
+        0 0 180px rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+    
+    .varux-text-4k::before {
+      content: 'VARUX';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.05) 75%,
+        transparent 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: hdrShimmer 4s ease-in-out infinite reverse;
+      z-index: -1;
+    }
+    
+    @keyframes hdrShimmer {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    .varux-subtitle {
+      font-size: clamp(12px, 1.2vw, 18px);
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.8;
+      text-align: center;
+      margin-top: 16px;
+    }
+    
+    .loading-pulse {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    
+    .loading-pulse div {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulseWave 1.4s ease-in-out infinite;
+    }
+    
+    .loading-pulse div:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .loading-pulse div:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes pulseWave {
+      0%, 60%, 100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+      }
+      30% {
+        transform: scale(1.2);
+        opacity: 1;
+        box-shadow: 0 0 20px var(--accent);
+      }
+    }
+
     .container {
       width: 100%;
       max-width: var(--max-w);
@@ -2079,6 +2212,11 @@
         opacity: 1;
         transform: none;
       }
+      
+      .varux-splash {
+        animation: none !important;
+        transition: opacity 0.3s ease !important;
+      }
     }
     
     /* Accessibility Focus Styles */
@@ -2147,6 +2285,19 @@
   </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
+  <!-- 4K HDR VARUX Splash Screen -->
+  <div class="varux-splash" id="varuxSplash">
+    <div class="varux-logo-4k">
+      <div class="varux-text-4k">VARUX</div>
+      <div class="varux-subtitle">AI Security Layer</div>
+      <div class="loading-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
   <!-- SEO için Gizli Zengin İçerik -->
   <div class="seo-content" aria-hidden="true">
     <h1>VARUX - Otonom AI Ajan Güvenlik Platformu</h1>
@@ -2694,6 +2845,7 @@
       const currentLang = document.getElementById('currentLang');
       const langDropdown = document.querySelector('.lang-dropdown');
       const mobileLangSelector = document.querySelector('.mobile-lang-selector');
+      const varuxSplash = document.getElementById('varuxSplash');
       
       // Enhanced Translations with SEO Keywords
       const translations = {
@@ -3144,14 +3296,44 @@
       initLanguage();
       setupLanguageSwitcher();
       
-      // Page Load Progress
-      window.addEventListener('load', () => {
-        loadingBar.style.width = '100%';
+      // Handle 4K VARUX Splash Screen
+      function handleSplashScreen() {
+        // Hide splash screen after page load
+        window.addEventListener('load', () => {
+          loadingBar.style.width = '100%';
+          
+          setTimeout(() => {
+            loadingBar.style.opacity = '0';
+            setTimeout(() => {
+              loadingBar.style.display = 'none';
+              
+              // Hide splash screen with smooth transition
+              setTimeout(() => {
+                if (varuxSplash) {
+                  varuxSplash.classList.add('hidden');
+                  
+                  // Remove from DOM after transition
+                  setTimeout(() => {
+                    if (varuxSplash && varuxSplash.classList.contains('hidden')) {
+                      varuxSplash.style.display = 'none';
+                    }
+                  }, 800);
+                }
+              }, 300);
+            }, 300);
+          }, 300);
+        });
+        
+        // Fallback: hide splash screen if page takes too long
         setTimeout(() => {
-          loadingBar.style.opacity = '0';
-          setTimeout(() => loadingBar.style.display = 'none', 300);
-        }, 300);
-      });
+          if (varuxSplash && !varuxSplash.classList.contains('hidden')) {
+            varuxSplash.classList.add('hidden');
+          }
+        }, 3000);
+      }
+      
+      // Initialize splash screen
+      handleSplashScreen();
       
       // Update loading bar on page load progress
       document.addEventListener('readystatechange', () => {
