@@ -7,7 +7,7 @@
 
 <link rel="canonical" href="https://varuxcyber.com/">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="VARUX">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://varuxcyber.com/">
-<meta property="og:title" content="VARUX | Deterministic Control Layer for Autonomous Systems">
+<meta property="og:title" content="VARUX | Deterministic Control for Autonomous Systems">
 <meta property="og:description" content="Deterministic policy enforcement before execution. Default deny, fail-safe, evidence-grade audit. VARUX (Varus).">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="tr_TR">
@@ -48,7 +48,7 @@
       "url": "https://varuxcyber.com/",
       "name": "VARUX",
       "alternateName": ["Varus", "VARUX Cybersecurity"],
-      "description": "Deterministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution with audit-grade evidence.",
+      "description": "Dete  rministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution with audit-grade evidence.",
       "inLanguage": ["en", "tr"],
       "publisher": { "@id": "https://varuxcyber.com/#org" }
     },
@@ -84,7 +84,7 @@
         :root {
             /* Enhanced Layout for 4K */
             --max-w: 1440px;
-            --pad-x: clamp(28px, 5.4vw, 108px);
+            --pad-x: clamp(20px, 5vw, 108px); /* Adjusted min for mobile safety */
             --nav-h: 81px;
             --radius: 21px;
             --radius-lg: 32px;
@@ -111,7 +111,7 @@
             --card-border-hover: rgba(255,255,255,0.2);
             --card-accent-border: rgba(110,231,255,0.25);
             --card-radius: 26px;
-            --card-padding: 48px;
+            --card-padding: clamp(24px, 3vw, 48px); /* Responsive padding */
             --card-shadow: 0 25px 70px -15px rgba(0,0,0,0.6),
                           inset 0 1px 0 rgba(255,255,255,0.05);
             --card-shadow-hover: 0 35px 90px -20px rgba(0,0,0,0.7),
@@ -139,14 +139,14 @@
             --ease-heavy: cubic-bezier(0.2, 0.95, 0.3, 1);
             
             /* Typography - Optimized for Readability */
-            --text-xs: clamp(9.45px, 0.684vw, 11.16px);
-            --text-sm: clamp(11.16px, 0.855vw, 12.87px);
-            --text-base: clamp(12.87px, 1.026vw, 15.39px);
-            --text-lg: clamp(15.39px, 1.287vw, 18.81px);
-            --text-xl: clamp(18.81px, 1.71vw, 23.94px);
-            --text-2xl: clamp(23.94px, 2.565vw, 34.2px);
-            --text-3xl: clamp(30.78px, 3.42vw, 47.88px);
-            --text-hero: clamp(45px, 4.8vw, 89px);
+            --text-xs: clamp(10px, 0.7vw, 12px);
+            --text-sm: clamp(12px, 0.85vw, 13px);
+            --text-base: clamp(14px, 1.05vw, 16px); /* Boosted base size for readability */
+            --text-lg: clamp(16px, 1.3vw, 19px);
+            --text-xl: clamp(20px, 1.71vw, 24px);
+            --text-2xl: clamp(24px, 2.565vw, 34px);
+            --text-3xl: clamp(32px, 3.42vw, 48px);
+            --text-hero: clamp(40px, 5vw, 89px); /* Adjusted min for mobile fitting */
         }
 
         /* 4K Base Styles */
@@ -158,10 +158,11 @@
         
         html {
             scroll-behavior: smooth;
-            font-size: clamp(14.4px, 0.81vw, 16.2px);
+            font-size: 16px; /* Base font size standardization */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
         }
         
         body {
@@ -185,6 +186,19 @@
             overflow-x: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+        }
+
+        /* Screen reader only utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Splash/Loading Screen */
@@ -274,6 +288,7 @@
             line-height: 1.1;
             letter-spacing: -0.02em;
             color: var(--text);
+            overflow-wrap: break-word; /* Prevent overflow on long words */
         }
 
         h1 {
@@ -341,7 +356,7 @@
         }
 
         .section {
-            padding: clamp(80px, 8vw, 160px) 0;
+            padding: clamp(60px, 8vw, 160px) 0;
             position: relative;
         }
 
@@ -380,6 +395,11 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: clamp(24px, 2.5vw, 32px);
+        }
+
+        /* Prevent grid blowouts */
+        .grid-2 > *, .grid-3 > *, .grid-4 > * {
+            min-width: 0;
         }
 
         /* Background Elements */
@@ -444,6 +464,7 @@
             min-width: 180px;
             transition: transform .3s var(--ease);
             text-decoration: none;
+            flex-shrink: 0;
         }
         
         .brand:hover {
@@ -465,6 +486,7 @@
             overflow: hidden;
             box-shadow: 0 0 20px rgba(110, 231, 255, 0.1),
                         inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
         }
         
         .mark::before {
@@ -562,6 +584,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex-shrink: 0;
         }
 
         /* Language Selector */
@@ -704,6 +727,7 @@
             overflow: hidden;
             isolation: isolate;
             text-decoration: none;
+            min-height: 44px; /* Accessible touch target */
         }
         
         .btn:hover {
@@ -739,6 +763,7 @@
             padding: 10px 20px;
             font-size: 11px;
             letter-spacing: .1em;
+            min-height: 36px;
         }
 
         .btn-disabled {
@@ -746,12 +771,16 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        
+        .btn.full-width {
+            width: 100%;
+        }
 
         /* Menu Toggle */
         .menu-btn {
             display: none;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 1px solid rgba(255,255,255,0.15);
             background: rgba(255,255,255,0.06);
@@ -810,7 +839,7 @@
             top: var(--nav-h);
             left: 0;
             right: 0;
-            background: rgba(5, 6, 8, .95);
+            background: rgba(5, 6, 8, .98);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -820,6 +849,8 @@
             visibility: hidden;
             transition: all .4s var(--ease-smooth);
             z-index: 999;
+            max-height: calc(100vh - var(--nav-h));
+            overflow-y: auto;
         }
         
         .mobile-drawer.open {
@@ -844,6 +875,7 @@
             text-transform: uppercase;
             text-decoration: none;
             transition: all .3s var(--ease);
+            display: block;
         }
         
         .mobile-drawer a:hover {
@@ -1053,6 +1085,7 @@
             transition: all 0.4s var(--ease-heavy);
             position: relative;
             overflow: hidden;
+            min-width: 0; /* Fix flex/grid overflow */
         }
         
         .stat-box:hover {
@@ -1073,6 +1106,9 @@
             margin-bottom: 12px;
             font-weight: 600;
             font-family: 'SF Mono', 'Courier New', monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .stat-value {
@@ -1271,70 +1307,74 @@
             position: relative;
             margin: clamp(40px, 4vw, 60px) 0;
         }
-        
-        /* Hide arrows on smaller screens */
+
+        .pipeline-step {
+            position: relative;
+        }
+
+        /* Desktop Arrows (Pseudo-elements) */
+        .pipeline-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 24px; /* Adjust vertical alignment */
+            right: -20px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(110,231,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3Cpolyline points='12 5 19 12 12 19'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            transform: translateX(50%);
+            opacity: 0.6;
+        }
+
         @media (max-width: 1024px) {
-            .pipeline-arrows {
-                display: none;
-            }
             .pipeline {
                 grid-template-columns: repeat(2, 1fr);
+            }
+             .pipeline-step:nth-child(2)::after {
+                display: none; /* No arrow after 2nd item on tablet grid */
+            }
+            .pipeline-step:nth-child(1)::after, .pipeline-step:nth-child(3)::after {
+                right: -16px; /* Tweak spacing */
             }
         }
         
         @media (max-width: 768px) {
             .pipeline {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-        }
-
-        /* Arrow container */
-        .pipeline-arrows {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* SVG arrow line */
-        .arrow-line {
-            stroke: rgba(110, 231, 255, 0.4);
-            stroke-width: 1.5;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            transition: stroke-dashoffset 1.2s var(--ease-lux);
-            fill: none;
-        }
-
-        /* Arrowhead */
-        .arrow-head {
-            fill: rgba(110, 231, 255, 0.4);
-            opacity: 0;
-            transition: opacity 0.5s var(--ease-lux) 0.8s;
-        }
-
-        /* When pipeline is in view */
-        .pipeline.in-view .arrow-line {
-            stroke-dashoffset: 0;
-        }
-        
-        .pipeline.in-view .arrow-head {
-            opacity: 1;
-        }
-
-        /* Disable animation if user prefers reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .arrow-line {
-                transition: none;
-                stroke-dashoffset: 0;
+            .pipeline-step:not(:last-child)::after {
+                content: "";
+                top: auto;
+                bottom: -24px;
+                left: 24px; /* Align with padding or text start */
+                right: auto;
+                transform: rotate(90deg); /* Point down */
+                width: 16px;
+                height: 16px;
             }
-            .arrow-head {
-                transition: none;
-                opacity: 1;
+            .pipeline-step {
+                border-left: 2px solid rgba(110, 231, 255, 0.1);
+                padding-left: 20px;
+                margin-left: 10px;
             }
+            /* Reset pseudo arrow for clean stack logic */
+             .pipeline-step:not(:last-child)::after {
+                display: none;
+             }
+             .pipeline-step::before {
+                 content: "";
+                 position: absolute;
+                 left: -6px;
+                 top: 0;
+                 width: 10px;
+                 height: 10px;
+                 border-radius: 50%;
+                 background: rgba(110,231,255,0.2);
+                 border: 1px solid rgba(110,231,255,0.4);
+             }
         }
 
         .step-number {
@@ -1456,34 +1496,41 @@
             letter-spacing: 0.05em;
         }
 
-        /* Contact Section */
+        /* Contact Section - "Sade" Refinement */
         .contact-container {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: clamp(60px, 6vw, 80px);
-            align-items: center;
+            grid-template-columns: 1fr 1.2fr;
+            gap: clamp(40px, 4vw, 80px);
+            align-items: stretch;
+            /* Simplified background for cleaner look */
+            background: var(--bg0);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255,255,255,0.08); /* Minimal border */
+            padding: var(--card-padding);
+            overflow: hidden;
+            position: relative;
         }
-        
+
         .contact-logo {
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: clamp(40px, 4vw, 60px);
+            align-items: flex-start;
+            padding-right: 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
         
         .wordmark {
-            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
         
         .wordmark-main {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             font-weight: 800;
-            font-size: clamp(64px, 6vw, 96px);
+            font-size: clamp(48px, 5vw, 72px);
             letter-spacing: -0.03em;
             color: var(--text);
             line-height: 1;
@@ -1493,31 +1540,28 @@
         .wordmark-sub {
             font-family: 'SF Mono', 'Courier New', monospace;
             font-weight: 500;
-            font-size: clamp(12px, 1vw, 14px);
+            font-size: 12px;
             letter-spacing: 0.3em;
-            color: var(--faint);
+            color: var(--accent);
             text-transform: uppercase;
-            margin-top: 8px;
+        }
+        
+        .contact-logo h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .contact-logo .text-lead {
+            font-size: 15px;
+            color: var(--muted);
         }
         
         .contact-content {
-            text-align: left;
-            max-width: 100%;
-        }
-        
-        .contact-content h2 {
-            margin-bottom: 24px;
-            font-size: var(--text-2xl);
-            letter-spacing: -0.02em;
-            max-width: 24ch;
-        }
-        
-        .contact-content .text-lead {
-            margin-bottom: 40px;
-            font-size: var(--text-base);
-            line-height: 1.6;
-            color: var(--muted);
-            max-width: 48ch;
+            background: transparent; /* Removed noisy background */
+            padding: 10px; /* Reduced internal padding */
+            border-radius: 16px;
+            border: none;
         }
 
         /* Form */
@@ -1539,21 +1583,34 @@
         
         input, select, textarea {
             width: 100%;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 14px 16px;
+            border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(10, 12, 15, 0.6);
+            background: rgba(5, 6, 8, 0.8);
             color: white;
             font-family: inherit;
-            font-size: 15px;
-            transition: all .3s var(--ease-heavy);
+            font-size: 14px;
+            transition: all .2s var(--ease);
+            -webkit-appearance: none; /* Mobile Safari fix */
+        }
+        
+        /* Mobile Input Safety */
+        @media screen and (max-width: 768px) {
+            input, select, textarea {
+                font-size: 16px !important; /* Prevents iOS zoom */
+            }
         }
         
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent);
-            background: rgba(10, 12, 15, 0.8);
+            background: rgba(10, 12, 15, 1);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(110,231,255,0.1);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
         
         select {
@@ -1562,6 +1619,55 @@
             background-repeat: no-repeat;
             background-position: right 1rem center;
             padding-right: 2.5rem;
+        }
+
+        .form-success-message {
+            display: none;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34D399;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 14px;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Fallback UI for contact form */
+        .fallback-ui {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 13px;
+            color: var(--muted);
+            display: none; /* Shown via JS */
+        }
+        
+        .fallback-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .fallback-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .fallback-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
         }
 
         /* Footer */
@@ -1667,30 +1773,27 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .pipeline::before {
-                display: none;
-            }
-            
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 40px;
+                padding: 32px;
             }
             
             .contact-logo {
-                order: 2;
-                padding: 0;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                padding-right: 0;
+                padding-bottom: 32px;
+                align-items: center;
+                text-align: center;
             }
             
-            .wordmark-main {
-                font-size: clamp(48px, 8vw, 72px);
-            }
-            
-            .wordmark-sub {
-                font-size: clamp(11px, 1.5vw, 13px);
+            .wordmark {
+                align-items: center;
             }
             
             .product-card {
@@ -1746,16 +1849,22 @@
                 text-align: center;
             }
             
-            .pipeline {
-                grid-template-columns: 1fr;
-            }
-            
             .product-content > p:not(.text-lead) {
                 padding-left: 0;
+            }
+            
+            /* Enhanced mobile padding */
+            .section {
+                padding: 60px 0;
             }
         }
         
         @media (max-width: 480px) {
+            .contact-container {
+                padding: 24px 20px;
+                border-radius: 20px;
+            }
+            
             .hero-actions {
                 flex-direction: column;
                 align-items: stretch;
@@ -1777,6 +1886,10 @@
             
             .deployment-modes {
                 justify-content: center;
+            }
+            
+            .contact-content {
+                padding: 0;
             }
         }
         
@@ -1844,19 +1957,6 @@
         .hero-content h1 { animation-delay: 0.2s; }
         .hero-content .lead { animation-delay: 0.3s; }
         .hero-content .hero-actions { animation-delay: 0.4s; }
-        
-        /* Screen reader only */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
 
         /* ========================================= */
         /* PRINCIPLES CONTROL SPINE (ENTERPRISE) */
@@ -1865,15 +1965,15 @@
         #principles .principles-bus {
             --spine-w: clamp(96px, 10vw, 132px);
             --gap: clamp(18px, 2.6vw, 32px);
-            --node: 10px;
+            --node: 12px;
             position: relative;
             display: grid;
-            gap: clamp(16px, 2.2vw, 22px);
+            gap: clamp(24px, 3vw, 40px);
             margin-top: clamp(28px, 3.2vw, 44px);
             contain: layout paint;
         }
 
-        /* Rigid vertical control axis (non-rotating, decorative) */
+        /* Rigid vertical control axis */
         #principles .principles-axis {
             position: absolute;
             top: 0;
@@ -1883,91 +1983,138 @@
             transform: translateX(-0.5px);
             background: linear-gradient(
                 to bottom,
-                rgba(255,255,255,0.03),
-                rgba(110,231,255,0.22),
-                rgba(255,255,255,0.03)
+                rgba(255,255,255,0),
+                rgba(110,231,255,0.4) 10%,
+                rgba(110,231,255,0.4) 90%,
+                rgba(255,255,255,0)
             );
-            opacity: 0.55;
+            opacity: 0.6;
             pointer-events: none;
+            z-index: 0;
         }
 
         #principles .principles-row {
             --link-len: calc(var(--gap) + (var(--spine-w) / 2) - (var(--node) / 2));
             display: grid;
-            grid-template-columns: minmax(0, 1fr) var(--spine-w) minmax(0, 1fr);
-            column-gap: var(--gap);
+            grid-template-columns: 1fr var(--spine-w) 1fr;
+            column-gap: 0; /* Gap handled by grid columns */
             align-items: center;
-            padding: clamp(8px, 1vw, 12px) 0;
+            padding: 0;
             contain: layout paint;
+            position: relative;
+            z-index: 1;
         }
 
         #principles .principles-card-wrap {
-            max-width: 560px;
+            max-width: 100%;
+            min-width: 0; /* Prevent flex overflow */
         }
         #principles .principles-card-wrap.left {
-            justify-self: end;
+            justify-self: stretch;
+            text-align: right;
+            padding-right: var(--gap);
         }
         #principles .principles-card-wrap.right {
-            justify-self: start;
+            justify-self: stretch;
+            text-align: left;
+            padding-left: var(--gap);
         }
 
         #principles .principles-card {
             border: 1px solid rgba(255,255,255,0.10);
             border-radius: 16px;
-            padding: clamp(14px, 1.6vw, 20px) clamp(16px, 2.0vw, 22px);
-            background: rgba(8, 10, 12, 0.86);
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.22) inset;
+            padding: clamp(20px, 2vw, 24px);
+            background: rgba(8, 10, 12, 0.9);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #principles .principles-card-wrap.left .principles-card {
+             margin-left: auto;
+             text-align: left; /* Keep text legible */
         }
 
         #principles .principles-card h4 {
             margin: 0 0 10px;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-family: 'SF Mono', 'Courier New', monospace;
             font-size: 0.95rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--text);
+            color: var(--accent);
         }
 
         #principles .principles-card p {
             margin: 0;
-            color: rgba(255,255,255,0.78);
+            color: rgba(255,255,255,0.8);
             line-height: 1.6;
             font-size: 0.98rem;
         }
 
-        /* Single intentional node per row (decorative) */
+        /* Single intentional node per row */
         #principles .principles-node {
             position: relative;
             justify-self: center;
             width: var(--node);
             height: var(--node);
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.20);
-            background: rgba(110,231,255,0.16);
-            opacity: 0.35;
+            border-radius: 50%;
+            border: 1px solid rgba(110,231,255,0.6);
+            background: #050608;
+            box-shadow: 0 0 10px rgba(110,231,255,0.3);
+            z-index: 2;
         }
-
-        /* Connector lines: transform-only (scaleX), no midpoints/handles */
-        #principles .principles-node::before,
+        
         #principles .principles-node::after {
             content: "";
             position: absolute;
             top: 50%;
-            height: 1px;
-            width: var(--link-len);
-            background: rgba(110,231,255,0.28);
-            opacity: 0.0;
-        }
-        #principles .principles-node::before {
-            right: 100%;
-            transform-origin: right center;
-        }
-        #principles .principles-node::after {
-            left: 100%;
-            transform-origin: left center;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
         }
 
-        /* Progressive enhancement: only animate/reveal after JS enables the module */
+        /* Connectors */
+        #principles .principles-row::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            height: 1px;
+            background: rgba(110,231,255,0.2);
+            z-index: -1;
+        }
+        
+        /* Simpler connector approach: Pseudo on Card Wrap */
+        #principles .principles-card-wrap.left {
+            position: relative;
+        }
+        #principles .principles-card-wrap.left::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: var(--gap);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(110,231,255,0.1), rgba(110,231,255,0.3));
+        }
+        
+        #principles .principles-card-wrap.right {
+            position: relative;
+        }
+        #principles .principles-card-wrap.right::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: var(--gap);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(110,231,255,0.3), rgba(110,231,255,0.1));
+        }
+
+        /* Progressive enhancement */
         #principles[data-principles-enhanced="true"] .principles-card-wrap {
             opacity: 0;
             transform: translate3d(0, 12px, 0);
@@ -1975,74 +2122,48 @@
             will-change: opacity, transform;
         }
 
-        #principles[data-principles-enhanced="true"] .principles-node::before,
-        #principles[data-principles-enhanced="true"] .principles-node::after {
-            transform: scaleX(0);
-            opacity: 0.0;
-            transition: transform 560ms ease, opacity 560ms ease;
-        }
-
         #principles[data-principles-enhanced="true"] .principles-row.in-view .principles-card-wrap {
             opacity: 1;
             transform: translate3d(0, 0, 0);
         }
 
-        #principles[data-principles-enhanced="true"] .principles-row.in-view .principles-node {
-            opacity: 0.92;
-            border-color: rgba(110,231,255,0.65);
-        }
-
-        #principles[data-principles-enhanced="true"] .principles-row.in-view .principles-node::before,
-        #principles[data-principles-enhanced="true"] .principles-row.in-view .principles-node::after {
-            transform: scaleX(1);
-            opacity: 1;
-        }
-
-        /* Responsive: stack on tablet/mobile, remove spine/lines, no horizontal scroll */
+        /* Responsive: stack on tablet/mobile */
         @media (max-width: 900px) {
             #principles .principles-axis {
                 display: none;
             }
+            #principles .principles-bus {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
             #principles .principles-row {
-                grid-template-columns: 1fr;
-                row-gap: 14px;
-                padding: 0;
+                display: block;
             }
             #principles .principles-node {
                 display: none;
             }
             #principles .principles-card-wrap {
-                justify-self: stretch;
-                max-width: none;
+                padding: 0 !important;
+                text-align: left !important;
+            }
+             #principles .principles-card-wrap::after {
+                display: none;
             }
             #principles .principles-card {
+                max-width: none;
                 width: 100%;
+                margin: 0 !important;
             }
         }
 
-        /* Accessibility: reduced motion shows everything immediately */
+        /* Accessibility: reduced motion */
         @media (prefers-reduced-motion: reduce) {
             #principles[data-principles-enhanced="true"] .principles-card-wrap {
                 opacity: 1 !important;
                 transform: none !important;
                 transition: none !important;
                 will-change: auto;
-            }
-            #principles[data-principles-enhanced="true"] .principles-node::before,
-            #principles[data-principles-enhanced="true"] .principles-node::after {
-                transform: scaleX(1) !important;
-                opacity: 1 !important;
-                transition: none !important;
-            }
-            #principles[data-principles-enhanced="true"] .principles-node {
-                opacity: 0.92 !important;
-            }
-        }
-
-        /* Fallback for no backdrop-filter on some mobile browsers */
-        @supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
-            .dna-capsule, .glass-card, header.site-header {
-                background: rgba(10, 12, 15, 0.98);
             }
         }
 </style>
@@ -2232,33 +2353,22 @@
             </div>
             
             <div class="pipeline">
-                <div class="pipeline-arrows" aria-hidden="true">
-                    <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1000 200">
-                        <path class="arrow-line" d="M180,100 L280,100" />
-                        <polygon class="arrow-head" points="280,100 270,95 270,105" />
-                        <path class="arrow-line" d="M430,100 L530,100" />
-                        <polygon class="arrow-head" points="530,100 520,95 520,105" />
-                        <path class="arrow-line" d="M680,100 L780,100" />
-                        <polygon class="arrow-head" points="780,100 770,95 770,105" />
-                    </svg>
-                </div>
-                
-                <div class="card reveal-element">
+                <div class="card reveal-element pipeline-step">
                     <span class="step-number">01</span>
                     <h4 data-i18n="pipeline.step1.title">Intercept</h4>
                     <p data-i18n="pipeline.step1.text">Collect request context, agent identity, target resources, and operation details at the network layer.</p>
                 </div>
-                <div class="card reveal-element">
+                <div class="card reveal-element pipeline-step">
                     <span class="step-number">02</span>
                     <h4 data-i18n="pipeline.step2.title">Evaluate</h4>
                     <p data-i18n="pipeline.step2.text">Deterministic policy engine checks against hard constraints, data classifications, and risk signals.</p>
                 </div>
-                <div class="card reveal-element">
+                <div class="card reveal-element pipeline-step">
                     <span class="step-number">03</span>
                     <h4 data-i18n="pipeline.step3.title">Enforce</h4>
                     <p data-i18n="pipeline.step3.text">Request is allowed, denied, or requires approval before execution proceeds. No ambiguous outcomes.</p>
                 </div>
-                <div class="card reveal-element">
+                <div class="card reveal-element pipeline-step">
                     <span class="step-number">04</span>
                     <h4 data-i18n="pipeline.step4.title">Evidence</h4>
                     <p data-i18n="pipeline.step4.text">Append-only audit record is created with request correlation ID, policy version, and decision reason.</p>
@@ -2490,17 +2600,16 @@
         
         <!-- Contact -->
         <section id="contact" class="section container">
-            <div class="contact-container">
+            <div class="contact-container reveal-element">
                 <div class="contact-logo">
                     <div class="wordmark">
                         <div class="wordmark-main">VARUX</div>
                         <div class="wordmark-sub">VARUX TECH</div>
                     </div>
+                    <h2 data-i18n="contact.title">Request Access</h2>
+                    <p class="text-lead" data-i18n="contact.subtitle">VARUX is currently available to select enterprise teams. Describe your use case and we'll follow up within 48 hours.</p>
                 </div>
                 <div class="contact-content">
-                    <h2 class="reveal-element" data-i18n="contact.title">Request Access</h2>
-                    <p class="text-lead reveal-element" data-i18n="contact.subtitle">VARUX is currently available to select enterprise teams. Describe your use case and we'll follow up within 48 hours.</p>
-                    
                     <form id="contact-form">
                         <div class="form-group">
                             <label for="name" data-i18n="contact.form.name">Name</label>
@@ -2527,8 +2636,27 @@
                                 <option value="other" data-i18n="contact.form.option4">Other</option>
                             </select>
                         </div>
+
+                         <div class="form-group">
+                            <label for="details" data-i18n="contact.form.details">Use Case Details</label>
+                            <textarea id="details" name="details" rows="4" required aria-describedby="details-help"></textarea>
+                            <div id="details-help" class="sr-only">Please provide details about your security needs.</div>
+                        </div>
                         
-                        <button type="submit" class="btn primary" style="width: 100%;" data-i18n="contact.form.submit">Submit Request</button>
+                        <button type="submit" class="btn primary full-width" data-i18n="contact.form.submit">Submit Request</button>
+                        
+                        <div id="formSuccess" class="form-success-message" aria-live="polite">
+                            <strong>Request Processing...</strong> If your email client does not open automatically, please use the links below.
+                        </div>
+
+                        <!-- Fallback UI (Hidden by default) -->
+                        <div id="fallbackUI" class="fallback-ui">
+                            <p>Email client didn't open?</p>
+                            <div class="fallback-row">
+                                <a id="manualMailto" href="#" class="fallback-btn">Open Mail Client</a>
+                                <button type="button" id="copyBtn" class="fallback-btn">Copy Details</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -2727,6 +2855,7 @@
                 "contact.form.email": "Work Email",
                 "contact.form.company": "Company",
                 "contact.form.usecase": "What are you trying to secure?",
+                "contact.form.details": "Use Case Details",
                 "contact.form.select": "Select an option",
                 "contact.form.option1": "Production database access",
                 "contact.form.option2": "Autonomous agent tool use",
@@ -2747,7 +2876,164 @@
                 "footer.motto": "Policy > Agent"
             },
             tr: {
-                // ... (Truncated for brevity, logic identical to original)
+                // Navigation
+                "nav.sublabel": "Güvenlik Katmanı",
+                "nav.features": "Özellikler",
+                "nav.technology": "Teknoloji",
+                "nav.usecases": "Kullanım Durumları",
+                "nav.documentation": "Dokümantasyon",
+                "nav.contact": "İletişim",
+                "nav.demo": "Demo İste",
+                
+                // Language
+                "lang.english": "English",
+                "lang.turkish": "Türkçe",
+                
+                // Hero
+                "skip": "İçeriğe atla",
+                "hero.status": "ZORLAMA KATMANI AKTİF",
+                "hero.title": "Otonom Sistemler için Deterministik Kontrol",
+                "hero.subtitle": "Politika ile zorunlu kılınan araç ve veritabanı erişimi, yürütmeden önce değerlendirilir, denetim sınıfı kanıtlarla. Otonom ajanların belirlenen sınırlar içinde çalışmasını sağlayan kontrol katmanı.",
+                "hero.cta.primary": "Erişim İste",
+                "hero.cta.secondary": "Mimarimizi İncele",
+                
+                // Card
+                "card.title": "Canlı Kontrol Düzlemi",
+                "card.status": "Politika Uygulandı",
+                "card.stat1": "Politika Kararları",
+                "card.stat2": "Onay Gerekli",
+                "card.stat3": "Denetim Olayları",
+                "card.stat4": "Reddetme-Kazanır",
+                "card.info.title": "Deterministik Zorlama",
+                "card.info.text": "Her istek, yürütmeden önce politikaya karşı değerlendirilir. Eksik veriler kapalı kalır. Kanıtlar yürütme öncesi kaydedilir. Düşük tek haneli ms gecikmesi için tasarlanmıştır.",
+                
+                // Philosophy
+                "philosophy.eyebrow": "Temel Felsefe",
+                "philosophy.title": "VARUX Nedir",
+                "philosophy.subtitle": "VARUX, araçlara veya veritabanlarına dokunulmadan önce politikayı zorunlu kılan ve denetim sınıfı kanıtlar üreten, deterministik bir yürütme öncesi kontrol katmanıdır.",
+                "philosophy.is.tag": "Nedir",
+                "philosophy.is.title": "Politika Uygulama Sistemi",
+                "philosophy.is.p1": "Ağ ve uygulama katmanında çalışan, açık izin/red sonuçlarına sahip deterministik bir karar motoru.",
+                "philosophy.is.p2": "Her kararın yürütme öncesi kaydedildiği kanıt öncelikli denetim sistemi.",
+                "philosophy.is.p3": "Herhangi bir ajan davranışı veya istem mühendisliğini geçersiz kılan, dışsallaştırılmış, sürümlenmiş politikalar.",
+                "philosophy.not.tag": "Ne Değildir",
+                "philosophy.not.title": "Sıradan Bir YZ Katmanı Değil",
+                "philosophy.not.p1": "Bir YZ modeli veya ajan çerçevesi değildir. Sonradan yapılan bir analiz veya izleme aracı değildir.",
+                "philosophy.not.p2": "Olasılıksal sonuçlara sahip sezgisel tabanlı bir güvenlik katmanı değildir.",
+                "philosophy.not.p3": "Belirsiz kararlar yoktur—sadece deterministik politika zorlaması.",
+                
+                // Pipeline
+                "pipeline.eyebrow": "Mimari",
+                "pipeline.title": "Yürütme Hattı",
+                "pipeline.subtitle": "Her istek, yürütmeden önce dört deterministik aşamadan geçer. Çakışmalarda red kazanır, eksik meta veriler kapalı kalır.",
+                "pipeline.step1.title": "Yakalama",
+                "pipeline.step1.text": "Ağ katmanında istek bağlamı, ajan kimliği, hedef kaynaklar ve işlem detaylarını topla.",
+                "pipeline.step2.title": "Değerlendirme",
+                "pipeline.step2.text": "Deterministik politika motoru, sert kısıtlamalara, veri sınıflandırmalarına ve risk sinyallerine karşı kontrol eder.",
+                "pipeline.step3.title": "Zorlama",
+                "pipeline.step3.text": "İstek, yürütme devam etmeden önce izin verilir, reddedilir veya onay gerektirir. Belirsiz sonuç yok.",
+                "pipeline.step4.title": "Kanıt",
+                "pipeline.step4.text": "İstek korelasyon kimliği, politika sürümü ve karar nedeni ile salt eklemeli bir denetim kaydı oluşturulur.",
+                "pipeline.note.title": "Mimari Not",
+                "pipeline.note.text": "Her karar deterministiktir ve yürürlükteki politika sürümü ile kaydedilir. Bir isteğin yeniden değerlendirilmesi gerekiyorsa, sistem mevcut etkili politika sürümünü kullanır. Herhangi bir eksik meta veri, sürüm tutarsızlığı veya belirsizlik, kapalı kalma reddini tetikler ve kanıt olarak günlüğe kaydedilir.",
+                
+                // Principles
+                "principles.eyebrow": "Temel",
+                "principles.title": "Temel İlkeler",
+                "principles.subtitle": "Basit, denetlenebilir, uygulanabilir. Otonom sistemler için deterministik kontrolün genetik kodu.",
+                "principles.1.title": "Politika > Ajan",
+                "principles.1.text": "Dışsallaştırılmış, sürümlenmiş politikalar güvenlik çevresini tanımlar, herhangi bir ajan davranışı veya istem mühendisliğini geçersiz kılar.",
+                "principles.2.title": "Varsayılan Red",
+                "principles.2.text": "Politika tarafından açıkça izin verilmedikçe tüm istekler reddedilir. Eksik veriler kapalı kalır.",
+                "principles.3.title": "Arıza Emniyeti",
+                "principles.3.text": "Kontrol düzlemi arızaları, güvenliği azaltılmış duruma değil, sistem kilitlenmesine neden olur.",
+                "principles.4.title": "Önce Kanıt",
+                "principles.4.text": "Her karar, yürütmeden önce değiştirilemez bir denetim kaydı oluşturur. Eğer günlüğe kaydedilmediyse, gerçekleşmemiştir.",
+                "principles.5.title": "Deterministik Kararlar",
+                "principles.5.text": "Aynı girdiler her zaman aynı çıktıları üretir. Olasılıksal güvenlik mekanizmaları yoktur.",
+                "principles.6.title": "Kontrollü Geçersiz Kılmalar",
+                "principles.6.text": "Acil durum prosedürleri zaman sınırlıdır, birden fazla doğrulama gerektirir ve geliştirilmiş denetim izleri oluşturur.",
+                
+                // Products
+                "products.eyebrow": "Ürünler",
+                "products.title": "Ürün Paketi",
+                "products.subtitle": "Farklı erişim modelleri ve risk profilleri için özelleştirilmiş zorlama katmanları.",
+                "products.dbguard.title": "DB Guard",
+                "products.dbguard.description": "Üretim veritabanlarına giden tek zorunlu yazma yolu. SQL yazmalarını yakalar, işlemleri normalleştirir, risk sinyalleri türetir ve İZİN/BLOKE/ONAY_GEREKLİ kararlarını zorunlu kılar.",
+                "products.dbguard.mode1": "Gölge/Gözlemle",
+                "products.dbguard.mode2": "Önce-Onay",
+                "products.dbguard.mode3": "Zorla",
+                "products.dbguard.mode4": "Camı-Kır",
+                "products.dbguard.feature1": "Açık politika izni olmadan yıkıcı DDL işlemlerini (DROP, TRUNCATE, ALTER) engeller.",
+                "products.dbguard.feature2": "Veri sınıflandırma etiketlerine dayalı olarak SELECT sorgularında KVKK maskelemesini zorunlu kılar.",
+                "products.dbguard.feature3": "Anormal veri çekme hacimlerini ve bağlantı modellerini sınırlar.",
+                "products.dbguard.cta1": "Entegrasyon Belgeleri",
+                "products.dbguard.cta2": "Özellikleri Görüntüle",
+                "products.dbguard.badge": "Üretime Hazır",
+                "products.kernel.title": "Ajan Güvenlik Çekirdeği",
+                "products.kernel.description": "LLM bağlam pencereleri için hipervizör. Model çıktısının, istem enjeksiyon saldırılarına bakılmaksızın yetkisiz araç kullanımı veya API çağrılarını tetikleyememesini sağlar.",
+                "products.kernel.cta1": "Önizleme İste",
+                "products.kernel.cta2": "Teknik Genel Bakış",
+                "products.kernel.badge": "Sınırlı Önizleme",
+                "products.kernel.target": "LLM Araç Kullanımı",
+                "products.kernel.logic": "Deterministik Grafik",
+                "products.spec.protocol": "Protokol",
+                "products.spec.deployment": "Dağıtım",
+                "products.spec.latency": "Gecikme",
+                "products.spec.status": "Durum",
+                "products.spec.target": "Hedef",
+                "products.spec.logic": "Mantık",
+                "products.status.production": "Üretim",
+                "products.status.preview": "Önizleme",
+                
+                // Security
+                "security.eyebrow": "Güvenlik",
+                "security.title": "Güvenlik Duruşu",
+                "security.subtitle": "Denetlenebilirlik, uyumluluk ve deterministik zorlama kanıtı için sıfırdan tasarlanmıştır.",
+                "security.audit.title": "Denetim Kanıtı",
+                "security.audit.text": "Her karar, istek korelasyon kimliği, politika sürümü, zaman damgası, karar nedeni ve tam istek bağlamı ile salt eklemeli bir olay oluşturur. Kanıtlar yürütme başlamadan önce yazılır.",
+                "security.compliance.title": "Uyumluluk Hizalaması",
+                "security.compliance.text": "Değişiklik kontrolü, veri erişimi ve ayrıcalıklı operasyonlar için denetim gereksinimlerini karşılamak üzere tasarlanmıştır. Düzenleyici çerçeveler için politika zorlamasının deterministik kanıtını sağlar.",
+                
+                // Documentation
+                "docs.eyebrow": "Kaynaklar",
+                "docs.title": "Dokümantasyon & Entegrasyonlar",
+                "docs.subtitle": "Güvenle entegre olmanıza ve ölçeklenmenize yardımcı olacak kapsamlı kaynaklar.",
+                "docs.guides.title": "Entegrasyon Rehberleri",
+                "docs.guides.text": "Yaygın platformlar ve çerçeveler için adım adım dağıtım.",
+                "docs.spec.title": "Politika Spesifikasyonu",
+                "docs.spec.text": "Politika dili sözdizimi, kısıtlamalar ve örnekler için tam referans.",
+                "docs.audit.title": "Denetim Şeması",
+                "docs.audit.text": "Denetim olayları, korelasyon kimlikleri ve kanıt yapısı için ayrıntılı şema.",
+                "docs.coming": "Yakında",
+                "docs.status": "Geliştiriliyor",
+                
+                // Contact
+                "contact.title": "Erişim İste",
+                "contact.subtitle": "VARUX şu anda seçkin kurumsal ekipler için mevcuttur. Kullanım durumunuzu açıklayın, 48 saat içinde geri dönelim.",
+                "contact.form.name": "Ad Soyad",
+                "contact.form.email": "İş E-postası",
+                "contact.form.company": "Şirket",
+                "contact.form.usecase": "Neyi güvenceye almaya çalışıyorsunuz?",
+                "contact.form.details": "Kullanım Durumu Detayları",
+                "contact.form.select": "Bir seçenek belirleyin",
+                "contact.form.option1": "Üretim veritabanı erişimi",
+                "contact.form.option2": "Otonom ajan araç kullanımı",
+                "contact.form.option3": "Denetim/uyumluluk gereksinimleri",
+                "contact.form.option4": "Diğer",
+                "contact.form.submit": "İstek Gönder",
+                
+                // Footer
+                "footer.tagline": "Otonom çağ için kurumsal sınıf kontrol düzlemi. Deterministik, politika sınıfı zorlamaya odaklanarak oluşturulmuştur.",
+                "footer.platform": "Platform",
+                "footer.policy": "Politika Dili",
+                "footer.resources": "Kaynaklar",
+                "footer.status": "Durum",
+                "footer.company": "Şirket",
+                "footer.principles": "İlkeler",
+                "footer.privacy": "Gizlilik",
+                "footer.copyright": "© 2026 VARUX Inc. Tüm hakları saklıdır.",
+                "footer.motto": "Politika > Ajan"
             }
         };
 
@@ -2831,13 +3117,22 @@
                 if (i18n[lang][key]) {
                     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
                         if (element.type !== 'submit' && element.type !== 'button') {
-                            element.placeholder = i18n[lang][key];
+                            // Check if placeholder attribute exists before setting
+                             if (element.hasAttribute('placeholder')) {
+                                element.placeholder = i18n[lang][key];
+                             }
                         } else {
-                            element.value = i18n[lang][key];
+                            // Buttons/Submit inputs
+                             if (element.tagName === 'INPUT') {
+                                element.value = i18n[lang][key];
+                             } else {
+                                element.textContent = i18n[lang][key];
+                             }
                         }
                     } else if (element.tagName === 'OPTION') {
                         element.textContent = i18n[lang][key];
                     } else {
+                        // Regular text elements
                         element.textContent = i18n[lang][key];
                     }
                 }
@@ -2950,7 +3245,7 @@
                         observer.unobserve(entry.target);
                         return;
                     }
-                    const container = entry.target.closest('.grid-2, .grid-3, .grid-4, .pipeline, .section-head');
+                    const container = entry.target.closest('.grid-2, .grid-3, .grid-4, .pipeline, .section-head, .principles-bus');
                     let siblings = [];
                     if (container) {
                         siblings = Array.from(container.querySelectorAll('.reveal-element'));
@@ -2973,7 +3268,7 @@
         if (pipelineElement) revealObserver.observe(pipelineElement);
 
         // ============================================
-                //  PRINCIPLES CONTROL SPINE LOGIC
+        //  PRINCIPLES CONTROL SPINE LOGIC
         // ============================================
 
         const principlesSection = document.getElementById('principles');
@@ -2999,6 +3294,115 @@
 
                 principlesRows.forEach(row => rowObserver.observe(row));
             }
+        }
+
+        // ============================================
+        //  FORM HANDLER (DETERMINISTIC FALLBACK)
+        // ============================================
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('formSuccess');
+        const fallbackUI = document.getElementById('fallbackUI');
+        const manualMailto = document.getElementById('manualMailto');
+        const copyBtn = document.getElementById('copyBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Stop page reload
+                
+                // 1. Collect Data
+                const formData = new FormData(contactForm);
+                const name = formData.get('name') || '';
+                const email = formData.get('email') || '';
+                const org = formData.get('organization') || '';
+                const usecase = formData.get('usecase') || '';
+                const details = formData.get('details') || '';
+
+                // 2. Build Content Strings
+                const subject = `VARUX Access Request: ${org}`;
+                const bodyText = `Name: ${name}\n` +
+                                 `Email: ${email}\n` +
+                                 `Company: ${org}\n` +
+                                 `Category: ${usecase}\n\n` +
+                                 `Use Case Details:\n${details}\n\n` +
+                                 `--\nSubmitted via varuxcyber.com`;
+
+                // 3. Construct Mailto Link
+                // URL encode properly
+                const encodedSubject = encodeURIComponent(subject);
+                const encodedBody = encodeURIComponent(bodyText);
+                let mailtoUrl = `mailto:contact@varuxcyber.com?subject=${encodedSubject}&body=${encodedBody}`;
+
+                // 4. Handle Max Length (Browsers/clients limit varies, ~2000 is safe-ish)
+                // If too long, drop the body from mailto and copy to clipboard instead
+                let isTruncated = false;
+                if (mailtoUrl.length > 1900) {
+                    isTruncated = true;
+                    mailtoUrl = `mailto:contact@varuxcyber.com?subject=${encodedSubject}`;
+                    copyToClipboard(bodyText);
+                }
+
+                // 5. Update UI immediately (Optimistic)
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                submitBtn.setAttribute('disabled', 'true');
+                submitBtn.innerText = 'Redirecting...';
+                
+                // Show fallback UI just in case logic fails or user cancels
+                formSuccess.style.display = 'block';
+                fallbackUI.style.display = 'block';
+                manualMailto.href = mailtoUrl;
+
+                if (isTruncated) {
+                     formSuccess.innerHTML = '<strong>Text Copied.</strong> Your message was too long for a direct link. The details have been copied to your clipboard. Please paste them into the email body.';
+                } else {
+                     formSuccess.innerHTML = '<strong>Opening Email Client...</strong> If nothing happens, use the buttons below.';
+                }
+
+                // 6. Trigger Navigation (Must happen in same event loop)
+                window.location.href = mailtoUrl;
+
+                // 7. Reset button state after a moment (to allow retry)
+                setTimeout(() => {
+                    submitBtn.innerText = 'Sent? Click to Retry';
+                    submitBtn.removeAttribute('disabled');
+                    submitBtn.classList.add('secondary'); // Visual feedback change
+                    submitBtn.classList.remove('primary');
+                }, 2000);
+
+                // Setup manual copy button for fallback
+                copyBtn.onclick = function() {
+                    copyToClipboard(bodyText);
+                    const originalText = copyBtn.innerText;
+                    copyBtn.innerText = "Copied!";
+                    setTimeout(() => copyBtn.innerText = originalText, 2000);
+                };
+            });
+        }
+
+        // Robust Copy Utility
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).catch(err => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
         }
 
         // Initialize general functionality
