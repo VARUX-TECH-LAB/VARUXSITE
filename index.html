@@ -48,7 +48,7 @@
       "url": "https://varuxcyber.com/",
       "name": "VARUX",
       "alternateName": ["Varus", "VARUX Cybersecurity"],
-      "description": "Dete  rministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution with audit-grade evidence.",
+      "description": "Deterministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution with audit-grade evidence.",
       "inLanguage": ["en", "tr"],
       "publisher": { "@id": "https://varuxcyber.com/#org" }
     },
@@ -199,6 +199,48 @@
             clip: rect(0, 0, 0, 0);
             white-space: nowrap;
             border: 0;
+        }
+
+        /* Skip link for keyboard users */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            padding: 12px 16px;
+            background: var(--bg1);
+            color: var(--text);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            z-index: 10000;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .skip-link:focus-visible {
+            left: calc(var(--pad-x));
+            top: 14px;
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        :where(a, button, input, select, textarea, .language-option, .menu-btn):focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        body.drawer-open {
+            overflow: hidden;
+        }
+
+        .deferred-section {
+            content-visibility: auto;
+            contain-intrinsic-size: 960px 1200px;
+        }
+
+        @media (max-width: 768px) {
+            .deferred-section {
+                contain-intrinsic-size: 1200px 1400px;
+            }
         }
 
         /* Splash/Loading Screen */
@@ -448,6 +490,13 @@
             width: calc(100% - 20px);
         }
 
+        @media (max-width: 768px) {
+            header.site-header {
+                backdrop-filter: blur(12px) saturate(140%);
+                -webkit-backdrop-filter: blur(12px) saturate(140%);
+            }
+        }
+
         .nav {
             width: 100%;
             padding: 0 28px;
@@ -498,7 +547,7 @@
             border-radius: 50%;
             filter: blur(4px);
             opacity: 0.8;
-            animation: pulse 2s ease-in-out infinite;
+            animation: markPulse 2s ease-in-out infinite;
         }
         
         .mark::after {
@@ -532,7 +581,7 @@
             color: var(--faint);
         }
 
-        @keyframes pulse {
+        @keyframes markPulse {
             0%, 100% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 0.9; transform: scale(1.1); }
         }
@@ -840,8 +889,8 @@
             left: 0;
             right: 0;
             background: rgba(5, 6, 8, .98);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-top: 1px solid rgba(255,255,255,0.1);
             padding: 20px 0;
             transform: translateY(-100%);
@@ -851,6 +900,23 @@
             z-index: 999;
             max-height: calc(100vh - var(--nav-h));
             overflow-y: auto;
+        }
+
+        .drawer-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s var(--ease-smooth);
+            z-index: 998;
+            pointer-events: none;
+        }
+
+        .drawer-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
         
         .mobile-drawer.open {
@@ -882,6 +948,13 @@
             color: var(--text);
             border-color: rgba(255,255,255,0.2);
             background: rgba(255,255,255,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-drawer {
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(16px);
+            }
         }
 
         /* Hero Section */
@@ -1057,10 +1130,10 @@
             border-radius: 999px;
             background: #10B981;
             box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-            animation: pulse 2s ease-in-out infinite;
+            animation: statusPulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
+        @keyframes statusPulse {
             0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
             50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(16, 185, 129, 0.3); }
         }
@@ -1356,7 +1429,7 @@
                 height: 16px;
             }
             .pipeline-step {
-                border-left: 2px solid rgba(110, 231, 255, 0.1);
+                border-left: 1px solid rgba(110, 231, 255, 0.1);
                 padding-left: 20px;
                 margin-left: 10px;
             }
@@ -1386,117 +1459,241 @@
             font-weight: 500;
         }
 
-        /* Product Cards */
-        .product-card {
+                /* --------------------------------------------- */
+        /* PRODUCT TILES - CONSOLIDATED, ENTERPRISE GRADE */
+        /* --------------------------------------------- */
+
+        /* --------------------------------------------- */
+.product-tiles {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            border: 1px solid var(--card-border);
-            background: linear-gradient(
-                145deg,
-                rgba(15, 17, 20, 0.95) 0%,
-                rgba(12, 14, 17, 0.98) 100%
-            );
-            margin-bottom: clamp(40px, 4vw, 60px);
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            min-height: 480px;
-        }
-        
-        .product-content {
-            padding: var(--card-padding);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .product-content h3 {
-            font-size: var(--text-2xl);
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-        
-        .product-content .text-lead {
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-size: var(--text-base);
-            color: var(--muted);
-        }
-        
-        .product-content > p:not(.text-lead) {
-            margin-bottom: 16px;
-            color: var(--muted);
-            line-height: 1.6;
-            font-size: var(--text-base);
-            position: relative;
-            padding-left: 0;
-        }
-        
-        .product-content > p:not(.text-lead)::before {
-            content: none;
-        }
-        
-        .product-specs {
-            padding: var(--card-padding);
-            border-left: 1px solid var(--card-border);
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.02) 0%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 24px;
-        }
-        
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .spec-label {
-            color: var(--faint);
-            font-size: var(--text-sm);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-family: 'SF Mono', 'Courier New', monospace;
-        }
-        
-        .spec-value {
-            font-family: 'SF Mono', 'Courier New', monospace;
-            color: var(--text);
-            font-size: var(--text-sm);
-            font-weight: 500;
-        }
-        
-        .spec-value[style*="color: #34D399"] {
-            color: #34D399 !important;
-            font-weight: 600;
-        }
-        
-        .deployment-modes {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .mode-tag {
-            padding: 6px 12px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            font-size: var(--text-xs);
-            font-family: 'SF Mono', 'Courier New', monospace;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(20px, 2.5vw, 32px);
+            margin-top: 36px;
+            align-items: stretch;
         }
 
-        /* Contact Section - "Sade" Refinement */
+        .product-tile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 4 / 5;
+            min-height: 360px;
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(255,255,255,0.115);
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 36%, rgba(0,0,0,0.00) 100%);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            --tile-trans: 220ms var(--ease-smooth);
+            --tile-sep: rgba(255,255,255,0.115);
+            --tile-sep-hi: rgba(255,255,255,0.135);
+            box-shadow: 0 18px 46px rgba(0,0,0,0.34);
+            transform: translateY(0);
+            transition: transform var(--tile-trans), box-shadow var(--tile-trans), border-color var(--tile-trans);
+            cursor: pointer;
+        }
+
+        .product-tile.axis {
+            border-color: rgba(110,231,255,0.18);
+        }
+
+        .product-tile.axis::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(110,231,255,0.0) 0%, rgba(110,231,255,0.62) 45%, rgba(110,231,255,0.0) 100%);
+            pointer-events: none;
+            opacity: 0.78;
+        }
+
+        .product-tile.arbiter {
+            border-color: rgba(255,255,255,0.10);
+        }
+
+        .product-tile:hover,
+        .product-tile:focus-visible {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.16);
+            box-shadow: 0 26px 72px rgba(0,0,0,0.45);
+        }
+
+        .product-tile.axis:hover,
+        .product-tile.axis:focus-visible {
+            border-color: rgba(110,231,255,0.33);
+        }
+
+        .product-tile-media {
+            position: relative;
+            flex: 0 0 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            background: linear-gradient(180deg, rgba(5,6,8,0.96) 0%, rgba(2,2,3,0.96) 100%);
+            border-bottom: 1px solid var(--tile-sep);
+        }
+
+        .product-tile-plaque {
+            width: 100%;
+            height: 100%;
+            max-width: 99%;
+            max-height: 99%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background: #020203;
+            border: 1px solid rgba(255,255,255,0.115);
+            border-radius: calc(var(--card-radius) - 8px);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.42);
+        }
+
+        .product-tile.axis .product-tile-plaque {
+            border-color: rgba(110,231,255,0.18);
+        }
+
+        .product-tile-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 10%, rgba(255,255,255,0.06), transparent 55%);
+            opacity: 0.55;
+            pointer-events: none;
+            transition: opacity var(--tile-trans);
+            }
+
+        .product-tile:hover .product-tile-media::after,
+        .product-tile:focus-visible .product-tile-media::after {
+            opacity: 0.75;
+        }
+
+        .product-tile-media img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 18px rgba(0,0,0,0.32));
+            transition: transform var(--tile-trans), filter var(--tile-trans);
+            }
+
+        .product-tile:hover .product-tile-media img,
+        .product-tile:focus-visible .product-tile-media img {
+            transform: scale(1.015);
+            filter: drop-shadow(0 12px 22px rgba(0,0,0,0.38));
+        }
+
+        .product-tile-meta {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 18px;
+            border-top: 1px solid var(--tile-sep);
+            background: rgba(1, 2, 3, 0.72);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        .product-tile-meta h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .product-tile .badge {
+            font-size: 10px;
+            color: var(--faint);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 6px 12px 6px 16px;
+            border-radius: 999px;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            line-height: 1.05;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            background: rgba(255,255,255,0.04);
+            justify-self: end;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .product-tile .badge::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            border-radius: 999px;
+            transform: translateY(-50%) translateY(0.5px);
+            background: rgba(255,255,255,0.22);
+        }
+
+        .product-tile .badge[data-status="production"] {
+            color: rgba(227,255,239,0.96);
+            border-color: rgba(22,163,74,0.48);
+            background: rgba(7,30,22,0.82);
+        }
+
+        .product-tile .badge[data-status="production"]::before {
+            background: #16a34a;
+        }
+
+        .product-tile .badge[data-status="preview"] {
+            color: rgba(235,238,242,0.87);
+            border-color: rgba(255,255,255,0.16);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .product-tile .badge[data-status="preview"]::before {
+            background: rgba(180,186,196,0.65);
+        }
+
+@supports not (aspect-ratio: 4 / 5) {
+            .product-tile {
+                height: 100%;
+                min-height: 360px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .product-tiles {
+                grid-template-columns: 1fr;
+            }
+            .product-tile {
+                min-height: 320px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .product-tile,
+            .product-tile-media::after,
+            .product-tile-media img,
+            .product-tile-meta {
+                transition: none !important;
+            }
+            .product-tile:hover,
+            .product-tile:focus-visible {
+                transform: none;
+            }
+        
+            .product-tile:hover .product-tile-media img,
+            .product-tile:focus-visible .product-tile-media img {
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+        /* ----- END PRODUCT TILES -------------------------------------- */
+
+/* Contact Section - "Sade" Refinement */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -1604,7 +1801,8 @@
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent);
             background: rgba(10, 12, 15, 1);
-            outline: none;
+            outline: 2px solid var(--accent);
+            outline-offset: 1px;
             box-shadow: 0 0 0 1px var(--accent);
         }
         
@@ -2166,9 +2364,45 @@
                 will-change: auto;
             }
         }
+
+        @media (max-width: 768px) {
+            .language-dropdown {
+                backdrop-filter: blur(14px) saturate(160%);
+                -webkit-backdrop-filter: blur(14px) saturate(160%);
+            }
+            .ambient-glow {
+                filter: blur(44px);
+                opacity: 0.42;
+            }
+        }
+
+
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .mark::before,
+            .kicker i,
+            .splash-logo::after,
+            .status-badge b {
+                animation: none !important;
+            }
+            .btn,
+            .card,
+            .glass-card,
+            .pill {
+                transition: none !important;
+            }
+            .btn:hover,
+            .card:hover,
+            .pill:hover {
+                transform: none !important;
+            }
+        }
+
 </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip">Skip to content</a>
     <!-- Splash Screen -->
     <div class="varux-splash" id="varuxSplash" role="status" aria-live="polite" aria-label="Loading VARUX interface">
         <div class="splash-content">
@@ -2227,7 +2461,7 @@
                     </div>
                 </div>
                 <a href="#contact" class="btn primary" data-i18n="nav.demo">Request Demo</a>
-                <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+                <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
                     <span></span>
                 </button>
             </div>
@@ -2243,6 +2477,7 @@
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
             </div>
         </div>
+        <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true" hidden></div>
     </header>
     
     <main id="main-content">
@@ -2451,7 +2686,7 @@
         </section>
         
         <!-- Product Suite -->
-        <section id="product" class="section container container-narrow">
+        <section id="product" class="section container container-narrow deferred-section">
             <div class="section-head reveal-element">
                 <div>
                     <div class="eyebrow" data-i18n="products.eyebrow">Products</div>
@@ -2461,81 +2696,36 @@
                     Specialized enforcement layers for different access patterns and risk profiles.
                 </p>
             </div>
-            
-            <!-- DB Guard -->
-            <div class="product-card reveal-element">
-                <div class="product-content">
-                    <h3 data-i18n="products.dbguard.title">DB Guard</h3>
-                    <p class="text-lead" data-i18n="products.dbguard.description">The single enforced write-path to production databases. Intercepts SQL writes, normalizes operations, derives risk signals, and enforces ALLOW/BLOCK/REQUIRE_APPROVAL decisions.</p>
-                    
-                    <div class="deployment-modes">
-                        <span class="mode-tag" data-i18n="products.dbguard.mode1">Shadow/Observe</span>
-                        <span class="mode-tag" data-i18n="products.dbguard.mode2">Approval-First</span>
-                        <span class="mode-tag" data-i18n="products.dbguard.mode3">Enforce</span>
-                        <span class="mode-tag" data-i18n="products.dbguard.mode4">Break-Glass</span>
+
+            <div class="product-tiles">
+                <a class="product-tile reveal-element axis" href="/axis" aria-label="Go to VARUX AXIS">
+                    <div class="product-tile-media">
+                        <div class="product-tile-plaque">
+                        <img src="axis.png" alt="VARUX AXIS" loading="lazy" decoding="async">
                     </div>
-                    
-                    <p data-i18n="products.dbguard.feature1">Prevents destructive DDL operations (DROP, TRUNCATE, ALTER) without explicit policy allowance.</p>
-                    <p data-i18n="products.dbguard.feature2">Enforces PII masking on SELECT queries based on data classification tags.</p>
-                    <p data-i18n="products.dbguard.feature3">Rate limits anomalous fetch volumes and connection patterns.</p>
-                    
-                    <div class="product-ctas">
-                        <a href="varuxdb.html" class="btn primary small" data-i18n="products.dbguard.cta1">Integration Docs</a>
-                        <a href="varuxdb.html#specs" class="btn secondary small" data-i18n="products.dbguard.cta2">View Specifications</a>
-                        <span class="badge" data-i18n="products.dbguard.badge">Production Ready</span>
                     </div>
-                </div>
-                <div class="product-specs">
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.protocol">Protocol</span>
-                        <span class="spec-value">Postgres / MySQL</span>
+                    <div class="product-tile-meta">
+                        <h3 data-i18n="products.dbguard.title">VARUX AXIS</h3>
+                        <span class="badge" data-status="production" data-i18n="products.dbguard.badge">PRODUCTION READY</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.deployment">Deployment</span>
-                        <span class="spec-value">Sidecar / Proxy</span>
+                </a>
+                <a class="product-tile reveal-element arbiter" href="/arbiter" aria-label="Go to VARUX ARBITER">
+                    <div class="product-tile-media">
+                        <div class="product-tile-plaque">
+                        <img src="arbiter.png" alt="VARUX ARBITER" loading="lazy" decoding="async">
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.latency">Latency</span>
-                        <span class="spec-value">&lt; 2ms typical</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.status">Status</span>
-                        <span class="spec-value" style="color: #34D399;" data-i18n="products.status.production">Production</span>
+                    <div class="product-tile-meta">
+                        <h3 data-i18n="products.kernel.title">VARUX ARBITER</h3>
+                        <span class="badge" data-status="preview" data-i18n="products.kernel.badge">LIMITED PREVIEW</span>
                     </div>
-                </div>
+                </a>
             </div>
-            
-            <!-- Agent Security Kernel -->
-            <div class="product-card reveal-element">
-                <div class="product-content">
-                    <h3 data-i18n="products.kernel.title">Agent Security Kernel</h3>
-                    <p class="text-lead" data-i18n="products.kernel.description">Hypervisor for LLM context windows. Ensures model output cannot trigger unauthorized tool use or API calls, regardless of prompt injection attacks.</p>
-                    
-                    <div class="product-ctas">
-                        <a href="varuxai.html" class="btn primary small" data-i18n="products.kernel.cta1">Request Preview</a>
-                        <a href="varuxai.html#overview" class="btn secondary small" data-i18n="products.kernel.cta2">Technical Overview</a>
-                        <span class="badge" data-i18n="products.kernel.badge">Limited Preview</span>
-                    </div>
-                </div>
-                <div class="product-specs">
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.target">Target</span>
-                        <span class="spec-value" data-i18n="products.kernel.target">LLM Tool Use</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.logic">Logic</span>
-                        <span class="spec-value" data-i18n="products.kernel.logic">Deterministic Graph</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label" data-i18n="products.spec.status">Status</span>
-                        <span class="spec-value" data-i18n="products.status.preview">Preview</span>
-                    </div>
-                </div>
-            </div>
+
         </section>
         
         <!-- Security & Compliance -->
-        <section id="security" class="section container container-narrow">
+        <section id="security" class="section container container-narrow deferred-section">
             <div class="section-head reveal-element">
                 <div>
                     <div class="eyebrow" data-i18n="security.eyebrow">Security</div>
@@ -2559,7 +2749,7 @@
         </section>
         
         <!-- Documentation -->
-        <section id="deployments" class="section container">
+        <section id="deployments" class="section container deferred-section">
             <div class="section-head reveal-element">
                 <div>
                     <div class="eyebrow" data-i18n="docs.eyebrow">Resources</div>
@@ -2598,68 +2788,43 @@
             </div>
         </section>
         
-        <!-- Contact -->
-        <section id="contact" class="section container">
-            <div class="contact-container reveal-element">
-                <div class="contact-logo">
-                    <div class="wordmark">
-                        <div class="wordmark-main">VARUX</div>
-                        <div class="wordmark-sub">VARUX TECH</div>
-                    </div>
-                    <h2 data-i18n="contact.title">Request Access</h2>
-                    <p class="text-lead" data-i18n="contact.subtitle">VARUX is currently available to select enterprise teams. Describe your use case and we'll follow up within 48 hours.</p>
+        <!-- <section id="product" class="section container container-narrow deferred-section">
+            <div class="section-head reveal-element">
+                <div>
+                    <div class="eyebrow" data-i18n="products.eyebrow">Products</div>
+                    <h2 data-i18n="products.title">Product Suite</h2>
                 </div>
-                <div class="contact-content">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name" data-i18n="contact.form.name">Name</label>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" data-i18n="contact.form.email">Work Email</label>
-                            <input type="email" id="email" name="email" autocomplete="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company" data-i18n="contact.form.company">Company</label>
-                            <input type="text" id="company" name="organization" autocomplete="organization" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="usecase" data-i18n="contact.form.usecase">What are you trying to secure?</label>
-                            <select id="usecase" name="usecase" required>
-                                <option value="" data-i18n="contact.form.select">Select an option</option>
-                                <option value="database" data-i18n="contact.form.option1">Production database access</option>
-                                <option value="agents" data-i18n="contact.form.option2">Autonomous agent tool use</option>
-                                <option value="compliance" data-i18n="contact.form.option3">Audit/compliance requirements</option>
-                                <option value="other" data-i18n="contact.form.option4">Other</option>
-                            </select>
-                        </div>
-
-                         <div class="form-group">
-                            <label for="details" data-i18n="contact.form.details">Use Case Details</label>
-                            <textarea id="details" name="details" rows="4" required aria-describedby="details-help"></textarea>
-                            <div id="details-help" class="sr-only">Please provide details about your security needs.</div>
-                        </div>
-                        
-                        <button type="submit" class="btn primary full-width" data-i18n="contact.form.submit">Submit Request</button>
-                        
-                        <div id="formSuccess" class="form-success-message" aria-live="polite">
-                            <strong>Request Processing...</strong> If your email client does not open automatically, please use the links below.
-                        </div>
-
-                        <!-- Fallback UI (Hidden by default) -->
-                        <div id="fallbackUI" class="fallback-ui">
-                            <p>Email client didn't open?</p>
-                            <div class="fallback-row">
-                                <a id="manualMailto" href="#" class="fallback-btn">Open Mail Client</a>
-                                <button type="button" id="copyBtn" class="fallback-btn">Copy Details</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <p class="subhead" data-i18n="products.subtitle">
+                    Specialized enforcement layers for different access patterns and risk profiles.
+                </p>
             </div>
+
+            <div class="product-tiles">
+                <a class="product-tile reveal-element axis" href="/axis" aria-label="VARUX AXIS. Production ready. Open product page.">
+                    <div class="product-tile-media">
+                        <div class="product-tile-plaque" aria-hidden="true">
+                            <img src="axis.png" alt="" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="product-tile-meta">
+                        <h3 data-i18n="products.dbguard.title">VARUX AXIS</h3>
+                        <span class="badge" data-status="production" data-i18n="products.dbguard.badge">PRODUCTION READY</span>
+                    </div>
+                </a>
+                <a class="product-tile reveal-element arbiter" href="/arbiter" aria-label="VARUX ARBITER. Limited preview. Open product page.">
+                    <div class="product-tile-media">
+                        <div class="product-tile-plaque" aria-hidden="true">
+                            <img src="arbiter.png" alt="" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="product-tile-meta">
+                        <h3 data-i18n="products.kernel.title">VARUX ARBITER</h3>
+                        <span class="badge" data-status="preview" data-i18n="products.kernel.badge">LIMITED PREVIEW</span>
+                    </div>
+                </a>
+            </div>
+
+        </section>>
         </section>
         
         <!-- Footer -->
@@ -2681,8 +2846,8 @@
                     <div class="footer-col">
                         <h5 data-i18n="footer.platform">Platform</h5>
                         <ul>
-                            <li><a href="#product" data-i18n="products.dbguard.title">DB Guard</a></li>
-                            <li><a href="#product" data-i18n="products.kernel.title">Agent Kernel</a></li>
+                            <li><a href="varuxdb.html" data-i18n="products.dbguard.title">VARUX AXIS</a></li>
+                            <li><a href="varuxai.html" data-i18n="products.kernel.title">VARUX ARBITER</a></li>
                             <li><a href="#deployments" data-i18n="footer.policy">Policy Language</a></li>
                         </ul>
                     </div>
@@ -2798,7 +2963,7 @@
                 "products.eyebrow": "Products",
                 "products.title": "Product Suite",
                 "products.subtitle": "Specialized enforcement layers for different access patterns and risk profiles.",
-                "products.dbguard.title": "DB Guard",
+                "products.dbguard.title": "VARUX AXIS",
                 "products.dbguard.description": "The single enforced write-path to production databases. Intercepts SQL writes, normalizes operations, derives risk signals, and enforces ALLOW/BLOCK/REQUIRE_APPROVAL decisions.",
                 "products.dbguard.mode1": "Shadow/Observe",
                 "products.dbguard.mode2": "Approval-First",
@@ -2809,12 +2974,12 @@
                 "products.dbguard.feature3": "Rate limits anomalous fetch volumes and connection patterns.",
                 "products.dbguard.cta1": "Integration Docs",
                 "products.dbguard.cta2": "View Specifications",
-                "products.dbguard.badge": "Production Ready",
-                "products.kernel.title": "Agent Security Kernel",
+                "products.dbguard.badge": "PRODUCTION READY",
+                "products.kernel.title": "VARUX ARBITER",
                 "products.kernel.description": "Hypervisor for LLM context windows. Ensures model output cannot trigger unauthorized tool use or API calls, regardless of prompt injection attacks.",
                 "products.kernel.cta1": "Request Preview",
                 "products.kernel.cta2": "Technical Overview",
-                "products.kernel.badge": "Limited Preview",
+                "products.kernel.badge": "LIMITED PREVIEW",
                 "products.kernel.target": "LLM Tool Use",
                 "products.kernel.logic": "Deterministic Graph",
                 "products.spec.protocol": "Protocol",
@@ -2958,7 +3123,7 @@
                 "products.eyebrow": "Ürünler",
                 "products.title": "Ürün Paketi",
                 "products.subtitle": "Farklı erişim modelleri ve risk profilleri için özelleştirilmiş zorlama katmanları.",
-                "products.dbguard.title": "DB Guard",
+                "products.dbguard.title": "VARUX AXIS",
                 "products.dbguard.description": "Üretim veritabanlarına giden tek zorunlu yazma yolu. SQL yazmalarını yakalar, işlemleri normalleştirir, risk sinyalleri türetir ve İZİN/BLOKE/ONAY_GEREKLİ kararlarını zorunlu kılar.",
                 "products.dbguard.mode1": "Gölge/Gözlemle",
                 "products.dbguard.mode2": "Önce-Onay",
@@ -2969,12 +3134,12 @@
                 "products.dbguard.feature3": "Anormal veri çekme hacimlerini ve bağlantı modellerini sınırlar.",
                 "products.dbguard.cta1": "Entegrasyon Belgeleri",
                 "products.dbguard.cta2": "Özellikleri Görüntüle",
-                "products.dbguard.badge": "Üretime Hazır",
-                "products.kernel.title": "Ajan Güvenlik Çekirdeği",
+                "products.dbguard.badge": "PRODUCTION READY",
+                "products.kernel.title": "VARUX ARBITER",
                 "products.kernel.description": "LLM bağlam pencereleri için hipervizör. Model çıktısının, istem enjeksiyon saldırılarına bakılmaksızın yetkisiz araç kullanımı veya API çağrılarını tetikleyememesini sağlar.",
                 "products.kernel.cta1": "Önizleme İste",
                 "products.kernel.cta2": "Teknik Genel Bakış",
-                "products.kernel.badge": "Sınırlı Önizleme",
+                "products.kernel.badge": "LIMITED PREVIEW",
                 "products.kernel.target": "LLM Araç Kullanımı",
                 "products.kernel.logic": "Deterministik Grafik",
                 "products.spec.protocol": "Protokol",
@@ -3159,25 +3324,31 @@
         
         function toggleDropdown() {
             const isExpanded = languageSelector.getAttribute('aria-expanded') === 'true';
-            languageSelector.setAttribute('aria-expanded', !isExpanded);
+            languageSelector.setAttribute('aria-expanded', String(!isExpanded));
             if (!isExpanded) {
-                languageDropdown.classList.add('active');
-                languageDropdown.setAttribute('aria-hidden', 'false');
-                setTimeout(() => { languageOptions[0].focus(); }, 10);
+                languageDropdown?.classList.add('active');
+                languageDropdown?.setAttribute('aria-hidden', 'false');
+                const active = languageDropdown.querySelector('.language-option.active') || languageOptions[0];
+                setTimeout(() => { active?.focus(); }, 10);
             } else {
                 closeDropdown();
             }
         }
         
-        function closeDropdown() {
+        function closeDropdown(focusTrigger = true) {
             languageSelector.setAttribute('aria-expanded', 'false');
-            languageDropdown.classList.remove('active');
-            languageDropdown.setAttribute('aria-hidden', 'true');
-            languageSelector.focus();
+            languageDropdown?.classList.remove('active');
+            languageDropdown?.setAttribute('aria-hidden', 'true');
+            if (focusTrigger) {
+                languageSelector.focus();
+            }
         }
         
         if (languageSelector) {
-            languageSelector.addEventListener('click', toggleDropdown);
+            languageSelector.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleDropdown();
+            });
             languageSelector.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -3188,18 +3359,31 @@
             });
         }
         
-        languageOptions.forEach(option => {
+        languageOptions.forEach((option, idx) => {
             option.addEventListener('click', () => {
                 const lang = option.dataset.lang;
                 setLanguage(lang);
                 updateLanguageSelector(lang);
                 closeDropdown();
             });
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeDropdown();
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const next = languageOptions[idx + 1] || languageOptions[0];
+                    next.focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prev = languageOptions[idx - 1] || languageOptions[languageOptions.length - 1];
+                    prev.focus();
+                }
+            });
         });
         
         document.addEventListener('click', (e) => {
-            if (!languageSelector.contains(e.target) && !languageDropdown.contains(e.target)) {
-                closeDropdown();
+            if (languageDropdown?.classList.contains('active') && !languageSelector.contains(e.target) && !languageDropdown.contains(e.target)) {
+                closeDropdown(false);
             }
         });
 
@@ -3216,56 +3400,155 @@
         // Mobile menu toggle
         const mobileToggle = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileNav');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+
+
+        let lockedScrollY = 0;
+        const lockBodyScroll = () => {
+            lockedScrollY = window.scrollY || window.pageYOffset || 0;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${lockedScrollY}px`;
+            document.body.style.width = '100%';
+        };
+        const unlockBodyScroll = () => {
+            const y = lockedScrollY;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, y);
+        };
+
+        const setMobileMenu = (open) => {
+            if (!mobileToggle || !mobileMenu) return;
+
+            mobileToggle.classList.toggle('active', open);
+            mobileToggle.setAttribute('aria-expanded', String(open));
+            mobileToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+
+            mobileMenu.classList.toggle('open', open);
+            mobileMenu.setAttribute('aria-hidden', String(!open));
+
+            document.body.classList.toggle('drawer-open', open);
+
+            if (drawerBackdrop) {
+                drawerBackdrop.classList.toggle('active', open);
+                drawerBackdrop.hidden = !open;
+                drawerBackdrop.setAttribute('aria-hidden', String(!open));
+            }
+
+            if (open) {
+                lockBodyScroll();
+                // Move focus into the drawer for keyboard users
+                const firstLink = mobileMenu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+                setTimeout(() => { firstLink?.focus(); }, 30);
+            } else {
+                unlockBodyScroll();
+            }
+        };
+
+        const closeMobileMenu = () => setMobileMenu(false);
+
         if (mobileToggle) {
             mobileToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-                mobileToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('open');
-                mobileToggle.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.setAttribute('aria-hidden', isExpanded);
+                setMobileMenu(!isExpanded);
             });
         }
+
+        drawerBackdrop?.addEventListener('click', closeMobileMenu);
+
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (mobileMenu?.classList.contains('open') && !mobileMenu.contains(e.target) && !mobileToggle?.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const drawerOpen = mobileMenu?.classList.contains('open');
+            const dropdownOpen = !!languageDropdown?.classList.contains('active');
+
+            if (e.key === 'Escape') {
+                if (dropdownOpen) {
+                    closeDropdown();
+                }
+                if (drawerOpen) {
+                    closeMobileMenu();
+                    mobileToggle?.focus();
+                }
+                return;
+            }
+
+            if (drawerOpen && e.key === 'Tab') {
+                const focusables = Array.from(mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true');
+                if (focusables.length === 0) return;
+
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+
+                // No focus trap: tabbing out closes the drawer and returns focus to the toggle.
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    closeMobileMenu();
+                    mobileToggle?.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    closeMobileMenu();
+                    mobileToggle?.focus();
+                }
+            }
+        });
 
         // Reveal animations
         const revealElements = document.querySelectorAll('.reveal-element');
         const pipelineElement = document.querySelector('.pipeline');
+        const prefersReducedMotionGlobal = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -80px 0px',
-            threshold: 0.1
-        };
-        
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('pipeline')) {
-                        entry.target.classList.add('in-view');
+        if (prefersReducedMotionGlobal) {
+            revealElements.forEach(el => el.classList.add('in-view'));
+            if (pipelineElement) pipelineElement.classList.add('in-view');
+        } else {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -80px 0px',
+                threshold: 0.1
+            };
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('pipeline')) {
+                            entry.target.classList.add('in-view');
+                            observer.unobserve(entry.target);
+                            return;
+                        }
+                        const container = entry.target.closest('.grid-2, .grid-3, .grid-4, .pipeline, .section-head, .principles-bus');
+                        let siblings = [];
+                        if (container) {
+                            siblings = Array.from(container.querySelectorAll('.reveal-element'));
+                        } else {
+                            siblings = [entry.target];
+                        }
+                        const index = siblings.indexOf(entry.target);
+                        const delay = Math.min(index * 80, 400);
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add('in-view');
+                        }, delay);
+                        
                         observer.unobserve(entry.target);
-                        return;
                     }
-                    const container = entry.target.closest('.grid-2, .grid-3, .grid-4, .pipeline, .section-head, .principles-bus');
-                    let siblings = [];
-                    if (container) {
-                        siblings = Array.from(container.querySelectorAll('.reveal-element'));
-                    } else {
-                        siblings = [entry.target];
-                    }
-                    const index = siblings.indexOf(entry.target);
-                    const delay = Math.min(index * 80, 400);
-                    
-                    setTimeout(() => {
-                        entry.target.classList.add('in-view');
-                    }, delay);
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        revealElements.forEach(el => revealObserver.observe(el));
-        if (pipelineElement) revealObserver.observe(pipelineElement);
+                });
+            }, observerOptions);
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+            if (pipelineElement) revealObserver.observe(pipelineElement);
+        }
 
         // ============================================
         //  PRINCIPLES CONTROL SPINE LOGIC
