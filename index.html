@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>VARUX Cybersecurity | Deterministic Policy Enforcement for AI & Autonomous Systems</title>
- 
+
 <meta name="description" content="VARUX is the deterministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution (default deny, fail-safe), with audit-grade evidence. Also referenced as Varus.">
-
-<link rel="canonical" href="https://varuxcyber.com/">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+<meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
+
+<link rel="canonical" href="https://varuxcyber.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="apple-mobile-web-app-title" content="VARUX">
 
 <meta name="application-name" content="VARUX">
 <meta name="author" content="VARUX Cybersecurity">
 <meta name="publisher" content="VARUX Cybersecurity">
 <meta name="theme-color" content="#050608" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="dark light">
 
 <!-- Optional but helpful if you have multi-language pages -->
@@ -29,6 +41,10 @@
 <meta property="og:url" content="https://varuxcyber.com/">
 <meta property="og:title" content="VARUX | Deterministic Control for Autonomous Systems">
 <meta property="og:description" content="Deterministic policy enforcement before execution. Default deny, fail-safe, evidence-grade audit. VARUX (Varus).">
+<meta property="og:image" content="https://varuxcyber.com/apple-touch-icon.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="VARUX brand mark">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="tr_TR">
 
@@ -36,6 +52,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VARUX Cybersecurity">
 <meta name="twitter:description" content="Deterministic policy enforcement for autonomous systems and AI agents. Control layer, not an AI model. VARUX (Varus).">
+<meta name="twitter:image" content="https://varuxcyber.com/apple-touch-icon.png">
+<meta name="twitter:site" content="@varuxtech">
 
 <!-- Brand/Entity: Schema.org -->
 <script type="application/ld+json">
@@ -49,6 +67,7 @@
       "name": "VARUX",
       "alternateName": ["Varus", "VARUX Cybersecurity"],
       "description": "Deterministic control and obligation layer for autonomous systems and AI agents. Policy enforced before execution with audit-grade evidence.",
+      "image": "https://varuxcyber.com/apple-touch-icon.png",
       "inLanguage": ["en", "tr"],
       "publisher": { "@id": "https://varuxcyber.com/#org" }
     },
@@ -74,6 +93,7 @@
       "name": "VARUX | Deterministic Control for Autonomous Systems",
       "isPartOf": { "@id": "https://varuxcyber.com/#website" },
       "about": { "@id": "https://varuxcyber.com/#org" },
+      "primaryImageOfPage": "https://varuxcyber.com/apple-touch-icon.png",
       "inLanguage": "en"
     }
   ]
@@ -186,6 +206,33 @@
             overflow-x: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+        }
+
+        img, svg, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            z-index: 12000;
+            pointer-events: none;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+            box-shadow: 0 0 18px rgba(110, 231, 255, 0.35);
+        }
+
+        .motion-ready {
+            will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-progress {
+                display: none;
+            }
         }
 
         /* Screen reader only utility */
@@ -2698,7 +2745,7 @@
             </div>
 
             <div class="product-tiles">
-                <a class="product-tile reveal-element axis" href="/axis" aria-label="Go to VARUX AXIS">
+                <a class="product-tile reveal-element axis" href="axis.html" aria-label="Go to VARUX AXIS">
                     <div class="product-tile-media">
                         <div class="product-tile-plaque">
                         <img src="axis.png" alt="VARUX AXIS" loading="lazy" decoding="async">
@@ -2709,7 +2756,7 @@
                         <span class="badge" data-status="production" data-i18n="products.dbguard.badge">PRODUCTION READY</span>
                     </div>
                 </a>
-                <a class="product-tile reveal-element arbiter" href="/arbiter" aria-label="Go to VARUX ARBITER">
+                <a class="product-tile reveal-element arbiter" href="arbiter.html" aria-label="Go to VARUX ARBITER">
                     <div class="product-tile-media">
                         <div class="product-tile-plaque">
                         <img src="arbiter.png" alt="VARUX ARBITER" loading="lazy" decoding="async">
@@ -2788,45 +2835,6 @@
             </div>
         </section>
         
-        <!-- <section id="product" class="section container container-narrow deferred-section">
-            <div class="section-head reveal-element">
-                <div>
-                    <div class="eyebrow" data-i18n="products.eyebrow">Products</div>
-                    <h2 data-i18n="products.title">Product Suite</h2>
-                </div>
-                <p class="subhead" data-i18n="products.subtitle">
-                    Specialized enforcement layers for different access patterns and risk profiles.
-                </p>
-            </div>
-
-            <div class="product-tiles">
-                <a class="product-tile reveal-element axis" href="/axis" aria-label="VARUX AXIS. Production ready. Open product page.">
-                    <div class="product-tile-media">
-                        <div class="product-tile-plaque" aria-hidden="true">
-                            <img src="axis.png" alt="" loading="lazy" decoding="async">
-                        </div>
-                    </div>
-                    <div class="product-tile-meta">
-                        <h3 data-i18n="products.dbguard.title">VARUX AXIS</h3>
-                        <span class="badge" data-status="production" data-i18n="products.dbguard.badge">PRODUCTION READY</span>
-                    </div>
-                </a>
-                <a class="product-tile reveal-element arbiter" href="/arbiter" aria-label="VARUX ARBITER. Limited preview. Open product page.">
-                    <div class="product-tile-media">
-                        <div class="product-tile-plaque" aria-hidden="true">
-                            <img src="arbiter.png" alt="" loading="lazy" decoding="async">
-                        </div>
-                    </div>
-                    <div class="product-tile-meta">
-                        <h3 data-i18n="products.kernel.title">VARUX ARBITER</h3>
-                        <span class="badge" data-status="preview" data-i18n="products.kernel.badge">LIMITED PREVIEW</span>
-                    </div>
-                </a>
-            </div>
-
-        </section>>
-        </section>
-        
         <!-- Footer -->
         <footer>
             <div class="container">
@@ -2846,8 +2854,8 @@
                     <div class="footer-col">
                         <h5 data-i18n="footer.platform">Platform</h5>
                         <ul>
-                            <li><a href="varuxdb.html" data-i18n="products.dbguard.title">VARUX AXIS</a></li>
-                            <li><a href="varuxai.html" data-i18n="products.kernel.title">VARUX ARBITER</a></li>
+                            <li><a href="axis.html" data-i18n="products.dbguard.title">VARUX AXIS</a></li>
+                            <li><a href="arbiter.html" data-i18n="products.kernel.title">VARUX ARBITER</a></li>
                             <li><a href="#deployments" data-i18n="footer.policy">Policy Language</a></li>
                         </ul>
                     </div>
@@ -3587,6 +3595,7 @@
         const fallbackUI = document.getElementById('fallbackUI');
         const manualMailto = document.getElementById('manualMailto');
         const copyBtn = document.getElementById('copyBtn');
+        let lastFallbackBodyText = '';
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -3633,11 +3642,18 @@
                 formSuccess.style.display = 'block';
                 fallbackUI.style.display = 'block';
                 manualMailto.href = mailtoUrl;
+                lastFallbackBodyText = bodyText;
 
                 if (isTruncated) {
-                     formSuccess.innerHTML = '<strong>Text Copied.</strong> Your message was too long for a direct link. The details have been copied to your clipboard. Please paste them into the email body.';
+                     setFormStatus(
+                        'Text Copied.',
+                        'Your message was too long for a direct link. The details have been copied to your clipboard. Please paste them into the email body.'
+                     );
                 } else {
-                     formSuccess.innerHTML = '<strong>Opening Email Client...</strong> If nothing happens, use the buttons below.';
+                     setFormStatus(
+                        'Opening Email Client...',
+                        'If nothing happens, use the buttons below.'
+                     );
                 }
 
                 // 6. Trigger Navigation (Must happen in same event loop)
@@ -3651,14 +3667,26 @@
                     submitBtn.classList.remove('primary');
                 }, 2000);
 
-                // Setup manual copy button for fallback
-                copyBtn.onclick = function() {
-                    copyToClipboard(bodyText);
-                    const originalText = copyBtn.innerText;
-                    copyBtn.innerText = "Copied!";
-                    setTimeout(() => copyBtn.innerText = originalText, 2000);
-                };
             });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                if (!lastFallbackBodyText) return;
+                copyToClipboard(lastFallbackBodyText);
+                const originalText = copyBtn.innerText;
+                copyBtn.innerText = "Copied!";
+                setTimeout(() => { copyBtn.innerText = originalText; }, 2000);
+            });
+        }
+
+        function setFormStatus(titleText, bodyText) {
+            if (!formSuccess) return;
+            formSuccess.replaceChildren();
+            const strongEl = document.createElement('strong');
+            strongEl.textContent = titleText;
+            formSuccess.appendChild(strongEl);
+            formSuccess.append(' ' + bodyText);
         }
 
         // Robust Copy Utility
@@ -3688,12 +3716,128 @@
             document.body.removeChild(textArea);
         }
 
+        function initAdvancedMotionLayer() {
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.appendChild(progressBar);
+
+            const updateScrollProgress = () => {
+                const scrollTop = window.scrollY || window.pageYOffset || 0;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
+                progressBar.style.width = percent.toFixed(2) + '%';
+            };
+
+            let scrollTicking = false;
+            const requestScrollUpdate = () => {
+                if (scrollTicking) return;
+                scrollTicking = true;
+                requestAnimationFrame(() => {
+                    scrollTicking = false;
+                    updateScrollProgress();
+                });
+            };
+
+            requestScrollUpdate();
+            window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+            window.addEventListener('resize', requestScrollUpdate);
+
+            if (reduceMotion) return;
+
+            const magneticTargets = document.querySelectorAll('.btn, .menu-btn, .icon-btn, .language-selector');
+            magneticTargets.forEach((el) => {
+                el.classList.add('motion-ready');
+                let rafId = 0;
+
+                el.addEventListener('pointermove', (event) => {
+                    const bounds = el.getBoundingClientRect();
+                    const relX = (event.clientX - bounds.left) / bounds.width - 0.5;
+                    const relY = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(() => {
+                        const moveX = Math.max(-6, Math.min(6, relX * 12));
+                        const moveY = Math.max(-4, Math.min(4, relY * 8));
+                        el.style.translate = `${moveX.toFixed(2)}px ${moveY.toFixed(2)}px`;
+                    });
+                });
+
+                el.addEventListener('pointerleave', () => {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    el.style.translate = '0px 0px';
+                });
+            });
+
+            const statValues = document.querySelectorAll('.stat-value');
+            if (!statValues.length || !('IntersectionObserver' in window)) return;
+
+            const parseCounter = (rawValue) => {
+                const raw = (rawValue || '').trim();
+                const match = raw.match(/(-?\d+(?:[.,]\d+)?)(.*)/);
+                if (!match) return null;
+                const numberToken = match[1];
+                const suffix = match[2] || '';
+                const decimalSeparator = numberToken.includes(',') ? ',' : '.';
+                const decimals = numberToken.includes('.') ? numberToken.split('.')[1].length : (numberToken.includes(',') ? numberToken.split(',')[1].length : 0);
+                const endValue = Number.parseFloat(numberToken.replace(',', '.'));
+                if (!Number.isFinite(endValue)) return null;
+                return { endValue, suffix, decimals, decimalSeparator };
+            };
+
+            const formatCounter = (value, cfg) => {
+                let text = value.toFixed(cfg.decimals);
+                if (cfg.decimalSeparator === ',') {
+                    text = text.replace('.', ',');
+                }
+                return text + cfg.suffix;
+            };
+
+            const animateCounter = (el) => {
+                const parsed = parseCounter(el.textContent);
+                if (!parsed) return;
+                if (el.dataset.countAnimated === 'true') return;
+                el.dataset.countAnimated = 'true';
+
+                const duration = 1000 + Math.min(600, Math.abs(parsed.endValue) * 2);
+                const startAt = performance.now();
+                const startValue = 0;
+                const delta = parsed.endValue - startValue;
+
+                const tick = (now) => {
+                    const t = Math.min(1, (now - startAt) / duration);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    const current = startValue + delta * eased;
+                    el.textContent = formatCounter(current, parsed);
+                    if (t < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = formatCounter(parsed.endValue, parsed);
+                    }
+                };
+
+                requestAnimationFrame(tick);
+            };
+
+            const countObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.45 });
+
+            statValues.forEach((node) => countObserver.observe(node));
+        }
+
         // Initialize general functionality
         document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 30) {
                 document.getElementById('siteHeader')?.classList.add('scrolled');
             }
             initLanguage();
+            initAdvancedMotionLayer();
         });
     </script>
 </body>
