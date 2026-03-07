@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VARUX page not found. Return to the homepage to continue browsing.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
+    <link rel="canonical" href="https://varuxcyber.com/404.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0a0a0a">
     <title>404 - Page Not Found</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -11,9 +24,10 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
-            overflow: hidden;
+            overflow-x: hidden;
             margin: 0;
             color: white;
+            min-height: 100dvh;
         }
 
         .gradient-bg {
@@ -27,7 +41,7 @@
         }
 
         .glitch {
-            font-size: 12rem;
+            font-size: clamp(4.5rem, 22vw, 12rem);
             font-weight: 900;
             position: relative;
             text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
@@ -70,10 +84,49 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
+
+        .motion-ready {
+            will-change: transform;
+        }
+
+        .orb-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+            animation: drift 12s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate3d(0, 0, 0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.6; }
+            100% { transform: translate3d(30px, -120px, 0); opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glitch,
+            .floating {
+                animation: none;
+            }
+            .orb-particle {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-6">
     <div class="gradient-bg" id="bg"></div>
+    <div class="orb-particles" id="orbParticles" aria-hidden="true"></div>
 
     <div class="text-center z-10">
         <div class="floating">
@@ -87,8 +140,8 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="index.html" class="btn-primary">Back to Homepage</a>
-            <button onclick="window.history.back()" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+            <a href="/" class="btn-primary">Back to Homepage</a>
+            <button type="button" id="goBackBtn" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
                 <span>←</span> Go Back
             </button>
         </div>
@@ -105,14 +158,68 @@
     </div>
 
     <script>
-        // Mouse tracking light effect
         const bg = document.getElementById('bg');
+        const goBackBtn = document.getElementById('goBackBtn');
+        const orbParticles = document.getElementById('orbParticles');
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (goBackBtn) {
+            goBackBtn.addEventListener('click', () => window.history.back());
+        }
+
+        if (orbParticles && !prefersReduced) {
+            for (let i = 0; i < 14; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'orb-particle';
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${30 + Math.random() * 70}%`;
+                dot.style.animationDelay = `${(Math.random() * 8).toFixed(2)}s`;
+                dot.style.animationDuration = `${(10 + Math.random() * 8).toFixed(2)}s`;
+                orbParticles.appendChild(dot);
+            }
+        }
+
+        let pointerX = 50;
+        let pointerY = 50;
+        let currentX = 50;
+        let currentY = 50;
+
         document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            bg.style.setProperty('--x', x + '%');
-            bg.style.setProperty('--y', y + '%');
-        });
+            pointerX = (e.clientX / window.innerWidth) * 100;
+            pointerY = (e.clientY / window.innerHeight) * 100;
+        }, { passive: true });
+
+        const animateGlow = () => {
+            currentX += (pointerX - currentX) * 0.12;
+            currentY += (pointerY - currentY) * 0.12;
+            bg.style.setProperty('--x', currentX.toFixed(2) + '%');
+            bg.style.setProperty('--y', currentY.toFixed(2) + '%');
+            requestAnimationFrame(animateGlow);
+        };
+        requestAnimationFrame(animateGlow);
+
+        if (!prefersReduced) {
+            const motionTargets = document.querySelectorAll('.btn-primary, #goBackBtn');
+            motionTargets.forEach((el) => {
+                el.classList.add('motion-ready');
+                let raf = 0;
+                el.addEventListener('pointermove', (event) => {
+                    const box = el.getBoundingClientRect();
+                    const x = (event.clientX - box.left) / box.width - 0.5;
+                    const y = (event.clientY - box.top) / box.height - 0.5;
+                    if (raf) cancelAnimationFrame(raf);
+                    raf = requestAnimationFrame(() => {
+                        const tx = Math.max(-6, Math.min(6, x * 12));
+                        const ty = Math.max(-4, Math.min(4, y * 8));
+                        el.style.translate = `${tx.toFixed(2)}px ${ty.toFixed(2)}px`;
+                    });
+                });
+                el.addEventListener('pointerleave', () => {
+                    if (raf) cancelAnimationFrame(raf);
+                    el.style.translate = '0px 0px';
+                });
+            });
+        }
     </script>
 </body>
 </html>
