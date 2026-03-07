@@ -5,16 +5,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()" />
+  <meta name="author" content="VARUX Cybersecurity" />
+  <meta name="theme-color" content="#070A0E" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F7F9FC" media="(prefers-color-scheme: light)" />
+  <meta name="color-scheme" content="dark light" />
   <meta name="description" content="VARUX DB Guard: policy control for production database writes. Guard UPDATE/DELETE/DDL, route risky actions to approval, and audit everything." />
   <title>VARUX DB Guard — Policy Control for Production Writes</title>
+  <link rel="canonical" href="https://varuxcyber.com/axis" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="VARUX" />
 
-  <!-- Open Graph (placeholder) -->
-  <meta property="og:title" content="VARUX DB Guard" />
-  <meta property="og:description" content="Policy control for production writes. Guard UPDATE/DELETE/DDL before it happens." />
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="VARUX" />
+  <meta property="og:title" content="VARUX DB Guard | Policy Control for Production Writes" />
+  <meta property="og:description" content="Policy-first guardrail for production database writes: block risky UPDATE/DELETE/DDL, route approvals, and keep audit-grade traceability." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://varuxcyber.com" />
-  <meta property="og:image" content="https://varuxcyber.com/og.png" />
-  <meta name="theme-color" content="#070A0E" />
+  <meta property="og:url" content="https://varuxcyber.com/axis" />
+  <meta property="og:image" content="https://varuxcyber.com/axis.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="VARUX AXIS product emblem" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VARUX DB Guard" />
+  <meta name="twitter:description" content="Deterministic policy enforcement for production database writes." />
+  <meta name="twitter:image" content="https://varuxcyber.com/axis.png" />
+  <meta name="twitter:site" content="@varuxtech" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://varuxcyber.com/axis#webpage",
+        "url": "https://varuxcyber.com/axis",
+        "name": "VARUX DB Guard - Policy Control for Production Writes",
+        "description": "Policy enforcement for production database writes with deterministic decisions and audit logs.",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://varuxcyber.com/#website"
+        },
+        "primaryImageOfPage": "https://varuxcyber.com/axis.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://varuxcyber.com/axis#application",
+        "name": "VARUX DB Guard",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Linux, Windows, macOS",
+        "url": "https://varuxcyber.com/axis",
+        "image": "https://varuxcyber.com/axis.png",
+        "publisher": {
+          "@type": "Organization",
+          "name": "VARUX Cybersecurity",
+          "url": "https://varuxcyber.com/"
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -118,7 +179,32 @@
         radial-gradient(800px 520px at 20% 0%, rgba(26,168,255,.10), transparent 55%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       background-attachment: fixed;
-      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    img, svg, video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      z-index: 12000;
+      pointer-events: none;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), #8be9ff);
+      box-shadow: 0 0 16px rgba(51,230,214,.35);
+    }
+
+    .motion-ready {
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-progress { display: none; }
     }
 
     /* Subtle grid + noise (pure CSS) */
@@ -196,6 +282,10 @@
     }
     @media (prefers-color-scheme: light){
       .header.is-scrolled{ background: rgba(255,255,255,.65); }
+    }
+
+    @media (max-width: 1024px){
+      body{ background-attachment: scroll; }
     }
 
     .header__row{
@@ -2386,6 +2476,61 @@
         }, { passive:true });
       }
       bindParallax();
+
+      // Advanced motion layer: scroll progress + magnetic controls
+      function initAdvancedMotionLayer(){
+        const progressBar = document.createElement("div");
+        progressBar.className = "scroll-progress";
+        document.body.appendChild(progressBar);
+
+        const updateScrollProgress = () => {
+          const top = window.scrollY || window.pageYOffset || 0;
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          const percent = max > 0 ? Math.min(100, Math.max(0, (top / max) * 100)) : 0;
+          progressBar.style.width = percent.toFixed(2) + "%";
+        };
+
+        let scrollTicking = false;
+        const requestScrollUpdate = () => {
+          if(scrollTicking) return;
+          scrollTicking = true;
+          requestAnimationFrame(() => {
+            scrollTicking = false;
+            updateScrollProgress();
+          });
+        };
+
+        requestScrollUpdate();
+        window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+        window.addEventListener("resize", requestScrollUpdate);
+
+        if(state.reducedMotion) return;
+
+        const magneticTargets = $$(".btn, .icon-btn, .menu-btn");
+        magneticTargets.forEach(el => {
+          el.classList.add("motion-ready");
+          let raf = 0;
+
+          el.addEventListener("pointermove", (e) => {
+            const r = el.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width) - 0.5;
+            const y = ((e.clientY - r.top) / r.height) - 0.5;
+            if(raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const tx = Math.max(-6, Math.min(6, x * 12));
+              const ty = Math.max(-4, Math.min(4, y * 8));
+              el.style.translate = `${tx.toFixed(2)}px ${ty.toFixed(2)}px`;
+            });
+          });
+
+          el.addEventListener("pointerleave", () => {
+            if(raf) cancelAnimationFrame(raf);
+            el.style.translate = "0px 0px";
+          });
+        });
+      }
+
+      initAdvancedMotionLayer();
 
       // Ensure clicking nav in header doesn't break in reduced motion
       // (already handled via anchor handler + scrollToId)
