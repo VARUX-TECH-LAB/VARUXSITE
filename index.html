@@ -89,18 +89,18 @@
     {
       "@type": "WebPage",
       "@id": "https://varuxcyber.com/#homepage",
-      "url": "https://varuxcyber.com/",
+      "url": "https://varuxcyber.com/", 
       "name": "VARUX | Deterministic Control for Autonomous Systems",
       "isPartOf": { "@id": "https://varuxcyber.com/#website" },
       "about": { "@id": "https://varuxcyber.com/#org" },
       "primaryImageOfPage": "https://varuxcyber.com/apple-touch-icon.png",
       "inLanguage": "en"
-    }
+    }6
   ]
 }
 </script>
     <style>
-        /* ULTRA 4K Optimized CSS Variables - Ultra Clean Design */
+        
         :root {
             /* Enhanced Layout for 4K */
             --max-w: 1440px;
@@ -157,6 +157,11 @@
             --ease-smooth: cubic-bezier(.4,0,.2,1);
             --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-heavy: cubic-bezier(0.2, 0.95, 0.3, 1);
+            --motion-quick: 0.45s;
+            --motion-base: 0.68s;
+            --motion-slow: 0.95s;
+            --motion-hero: 1.15s;
+            --motion-pulse: 3.4s;
             
             /* Typography - Optimized for Readability */
             --text-xs: clamp(10px, 0.7vw, 12px);
@@ -189,23 +194,29 @@
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text);
             background-color: var(--bg0);
-            background-image:
-                radial-gradient(ellipse 100% 100% at 50% 0%,
-                  rgba(110, 231, 255, 0.03) 0%,
-                  transparent 70%),
-                radial-gradient(ellipse 80% 80% at 80% 20%,
-                  rgba(167, 139, 250, 0.02) 0%,
-                  transparent 60%),
-                radial-gradient(ellipse 80% 80% at 20% 80%,
-                  rgba(110, 231, 255, 0.015) 0%,
-                  transparent 60%);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
+            background-image: linear-gradient(180deg, #040507 0%, #020203 100%);
             min-height: 100dvh;
             line-height: 1.6;
             overflow-x: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+            position: relative;
+        }
+
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logic-tree-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            display: block;
         }
 
         img, svg, video {
@@ -303,7 +314,7 @@
             justify-content: center;
             z-index: 9999;
             opacity: 1;
-            transition: opacity 0.6s var(--ease-smooth);
+            transition: opacity 0.8s var(--ease-smooth);
         }
         
         .varux-splash.hidden {
@@ -491,25 +502,6 @@
             min-width: 0;
         }
 
-        /* Background Elements */
-        .ambient-glow {
-            position: fixed;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 60vh;
-            background: radial-gradient(
-                ellipse at center,
-                rgba(110, 231, 255, 0.03) 0%,
-                transparent 65%
-            );
-            filter: blur(60px);
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
         /* Enhanced Header */
         header.site-header {
             position: sticky;
@@ -526,7 +518,7 @@
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             display: flex;
             align-items: center;
-            transition: all 0.5s var(--ease-lux);
+            transition: all 0.65s var(--ease-lux);
         }
         
         header.site-header.scrolled {
@@ -558,7 +550,7 @@
             align-items: center;
             gap: 14px;
             min-width: 180px;
-            transition: transform .3s var(--ease);
+            transition: transform var(--motion-quick) var(--ease);
             text-decoration: none;
             flex-shrink: 0;
         }
@@ -594,7 +586,7 @@
             border-radius: 50%;
             filter: blur(4px);
             opacity: 0.8;
-            animation: markPulse 2s ease-in-out infinite;
+            animation: markPulse var(--motion-pulse) ease-in-out infinite;
         }
         
         .mark::after {
@@ -650,7 +642,7 @@
         nav.primary a {
             position: relative;
             padding: 10px 0;
-            transition: all .3s var(--ease);
+            transition: color var(--motion-quick) var(--ease);
             text-decoration: none;
             color: var(--muted);
         }
@@ -663,7 +655,7 @@
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            transition: width .4s var(--ease);
+            transition: width var(--motion-base) var(--ease);
             border-radius: 1px;
         }
         
@@ -699,7 +691,7 @@
             color: var(--muted);
             font-size: 12px;
             cursor: pointer;
-            transition: all 0.3s var(--ease);
+            transition: background-color var(--motion-quick) var(--ease), border-color var(--motion-quick) var(--ease), color var(--motion-quick) var(--ease);
             min-width: 70px;
             justify-content: space-between;
         }
@@ -718,7 +710,7 @@
         }
 
         .language-selector .arrow {
-            transition: transform 0.3s var(--ease);
+            transition: transform var(--motion-quick) var(--ease);
             width: 12px;
             height: 12px;
             display: flex;
@@ -747,7 +739,7 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s var(--ease-smooth);
+            transition: opacity var(--motion-quick) var(--ease-smooth), transform var(--motion-quick) var(--ease-smooth), visibility var(--motion-quick) var(--ease-smooth);
         }
 
         .language-dropdown.active {
@@ -767,7 +759,7 @@
             color: var(--muted);
             font-size: 12px;
             cursor: pointer;
-            transition: all 0.2s var(--ease);
+            transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
             text-align: left;
         }
 
@@ -819,7 +811,7 @@
             text-transform: uppercase;
             font-size: 11.7px;
             cursor: pointer;
-            transition: all .4s var(--ease-lux);
+            transition: transform var(--motion-base) var(--ease-lux), border-color var(--motion-base) var(--ease-lux), background-color var(--motion-base) var(--ease-lux), box-shadow var(--motion-base) var(--ease-lux), color var(--motion-base) var(--ease-lux);
             overflow: hidden;
             isolation: isolate;
             text-decoration: none;
@@ -884,7 +876,7 @@
             cursor: pointer;
             align-items: center;
             justify-content: center;
-            transition: all .3s var(--ease);
+            transition: all var(--motion-quick) var(--ease);
             position: relative;
             z-index: 1001;
         }
@@ -894,7 +886,7 @@
             width: 18px;
             height: 2px;
             background: var(--text);
-            transition: all .3s var(--ease);
+            transition: all var(--motion-quick) var(--ease);
             position: relative;
         }
         
@@ -905,7 +897,7 @@
             width: 100%;
             height: 2px;
             background: var(--text);
-            transition: all .3s var(--ease);
+            transition: all var(--motion-quick) var(--ease);
         }
         
         .menu-btn span::before {
@@ -943,7 +935,7 @@
             transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
-            transition: all .4s var(--ease-smooth);
+            transition: transform var(--motion-base) var(--ease-smooth), opacity var(--motion-base) var(--ease-smooth), visibility var(--motion-base) var(--ease-smooth);
             z-index: 999;
             max-height: calc(100vh - var(--nav-h));
             overflow-y: auto;
@@ -955,7 +947,7 @@
             background: rgba(0,0,0,0.45);
             opacity: 0;
             visibility: hidden;
-            transition: opacity .3s var(--ease-smooth);
+            transition: opacity var(--motion-quick) var(--ease-smooth), visibility var(--motion-quick) var(--ease-smooth);
             z-index: 998;
             pointer-events: none;
         }
@@ -987,7 +979,7 @@
             letter-spacing: .12em;
             text-transform: uppercase;
             text-decoration: none;
-            transition: all .3s var(--ease);
+            transition: all var(--motion-quick) var(--ease);
             display: block;
         }
         
@@ -1046,7 +1038,7 @@
             border-radius: 999px;
             background: #10B981;
             box-shadow: 0 0 8px #10B981;
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: glow 3s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
@@ -1093,9 +1085,9 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transform: rotateY(-5deg) rotateX(2deg);
-            transition: transform 0.6s var(--ease-heavy),
-                      box-shadow 0.6s var(--ease-heavy),
-                      border-color 0.4s var(--ease-heavy);
+            transition: transform 0.85s var(--ease-heavy),
+                      box-shadow 0.85s var(--ease-heavy),
+                      border-color var(--motion-base) var(--ease-heavy);
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -1177,7 +1169,7 @@
             border-radius: 999px;
             background: #10B981;
             box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-            animation: statusPulse 2s ease-in-out infinite;
+            animation: statusPulse 3.2s ease-in-out infinite;
         }
 
         @keyframes statusPulse {
@@ -1202,7 +1194,7 @@
             border-top: 1px solid rgba(255,255,255,0.08);
             padding: 24px 20px;
             border-radius: 20px;
-            transition: all 0.4s var(--ease-heavy);
+            transition: background-color var(--motion-base) var(--ease-heavy), border-color var(--motion-base) var(--ease-heavy), transform var(--motion-base) var(--ease-heavy);
             position: relative;
             overflow: hidden;
             min-width: 0; /* Fix flex/grid overflow */
@@ -1254,7 +1246,7 @@
             background: linear-gradient(90deg, var(--accent), var(--accent-light));
             border-radius: 99px;
             box-shadow: 0 0 10px var(--accent-glow);
-            transition: width 1.5s var(--ease-bounce);
+            transition: width 2.1s var(--ease-bounce);
             position: relative;
             overflow: hidden;
         }
@@ -1298,7 +1290,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: var(--card-padding);
             border-radius: var(--card-radius);
-            transition: all 0.5s var(--ease-heavy);
+            transition: transform 0.72s var(--ease-heavy), border-color var(--motion-base) var(--ease-heavy), box-shadow 0.72s var(--ease-heavy), background-color var(--motion-base) var(--ease-heavy);
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -1386,7 +1378,7 @@
             color: white;
             font-size: 13px;
             font-weight: 600;
-            transition: all .3s var(--ease-heavy);
+            transition: all var(--motion-quick) var(--ease-heavy);
             position: relative;
             padding-right: 24px;
             text-decoration: none;
@@ -1396,7 +1388,7 @@
             content: "→";
             position: absolute;
             right: 0;
-            transition: transform .3s var(--ease-heavy);
+            transition: transform var(--motion-quick) var(--ease-heavy);
         }
         
         .card a:hover {
@@ -1531,7 +1523,7 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            --tile-trans: 220ms var(--ease-smooth);
+            --tile-trans: 420ms var(--ease-smooth);
             --tile-sep: rgba(255,255,255,0.115);
             --tile-sep-hi: rgba(255,255,255,0.135);
             box-shadow: 0 18px 46px rgba(0,0,0,0.34);
@@ -1834,7 +1826,7 @@
             color: white;
             font-family: inherit;
             font-size: 14px;
-            transition: all .2s var(--ease);
+            transition: all 0.35s var(--ease);
             -webkit-appearance: none; /* Mobile Safari fix */
         }
         
@@ -1907,7 +1899,7 @@
             font-size: 12px;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.35s;
         }
         
         .fallback-btn:hover {
@@ -1969,8 +1961,8 @@
         /* Reveal Animation Classes */
         .reveal-element {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s var(--ease-lux), transform 0.6s var(--ease-lux);
+            transform: translateY(26px);
+            transition: opacity var(--motion-slow) var(--ease-lux), transform var(--motion-slow) var(--ease-lux);
         }
         
         .reveal-element.in-view {
@@ -2195,13 +2187,13 @@
         }
         
         .hero-content > * {
-            animation: fadeInUp 0.8s var(--ease-lux) both;
+            animation: fadeInUp var(--motion-hero) var(--ease-lux) both;
         }
-        
-        .hero-content .kicker { animation-delay: 0.1s; }
-        .hero-content h1 { animation-delay: 0.2s; }
-        .hero-content .lead { animation-delay: 0.3s; }
-        .hero-content .hero-actions { animation-delay: 0.4s; }
+
+        .hero-content .kicker { animation-delay: 0.12s; }
+        .hero-content h1 { animation-delay: 0.28s; }
+        .hero-content .lead { animation-delay: 0.44s; }
+        .hero-content .hero-actions { animation-delay: 0.6s; }
 
         /* ========================================= */
         /* PRINCIPLES CONTROL SPINE (ENTERPRISE) */
@@ -2363,7 +2355,7 @@
         #principles[data-principles-enhanced="true"] .principles-card-wrap {
             opacity: 0;
             transform: translate3d(0, 12px, 0);
-            transition: opacity 520ms ease, transform 520ms ease;
+            transition: opacity 760ms ease, transform 760ms ease;
             will-change: opacity, transform;
         }
 
@@ -2417,10 +2409,6 @@
                 backdrop-filter: blur(14px) saturate(160%);
                 -webkit-backdrop-filter: blur(14px) saturate(160%);
             }
-            .ambient-glow {
-                filter: blur(44px);
-                opacity: 0.42;
-            }
         }
 
 
@@ -2459,7 +2447,7 @@
     <div class="loading-bar" id="loadingBar"></div>
     
     <!-- Background Elements -->
-    <div class="ambient-glow" aria-hidden="true"></div>
+    <canvas class="logic-tree-canvas" id="logicTreeCanvas" aria-hidden="true"></canvas>
     
     <!-- Header -->
     <header class="site-header" id="siteHeader" role="banner">
@@ -3543,7 +3531,7 @@
                             siblings = [entry.target];
                         }
                         const index = siblings.indexOf(entry.target);
-                        const delay = Math.min(index * 80, 400);
+                        const delay = Math.min(index * 140, 700);
                         
                         setTimeout(() => {
                             entry.target.classList.add('in-view');
@@ -3716,6 +3704,354 @@
             document.body.removeChild(textArea);
         }
 
+        function initLogicTreeBackground() {
+            const canvas = document.getElementById('logicTreeCanvas');
+            if (!canvas || !canvas.getContext) return;
+
+            const ctx = canvas.getContext('2d', { alpha: true });
+            if (!ctx) return;
+
+            const staticLayer = document.createElement('canvas');
+            const staticCtx = staticLayer.getContext('2d', { alpha: true });
+            if (!staticCtx) return;
+
+            const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+            const pulseSequence = [0, 3, 1, 4, 2, 5];
+            const pulseDuration = 5600;
+            const pulseGap = 1800;
+            const rawRoutes = [
+                [[0, 5], [3, 5], [3, 2], [6, 2], [6, 1], [10, 1], [10, 3], [14, 3], [14, 1], [17, 1]],
+                [[0, 5], [3, 5], [3, 2], [6, 2], [6, 4], [9, 4], [9, 6], [13, 6], [13, 4], [17, 4]],
+                [[0, 5], [3, 5], [3, 7], [6, 7], [6, 9], [10, 9], [10, 7], [13, 7], [13, 8], [17, 8]],
+                [[0, 5], [5, 5], [5, 6], [8, 6], [8, 8], [11, 8], [11, 5], [15, 5], [15, 6], [17, 6]],
+                [[0, 5], [5, 5], [5, 3], [8, 3], [8, 0], [12, 0], [12, 2], [15, 2], [15, 5], [17, 5]],
+                [[0, 5], [5, 5], [5, 7], [8, 7], [8, 10], [12, 10], [12, 8], [15, 8], [15, 9], [17, 9]]
+            ];
+
+            let viewportWidth = 0;
+            let viewportHeight = 0;
+            let dpr = 1;
+            let geometry = null;
+            let sequenceIndex = 0;
+            let pulseTimer = 0;
+            let rafId = 0;
+            let resizeRaf = 0;
+            let activePulse = null;
+
+            const snap = (value) => Math.round(value) + 0.5;
+
+            function createRoute(points) {
+                let totalLength = 0;
+                const segments = [];
+
+                for (let i = 0; i < points.length - 1; i += 1) {
+                    const start = points[i];
+                    const end = points[i + 1];
+                    const length = Math.abs(end.x - start.x) + Math.abs(end.y - start.y);
+
+                    if (!length) continue;
+
+                    segments.push({
+                        start,
+                        end,
+                        length,
+                        offset: totalLength
+                    });
+
+                    totalLength += length;
+                }
+
+                return { points, segments, totalLength };
+            }
+
+            function buildGeometry(width, height) {
+                const columns = 18;
+                const rows = 11;
+                const padX = Math.max(48, width * 0.07);
+                const padY = Math.max(56, height * 0.12);
+                const cellX = (width - padX * 2) / (columns - 1);
+                const cellY = (height - padY * 2) / (rows - 1);
+
+                const mapPoint = ([col, row]) => ({
+                    x: snap(padX + col * cellX),
+                    y: snap(padY + row * cellY)
+                });
+
+                const routes = rawRoutes.map((route) => createRoute(route.map(mapPoint)));
+                const segmentMap = new Map();
+                const nodeMap = new Map();
+
+                routes.forEach((route) => {
+                    route.points.forEach((point) => {
+                        const key = `${point.x}|${point.y}`;
+                        const current = nodeMap.get(key);
+                        nodeMap.set(key, {
+                            x: point.x,
+                            y: point.y,
+                            count: current ? current.count + 1 : 1
+                        });
+                    });
+
+                    route.segments.forEach((segment) => {
+                        const isVertical = segment.start.x === segment.end.x;
+                        const key = isVertical
+                            ? `v:${segment.start.x}:${Math.min(segment.start.y, segment.end.y)}:${Math.max(segment.start.y, segment.end.y)}`
+                            : `h:${Math.min(segment.start.x, segment.end.x)}:${Math.max(segment.start.x, segment.end.x)}:${segment.start.y}`;
+
+                        if (!segmentMap.has(key)) {
+                            segmentMap.set(key, segment);
+                        }
+                    });
+                });
+
+                return {
+                    routes,
+                    segments: Array.from(segmentMap.values()),
+                    nodes: Array.from(nodeMap.values()).filter((node) => node.count > 1)
+                };
+            }
+
+            function setupCanvasSize() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+                viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+
+                canvas.width = Math.max(1, Math.floor(viewportWidth * dpr));
+                canvas.height = Math.max(1, Math.floor(viewportHeight * dpr));
+                canvas.style.width = `${viewportWidth}px`;
+                canvas.style.height = `${viewportHeight}px`;
+
+                staticLayer.width = canvas.width;
+                staticLayer.height = canvas.height;
+
+                geometry = buildGeometry(viewportWidth, viewportHeight);
+            }
+
+            function resetContext(target) {
+                target.setTransform(dpr, 0, 0, dpr, 0, 0);
+                target.clearRect(0, 0, viewportWidth, viewportHeight);
+            }
+
+            function drawStaticLayer() {
+                resetContext(staticCtx);
+
+                const vignette = staticCtx.createRadialGradient(
+                    viewportWidth * 0.5,
+                    viewportHeight * 0.42,
+                    0,
+                    viewportWidth * 0.5,
+                    viewportHeight * 0.42,
+                    Math.max(viewportWidth, viewportHeight) * 0.72
+                );
+
+                vignette.addColorStop(0, 'rgba(110, 231, 255, 0.010)');
+                vignette.addColorStop(0.6, 'rgba(4, 5, 7, 0.000)');
+                vignette.addColorStop(1, 'rgba(0, 0, 0, 0.22)');
+
+                staticCtx.fillStyle = vignette;
+                staticCtx.fillRect(0, 0, viewportWidth, viewportHeight);
+
+                staticCtx.lineWidth = 1;
+                staticCtx.lineCap = 'square';
+                staticCtx.lineJoin = 'miter';
+                staticCtx.strokeStyle = 'rgba(110, 231, 255, 0.045)';
+
+                geometry.segments.forEach((segment) => {
+                    staticCtx.beginPath();
+                    staticCtx.moveTo(segment.start.x, segment.start.y);
+                    staticCtx.lineTo(segment.end.x, segment.end.y);
+                    staticCtx.stroke();
+                });
+
+                staticCtx.fillStyle = 'rgba(110, 231, 255, 0.038)';
+                geometry.nodes.forEach((node) => {
+                    staticCtx.fillRect(node.x - 1.5, node.y - 1.5, 3, 3);
+                });
+            }
+
+            function compositeStaticLayer() {
+                resetContext(ctx);
+                ctx.drawImage(staticLayer, 0, 0, viewportWidth, viewportHeight);
+            }
+
+            function getPointAlongRoute(route, distance) {
+                const clampedDistance = Math.max(0, Math.min(route.totalLength, distance));
+
+                for (const segment of route.segments) {
+                    const localStart = segment.offset;
+                    const localEnd = segment.offset + segment.length;
+
+                    if (clampedDistance <= localEnd) {
+                        const ratio = segment.length === 0 ? 0 : (clampedDistance - localStart) / segment.length;
+                        return {
+                            x: segment.start.x + (segment.end.x - segment.start.x) * ratio,
+                            y: segment.start.y + (segment.end.y - segment.start.y) * ratio
+                        };
+                    }
+                }
+
+                const lastPoint = route.points[route.points.length - 1];
+                return { x: lastPoint.x, y: lastPoint.y };
+            }
+
+            function drawRouteSlice(route, fromDistance, toDistance, renderer) {
+                if (toDistance <= fromDistance) return;
+
+                route.segments.forEach((segment) => {
+                    const segmentStart = segment.offset;
+                    const segmentEnd = segment.offset + segment.length;
+                    const drawFrom = Math.max(fromDistance, segmentStart);
+                    const drawTo = Math.min(toDistance, segmentEnd);
+
+                    if (drawTo <= drawFrom) return;
+
+                    const startPoint = getPointAlongRoute(route, drawFrom);
+                    const endPoint = getPointAlongRoute(route, drawTo);
+                    renderer(startPoint, endPoint);
+                });
+            }
+
+            function drawPulseFrame(progress) {
+                compositeStaticLayer();
+
+                if (!activePulse || !geometry) return;
+
+                const route = geometry.routes[activePulse.routeIndex];
+                const eased = 0.5 - Math.cos(progress * Math.PI) * 0.5;
+                const intensity = Math.sin(progress * Math.PI);
+                const pulseLength = Math.max(120, route.totalLength * 0.18);
+                const headDistance = eased * route.totalLength;
+                const tailDistance = Math.max(0, headDistance - pulseLength);
+
+                ctx.save();
+                ctx.lineCap = 'square';
+                ctx.lineJoin = 'miter';
+
+                ctx.strokeStyle = `rgba(110, 231, 255, ${0.03 + intensity * 0.03})`;
+                ctx.lineWidth = 3.5;
+                drawRouteSlice(route, tailDistance, headDistance, (startPoint, endPoint) => {
+                    ctx.beginPath();
+                    ctx.moveTo(startPoint.x, startPoint.y);
+                    ctx.lineTo(endPoint.x, endPoint.y);
+                    ctx.stroke();
+                });
+
+                ctx.strokeStyle = `rgba(110, 231, 255, ${0.07 + intensity * 0.08})`;
+                ctx.shadowColor = 'rgba(110, 231, 255, 0.12)';
+                ctx.shadowBlur = 12;
+                ctx.lineWidth = 1.6;
+                drawRouteSlice(route, tailDistance, headDistance, (startPoint, endPoint) => {
+                    ctx.beginPath();
+                    ctx.moveTo(startPoint.x, startPoint.y);
+                    ctx.lineTo(endPoint.x, endPoint.y);
+                    ctx.stroke();
+                });
+
+                const headPoint = getPointAlongRoute(route, headDistance);
+                ctx.shadowBlur = 8;
+                ctx.fillStyle = `rgba(110, 231, 255, ${0.06 + intensity * 0.08})`;
+                ctx.fillRect(headPoint.x - 2, headPoint.y - 2, 4, 4);
+                ctx.restore();
+            }
+
+            function stopPulseLoop() {
+                if (pulseTimer) {
+                    clearTimeout(pulseTimer);
+                    pulseTimer = 0;
+                }
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = 0;
+                }
+                activePulse = null;
+            }
+
+            function scheduleNextPulse(delay = pulseGap) {
+                if (!geometry || (motionQuery && motionQuery.matches) || document.hidden) {
+                    compositeStaticLayer();
+                    return;
+                }
+
+                if (pulseTimer) clearTimeout(pulseTimer);
+                pulseTimer = window.setTimeout(() => {
+                    activePulse = {
+                        routeIndex: pulseSequence[sequenceIndex % pulseSequence.length],
+                        startedAt: performance.now()
+                    };
+                    sequenceIndex += 1;
+                    rafId = requestAnimationFrame(runPulseFrame);
+                }, delay);
+            }
+
+            function runPulseFrame(now) {
+                if (!activePulse) {
+                    compositeStaticLayer();
+                    return;
+                }
+
+                const elapsed = now - activePulse.startedAt;
+                const progress = Math.min(1, elapsed / pulseDuration);
+                drawPulseFrame(progress);
+
+                if (progress < 1) {
+                    rafId = requestAnimationFrame(runPulseFrame);
+                    return;
+                }
+
+                activePulse = null;
+                compositeStaticLayer();
+                scheduleNextPulse(pulseGap);
+            }
+
+            function render() {
+                setupCanvasSize();
+                drawStaticLayer();
+                compositeStaticLayer();
+
+                if (!motionQuery || !motionQuery.matches) {
+                    scheduleNextPulse(1200);
+                }
+            }
+
+            function handleResize() {
+                if (resizeRaf) cancelAnimationFrame(resizeRaf);
+                resizeRaf = requestAnimationFrame(() => {
+                    stopPulseLoop();
+                    render();
+                });
+            }
+
+            function handleVisibility() {
+                stopPulseLoop();
+                compositeStaticLayer();
+
+                if (!document.hidden && (!motionQuery || !motionQuery.matches)) {
+                    scheduleNextPulse(800);
+                }
+            }
+
+            function handleMotionPreferenceChange() {
+                stopPulseLoop();
+                compositeStaticLayer();
+
+                if (!motionQuery || !motionQuery.matches) {
+                    scheduleNextPulse(800);
+                }
+            }
+
+            render();
+            window.addEventListener('resize', handleResize, { passive: true });
+            document.addEventListener('visibilitychange', handleVisibility);
+
+            if (motionQuery) {
+                if (typeof motionQuery.addEventListener === 'function') {
+                    motionQuery.addEventListener('change', handleMotionPreferenceChange);
+                } else if (typeof motionQuery.addListener === 'function') {
+                    motionQuery.addListener(handleMotionPreferenceChange);
+                }
+            }
+        }
+
         function initAdvancedMotionLayer() {
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -3758,8 +4094,8 @@
 
                     if (rafId) cancelAnimationFrame(rafId);
                     rafId = requestAnimationFrame(() => {
-                        const moveX = Math.max(-6, Math.min(6, relX * 12));
-                        const moveY = Math.max(-4, Math.min(4, relY * 8));
+                        const moveX = Math.max(-4.5, Math.min(4.5, relX * 9));
+                        const moveY = Math.max(-3, Math.min(3, relY * 6));
                         el.style.translate = `${moveX.toFixed(2)}px ${moveY.toFixed(2)}px`;
                     });
                 });
@@ -3800,7 +4136,7 @@
                 if (el.dataset.countAnimated === 'true') return;
                 el.dataset.countAnimated = 'true';
 
-                const duration = 1000 + Math.min(600, Math.abs(parsed.endValue) * 2);
+                const duration = 1400 + Math.min(900, Math.abs(parsed.endValue) * 2.5);
                 const startAt = performance.now();
                 const startValue = 0;
                 const delta = parsed.endValue - startValue;
@@ -3837,6 +4173,7 @@
                 document.getElementById('siteHeader')?.classList.add('scrolled');
             }
             initLanguage();
+            initLogicTreeBackground();
             initAdvancedMotionLayer();
         });
     </script>
