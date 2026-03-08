@@ -224,26 +224,8 @@
             height: auto;
         }
 
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            z-index: 12000;
-            pointer-events: none;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
-            box-shadow: 0 0 18px rgba(110, 231, 255, 0.35);
-        }
-
         .motion-ready {
             will-change: transform;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .scroll-progress {
-                display: none;
-            }
         }
 
         /* Screen reader only utility */
@@ -4054,31 +4036,6 @@
 
         function initAdvancedMotionLayer() {
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            const progressBar = document.createElement('div');
-            progressBar.className = 'scroll-progress';
-            document.body.appendChild(progressBar);
-
-            const updateScrollProgress = () => {
-                const scrollTop = window.scrollY || window.pageYOffset || 0;
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const percent = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
-                progressBar.style.width = percent.toFixed(2) + '%';
-            };
-
-            let scrollTicking = false;
-            const requestScrollUpdate = () => {
-                if (scrollTicking) return;
-                scrollTicking = true;
-                requestAnimationFrame(() => {
-                    scrollTicking = false;
-                    updateScrollProgress();
-                });
-            };
-
-            requestScrollUpdate();
-            window.addEventListener('scroll', requestScrollUpdate, { passive: true });
-            window.addEventListener('resize', requestScrollUpdate);
 
             if (reduceMotion) return;
 
