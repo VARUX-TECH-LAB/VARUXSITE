@@ -1715,42 +1715,185 @@
         }
         /* ----- END PRODUCT TILES -------------------------------------- */
 
-/* Contact Section - "Sade" Refinement */
+/* Contact Section - Executive Briefing */
+        #contact {
+            max-width: 1140px;
+            padding-top: clamp(58px, 7vw, 108px);
+            padding-bottom: clamp(74px, 8vw, 124px);
+        }
+
+        #contact .section-head {
+            margin-bottom: 42px;
+            padding-bottom: 20px;
+            gap: 24px;
+            align-items: flex-end;
+        }
+
+        #contact .section-head .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        #contact .section-head h2 {
+            margin-bottom: 0;
+            font-size: clamp(32px, 3.4vw, 46px);
+        }
+
+        #contact .section-head .subhead {
+            max-width: 42ch;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: clamp(40px, 4vw, 80px);
-            align-items: stretch;
-            /* Simplified background for cleaner look */
-            background: var(--bg0);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(255,255,255,0.08); /* Minimal border */
-            padding: var(--card-padding);
-            overflow: hidden;
+            grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
+            gap: clamp(24px, 3vw, 38px);
             position: relative;
+            padding: clamp(22px, 2.6vw, 32px);
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background:
+                radial-gradient(circle at top left, rgba(110,231,255,0.16), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(167,139,250,0.12), transparent 30%),
+                linear-gradient(135deg, rgba(9,11,14,0.98) 0%, rgba(4,5,8,0.99) 100%);
+            box-shadow: 0 40px 110px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.04);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 58px 58px;
+            opacity: 0.18;
+            mask-image: linear-gradient(135deg, rgba(0,0,0,0.9), transparent 82%);
+            pointer-events: none;
+        }
+
+        .contact-container::after {
+            content: '';
+            position: absolute;
+            top: -140px;
+            right: -120px;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110,231,255,0.2) 0%, rgba(110,231,255,0) 72%);
+            filter: blur(18px);
+            opacity: 0.72;
+            pointer-events: none;
+        }
+
+        .contact-logo,
+        .contact-content {
+            position: relative;
+            z-index: 1;
         }
 
         .contact-logo {
+            position: relative;
+            display: grid;
+            align-content: start;
+            gap: 26px;
+            min-width: 0;
+            padding: clamp(24px, 2.6vw, 34px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(160deg, rgba(15,18,23,0.95) 0%, rgba(8,10,13,0.84) 100%);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .contact-logo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 16% 18%, rgba(110,231,255,0.12), transparent 22%),
+                linear-gradient(135deg, rgba(255,255,255,0.04), transparent 30%);
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        .contact-logo > *:not(.contact-brand-scene) {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-brand-scene {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-brand-orb {
+            position: absolute;
+            top: -72px;
+            left: -58px;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110,231,255,0.2) 0%, rgba(110,231,255,0) 74%);
+            filter: blur(12px);
+            opacity: 0.82;
+        }
+
+        .contact-brand-grid {
+            position: absolute;
+            right: -12%;
+            bottom: -18%;
+            width: 70%;
+            height: 68%;
+            background:
+                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.95) 100%);
+            opacity: 0.2;
+            transform: rotate(-10deg);
+        }
+
+        .contact-brand-mark {
+            position: absolute;
+            right: -14px;
+            bottom: -22px;
+            width: 220px;
+            height: 220px;
+            color: rgba(248,250,252,0.08);
+            transform: rotate(-12deg);
+        }
+
+        .contact-topbar {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: flex-start;
-            padding-right: 20px;
-            border-right: 1px solid rgba(255,255,255,0.05);
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
         }
         
         .wordmark {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            width: auto;
+            margin: 0;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            background: rgba(6, 9, 12, 0.5);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
         
         .wordmark-main {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             font-weight: 800;
-            font-size: clamp(48px, 5vw, 72px);
-            letter-spacing: -0.03em;
+            font-size: 12px;
+            letter-spacing: 0.3em;
             color: var(--text);
             line-height: 1;
             text-transform: uppercase;
@@ -1759,33 +1902,314 @@
         .wordmark-sub {
             font-family: 'SF Mono', 'Courier New', monospace;
             font-weight: 500;
-            font-size: 12px;
-            letter-spacing: 0.3em;
-            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: var(--muted);
             text-transform: uppercase;
+            padding-left: 12px;
+            border-left: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .contact-summary {
+            display: grid;
+            gap: 12px;
+            max-width: 46ch;
         }
         
         .contact-logo h2 {
-            font-size: 24px;
-            margin-bottom: 16px;
+            font-size: clamp(34px, 3.5vw, 48px);
+            margin: 0;
             color: var(--text);
+            max-width: 10ch;
+            line-height: 1.02;
         }
 
         .contact-logo .text-lead {
+            margin: 0;
             font-size: 15px;
-            color: var(--muted);
-        }
-        
-        .contact-content {
-            background: transparent; /* Removed noisy background */
-            padding: 10px; /* Reduced internal padding */
-            border-radius: 16px;
-            border: none;
+            line-height: 1.78;
+            color: rgba(255,255,255,0.74);
+            max-width: 44ch;
         }
 
-        /* Form */
+        .contact-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            align-items: start;
+            width: 100%;
+        }
+
+        .contact-point {
+            position: relative;
+            min-width: 0;
+            min-height: 168px;
+            padding: 18px 18px 16px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.016));
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+            transition: transform var(--motion-base) var(--ease-heavy), border-color var(--motion-base) var(--ease-heavy), background var(--motion-base) var(--ease-heavy);
+            overflow: hidden;
+        }
+
+        .contact-point::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(110,231,255,0.92), rgba(167,139,250,0.28), transparent);
+            opacity: 0.9;
+        }
+
+        .contact-point:nth-child(2) {
+            margin-top: 24px;
+        }
+
+        .contact-point:nth-child(3) {
+            margin-top: 10px;
+        }
+
+        .contact-point:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110,231,255,0.2);
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+        }
+
+        .contact-point-label {
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'SF Mono', 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.52);
+        }
+
+        .contact-point-value,
+        .contact-point a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .contact-point a:hover {
+            color: var(--accent);
+        }
+
+        .contact-point p {
+            margin-top: 8px;
+            color: rgba(255,255,255,0.64);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .contact-quick-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-quick-actions .btn {
+            min-height: 42px;
+            padding: 11px 14px;
+            border-radius: 12px;
+            border-color: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .contact-content {
+            position: relative;
+            display: grid;
+            align-content: start;
+            padding: clamp(24px, 2.3vw, 32px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(180deg, rgba(14,17,22,0.95) 0%, rgba(8,10,13,0.92) 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .contact-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top left, rgba(110,231,255,0.09), transparent 28%),
+                linear-gradient(180deg, rgba(255,255,255,0.03), transparent 26%);
+            pointer-events: none;
+        }
+
+        .contact-content::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 54px;
+            height: 54px;
+            border-top: 1px solid rgba(110,231,255,0.24);
+            border-right: 1px solid rgba(110,231,255,0.24);
+            border-radius: 0 12px 0 0;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+
+        .contact-form-heading {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .contact-form-kicker {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(110,231,255,0.16);
+            background: rgba(110,231,255,0.08);
+            color: var(--accent);
+            font-family: 'SF Mono', 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .contact-form-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(110,231,255,0.36), rgba(255,255,255,0.05));
+        }
+
+        .contact-form-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 16px;
+        }
+
+        .contact-content .form-row {
+            display: contents;
+        }
+
         .form-group {
-            margin-bottom: 24px;
+            margin: 0;
+            min-width: 0;
+            position: relative;
+        }
+
+        .form-group-wide,
+        .contact-form-grid > button,
+        .contact-form-grid > .form-success-message,
+        .contact-form-grid > .fallback-ui {
+            grid-column: 1 / -1;
+        }
+
+        .contact-container label {
+            margin-bottom: 8px;
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-family: 'SF Mono', 'Courier New', monospace;
+        }
+
+        .contact-container input,
+        .contact-container select,
+        .contact-container textarea {
+            width: 100%;
+            padding: 15px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(6, 9, 12, 0.94);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+            transition: transform var(--motion-quick) var(--ease), border-color var(--motion-quick) var(--ease), background-color var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease);
+        }
+
+        .contact-container input::placeholder,
+        .contact-container textarea::placeholder {
+            color: rgba(255,255,255,0.34);
+        }
+
+        .contact-container input:focus,
+        .contact-container select:focus,
+        .contact-container textarea:focus {
+            background: rgba(10, 13, 16, 1);
+            border-color: rgba(110,231,255,0.34);
+            box-shadow: 0 0 0 1px rgba(110,231,255,0.2), 0 16px 32px rgba(0,0,0,0.24);
+            transform: translateY(-1px);
+        }
+
+        .contact-container textarea {
+            min-height: 132px;
+        }
+
+        .contact-container .btn {
+            border-radius: 12px;
+            padding: 14px 18px;
+            letter-spacing: .08em;
+            box-shadow: none;
+        }
+
+        .contact-container .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .contact-container .btn.primary {
+            color: #041118;
+            border-color: transparent;
+            background: linear-gradient(180deg, #ebfbff 0%, #c3eaf4 100%);
+            box-shadow: 0 18px 38px rgba(110,231,255,0.16);
+        }
+
+        .contact-container .btn.primary:hover {
+            color: #041118;
+            border-color: transparent;
+            background: linear-gradient(180deg, #f3fdff 0%, #cff0f7 100%);
+            box-shadow: 0 20px 40px rgba(110,231,255,0.2);
+        }
+
+        .contact-content .form-success-message {
+            margin-top: 0;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(16,185,129,0.12), rgba(16,185,129,0.05));
+            border-color: rgba(16,185,129,0.22);
+        }
+
+        .contact-content .fallback-ui {
+            margin-top: 0;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-content .fallback-row {
+            gap: 10px;
+        }
+
+        .contact-content .fallback-btn {
+            border-radius: 10px;
+            padding: 9px 14px;
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
         }
         
         label {
@@ -2007,21 +2431,16 @@
             
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 32px;
+                gap: 22px;
+                padding: 24px;
             }
             
             .contact-logo {
-                border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-                padding-right: 0;
-                padding-bottom: 32px;
-                align-items: center;
-                text-align: center;
+                gap: 22px;
             }
             
-            .wordmark {
-                align-items: center;
+            .contact-topbar {
+                align-items: flex-start;
             }
             
             .product-card {
@@ -2041,6 +2460,70 @@
                 --nav-h: 68px;
                 --text-hero: clamp(34px, 9vw, 42px);
                 --card-padding: clamp(24px, 5vw, 32px);
+            }
+
+            #contact {
+                max-width: none;
+                padding-top: 46px;
+                padding-bottom: 72px;
+            }
+
+            #contact .section-head {
+                align-items: flex-start;
+                gap: 16px;
+                margin-bottom: 30px;
+                padding-bottom: 14px;
+            }
+
+            .contact-container {
+                padding: 18px;
+                border-radius: 22px;
+            }
+
+            .contact-logo,
+            .contact-content {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .contact-topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-quick-actions {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .contact-logo h2 {
+                max-width: none;
+            }
+
+            .contact-points {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-point {
+                min-height: 0;
+            }
+
+            .contact-point:nth-child(2),
+            .contact-point:nth-child(3) {
+                margin-top: 0;
+            }
+
+            .contact-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                padding: 18px;
+            }
+
+            .contact-brand-mark {
+                width: 180px;
+                height: 180px;
             }
 
             header.site-header {
@@ -2107,6 +2590,11 @@
             /* Enhanced mobile padding */
             .section {
                 padding: 60px 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
         }
 
@@ -2177,8 +2665,49 @@
             }
 
             .contact-container {
-                padding: 24px 20px;
-                border-radius: 20px;
+                padding: 14px;
+                border-radius: 18px;
+            }
+
+            .contact-logo,
+            .contact-content {
+                padding: 16px;
+                border-radius: 16px;
+            }
+
+            .contact-topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .wordmark {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .wordmark-sub {
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .contact-quick-actions {
+                width: 100%;
+            }
+
+            .contact-quick-actions .btn {
+                flex: 1 1 100%;
+            }
+
+            .contact-point {
+                padding: 16px;
+            }
+
+            .contact-brand-mark {
+                width: 140px;
+                height: 140px;
+                right: -10px;
+                bottom: -10px;
             }
             
             .hero-actions {
@@ -2225,7 +2754,11 @@
             }
             
             .contact-content {
-                padding: 0;
+                padding: 16px;
+            }
+
+            .contact-quick-actions {
+                width: 100%;
             }
         }
         
@@ -2641,7 +3174,7 @@
                             The control layer that ensures autonomous agents operate within defined boundaries.
                         </p>
                         <div class="hero-actions">
-                            <a href="#contact" class="btn primary" data-i18n="hero.cta.primary">Request Access</a>
+                            <a href="#contact" class="btn primary" data-i18n="hero.cta.primary">Request Demo</a>
                             <a href="#how-it-works" class="btn secondary" data-i18n="hero.cta.secondary">Read the Architecture</a>
                         </div>
                     </div>
@@ -2932,6 +3465,122 @@
                 </div>
             </div>
         </section>
+
+        <!-- Contact / Request Demo -->
+        <section id="contact" class="section container container-narrow deferred-section">
+            <div class="section-head reveal-element">
+                <div>
+                    <div class="eyebrow" data-i18n="contact.eyebrow">Contact</div>
+                    <h2 data-i18n="contact.title">Request Demo</h2>
+                </div>
+                <p class="subhead" data-i18n="contact.subtitle">
+                    Tell us what you want to explore and we will get back to you within 24-48 hours.
+                </p>
+            </div>
+
+            <div class="contact-container reveal-element">
+                <div class="contact-logo">
+                    <div class="contact-brand-scene" aria-hidden="true">
+                        <div class="contact-brand-orb"></div>
+                        <div class="contact-brand-grid"></div>
+                        <svg class="mark contact-brand-mark" viewBox="0 0 100 100" shape-rendering="geometricPrecision">
+                            <use href="#varux-mark"></use>
+                        </svg>
+                    </div>
+
+                    <div class="contact-topbar">
+                        <div class="wordmark">
+                            <span class="wordmark-main">VARUX</span>
+                            <span class="wordmark-sub" data-i18n="contact.wordmark">Request demo</span>
+                        </div>
+
+                        <div class="contact-quick-actions">
+                            <a href="mailto:contact@varuxcyber.com" class="btn secondary small" data-i18n="contact.quick.email">Email Us</a>
+                            <a href="https://www.linkedin.com/company/varux/" class="btn small" target="_blank" rel="noreferrer" data-i18n="contact.quick.linkedin">LinkedIn</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-summary">
+                        <h2 data-i18n="contact.panel.title">Talk to the VARUX team</h2>
+                        <p class="text-lead" data-i18n="contact.panel.text">
+                            Use this form for demos, pilot planning, integrations, or general enterprise questions.
+                        </p>
+                    </div>
+
+                    <div class="contact-points">
+                        <div class="contact-point">
+                            <span class="contact-point-label" data-i18n="contact.point.email.label">Email</span>
+                            <a href="mailto:contact@varuxcyber.com">contact@varuxcyber.com</a>
+                            <p data-i18n="contact.point.email.text">Best for demo requests, procurement, and general questions.</p>
+                        </div>
+                        <div class="contact-point">
+                            <span class="contact-point-label" data-i18n="contact.point.reply.label">Response window</span>
+                            <div class="contact-point-value" data-i18n="contact.point.reply.value">24-48 hours</div>
+                            <p data-i18n="contact.point.reply.text">Include your stack and goals so we can route the request correctly on the first reply.</p>
+                        </div>
+                        <div class="contact-point">
+                            <span class="contact-point-label" data-i18n="contact.point.scope.label">Best for</span>
+                            <div class="contact-point-value" data-i18n="contact.point.scope.value">Demo, pilot, security review</div>
+                            <p data-i18n="contact.point.scope.text">If you prefer, you can also reach us directly on LinkedIn.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-heading">
+                        <span class="contact-form-kicker" data-i18n="contact.wordmark">Request demo</span>
+                        <span class="contact-form-line" aria-hidden="true"></span>
+                    </div>
+
+                    <form id="contact-form" class="contact-form-grid">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name" data-i18n="contact.form.name">Name</label>
+                                <input id="contact-name" name="name" type="text" autocomplete="name" required placeholder="Jane Doe" data-i18n="contact.form.placeholder.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email" data-i18n="contact.form.email">Work Email</label>
+                                <input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" data-i18n="contact.form.placeholder.email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-company" data-i18n="contact.form.company">Company</label>
+                                <input id="contact-company" name="organization" type="text" autocomplete="organization" required placeholder="Company / team" data-i18n="contact.form.placeholder.company">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-usecase" data-i18n="contact.form.usecase">What would you like to discuss?</label>
+                                <select id="contact-usecase" name="usecase" required>
+                                    <option value="" selected disabled data-i18n="contact.form.select">Select an option</option>
+                                    <option value="Schedule a demo" data-i18n="contact.form.option1">Schedule a demo</option>
+                                    <option value="Pilot or integration" data-i18n="contact.form.option2">Pilot or integration</option>
+                                    <option value="Security / architecture review" data-i18n="contact.form.option3">Security / architecture review</option>
+                                    <option value="Other" data-i18n="contact.form.option4">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-wide">
+                            <label for="contact-details" data-i18n="contact.form.details">How can we help?</label>
+                            <textarea id="contact-details" name="details" required placeholder="Briefly describe your environment, what you want to protect, and what kind of demo or support you need." data-i18n="contact.form.placeholder.details"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn primary full-width" data-i18n="contact.form.submit">Submit Request</button>
+
+                        <div id="formSuccess" class="form-success-message" aria-live="polite"></div>
+
+                        <div id="fallbackUI" class="fallback-ui">
+                            <p data-i18n="contact.fallback.text">If your email application does not open, use one of the actions below.</p>
+                            <div class="fallback-row">
+                                <a id="manualMailto" class="fallback-btn" href="mailto:contact@varuxcyber.com" data-i18n="contact.fallback.email">Open email</a>
+                                <button id="copyBtn" type="button" class="fallback-btn" data-i18n="contact.fallback.copy">Copy message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
         
         <!-- Footer -->
         <footer>
@@ -3005,7 +3654,7 @@
                 "hero.status": "ENFORCEMENT LAYER ACTIVE",
                 "hero.title": "Deterministic Control for Autonomous Systems",
                 "hero.subtitle": "Policy-enforced tool and database access, evaluated before execution, with audit-grade evidence. The control layer that ensures autonomous agents operate within defined boundaries.",
-                "hero.cta.primary": "Request Access",
+                "hero.cta.primary": "Request Demo",
                 "hero.cta.secondary": "Read the Architecture",
                 
                 // Card
@@ -3120,19 +3769,55 @@
                 "docs.status": "In Development",
                 
                 // Contact
-                "contact.title": "Request Access",
-                "contact.subtitle": "VARUX is currently available to select enterprise teams. Describe your use case and we'll follow up within 48 hours.",
+                "contact.eyebrow": "Contact",
+                "contact.title": "Request Demo",
+                "contact.subtitle": "Tell us what you want to explore and we will get back to you within 24-48 hours.",
+                "contact.wordmark": "Request demo",
+                "contact.panel.title": "Talk to the VARUX team",
+                "contact.panel.text": "Use this form for demos, pilot planning, integrations, or general enterprise questions.",
+                "contact.point.email.label": "Email",
+                "contact.point.email.text": "Best for demo requests, procurement, and general questions.",
+                "contact.point.reply.label": "Response window",
+                "contact.point.reply.value": "24-48 hours",
+                "contact.point.reply.text": "Include your stack and goals so we can route the request correctly on the first reply.",
+                "contact.point.scope.label": "Best for",
+                "contact.point.scope.value": "Demo, pilot, security review",
+                "contact.point.scope.text": "If you prefer, you can also reach us directly on LinkedIn.",
+                "contact.quick.email": "Email Us",
+                "contact.quick.linkedin": "LinkedIn",
                 "contact.form.name": "Name",
                 "contact.form.email": "Work Email",
                 "contact.form.company": "Company",
-                "contact.form.usecase": "What are you trying to secure?",
-                "contact.form.details": "Use Case Details",
+                "contact.form.usecase": "What would you like to discuss?",
+                "contact.form.details": "How can we help?",
                 "contact.form.select": "Select an option",
-                "contact.form.option1": "Production database access",
-                "contact.form.option2": "Autonomous agent tool use",
-                "contact.form.option3": "Audit/compliance requirements",
+                "contact.form.option1": "Schedule a demo",
+                "contact.form.option2": "Pilot or integration",
+                "contact.form.option3": "Security / architecture review",
                 "contact.form.option4": "Other",
                 "contact.form.submit": "Submit Request",
+                "contact.form.placeholder.name": "Jane Doe",
+                "contact.form.placeholder.email": "name@company.com",
+                "contact.form.placeholder.company": "Company / team",
+                "contact.form.placeholder.details": "Briefly describe your environment, what you want to protect, and what kind of demo or support you need.",
+                "contact.fallback.text": "If your email application does not open, use one of the actions below.",
+                "contact.fallback.email": "Open email",
+                "contact.fallback.copy": "Copy message",
+                "contact.status.redirecting": "Redirecting...",
+                "contact.status.opening.title": "Opening email client...",
+                "contact.status.opening.body": "If nothing happens, use the buttons below.",
+                "contact.status.copied.title": "Text copied.",
+                "contact.status.copied.body": "Your message was too long for a direct link. The details were copied to your clipboard. Paste them into the email body.",
+                "contact.status.retry": "Sent? Click to Retry",
+                "contact.status.copydone": "Copied!",
+                "contact.email.subject": "VARUX Demo Request",
+                "contact.email.subjectFallback": "Website Inquiry",
+                "contact.email.field.name": "Name",
+                "contact.email.field.email": "Email",
+                "contact.email.field.company": "Company",
+                "contact.email.field.category": "Category",
+                "contact.email.field.details": "Message",
+                "contact.email.footer": "Submitted via varuxcyber.com",
                 
                 // Footer
                 "footer.tagline": "Enterprise-grade control plane for the autonomous age. Built with a focus on deterministic, policy-grade enforcement.",
@@ -3164,7 +3849,7 @@
                 "hero.status": "ZORLAMA KATMANI AKTİF",
                 "hero.title": "Otonom Sistemler için Deterministik Kontrol",
                 "hero.subtitle": "Politika ile zorunlu kılınan araç ve veritabanı erişimi, yürütmeden önce değerlendirilir, denetim sınıfı kanıtlarla. Otonom ajanların belirlenen sınırlar içinde çalışmasını sağlayan kontrol katmanı.",
-                "hero.cta.primary": "Erişim İste",
+                "hero.cta.primary": "Demo İste",
                 "hero.cta.secondary": "Mimarimizi İncele",
                 
                 // Card
@@ -3279,19 +3964,55 @@
                 "docs.status": "Geliştiriliyor",
                 
                 // Contact
-                "contact.title": "Erişim İste",
-                "contact.subtitle": "VARUX şu anda seçkin kurumsal ekipler için mevcuttur. Kullanım durumunuzu açıklayın, 48 saat içinde geri dönelim.",
+                "contact.eyebrow": "İletişim",
+                "contact.title": "Demo İste",
+                "contact.subtitle": "Ne görmek istediğinizi yazın, size 24-48 saat içinde geri dönelim.",
+                "contact.wordmark": "Demo talebi",
+                "contact.panel.title": "VARUX ekibiyle iletişime geçin",
+                "contact.panel.text": "Bu formu demo, pilot planlama, entegrasyon veya genel kurumsal sorular için kullanabilirsiniz.",
+                "contact.point.email.label": "E-posta",
+                "contact.point.email.text": "Demo talepleri, satın alma ve genel sorular için en hızlı kanal.",
+                "contact.point.reply.label": "Geri dönüş süresi",
+                "contact.point.reply.value": "24-48 saat",
+                "contact.point.reply.text": "Altyapınızı ve hedefinizi paylaşırsanız ilk yanıtta doğru kişiye yönlendirebiliriz.",
+                "contact.point.scope.label": "Uygun konular",
+                "contact.point.scope.value": "Demo, pilot, güvenlik incelemesi",
+                "contact.point.scope.text": "Dilerseniz bize doğrudan LinkedIn üzerinden de ulaşabilirsiniz.",
+                "contact.quick.email": "E-posta Gönder",
+                "contact.quick.linkedin": "LinkedIn",
                 "contact.form.name": "Ad Soyad",
                 "contact.form.email": "İş E-postası",
                 "contact.form.company": "Şirket",
-                "contact.form.usecase": "Neyi güvenceye almaya çalışıyorsunuz?",
-                "contact.form.details": "Kullanım Durumu Detayları",
+                "contact.form.usecase": "Neyi konuşmak istiyorsunuz?",
+                "contact.form.details": "Nasıl yardımcı olabiliriz?",
                 "contact.form.select": "Bir seçenek belirleyin",
-                "contact.form.option1": "Üretim veritabanı erişimi",
-                "contact.form.option2": "Otonom ajan araç kullanımı",
-                "contact.form.option3": "Denetim/uyumluluk gereksinimleri",
+                "contact.form.option1": "Demo planlamak istiyorum",
+                "contact.form.option2": "Pilot veya entegrasyon",
+                "contact.form.option3": "Güvenlik / mimari inceleme",
                 "contact.form.option4": "Diğer",
                 "contact.form.submit": "İstek Gönder",
+                "contact.form.placeholder.name": "Ad Soyad",
+                "contact.form.placeholder.email": "ad@firma.com",
+                "contact.form.placeholder.company": "Şirket / ekip",
+                "contact.form.placeholder.details": "Altyapınızı, neyi korumak istediğinizi ve ne tür bir demo veya destek aradığınızı kısaca yazın.",
+                "contact.fallback.text": "E-posta uygulamanız açılmazsa aşağıdaki seçenekleri kullanın.",
+                "contact.fallback.email": "E-postayı Aç",
+                "contact.fallback.copy": "Mesajı Kopyala",
+                "contact.status.redirecting": "Yönlendiriliyor...",
+                "contact.status.opening.title": "E-posta uygulaması açılıyor...",
+                "contact.status.opening.body": "Bir şey olmazsa aşağıdaki butonları kullanın.",
+                "contact.status.copied.title": "Metin kopyalandı.",
+                "contact.status.copied.body": "Mesajınız doğrudan bağlantı için çok uzundu. Detaylar panonuza kopyalandı. Lütfen e-posta gövdesine yapıştırın.",
+                "contact.status.retry": "Gönderildi mi? Tekrar dene",
+                "contact.status.copydone": "Kopyalandı!",
+                "contact.email.subject": "VARUX Demo Talebi",
+                "contact.email.subjectFallback": "Web Sitesi Talebi",
+                "contact.email.field.name": "Ad Soyad",
+                "contact.email.field.email": "E-posta",
+                "contact.email.field.company": "Şirket",
+                "contact.email.field.category": "Kategori",
+                "contact.email.field.details": "Mesaj",
+                "contact.email.footer": "varuxcyber.com üzerinden gönderildi",
                 
                 // Footer
                 "footer.tagline": "Otonom çağ için kurumsal sınıf kontrol düzlemi. Deterministik, politika sınıfı zorlamaya odaklanarak oluşturulmuştur.",
@@ -3306,6 +4027,11 @@
                 "footer.motto": "Politika > Ajan"
             }
         };
+
+        function getText(key, fallback = '') {
+            const lang = i18n[document.documentElement.lang] ? document.documentElement.lang : 'en';
+            return i18n[lang]?.[key] || i18n.en?.[key] || fallback || key;
+        }
 
         // Splash/Loading Screen Logic
         const varuxSplash = document.getElementById('varuxSplash');
@@ -4263,3 +4989,4 @@
     </script>
 </body>
 </html>
+
