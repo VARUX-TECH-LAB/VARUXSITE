@@ -12,10 +12,6 @@ Stay updated with our projects, releases, and community posts:
 
 X: https://x.com/varuxtech
 
-GitHub: https://lnkd.in/deF745ru
-
-Reddit: https://lnkd.in/dCV7m_Hx
-
 Telegram: t.me/varuxcyber
 
 We share unique content on every platform—stay connected!
