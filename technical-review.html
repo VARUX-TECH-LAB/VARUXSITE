@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>VARUX | Technical Review Pack</title>
+    <meta name="description" content="Public technical review material for VARUX control surfaces: integration boundaries, policy objects, and audit record structure.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
+    <link rel="canonical" href="https://varuxcyber.com/technical-review">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#090d14">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:site_name" content="VARUX">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://varuxcyber.com/technical-review">
+    <meta property="og:title" content="VARUX | Technical Review Pack">
+    <meta property="og:description" content="Public technical review material for VARUX control surfaces: integration boundaries, policy objects, and audit record structure.">
+    <meta property="og:image" content="https://varuxcyber.com/apple-touch-icon.png">
+    <meta property="og:image:alt" content="VARUX brand mark">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VARUX | Technical Review Pack">
+    <meta name="twitter:description" content="Public technical review material for VARUX control surfaces: integration boundaries, policy objects, and audit record structure.">
+    <meta name="twitter:image" content="https://varuxcyber.com/apple-touch-icon.png">
+    <meta name="twitter:site" content="@varuxtech">
+    <link rel="stylesheet" href="product-pages.css">
+    <link rel="stylesheet" href="review-pack.css">
+</head>
+<body data-product="review-pack" data-product-name="Technical Review Pack">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="page-ambient" aria-hidden="true">
+        <span class="ambient-orb ambient-orb-a"></span>
+        <span class="ambient-orb ambient-orb-b"></span>
+        <span class="ambient-orb ambient-orb-c"></span>
+        <span class="ambient-beam ambient-beam-a"></span>
+        <span class="ambient-beam ambient-beam-b"></span>
+        <span class="ambient-pulse"></span>
+        <span class="ambient-noise"></span>
+    </div>
+
+    <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden;">
+        <symbol id="varux-mark" viewBox="0 0 100 100">
+            <path fill="currentColor" fill-rule="evenodd" d="M50 94L8 10H28L50 60L72 10H92L50 94ZM50 71L31 24H42.5L50 42L57.5 24H69L50 71ZM18 10H22L35 37H31L18 10ZM78 10H82L69 37H65L78 10Z"></path>
+        </symbol>
+    </svg>
+
+    <header class="site-header" id="siteHeader">
+        <div class="container">
+            <div class="header-shell">
+                <div class="header-inner">
+                    <a class="brand" href="index.html" aria-label="VARUX home">
+                        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+                            <use href="#varux-mark"></use>
+                        </svg>
+                        <div class="brand-copy">
+                            <strong>VARUX</strong>
+                            <span>Control layers for database writes and AI agents</span>
+                        </div>
+                    </a>
+
+                    <nav class="primary-nav" aria-label="Primary navigation">
+                        <a href="index.html">Home</a>
+                        <a href="axis.html">AXIS</a>
+                        <a href="arbiter.html">ARBITER</a>
+                        <a href="#policy-model">Policy</a>
+                        <a href="#audit-schema">Audit</a>
+                    </nav>
+
+                    <div class="header-actions">
+                        <a class="btn btn-primary" href="index.html#contact">Request Review</a>
+                        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation menu">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+                    <nav aria-label="Mobile navigation">
+                        <a href="index.html">Home</a>
+                        <a href="axis.html">AXIS</a>
+                        <a href="arbiter.html">ARBITER</a>
+                        <a href="#policy-model">Policy</a>
+                        <a href="#audit-schema">Audit</a>
+                        <a href="index.html#contact">Request Review</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="top">
+            <div class="container">
+                <div class="hero-shell">
+                    <div class="hero-copy reveal">
+                        <span class="eyebrow">Technical Review Pack</span>
+                        <h1>Public technical material for reviewing VARUX control surfaces.</h1>
+                        <p>This page exposes the public artifacts technical buyers and engineers usually inspect first: integration boundaries, policy objects, decision outcomes, and audit record shape.</p>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="index.html#contact">Request Review</a>
+                            <a class="btn btn-secondary" href="#integration-guide">Open Artifacts</a>
+                        </div>
+                        <ul class="capability-row" aria-label="Review pack scope">
+                            <li>Database write-path boundaries</li>
+                            <li>Agent tool and approval boundaries</li>
+                            <li>Policy and evidence objects</li>
+                        </ul>
+                    </div>
+
+                    <div class="hero-panel panel reveal">
+                        <div class="panel-kicker">Public Scope</div>
+                        <h2>Enough detail to review the model before a pilot conversation.</h2>
+                        <p>This pack stays honest about scope. It contains public technical material only. Environment-specific deployment detail, benchmarks, and customer-specific workflows are discussed during direct review.</p>
+                        <div class="stack-grid">
+                            <section class="stack-card">
+                                <h3>Included</h3>
+                                <ul class="stack-list">
+                                    <li>Boundary placement and request path examples.</li>
+                                    <li>Shared policy object structure.</li>
+                                    <li>Audit and decision record examples.</li>
+                                </ul>
+                            </section>
+                            <section class="stack-card">
+                                <h3>Not Included</h3>
+                                <ul class="stack-list">
+                                    <li>Customer-specific topology assumptions.</li>
+                                    <li>Invented benchmarks or private references.</li>
+                                    <li>Deployment promises detached from scope.</li>
+                                </ul>
+                            </section>
+                            <section class="stack-card">
+                                <h3>Best Use</h3>
+                                <ul class="stack-list">
+                                    <li>Initial engineering fit evaluation.</li>
+                                    <li>Cross-functional review with security and platform teams.</li>
+                                    <li>Scoping a first controlled pilot boundary.</li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="overview">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Review Angles</span>
+                        <h2>Four things this pack should answer quickly.</h2>
+                    </div>
+                    <p>The material here is designed to remove ambiguity around where control lives, what policy decides, and how evidence survives review.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card reveal">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3>Boundary Placement</h3>
+                        <p>Where AXIS or ARBITER sits relative to the request path, approval services, and downstream systems.</p>
+                    </article>
+                    <article class="feature-card reveal">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v10l-7 4-7-4V7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Policy Inputs</h3>
+                        <p>The fields used to classify a request, match policy, and decide whether to allow, block, or require approval.</p>
+                    </article>
+                    <article class="feature-card reveal">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0" stroke="currentColor" stroke-width="2" stroke-opacity=".35"/></svg>
+                        </div>
+                        <h3>Decision Outcomes</h3>
+                        <p>What changes when the outcome is allow, block, or approval-required, and which assumptions stay out of band.</p>
+                    </article>
+                    <article class="feature-card reveal">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M7 4h10v16H7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3>Evidence Fields</h3>
+                        <p>The actor, surface, policy, approval, and execution data preserved for review and retention.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="integration-guide">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Integration Guide</span>
+                        <h2>How the control boundary is inserted without hand-waving.</h2>
+                    </div>
+                    <p>Both products follow the same operating sequence even though the request surface changes: classify the action, evaluate policy, attach approval if needed, then preserve evidence.</p>
+                </div>
+
+                <div class="architecture-layout">
+                    <div class="mini-card reveal">
+                        <h3>Shared insertion checklist</h3>
+                        <p>What matters most in the first architecture review is not the total platform diagram. It is the exact point where state-changing work crosses from intent into execution.</p>
+                        <ul class="mini-points">
+                            <li>Identify the risky request path</li>
+                            <li>Define the actor and target surface</li>
+                            <li>Attach approval without widening overrides</li>
+                            <li>Record evidence before release</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-grid">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-step">01</div>
+                            <h3>Capture the request</h3>
+                            <p>Collect the minimum identity, target, and context fields needed to evaluate the action without guessing.</p>
+                        </article>
+                        <article class="timeline-card reveal">
+                            <div class="timeline-step">02</div>
+                            <h3>Normalize the surface</h3>
+                            <p>Reduce database writes or agent tool calls into a stable shape the policy engine can classify consistently.</p>
+                        </article>
+                        <article class="timeline-card reveal">
+                            <div class="timeline-step">03</div>
+                            <h3>Decide and gate</h3>
+                            <p>Return allow, block, or require-approval using explicit policy objects and narrow approval rules.</p>
+                        </article>
+                        <article class="timeline-card reveal">
+                            <div class="timeline-step">04</div>
+                            <h3>Emit evidence</h3>
+                            <p>Persist the decision record with reason codes, approval lineage, and execution timing before the action is treated as complete.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="policy-model">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Policy Model</span>
+                        <h2>Shared object shape, surface-specific matching.</h2>
+                    </div>
+                    <p>AXIS and ARBITER do not pretend every surface is the same. They do share the same decision grammar: scoped match inputs, explicit effect, and reviewable evidence fields.</p>
+                </div>
+
+                <div class="code-grid">
+                    <article class="code-card reveal">
+                        <div>
+                            <span class="doc-kicker">AXIS Example</span>
+                            <h3>Database write-path rule</h3>
+                        </div>
+                        <p>AXIS policies typically classify statement type, scope, environment, and approval requirements before any write reaches production state.</p>
+                        <pre><code>{
+  "id": "axis.write_requires_approval",
+  "surface": "postgres.write",
+  "match": {
+    "statement_class": ["UPDATE", "DELETE", "DDL"],
+    "table": ["customers", "accounts"],
+    "environment": ["production"]
+  },
+  "decision": {
+    "effect": "require_approval",
+    "approval_scope": "customers.balance"
+  },
+  "evidence": {
+    "reason_code": "WRITE_REQUIRES_APPROVAL",
+    "log_timing": "pre_exec"
+  }
+}</code></pre>
+                    </article>
+
+                    <article class="code-card reveal">
+                        <div>
+                            <span class="doc-kicker">ARBITER Example</span>
+                            <h3>Agent tool rule</h3>
+                        </div>
+                        <p>ARBITER policies usually classify agent identity, requested tool, target resource, and whether the action can proceed without a narrow approval path.</p>
+                        <pre><code>{
+  "id": "arbiter.tool.requires_human",
+  "surface": "agent.tool_call",
+  "match": {
+    "agent_id": ["ops-assistant"],
+    "tool": ["github.merge_pull_request"],
+    "environment": ["production"]
+  },
+  "decision": {
+    "effect": "require_approval",
+    "approval_scope": "repo.merge"
+  },
+  "evidence": {
+    "reason_code": "TOOL_CALL_REQUIRES_APPROVAL",
+    "log_timing": "pre_exec"
+  }
+}</code></pre>
+                    </article>
+                </div>
+
+                <div class="review-note reveal">
+                    Shared invariants across both products: explicit default-deny behavior under incomplete context, stable reason codes per decision path, and evidence fields that survive downstream incident review.
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="audit-schema">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Audit Schema</span>
+                        <h2>Decision records are part of the product, not an afterthought.</h2>
+                    </div>
+                    <p>Reviewability breaks when the evidence trail depends on post-event reconstruction. The sample below shows the minimum fields we treat as first-class in a decision record.</p>
+                </div>
+
+                <div class="code-grid">
+                    <article class="code-card reveal">
+                        <div>
+                            <span class="doc-kicker">Database Example</span>
+                            <h3>AXIS decision record</h3>
+                        </div>
+                        <pre><code>{
+  "request_id": "req_92af01",
+  "surface": "postgres.write",
+  "actor": "app_role",
+  "target": "customers.balance",
+  "policy_id": "axis.write_requires_approval",
+  "decision": "require_approval",
+  "reason_code": "WRITE_REQUIRES_APPROVAL",
+  "approval_state": "pending",
+  "evidence_timing": "pre_exec",
+  "trace_id": "8b14e2c1c0a34a4aa1726f5d"
+}</code></pre>
+                        <ul class="annotation-list">
+                            <li>The decision record exists before the write is released.</li>
+                            <li>Approval state is attached to the same record rather than a separate informal note.</li>
+                            <li>Reason codes stay stable enough for review and retention policy.</li>
+                        </ul>
+                    </article>
+
+                    <article class="code-card reveal">
+                        <div>
+                            <span class="doc-kicker">Agent Example</span>
+                            <h3>ARBITER action record</h3>
+                        </div>
+                        <pre><code>{
+  "request_id": "req_4b0d3a",
+  "surface": "agent.tool_call",
+  "agent_id": "ops-assistant",
+  "tool": "github.merge_pull_request",
+  "user_scope": "release-manager",
+  "policy_id": "arbiter.tool.requires_human",
+  "decision": "require_approval",
+  "reason_code": "TOOL_CALL_REQUIRES_APPROVAL",
+  "approval_state": "pending",
+  "evidence_timing": "pre_exec",
+  "session_id": "sess_f5ac12"
+}</code></pre>
+                        <ul class="annotation-list">
+                            <li>Agent identity, user scope, and tool request stay in one reviewable object.</li>
+                            <li>The approval chain is attached to the action, not stored as an external assumption.</li>
+                            <li>Execution outcome can be appended without changing the original decision basis.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="review-checklist">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Checklist</span>
+                        <h2>What to bring into the first review.</h2>
+                    </div>
+                    <p>The best first conversation is narrow and technical. It should be obvious which boundary matters and what evidence the team expects to keep.</p>
+                </div>
+
+                <div class="readiness-shell">
+                    <div class="checklist-grid">
+                        <article class="mini-card checklist-card reveal">
+                            <h3>Bring this</h3>
+                            <ul class="annotation-list">
+                                <li>The risky write path or agent tool action you want to control first.</li>
+                                <li>The actor model behind that action: service, human, or agent.</li>
+                                <li>The approval or exception path that exists today.</li>
+                            </ul>
+                        </article>
+                        <article class="mini-card checklist-card reveal">
+                            <h3>Ask this</h3>
+                            <ul class="annotation-list">
+                                <li>Where exactly does the control point sit?</li>
+                                <li>Which policy inputs are mandatory before release?</li>
+                                <li>How is evidence preserved if the action is denied or paused?</li>
+                            </ul>
+                        </article>
+                        <article class="mini-card checklist-card reveal">
+                            <h3>Do not assume</h3>
+                            <ul class="annotation-list">
+                                <li>That one pilot surface automatically means total platform coverage.</li>
+                                <li>That approval rules can stay informal if the action is high-risk.</li>
+                                <li>That post-event logs are enough for evidence-grade review.</li>
+                            </ul>
+                        </article>
+                        <article class="mini-card checklist-card reveal">
+                            <h3>Expect next</h3>
+                            <ul class="annotation-list">
+                                <li>A scope confirmation around one boundary worth proving.</li>
+                                <li>Requests for topology, actor, and approval-path detail.</li>
+                                <li>Environment-specific material only after the boundary is real.</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <aside class="readiness-aside panel reveal">
+                        <h3>What a first review should return</h3>
+                        <ul class="readiness-list">
+                            <li>A clear yes or no on whether the boundary fits AXIS or ARBITER.</li>
+                            <li>The minimum pilot surface worth testing.</li>
+                            <li>The policy inputs and evidence fields that matter most.</li>
+                            <li>The open questions that must be answered before deployment planning.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="panel cta-panel reveal">
+                    <div>
+                        <span class="eyebrow">Next Step</span>
+                        <h2 style="margin-top:10px;">Need environment-specific detail?</h2>
+                        <p style="margin-top:10px;color:var(--muted);max-width:58ch;">Use the public material here to decide whether a direct technical review is worth the time. If it is, bring one real boundary rather than a generic platform request.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="btn btn-primary" href="index.html#contact">Request Review</a>
+                        <a class="btn btn-secondary" href="mailto:contact@varuxcyber.com">Email Directly</a>
+                    </div>
+                    <div class="cta-meta">
+                        <span>Public review pack only</span>
+                        <span>Direct contact: contact@varuxcyber.com</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-shell">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a class="brand" href="index.html" aria-label="VARUX home">
+                        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+                            <use href="#varux-mark"></use>
+                        </svg>
+                        <div class="brand-copy">
+                            <strong>VARUX</strong>
+                            <span>Control layers for database writes and AI agents</span>
+                        </div>
+                    </a>
+                    <p style="margin-top:16px;">Public technical material for reviewing integration boundaries, policy objects, and audit record structure.</p>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-title">Products</div>
+                    <ul>
+                        <li><a href="axis.html">AXIS</a></li>
+                        <li><a href="arbiter.html">ARBITER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-title">Resources</div>
+                    <ul>
+                        <li><a href="#integration-guide">Integration Guide</a></li>
+                        <li><a href="#policy-model">Policy Model</a></li>
+                        <li><a href="#audit-schema">Audit Schema</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-title">Company</div>
+                    <ul>
+                        <li><a href="index.html">About VARUX</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="mailto:contact@varuxcyber.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 VARUX. All rights reserved.</span>
+                <span>Policy before execution</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="product-pages.js"></script>
+</body>
+</html>
