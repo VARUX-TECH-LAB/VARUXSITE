@@ -1,1359 +1,1722 @@
 <!DOCTYPE html>
-<html lang="tr" data-ui-lang="tr">
+<html lang="tr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>VARUX | Gizlilik Politikasi</title>
-    <meta name="description" content="VARUX gizlilik politikasi: KVKK, GDPR, veri isleme amaclari, aktarim, saklama, guvenlik ve ilgili kisi haklari.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
-    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
-    <link rel="canonical" href="https://varuxcyber.com/privacy">
-    <link rel="alternate" hreflang="tr" href="https://varuxcyber.com/privacy">
-    <link rel="alternate" hreflang="en" href="https://varuxcyber.com/privacy">
-    <link rel="alternate" hreflang="x-default" href="https://varuxcyber.com/privacy">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="apple-mobile-web-app-title" content="VARUX">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance</title>
+    <meta name="description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin pre-execution control, deterministic policy enforcement ve enterprise governance platformudur.">
+    <meta name="keywords" content="VARUX, pre-execution control, policy enforcement, agent security, autonomous system governance, enterprise security, database write protection, Arbiter, Axis">
+    <meta name="author" content="VARUX">
     <meta name="application-name" content="VARUX">
-    <meta name="author" content="VARUX Cybersecurity">
-    <meta name="publisher" content="VARUX Cybersecurity">
-    <meta name="theme-color" content="#09111a">
-    <meta name="color-scheme" content="dark">
-    <meta property="og:site_name" content="VARUX">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://varuxcyber.com/privacy">
-    <meta property="og:title" content="VARUX | Privacy Policy">
-    <meta property="og:description" content="Corporate privacy notice covering data categories, legal bases, retention, transfers, security controls and privacy rights.">
-    <meta property="og:image" content="https://varuxcyber.com/apple-touch-icon.png">
-    <meta property="og:image:alt" content="VARUX brand mark">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#020202">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VARUX">
+    <meta property="og:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
+    <meta property="og:description" content="Kritik istekleri execution baslamadan once degerlendirin, yetkiyi policy ile sinirlayin ve denetlenebilir enforcement uygulayin.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VARUX | Privacy Policy">
-    <meta name="twitter:description" content="Corporate privacy notice for website visitors, customers, and business contacts.">
-    <meta name="twitter:image" content="https://varuxcyber.com/apple-touch-icon.png">
     <meta name="twitter:site" content="@varuxtech">
+    <meta name="twitter:creator" content="@varuxtech">
+    <meta name="twitter:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
+    <meta name="twitter:description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin deterministic control ve enforcement katmani sunar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
         {
-          "@type": "Organization",
-          "@id": "https://varuxcyber.com/#org",
-          "name": "VARUX",
-          "alternateName": ["VARUX Cybersecurity", "VARUX Cybersecurity Technologies"],
-          "url": "https://varuxcyber.com/",
-          "logo": "https://varuxcyber.com/apple-touch-icon.png",
-          "sameAs": [
-            "https://github.com/VARUX-TECH-LAB",
-            "https://www.linkedin.com/company/varux/"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://varuxcyber.com/#website",
-          "url": "https://varuxcyber.com/",
-          "name": "VARUX",
-          "publisher": { "@id": "https://varuxcyber.com/#org" }
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://varuxcyber.com/privacy#webpage",
-          "url": "https://varuxcyber.com/privacy",
-          "name": "VARUX Privacy Policy",
-          "isPartOf": { "@id": "https://varuxcyber.com/#website" },
-          "about": { "@id": "https://varuxcyber.com/#org" },
-          "inLanguage": ["tr", "en"],
-          "description": "Corporate privacy notice covering data handling, security, retention, transfers and privacy rights."
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "VARUX",
+            "description": "Pre-execution control ve enforcement platformu. Agentler, otomasyonlar ve kritik write operasyonlari icin deterministic policy governance saglar.",
+            "sameAs": [
+                "https://github.com/VARUX-TECH-LAB",
+                "https://x.com/varuxtech",
+                "https://www.linkedin.com/company/varux"
+            ],
+            "knowsAbout": [
+                "Pre-execution control",
+                "Policy enforcement",
+                "Agent governance",
+                "Autonomous system security",
+                "Database write-path enforcement"
+            ]
         }
-      ]
-    }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "VARUX",
+            "applicationCategory": "SecurityApplication",
+            "operatingSystem": "Web",
+            "description": "VARUX is a pre-execution control and enforcement platform for autonomous systems, agents, automation and critical write operations.",
+            "inLanguage": ["tr", "en"],
+            "featureList": [
+                "Pre-execution control",
+                "Deterministic policy enforcement",
+                "Agent governance",
+                "Database write-path protection",
+                "Evidence-oriented audit trails"
+            ],
+            "publisher": {
+                "@type": "Organization",
+                "name": "VARUX"
+            }
+        }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono&display=swap');
 
         :root {
-            --bg: #09111a;
-            --bg-deep: #050b12;
-            --panel: rgba(12, 20, 31, 0.82);
-            --line: rgba(169, 186, 209, 0.15);
-            --text: #f2f6fc;
-            --muted: rgba(223, 231, 243, 0.78);
-            --faint: rgba(190, 203, 220, 0.58);
-            --accent: #8fb1f1;
-            --accent-strong: #c7d7ff;
-            --accent-soft: rgba(143, 177, 241, 0.14);
-            --warning: #f0cf88;
-            --shadow: 0 28px 70px rgba(2, 7, 14, 0.42);
-            --radius-xl: 28px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --container: 1220px;
-            --header-height: 78px;
-            --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
-            --font-display: 'Manrope', 'IBM Plex Sans', sans-serif;
-            --pointer-x: 48%;
-            --pointer-y: 18%;
+            --bg: #020202;
+            --card: #080808;
+            --border: #121212;
+            --accent: #3b82f6;
+            --axis-accent: #10b981;
+            --arbiter-accent: #6366f1;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-        html[data-ui-lang="tr"] [data-lang="en"], html[data-ui-lang="en"] [data-lang="tr"] { display: none !important; }
 
         body {
-            min-height: 100vh;
-            font-family: var(--font-body);
-            color: var(--text);
-            line-height: 1.7;
+            background-color: var(--bg);
+            color: #a1a1aa;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-mark-premium {
             position: relative;
-            isolation: isolate;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background:
-                radial-gradient(circle at 12% 16%, rgba(143, 177, 241, 0.12), transparent 22%),
-                radial-gradient(circle at 86% 14%, rgba(143, 177, 241, 0.08), transparent 20%),
-                radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(143, 177, 241, 0.07), transparent 28%),
-                linear-gradient(180deg, var(--bg-deep) 0%, #08111a 36%, var(--bg) 100%);
-        }
-
-        body::before, body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::before {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-            background-size: 56px 56px;
-            mask-image: radial-gradient(circle at center, black 22%, transparent 82%);
-            opacity: 0.24;
-            animation: drift 28s linear infinite;
-        }
-
-        body::after {
-            inset: -18%;
-            background:
-                radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(143, 177, 241, 0.14), transparent 14%),
-                radial-gradient(circle at 76% 72%, rgba(143, 177, 241, 0.07), transparent 20%);
-            filter: blur(42px);
-            opacity: 0.5;
-        }
-
-        a { color: inherit; text-decoration: none; }
-        img { display: block; max-width: 100%; }
-        button { font: inherit; }
-
-        .scroll-progress {
-            position: fixed;
-            inset: 0 auto auto 0;
-            width: 0;
-            height: 3px;
-            z-index: 1200;
-            background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-            box-shadow: 0 0 24px rgba(143, 177, 241, 0.55);
-        }
-
-        .page-ambient {
-            position: fixed;
-            inset: 0;
+                linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(222, 232, 248, 0.9) 52%, rgba(132, 164, 213, 0.86) 100%);
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
             overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
         }
 
-        .orb, .beam {
+        .brand-mark-premium::before {
+            content: "";
             position: absolute;
-            pointer-events: none;
+            inset: 1px;
+            border-radius: 0.44rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.75;
         }
 
-        .orb { border-radius: 50%; mix-blend-mode: screen; }
-        .orb-a {
-            width: min(42vw, 600px);
-            aspect-ratio: 1;
-            top: -14vw;
-            left: -8vw;
-            background: radial-gradient(circle, rgba(143, 177, 241, 0.18) 0%, rgba(143, 177, 241, 0.06) 36%, transparent 72%);
-            animation: floatA 22s ease-in-out infinite alternate;
-        }
-        .orb-b {
-            width: min(28vw, 420px);
-            aspect-ratio: 1;
-            top: 12%;
-            right: -9vw;
-            background: radial-gradient(circle, rgba(143, 177, 241, 0.12) 0%, rgba(143, 177, 241, 0.04) 44%, transparent 78%);
-            animation: floatB 26s ease-in-out infinite alternate;
-        }
-        .orb-c {
-            width: min(34vw, 540px);
-            aspect-ratio: 1;
-            bottom: -16vw;
-            left: 18%;
-            background: radial-gradient(circle, rgba(143, 177, 241, 0.12) 0%, rgba(143, 177, 241, 0.04) 44%, transparent 78%);
-            animation: floatC 24s ease-in-out infinite alternate;
+        .brand-mark-premium::after {
+            content: "";
+            position: absolute;
+            top: -28%;
+            left: 48%;
+            width: 84%;
+            height: 84%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 72%);
+            transform: rotate(32deg);
+            opacity: 0.42;
         }
 
-        .beam {
-            height: 1px;
-            opacity: 0.28;
-            background: linear-gradient(90deg, transparent 0%, rgba(143, 177, 241, 0.42) 50%, transparent 100%);
-        }
-        .beam-a {
-            top: 26%;
-            left: -12%;
-            width: 54vw;
-            transform: rotate(-16deg);
-            animation: beamA 16s linear infinite;
-        }
-        .beam-b {
-            bottom: 18%;
-            right: -16%;
-            width: 46vw;
-            transform: rotate(-28deg);
-            animation: beamB 20s linear infinite;
-        }
-
-        .wrap {
-            width: min(calc(100% - 40px), var(--container));
-            margin: 0 auto;
+        .brand-mark-core {
             position: relative;
+            width: 0.52rem;
+            height: 0.52rem;
+            border-radius: 0.14rem;
+            background: #050505;
+            box-shadow:
+                0 0 0 4px rgba(5, 5, 5, 0.08),
+                0 0 0 8px rgba(5, 5, 5, 0.04);
             z-index: 1;
         }
 
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 1100;
-            backdrop-filter: blur(16px);
-            background: rgba(6, 11, 18, 0.72);
-            border-bottom: 1px solid rgba(169, 186, 209, 0.1);
-        }
-
-        .header-shell {
-            min-height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 0;
-        }
-        .brand-mark {
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            border: 1px solid rgba(169, 186, 209, 0.18);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(143, 177, 241, 0.06));
-            padding: 9px;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
-        .brand-copy { display: grid; gap: 2px; }
-        .brand-copy strong {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            letter-spacing: -0.03em;
-        }
-        .brand-copy span {
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-        .header-nav a {
-            font-size: 0.86rem;
-            color: var(--faint);
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-        .header-nav a:hover,
-        .header-nav a:focus-visible {
-            color: var(--text);
-            transform: translateY(-1px);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .header-link {
-            padding: 10px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(169, 186, 209, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--muted);
-            font-size: 0.86rem;
-            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-        }
-        .header-link:hover,
-        .header-link:focus-visible {
-            color: var(--text);
-            border-color: rgba(169, 186, 209, 0.22);
-            background: rgba(255, 255, 255, 0.06);
+        .brand-link:hover .brand-mark-premium {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.36),
+                inset 0 1px 0 rgba(255, 255, 255, 0.72),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+            filter: saturate(1.08);
         }
 
         .lang-switch {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 5px;
+            gap: 0.3rem;
+            padding: 0.25rem;
             border-radius: 999px;
-            border: 1px solid rgba(169, 186, 209, 0.14);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .lang-btn {
-            min-width: 42px;
-            height: 36px;
-            border: 0;
-            border-radius: 999px;
-            cursor: pointer;
-            color: var(--faint);
-            background: transparent;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-        }
-        .lang-btn:hover,
-        .lang-btn:focus-visible {
-            color: var(--text);
-            transform: translateY(-1px);
-        }
-        .lang-btn.active {
-            background: linear-gradient(180deg, rgba(143, 177, 241, 0.26), rgba(143, 177, 241, 0.16));
-            color: var(--text);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px rgba(143, 177, 241, 0.18);
-        }
-
-        main { padding: 44px 0 88px; }
-
-        .panel {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--line);
-            background: linear-gradient(180deg, rgba(18, 29, 43, 0.9), rgba(10, 17, 27, 0.9));
-            box-shadow: var(--shadow);
-        }
-        .panel::after {
-            content: "";
-            position: absolute;
-            inset: 0 0 auto;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(143, 177, 241, 0.4) 50%, transparent 100%);
-            opacity: 0.8;
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-            gap: 22px;
-            margin-bottom: 22px;
-        }
-        .hero-copy,
-        .hero-side {
-            padding: clamp(28px, 4vw, 42px);
-        }
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(143, 177, 241, 0.18);
-            background: rgba(143, 177, 241, 0.1);
-            color: var(--accent-strong);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-        .hero h1 {
-            max-width: 11ch;
-            font-family: var(--font-display);
-            font-size: clamp(2.6rem, 5vw, 4.6rem);
-            line-height: 0.98;
-            letter-spacing: -0.05em;
-            margin-bottom: 18px;
-        }
-        .hero p { max-width: 62ch; color: var(--muted); font-size: 1.05rem; }
-        .hero-meta {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 28px;
-        }
-        .hero-stat {
-            padding: 16px 18px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(169, 186, 209, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.03);
         }
-        .hero-stat strong {
-            display: block;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            margin-bottom: 4px;
+
+        .lang-button {
+            min-width: 2.4rem;
+            height: 2rem;
+            padding: 0 0.75rem;
+            border-radius: 999px;
+            color: #71717a;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
         }
-        .hero-stat span { color: var(--faint); font-size: 0.84rem; }
-        .hero-side {
-            display: grid;
-            gap: 18px;
-            align-content: start;
+
+        .lang-button:hover {
+            color: #ffffff;
+        }
+
+        .lang-button.is-active {
+            background: rgba(255, 255, 255, 0.94);
+            color: #050505;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        }
+
+        .glass {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .hero-stage {
+            isolation: isolate;
             background:
-                radial-gradient(circle at top right, rgba(143, 177, 241, 0.12), transparent 42%),
-                linear-gradient(180deg, rgba(15, 25, 37, 0.96), rgba(9, 15, 24, 0.98));
+                radial-gradient(circle at 76% 48%, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.03) 18%, transparent 38%),
+                radial-gradient(circle at 84% 78%, rgba(59, 130, 246, 0.04) 0%, transparent 34%),
+                linear-gradient(180deg, #060606 0%, #020202 46%, #010101 100%);
         }
-        .side-title {
-            font-family: var(--font-display);
-            font-size: 1.35rem;
-            line-height: 1.15;
-            margin-bottom: 4px;
-        }
-        .side-text { color: var(--muted); font-size: 0.96rem; }
-        .mini-list {
-            display: grid;
-            gap: 12px;
-            list-style: none;
-        }
-        .mini-list li {
-            padding: 14px 16px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(169, 186, 209, 0.12);
-            background: rgba(255, 255, 255, 0.03);
-        }
-        .mini-list strong {
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.96rem;
-        }
-        .mini-list span { color: var(--faint); font-size: 0.88rem; }
 
-        .notice-strip {
+        .hero-background,
+        .hero-grid,
+        .hero-noise,
+        .hero-vignette,
+        .hero-readability,
+        .hero-core-halo,
+        .hero-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hero-background {
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 68px 68px;
+            -webkit-mask-image: radial-gradient(circle at 76% 52%, black 18%, rgba(0, 0, 0, 0.82) 48%, transparent 100%);
+            mask-image: radial-gradient(circle at 76% 52%, black 18%, rgba(0, 0, 0, 0.82) 48%, transparent 100%);
+        }
+
+        .hero-noise {
+            opacity: 0.08;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18) 0.55px, transparent 0.8px),
+                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.15) 0.55px, transparent 0.85px),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0.45px, transparent 0.75px),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.16) 0.55px, transparent 0.85px);
+            background-size: 22px 22px, 28px 28px, 18px 18px, 24px 24px;
+            mix-blend-mode: screen;
+        }
+
+        .hero-canvas {
+            width: 100%;
+            height: 100%;
+            opacity: 0.92;
+        }
+
+        .hero-core-halo {
+            background:
+                radial-gradient(circle at 72% 50%, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0.08) 10%, rgba(59, 130, 246, 0.035) 22%, transparent 40%),
+                radial-gradient(circle at 80% 64%, rgba(59, 130, 246, 0.05) 0%, transparent 34%);
+            filter: blur(20px);
+            opacity: 0.85;
+        }
+
+        .hero-vignette {
+            background:
+                radial-gradient(circle at center, transparent 52%, rgba(0, 0, 0, 0.28) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.06) 28%, rgba(0, 0, 0, 0.18) 100%);
+        }
+
+        .hero-readability {
+            background: linear-gradient(90deg, rgba(2, 2, 2, 0.96) 0%, rgba(2, 2, 2, 0.92) 34%, rgba(2, 2, 2, 0.66) 56%, rgba(2, 2, 2, 0.26) 78%, rgba(2, 2, 2, 0.08) 100%);
+        }
+
+        .social-links {
             display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 18px 20px;
-            margin-bottom: 22px;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(240, 207, 136, 0.18);
-            background: linear-gradient(180deg, rgba(240, 207, 136, 0.08), rgba(240, 207, 136, 0.04));
-            color: var(--muted);
-        }
-        .notice-strip strong {
-            color: var(--warning);
-            font-size: 0.84rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            flex: 0 0 auto;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.25rem;
         }
 
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-            margin-bottom: 26px;
-        }
-        .summary-card {
-            padding: 22px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: linear-gradient(180deg, rgba(14, 23, 35, 0.88), rgba(11, 18, 28, 0.92));
-            box-shadow: var(--shadow);
-        }
-        .summary-card strong {
-            display: block;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-        .summary-card p { color: var(--muted); font-size: 0.94rem; }
-
-        .content-shell {
-            display: grid;
-            grid-template-columns: 290px minmax(0, 1fr);
-            gap: 22px;
-            align-items: start;
-        }
-        .policy-index {
-            position: sticky;
-            top: calc(var(--header-height) + 18px);
-            padding: 22px;
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--line);
-            background: linear-gradient(180deg, rgba(12, 20, 31, 0.88), rgba(8, 14, 22, 0.94));
-            box-shadow: var(--shadow);
-        }
-        .policy-index h2 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-        .policy-index p { color: var(--faint); font-size: 0.9rem; margin-bottom: 18px; }
-        .policy-index nav { display: grid; gap: 8px; }
-        .policy-index a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            color: var(--muted);
-            border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.025);
-            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-        }
-        .policy-index a:hover,
-        .policy-index a:focus-visible,
-        .policy-index a.active {
-            color: var(--text);
-            border-color: rgba(143, 177, 241, 0.2);
-            background: rgba(143, 177, 241, 0.08);
-            transform: translateX(2px);
-        }
-        .policy-index a span:last-child {
-            color: var(--faint);
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .policy-flow { display: grid; gap: 18px; }
-        .policy-section { padding: clamp(24px, 3vw, 34px); }
-        .reveal {
-            opacity: 0;
-            transform: translateY(22px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        .section-head {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .section-kicker {
+        .social-link {
             display: inline-flex;
             align-items: center;
-            padding: 7px 11px;
+            gap: 0.7rem;
+            padding: 0.8rem 1rem;
             border-radius: 999px;
-            border: 1px solid rgba(143, 177, 241, 0.16);
-            background: rgba(143, 177, 241, 0.08);
-            color: var(--accent-strong);
-            font-size: 0.74rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            color: #a1a1aa;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .policy-section h2 {
-            font-family: var(--font-display);
-            font-size: clamp(1.6rem, 2.4vw, 2.2rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-        .section-index {
-            flex: 0 0 auto;
-            min-width: 64px;
-            padding-top: 6px;
-            color: var(--accent-strong);
-            font-family: var(--font-display);
-            font-size: 0.98rem;
-            text-align: right;
-            letter-spacing: 0.06em;
-        }
-        .policy-section p,
-        .policy-section li {
-            color: var(--muted);
-            font-size: 0.98rem;
-        }
-        .policy-section p + p { margin-top: 12px; }
-        .policy-section ul {
-            list-style: none;
-            display: grid;
-            gap: 11px;
-            margin-top: 14px;
-        }
-        .policy-section li {
-            position: relative;
-            padding-left: 18px;
-        }
-        .policy-section li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.78em;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(143, 177, 241, 0.12);
-            transform: translateY(-50%);
+            transition: all 0.25s ease;
         }
 
-        .stack { display: grid; gap: 16px; }
-        .dual-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 18px;
-        }
-        .info-block,
-        .matrix,
-        .contact-card {
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(169, 186, 209, 0.12);
-            background: rgba(255, 255, 255, 0.03);
-        }
-        .info-block { padding: 18px; }
-        .info-block strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.94rem;
-            color: var(--text);
-        }
-        .info-block p { color: var(--faint); font-size: 0.92rem; }
-
-        .matrix {
-            overflow: hidden;
-            margin-top: 16px;
-        }
-        .matrix-row {
-            display: grid;
-            grid-template-columns: minmax(160px, 0.8fr) 1.3fr;
-            gap: 18px;
-            padding: 16px 18px;
-            border-bottom: 1px solid rgba(169, 186, 209, 0.1);
-        }
-        .matrix-row:last-child { border-bottom: 0; }
-        .matrix-label { color: var(--text); font-weight: 600; font-size: 0.92rem; }
-        .matrix-value { color: var(--faint); font-size: 0.92rem; }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 18px;
-        }
-        .contact-card { padding: 20px; }
-        .contact-card strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.98rem;
-        }
-        .contact-card span,
-        .contact-card a {
-            color: var(--muted);
-            font-size: 0.94rem;
-        }
-        .contact-card a {
-            display: inline-block;
-            margin-top: 4px;
-            color: var(--accent-strong);
+        .social-link:hover {
+            color: #ffffff;
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.08);
         }
 
-        .footer {
-            padding: 26px 0 38px;
-            border-top: 1px solid rgba(169, 186, 209, 0.1);
-        }
-        .footer-shell {
+        .demo-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(18px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .demo-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .demo-modal-panel {
+            position: relative;
+            width: min(100%, 680px);
+            border-radius: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(180deg, rgba(13, 13, 13, 0.97) 0%, rgba(6, 6, 6, 0.98) 100%);
+            box-shadow: 0 30px 120px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+        }
+
+        .demo-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .demo-modal-close:hover {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.35);
+        }
+
+        .demo-kicker {
+            color: #60a5fa;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .demo-form-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .demo-form-grid-two {
+            grid-template-columns: 1fr;
+        }
+
+        .demo-field label {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: #71717a;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+        }
+
+        .demo-input,
+        .demo-textarea {
+            width: 100%;
+            border-radius: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.025);
+            color: #ffffff;
+            padding: 0.95rem 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .demo-input:focus,
+        .demo-textarea:focus {
+            border-color: rgba(59, 130, 246, 0.45);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .demo-textarea {
+            min-height: 96px;
+            resize: vertical;
+        }
+
+        .demo-form-actions {
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap: 18px;
-            color: var(--faint);
-            font-size: 0.88rem;
-        }
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .footer-links a { color: var(--muted); }
-        .footer-links a:hover,
-        .footer-links a:focus-visible { color: var(--text); }
-        .accent-link { color: var(--accent-strong); }
-
-        @media (max-width: 1100px) {
-            .hero,
-            .content-shell,
-            .summary-grid,
-            .contact-grid,
-            .dual-grid { grid-template-columns: 1fr; }
-            .policy-index { position: static; }
-            .hero h1 { max-width: none; }
-            .header-nav { display: none; }
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        @media (max-width: 760px) {
-            .wrap { width: min(calc(100% - 28px), var(--container)); }
-            .header-shell {
-                min-height: auto;
-                padding: 14px 0;
+        .demo-status {
+            min-height: 1.5rem;
+            color: #93c5fd;
+            font-size: 0.92rem;
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        .btn-premium {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.4);
+        }
+
+        .product-card {
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+        }
+
+        .product-card:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(15, 15, 15, 0.5);
+        }
+
+        .flow-animate {
+            stroke-dasharray: 10;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to { stroke-dashoffset: -1000; }
+        }
+
+        section { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                background-size: 56px 56px;
+                opacity: 0.18;
+            }
+
+            .hero-readability {
+                background: linear-gradient(180deg, rgba(2, 2, 2, 0.62) 0%, rgba(2, 2, 2, 0.22) 44%, rgba(2, 2, 2, 0.72) 100%);
+            }
+
+            .hero-core-halo {
+                background:
+                    radial-gradient(circle at 72% 42%, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 22%, transparent 44%),
+                    radial-gradient(circle at 82% 76%, rgba(59, 130, 246, 0.05) 0%, transparent 28%);
+            }
+
+        }
+
+        @media (max-width: 767px) {
+            nav,
+            header,
+            section,
+            footer {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            #navbar .max-w-7xl {
+                gap: 1rem;
+                align-items: flex-start;
                 flex-wrap: wrap;
             }
-            .header-actions {
+
+            .brand-mark-premium {
+                width: 1.45rem;
+                height: 1.45rem;
+            }
+
+            .brand-mark-core {
+                width: 0.46rem;
+                height: 0.46rem;
+            }
+
+            .hero-stage {
+                padding-top: 7.5rem !important;
+                min-height: auto;
+            }
+
+            .hero-stage h1 {
+                font-size: clamp(3rem, 14vw, 4.6rem);
+            }
+
+            .hero-stage p {
+                font-size: 1rem;
+            }
+
+            .demo-modal {
+                padding: 1rem;
+            }
+
+            .demo-modal-panel {
+                padding: 1.25rem;
+                border-radius: 1rem;
+            }
+
+            .social-links {
+                gap: 0.55rem;
+            }
+
+            .social-link {
+                padding: 0.72rem 0.88rem;
+                font-size: 10px;
+            }
+
+            header .flex.flex-col.sm\:flex-row button,
+            section .flex.flex-col.sm\:flex-row button {
                 width: 100%;
-                justify-content: space-between;
             }
-            .header-link { display: none; }
-            main { padding-top: 28px; }
-            .hero-copy,
-            .hero-side,
-            .policy-section { padding: 22px; }
-            .hero-meta { grid-template-columns: 1fr; }
-            .section-head { flex-direction: column; }
-            .section-index {
-                min-width: 0;
-                text-align: left;
-                padding-top: 0;
+
+            #urunler .product-card {
+                padding: 1.75rem;
             }
-            .matrix-row { grid-template-columns: 1fr; gap: 8px; }
-            .footer-shell {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-links { flex-wrap: wrap; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important;
+            .btn-premium,
+            .product-card,
+            section {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
             }
-            .reveal { opacity: 1; transform: none; }
+
+            section {
+                opacity: 1;
+                transform: none;
+            }
         }
 
-        @keyframes drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-32px, -40px, 0); } }
-        @keyframes floatA { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(40px, 60px, 0); } }
-        @keyframes floatB { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-32px, 48px, 0); } }
-        @keyframes floatC { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(24px, -42px, 0); } }
-        @keyframes beamA { from { transform: translateX(0) rotate(-16deg); } to { transform: translateX(10vw) rotate(-16deg); } }
-        @keyframes beamB { from { transform: translateX(0) rotate(-28deg); } to { transform: translateX(-12vw) rotate(-28deg); } }
+        @media (min-width: 640px) {
+            .demo-form-grid-two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-    <div class="page-ambient" aria-hidden="true">
-        <div class="orb orb-a"></div>
-        <div class="orb orb-b"></div>
-        <div class="orb orb-c"></div>
-        <div class="beam beam-a"></div>
-        <div class="beam beam-b"></div>
-    </div>
-
-    <header class="site-header">
-        <div class="wrap header-shell">
-            <a class="brand" href="index.html" aria-label="VARUX home">
-                <span class="brand-mark">
-                    <img src="images/varux-monogram.svg" alt="VARUX">
-                </span>
-                <span class="brand-copy">
-                    <strong>VARUX</strong>
-                    <span data-lang="tr">Privacy and Compliance</span>
-                    <span data-lang="en">Privacy and Compliance</span>
-                </span>
-            </a>
-
-            <nav class="header-nav" aria-label="Policy navigation">
-                <a href="#scope"><span data-lang="tr">Kapsam</span><span data-lang="en">Scope</span></a>
-                <a href="#purposes"><span data-lang="tr">Isleme</span><span data-lang="en">Processing</span></a>
-                <a href="#retention"><span data-lang="tr">Saklama</span><span data-lang="en">Retention</span></a>
-                <a href="#rights"><span data-lang="tr">Haklar</span><span data-lang="en">Rights</span></a>
-                <a href="#contact"><span data-lang="tr">Iletisim</span><span data-lang="en">Contact</span></a>
-            </nav>
-
-            <div class="header-actions">
-                <a class="header-link" href="mailto:legal@varuxcyber.com">legal@varuxcyber.com</a>
-                <div class="lang-switch" role="group" aria-label="Language switch">
-                    <button class="lang-btn active" type="button" data-set-lang="tr" aria-pressed="true">TR</button>
-                    <button class="lang-btn" type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <!-- SECTION 1: NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 md:py-8 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-6 lg:gap-14">
+                <a href="#" class="brand-link group">
+                    <span class="brand-mark-premium" aria-hidden="true">
+                        <span class="brand-mark-core"></span>
+                    </span>
+                    <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
+                </a>
+                <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+                    <div class="relative group cursor-pointer">
+                        <span class="hover:text-white transition-colors">Ürünler</span>
+                        <div class="absolute top-full left-0 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity">
+                            <div class="glass p-4 rounded-lg w-48 space-y-3">
+                                <a href="#arbiter" class="block hover:text-white transition-colors">Arbiter</a>
+                                <a href="#axis" class="block hover:text-white transition-colors">Axis</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#nasil-calisir" class="hover:text-white transition-colors">Nasıl Çalışır</a>
+                    <a href="#kullanim-alanlari" class="hover:text-white transition-colors">Kullanım Alanları</a>
+                    <a href="#docs" class="hover:text-white transition-colors">Dokümantasyon</a>
                 </div>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-5">
+                <a href="#docs" class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Dokümantasyon</a>
+                <div class="lang-switch" aria-label="Language switcher">
+                    <button type="button" class="lang-button is-active" data-lang-switch="tr">TR</button>
+                    <button type="button" class="lang-button" data-lang-switch="en">EN</button>
+                </div>
+                <button type="button" data-demo-open class="bg-white text-black px-4 sm:px-7 py-3 rounded-sm text-[9px] sm:text-[10px] font-black uppercase tracking-widest btn-premium">Demo Talep Et</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 2: HERO -->
+    <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
+        <div class="hero-background" aria-hidden="true">
+            <div class="hero-grid"></div>
+            <div class="hero-noise"></div>
+            <canvas id="heroMesh" class="hero-canvas"></canvas>
+            <div class="hero-core-halo"></div>
+            <div class="hero-vignette"></div>
+            <div class="hero-readability"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <div class="max-w-5xl">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-12">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                    Pre-Execution Control for Autonomous Systems
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter text-white mb-10 leading-[0.9] lg:max-w-4xl">
+                    Execution Başlamadan Önce <span class="text-zinc-600 italic">Kontrol.</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
+                    Ajanlara, otomasyonlara ve kritik write işlemlerine deterministik policy uygulayın. 
+                    Karar üretmek modele, yetki üretmek <span class="text-white font-medium italic">VARUX</span>'a aittir.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
+                    <button type="button" data-demo-open class="bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
+                    <button class="border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
+                        Dokümantasyonu İncele <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+                    </button>
+                </div>
+
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="wrap">
-            <section class="hero">
-                <article class="panel hero-copy reveal">
-                    <span class="eyebrow" data-lang="tr">Kurumsal Yasal Bildirim</span>
-                    <span class="eyebrow" data-lang="en">Corporate Legal Notice</span>
-
-                    <h1 data-lang="tr">Gizlilik politikasini daha net, daha guvenli ve daha hesap verebilir hale getirdik.</h1>
-                    <h1 data-lang="en">A clearer, stricter, and more accountable privacy standard.</h1>
-
-                    <p data-lang="tr">Bu politika; VARUX web varligi, is iletisimleri, demo ve degerlendirme surecleri, urun guvenligiyle baglantili operasyonel kayitlar ve ilgili gizlilik haklari icin uygulanan temel veri koruma kurallarini aciklar. Metin; KVKK, GDPR ve uygulanabilir diger mevzuat ile sozlesmesel yukumlulukler dikkate alinarak hazirlanmistir.</p>
-                    <p data-lang="en">This policy explains the core data protection rules applied across the VARUX web presence, business communications, demo and evaluation workflows, operational security records related to product delivery, and the privacy rights connected to those activities. It is designed around KVKK, GDPR, other applicable laws, and relevant contractual obligations.</p>
-
-                    <div class="hero-meta">
-                        <div class="hero-stat">
-                            <strong data-lang="tr">Yururluk tarihi</strong>
-                            <strong data-lang="en">Effective date</strong>
-                            <span>10 Mart 2026 / March 10, 2026</span>
+    <!-- SECTION 3: PROBLEM / THESIS -->
+    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 border-y border-zinc-900 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter mb-10 leading-none">Hata Execution'dan Sonra Değil, <br><span class="text-zinc-600">Önce Durmalı.</span></h2>
+                    <p class="text-zinc-400 text-lg mb-12 leading-relaxed font-light">
+                        Observability size neyin bozulduğunu söyler. Kontrol ise bozulmasına engel olur. 
+                        Kritik sistemlerde sorun <span class="italic text-white">niyet değil, yetkidir.</span> 
+                        Model doğru karar verebilir ancak bu karar yetki sınırları dışındaysa VARUX onu durdurur.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-10">
+                        <div class="space-y-4">
+                            <div class="w-8 h-[1px] bg-zinc-700"></div>
+                            <h4 class="text-white text-xs font-bold uppercase tracking-widest">Post-Mortem Risk</h4>
+                            <p class="text-zinc-500 text-xs">İşlem DB'ye ulaştıktan sonra atılan loglar zararı engellemez. Geri dönüş maliyeti yüksektir.</p>
                         </div>
-                        <div class="hero-stat">
-                            <strong data-lang="tr">Talep yanit suresi</strong>
-                            <strong data-lang="en">Request response window</strong>
-                            <span data-lang="tr">KVKK ve GDPR kapsamindaki yasal sureler icinde</span>
-                            <span data-lang="en">Within statutory KVKK and GDPR timelines</span>
-                        </div>
-                        <div class="hero-stat">
-                            <strong data-lang="tr">Ana iletisim kanali</strong>
-                            <strong data-lang="en">Primary contact channel</strong>
-                            <span>legal@varuxcyber.com</span>
+                        <div class="space-y-4">
+                            <div class="w-8 h-[1px] bg-blue-500"></div>
+                            <h4 class="text-blue-500 text-xs font-bold uppercase tracking-widest">Pre-Execution Enforcement</h4>
+                            <p class="text-zinc-500 text-xs">Eylem hiç başlamadan policy kontrolü yapılır. Risk daha oluşmadan yok edilir.</p>
                         </div>
                     </div>
-                </article>
-
-                <aside class="panel hero-side reveal">
-                    <div>
-                        <h2 class="side-title" data-lang="tr">Kisa ozet</h2>
-                        <h2 class="side-title" data-lang="en">At a glance</h2>
-                        <p class="side-text" data-lang="tr">VARUX, gizliligi yalnizca uyumluluk konusu olarak degil; urun guvenligi, denetlenebilirlik ve guvene dayali kurumsal iliski modeli olarak ele alir.</p>
-                        <p class="side-text" data-lang="en">VARUX treats privacy as more than a compliance issue. It is part of product security, auditability, and the trust model required for enterprise engagements.</p>
+                </div>
+                <div class="glass p-1 rounded-2xl overflow-hidden grayscale opacity-60">
+                    <div class="bg-zinc-950 p-10 border border-zinc-900">
+                        <div class="text-[10px] font-mono text-zinc-600 mb-8 tracking-widest uppercase">// CONTROL_DIAGRAM_V2</div>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_10px_#f43f5e]"></div>
+                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
+                                <span class="text-[10px] font-mono text-zinc-500">REQUEST INTERCEPTED</span>
+                            </div>
+                            <div class="pl-7 border-l border-zinc-800 space-y-4 py-2">
+                                <div class="text-xs text-zinc-500">Reason: <span class="text-zinc-300">Unauthorized DELETE scope</span></div>
+                                <div class="text-xs text-zinc-500">Policy: <span class="text-zinc-300 font-mono">prod_write_v4</span></div>
+                                <div class="text-xs font-bold text-rose-500 uppercase tracking-widest">Decision: BLOCK</div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-3 h-3 rounded-full bg-zinc-800"></div>
+                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
+                                <span class="text-[10px] font-mono text-zinc-600">ACTION_STOPPED</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <ul class="mini-list">
-                        <li>
-                            <strong data-lang="tr">Roller netlestirilir</strong>
-                            <strong data-lang="en">Roles are defined</strong>
-                            <span data-lang="tr">Web sitesi ve is iletisim verilerinde veri sorumlusu; musterinin talimat verdigi senaryolarda veri isleyen rolune gecilebilir.</span>
-                            <span data-lang="en">VARUX acts as controller for website and business contact data, and may act as processor where customer instructions govern processing.</span>
-                        </li>
-                        <li>
-                            <strong data-lang="tr">Gereksiz profil cikarimi yapilmaz</strong>
-                            <strong data-lang="en">No unrelated profiling</strong>
-                            <span data-lang="tr">Guvenlik, hizmet surekliligi ve yasal yukumluluklarla ilgisiz ucuncu taraf reklam amacli paylasim esas alinmaz.</span>
-                            <span data-lang="en">Data is not handled for unrelated third-party advertising or profiling purposes outside legitimate security and service needs.</span>
-                        </li>
-                        <li>
-                            <strong data-lang="tr">Guvenlik ve kayit zinciri korunur</strong>
-                            <strong data-lang="en">Security and audit discipline</strong>
-                            <span data-lang="tr">Ag guvenligi, tehdit tespiti, log yonetimi ve olay incelemeleri bu politikanin ayrilmaz parcasidir.</span>
-                            <span data-lang="en">Network security, threat detection, logging, and incident review are embedded into this policy framework.</span>
-                        </li>
-                    </ul>
-                </aside>
-            </section>
-
-            <div class="notice-strip reveal">
-                <strong data-lang="tr">Onemli</strong>
-                <strong data-lang="en">Important</strong>
-                <span data-lang="tr">Bu politika genel kurumsal bildirimdir. Bir musteriye ozel ana hizmet sozlesmesi, veri isleme sozlesmesi, gizlilik taahhudu veya tedarik belgesi ile catisma olursa ilgili sozlesme, o iliski bakimindan once gelir.</span>
-                <span data-lang="en">This notice is a general corporate disclosure. If a customer-specific master services agreement, data processing agreement, confidentiality commitment, or procurement document sets more specific terms, that document prevails for that relationship.</span>
-            </div>
-
-            <section class="summary-grid">
-                <article class="summary-card reveal">
-                    <strong data-lang="tr">Hangi veriler kapsanir?</strong>
-                    <strong data-lang="en">What data is covered?</strong>
-                    <p data-lang="tr">Is iletisim bilgileri, demo ve degerlendirme sureci verileri, cihaz ve baglanti kayitlari, guvenlik loglari, tercih bilgileri ve sozlesmesel iliski dogdugunda gereken operasyonel kayitlar.</p>
-                    <p data-lang="en">Business contact details, demo and evaluation records, device and connection data, security logs, preference records, and operational records required once a contractual relationship exists.</p>
-                </article>
-                <article class="summary-card reveal">
-                    <strong data-lang="tr">Neden islenir?</strong>
-                    <strong data-lang="en">Why is it processed?</strong>
-                    <p data-lang="tr">Talepleri yanitlamak, guvenli hizmet saglamak, lisanslama ve destek sureclerini yurutmek, suistimali onlemek, yasal yukumlulukleri yerine getirmek ve haklarimizi korumak icin.</p>
-                    <p data-lang="en">To answer requests, deliver services securely, support licensing and assistance workflows, prevent abuse, comply with law, and protect legal rights and legitimate interests.</p>
-                </article>
-                <article class="summary-card reveal">
-                    <strong data-lang="tr">Haklar nasil kullanilir?</strong>
-                    <strong data-lang="en">How are rights exercised?</strong>
-                    <p data-lang="tr">Kimligi dogrulanabilir bir basvuruyla bize ulasabilirsiniz. Talep, yasal sureler icinde degerlendirilir; gerekli oldugunda ilave dogrulama veya kapsam netlestirmesi istenebilir.</p>
-                    <p data-lang="en">You may contact us through a verifiable request. Claims are reviewed within statutory timelines, and additional identity or scope confirmation may be requested where necessary.</p>
-                </article>
-            </section>
-
-            <div class="content-shell">
-                <aside class="policy-index reveal">
-                    <h2 data-lang="tr">Politika indexi</h2>
-                    <h2 data-lang="en">Policy index</h2>
-                    <p data-lang="tr">Sayfadaki ana hukuki ve operasyonel basliklar.</p>
-                    <p data-lang="en">Core legal and operational sections in this notice.</p>
-
-                    <nav>
-                        <a href="#scope" class="toc-link"><span data-lang="tr">Kapsam ve roller</span><span data-lang="en">Scope and roles</span><span>01</span></a>
-                        <a href="#data" class="toc-link"><span data-lang="tr">Veri kategorileri</span><span data-lang="en">Data categories</span><span>02</span></a>
-                        <a href="#purposes" class="toc-link"><span data-lang="tr">Amaclar ve hukuki sebepler</span><span data-lang="en">Purposes and legal bases</span><span>03</span></a>
-                        <a href="#sharing" class="toc-link"><span data-lang="tr">Paylasim ve aktarim</span><span data-lang="en">Sharing and transfers</span><span>04</span></a>
-                        <a href="#security-logs" class="toc-link"><span data-lang="tr">Guvenlik kayitlari</span><span data-lang="en">Security records</span><span>05</span></a>
-                        <a href="#retention" class="toc-link"><span data-lang="tr">Saklama sureleri</span><span data-lang="en">Retention</span><span>06</span></a>
-                        <a href="#cookies" class="toc-link"><span data-lang="tr">Cerezler ve depolama</span><span data-lang="en">Cookies and storage</span><span>07</span></a>
-                        <a href="#rights" class="toc-link"><span data-lang="tr">Ilgili kisi haklari</span><span data-lang="en">Privacy rights</span><span>08</span></a>
-                        <a href="#sensitive" class="toc-link"><span data-lang="tr">Hassas veri ve cocuklar</span><span data-lang="en">Sensitive data and minors</span><span>09</span></a>
-                        <a href="#changes" class="toc-link"><span data-lang="tr">Guncellemeler</span><span data-lang="en">Changes</span><span>10</span></a>
-                        <a href="#contact" class="toc-link"><span data-lang="tr">Iletisim</span><span data-lang="en">Contact</span><span>11</span></a>
-                    </nav>
-                </aside>
-
-                <div class="policy-flow">
-                    <section class="panel policy-section reveal" id="scope">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Kapsam</span>
-                                <span class="section-kicker" data-lang="en">Scope</span>
-                                <h2 data-lang="tr">1. Kapsam, veri sorumlusu rolu ve iliski bazli ayrim</h2>
-                                <h2 data-lang="en">1. Scope, controller role, and relationship-based distinction</h2>
-                            </div>
-                            <div class="section-index">01</div>
-                        </div>
-
-                        <div class="stack">
-                            <p data-lang="tr">Bu politika; VARUX web sitesi, ilgili urun acilis sayfalari, form veya e-posta uzerinden yapilan iletisimler, demo ve degerlendirme talepleri, tedarik ve guvenlik incelemeleri ile bu sureclerin guvenli sekilde yurutulmesi icin tutulan teknik kayitlar bakimindan uygulanir.</p>
-                            <p data-lang="en">This policy applies to the VARUX website, related product landing pages, communications submitted through forms or email, demo and evaluation requests, procurement and security review workflows, and the technical records maintained to operate those activities securely.</p>
-
-                            <p data-lang="tr">VARUX, web sitesi ziyaretcileri, potansiyel musteri temsilcileri, is ortaklari ve dogrudan kendisiyle iletisim kuran kisilere ait veriler acisindan veri sorumlusu olarak hareket eder. Bununla birlikte, VARUX bir musteri ortami veya urun dagitimi icinde, kisisel verileri musterinin yazili talimatlari ya da taraflar arasindaki sozlesme kapsaminda isliyorsa, veri isleyen veya esdeger hizmet saglayici rolunde hareket edebilir. Bu durumda ilgili musteri veya karsi taraf asil veri sorumlusu olmaya devam eder.</p>
-                            <p data-lang="en">VARUX acts as controller for data relating to website visitors, prospective customer representatives, business partners, and individuals who contact the company directly. However, where VARUX processes personal data inside a customer environment or product deployment based on written customer instructions or contractual terms, VARUX may act as processor or equivalent service provider. In that scenario, the relevant customer or counterparty remains the primary controller.</p>
-                        </div>
-
-                        <div class="dual-grid">
-                            <div class="info-block">
-                                <strong data-lang="tr">Politikanin kapsadigi kisi gruplari</strong>
-                                <strong data-lang="en">Typical data subject groups</strong>
-                                <p data-lang="tr">Web sitesi ziyaretcileri, demo talep sahipleri, musteri ve tedarikci temsilcileri, guvenlik veya tedarik incelemesi yapan paydaslar ve dogrudan iletisim kuran kisiler.</p>
-                                <p data-lang="en">Website visitors, demo requesters, customer and vendor representatives, stakeholders conducting security or procurement review, and individuals who communicate with VARUX directly.</p>
-                            </div>
-                            <div class="info-block">
-                                <strong data-lang="tr">Sozlesmesel ustunluk kurali</strong>
-                                <strong data-lang="en">Contractual precedence</strong>
-                                <p data-lang="tr">Bir veri isleme sozlesmesi, ana hizmet sozlesmesi, gizlilik anlasmasi veya tedarik eki daha ozel bir duzenleme getiriyorsa, ilgili iliski bakimindan once o belge uygulanir.</p>
-                                <p data-lang="en">If a data processing agreement, master services agreement, confidentiality agreement, or procurement addendum sets more specific terms, that document governs the relevant relationship.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="data">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Veri envanteri</span>
-                                <span class="section-kicker" data-lang="en">Data inventory</span>
-                                <h2 data-lang="tr">2. Islenen veri kategorileri ve veri kaynaklari</h2>
-                                <h2 data-lang="en">2. Categories of personal data and data sources</h2>
-                            </div>
-                            <div class="section-index">02</div>
-                        </div>
-
-                        <p data-lang="tr">VARUX, veri minimizasyonu ilkesini esas alir. Islenen veri tipi; sizinle kurulan iliskinin niteligine, gonderdiginiz bilgiye, kullandiginiz iletisim kanalina ve gerekli guvenlik kontrollerine gore degisir.</p>
-                        <p data-lang="en">VARUX applies data minimization. The exact categories processed depend on the relationship involved, the information you submit, the communication channel used, and the security controls necessary for the relevant workflow.</p>
-
-                        <div class="matrix">
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Kimlik ve is iletisim verileri</div>
-                                <div class="matrix-label" data-lang="en">Identity and business contact data</div>
-                                <div class="matrix-value" data-lang="tr">Ad soyad, sirket, gorev unvani, is e-postasi, telefon numarasi ve kurumsal iletisim icin sizin tarafinizdan paylasilan benzeri bilgiler.</div>
-                                <div class="matrix-value" data-lang="en">Name, company, job title, work email, phone number, and similar business contact details you choose to provide for corporate communications.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Iletisim ve talep icerigi</div>
-                                <div class="matrix-label" data-lang="en">Communication and request content</div>
-                                <div class="matrix-value" data-lang="tr">Demo talepleri, urun sorulari, hukuki yazismalar, tedarik incelemeleri, toplanti notlari ve sizin tarafinizdan iletilen diger serbest metin icerikleri.</div>
-                                <div class="matrix-value" data-lang="en">Demo requests, product questions, legal correspondence, procurement reviews, meeting notes, and other free-form content submitted by you.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Teknik ve baglanti verileri</div>
-                                <div class="matrix-label" data-lang="en">Technical and connection data</div>
-                                <div class="matrix-value" data-lang="tr">IP adresi, user-agent, cihaz ve tarayici bilgileri, zaman damgasi, yonlendiren sayfa, hata gunlukleri, guvenlik olay kayitlari ve talebin guvenli islenmesi icin gerekli teknik sinyaller.</div>
-                                <div class="matrix-value" data-lang="en">IP address, user agent, device and browser details, timestamps, referrer page, error logs, security event records, and technical signals required to process requests securely.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Tercih ve izin kayitlari</div>
-                                <div class="matrix-label" data-lang="en">Preference and permission records</div>
-                                <div class="matrix-value" data-lang="tr">Dil secimi gibi istemci tarafinda saklanan tercihler, iletisim tercihleri ve varsa acik riza, izin veya itiraz kayitlari.</div>
-                                <div class="matrix-value" data-lang="en">Preferences stored client-side such as language choice, communication preferences, and any records of consent, permissions, or objections where applicable.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Sozlesmesel ve uyum verileri</div>
-                                <div class="matrix-label" data-lang="en">Contractual and compliance data</div>
-                                <div class="matrix-value" data-lang="tr">Tedarik, faturalama, denetim, yaptirim veya ihracat kontrolu degerlendirmeleri icin gerekli olabilecek is iletisim ve islem verileri; ancak yalnizca ilgili iliski dogdugunda.</div>
-                                <div class="matrix-value" data-lang="en">Business contact and transaction records that may be necessary for procurement, billing, audit, sanctions, or export control review, but only where such a relationship exists.</div>
-                            </div>
-                        </div>
-
-                        <ul>
-                            <li data-lang="tr">Veriler dogrudan sizden, cihazinizdan otomatik yollarla veya sirketinizin yetkili temsilcilerinden elde edilebilir.</li>
-                            <li data-lang="en">Data may be obtained directly from you, automatically from your device, or from authorized representatives of your organization.</li>
-                            <li data-lang="tr">Kurumsal iliski kurulmasi halinde, kamuya acik profesyonel kaynaklardan sinirli dogrulama verileri alinabilir.</li>
-                            <li data-lang="en">Where a business relationship is being formed, limited verification data may be sourced from public professional sources.</li>
-                        </ul>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="purposes">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Hukuki dayanak</span>
-                                <span class="section-kicker" data-lang="en">Legal basis</span>
-                                <h2 data-lang="tr">3. Veri isleme amaclari ve hukuki sebepler</h2>
-                                <h2 data-lang="en">3. Purposes of processing and legal bases</h2>
-                            </div>
-                            <div class="section-index">03</div>
-                        </div>
-
-                        <p data-lang="tr">Kisisel veriler, is iliskisinin gerektirdigi olcululukte ve belirli amaclarla islenir. Isleme faaliyetleri, uygulanabildigi olcude KVKK madde 5 ve 6; GDPR madde 6 ve ilgili diger hukuki duzenlemeler kapsamindaki sebeplere dayandirilir.</p>
-                        <p data-lang="en">Personal data is processed only to the extent proportionate to the business relationship and for defined purposes. Processing is mapped, where applicable, to the legal bases under KVKK Articles 5 and 6, GDPR Article 6, and other relevant legal requirements.</p>
-
-                        <ul>
-                            <li data-lang="tr"><strong>Talep yonetimi ve sozlesme oncesi surecler:</strong> Demo, pilot, tedarik, entegrasyon veya bilgi taleplerini cevaplamak; toplanti planlamak; teklif ve teknik inceleme surecini yurutmek. Bu faaliyetler, sizin talebiniz uzerine sozlesme kurulmasi veya kurulma ihtimaline iliskin adimlarla baglantili olabilir.</li>
-                            <li data-lang="en"><strong>Request handling and pre-contractual steps:</strong> To respond to demo, pilot, procurement, integration, or information requests; schedule meetings; and manage technical review or proposal workflows. These activities may be necessary to take steps at your request before entering into a contract.</li>
-                            <li data-lang="tr"><strong>Hizmetin guvenli sekilde sunulmasi:</strong> Web varliginin, urun degerlendirme sureclerinin, lisanslama ve destek operasyonlarinin guvenligi, kullanilabilirligi ve surekliligini saglamak. Bu kapsamda teknik loglar, trafik sinyalleri ve guvenlik uyarilari islenebilir.</li>
-                            <li data-lang="en"><strong>Secure delivery of services:</strong> To maintain the security, availability, and continuity of the web presence, product evaluation workflows, licensing functions, and support operations. Technical logs, traffic signals, and security alerts may be processed for this purpose.</li>
-                            <li data-lang="tr"><strong>Yasal yukumlulukler ve resmi talepler:</strong> Uygulanabilir muhasebe, vergi, bilgi guvenligi, saklama, ispat ve resmi makam taleplerine cevap verme yukumluluklerinin yerine getirilmesi.</li>
-                            <li data-lang="en"><strong>Legal obligations and official requests:</strong> To comply with applicable accounting, tax, information security, retention, evidentiary, and lawful disclosure obligations.</li>
-                            <li data-lang="tr"><strong>Hak tesisi, kullanimi ve korunmasi:</strong> Uyum ispatinin saglanmasi, ihtilaf yonetimi, denetim izi olusturma, dolandiricilik ve suistimalin onlenmesi ile kurumun mesru menfaatlerinin korunmasi.</li>
-                            <li data-lang="en"><strong>Establishing, exercising, and defending rights:</strong> To evidence compliance, manage disputes, preserve auditability, prevent fraud and misuse, and protect the legitimate interests of the company.</li>
-                            <li data-lang="tr"><strong>Iletisim ve guncellemeler:</strong> Kurumsal iliskiniz veya acik izniniz bulunuyorsa, urunle baglantili guncellemeler, guvenlik bildirimleri veya iliski yonetimine donuk iletiler gonderilebilir.</li>
-                            <li data-lang="en"><strong>Communications and updates:</strong> Where your business relationship or consent supports it, VARUX may send product-related updates, security notices, or communications necessary to manage the relationship.</li>
-                        </ul>
-
-                        <div class="dual-grid">
-                            <div class="info-block">
-                                <strong data-lang="tr">Acik riza ne zaman gerekli olabilir?</strong>
-                                <strong data-lang="en">When might consent be required?</strong>
-                                <p data-lang="tr">Kanunen alternatif bir hukuki sebep bulunmadiginda, secime bagli iletisimler veya zorunlu olmayan teknolojiler bakimindan acik riza ya da esdeger izin mekanizmasi uygulanabilir.</p>
-                                <p data-lang="en">Where no alternative legal basis exists, explicit consent or an equivalent permission mechanism may be used for optional communications or non-essential technologies.</p>
-                            </div>
-                            <div class="info-block">
-                                <strong data-lang="tr">Ozel nitelikli veri politikasi</strong>
-                                <strong data-lang="en">Special category data posture</strong>
-                                <p data-lang="tr">VARUX, bu web varligi uzerinden ozel nitelikli kisisel veri gonderilmesini talep etmez. Boyle bir veri islenecekse, bu isleme faaliyeti ayrica tanimlanmis guvenli kanal ve sozlesmesel cerceve ile sinirlandirilir.</p>
-                                <p data-lang="en">VARUX does not request special category personal data through this web presence. If such data must be processed, it is handled only through separately defined secure channels and contractual controls.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="sharing">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Aktarim</span>
-                                <span class="section-kicker" data-lang="en">Transfers</span>
-                                <h2 data-lang="tr">4. Ucuncu taraflarla paylasim ve sinir otesi veri aktarimi</h2>
-                                <h2 data-lang="en">4. Sharing with third parties and cross-border transfers</h2>
-                            </div>
-                            <div class="section-index">04</div>
-                        </div>
-
-                        <p data-lang="tr">VARUX, kisisel verileri satmaz ve bunlari ilgisiz ucuncu taraf reklam amaclari icin kullanima acik hale getirmez. Paylasim, yalnizca gerekli oldugunda, belirli bir amaca bagli olarak ve uygun gizlilik-guvenlik yukumlulukleri altinda yapilir.</p>
-                        <p data-lang="en">VARUX does not sell personal data and does not make it available for unrelated third-party advertising purposes. Disclosure occurs only where necessary, for a defined purpose, and under suitable confidentiality and security obligations.</p>
-
-                        <ul>
-                            <li data-lang="tr">Guvenli barindirma, iletisim, destek, altyapi, kurumsal is akisi veya denetim hizmeti saglayan tedarikcilere sinirli erisim verilebilir.</li>
-                            <li data-lang="en">Limited access may be provided to vendors delivering secure hosting, communications, support, infrastructure, business workflow, or audit-related services.</li>
-                            <li data-lang="tr">Mahkemeler, duzenleyici otoriteler, kolluk birimleri veya yetkili kamu makamlarina, yalnizca hukuken gerekli oldugunda bilgi aktarilabilir.</li>
-                            <li data-lang="en">Information may be disclosed to courts, regulators, law enforcement, or public authorities only where legally required.</li>
-                            <li data-lang="tr">Sirket birlesmesi, yeniden yapilanma, varlik devri veya benzer kurumsal islem senaryolarinda; gizlilik yukumlulukleri korunmak kaydiyla veriler aktarilabilir.</li>
-                            <li data-lang="en">In the context of a merger, restructuring, asset transfer, or similar corporate transaction, data may be transferred subject to ongoing confidentiality obligations.</li>
-                        </ul>
-
-                        <p data-lang="tr">Verilerin yurt disina aktarilmasi gerektiginde, aktarim; uygulanabilir mevzuatin izin verdigi mekanizmalar, yeterli ulke kararlari, standart sozlesme maddeleri, aktarim risk degerlendirmeleri, kurumsal ic politikalar veya ilgili KVKK transfer rejimi kapsaminda yonetilir.</p>
-                        <p data-lang="en">Where cross-border transfers are necessary, they are managed through mechanisms permitted by applicable law, such as adequacy decisions, standard contractual clauses, transfer risk assessments, internal control frameworks, or the relevant KVKK transfer regime.</p>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="security-logs">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Siber savunma</span>
-                                <span class="section-kicker" data-lang="en">Cyber defense</span>
-                                <h2 data-lang="tr">5. Guvenlik kayitlari, tehdit tespiti ve olay yonetimi</h2>
-                                <h2 data-lang="en">5. Security records, threat detection, and incident management</h2>
-                            </div>
-                            <div class="section-index">05</div>
-                        </div>
-
-                        <p data-lang="tr">VARUX bir siber guvenlik organizasyonudur. Bu nedenle belli teknik veriler, sistemlerin korunmasi, guvenlik zafiyetlerinin analiz edilmesi, kotuye kullanim girisimlerinin engellenmesi, adli inceleme izi olusturulmasi ve hizmet butunlugunun saglanmasi icin islenebilir. Bu kapsamda IP adresleri, zaman damgalari, istek basliklari, oran sinirlandirma sinyalleri, hata kayitlari ve guvenlik olay metadatalari kullanilabilir.</p>
-                        <p data-lang="en">VARUX is a cybersecurity organization. For that reason, certain technical records may be processed to protect systems, analyze vulnerabilities, prevent abusive activity, preserve forensic audit trails, and maintain service integrity. This may include IP addresses, timestamps, request headers, rate-limiting signals, error records, and security event metadata.</p>
-
-                        <ul>
-                            <li data-lang="tr">Guvenlik loglari, ilgisiz ticari profil cikarmak icin degil; yalnizca savunma, denetim ve olay yaniti amaclariyla kullanilir.</li>
-                            <li data-lang="en">Security logs are not used for unrelated commercial profiling; they are maintained for defense, auditability, and incident response purposes.</li>
-                            <li data-lang="tr">Guvenlik olayinin tespiti halinde, ilgili log ve delil kayitlari normal saklama suresinden daha uzun tutulabilir.</li>
-                            <li data-lang="en">Where a security incident is detected, relevant logs and evidence may be retained longer than routine periods.</li>
-                            <li data-lang="tr">Yasal bildirim gerektiren bir veri ihlali tespit edilirse, uygulanabilir mevzuatin ongordugu sure ve kapsamda yetkili makamlar ve ilgili kisiler bilgilendirilebilir.</li>
-                            <li data-lang="en">If a reportable personal data breach is identified, regulators and affected individuals may be notified within the scope and timelines required by applicable law.</li>
-                        </ul>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="retention">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Saklama</span>
-                                <span class="section-kicker" data-lang="en">Retention</span>
-                                <h2 data-lang="tr">6. Veri saklama sureleri ve silme yaklasimi</h2>
-                                <h2 data-lang="en">6. Retention periods and deletion approach</h2>
-                            </div>
-                            <div class="section-index">06</div>
-                        </div>
-
-                        <p data-lang="tr">Veriler; isleme amaci, yasal zorunluluk, ispat ihtiyaci, guvenlik riski ve sozlesmesel yukumluluklar dikkate alinarak tutulur. Gerek kalmayan veriler silinir, anonimlestirilir veya erisimi ciddi sekilde kisitlanir.</p>
-                        <p data-lang="en">Data is retained according to the processing purpose, legal obligations, evidentiary needs, security risk, and contractual requirements. When data is no longer needed, it is deleted, anonymized, or subject to sharply restricted access.</p>
-
-                        <div class="matrix">
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Iletisim ve demo kayitlari</div>
-                                <div class="matrix-label" data-lang="en">Contact and demo records</div>
-                                <div class="matrix-value" data-lang="tr">Talebin degerlendirilmesi ve sonraki kurumsal iletisim ihtiyaci boyunca; genellikle son anlamli etkilesimden sonra makul bir sure daha tutulur.</div>
-                                <div class="matrix-value" data-lang="en">Retained for the duration of the request and any subsequent business follow-up, typically for a reasonable period after the last meaningful interaction.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Guvenlik ve denetim loglari</div>
-                                <div class="matrix-label" data-lang="en">Security and audit logs</div>
-                                <div class="matrix-value" data-lang="tr">Operasyonel guvenlik ihtiyaci ve olay incelemesi riski dikkate alinarak tutulur; aktif bir olay, hukuki ihtilaf veya resmi saklama zorunlulugu varsa daha uzun saklanabilir.</div>
-                                <div class="matrix-value" data-lang="en">Retained according to operational security needs and incident review risk; longer periods may apply if there is an active incident, dispute, or legal hold requirement.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Sozlesmesel ve finansal kayitlar</div>
-                                <div class="matrix-label" data-lang="en">Contractual and financial records</div>
-                                <div class="matrix-value" data-lang="tr">Uygulanabilir vergi, muhasebe, ticaret hukuku ve zamanaasimi sureleri dogrultusunda tutulur.</div>
-                                <div class="matrix-value" data-lang="en">Retained in line with applicable tax, accounting, commercial law, and limitation period requirements.</div>
-                            </div>
-                            <div class="matrix-row">
-                                <div class="matrix-label" data-lang="tr">Riza, itiraz ve tercih kayitlari</div>
-                                <div class="matrix-label" data-lang="en">Consent, objection, and preference records</div>
-                                <div class="matrix-value" data-lang="tr">Tercihinize uyuldugunu ispatlamak ve gelecekte ayni iletisimi onlemek icin gerekli oldugu surece saklanabilir.</div>
-                                <div class="matrix-value" data-lang="en">May be retained as long as necessary to honor your preference and demonstrate compliance with that preference.</div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="cookies">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Istemci tarafi teknolojiler</span>
-                                <span class="section-kicker" data-lang="en">Client-side technologies</span>
-                                <h2 data-lang="tr">7. Cerezler, local storage ve benzeri teknolojiler</h2>
-                                <h2 data-lang="en">7. Cookies, local storage, and similar technologies</h2>
-                            </div>
-                            <div class="section-index">07</div>
-                        </div>
-
-                        <p data-lang="tr">Bu web varligi; guvenlik, temel sayfa islevleri ve kullanici tercihlerinin korunmasi icin cerez, local storage veya benzeri istemci tarafi teknolojiler kullanabilir. Ornegin dil tercihi, tarayici tarafinda saklanabilir.</p>
-                        <p data-lang="en">This web presence may use cookies, local storage, or similar client-side technologies for security, core page functionality, and preserving user preferences. For example, your language preference may be stored locally in the browser.</p>
-
-                        <ul>
-                            <li data-lang="tr">Zorunlu olmayan olcumleme, pazarlama veya davranissal izleme teknolojileri devreye alinacaksa, gerekiyorsa onceden bilgilendirme ve izin mekanizmasi uygulanir.</li>
-                            <li data-lang="en">If non-essential analytics, marketing, or behavioral tracking technologies are introduced, notice and consent mechanisms will be implemented where required.</li>
-                            <li data-lang="tr">Tarayici ayarlariniz uzerinden cerezleri sinirlayabilir veya yerel depolama verilerini temizleyebilirsiniz; ancak bu durumda bazi tercih fonksiyonlari etkilenebilir.</li>
-                            <li data-lang="en">You can restrict cookies or clear local storage through your browser settings, but some preference functions may then be affected.</li>
-                        </ul>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="rights">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Basvuru haklari</span>
-                                <span class="section-kicker" data-lang="en">Rights requests</span>
-                                <h2 data-lang="tr">8. Ilgili kisi haklari ve basvuru sureci</h2>
-                                <h2 data-lang="en">8. Data subject rights and request process</h2>
-                            </div>
-                            <div class="section-index">08</div>
-                        </div>
-
-                        <p data-lang="tr">Uygulanabilir mevzuata gore; verilerinize erisim talep etme, duzeltme, silme, islemeyi kisitlama, itiraz etme, tasinabilirlik talebinde bulunma ve acik rizanizi geri cekme haklarina sahip olabilirsiniz. Turkiye'deki ilgili kisiler bakimindan KVKK madde 11; GDPR kapsaminda olan kisiler bakimindan ise GDPR madde 15 ila 22 arasi haklar uygulanabilir.</p>
-                        <p data-lang="en">Depending on applicable law, you may have rights to request access, rectification, erasure, restriction, objection, portability, and withdrawal of consent. For individuals in Turkey, Article 11 of KVKK may apply; for individuals within GDPR scope, rights under Articles 15 through 22 of the GDPR may apply.</p>
-
-                        <ul>
-                            <li data-lang="tr">Basvurularinizi, kimligi dogrulanabilir bir kanaldan <a class="accent-link" href="mailto:legal@varuxcyber.com">legal@varuxcyber.com</a> adresine iletebilirsiniz.</li>
-                            <li data-lang="en">You may submit requests through a verifiable channel to <a class="accent-link" href="mailto:legal@varuxcyber.com">legal@varuxcyber.com</a>.</li>
-                            <li data-lang="tr">Talebinizin dogru kisiye ait oldugunu teyit etmek ve kapsamini netlestirmek icin ek bilgi istenebilir.</li>
-                            <li data-lang="en">Additional information may be requested to verify identity and clarify the scope of the request.</li>
-                            <li data-lang="tr">Basvurular, ilgili mevzuatin ongordugu sureler icinde yanitlanir. KVKK rejiminde genel kural otuz gun; GDPR rejiminde ise genel kural bir aydir, ancak mevzuatin izin verdigi durumlarda uzama olabilir.</li>
-                            <li data-lang="en">Requests are handled within the timelines required by law. Under KVKK, the general rule is thirty days; under GDPR, the general rule is one month, subject to lawful extensions where permitted.</li>
-                            <li data-lang="tr">Bazi talepler, baskalarinin hak ve ozgurluklerini etkilemesi, guvenlik gerekleri, ispat yukumlulukleri veya hukuki saklama zorunluluklari nedeniyle tamamen veya kismen sinirlanabilir.</li>
-                            <li data-lang="en">Some requests may be limited in whole or in part where they affect the rights of others, security requirements, evidentiary obligations, or legal retention duties.</li>
-                        </ul>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="sensitive">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Ek koruma</span>
-                                <span class="section-kicker" data-lang="en">Additional safeguards</span>
-                                <h2 data-lang="tr">9. Hassas veri, cocuklara ait veriler ve ucuncu taraf baglantilari</h2>
-                                <h2 data-lang="en">9. Sensitive data, minors, and third-party links</h2>
-                            </div>
-                            <div class="section-index">09</div>
-                        </div>
-
-                        <ul>
-                            <li data-lang="tr">Bu site cocuklara yonelik tasarlanmamistir. Reit olmayan kisilerden bilerek veri toplamayi hedeflemiyoruz. Boyle bir veri islendigi fark edilirse uygun adimlarla silinir veya erisim kesilir.</li>
-                            <li data-lang="en">This site is not directed to children. VARUX does not knowingly seek to collect personal data from minors. If such data is identified, appropriate deletion or access restriction steps will be taken.</li>
-                            <li data-lang="tr">Sizinle ayrica kararlastirilmamis olmadikca, saglik verisi, biyometrik veri, ceza mahkumiyeti bilgisi, devlet sirri niteligindeki bilgi veya benzeri yuksek riskli icerikleri bu site veya standart e-posta kanali uzerinden gondermeyin.</li>
-                            <li data-lang="en">Unless specifically arranged with VARUX in advance, do not submit health data, biometric data, criminal conviction data, classified information, or similar high-risk content through this website or standard email channels.</li>
-                            <li data-lang="tr">Web sitemiz ucuncu taraf sayfalara baglanti icerebilir. Bu sayfalar kendi gizlilik sartlarina tabidir ve VARUX bu harici iceriklerin veri uygulamalarindan sorumlu degildir.</li>
-                            <li data-lang="en">Our website may contain links to third-party pages. Those pages operate under their own privacy terms, and VARUX is not responsible for the data practices of external content.</li>
-                        </ul>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="changes">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Revizyon</span>
-                                <span class="section-kicker" data-lang="en">Revision</span>
-                                <h2 data-lang="tr">10. Politika guncellemeleri</h2>
-                                <h2 data-lang="en">10. Policy updates</h2>
-                            </div>
-                            <div class="section-index">10</div>
-                        </div>
-
-                        <p data-lang="tr">Bu politika; mevzuat, urun, tedarik zinciri, guvenlik kontrolleri veya operasyonel surecler degistikce guncellenebilir. Guncel surum bu sayfada yururluk tarihi ile birlikte yayimlanir. Esasli degisiklikler durumunda, uygun oldugu olcude ek bildirim yontemleri de kullanilabilir.</p>
-                        <p data-lang="en">This policy may be updated as laws, products, supply chain dependencies, security controls, or operational workflows change. The current version is published on this page with its effective date. For material changes, additional notice methods may be used where appropriate.</p>
-                    </section>
-
-                    <section class="panel policy-section reveal" id="contact">
-                        <div class="section-head">
-                            <div>
-                                <span class="section-kicker" data-lang="tr">Iletisim</span>
-                                <span class="section-kicker" data-lang="en">Contact</span>
-                                <h2 data-lang="tr">11. Gizlilik ve uyum iletisim noktasi</h2>
-                                <h2 data-lang="en">11. Privacy and compliance contact points</h2>
-                            </div>
-                            <div class="section-index">11</div>
-                        </div>
-
-                        <p data-lang="tr">Gizlilik basvurulari, uyum sorulari, veri sahibi talepleri veya bu politikaya iliskin aciklama istemleri icin asagidaki kanallari kullanabilirsiniz.</p>
-                        <p data-lang="en">For privacy requests, compliance questions, data subject rights claims, or clarification about this notice, you may use the channels below.</p>
-
-                        <div class="contact-grid">
-                            <div class="contact-card">
-                                <strong data-lang="tr">Veri sorumlusu / kurumsal birim</strong>
-                                <strong data-lang="en">Controller / corporate entity</strong>
-                                <span>VARUX Cybersecurity Technologies</span>
-                            </div>
-                            <div class="contact-card">
-                                <strong data-lang="tr">Gizlilik ve uyum talepleri</strong>
-                                <strong data-lang="en">Privacy and compliance requests</strong>
-                                <a href="mailto:legal@varuxcyber.com">legal@varuxcyber.com</a>
-                            </div>
-                            <div class="contact-card">
-                                <strong data-lang="tr">Genel kurumsal iletisim</strong>
-                                <strong data-lang="en">General corporate contact</strong>
-                                <a href="mailto:contact@varuxcyber.com">contact@varuxcyber.com</a>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-        <div class="wrap footer-shell">
-            <span data-lang="tr">&copy; 2026 VARUX Cybersecurity. Tum haklari saklidir.</span>
-            <span data-lang="en">&copy; 2026 VARUX Cybersecurity. All rights reserved.</span>
+    <!-- SECTION 4: NASIL ÇALIŞIR (UNIFIED MODEL) -->
+    <section id="nasil-calisir" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto mb-32 text-center">
+            <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">Deterministik Döngü</span>
+            <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter">Kontrol Mimarisi</h2>
+        </div>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6">
+            <div class="p-10 glass rounded-xl space-y-8">
+                <div class="text-3xl font-black text-zinc-800 font-mono">01</div>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Intercept</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek execution başlamadan önce platform katmanında yakalanır. Bağlam ve kimlik bilgileri ayrıştırılır.</p>
+            </div>
+            <div class="p-10 glass rounded-xl space-y-8">
+                <div class="text-3xl font-black text-zinc-800 font-mono">02</div>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evaluate</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Policy Engine, aktif sürümdeki deterministik kuralları çalıştırır. Karar modeli rasyonel ve açıklanabilirdir.</p>
+            </div>
+            <div class="p-10 glass rounded-xl space-y-8 border-blue-500/30">
+                <div class="text-3xl font-black text-zinc-800 font-mono">03</div>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Decide</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">ALLOW, BLOCK veya REQUIRE_APPROVAL kararı verilir. Belirsizlik durumunda sistem "fail-closed" çalışır.</p>
+            </div>
+            <div class="p-10 glass rounded-xl space-y-8">
+                <div class="text-3xl font-black text-zinc-800 font-mono">04</div>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evidence</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar request_id ile imzalanır ve append-only denetim kayıtlarına kanıt olarak işlenir.</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="footer-links">
-                <a href="index.html"><span data-lang="tr">Ana sayfa</span><span data-lang="en">Home</span></a>
-                <a href="#rights"><span data-lang="tr">Haklar</span><span data-lang="en">Rights</span></a>
-                <a href="mailto:legal@varuxcyber.com"><span data-lang="tr">Uyum birimi</span><span data-lang="en">Compliance desk</span></a>
+    <!-- SECTION 5: PRODUCTS (ARBITER & AXIS) -->
+    <section id="urunler" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 bg-[#040404]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-3xl md:text-5xl text-white font-medium tracking-tighter mb-6">İki Kritik Operasyonel Yüzey</h2>
+                <p class="text-zinc-500 text-lg max-w-2xl mx-auto font-light">VARUX kontrol modeli, sisteminizin iki hayati katmanında somut ürünlere dönüşür.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- ARBITER -->
+                <div id="arbiter" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-arbiter-accent/10 text-arbiter-accent rounded flex items-center justify-center mb-10 text-xl border border-arbiter-accent/20">
+                            <i class="fa-solid fa-code-branch"></i>
+                        </div>
+                        <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Arbiter</h3>
+                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Tool & Action Governance</p>
+                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
+                            Ajanların, otomasyonların ve servislerin hangi araçları, hangi parametrelerle ve hangi kapsamda kullanabileceğini yönetir. Ajan karar üretebilir ama yetki üretemez ilkesini uygular.
+                        </p>
+                        <ul class="space-y-4 mb-12">
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Pre-execution action gate</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Resource scope enforcement</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Default-deny tool usage</li>
+                        </ul>
+                    </div>
+                    <button class="w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-arbiter-accent hover:text-white transition-all">Arbiter'ı İncele</button>
+                </div>
+
+                <!-- AXIS -->
+                <div id="axis" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-axis-accent/10 text-axis-accent rounded flex items-center justify-center mb-10 text-xl border border-axis-accent/20">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Axis</h3>
+                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Database Write-Path Enforcement</p>
+                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
+                            Kritik sistemlere yönelen UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce durdurur. İnsan veya yazılım fark etmeksizin tüm write-path trafiğini policy katmanına zorlar.
+                        </p>
+                        <ul class="space-y-4 mb-12">
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Real-time write interceptor</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Approval-gated destructive actions</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> No direct write principle</li>
+                        </ul>
+                    </div>
+                    <button class="w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-axis-accent hover:text-white transition-all">Axis'i İncele</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: POLICY & DETERMINISM -->
+    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div class="terminal-window">
+                <div class="px-5 py-3 border-b border-zinc-900 flex justify-between items-center bg-zinc-950">
+                    <div class="flex gap-1.5">
+                        <div class="w-2 h-2 rounded-full bg-zinc-800"></div>
+                        <div class="w-2 h-2 rounded-full bg-zinc-800"></div>
+                    </div>
+                    <span class="text-[9px] font-mono text-zinc-700 tracking-[0.2em]">AXIS_POLICY_V4.YAML</span>
+                </div>
+                <div class="p-8 font-mono text-[13px] text-zinc-400 leading-relaxed">
+                    <div><span class="text-blue-500">scope:</span> "production-cluster"</div>
+                    <div><span class="text-blue-500">default_action:</span> "BLOCK"</div>
+                    <div class="mt-4"><span class="text-blue-500">rules:</span></div>
+                    <div class="pl-4">- <span class="text-zinc-200">action:</span> "DELETE"</div>
+                    <div class="pl-8"><span class="text-blue-500">condition:</span> "bulk_limit > 100"</div>
+                    <div class="pl-8 text-emerald-500"><span class="text-blue-500">result:</span> "REQUIRE_APPROVAL"</div>
+                    <div class="pl-8"><span class="text-blue-500">approver_group:</span> "platform-leads"</div>
+                    <div class="mt-8 border-t border-zinc-900 pt-6">
+                        <div class="text-rose-500 text-[10px] font-bold mb-2">INTERCEPT_EVENT:</div>
+                        <div class="text-zinc-500 text-[11px]">User 'agent-03' attempted 'DROP TABLE legacy_users'</div>
+                        <div class="text-rose-500 font-black mt-1">DECISION -> BLOCK (Reason: ForbiddenAction)</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-4xl md:text-5xl text-white font-medium tracking-tighter mb-10 leading-none italic">Policy Yoksa <br><span class="text-zinc-600">İzin Yok.</span></h2>
+                <p class="text-zinc-500 text-lg mb-12 font-light">
+                    VARUX, belirsizlikte sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif policy sürümüne bağlıdır. Tahmin yürütmez, kural işletir.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="px-5 py-2 border border-emerald-500/20 bg-emerald-500/5 text-emerald-500 text-[10px] font-black uppercase tracking-widest rounded">ALLOW</div>
+                    <div class="px-5 py-2 border border-rose-500/20 bg-rose-500/5 text-rose-500 text-[10px] font-black uppercase tracking-widest rounded">BLOCK</div>
+                    <div class="px-5 py-2 border border-blue-500/20 bg-blue-500/5 text-blue-500 text-[10px] font-black uppercase tracking-widest rounded">REQUIRE_APPROVAL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: WHAT VARUX IS NOT -->
+    <section class="py-24 md:py-32 px-4 sm:px-6 lg:px-10 bg-zinc-950 border-y border-zinc-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Threat Boundary</h3>
+            <div class="grid md:grid-cols-2 gap-16 text-left">
+                <div class="space-y-4">
+                    <h4 class="text-white text-xs font-black uppercase tracking-widest text-zinc-600">VARUX Ne Değildir?</h4>
+                    <ul class="text-zinc-500 text-sm space-y-3 font-light">
+                        <li>- Model doğruluğunu artıran bir araç değildir.</li>
+                        <li>- Halüsinasyon düzelten bir chatbot değildir.</li>
+                        <li>- Klasik observability veya logging platformu değildir.</li>
+                        <li>- Business logic katmanı değildir.</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="text-white text-xs font-black uppercase tracking-widest text-blue-500">VARUX Ne Yapar?</h4>
+                    <ul class="text-zinc-300 text-sm space-y-3 font-light">
+                        <li>+ Eylem başlamadan yetkiyi policy ile sınırlar.</li>
+                        <li>+ Kritik write-path'i fiziksel olarak gate eder.</li>
+                        <li>+ Riskli aksiyonları insan onayına (Approval) bağlar.</li>
+                        <li>+ Her kararı audit-ready kanıta dönüştürür.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: FOR WHOM -->
+    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl text-white font-medium tracking-tighter mb-20 text-center uppercase tracking-[0.2em]">Kime Hitap Ediyoruz?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Platform & Infra</h4>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Üretim ortamındaki kritik sistemleri otonom veya manuel hatalardan korumak isteyen ekipler.</p>
+                </div>
+                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">AI Engineering</h4>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Ajanlarının yeteneklerini artırırken güvenliği son karara değil, ilk adıma (gate) koymak isteyenler.</p>
+                </div>
+                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Security & Compliance</h4>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Kritik eylemler için değiştirilemez kanıt (evidence) ve insan onayı döngüsü kurmak zorunda olanlar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FINAL CTA -->
+    <section class="py-32 md:py-44 lg:py-60 px-4 sm:px-6 lg:px-10 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#3b82f60d_0%,transparent_60%)]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-8xl text-white font-medium tracking-tighter mb-16 leading-tight italic">Son Kararı <br><span class="text-zinc-700">Modele Bırakmayın.</span></h2>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button type="button" data-demo-open class="bg-white text-black py-5 px-14 text-[10px] font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
+                <button class="border border-zinc-800 text-white py-5 px-14 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all">Dokümantasyonu Oku</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FOOTER -->
+    <footer class="py-16 md:py-24 border-t border-zinc-900 px-4 sm:px-6 lg:px-10 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 md:gap-16 mb-24">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-10">
+                        <span class="brand-mark-premium" aria-hidden="true">
+                            <span class="brand-mark-core"></span>
+                        </span>
+                        <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
+                    </div>
+                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose">
+                        Pre-execution control architecture <br>for autonomous operations.
+                    </p>
+                    <div class="social-links">
+                        <a class="social-link" href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a class="social-link" href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                            <span>X</span>
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Ürünler</h5>
+                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
+                        <li class="hover:text-white cursor-pointer transition-colors">Arbiter</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">Axis</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">Control Core</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Kaynaklar</h5>
+                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
+                        <li class="hover:text-white cursor-pointer transition-colors">Dokümantasyon</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">Güvenlik</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">API Reference</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col items-start md:items-end">
+                    <div class="flex gap-6 mb-10">
+                        <a href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub" class="text-zinc-800 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X" class="text-zinc-800 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn" class="text-zinc-800 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="text-[9px] font-mono text-zinc-900 uppercase tracking-widest">© 2026 VARUX INC. PROD-ENV READY.</div>
+                </div>
             </div>
         </div>
     </footer>
+
+    <div id="demoModal" class="demo-modal" data-demo-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+        <div class="demo-modal-panel">
+            <button type="button" class="demo-modal-close" data-demo-close aria-label="Formu kapat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="demo-kicker">Demo Talep</div>
+            <h2 id="demoModalTitle" class="text-3xl md:text-4xl text-white font-semibold tracking-tighter mb-4">VARUX ile iletisime gecin</h2>
+            <p class="text-zinc-400 text-base leading-relaxed max-w-2xl">
+                Kisa bilgilerinizi birakin. Ekibinizin agent, automation veya kritik write-path guvenligini nasil korumak istediginizi ogrenelim.
+            </p>
+
+            <form id="demoRequestForm" class="mt-8">
+                <div class="demo-form-grid demo-form-grid-two">
+                    <div class="demo-field">
+                        <label for="demoName">Ad Soyad</label>
+                        <input id="demoName" name="name" type="text" class="demo-input" placeholder="Adiniz Soyadiniz" required>
+                    </div>
+                    <div class="demo-field">
+                        <label for="demoCompany">Sirket</label>
+                        <input id="demoCompany" name="company" type="text" class="demo-input" placeholder="Sirket adiniz" required>
+                    </div>
+                </div>
+
+                <div class="demo-form-grid mt-4">
+                    <div class="demo-field">
+                        <label for="demoEmail">Mail</label>
+                        <input id="demoEmail" name="email" type="email" class="demo-input" placeholder="ornek@sirket.com" required>
+                    </div>
+                </div>
+
+                <div class="demo-form-grid mt-4">
+                    <div class="demo-field">
+                        <label for="demoMessage">Talep veya Mesaj</label>
+                        <textarea id="demoMessage" name="message" class="demo-textarea" placeholder="Kisa ihtiyacinizi yazin"></textarea>
+                    </div>
+                </div>
+
+                <div class="demo-form-actions">
+                    <div id="demoFormStatus" class="demo-status" role="status" aria-live="polite"></div>
+                    <button type="submit" class="bg-white text-black py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] btn-premium rounded-sm">Talebi Gonder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        const root = document.documentElement;
-        const progressBar = document.getElementById('scroll-progress');
-        const langButtons = Array.from(document.querySelectorAll('[data-set-lang]'));
-        const sections = Array.from(document.querySelectorAll('.policy-section'));
-        const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
-        const titles = {
-            tr: 'VARUX | Gizlilik Politikasi',
-            en: 'VARUX | Privacy Policy'
+        // Intersection Observer for section entry animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Compact Navbar on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-black/60', 'backdrop-blur-2xl', 'border-b', 'border-zinc-900', 'py-5');
+                nav.classList.remove('py-8');
+            } else {
+                nav.classList.remove('bg-black/60', 'backdrop-blur-2xl', 'border-b', 'border-zinc-900', 'py-5');
+                nav.classList.add('py-8');
+            }
+        });
+
+        // Smooth Scroll Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Language support
+        const pageSections = Array.from(document.querySelectorAll('section'));
+        const navProductsLabel = document.querySelector('#navbar .hidden.lg\\:flex .relative > span');
+        const navProductLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex .relative a'));
+        const navMainLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex > a'));
+        const navDocsLinks = Array.from(document.querySelectorAll('#navbar a[href="#docs"]'));
+        const langButtons = Array.from(document.querySelectorAll('[data-lang-switch]'));
+        const demoButtons = Array.from(document.querySelectorAll('[data-demo-open]'));
+        const heroButtons = Array.from(document.querySelectorAll('header .flex.flex-col.sm\\:flex-row button'));
+        const productsSection = document.getElementById('urunler');
+        const problemCards = Array.from(pageSections[0]?.querySelectorAll('.grid.sm\\:grid-cols-2 > div') || []);
+        const controlCards = Array.from(document.querySelectorAll('#nasil-calisir .p-10.glass.rounded-xl'));
+        const arbiterCard = document.getElementById('arbiter');
+        const axisCard = document.getElementById('axis');
+        const policySection = pageSections[3];
+        const threatSection = pageSections[4];
+        const audienceSection = pageSections[5];
+        const finalCtaSection = pageSections[6];
+        const audienceCards = Array.from(audienceSection?.querySelectorAll('.p-10.border') || []);
+        const footerHeadings = Array.from(document.querySelectorAll('footer h5'));
+        const footerLists = Array.from(document.querySelectorAll('footer ul'));
+        const footerIntro = document.querySelector('footer .col-span-2 p');
+        const modalTitle = document.getElementById('demoModalTitle');
+        const modalDescription = document.querySelector('#demoModal p');
+        const modalLabels = {
+            name: document.querySelector('label[for="demoName"]'),
+            company: document.querySelector('label[for="demoCompany"]'),
+            email: document.querySelector('label[for="demoEmail"]'),
+            message: document.querySelector('label[for="demoMessage"]')
+        };
+        const modalInputs = {
+            name: document.getElementById('demoName'),
+            company: document.getElementById('demoCompany'),
+            email: document.getElementById('demoEmail'),
+            message: document.getElementById('demoMessage')
+        };
+        const modalKicker = document.querySelector('.demo-kicker');
+        const modalSubmitButton = document.querySelector('#demoRequestForm button[type="submit"]');
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+
+        const originalLanguageContent = {
+            lang: document.documentElement.lang,
+            title: document.title,
+            metaDescription: metaDescription?.getAttribute('content') || '',
+            ogLocale: ogLocale?.getAttribute('content') || '',
+            ogTitle: ogTitle?.getAttribute('content') || '',
+            ogDescription: ogDescription?.getAttribute('content') || '',
+            twitterTitle: twitterTitle?.getAttribute('content') || '',
+            twitterDescription: twitterDescription?.getAttribute('content') || '',
+            navProductsLabel: navProductsLabel?.innerHTML || '',
+            navMainLinks: navMainLinks.map((item) => item.innerHTML),
+            navDocsLinks: navDocsLinks.map((item) => item.innerHTML),
+            demoButtons: demoButtons.map((item) => item.innerHTML),
+            heroTitle: document.querySelector('header h1')?.innerHTML || '',
+            heroDescription: document.querySelector('header p')?.innerHTML || '',
+            heroDocsButton: heroButtons[1]?.innerHTML || '',
+            problemTitle: pageSections[0]?.querySelector('h2')?.innerHTML || '',
+            problemDescription: pageSections[0]?.querySelector('p')?.innerHTML || '',
+            problemCards: problemCards.map((card) => ({
+                title: card.querySelector('h4')?.innerHTML || '',
+                text: card.querySelector('p')?.innerHTML || ''
+            })),
+            controlKicker: document.querySelector('#nasil-calisir span.block')?.innerHTML || '',
+            controlTitle: document.querySelector('#nasil-calisir h2')?.innerHTML || '',
+            controlCards: controlCards.map((card) => ({
+                title: card.querySelector('h3')?.innerHTML || '',
+                text: card.querySelector('p')?.innerHTML || ''
+            })),
+            productsTitle: productsSection?.querySelector('h2')?.innerHTML || '',
+            productsDescription: productsSection?.querySelector('.text-center p')?.innerHTML || '',
+            arbiterDescription: arbiterCard?.querySelectorAll('p')[1]?.innerHTML || '',
+            arbiterButton: arbiterCard?.querySelector('button')?.innerHTML || '',
+            axisDescription: axisCard?.querySelectorAll('p')[1]?.innerHTML || '',
+            axisButton: axisCard?.querySelector('button')?.innerHTML || '',
+            policyTitle: policySection?.querySelector('h2')?.innerHTML || '',
+            policyDescription: policySection?.querySelector('p')?.innerHTML || '',
+            threatTitle: threatSection?.querySelector('h3')?.innerHTML || '',
+            threatHeadings: Array.from(threatSection?.querySelectorAll('h4') || []).map((item) => item.innerHTML),
+            threatLists: Array.from(threatSection?.querySelectorAll('ul') || []).map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
+            audienceTitle: audienceSection?.querySelector('h2')?.innerHTML || '',
+            audienceCards: audienceCards.map((card) => ({
+                title: card.querySelector('h4')?.innerHTML || '',
+                text: card.querySelector('p')?.innerHTML || ''
+            })),
+            finalTitle: finalCtaSection?.querySelector('h2')?.innerHTML || '',
+            finalDocsButton: finalCtaSection?.querySelectorAll('button')[1]?.innerHTML || '',
+            footerIntro: footerIntro?.innerHTML || '',
+            footerHeadings: footerHeadings.map((item) => item.innerHTML),
+            footerLists: footerLists.map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
+            modalKicker: modalKicker?.innerHTML || '',
+            modalTitle: modalTitle?.innerHTML || '',
+            modalDescription: modalDescription?.innerHTML || '',
+            modalLabels: {
+                name: modalLabels.name?.innerHTML || '',
+                company: modalLabels.company?.innerHTML || '',
+                email: modalLabels.email?.innerHTML || '',
+                message: modalLabels.message?.innerHTML || ''
+            },
+            modalPlaceholders: {
+                name: modalInputs.name?.getAttribute('placeholder') || '',
+                company: modalInputs.company?.getAttribute('placeholder') || '',
+                email: modalInputs.email?.getAttribute('placeholder') || '',
+                message: modalInputs.message?.getAttribute('placeholder') || ''
+            },
+            modalSubmitButton: modalSubmitButton?.innerHTML || ''
         };
 
-        function setLanguage(lang) {
-            root.setAttribute('data-ui-lang', lang);
-            root.setAttribute('lang', lang);
-            document.title = titles[lang] || titles.tr;
+        const englishLanguageContent = {
+            lang: 'en',
+            title: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
+            metaDescription: 'VARUX is a pre-execution control and deterministic enforcement platform for agents, automation and critical write operations.',
+            ogLocale: 'en_US',
+            ogTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
+            ogDescription: 'Evaluate critical requests before execution, constrain authority with policy and apply enterprise-grade enforcement.',
+            twitterTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
+            twitterDescription: 'VARUX delivers deterministic control and enforcement for agents, automation and critical write paths.',
+            navProductsLabel: 'Products',
+            navMainLinks: ['How It Works', 'Use Cases', 'Documentation'],
+            navDocsLinks: ['Documentation', 'Documentation'],
+            demoButtons: ['Request Demo', 'Request Demo', 'Request Demo'],
+            heroTitle: 'Control <span class="text-zinc-600 italic">Before Execution.</span>',
+            heroDescription: 'Apply deterministic policy to agents, automation and critical write operations. The model can generate decisions; <span class="text-white font-medium italic">VARUX</span> generates authority.',
+            heroDocsButton: 'Read Documentation <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
+            problemTitle: 'Failure should stop <br><span class="text-zinc-600">before execution.</span>',
+            problemDescription: 'Observability tells you what broke. Control prevents it from breaking. In critical systems, the problem is not intent; it is authority. A model may choose a valid action, but VARUX stops it when that action exceeds policy boundaries.',
+            problemCards: [
+                {
+                    title: 'Post-Mortem Risk',
+                    text: 'Logs emitted after a database write do not prevent damage. Recovery is expensive and slow.'
+                },
+                {
+                    title: 'Pre-Execution Enforcement',
+                    text: 'Policy is evaluated before any action begins. Risk is removed before it materializes.'
+                }
+            ],
+            controlKicker: 'Deterministic Loop',
+            controlTitle: 'Control Architecture',
+            controlCards: [
+                {
+                    title: 'Intercept',
+                    text: 'The request is intercepted at the platform layer before execution starts. Identity, context and scope are extracted.'
+                },
+                {
+                    title: 'Evaluate',
+                    text: 'The Policy Engine executes active deterministic rules. The decision model is rational, consistent and explainable.'
+                },
+                {
+                    title: 'Decide',
+                    text: 'The platform returns ALLOW, BLOCK or REQUIRE_APPROVAL. Under uncertainty, the system remains fail-closed.'
+                },
+                {
+                    title: 'Evidence',
+                    text: 'Every decision is signed with a request id and written into append-only audit records as evidence.'
+                }
+            ],
+            productsTitle: 'Two Critical Operational Surfaces',
+            productsDescription: 'The VARUX control model becomes concrete products across the two most sensitive layers of your system.',
+            arbiterDescription: 'Governs which tools, parameters and scopes agents, automation and services may use. It enforces the principle that a model can generate decisions but cannot generate authority.',
+            arbiterButton: 'Explore Arbiter',
+            axisDescription: 'Stops UPDATE, DELETE and DDL traffic aimed at critical systems before it reaches the database. It forces every write path through policy enforcement.',
+            axisButton: 'Explore Axis',
+            policyTitle: 'Without policy, <br><span class="text-zinc-600">there is no permission.</span>',
+            policyDescription: 'VARUX halts the system under uncertainty with fail-closed behavior. Every decision is deterministic and bound to the active policy version. It does not guess; it enforces rules.',
+            threatTitle: 'Threat Boundary',
+            threatHeadings: ['What VARUX Is Not', 'What VARUX Does'],
+            threatLists: [
+                [
+                    '- It is not a tool that improves model accuracy.',
+                    '- It is not a chatbot that fixes hallucinations.',
+                    '- It is not a traditional observability or logging platform.',
+                    '- It is not a business logic layer.'
+                ],
+                [
+                    '+ It constrains authority with policy before an action begins.',
+                    '+ It physically gates the critical write path.',
+                    '+ It routes high-risk actions to approval flows.',
+                    '+ It converts every decision into audit-ready evidence.'
+                ]
+            ],
+            audienceTitle: 'Who Is It For?',
+            audienceCards: [
+                {
+                    title: 'Platform & Infra',
+                    text: 'Teams that need to protect production-critical systems from autonomous or manual mistakes.'
+                },
+                {
+                    title: 'AI Engineering',
+                    text: 'Teams that want to place security at the first gate, not at the final model decision.'
+                },
+                {
+                    title: 'Security & Compliance',
+                    text: 'Teams that require immutable evidence and human approval loops for critical actions.'
+                }
+            ],
+            finalTitle: 'Do not leave the final decision <br><span class="text-zinc-700">to the model.</span>',
+            finalDocsButton: 'Read Documentation',
+            footerIntro: 'Pre-execution control architecture <br>for autonomous operations.',
+            footerHeadings: ['Products', 'Resources'],
+            footerLists: [
+                ['Arbiter', 'Axis', 'Control Core'],
+                ['Documentation', 'Security', 'API Reference']
+            ],
+            modalKicker: 'Request Demo',
+            modalTitle: 'Get in touch with VARUX',
+            modalDescription: 'Leave your details. Let us understand how your team wants to secure agents, automation and critical write paths.',
+            modalLabels: {
+                name: 'Full Name',
+                company: 'Company',
+                email: 'Email',
+                message: 'Request or Message'
+            },
+            modalPlaceholders: {
+                name: 'Your full name',
+                company: 'Your company',
+                email: 'name@company.com',
+                message: 'Write a short note about your needs'
+            },
+            modalSubmitButton: 'Send Request'
+        };
+
+        let currentLanguage = originalLanguageContent.lang || 'tr';
+
+        const setHtml = (element, value) => {
+            if (element && typeof value === 'string') {
+                element.innerHTML = value;
+            }
+        };
+
+        const setManyHtml = (elements, values) => {
+            elements.forEach((element, index) => {
+                if (typeof values[index] === 'string') {
+                    setHtml(element, values[index]);
+                }
+            });
+        };
+
+        const setPlaceholder = (element, value) => {
+            if (element && typeof value === 'string') {
+                element.setAttribute('placeholder', value);
+            }
+        };
+
+        const applyLanguage = (lang) => {
+            const source = lang === 'en' ? englishLanguageContent : originalLanguageContent;
+
+            currentLanguage = lang === 'en' ? 'en' : originalLanguageContent.lang || 'tr';
+            document.documentElement.lang = currentLanguage;
+            document.title = source.title;
+
+            if (metaDescription) metaDescription.setAttribute('content', source.metaDescription);
+            if (ogLocale) ogLocale.setAttribute('content', source.ogLocale);
+            if (ogTitle) ogTitle.setAttribute('content', source.ogTitle);
+            if (ogDescription) ogDescription.setAttribute('content', source.ogDescription);
+            if (twitterTitle) twitterTitle.setAttribute('content', source.twitterTitle);
+            if (twitterDescription) twitterDescription.setAttribute('content', source.twitterDescription);
+
+            setHtml(navProductsLabel, source.navProductsLabel);
+            setManyHtml(navMainLinks, source.navMainLinks);
+            setManyHtml(navDocsLinks, source.navDocsLinks);
+            setManyHtml(demoButtons, source.demoButtons);
+
+            setHtml(document.querySelector('header h1'), source.heroTitle);
+            setHtml(document.querySelector('header p'), source.heroDescription);
+            if (heroButtons[1]) setHtml(heroButtons[1], source.heroDocsButton);
+
+            setHtml(pageSections[0]?.querySelector('h2'), source.problemTitle);
+            setHtml(pageSections[0]?.querySelector('p'), source.problemDescription);
+            problemCards.forEach((card, index) => {
+                setHtml(card.querySelector('h4'), source.problemCards[index]?.title || '');
+                setHtml(card.querySelector('p'), source.problemCards[index]?.text || '');
+            });
+
+            setHtml(document.querySelector('#nasil-calisir span.block'), source.controlKicker);
+            setHtml(document.querySelector('#nasil-calisir h2'), source.controlTitle);
+            controlCards.forEach((card, index) => {
+                setHtml(card.querySelector('h3'), source.controlCards[index]?.title || '');
+                setHtml(card.querySelector('p'), source.controlCards[index]?.text || '');
+            });
+
+            setHtml(productsSection?.querySelector('h2'), source.productsTitle);
+            setHtml(productsSection?.querySelector('.text-center p'), source.productsDescription);
+            setHtml(arbiterCard?.querySelectorAll('p')[1], source.arbiterDescription);
+            setHtml(arbiterCard?.querySelector('button'), source.arbiterButton);
+            setHtml(axisCard?.querySelectorAll('p')[1], source.axisDescription);
+            setHtml(axisCard?.querySelector('button'), source.axisButton);
+
+            setHtml(policySection?.querySelector('h2'), source.policyTitle);
+            setHtml(policySection?.querySelector('p'), source.policyDescription);
+
+            setHtml(threatSection?.querySelector('h3'), source.threatTitle);
+            Array.from(threatSection?.querySelectorAll('h4') || []).forEach((item, index) => {
+                setHtml(item, source.threatHeadings[index] || '');
+            });
+            Array.from(threatSection?.querySelectorAll('ul') || []).forEach((list, listIndex) => {
+                Array.from(list.querySelectorAll('li')).forEach((item, itemIndex) => {
+                    setHtml(item, source.threatLists[listIndex]?.[itemIndex] || '');
+                });
+            });
+
+            setHtml(audienceSection?.querySelector('h2'), source.audienceTitle);
+            audienceCards.forEach((card, index) => {
+                setHtml(card.querySelector('h4'), source.audienceCards[index]?.title || '');
+                setHtml(card.querySelector('p'), source.audienceCards[index]?.text || '');
+            });
+
+            setHtml(finalCtaSection?.querySelector('h2'), source.finalTitle);
+            if (finalCtaSection?.querySelectorAll('button')[1]) {
+                setHtml(finalCtaSection.querySelectorAll('button')[1], source.finalDocsButton);
+            }
+
+            setHtml(footerIntro, source.footerIntro);
+            setManyHtml(footerHeadings, source.footerHeadings);
+            footerLists.forEach((list, index) => {
+                const listItems = Array.from(list.querySelectorAll('li'));
+                setManyHtml(listItems, source.footerLists[index] || []);
+            });
+
+            setHtml(modalKicker, source.modalKicker);
+            setHtml(modalTitle, source.modalTitle);
+            setHtml(modalDescription, source.modalDescription);
+            setHtml(modalLabels.name, source.modalLabels.name);
+            setHtml(modalLabels.company, source.modalLabels.company);
+            setHtml(modalLabels.email, source.modalLabels.email);
+            setHtml(modalLabels.message, source.modalLabels.message);
+            setPlaceholder(modalInputs.name, source.modalPlaceholders.name);
+            setPlaceholder(modalInputs.company, source.modalPlaceholders.company);
+            setPlaceholder(modalInputs.email, source.modalPlaceholders.email);
+            setPlaceholder(modalInputs.message, source.modalPlaceholders.message);
+            setHtml(modalSubmitButton, source.modalSubmitButton);
+            if (document.getElementById('demoFormStatus')) {
+                document.getElementById('demoFormStatus').textContent = '';
+            }
 
             langButtons.forEach((button) => {
-                const active = button.dataset.setLang === lang;
-                button.classList.toggle('active', active);
-                button.setAttribute('aria-pressed', active ? 'true' : 'false');
+                button.classList.toggle('is-active', button.dataset.langSwitch === currentLanguage);
             });
 
-            localStorage.setItem('varux-lang', lang);
-        }
-
-        function updateScrollProgress() {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const value = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-            progressBar.style.width = value + '%';
-        }
-
-        function setActiveToc(id) {
-            tocLinks.forEach((link) => {
-                const active = link.getAttribute('href') === '#' + id;
-                link.classList.toggle('active', active);
-            });
-        }
-
-        setLanguage(localStorage.getItem('varux-lang') || 'tr');
+            try {
+                window.localStorage.setItem('varux-language', currentLanguage);
+            } catch (error) {
+                // Ignore storage access issues.
+            }
+        };
 
         langButtons.forEach((button) => {
-            button.addEventListener('click', () => setLanguage(button.dataset.setLang));
-        });
-
-        window.addEventListener('scroll', updateScrollProgress, { passive: true });
-        updateScrollProgress();
-
-        document.addEventListener('mousemove', (event) => {
-            const x = (event.clientX / window.innerWidth) * 100;
-            const y = (event.clientY / window.innerHeight) * 100;
-            root.style.setProperty('--pointer-x', x + '%');
-            root.style.setProperty('--pointer-y', y + '%');
-        });
-
-        if ('IntersectionObserver' in window) {
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-
-            document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
-            const tocObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveToc(entry.target.id);
-                    }
-                });
-            }, {
-                rootMargin: '-20% 0px -60% 0px',
-                threshold: 0
+            button.addEventListener('click', () => {
+                applyLanguage(button.dataset.langSwitch === 'en' ? 'en' : 'tr');
             });
+        });
 
-            sections.forEach((section) => tocObserver.observe(section));
-        } else {
-            document.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'));
+        try {
+            const savedLanguage = window.localStorage.getItem('varux-language');
+            if (savedLanguage === 'en') {
+                applyLanguage('en');
+            }
+        } catch (error) {
+            // Ignore storage access issues.
         }
 
-        if (sections[0]) {
-            setActiveToc(sections[0].id);
+        // Demo request modal
+        const demoModal = document.querySelector('[data-demo-modal]');
+        if (demoModal) {
+            const demoForm = document.getElementById('demoRequestForm');
+            const demoStatus = document.getElementById('demoFormStatus');
+            const demoFirstField = document.getElementById('demoName');
+            const openDemoButtons = document.querySelectorAll('[data-demo-open]');
+            const closeDemoButtons = demoModal.querySelectorAll('[data-demo-close]');
+
+            const openDemoModal = () => {
+                demoModal.classList.add('is-open');
+                demoModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                if (demoStatus) demoStatus.textContent = '';
+                window.setTimeout(() => {
+                    if (demoFirstField) demoFirstField.focus();
+                }, 40);
+            };
+
+            const closeDemoModal = () => {
+                demoModal.classList.remove('is-open');
+                demoModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+                if (demoStatus) demoStatus.textContent = '';
+            };
+
+            openDemoButtons.forEach((button) => {
+                button.addEventListener('click', openDemoModal);
+            });
+
+            closeDemoButtons.forEach((button) => {
+                button.addEventListener('click', closeDemoModal);
+            });
+
+            demoModal.addEventListener('click', (event) => {
+                if (event.target === demoModal) {
+                    closeDemoModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && demoModal.classList.contains('is-open')) {
+                    closeDemoModal();
+                }
+            });
+
+            if (demoForm) {
+                demoForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+
+                    if (!demoForm.checkValidity()) {
+                        demoForm.reportValidity();
+                        return;
+                    }
+
+                    const payload = Object.fromEntries(new FormData(demoForm).entries());
+                    const localizedMessages = currentLanguage === 'en'
+                        ? {
+                            success: 'Request captured. Details were saved in this browser.',
+                            fallback: 'The form is ready. A backend or CRM integration can be connected for live delivery.'
+                        }
+                        : {
+                            success: 'Talep kaydi alindi. Bilgiler bu tarayicida saklandi.',
+                            fallback: 'Talep hazir. Canli gonderim icin backend veya CRM baglantisi eklenebilir.'
+                        };
+
+                    try {
+                        window.localStorage.setItem('varux-demo-request', JSON.stringify({
+                            ...payload,
+                            createdAt: new Date().toISOString()
+                        }));
+                        demoStatus.textContent = localizedMessages.success;
+                    } catch (error) {
+                        demoStatus.textContent = localizedMessages.fallback;
+                    }
+
+                    demoForm.reset();
+                });
+            }
+        }
+
+        // Hero background mesh animation
+        const heroCanvas = document.getElementById('heroMesh');
+        if (heroCanvas) {
+            const context = heroCanvas.getContext('2d');
+            const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const lowPowerDevice =
+                reducedMotionQuery.matches ||
+                (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
+                (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+
+            const dpr = () => Math.min(window.devicePixelRatio || 1, lowPowerDevice ? 1.15 : 1.5);
+
+            const nodeBlueprints = [
+                { x: 0.38, y: 0.28, role: 'source', size: 1.4, drift: 5, speed: 0.22 },
+                { x: 0.36, y: 0.56, role: 'source', size: 1.5, drift: 6, speed: 0.18 },
+                { x: 0.44, y: 0.76, role: 'source', size: 1.3, drift: 4, speed: 0.16 },
+                { x: 0.53, y: 0.20, role: 'relay', size: 1.2, drift: 7, speed: 0.14 },
+                { x: 0.56, y: 0.43, role: 'relay', size: 1.35, drift: 6, speed: 0.15 },
+                { x: 0.58, y: 0.67, role: 'relay', size: 1.25, drift: 5, speed: 0.13 },
+                { x: 0.66, y: 0.30, role: 'core', size: 1.7, drift: 3, speed: 0.11 },
+                { x: 0.72, y: 0.48, role: 'core', size: 2.1, drift: 2, speed: 0.08 },
+                { x: 0.69, y: 0.64, role: 'core', size: 1.6, drift: 3, speed: 0.1 },
+                { x: 0.78, y: 0.22, role: 'relay', size: 1.25, drift: 4, speed: 0.1 },
+                { x: 0.82, y: 0.50, role: 'relay', size: 1.4, drift: 5, speed: 0.12 },
+                { x: 0.80, y: 0.77, role: 'relay', size: 1.25, drift: 5, speed: 0.11 },
+                { x: 0.91, y: 0.17, role: 'surface', size: 1.35, drift: 4, speed: 0.09 },
+                { x: 0.93, y: 0.39, role: 'surface', size: 1.5, drift: 4, speed: 0.1 },
+                { x: 0.89, y: 0.64, role: 'surface', size: 1.55, drift: 4, speed: 0.08 },
+                { x: 0.95, y: 0.84, role: 'surface', size: 1.25, drift: 3, speed: 0.07 }
+            ];
+
+            const edgePairs = [
+                [0, 3], [1, 4], [2, 5],
+                [3, 6], [4, 7], [5, 8],
+                [6, 7], [7, 8],
+                [6, 9], [7, 10], [8, 11],
+                [9, 12], [10, 13], [10, 14], [11, 15],
+                [7, 13], [8, 14]
+            ];
+
+            const pulseRoutes = [
+                [0, 3, 6, 7, 10, 13],
+                [1, 4, 7, 10, 14],
+                [2, 5, 8, 11, 15],
+                [1, 4, 7, 13]
+            ];
+
+            const particles = [];
+            const stars = [];
+            let width = 0;
+            let height = 0;
+            let animationFrame = 0;
+            let lastTimestamp = 0;
+            let paused = false;
+            let pulses = [];
+
+            const createPointCloud = () => {
+                particles.length = 0;
+                stars.length = 0;
+
+                const particleCount = lowPowerDevice ? 42 : 74;
+                const starCount = lowPowerDevice ? 16 : 28;
+
+                for (let i = 0; i < particleCount; i += 1) {
+                    const bias = Math.random() > 0.25 ? 1 - Math.pow(Math.random(), 1.9) : Math.random();
+                    particles.push({
+                        x: bias,
+                        y: Math.random(),
+                        radius: 0.3 + Math.random() * 0.9,
+                        alpha: 0.025 + Math.random() * 0.05
+                    });
+                }
+
+                for (let i = 0; i < starCount; i += 1) {
+                    const bias = 1 - Math.pow(Math.random(), 2.2);
+                    stars.push({
+                        x: bias,
+                        y: Math.random(),
+                        radius: 0.6 + Math.random() * 1.4,
+                        alpha: 0.04 + Math.random() * 0.07,
+                        twinkle: Math.random() * Math.PI * 2
+                    });
+                }
+            };
+
+            const resetPulses = () => {
+                const pulseCount = lowPowerDevice ? 2 : 4;
+                pulses = Array.from({ length: pulseCount }, (_, index) => ({
+                    routeIndex: index % pulseRoutes.length,
+                    progress: -(3 + Math.random() * 8),
+                    speed: 0.24 + Math.random() * 0.12
+                }));
+            };
+
+            const resizeCanvas = () => {
+                const rect = heroCanvas.getBoundingClientRect();
+                width = Math.max(rect.width, 1);
+                height = Math.max(rect.height, 1);
+
+                heroCanvas.width = Math.floor(width * dpr());
+                heroCanvas.height = Math.floor(height * dpr());
+                context.setTransform(dpr(), 0, 0, dpr(), 0, 0);
+
+                createPointCloud();
+                resetPulses();
+                drawFrame(lastTimestamp || 0);
+            };
+
+            const getAnimatedNodes = (time) => {
+                return nodeBlueprints.map((node, index) => {
+                    const phase = index * 0.9;
+                    const driftX = Math.sin(time * node.speed + phase) * node.drift;
+                    const driftY = Math.cos(time * (node.speed * 0.82) + phase * 1.3) * node.drift * 0.55;
+
+                    return {
+                        ...node,
+                        xPos: node.x * width + driftX,
+                        yPos: node.y * height + driftY
+                    };
+                });
+            };
+
+            const drawFrame = (timestamp) => {
+                if (!context || !width || !height) return;
+
+                const seconds = timestamp * 0.001;
+                const delta = Math.min((timestamp - lastTimestamp) / 1000 || 0, 0.05);
+                lastTimestamp = timestamp;
+                const nodes = getAnimatedNodes(seconds);
+
+                context.clearRect(0, 0, width, height);
+
+                particles.forEach((particle) => {
+                    context.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
+                    context.beginPath();
+                    context.arc(particle.x * width, particle.y * height, particle.radius, 0, Math.PI * 2);
+                    context.fill();
+                });
+
+                stars.forEach((star) => {
+                    const twinkle = (Math.sin(seconds * 0.35 + star.twinkle) + 1) * 0.5;
+                    context.fillStyle = `rgba(180, 214, 255, ${star.alpha + twinkle * 0.03})`;
+                    context.beginPath();
+                    context.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
+                    context.fill();
+                });
+
+                edgePairs.forEach(([fromIndex, toIndex]) => {
+                    const from = nodes[fromIndex];
+                    const to = nodes[toIndex];
+                    const coreEdge = from.role === 'core' || to.role === 'core';
+
+                    context.strokeStyle = coreEdge ? 'rgba(104, 164, 255, 0.17)' : 'rgba(151, 193, 255, 0.08)';
+                    context.lineWidth = coreEdge ? 1.15 : 0.85;
+                    context.beginPath();
+                    context.moveTo(from.xPos, from.yPos);
+                    context.lineTo(to.xPos, to.yPos);
+                    context.stroke();
+                });
+
+                const coreNode = nodes[7];
+                const radialGlow = context.createRadialGradient(coreNode.xPos, coreNode.yPos, 0, coreNode.xPos, coreNode.yPos, Math.min(width, height) * 0.18);
+                radialGlow.addColorStop(0, 'rgba(72, 137, 255, 0.12)');
+                radialGlow.addColorStop(0.28, 'rgba(72, 137, 255, 0.05)');
+                radialGlow.addColorStop(1, 'rgba(72, 137, 255, 0)');
+                context.fillStyle = radialGlow;
+                context.beginPath();
+                context.arc(coreNode.xPos, coreNode.yPos, Math.min(width, height) * 0.18, 0, Math.PI * 2);
+                context.fill();
+
+                nodes.forEach((node) => {
+                    const isCore = node.role === 'core';
+                    const isSurface = node.role === 'surface';
+                    const alpha = isCore ? 0.78 : isSurface ? 0.46 : 0.34;
+                    const radius = isCore ? node.size + 1.5 : node.size + 0.6;
+
+                    context.fillStyle = `rgba(227, 240, 255, ${alpha})`;
+                    context.beginPath();
+                    context.arc(node.xPos, node.yPos, radius, 0, Math.PI * 2);
+                    context.fill();
+
+                    if (isCore || isSurface) {
+                        context.fillStyle = isCore ? 'rgba(80, 149, 255, 0.18)' : 'rgba(80, 149, 255, 0.08)';
+                        context.beginPath();
+                        context.arc(node.xPos, node.yPos, radius * 2.8, 0, Math.PI * 2);
+                        context.fill();
+                    }
+                });
+
+                if (!reducedMotionQuery.matches) {
+                    pulses.forEach((pulse) => {
+                        if (pulse.progress < 0) {
+                            pulse.progress += delta;
+                            return;
+                        }
+
+                        pulse.progress += delta * pulse.speed;
+
+                        const route = pulseRoutes[pulse.routeIndex];
+                        if (pulse.progress >= route.length - 1) {
+                            pulse.routeIndex = (pulse.routeIndex + 1 + Math.floor(Math.random() * 2)) % pulseRoutes.length;
+                            pulse.progress = -(4 + Math.random() * 9);
+                            pulse.speed = 0.22 + Math.random() * 0.1;
+                            return;
+                        }
+
+                        const segmentIndex = Math.floor(pulse.progress);
+                        const segmentProgress = pulse.progress - segmentIndex;
+                        const start = nodes[route[segmentIndex]];
+                        const end = nodes[route[segmentIndex + 1]];
+                        const x = start.xPos + (end.xPos - start.xPos) * segmentProgress;
+                        const y = start.yPos + (end.yPos - start.yPos) * segmentProgress;
+
+                        const pulseGlow = context.createRadialGradient(x, y, 0, x, y, 18);
+                        pulseGlow.addColorStop(0, 'rgba(163, 206, 255, 0.9)');
+                        pulseGlow.addColorStop(0.38, 'rgba(113, 178, 255, 0.24)');
+                        pulseGlow.addColorStop(1, 'rgba(113, 178, 255, 0)');
+                        context.fillStyle = pulseGlow;
+                        context.beginPath();
+                        context.arc(x, y, 18, 0, Math.PI * 2);
+                        context.fill();
+
+                        context.strokeStyle = 'rgba(143, 196, 255, 0.3)';
+                        context.lineWidth = 1.4;
+                        context.beginPath();
+                        context.moveTo(start.xPos, start.yPos);
+                        context.lineTo(x, y);
+                        context.stroke();
+
+                        context.fillStyle = 'rgba(220, 239, 255, 0.95)';
+                        context.beginPath();
+                        context.arc(x, y, 1.9, 0, Math.PI * 2);
+                        context.fill();
+                    });
+                }
+            };
+
+            const tick = (timestamp) => {
+                if (paused) return;
+                drawFrame(timestamp);
+                if (!reducedMotionQuery.matches) {
+                    animationFrame = window.requestAnimationFrame(tick);
+                }
+            };
+
+            const handleVisibility = () => {
+                paused = document.hidden;
+                if (paused) {
+                    window.cancelAnimationFrame(animationFrame);
+                    return;
+                }
+
+                lastTimestamp = performance.now();
+                drawFrame(lastTimestamp);
+                if (!reducedMotionQuery.matches) {
+                    animationFrame = window.requestAnimationFrame(tick);
+                }
+            };
+
+            resizeCanvas();
+            document.addEventListener('visibilitychange', handleVisibility);
+            window.addEventListener('resize', resizeCanvas);
+
+            if (!reducedMotionQuery.matches) {
+                animationFrame = window.requestAnimationFrame(tick);
+            }
         }
     </script>
 </body>
