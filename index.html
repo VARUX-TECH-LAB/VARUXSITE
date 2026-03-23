@@ -2,8 +2,8 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VARUX | Stop Post-Mortem. Start Pre-Execution Control.</title>
     <meta name="description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin pre-execution control, deterministic policy enforcement ve enterprise governance platformudur.">
     <meta name="keywords" content="VARUX, pre-execution control, policy enforcement, agent security, autonomous system governance, enterprise security, database write protection, Arbiter, Axis">
     <meta name="author" content="VARUX">
@@ -246,7 +246,8 @@
         .hero-canvas {
             width: 100%;
             height: 100%;
-            opacity: 0.92;
+            opacity: 0.96;
+            filter: blur(0px);
         }
 
         .hero-core-halo {
@@ -446,6 +447,7 @@
         section { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
         section.visible { opacity: 1; transform: translateY(0); }
 
+        /* Responsive fine-tuning for all devices */
         @media (max-width: 1024px) {
             .hero-grid {
                 background-size: 56px 56px;
@@ -461,7 +463,6 @@
                     radial-gradient(circle at 72% 42%, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 22%, transparent 44%),
                     radial-gradient(circle at 82% 76%, rgba(59, 130, 246, 0.05) 0%, transparent 28%);
             }
-
         }
 
         @media (max-width: 767px) {
@@ -530,6 +531,22 @@
             }
         }
 
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero-stage h1 {
+                font-size: clamp(2.5rem, 12vw, 3.5rem);
+            }
+            .hero-stage p {
+                font-size: 0.9rem;
+            }
+            .product-card {
+                padding: 1.25rem !important;
+            }
+            .product-card h3 {
+                font-size: 2rem !important;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .btn-premium,
             .product-card,
@@ -589,7 +606,7 @@
         </div>
     </nav>
 
-    <!-- SECTION 2: HERO -->
+    <!-- SECTION 2: HERO (Enhanced Animation - mouse interaction disabled) -->
     <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
         <div class="hero-background" aria-hidden="true">
             <div class="hero-grid"></div>
@@ -1006,7 +1023,7 @@
             });
         });
 
-        // Language support
+        // Language support (identical to original, but kept for completeness)
         const pageSections = Array.from(document.querySelectorAll('section'));
         const navProductsLabel = document.querySelector('#navbar .hidden.lg\\:flex .relative > span');
         const navProductLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex .relative a'));
@@ -1370,7 +1387,7 @@
             // Ignore storage access issues.
         }
 
-        // Demo request modal
+        // Demo request modal (same as original)
         const demoModal = document.querySelector('[data-demo-modal]');
         if (demoModal) {
             const demoForm = document.getElementById('demoRequestForm');
@@ -1451,272 +1468,194 @@
             }
         }
 
-        // Hero background mesh animation
+        // Enhanced Hero Animation (mouse interaction disabled)
         const heroCanvas = document.getElementById('heroMesh');
         if (heroCanvas) {
-            const context = heroCanvas.getContext('2d');
-            const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-            const lowPowerDevice =
-                reducedMotionQuery.matches ||
-                (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
-                (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-
-            const dpr = () => Math.min(window.devicePixelRatio || 1, lowPowerDevice ? 1.15 : 1.5);
-
-            const nodeBlueprints = [
-                { x: 0.38, y: 0.28, role: 'source', size: 1.4, drift: 5, speed: 0.22 },
-                { x: 0.36, y: 0.56, role: 'source', size: 1.5, drift: 6, speed: 0.18 },
-                { x: 0.44, y: 0.76, role: 'source', size: 1.3, drift: 4, speed: 0.16 },
-                { x: 0.53, y: 0.20, role: 'relay', size: 1.2, drift: 7, speed: 0.14 },
-                { x: 0.56, y: 0.43, role: 'relay', size: 1.35, drift: 6, speed: 0.15 },
-                { x: 0.58, y: 0.67, role: 'relay', size: 1.25, drift: 5, speed: 0.13 },
-                { x: 0.66, y: 0.30, role: 'core', size: 1.7, drift: 3, speed: 0.11 },
-                { x: 0.72, y: 0.48, role: 'core', size: 2.1, drift: 2, speed: 0.08 },
-                { x: 0.69, y: 0.64, role: 'core', size: 1.6, drift: 3, speed: 0.1 },
-                { x: 0.78, y: 0.22, role: 'relay', size: 1.25, drift: 4, speed: 0.1 },
-                { x: 0.82, y: 0.50, role: 'relay', size: 1.4, drift: 5, speed: 0.12 },
-                { x: 0.80, y: 0.77, role: 'relay', size: 1.25, drift: 5, speed: 0.11 },
-                { x: 0.91, y: 0.17, role: 'surface', size: 1.35, drift: 4, speed: 0.09 },
-                { x: 0.93, y: 0.39, role: 'surface', size: 1.5, drift: 4, speed: 0.1 },
-                { x: 0.89, y: 0.64, role: 'surface', size: 1.55, drift: 4, speed: 0.08 },
-                { x: 0.95, y: 0.84, role: 'surface', size: 1.25, drift: 3, speed: 0.07 }
-            ];
-
-            const edgePairs = [
-                [0, 3], [1, 4], [2, 5],
-                [3, 6], [4, 7], [5, 8],
-                [6, 7], [7, 8],
-                [6, 9], [7, 10], [8, 11],
-                [9, 12], [10, 13], [10, 14], [11, 15],
-                [7, 13], [8, 14]
-            ];
-
-            const pulseRoutes = [
-                [0, 3, 6, 7, 10, 13],
-                [1, 4, 7, 10, 14],
-                [2, 5, 8, 11, 15],
-                [1, 4, 7, 13]
-            ];
-
-            const particles = [];
+            const ctx = heroCanvas.getContext('2d');
+            let width, height;
+            let animationFrame;
+            let time = 0;
+            
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const lowPower = reducedMotion || (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+            
+            const nodes = [];
+            const edges = [];
             const stars = [];
-            let width = 0;
-            let height = 0;
-            let animationFrame = 0;
-            let lastTimestamp = 0;
-            let paused = false;
-            let pulses = [];
-
-            const createPointCloud = () => {
-                particles.length = 0;
-                stars.length = 0;
-
-                const particleCount = lowPowerDevice ? 42 : 74;
-                const starCount = lowPowerDevice ? 16 : 28;
-
-                for (let i = 0; i < particleCount; i += 1) {
-                    const bias = Math.random() > 0.25 ? 1 - Math.pow(Math.random(), 1.9) : Math.random();
-                    particles.push({
-                        x: bias,
-                        y: Math.random(),
-                        radius: 0.3 + Math.random() * 0.9,
-                        alpha: 0.025 + Math.random() * 0.05
-                    });
-                }
-
-                for (let i = 0; i < starCount; i += 1) {
-                    const bias = 1 - Math.pow(Math.random(), 2.2);
-                    stars.push({
-                        x: bias,
-                        y: Math.random(),
-                        radius: 0.6 + Math.random() * 1.4,
-                        alpha: 0.04 + Math.random() * 0.07,
-                        twinkle: Math.random() * Math.PI * 2
-                    });
-                }
-            };
-
-            const resetPulses = () => {
-                const pulseCount = lowPowerDevice ? 2 : 4;
-                pulses = Array.from({ length: pulseCount }, (_, index) => ({
-                    routeIndex: index % pulseRoutes.length,
-                    progress: -(3 + Math.random() * 8),
-                    speed: 0.24 + Math.random() * 0.12
-                }));
-            };
-
-            const resizeCanvas = () => {
-                const rect = heroCanvas.getBoundingClientRect();
-                width = Math.max(rect.width, 1);
-                height = Math.max(rect.height, 1);
-
-                heroCanvas.width = Math.floor(width * dpr());
-                heroCanvas.height = Math.floor(height * dpr());
-                context.setTransform(dpr(), 0, 0, dpr(), 0, 0);
-
-                createPointCloud();
-                resetPulses();
-                drawFrame(lastTimestamp || 0);
-            };
-
-            const getAnimatedNodes = (time) => {
-                return nodeBlueprints.map((node, index) => {
-                    const phase = index * 0.9;
-                    const driftX = Math.sin(time * node.speed + phase) * node.drift;
-                    const driftY = Math.cos(time * (node.speed * 0.82) + phase * 1.3) * node.drift * 0.55;
-
-                    return {
-                        ...node,
-                        xPos: node.x * width + driftX,
-                        yPos: node.y * height + driftY
-                    };
+            let particles = [];
+            
+            // Generate dynamic nodes
+            const nodeCount = lowPower ? 48 : 78;
+            for (let i = 0; i < nodeCount; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 0.2 + Math.random() * 0.7;
+                nodes.push({
+                    x: 0.5 + Math.cos(angle) * radius * (Math.random() * 0.8 + 0.2),
+                    y: 0.5 + Math.sin(angle) * radius * (Math.random() * 0.8 + 0.2),
+                    radius: 1.2 + Math.random() * 2.5,
+                    pulseOffset: Math.random() * Math.PI * 2,
+                    driftSpeed: 0.1 + Math.random() * 0.3,
+                    phaseX: Math.random() * Math.PI * 2,
+                    phaseY: Math.random() * Math.PI * 2,
+                    intensity: 0.3 + Math.random() * 0.6
                 });
-            };
-
-            const drawFrame = (timestamp) => {
-                if (!context || !width || !height) return;
-
-                const seconds = timestamp * 0.001;
-                const delta = Math.min((timestamp - lastTimestamp) / 1000 || 0, 0.05);
-                lastTimestamp = timestamp;
-                const nodes = getAnimatedNodes(seconds);
-
-                context.clearRect(0, 0, width, height);
-
-                particles.forEach((particle) => {
-                    context.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
-                    context.beginPath();
-                    context.arc(particle.x * width, particle.y * height, particle.radius, 0, Math.PI * 2);
-                    context.fill();
-                });
-
-                stars.forEach((star) => {
-                    const twinkle = (Math.sin(seconds * 0.35 + star.twinkle) + 1) * 0.5;
-                    context.fillStyle = `rgba(180, 214, 255, ${star.alpha + twinkle * 0.03})`;
-                    context.beginPath();
-                    context.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
-                    context.fill();
-                });
-
-                edgePairs.forEach(([fromIndex, toIndex]) => {
-                    const from = nodes[fromIndex];
-                    const to = nodes[toIndex];
-                    const coreEdge = from.role === 'core' || to.role === 'core';
-
-                    context.strokeStyle = coreEdge ? 'rgba(104, 164, 255, 0.17)' : 'rgba(151, 193, 255, 0.08)';
-                    context.lineWidth = coreEdge ? 1.15 : 0.85;
-                    context.beginPath();
-                    context.moveTo(from.xPos, from.yPos);
-                    context.lineTo(to.xPos, to.yPos);
-                    context.stroke();
-                });
-
-                const coreNode = nodes[7];
-                const radialGlow = context.createRadialGradient(coreNode.xPos, coreNode.yPos, 0, coreNode.xPos, coreNode.yPos, Math.min(width, height) * 0.18);
-                radialGlow.addColorStop(0, 'rgba(72, 137, 255, 0.12)');
-                radialGlow.addColorStop(0.28, 'rgba(72, 137, 255, 0.05)');
-                radialGlow.addColorStop(1, 'rgba(72, 137, 255, 0)');
-                context.fillStyle = radialGlow;
-                context.beginPath();
-                context.arc(coreNode.xPos, coreNode.yPos, Math.min(width, height) * 0.18, 0, Math.PI * 2);
-                context.fill();
-
-                nodes.forEach((node) => {
-                    const isCore = node.role === 'core';
-                    const isSurface = node.role === 'surface';
-                    const alpha = isCore ? 0.78 : isSurface ? 0.46 : 0.34;
-                    const radius = isCore ? node.size + 1.5 : node.size + 0.6;
-
-                    context.fillStyle = `rgba(227, 240, 255, ${alpha})`;
-                    context.beginPath();
-                    context.arc(node.xPos, node.yPos, radius, 0, Math.PI * 2);
-                    context.fill();
-
-                    if (isCore || isSurface) {
-                        context.fillStyle = isCore ? 'rgba(80, 149, 255, 0.18)' : 'rgba(80, 149, 255, 0.08)';
-                        context.beginPath();
-                        context.arc(node.xPos, node.yPos, radius * 2.8, 0, Math.PI * 2);
-                        context.fill();
+            }
+            
+            // Generate edges based on proximity
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i+1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist < 0.28) {
+                        edges.push({ from: i, to: j, strength: 1 - dist / 0.28 });
                     }
+                }
+            }
+            
+            // Stars background
+            const starCount = lowPower ? 80 : 150;
+            for (let i = 0; i < starCount; i++) {
+                stars.push({
+                    x: Math.random(),
+                    y: Math.random(),
+                    size: 0.5 + Math.random() * 1.5,
+                    alpha: 0.2 + Math.random() * 0.5,
+                    twinkleSpeed: 0.2 + Math.random() * 0.8
                 });
-
-                if (!reducedMotionQuery.matches) {
-                    pulses.forEach((pulse) => {
-                        if (pulse.progress < 0) {
-                            pulse.progress += delta;
-                            return;
-                        }
-
-                        pulse.progress += delta * pulse.speed;
-
-                        const route = pulseRoutes[pulse.routeIndex];
-                        if (pulse.progress >= route.length - 1) {
-                            pulse.routeIndex = (pulse.routeIndex + 1 + Math.floor(Math.random() * 2)) % pulseRoutes.length;
-                            pulse.progress = -(4 + Math.random() * 9);
-                            pulse.speed = 0.22 + Math.random() * 0.1;
-                            return;
-                        }
-
-                        const segmentIndex = Math.floor(pulse.progress);
-                        const segmentProgress = pulse.progress - segmentIndex;
-                        const start = nodes[route[segmentIndex]];
-                        const end = nodes[route[segmentIndex + 1]];
-                        const x = start.xPos + (end.xPos - start.xPos) * segmentProgress;
-                        const y = start.yPos + (end.yPos - start.yPos) * segmentProgress;
-
-                        const pulseGlow = context.createRadialGradient(x, y, 0, x, y, 18);
-                        pulseGlow.addColorStop(0, 'rgba(163, 206, 255, 0.9)');
-                        pulseGlow.addColorStop(0.38, 'rgba(113, 178, 255, 0.24)');
-                        pulseGlow.addColorStop(1, 'rgba(113, 178, 255, 0)');
-                        context.fillStyle = pulseGlow;
-                        context.beginPath();
-                        context.arc(x, y, 18, 0, Math.PI * 2);
-                        context.fill();
-
-                        context.strokeStyle = 'rgba(143, 196, 255, 0.3)';
-                        context.lineWidth = 1.4;
-                        context.beginPath();
-                        context.moveTo(start.xPos, start.yPos);
-                        context.lineTo(x, y);
-                        context.stroke();
-
-                        context.fillStyle = 'rgba(220, 239, 255, 0.95)';
-                        context.beginPath();
-                        context.arc(x, y, 1.9, 0, Math.PI * 2);
-                        context.fill();
-                    });
+            }
+            
+            // Floating particles
+            const particleCount = lowPower ? 60 : 120;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random(),
+                    y: Math.random(),
+                    vx: (Math.random() - 0.5) * 0.002,
+                    vy: (Math.random() - 0.5) * 0.002,
+                    size: 0.8 + Math.random() * 1.5,
+                    alpha: 0.1 + Math.random() * 0.3
+                });
+            }
+            
+            function resize() {
+                const rect = heroCanvas.getBoundingClientRect();
+                width = rect.width;
+                height = rect.height;
+                heroCanvas.width = width * window.devicePixelRatio;
+                heroCanvas.height = height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            
+            window.addEventListener('resize', resize);
+            
+            function draw() {
+                if (!ctx || width === 0 || height === 0) return;
+                ctx.clearRect(0, 0, width, height);
+                
+                time += 0.008;
+                if (reducedMotion) time *= 0.2;
+                
+                // Background stars with twinkle
+                stars.forEach(star => {
+                    const twinkle = 0.5 + 0.5 * Math.sin(time * star.twinkleSpeed);
+                    ctx.fillStyle = `rgba(255, 240, 200, ${star.alpha * (0.6 + twinkle * 0.4)})`;
+                    ctx.beginPath();
+                    ctx.arc(star.x * width, star.y * height, star.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // Update and draw particles
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = 1;
+                    if (p.x > 1) p.x = 0;
+                    if (p.y < 0) p.y = 1;
+                    if (p.y > 1) p.y = 0;
+                    
+                    ctx.fillStyle = `rgba(100, 160, 255, ${p.alpha * 0.5})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x * width, p.y * height, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // Calculate node positions with drift (no mouse influence)
+                const nodePositions = nodes.map((node, idx) => {
+                    const driftX = Math.sin(time * node.driftSpeed + node.phaseX) * 0.02;
+                    const driftY = Math.cos(time * node.driftSpeed * 0.7 + node.phaseY) * 0.02;
+                    let x = node.x + driftX;
+                    let y = node.y + driftY;
+                    return { x: Math.min(Math.max(x, 0.02), 0.98), y: Math.min(Math.max(y, 0.02), 0.98) };
+                });
+                
+                // Draw edges with gradient glow
+                edges.forEach(edge => {
+                    const from = nodePositions[edge.from];
+                    const to = nodePositions[edge.to];
+                    const intensity = edge.strength * (0.2 + 0.3 * Math.sin(time * 1.2));
+                    ctx.beginPath();
+                    ctx.moveTo(from.x * width, from.y * height);
+                    ctx.lineTo(to.x * width, to.y * height);
+                    ctx.strokeStyle = `rgba(80, 150, 255, ${0.08 + intensity * 0.2})`;
+                    ctx.lineWidth = 0.8 + intensity * 1.2;
+                    ctx.stroke();
+                });
+                
+                // Draw nodes with pulsing glow
+                nodes.forEach((node, idx) => {
+                    const pos = nodePositions[idx];
+                    const pulse = 0.6 + 0.4 * Math.sin(time * 1.8 + node.pulseOffset);
+                    const size = node.radius * (0.8 + pulse * 0.4);
+                    const glowAlpha = 0.15 + pulse * 0.2;
+                    
+                    // Outer glow
+                    ctx.fillStyle = `rgba(59, 130, 246, ${glowAlpha * 0.5})`;
+                    ctx.beginPath();
+                    ctx.arc(pos.x * width, pos.y * height, size + 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Core
+                    ctx.fillStyle = `rgba(130, 190, 255, ${0.7 + pulse * 0.3})`;
+                    ctx.beginPath();
+                    ctx.arc(pos.x * width, pos.y * height, size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Inner highlight
+                    ctx.fillStyle = `rgba(255, 255, 255, 0.9)`;
+                    ctx.beginPath();
+                    ctx.arc(pos.x * width, pos.y * height, size * 0.35, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // Additional light streaks (flow particles)
+                if (!reducedMotion && time % 0.5 < 0.05) {
+                    const randEdge = edges[Math.floor(Math.random() * edges.length)];
+                    if (randEdge) {
+                        const from = nodePositions[randEdge.from];
+                        const to = nodePositions[randEdge.to];
+                        const t = Math.random();
+                        const x = from.x * (1-t) + to.x * t;
+                        const y = from.y * (1-t) + to.y * t;
+                        ctx.fillStyle = 'rgba(255, 210, 100, 0.9)';
+                        ctx.beginPath();
+                        ctx.arc(x * width, y * height, 2.2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
                 }
-            };
-
-            const tick = (timestamp) => {
-                if (paused) return;
-                drawFrame(timestamp);
-                if (!reducedMotionQuery.matches) {
-                    animationFrame = window.requestAnimationFrame(tick);
-                }
-            };
-
-            const handleVisibility = () => {
-                paused = document.hidden;
-                if (paused) {
-                    window.cancelAnimationFrame(animationFrame);
+            }
+            
+            function animate() {
+                if (reducedMotion) {
+                    draw();
                     return;
                 }
-
-                lastTimestamp = performance.now();
-                drawFrame(lastTimestamp);
-                if (!reducedMotionQuery.matches) {
-                    animationFrame = window.requestAnimationFrame(tick);
-                }
-            };
-
-            resizeCanvas();
-            document.addEventListener('visibilitychange', handleVisibility);
-            window.addEventListener('resize', resizeCanvas);
-
-            if (!reducedMotionQuery.matches) {
-                animationFrame = window.requestAnimationFrame(tick);
+                draw();
+                animationFrame = requestAnimationFrame(animate);
             }
+            
+            resize();
+            animate();
         }
     </script>
 </body>
