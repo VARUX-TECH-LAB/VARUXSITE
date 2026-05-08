@@ -1,0 +1,2097 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jujutsu Shangis 10K Kill Hesaplayıcı</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070707;
+      --bg-2: #12100f;
+      --card: rgba(17, 18, 18, 0.86);
+      --card-soft: rgba(255, 255, 255, 0.055);
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.25);
+      --text: #f4f0ea;
+      --muted: #b5aca1;
+      --faint: #7f776f;
+      --teal: #27c0a6;
+      --teal-soft: rgba(39, 192, 166, 0.18);
+      --red: #d85b61;
+      --red-soft: rgba(216, 91, 97, 0.18);
+      --gold: #d6a84f;
+      --gold-soft: rgba(214, 168, 79, 0.16);
+      --shadow: rgba(0, 0, 0, 0.48);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(145deg, rgba(95, 24, 30, 0.32) 0%, transparent 31%),
+        linear-gradient(35deg, transparent 0%, rgba(19, 92, 82, 0.23) 58%, transparent 100%),
+        linear-gradient(135deg, #050505 0%, #15100f 42%, #0a1412 74%, #030303 100%);
+      overflow-x: hidden;
+    }
+
+    @supports (min-height: 100dvh) {
+      body {
+        min-height: 100dvh;
+      }
+    }
+
+    button,
+    input {
+      touch-action: manipulation;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
+    }
+
+    .app-shell {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px max(0px, env(safe-area-inset-right)) 46px max(0px, env(safe-area-inset-left));
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .app-header > div:last-child {
+      min-width: 0;
+    }
+
+    .seal {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(214, 168, 79, 0.22), rgba(39, 192, 166, 0.08)),
+        rgba(255, 255, 255, 0.04);
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    }
+
+    .eyebrow {
+      margin: 0 0 5px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 54px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+
+    .progress-panel {
+      margin-bottom: 24px;
+      padding: 13px 14px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: var(--radius);
+      background: rgba(8, 8, 8, 0.48);
+      backdrop-filter: blur(12px);
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .progress-shell {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.32);
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--gold), var(--red));
+      box-shadow: 0 0 22px rgba(39, 192, 166, 0.2);
+      transition: width 260ms ease;
+    }
+
+    .deck {
+      position: relative;
+      display: grid;
+      align-items: stretch;
+      width: min(760px, 100%);
+      margin: 0 auto;
+      isolation: isolate;
+    }
+
+    .deck-card,
+    .main-card {
+      grid-area: 1 / 1;
+      min-height: 536px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 30px 80px var(--shadow);
+    }
+
+    .deck-card {
+      pointer-events: none;
+      height: 100%;
+      transform-origin: center top;
+      backdrop-filter: blur(12px);
+    }
+
+    .back-1 {
+      z-index: 1;
+      opacity: 0.62;
+      transform: translate(10px, 12px) rotate(1.2deg) scale(0.985);
+      background: rgba(27, 29, 28, 0.64);
+    }
+
+    .back-2 {
+      z-index: 0;
+      opacity: 0.46;
+      transform: translate(-12px, 25px) rotate(-1.6deg) scale(0.963);
+      background: rgba(20, 21, 21, 0.55);
+    }
+
+    .back-3 {
+      z-index: -1;
+      opacity: 0.32;
+      transform: translate(0, 39px) rotate(0.55deg) scale(0.94);
+      background: rgba(18, 18, 18, 0.46);
+    }
+
+    .main-card {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .main-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 31%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 58%);
+      opacity: 0.75;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .card-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--faint);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .card-kicker span:last-child {
+      color: var(--gold);
+    }
+
+    .question-title {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+
+    .question-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      padding: 26px 0 22px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .option-button {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.055);
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 760;
+      line-height: 1.28;
+      text-align: left;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .option-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(214, 168, 79, 0.48);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .option-button.selected {
+      border-color: rgba(39, 192, 166, 0.8);
+      background:
+        linear-gradient(135deg, rgba(39, 192, 166, 0.24), rgba(214, 168, 79, 0.12)),
+        rgba(255, 255, 255, 0.065);
+      box-shadow: inset 0 0 0 1px rgba(39, 192, 166, 0.16), 0 16px 38px rgba(0, 0, 0, 0.23);
+    }
+
+    .input-wrap {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .number-input {
+      width: 100%;
+      min-height: 64px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      padding: 0 18px;
+      background: rgba(0, 0, 0, 0.31);
+      color: var(--text);
+      font: inherit;
+      font-size: 22px;
+      font-weight: 850;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .number-input::placeholder {
+      color: rgba(244, 240, 234, 0.34);
+    }
+
+    .number-input:focus {
+      border-color: rgba(39, 192, 166, 0.76);
+      background: rgba(0, 0, 0, 0.39);
+      box-shadow: 0 0 0 4px rgba(39, 192, 166, 0.1);
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .nav-button {
+      min-height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      padding: 0 20px;
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 160ms ease, opacity 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .nav-button:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .nav-button:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    .nav-button.secondary {
+      min-width: 122px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .nav-button.primary,
+    .nav-button.restart {
+      flex: 1;
+      border-color: rgba(214, 168, 79, 0.48);
+      background:
+        linear-gradient(135deg, rgba(214, 168, 79, 0.88), rgba(216, 91, 97, 0.78));
+      color: #120d0b;
+      box-shadow: 0 18px 42px rgba(216, 91, 97, 0.22);
+    }
+
+    .nav-button.restart {
+      width: 100%;
+    }
+
+    .shake {
+      animation: shake 260ms ease;
+    }
+
+    .slide-out-left {
+      animation: slideOutLeft 180ms ease forwards;
+    }
+
+    .slide-out-right {
+      animation: slideOutRight 180ms ease forwards;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 230ms ease both;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 230ms ease both;
+    }
+
+    .result-kill {
+      display: grid;
+      gap: 6px;
+      margin: 24px 0 22px;
+      padding: 22px;
+      border: 1px solid rgba(214, 168, 79, 0.26);
+      border-radius: var(--radius);
+      background: rgba(214, 168, 79, 0.075);
+    }
+
+    .result-kill span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .result-kill strong {
+      font-size: 68px;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .result-list {
+      display: grid;
+      gap: 13px;
+      margin: 6px 0 18px;
+    }
+
+    .result-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    .result-row-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .result-row-top span:first-child {
+      overflow-wrap: anywhere;
+    }
+
+    .result-row-top span:last-child {
+      flex: 0 0 auto;
+    }
+
+    .mini-bar-shell {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--gold), var(--red));
+    }
+
+    .row-comment {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .decision-box {
+      margin-top: 18px;
+      padding: 20px;
+      border: 1px solid rgba(216, 91, 97, 0.34);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(216, 91, 97, 0.17), rgba(39, 192, 166, 0.08)),
+        rgba(255, 255, 255, 0.045);
+    }
+
+    .decision-box span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .decision-box p {
+      margin: 0;
+      font-size: 29px;
+      font-weight: 920;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 20;
+      max-width: min(520px, calc(100% - 28px));
+      padding: 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      background: rgba(12, 12, 12, 0.9);
+      color: var(--text);
+      box-shadow: 0 22px 62px rgba(0, 0, 0, 0.46);
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      transform: translate(-50%, 18px) scale(0.97);
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(16px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    @media (min-width: 721px) and (max-width: 1024px) {
+      .app-shell {
+        width: min(920px, calc(100% - 40px));
+        padding-top: 28px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .deck {
+        width: min(720px, 100%);
+      }
+
+      .deck-card,
+      .main-card {
+        min-height: 500px;
+      }
+
+      .question-title {
+        font-size: 34px;
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px) rotate(-0.25deg); }
+      75% { transform: translateX(8px) rotate(0.25deg); }
+    }
+
+    @keyframes slideOutLeft {
+      to {
+        opacity: 0;
+        transform: translateX(-34px) rotate(-1.2deg) scale(0.985);
+      }
+    }
+
+    @keyframes slideOutRight {
+      to {
+        opacity: 0;
+        transform: translateX(34px) rotate(1.2deg) scale(0.985);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(34px) rotate(1.2deg) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotate(0) scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-34px) rotate(-1.2deg) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotate(0) scale(1);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app-shell {
+        width: min(100% - 22px, 920px);
+        padding-top: 18px;
+        padding-bottom: 34px;
+      }
+
+      .app-header {
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .seal {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 35px;
+        line-height: 1.04;
+      }
+
+      .question-title {
+        font-size: 29px;
+      }
+
+      .progress-panel {
+        margin-bottom: 18px;
+        padding: 12px;
+      }
+
+      .question-meta {
+        font-size: 12px;
+      }
+
+      .main-card {
+        min-height: 0;
+        padding: 22px;
+        overflow: visible;
+      }
+
+      .deck-card {
+        min-height: 0;
+      }
+
+      .question-body {
+        justify-content: start;
+        padding: 22px 0 18px;
+      }
+
+      .options {
+        gap: 9px;
+      }
+
+      .option-button {
+        min-height: 50px;
+        padding: 13px 14px;
+      }
+
+      .body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-actions {
+        flex-direction: column-reverse;
+      }
+
+      .nav-button.secondary,
+      .nav-button.primary {
+        width: 100%;
+      }
+
+      .number-input {
+        min-height: 58px;
+        font-size: 20px;
+      }
+
+      .result-kill strong {
+        font-size: 44px;
+      }
+
+      .decision-box p {
+        font-size: 23px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .app-shell {
+        width: min(100% - 16px, 920px);
+        padding-top: 14px;
+      }
+
+      .app-header {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .seal {
+        width: 46px;
+        height: 46px;
+        font-size: 11px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .question-title {
+        font-size: 26px;
+      }
+
+      .main-card {
+        padding: 16px;
+        box-shadow: 0 22px 56px rgba(0, 0, 0, 0.45);
+      }
+
+      .back-1 {
+        transform: translate(6px, 10px) rotate(1deg) scale(0.985);
+      }
+
+      .back-2 {
+        transform: translate(-6px, 20px) rotate(-1.2deg) scale(0.963);
+      }
+
+      .back-3 {
+        transform: translate(0, 30px) rotate(0.5deg) scale(0.94);
+      }
+
+      .card-kicker {
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 14px;
+      }
+
+      .option-button,
+      .nav-button {
+        font-size: 15px;
+      }
+
+      .option-button {
+        min-height: 48px;
+        padding: 12px;
+      }
+
+      .nav-button {
+        min-height: 50px;
+      }
+
+      .result-kill {
+        margin: 18px 0;
+        padding: 16px;
+      }
+
+      .result-kill strong {
+        font-size: 38px;
+      }
+
+      .decision-box p {
+        font-size: 21px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .app-shell {
+        width: min(100% - 12px, 920px);
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .question-title {
+        font-size: 23px;
+      }
+
+      .main-card {
+        padding: 14px;
+      }
+
+      .option-button,
+      .nav-button {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-height: 560px) and (orientation: landscape) {
+      .app-shell {
+        padding-top: 10px;
+        padding-bottom: 22px;
+      }
+
+      .app-header {
+        margin-bottom: 10px;
+      }
+
+      .seal {
+        width: 42px;
+        height: 42px;
+        font-size: 11px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .progress-panel {
+        margin-bottom: 14px;
+      }
+
+      .deck-card,
+      .main-card {
+        min-height: 0;
+      }
+
+      .main-card {
+        padding: 18px;
+      }
+
+      .question-title {
+        font-size: 24px;
+      }
+
+      .question-body {
+        justify-content: start;
+        padding: 16px 0 14px;
+      }
+
+      .options {
+        gap: 8px;
+      }
+
+      .option-button {
+        min-height: 44px;
+        padding: 10px 12px;
+      }
+
+      .card-actions {
+        padding-top: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 1ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="seal">10K</div>
+      <div>
+        <p class="eyebrow">Ölçme, Sövme ve Yerleştirme Merkezi</p>
+        <h1>Jujutsu Shangis 10K Kill Hesaplayıcı</h1>
+      </div>
+    </header>
+
+    <section class="progress-panel" aria-label="İlerleme">
+      <div class="question-meta">
+        <span id="questionCounter">Soru 1 / 25</span>
+        <span id="percentLabel">%0</span>
+      </div>
+      <div class="progress-shell">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </section>
+
+    <section class="deck" aria-live="polite">
+      <div class="deck-card back-3"></div>
+      <div class="deck-card back-2"></div>
+      <div class="deck-card back-1"></div>
+      <article class="main-card" id="card" tabindex="-1"></article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const questions = [
+      {
+        id: "kills",
+        title: "Şu an kaç killin var?",
+        type: "number",
+        placeholder: "Örn: 1250"
+      },
+      
+      {
+        id: "hours",
+        title: "Günde ortalama kaç saat oynuyorsun?",
+        type: "choice",
+        options: ["0-1 saat", "1-2 saat", "2-4 saat", "4-6 saat", "6+ saat"]
+      },
+      {
+        id: "duel",
+        title: "1v1 maçlarda genel durumun ne?",
+        type: "choice",
+        options: ["Genelde kazanıyorum", "Yarı yarıya", "Genelde dayak yiyorum", "Spawn olurken ölüyorum"]
+      },
+      {
+        id: "outnumbered",
+        title: "2v1 maçlarda kazanma ihtimalin ne?",
+        type: "choice",
+        options: [
+          "Bazen ikisini de alıyorum",
+          "Birini alıp ölüyorum",
+          "İkisine de damage atamadan gidiyorum",
+          "2 kişi görünce karakterim manevi olarak teslim oluyor"
+        ]
+      },
+      {
+        id: "badPlay",
+        title: "Kötü oynayınca ne yapıyorsun?",
+        type: "choice",
+        options: [
+          "Anında çıkıyorum, kimse kötü oynadığımı görmesin",
+          "Biraz daha oynayıp rage quit atıyorum",
+          "Selman’ı suçluyorum.",
+          "Dayak yesem de devam ediyorum"
+        ]
+      },
+      {
+        id: "hideBad",
+        title: "1v1’de kötü olduğun belli olmasın diye ne yaparsın?",
+        type: "choice",
+        options: [
+          "1v1’e girerim, dayak yesem de öğrenirim",
+          "Toplu fight’a girerim, kimse bok gibi oynadığımı anlamasın",
+          "Takım arkadaşımın arkasına saklanıp son vuruş çalarım"
+        ]
+      },
+      {
+        id: "combo",
+        title: "Combo bilgin hangi seviyede?",
+        type: "choice",
+        options: [
+          "Full combo biliyorum",
+          "Birkaç combo biliyorum",
+          "YouTube’dan izledim ama elim uygulamıyor",
+          "Klavyeye basıyorum, oyun bir şeyler yapıyor",
+          "Combo ne kardeşim, ben kader oynuyorum"
+        ]
+      },
+      {
+        id: "blame",
+        title: "Kaybedince en çok kimi suçluyorsun?",
+        type: "choice",
+        options: [
+          "Kendimi",
+          "Ping’i",
+          "Takımı",
+          "Karakter dengesini",
+          "Oyunu yapanları",
+          "Allah belanı versin diyip Selmanı suçluyorum",
+          "Allah ne verdiyse herkesi"
+        ]
+      },
+      {
+        id: "threeDeaths",
+        title: "Birisi seni 3 kere üst üste keserse tepkin ne olur?",
+        type: "choice",
+        options: ["Sakin kalırım", "Sinirlenirim ama devam ederim", "“Bu çocuk hile” derim", "Oyundan çıkarım", "Hayatımı sorgularım"]
+      },
+      {
+        id: "rageQuit",
+        title: "Rage quit sıklığın nedir?",
+        type: "choice",
+        options: ["Neredeyse hiç", "Haftada birkaç kez", "Günde bir", "Günde birkaç kez", "Oyuna giriş amacım rage quit"]
+      },
+      {
+        id: "teammate",
+        title: "Takım arkadaşın ölünce ne yaparsın?",
+        type: "choice",
+        options: [
+          "Yardım ederim",
+          "Kaçarım",
+          "Son vuruş peşinde koşarım",
+          "“Salak zaten” derim",
+          "Ben de yanında ölürüm, dramatik final",
+          "Aklın başına geldi mi diyorum"
+        ]
+      },
+      {
+        id: "girlfriends",
+        title: "Şu ana kadar kaç sevgilin oldu?",
+        type: "choice",
+        options: ["0", "1", "2-3", "4+", "Bu soru beni oyundan daha çok yaraladı"]
+      },
+      {
+        id: "last31",
+        title: "En son ne zaman 31 çektin?",
+        type: "choice",
+        adultOnly: true,
+        options: ["Bugün", "Dün", "Bu hafta", "Hatırlamıyorum", "Sıradaki soruya geçelim, "]
+      },
+      {
+        id: "weekly31",
+        title: "Haftada kaç kere 31 çekiyorsun?",
+        type: "choice",
+        adultOnly: true,
+        options: ["0", "1-3", "4-7", "8-14", "15+"]
+      },
+      {
+        id: "age",
+        title: "Yaş kaç?",
+        type: "choice",
+        options: ["12-14", "15-17", "18-20", "21+"]
+      },
+      {
+        id: "body",
+        title: "Boy / kilo giriniz.",
+        type: "custom",
+        fields: [
+          { key: "height", label: "Boy", placeholder: "Örn: 175" },
+          { key: "weight", label: "Kilo", placeholder: "Örn: 68" }
+        ]
+      },
+      {
+        id: "entity",
+        title: "En son ne zaman kadın  dövdün?",
+        type: "choice",
+        options: ["Bugün", "Dün", "Bu hafta", "Hatırlamıyorum", "Daha dövecek karı bulamadım"]
+      },
+      {
+        id: "values",
+        title: "En son ne zaman dini milli değerlere küfür ettin?",
+        type: "choice",
+        options: ["Hiç", "Bugün", "Dün", "Bu hafta", "Şimdi ettim"],
+        specialAction: { option: "Şimdi ettim", message: "he iyi yaptın" }
+      },
+      {
+        id: "aytMath",
+        title: "En son ne zaman 7+ AYT mat çalıştın?",
+        type: "choice",
+        options: ["Bugün", "Dün", "Bu hafta", "Bu ay", "Hatırlamıyorum"]
+      },
+      {
+        id: "tytNet",
+        title: "TYT kaç net?",
+        type: "choice",
+        options: ["35-45", "55-65", "70-85", "85-90", "tyt sikiyorum"]
+      },
+      {
+        id: "aytFen",
+        title: "AYT fen bitti mi?",
+        type: "choice",
+        options: ["Evet", "Hayır"],
+        specialAction: { option: "Hayır", message: "ananı sikeyim" }
+      },
+      {
+        id: "selfView",
+        title: "Kendini oyunda nasıl görüyorsun?",
+        type: "choice",
+        options: ["Ana karakter", "Gizli yetenek", "Takımın yükünü taşıyan adam", "Ana siken ocak söndüren", "Haritada gezen ücretsiz kill"]
+      },
+      {
+        id: "exposed",
+        title: "Maçta bok gibi oynadığın anlaşılırsa ne hissedersin?",
+        type: "choice",
+        options: [
+          "Umursamam",
+          "Biraz utanırım",
+          "Oyundan çıkasım gelir",
+          "Arkadaşıma “Allah senin belanı versin inşallah su içemez hale gelirsin” demek isterim, suç onun"
+        ]
+      },
+      {
+        id: "robloxYks",
+        title: "YKS çalışman gereken saatte Roblox açıyor musun?",
+        type: "choice",
+        options: ["Hayır", "Bazen", "E tabi amk", "Her gün", "YKS ne yeniyo mu"]
+      },
+      {
+        id: "sacrifice",
+        title: "Son karar: 10K kill için neyi feda edersin?",
+        type: "choice",
+        options: ["Uykumu", "YKS netimi", "Sosyal hayatımı", "Onurumu", "Bakireliğimi feda edebilirim", "Zaten hepsi gitmişti"]
+      }
+    ];
+
+    const flowOrder = [
+      "kills",
+      "hours",
+      "duel",
+      "outnumbered",
+      "badPlay",
+      "hideBad",
+      "combo",
+      "blame",
+      "threeDeaths",
+      "rageQuit",
+      "teammate",
+      "girlfriends",
+      "age",
+      "last31",
+      "weekly31",
+      "body",
+      "entity",
+      "values",
+      "aytMath",
+      "tytNet",
+      "aytFen",
+      "selfView",
+      "exposed",
+      "robloxYks",
+      "sacrifice"
+    ];
+
+    const state = {
+      answers: {},
+      currentIndex: 0,
+      resultMode: false,
+      isAnimating: false,
+      toastTimer: null
+    };
+
+    const card = document.getElementById("card");
+    const questionCounter = document.getElementById("questionCounter");
+    const percentLabel = document.getElementById("percentLabel");
+    const progressBar = document.getElementById("progressBar");
+    const toast = document.getElementById("toast");
+
+    function byId(id) {
+      return questions.find((question) => question.id === id);
+    }
+
+    function hasAgeAnswer() {
+      return Object.prototype.hasOwnProperty.call(state.answers, "age");
+    }
+
+    function isAdult() {
+      return state.answers.age === "18-20" || state.answers.age === "21+";
+    }
+
+    function shouldSkipQuestion(question) {
+      return Boolean(question.adultOnly && hasAgeAnswer() && !isAdult());
+    }
+
+    function getVisibleQuestions() {
+      return flowOrder
+        .map(byId)
+        .filter((question) => question && !shouldSkipQuestion(question));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value);
+    }
+
+    function clamp(value, min = 0, max = 100) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("tr-TR").format(Math.round(value));
+    }
+
+    function answer(id) {
+      return state.answers[id];
+    }
+
+    function hasAnswer(question) {
+      const value = answer(question.id);
+
+      if (question.type === "number") {
+        return value !== undefined && value !== "" && Number(value) >= 0;
+      }
+
+      if (question.type === "custom") {
+        return question.fields.every((field) => {
+          const fieldValue = value && value[field.key];
+          return fieldValue !== undefined && fieldValue !== "" && Number(fieldValue) > 0;
+        });
+      }
+
+      return value !== undefined && value !== "";
+    }
+
+    function renderQuestion(direction = "next") {
+      state.resultMode = false;
+
+      const visibleQuestions = getVisibleQuestions();
+      if (state.currentIndex >= visibleQuestions.length) {
+        state.currentIndex = visibleQuestions.length - 1;
+      }
+
+      const question = visibleQuestions[state.currentIndex];
+      const progress = ((state.currentIndex + 1) / visibleQuestions.length) * 100;
+
+      questionCounter.textContent = `Soru ${state.currentIndex + 1} / ${visibleQuestions.length}`;
+      percentLabel.textContent = `%${Math.round(progress)}`;
+      progressBar.style.width = `${progress}%`;
+
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-kicker">
+            <span>Aday İşlem Formu</span>
+            <span>JS-${String(state.currentIndex + 1).padStart(2, "0")}</span>
+          </div>
+          <h2 class="question-title">${escapeHtml(question.title)}</h2>
+          <div class="question-body">${renderQuestionBody(question)}</div>
+          <div class="card-actions">
+            <button class="nav-button secondary" type="button" data-nav="prev" ${state.currentIndex === 0 ? "disabled" : ""}>Geri</button>
+            <button class="nav-button primary" type="button" data-nav="next">${state.currentIndex === visibleQuestions.length - 1 ? "Sonucu Gör" : "İleri"}</button>
+          </div>
+        </div>
+      `;
+
+      card.classList.remove("slide-out-left", "slide-out-right", "slide-in-left", "slide-in-right", "shake");
+      if (direction === "prev") {
+        card.classList.add("slide-in-left");
+      } else if (direction === "next") {
+        card.classList.add("slide-in-right");
+      }
+      card.focus({ preventScroll: true });
+    }
+
+    function renderQuestionBody(question) {
+      if (question.type === "number") {
+        const value = answer(question.id);
+        const safeValue = value === undefined || value === null ? "" : value;
+        return `
+          <div class="input-wrap">
+            <label class="field-label">
+              Kill sayısı
+              <input
+                class="number-input"
+                type="number"
+                inputmode="numeric"
+                min="0"
+                data-question-id="${escapeAttr(question.id)}"
+                placeholder="${escapeAttr(question.placeholder)}"
+                value="${escapeAttr(safeValue)}"
+              >
+            </label>
+          </div>
+        `;
+      }
+
+      if (question.type === "custom") {
+        const values = answer(question.id) || {};
+        return `
+          <div class="body-grid">
+            ${question.fields.map((field) => `
+              <label class="field-label">
+                ${escapeHtml(field.label)}
+                <input
+                  class="number-input"
+                  type="number"
+                  inputmode="decimal"
+                  min="1"
+                  data-question-id="${escapeAttr(question.id)}"
+                  data-field="${escapeAttr(field.key)}"
+                  placeholder="${escapeAttr(field.placeholder)}"
+                  value="${escapeAttr(values[field.key] === undefined || values[field.key] === null ? "" : values[field.key])}"
+                >
+              </label>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="options">
+          ${question.options.map((option) => {
+            const selected = answer(question.id) === option ? " selected" : "";
+            return `<button class="option-button${selected}" type="button" data-option="${escapeAttr(option)}">${escapeHtml(option)}</button>`;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function selectOption(option) {
+      const question = getVisibleQuestions()[state.currentIndex];
+      state.answers[question.id] = option;
+
+      if (question.id === "age" && !isAdult()) {
+        delete state.answers.last31;
+        delete state.answers.weekly31;
+      }
+
+      if (question.specialAction && question.specialAction.option === option) {
+        showToast(question.specialAction.message);
+      }
+
+      renderQuestion(null);
+    }
+
+    function nextQuestion() {
+      if (state.resultMode || state.isAnimating) return;
+
+      const visibleQuestions = getVisibleQuestions();
+      const question = visibleQuestions[state.currentIndex];
+
+      if (!hasAnswer(question)) {
+        showToast("Bu soruyu boş bırakamazsın.");
+        card.classList.remove("shake");
+        void card.offsetWidth;
+        card.classList.add("shake");
+        return;
+      }
+
+      if (question.id === "age" && !isAdult()) {
+        delete state.answers.last31;
+        delete state.answers.weekly31;
+      }
+
+      const refreshedQuestions = getVisibleQuestions();
+      const currentQuestionIndex = refreshedQuestions.findIndex((item) => item.id === question.id);
+      const nextIndex = currentQuestionIndex + 1;
+
+      if (nextIndex >= refreshedQuestions.length) {
+        showResult();
+        return;
+      }
+
+      navigateTo(nextIndex, "next");
+    }
+
+    function prevQuestion() {
+      if (state.isAnimating) return;
+
+      if (state.resultMode) {
+        state.resultMode = false;
+        state.currentIndex = getVisibleQuestions().length - 1;
+        renderQuestion("prev");
+        return;
+      }
+
+      if (state.currentIndex <= 0) return;
+      navigateTo(state.currentIndex - 1, "prev");
+    }
+
+    function navigateTo(index, direction) {
+      state.isAnimating = true;
+      card.classList.remove("slide-in-left", "slide-in-right", "slide-out-left", "slide-out-right", "shake");
+      card.classList.add(direction === "next" ? "slide-out-left" : "slide-out-right");
+
+      window.setTimeout(() => {
+        state.currentIndex = index;
+        renderQuestion(direction);
+        window.setTimeout(() => {
+          state.isAnimating = false;
+        }, 240);
+      }, 170);
+    }
+
+    function showToast(message) {
+      window.clearTimeout(state.toastTimer);
+      toast.textContent = message;
+      toast.classList.add("visible");
+      state.toastTimer = window.setTimeout(() => {
+        toast.classList.remove("visible");
+      }, 1550);
+    }
+
+    function calculateResult() {
+      const currentKills = Number(answer("kills")) || 0;
+      const hoursDaily = {
+        "0-1 saat": 18,
+        "1-2 saat": 42,
+        "2-4 saat": 86,
+        "4-6 saat": 138,
+        "6+ saat": 218
+      };
+
+      const hoursPotential = {
+        "0-1 saat": 5,
+        "1-2 saat": 12,
+        "2-4 saat": 22,
+        "4-6 saat": 32,
+        "6+ saat": 42
+      };
+
+      let skillMultiplier = 1;
+      let potentialBonus = hoursPotential[answer("hours")] || 0;
+      let risk = 28;
+      let mental = 74;
+      let excuse = 12;
+      let yksNeed = 18;
+      let disgrace = 16;
+      let chaos = 0;
+
+      switch (answer("duel")) {
+        case "Genelde kazanıyorum":
+          skillMultiplier += 0.34;
+          potentialBonus += 16;
+          risk -= 12;
+          mental += 4;
+          break;
+        case "Yarı yarıya":
+          skillMultiplier += 0.04;
+          potentialBonus += 7;
+          break;
+        case "Genelde dayak yiyorum":
+          skillMultiplier -= 0.25;
+          potentialBonus -= 12;
+          risk += 22;
+          disgrace += 8;
+          break;
+        case "Spawn olurken ölüyorum":
+          skillMultiplier -= 0.42;
+          potentialBonus -= 24;
+          risk += 34;
+          disgrace += 16;
+          break;
+      }
+
+      switch (answer("outnumbered")) {
+        case "Bazen ikisini de alıyorum":
+          skillMultiplier += 0.22;
+          potentialBonus += 11;
+          risk -= 8;
+          break;
+        case "Birini alıp ölüyorum":
+          skillMultiplier += 0.02;
+          potentialBonus += 3;
+          risk += 6;
+          break;
+        case "İkisine de damage atamadan gidiyorum":
+          skillMultiplier -= 0.2;
+          potentialBonus -= 10;
+          risk += 21;
+          disgrace += 9;
+          break;
+        case "2 kişi görünce karakterim manevi olarak teslim oluyor":
+          skillMultiplier -= 0.32;
+          potentialBonus -= 18;
+          risk += 30;
+          mental -= 8;
+          disgrace += 12;
+          break;
+      }
+
+      switch (answer("badPlay")) {
+        case "Anında çıkıyorum, kimse kötü oynadığımı görmesin":
+          mental -= 24;
+          disgrace += 14;
+          excuse += 7;
+          break;
+        case "Biraz daha oynayıp rage quit atıyorum":
+          mental -= 16;
+          disgrace += 9;
+          excuse += 5;
+          break;
+        case "Selman’ı suçluyorum.":
+          mental -= 10;
+          disgrace += 9;
+          excuse += 22;
+          break;
+        case "Dayak yesem de devam ediyorum":
+          mental += 13;
+          potentialBonus += 5;
+          risk -= 4;
+          break;
+      }
+
+      switch (answer("hideBad")) {
+        case "1v1’e girerim, dayak yesem de öğrenirim":
+          mental += 9;
+          potentialBonus += 6;
+          break;
+        case "Toplu fight’a girerim, kimse bok gibi oynadığımı anlamasın":
+          excuse += 12;
+          disgrace += 8;
+          break;
+        case "Takım arkadaşımın arkasına saklanıp son vuruş çalarım":
+          excuse += 10;
+          disgrace += 13;
+          potentialBonus += 2;
+          break;
+      }
+
+      switch (answer("combo")) {
+        case "Full combo biliyorum":
+          skillMultiplier += 0.28;
+          potentialBonus += 14;
+          risk -= 10;
+          break;
+        case "Birkaç combo biliyorum":
+          skillMultiplier += 0.12;
+          potentialBonus += 8;
+          break;
+        case "YouTube’dan izledim ama elim uygulamıyor":
+          skillMultiplier -= 0.08;
+          risk += 9;
+          disgrace += 6;
+          break;
+        case "Klavyeye basıyorum, oyun bir şeyler yapıyor":
+          skillMultiplier -= 0.18;
+          risk += 15;
+          chaos += 8;
+          break;
+        case "Combo ne kardeşim, ben kader oynuyorum":
+          skillMultiplier -= 0.28;
+          risk += 23;
+          chaos += 14;
+          disgrace += 10;
+          break;
+      }
+
+      switch (answer("blame")) {
+        case "Kendimi":
+          excuse -= 5;
+          mental += 5;
+          break;
+        case "Ping’i":
+          excuse += 18;
+          break;
+        case "Takımı":
+          excuse += 22;
+          disgrace += 4;
+          break;
+        case "Karakter dengesini":
+          excuse += 19;
+          break;
+        case "Oyunu yapanları":
+          excuse += 24;
+          break;
+        case "Selmanı suçluyorum":
+        case "Allah belanı versin diyip Selmanı suçluyorum":
+          excuse += 30;
+          chaos += 5;
+          break;
+        case "Allah ne verdiyse herkesi":
+          excuse += 36;
+          chaos += 10;
+          disgrace += 10;
+          break;
+      }
+
+      switch (answer("threeDeaths")) {
+        case "Sakin kalırım":
+          mental += 11;
+          break;
+        case "Sinirlenirim ama devam ederim":
+          mental += 3;
+          chaos += 4;
+          break;
+        case "“Bu çocuk hile” derim":
+          excuse += 18;
+          mental -= 4;
+          break;
+        case "Oyundan çıkarım":
+          mental -= 17;
+          excuse += 8;
+          disgrace += 8;
+          break;
+        case "Hayatımı sorgularım":
+          mental -= 9;
+          disgrace += 7;
+          break;
+      }
+
+      switch (answer("rageQuit")) {
+        case "Neredeyse hiç":
+          mental += 12;
+          break;
+        case "Haftada birkaç kez":
+          mental -= 7;
+          disgrace += 4;
+          break;
+        case "Günde bir":
+          mental -= 16;
+          disgrace += 8;
+          excuse += 5;
+          break;
+        case "Günde birkaç kez":
+          mental -= 25;
+          disgrace += 13;
+          excuse += 9;
+          break;
+        case "Oyuna giriş amacım rage quit":
+          mental -= 36;
+          disgrace += 19;
+          excuse += 13;
+          chaos += 10;
+          break;
+      }
+
+      switch (answer("teammate")) {
+        case "Yardım ederim":
+          mental += 5;
+          risk -= 3;
+          break;
+        case "Kaçarım":
+          mental -= 6;
+          excuse += 6;
+          break;
+        case "Son vuruş peşinde koşarım":
+          potentialBonus += 3;
+          disgrace += 10;
+          break;
+        case "“Salak zaten” derim":
+          excuse += 13;
+          disgrace += 8;
+          break;
+        case "Ben de yanında ölürüm, dramatik final":
+          mental += 1;
+          risk += 8;
+          chaos += 6;
+          break;
+        case "Aklın başına geldi mi diyorum":
+          excuse += 10;
+          disgrace += 7;
+          break;
+      }
+
+      switch (answer("girlfriends")) {
+        case "0":
+          disgrace += 3;
+          break;
+        case "4+":
+          chaos += 4;
+          break;
+        case "31 çekiyorum genelde":
+          mental -= 4;
+          disgrace += 10;
+          break;
+      }
+
+      if (isAdult()) {
+        switch (answer("last31")) {
+          case "Bugün":
+            disgrace += 9;
+            mental -= 2;
+            break;
+          case "Dün":
+            disgrace += 5;
+            break;
+          case "Hatırlamıyorum":
+            chaos += 4;
+            break;
+          case "Sıradaki soruya geçelim, devlet sırrı bu":
+            excuse += 8;
+            disgrace += 7;
+            break;
+        }
+
+        switch (answer("weekly31")) {
+          case "0":
+            mental += 3;
+            break;
+          case "4-7":
+            disgrace += 6;
+            break;
+          case "8-14":
+            disgrace += 14;
+            mental -= 3;
+            break;
+          case "15+":
+            disgrace += 24;
+            mental -= 7;
+            chaos += 6;
+            break;
+        }
+      }
+
+      const body = answer("body") || {};
+      const height = Number(body.height);
+      const weight = Number(body.weight);
+      if (height > 0 && weight > 0) {
+        const bmi = weight / ((height / 100) ** 2);
+        if (bmi >= 18.5 && bmi <= 26) {
+          mental += 2;
+        } else {
+          risk += 5;
+          disgrace += 3;
+        }
+      }
+
+      switch (answer("entity")) {
+        case "Bugün":
+          chaos += 7;
+          disgrace += 6;
+          break;
+        case "Daha dövecek varlık bulamadım":
+          risk += 5;
+          mental -= 3;
+          break;
+      }
+
+      switch (answer("values")) {
+        case "Hiç":
+          mental += 2;
+          break;
+        case "Bugün":
+          chaos += 5;
+          disgrace += 5;
+          break;
+        case "Şimdi ettim":
+          chaos += 12;
+          disgrace += 11;
+          break;
+      }
+
+      switch (answer("aytMath")) {
+        case "Bugün":
+          yksNeed -= 10;
+          mental += 3;
+          break;
+        case "Dün":
+          yksNeed -= 5;
+          break;
+        case "Bu ay":
+          yksNeed += 13;
+          break;
+        case "Hatırlamıyorum":
+          yksNeed += 24;
+          disgrace += 6;
+          break;
+      }
+
+      switch (answer("tytNet")) {
+        case "35-45":
+          yksNeed += 32;
+          disgrace += 9;
+          break;
+        case "55-65":
+          yksNeed += 19;
+          disgrace += 4;
+          break;
+        case "70-85":
+          yksNeed += 7;
+          mental += 2;
+          break;
+        case "85-90":
+          yksNeed -= 4;
+          mental += 4;
+          break;
+        case "tyt sikiyorum":
+          yksNeed -= 12;
+          potentialBonus += 4;
+          chaos += 5;
+          break;
+      }
+
+      switch (answer("aytFen")) {
+        case "Evet":
+          yksNeed -= 8;
+          break;
+        case "Hayır":
+          yksNeed += 22;
+          disgrace += 6;
+          break;
+      }
+
+      switch (answer("selfView")) {
+        case "Ana karakter":
+          potentialBonus += 9;
+          chaos += 5;
+          break;
+        case "Gizli yetenek":
+          potentialBonus += 7;
+          break;
+        case "Takımın yükünü taşıyan adam":
+          potentialBonus += 10;
+          mental += 4;
+          break;
+        case "Ana siken ocak söndüren":
+          potentialBonus += 7;
+          chaos += 28;
+          disgrace += 20;
+          break;
+        case "Haritada gezen ücretsiz kill":
+          potentialBonus -= 24;
+          risk += 28;
+          disgrace += 16;
+          break;
+      }
+
+      switch (answer("exposed")) {
+        case "Umursamam":
+          mental += 8;
+          break;
+        case "Biraz utanırım":
+          mental -= 2;
+          disgrace += 4;
+          break;
+        case "Oyundan çıkasım gelir":
+          mental -= 14;
+          excuse += 4;
+          disgrace += 8;
+          break;
+        case "Arkadaşıma “Allah senin belanı versin inşallah su içemez hale gelirsin” demek isterim, suç onun":
+          mental -= 9;
+          excuse += 18;
+          disgrace += 18;
+          chaos += 9;
+          break;
+      }
+
+      switch (answer("robloxYks")) {
+        case "Hayır":
+          yksNeed += 4;
+          break;
+        case "Bazen":
+          yksNeed += 24;
+          break;
+        case "E tabi amk":
+          yksNeed += 42;
+          disgrace += 7;
+          break;
+        case "Her gün":
+          yksNeed += 58;
+          disgrace += 12;
+          break;
+        case "YKS ne yeniyo mu":
+          yksNeed += 78;
+          disgrace += 18;
+          chaos += 6;
+          break;
+      }
+
+      switch (answer("sacrifice")) {
+        case "Uykumu":
+          potentialBonus += 6;
+          mental -= 6;
+          break;
+        case "YKS netimi":
+          potentialBonus += 9;
+          yksNeed += 20;
+          disgrace += 8;
+          break;
+        case "Sosyal hayatımı":
+          potentialBonus += 10;
+          disgrace += 12;
+          break;
+        case "Onurumu":
+          potentialBonus += 12;
+          disgrace += 26;
+          break;
+        case "Bakireliğimi feda edebilirim":
+          potentialBonus += 6;
+          disgrace += 48;
+          chaos += 12;
+          break;
+        case "Zaten hepsi gitmişti":
+          potentialBonus += 4;
+          disgrace += 38;
+          chaos += 8;
+          break;
+      }
+
+      if (answer("hours") === "6+ saat") {
+        yksNeed += 10;
+        mental -= 3;
+      }
+
+      const dailyBase = hoursDaily[answer("hours")] || 20;
+      const mentalMultiplier = 0.62 + clamp(mental) / 130;
+      const riskMultiplier = 1 - clamp(risk) / 260;
+      const chaosMultiplier = 1 + clamp(chaos, 0, 60) / 190;
+      const projectedGain = Math.max(0, Math.round(dailyBase * Math.max(0.25, skillMultiplier) * mentalMultiplier * riskMultiplier * chaosMultiplier * 45));
+      const estimatedKills = Math.max(0, currentKills + projectedGain);
+
+      const tenKPotential = clamp((estimatedKills / 10000) * 76 + potentialBonus * 0.62);
+
+      return {
+        estimatedKills,
+        potential: Math.round(tenKPotential),
+        risk: Math.round(clamp(risk)),
+        yksNeed: Math.round(clamp(yksNeed)),
+        excuse: Math.round(clamp(excuse)),
+        mental: Math.round(clamp(mental)),
+        disgrace: Math.round(clamp(disgrace)),
+        decision: getFinalDecision(tenKPotential)
+      };
+    }
+
+    function getFinalDecision(score) {
+      if (score < 25) {
+        return "Kardeşim siktir git YKS çalış. Bu hesaplayıcı bile senden umudu kesti.";
+      }
+      if (score < 36) {
+        return "fikir iyide seni ben pek bilemedim";
+      }
+      if (score < 50) {
+        return "Herkes yapar da seni bilemedim.";
+      }
+      if (score < 66) {
+        return "Potansiyel var ama eller bazen kamu kurumu gibi çalışıyor.";
+      }
+      if (score < 85) {
+        return "10K mümkün. Ama bu yolda TYT netlerin sessizce tabuta giriyor olabilir.";
+      }
+      return "Tebrikler. Roblox’ta çocuk dövmeyi meslek haline getirecek seviyeye geldin. Ailen gurur duymayacak ama Discord saygı duyabilir.";
+    }
+
+    function getCategoryComment(key, value) {
+      const comments = {
+        potential: [
+          "10K şimdilik uzaktan el sallıyor.",
+          "Olur gibi ama maç geçmişi biraz ifade vermeli.",
+          "Ciddi potansiyel var, sadece eller bazen mesaiye geç kalıyor.",
+          "Bu tempo 10K kapısını bayağı sert çalar."
+        ],
+        risk: [
+          "Veletler seni görünce yön değiştirebilir.",
+          "Dikkatli oynarsan utanç raporu kısa kalır.",
+          "Bazı veletler şimdiden sıraya girmiş gibi.",
+          "Harita seni açık büfe sanabilir."
+        ],
+        yksNeed: [
+          "YKS dosyası şimdilik masanın kenarında duruyor.",
+          "Dersler kapıyı çalıyor ama sen ses kısmışsın.",
+          "YKS’ye dönüş artık tavsiye değil, kamu duyurusu.",
+          "Rehber öğretmen bu barı görse sandalye çekerdi."
+        ],
+        excuse: [
+          "Bahane kası zayıf, arada kendini de suçluyorsun.",
+          "Ping ve takım dosyaları hazır bekliyor.",
+          "Mağlubiyetin basın açıklaması senden sorulur.",
+          "Bahane üretim tesisin üç vardiya çalışıyor."
+        ],
+        mental: [
+          "Mental ince cam gibi; rage quit rüzgarı yetebilir.",
+          "Dayanıyorsun ama masa altından kablo çekilmiş gibi.",
+          "Fena değil, dayak yedikçe bürokratik sakinlik geliyor.",
+          "Bu mentalle spawn noktasında bile duruşma kazanırsın."
+        ],
+        disgrace: [
+          "Rezillik dosyası şimdilik temiz sayılır.",
+          "Bazı cevaplar sosyal hayata delil olarak sunulabilir.",
+          "Endeks yükselmiş; Discord kanalı bile sessizleşti.",
+          "Bu seviye artık akademik makale konusu."
+        ]
+      };
+
+      const bucket = value < 25 ? 0 : value < 50 ? 1 : value < 75 ? 2 : 3;
+      return comments[key][bucket];
+    }
+
+    function showResult() {
+      state.resultMode = true;
+      const visibleQuestions = getVisibleQuestions();
+      const result = calculateResult();
+      const rows = [
+        { key: "potential", label: "10K Kill Potansiyeli", value: result.potential },
+        { key: "risk", label: "Veletlerden Dayak Yeme Riski", value: result.risk },
+        { key: "yksNeed", label: "YKS’ye Geri Dönme Zorunluluğu", value: result.yksNeed },
+        { key: "excuse", label: "Bahane Üretim Kapasitesi", value: result.excuse },
+        { key: "mental", label: "Mental Dayanıklılık", value: result.mental },
+        { key: "disgrace", label: "Rezillik Endeksi", value: result.disgrace }
+      ];
+
+      questionCounter.textContent = `Sonuç / ${visibleQuestions.length}`;
+      percentLabel.textContent = "%100";
+      progressBar.style.width = "100%";
+
+      card.classList.remove("slide-in-left", "slide-in-right", "slide-out-left", "slide-out-right", "shake");
+      card.classList.add("slide-in-right");
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-kicker">
+            <span>Kesin Olmayan Belge</span>
+            <span>SONUÇ</span>
+          </div>
+          <h2 class="question-title">Jujutsu Shangis Performans Raporu</h2>
+
+          <div class="result-kill">
+            <span>45 günlük tahmini kill kapasiten:</span>
+            <strong>${formatNumber(result.estimatedKills)}</strong>
+          </div>
+
+          <div class="result-list">
+            ${rows.map((row) => `
+              <div class="result-row">
+                <div class="result-row-top">
+                  <span>${escapeHtml(row.label)}</span>
+                  <span>%${row.value}</span>
+                </div>
+                <div class="mini-bar-shell">
+                  <div class="mini-bar" style="width: ${row.value}%"></div>
+                </div>
+                <p class="row-comment">${escapeHtml(getCategoryComment(row.key, row.value))}</p>
+              </div>
+            `).join("")}
+          </div>
+
+          <div class="decision-box">
+            <span>Nihai Karar</span>
+            <p>${escapeHtml(result.decision)}</p>
+          </div>
+
+          <div class="card-actions">
+            <button class="nav-button restart" type="button" data-restart="true">Restart</button>
+          </div>
+        </div>
+      `;
+      card.focus({ preventScroll: true });
+    }
+
+    function restart() {
+      state.answers = {};
+      state.currentIndex = 0;
+      state.resultMode = false;
+      state.isAnimating = false;
+      renderQuestion("prev");
+    }
+
+    card.addEventListener("click", (event) => {
+      const optionButton = event.target.closest("[data-option]");
+      const navButton = event.target.closest("[data-nav]");
+      const restartButton = event.target.closest("[data-restart]");
+
+      if (optionButton) {
+        selectOption(optionButton.dataset.option);
+      }
+
+      if (navButton) {
+        if (navButton.dataset.nav === "next") {
+          nextQuestion();
+        } else {
+          prevQuestion();
+        }
+      }
+
+      if (restartButton) {
+        restart();
+      }
+    });
+
+    card.addEventListener("input", (event) => {
+      const input = event.target.closest("[data-question-id]");
+      if (!input) return;
+
+      const id = input.dataset.questionId;
+      const question = byId(id);
+
+      if (question.type === "custom") {
+        const nextCustomAnswer = Object.assign({}, state.answers[id] || {});
+        nextCustomAnswer[input.dataset.field] = input.value;
+        state.answers[id] = nextCustomAnswer;
+        return;
+      }
+
+      state.answers[id] = input.value;
+    });
+
+    document.addEventListener("keyup", (event) => {
+      const activeElement = document.activeElement;
+      const isTyping = activeElement && activeElement.tagName === "INPUT";
+
+      if (isTyping && event.key !== "Enter") return;
+
+      if (event.key === "ArrowRight" || event.key === "Enter") {
+        nextQuestion();
+      }
+
+      if (event.key === "ArrowLeft") {
+        prevQuestion();
+      }
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>
