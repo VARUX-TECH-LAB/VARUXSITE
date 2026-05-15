@@ -585,18 +585,19 @@
                         <span class="hover:text-white transition-colors">Ürünler</span>
                         <div class="absolute top-full left-0 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity">
                             <div class="glass p-4 rounded-lg w-48 space-y-3">
-                                <a href="#arbiter" class="block hover:text-white transition-colors">Arbiter</a>
-                                <a href="#axis" class="block hover:text-white transition-colors">Axis</a>
+                                <a href="arbiter.html" class="block hover:text-white transition-colors">Arbiter</a>
+                                <a href="axis.html" class="block hover:text-white transition-colors">Axis</a>
+                                <a href="VARUX%20LAB.html" data-lab-link class="block hover:text-white transition-colors">VARUX Lab</a>
                             </div>
                         </div>
                     </div>
                     <a href="#nasil-calisir" class="hover:text-white transition-colors">Nasıl Çalışır</a>
                     <a href="#kullanim-alanlari" class="hover:text-white transition-colors">Kullanım Alanları</a>
-                    <a href="#docs" class="hover:text-white transition-colors">Dokümantasyon</a>
+                    <a href="VARUX%20LAB.html" data-lab-link class="hover:text-white transition-colors">VARUX Lab</a>
                 </div>
             </div>
             <div class="flex items-center gap-3 sm:gap-5">
-                <a href="#docs" class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Dokümantasyon</a>
+                <a href="VARUX%20LAB.html" data-lab-link class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">VARUX Lab</a>
                 <div class="lang-switch" aria-label="Language switcher">
                     <button type="button" class="lang-button is-active" data-lang-switch="tr">TR</button>
                     <button type="button" class="lang-button" data-lang-switch="en">EN</button>
@@ -635,9 +636,9 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
                     <button type="button" data-demo-open class="bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                    <button class="border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
-                        Dokümantasyonu İncele <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
-                    </button>
+                    <a href="VARUX%20LAB.html" data-hero-secondary class="border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
+                        VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+                    </a>
                 </div>
 
             </div>
@@ -750,7 +751,7 @@
                             <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Default-deny tool usage</li>
                         </ul>
                     </div>
-                    <button class="w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-arbiter-accent hover:text-white transition-all">Arbiter'ı İncele</button>
+                    <a href="arbiter.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-arbiter-accent hover:text-white transition-all flex items-center justify-center text-center">Arbiter'ı İncele</a>
                 </div>
 
                 <!-- AXIS -->
@@ -770,8 +771,21 @@
                             <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> No direct write principle</li>
                         </ul>
                     </div>
-                    <button class="w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-axis-accent hover:text-white transition-all">Axis'i İncele</button>
+                    <a href="axis.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-axis-accent hover:text-white transition-all flex items-center justify-center text-center">Axis'i İncele</a>
                 </div>
+            </div>
+
+            <div id="varux-lab" class="mt-12 md:mt-16 border border-zinc-900 bg-black/50 rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between">
+                <div class="max-w-3xl">
+                    <span class="lab-kicker text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-5 block">VARUX LAB</span>
+                    <h3 class="lab-title text-3xl md:text-5xl text-white font-medium tracking-tighter mb-5">Gelecek Sistemler Araştırması</h3>
+                    <p class="lab-description text-zinc-500 text-base leading-relaxed font-light">
+                        VARUX Lab, AXIS ve ARBITER kontrol çekirdeğini gelecekteki otonom sistem senaryoları, araştırma prototipleri ve konsept mimarilerle aynı çatı altında toplar.
+                    </p>
+                </div>
+                <a href="VARUX%20LAB.html" data-lab-cta class="shrink-0 border border-zinc-800 text-white py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all inline-flex items-center justify-center gap-3">
+                    VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -844,7 +858,7 @@
     </section>
 
     <!-- SECTION 8: FOR WHOM -->
-    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
+    <section id="kullanim-alanlari" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl text-white font-medium tracking-tighter mb-20 text-center uppercase tracking-[0.2em]">Kime Hitap Ediyoruz?</h2>
             <div class="grid md:grid-cols-3 gap-8">
@@ -871,7 +885,7 @@
             <h2 class="text-5xl md:text-8xl text-white font-medium tracking-tighter mb-16 leading-tight italic">Son Kararı <br><span class="text-zinc-700">Modele Bırakmayın.</span></h2>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
                 <button type="button" data-demo-open class="bg-white text-black py-5 px-14 text-[10px] font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                <button class="border border-zinc-800 text-white py-5 px-14 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all">Dokümantasyonu Oku</button>
+                <a href="VARUX%20LAB.html" data-final-secondary class="border border-zinc-800 text-white py-5 px-14 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all inline-flex items-center justify-center">VARUX Lab'i Aç</a>
             </div>
         </div>
     </section>
@@ -910,15 +924,15 @@
                     <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
                         <li class="hover:text-white cursor-pointer transition-colors">Arbiter</li>
                         <li class="hover:text-white cursor-pointer transition-colors">Axis</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">Control Core</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">VARUX Lab</li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Kaynaklar</h5>
                     <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
-                        <li class="hover:text-white cursor-pointer transition-colors">Dokümantasyon</li>
                         <li class="hover:text-white cursor-pointer transition-colors">Güvenlik</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">API Reference</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">Demo</li>
+                        <li class="hover:text-white cursor-pointer transition-colors">İletişim</li>
                     </ul>
                 </div>
                 <div class="flex flex-col items-start md:items-end">
@@ -1028,19 +1042,21 @@
         const navProductsLabel = document.querySelector('#navbar .hidden.lg\\:flex .relative > span');
         const navProductLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex .relative a'));
         const navMainLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex > a'));
-        const navDocsLinks = Array.from(document.querySelectorAll('#navbar a[href="#docs"]'));
+        const navLabLinks = Array.from(document.querySelectorAll('[data-lab-link]'));
         const langButtons = Array.from(document.querySelectorAll('[data-lang-switch]'));
         const demoButtons = Array.from(document.querySelectorAll('[data-demo-open]'));
-        const heroButtons = Array.from(document.querySelectorAll('header .flex.flex-col.sm\\:flex-row button'));
+        const heroSecondaryLink = document.querySelector('[data-hero-secondary]');
         const productsSection = document.getElementById('urunler');
         const problemCards = Array.from(pageSections[0]?.querySelectorAll('.grid.sm\\:grid-cols-2 > div') || []);
         const controlCards = Array.from(document.querySelectorAll('#nasil-calisir .p-10.glass.rounded-xl'));
         const arbiterCard = document.getElementById('arbiter');
         const axisCard = document.getElementById('axis');
+        const labPanel = document.getElementById('varux-lab');
         const policySection = pageSections[3];
         const threatSection = pageSections[4];
         const audienceSection = pageSections[5];
         const finalCtaSection = pageSections[6];
+        const finalSecondaryLink = document.querySelector('[data-final-secondary]');
         const audienceCards = Array.from(audienceSection?.querySelectorAll('.p-10.border') || []);
         const footerHeadings = Array.from(document.querySelectorAll('footer h5'));
         const footerLists = Array.from(document.querySelectorAll('footer ul'));
@@ -1079,11 +1095,11 @@
             twitterDescription: twitterDescription?.getAttribute('content') || '',
             navProductsLabel: navProductsLabel?.innerHTML || '',
             navMainLinks: navMainLinks.map((item) => item.innerHTML),
-            navDocsLinks: navDocsLinks.map((item) => item.innerHTML),
+            navLabLinks: navLabLinks.map((item) => item.innerHTML),
             demoButtons: demoButtons.map((item) => item.innerHTML),
             heroTitle: document.querySelector('header h1')?.innerHTML || '',
             heroDescription: document.querySelector('header p')?.innerHTML || '',
-            heroDocsButton: heroButtons[1]?.innerHTML || '',
+            heroLabButton: heroSecondaryLink?.innerHTML || '',
             problemTitle: pageSections[0]?.querySelector('h2')?.innerHTML || '',
             problemDescription: pageSections[0]?.querySelector('p')?.innerHTML || '',
             problemCards: problemCards.map((card) => ({
@@ -1099,9 +1115,13 @@
             productsTitle: productsSection?.querySelector('h2')?.innerHTML || '',
             productsDescription: productsSection?.querySelector('.text-center p')?.innerHTML || '',
             arbiterDescription: arbiterCard?.querySelectorAll('p')[1]?.innerHTML || '',
-            arbiterButton: arbiterCard?.querySelector('button')?.innerHTML || '',
+            arbiterButton: arbiterCard?.querySelector('.product-cta')?.innerHTML || '',
             axisDescription: axisCard?.querySelectorAll('p')[1]?.innerHTML || '',
-            axisButton: axisCard?.querySelector('button')?.innerHTML || '',
+            axisButton: axisCard?.querySelector('.product-cta')?.innerHTML || '',
+            labKicker: labPanel?.querySelector('.lab-kicker')?.innerHTML || '',
+            labTitle: labPanel?.querySelector('.lab-title')?.innerHTML || '',
+            labDescription: labPanel?.querySelector('.lab-description')?.innerHTML || '',
+            labButton: labPanel?.querySelector('[data-lab-cta]')?.innerHTML || '',
             policyTitle: policySection?.querySelector('h2')?.innerHTML || '',
             policyDescription: policySection?.querySelector('p')?.innerHTML || '',
             threatTitle: threatSection?.querySelector('h3')?.innerHTML || '',
@@ -1113,7 +1133,7 @@
                 text: card.querySelector('p')?.innerHTML || ''
             })),
             finalTitle: finalCtaSection?.querySelector('h2')?.innerHTML || '',
-            finalDocsButton: finalCtaSection?.querySelectorAll('button')[1]?.innerHTML || '',
+            finalLabButton: finalSecondaryLink?.innerHTML || '',
             footerIntro: footerIntro?.innerHTML || '',
             footerHeadings: footerHeadings.map((item) => item.innerHTML),
             footerLists: footerLists.map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
@@ -1145,12 +1165,12 @@
             twitterTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
             twitterDescription: 'VARUX delivers deterministic control and enforcement for agents, automation and critical write paths.',
             navProductsLabel: 'Products',
-            navMainLinks: ['How It Works', 'Use Cases', 'Documentation'],
-            navDocsLinks: ['Documentation', 'Documentation'],
+            navMainLinks: ['How It Works', 'Use Cases', 'VARUX Lab'],
+            navLabLinks: ['VARUX Lab', 'VARUX Lab', 'VARUX Lab'],
             demoButtons: ['Request Demo', 'Request Demo', 'Request Demo'],
             heroTitle: 'Control <span class="text-zinc-600 italic">Before Execution.</span>',
             heroDescription: 'Apply deterministic policy to agents, automation and critical write operations. The model can generate decisions; <span class="text-white font-medium italic">VARUX</span> generates authority.',
-            heroDocsButton: 'Read Documentation <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
+            heroLabButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
             problemTitle: 'Failure should stop <br><span class="text-zinc-600">before execution.</span>',
             problemDescription: 'Observability tells you what broke. Control prevents it from breaking. In critical systems, the problem is not intent; it is authority. A model may choose a valid action, but VARUX stops it when that action exceeds policy boundaries.',
             problemCards: [
@@ -1189,6 +1209,10 @@
             arbiterButton: 'Explore Arbiter',
             axisDescription: 'Stops UPDATE, DELETE and DDL traffic aimed at critical systems before it reaches the database. It forces every write path through policy enforcement.',
             axisButton: 'Explore Axis',
+            labKicker: 'VARUX LAB',
+            labTitle: 'Future Systems Research',
+            labDescription: 'VARUX Lab brings the AXIS and ARBITER control core together with future autonomous-system scenarios, research prototypes and concept architectures.',
+            labButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
             policyTitle: 'Without policy, <br><span class="text-zinc-600">there is no permission.</span>',
             policyDescription: 'VARUX halts the system under uncertainty with fail-closed behavior. Every decision is deterministic and bound to the active policy version. It does not guess; it enforces rules.',
             threatTitle: 'Threat Boundary',
@@ -1223,12 +1247,12 @@
                 }
             ],
             finalTitle: 'Do not leave the final decision <br><span class="text-zinc-700">to the model.</span>',
-            finalDocsButton: 'Read Documentation',
+            finalLabButton: 'Open VARUX Lab',
             footerIntro: 'Pre-execution control architecture <br>for autonomous operations.',
             footerHeadings: ['Products', 'Resources'],
             footerLists: [
-                ['Arbiter', 'Axis', 'Control Core'],
-                ['Documentation', 'Security', 'API Reference']
+                ['Arbiter', 'Axis', 'VARUX Lab'],
+                ['Security', 'Demo', 'Contact']
             ],
             modalKicker: 'Request Demo',
             modalTitle: 'Get in touch with VARUX',
@@ -1286,12 +1310,12 @@
 
             setHtml(navProductsLabel, source.navProductsLabel);
             setManyHtml(navMainLinks, source.navMainLinks);
-            setManyHtml(navDocsLinks, source.navDocsLinks);
+            setManyHtml(navLabLinks, source.navLabLinks);
             setManyHtml(demoButtons, source.demoButtons);
 
             setHtml(document.querySelector('header h1'), source.heroTitle);
             setHtml(document.querySelector('header p'), source.heroDescription);
-            if (heroButtons[1]) setHtml(heroButtons[1], source.heroDocsButton);
+            setHtml(heroSecondaryLink, source.heroLabButton);
 
             setHtml(pageSections[0]?.querySelector('h2'), source.problemTitle);
             setHtml(pageSections[0]?.querySelector('p'), source.problemDescription);
@@ -1310,9 +1334,13 @@
             setHtml(productsSection?.querySelector('h2'), source.productsTitle);
             setHtml(productsSection?.querySelector('.text-center p'), source.productsDescription);
             setHtml(arbiterCard?.querySelectorAll('p')[1], source.arbiterDescription);
-            setHtml(arbiterCard?.querySelector('button'), source.arbiterButton);
+            setHtml(arbiterCard?.querySelector('.product-cta'), source.arbiterButton);
             setHtml(axisCard?.querySelectorAll('p')[1], source.axisDescription);
-            setHtml(axisCard?.querySelector('button'), source.axisButton);
+            setHtml(axisCard?.querySelector('.product-cta'), source.axisButton);
+            setHtml(labPanel?.querySelector('.lab-kicker'), source.labKicker);
+            setHtml(labPanel?.querySelector('.lab-title'), source.labTitle);
+            setHtml(labPanel?.querySelector('.lab-description'), source.labDescription);
+            setHtml(labPanel?.querySelector('[data-lab-cta]'), source.labButton);
 
             setHtml(policySection?.querySelector('h2'), source.policyTitle);
             setHtml(policySection?.querySelector('p'), source.policyDescription);
@@ -1334,9 +1362,7 @@
             });
 
             setHtml(finalCtaSection?.querySelector('h2'), source.finalTitle);
-            if (finalCtaSection?.querySelectorAll('button')[1]) {
-                setHtml(finalCtaSection.querySelectorAll('button')[1], source.finalDocsButton);
-            }
+            setHtml(finalSecondaryLink, source.finalLabButton);
 
             setHtml(footerIntro, source.footerIntro);
             setManyHtml(footerHeadings, source.footerHeadings);
