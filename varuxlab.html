@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX Lab | Future Systems Research</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#020203',
+                            800: '#060608',
+                            700: '#0a0a0d',
+                            600: '#111116',
+                        },
+                        cyan: {
+                            accent: '#00e5ff',
+                        },
+                        status: {
+                            active: '#00ff66',       /* HARDENED BASELINE */
+                            control: '#00d4ff',      /* CONTROL PLANE */
+                            vision: '#b200ff',       /* VISION CONCEPT */
+                            research: '#0088ff',     /* RESEARCH DIRECTION */
+                            future: '#ffaa00',       /* FUTURE CONCEPT */
+                            anomaly: '#ff3366',      /* FUTURE CONCEPT (Sentinel variant) */
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm39 39V1H1v38h38z' fill='rgba(255,255,255,0.015)' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/90 backdrop-blur-md border border-white/5;
+            }
+            .glass-panel-hover {
+                @apply hover:border-white/15 hover:bg-navy-700/90 transition-all duration-300;
+            }
+            .text-glow {
+                text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+            }
+        }
+
+        body {
+            background-color: #020203;
+            color: #d1d5db;
+        }
+
+        /* Section Scroll Offset for Fixed Navbar */
+        section[id] {
+            scroll-margin-top: 84px;
+        }
+
+        /* VARUX Themed Scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 229, 255, 0.45) #020203;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, #020203 0%, #060608 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(0, 212, 255, 0.22)), #111116;
+            border: 2px solid #020203;
+            border-radius: 999px;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.12);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.8), rgba(0, 212, 255, 0.35)), #111116;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #020203;
+        }
+
+        /* Core Animations */
+        @keyframes data-flow {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .data-line {
+            animation: data-flow 2.5s linear infinite;
+        }
+
+        @keyframes pulse-node {
+            0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+        }
+        .pulse-arbitration {
+            animation: pulse-node 2.5s infinite;
+        }
+
+        @keyframes radar-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .radar-sweep {
+            background: conic-gradient(from 0deg, transparent 70%, rgba(178, 0, 255, 0.15) 100%);
+            animation: radar-spin 4s linear infinite;
+        }
+
+        /* ATLAS Animations */
+        @keyframes atlas-pulse {
+            0%, 100% { opacity: 0.35; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.35); }
+        }
+        @keyframes atlas-flow {
+            from { stroke-dashoffset: 24; }
+            to { stroke-dashoffset: 0; }
+        }
+        .atlas-node {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: atlas-pulse 3.5s ease-in-out infinite;
+        }
+        .atlas-line {
+            stroke-dasharray: 4 6;
+            animation: atlas-flow 4s linear infinite;
+        }
+
+        /* SENTINEL Animations */
+        @keyframes sentinel-wave {
+            from { stroke-dashoffset: 120; }
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes sentinel-alert {
+            0%, 100% { transform: scale(1); opacity: 0.75; box-shadow: 0 0 8px rgba(255, 51, 102, 0.5); }
+            50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 18px rgba(255, 51, 102, 0.85); }
+        }
+        @keyframes sentinel-scan {
+            0% { transform: translateX(-120%); opacity: 0; }
+            25% { opacity: 0.45; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+        .sentinel-wave {
+            stroke-dasharray: 12 10;
+            animation: sentinel-wave 3.8s linear infinite;
+        }
+        .sentinel-alert {
+            animation: sentinel-alert 2.2s ease-in-out infinite;
+        }
+        .sentinel-scan {
+            animation: sentinel-scan 4.5s ease-in-out infinite;
+        }
+
+        /* ORBIT Animations */
+        @keyframes orbit-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes orbit-ring-pulse {
+            0%, 100% { opacity: 0.25; box-shadow: 0 0 8px rgba(255, 170, 0, 0.08) inset, 0 0 8px rgba(255, 170, 0, 0.08); }
+            50% { opacity: 0.55; box-shadow: 0 0 18px rgba(255, 170, 0, 0.16) inset, 0 0 18px rgba(255, 170, 0, 0.16); }
+        }
+        .orbit-system {
+            position: relative;
+            width: 150px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .orbit-ring {
+            position: absolute;
+            width: 140px;
+            height: 42px;
+            border: 1px solid rgba(255, 170, 0, 0.25);
+            border-radius: 999px;
+            transform: rotate(-12deg);
+            animation: orbit-ring-pulse 4s ease-in-out infinite;
+        }
+        .orbit-rotator {
+            position: absolute;
+            width: 140px;
+            height: 42px;
+            transform: rotate(-12deg);
+            animation: orbit-rotate 8s linear infinite;
+        }
+        .orbit-satellite {
+            position: absolute;
+            top: 50%;
+            left: -3px; 
+            width: 6px;
+            height: 6px;
+            margin-top: -3px;
+            border-radius: 999px;
+            background: #ffaa00;
+            box-shadow: 0 0 12px rgba(255, 170, 0, 0.8);
+        }
+        .orbit-core {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 170, 0, 0.55);
+            box-shadow: 0 0 10px rgba(255, 170, 0, 0.45);
+        }
+
+        /* Accessibility: Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-accent/20 selection:text-cyan-accent flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- Global Background Elements for Premium Feel -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]">
+        <div class="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-accent/5 rounded-full blur-[180px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-status-vision/5 rounded-full blur-[180px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5 border-t-0 border-x-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <div class="w-6 h-6 border-2 border-white/80 flex items-center justify-center rounded-sm">
+                    <div class="w-2 h-2 bg-cyan-accent"></div>
+                </div>
+                <span class="font-mono text-sm tracking-widest text-white font-medium">VARUX <span class="text-gray-500">LAB</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide">
+                <a href="https://varuxcyber.com" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="#lab" class="text-gray-400 hover:text-white transition-colors">Lab</a>
+                <a href="#constellation" class="text-gray-400 hover:text-white transition-colors">Research Map</a>
+                <a href="#architecture" class="text-gray-400 hover:text-white transition-colors">Architecture</a>
+                <a href="#registry" class="text-gray-400 hover:text-white transition-colors">Registry</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#constellation" class="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-accent/50 transition-all font-mono text-xs text-white rounded">
+                    Explore Projects <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+                <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-16 inset-x-0 bg-navy-900/95 backdrop-blur-md border-b border-white/5 shadow-2xl z-40 transition-all">
+        <div class="px-6 py-6 flex flex-col gap-2 font-mono text-sm">
+            <a href="https://varuxcyber.com" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Home</a>
+            <a href="#lab" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Lab</a>
+            <a href="#constellation" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Research Map</a>
+            <a href="#architecture" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Architecture</a>
+            <a href="#registry" class="mobile-link text-gray-300 hover:text-white transition-colors py-3">Registry</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="lab" class="relative pt-32 pb-20 md:pt-48 md:pb-32 border-b border-white/5">
+        <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_8px_rgba(0,229,255,0.6)]"></span>
+                    <span class="font-mono text-[11px] tracking-wider text-gray-300">DETERMINISTIC SYSTEMS LAB</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-medium text-white mb-4 tracking-tight leading-tight">
+                    Future Systems <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Research</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl font-light text-cyan-accent/90 mb-6 tracking-wide">
+                    Deterministic boundaries for critical systems.
+                </p>
+                
+                <p class="text-base md:text-lg text-gray-400 mb-10 leading-relaxed max-w-2xl font-light">
+                    VARUX Lab explores deterministic control layers, policy enforcement models and evidence-driven architectures for systems where unsafe writes, ambiguous authority or uncontrolled intelligence cannot be tolerated.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
+                    <a href="#constellation" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded">
+                        Explore Research Map <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-6 py-3 glass-panel hover:bg-white/5 transition-colors text-white rounded">
+                        View Architecture <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Constellation / Project Map -->
+    <section id="constellation" class="py-24 relative border-b border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            
+            <div class="mb-16 md:text-center">
+                <h2 class="text-2xl font-medium text-white mb-2">Research Constellation</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide">ACTIVE ARCHITECTURE & FUTURE CONCEPTS</p>
+            </div>
+
+            <div class="relative w-full">
+                <!-- Stable SVG Background Connections -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block z-0 opacity-[0.15]" viewBox="0 0 1000 900" preserveAspectRatio="none">
+                    <path d="M 500 150 L 250 150" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                    <path d="M 500 450 L 250 450" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                    <path d="M 500 750 L 250 750" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                    <path d="M 500 150 L 750 150" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                    <path d="M 500 450 L 750 450" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                    <path d="M 500 750 L 750 750" stroke="#ffffff" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+                </svg>
+
+                <div class="flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-[minmax(300px,360px)_80px_minmax(300px,360px)] xl:grid-cols-[360px_100px_360px] md:gap-8 lg:gap-x-0 lg:gap-y-12 lg:justify-center relative z-10">
+                    
+                    <!-- 1. AXIS -->
+                    <div class="group relative flex flex-col glass-panel border-white/10 rounded-xl overflow-hidden hover:border-status-active/40 transition-all shadow-[0_0_20px_rgba(0,255,102,0.015)] order-1 md:order-1 lg:order-none lg:col-start-3 lg:row-start-1 h-full">
+                        <div class="h-32 bg-[#020a0f] relative overflow-hidden border-b border-white/5">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+                            <div class="absolute top-0 left-[20%] w-px h-full bg-status-active/50 data-line shadow-[0_0_5px_#00ff66]"></div>
+                            <div class="absolute top-0 left-[60%] w-px h-full bg-status-active/30 data-line" style="animation-delay: 1.2s"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow bg-navy-800/50">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-status-active tracking-wider text-glow">ACTIVE CORE</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-active border border-status-active/30 px-2 py-0.5 rounded bg-status-active/10">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-active animate-pulse"></span>
+                                    HARDENED BASELINE
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX AXIS</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">AXIS is the active technical core of VARUX: a deterministic gateway for production database write paths, evaluating actor context, SQL intent, policy rules, approval state and audit requirements before risky operations execute.</p>
+                            <a href="#architecture" class="inline-flex items-center gap-2 text-xs font-mono text-status-active/80 hover:text-status-active transition-colors mt-auto">
+                                View AXIS Core <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2. ARBITER -->
+                    <div class="group relative flex flex-col glass-panel border-white/10 rounded-xl overflow-hidden hover:border-status-control/40 transition-all shadow-[0_0_20px_rgba(0,212,255,0.02)] order-2 md:order-2 lg:order-none lg:col-start-3 lg:row-start-2 h-full">
+                        <div class="h-32 bg-navy-900 relative overflow-hidden border-b border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-status-control/5"></div>
+                            <div class="w-10 h-10 border border-status-control/60 rotate-45 flex items-center justify-center z-10 bg-navy-900 pulse-arbitration shadow-[0_0_15px_rgba(0,212,255,0.1)]">
+                                <div class="w-2 h-2 bg-status-control rounded-full shadow-[0_0_8px_#00d4ff]"></div>
+                            </div>
+                            <div class="absolute left-0 top-1/2 border-t border-dashed border-cyan-accent/40 flex items-center" style="width: calc(50% - 20px);">
+                                <span class="text-[9px] text-cyan-accent/70 absolute left-4 -top-4 font-mono tracking-widest">POLICY</span>
+                                <div class="w-1.5 h-1.5 border border-cyan-accent/50 rounded-full absolute right-0 -mt-[3px] bg-navy-900"></div>
+                            </div>
+                            <div class="absolute right-0 top-1/2 border-t border-dashed border-status-future/40 flex items-center" style="width: calc(50% - 20px);">
+                                <span class="text-[9px] text-status-future/70 absolute right-4 -top-4 font-mono tracking-widest">APPROVAL</span>
+                                <div class="w-1.5 h-1.5 border border-status-future/50 rounded-full absolute left-0 -mt-[3px] bg-navy-900"></div>
+                            </div>
+                            <div class="absolute left-1/2 border-l border-dashed border-white/30 flex justify-center" style="top: calc(50% + 20px); height: calc(50% - 20px);">
+                                <span class="text-[9px] text-white/50 absolute top-3 ml-16 font-mono tracking-widest">EVIDENCE</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow bg-navy-800/50">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-status-control tracking-wider">POLICY ARBITRATION LAYER</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-control border border-status-control/30 px-2 py-0.5 rounded bg-status-control/10">
+                                    CONTROL PLANE
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX ARBITER</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">ARBITER is the deterministic decision layer behind sensitive data operations. It resolves whether an action should be allowed, blocked or routed to approval by evaluating policy, actor context, operation risk and evidence requirements.</p>
+                            <a href="#architecture" class="inline-flex items-center gap-2 text-xs font-mono text-status-control/80 hover:text-status-control transition-colors mt-auto">
+                                View Decision Layer <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 3. ABYSS -->
+                    <div class="group relative flex flex-col glass-panel rounded-xl overflow-hidden glass-panel-hover order-3 md:order-3 lg:order-none lg:col-start-1 lg:row-start-1 h-full">
+                        <div class="h-32 bg-navy-900 relative overflow-hidden border-b border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-status-vision/5"></div>
+                            <div class="absolute w-24 h-24 border border-status-vision/20 rounded-full"></div>
+                            <div class="absolute w-12 h-12 border border-status-vision/40 rounded-full"></div>
+                            <div class="absolute inset-0 radar-sweep rounded-full opacity-40"></div>
+                            <div class="w-1.5 h-1.5 bg-status-vision rounded-full z-10 relative shadow-[0_0_8px_#b200ff]"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-gray-400 tracking-wider">VISION CONCEPT</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-vision border border-status-vision/20 px-2 py-0.5 rounded bg-status-vision/5">
+                                    VISION CONCEPT
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX ABYSS</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">ABYSS is a bounded-autonomy concept for unmanned maritime platforms, focused on mission contracts, sensor fusion, operational envelopes, risk validation and human-supervised control.</p>
+                            <a href="#registry" class="inline-flex items-center gap-2 text-xs font-mono text-white/70 hover:text-white transition-colors mt-auto">
+                                Open ABYSS Concept <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4. ATLAS -->
+                    <div class="group relative flex flex-col glass-panel rounded-xl overflow-hidden glass-panel-hover order-4 md:order-4 lg:order-none lg:col-start-1 lg:row-start-2 h-full">
+                        <div class="h-32 bg-navy-900 relative overflow-hidden border-b border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-status-research/5"></div>
+                            <svg width="100%" height="100%" class="opacity-70 z-10">
+                                <path class="atlas-line" d="M 25% 35% L 75% 25% L 50% 75% Z" stroke="#0088ff" stroke-width="0.5" fill="none" />
+                                <path class="atlas-line" d="M 25% 35% L 40% 50% L 50% 75%" stroke="#0088ff" stroke-width="0.5" fill="none"/>
+                                <circle class="atlas-node" cx="25%" cy="35%" r="2.5" fill="#0088ff" style="animation-delay: 0s;"/>
+                                <circle class="atlas-node" cx="75%" cy="25%" r="2.5" fill="#0088ff" style="animation-delay: 0.6s;"/>
+                                <circle class="atlas-node" cx="50%" cy="75%" r="2.5" fill="#0088ff" style="animation-delay: 1.2s;"/>
+                                <circle class="atlas-node" cx="40%" cy="50%" r="1.5" fill="#0088ff" style="animation-delay: 1.8s;"/>
+                            </svg>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-gray-400 tracking-wider">RESEARCH DIRECTION</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-research border border-status-research/20 px-2 py-0.5 rounded bg-status-research/5">
+                                    RESEARCH DIRECTION
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX ATLAS</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">ATLAS is a future infrastructure mapping layer for visualizing services, data flows, operational dependencies, risk surfaces and policy boundaries across critical systems.</p>
+                            <a href="#registry" class="inline-flex items-center gap-2 text-xs font-mono text-white/70 hover:text-white transition-colors mt-auto">
+                                Explore ATLAS Map <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 5. SENTINEL -->
+                    <div class="group relative flex flex-col glass-panel rounded-xl overflow-hidden glass-panel-hover order-5 md:order-5 lg:order-none lg:col-start-1 lg:row-start-3 h-full">
+                        <div class="h-32 bg-navy-900 relative overflow-hidden border-b border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-status-anomaly/10 to-transparent sentinel-scan z-0"></div>
+                            <div class="w-full h-px bg-white/5 absolute top-1/2 z-10"></div>
+                            <svg width="100%" height="100%" class="opacity-60 z-20">
+                                <path class="sentinel-wave" d="M 0 64 Q 50 40, 100 64 T 200 64 T 300 64 T 400 64" stroke="#ff3366" stroke-width="1.5" fill="none" />
+                            </svg>
+                            <div class="absolute left-[25%] top-[43%] w-2 h-2 bg-status-anomaly rounded-full sentinel-alert z-30"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-gray-400 tracking-wider">FUTURE CONCEPT</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-anomaly border border-status-anomaly/20 px-2 py-0.5 rounded bg-status-anomaly/5">
+                                    FUTURE CONCEPT
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX SENTINEL</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">SENTINEL is a monitoring intelligence concept for detecting logic drift, abnormal behavior, unauthorized state transitions and emerging risk patterns in critical system control loops.</p>
+                            <a href="#registry" class="inline-flex items-center gap-2 text-xs font-mono text-white/70 hover:text-white transition-colors mt-auto">
+                                Inspect SENTINEL Concept <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 6. ORBIT -->
+                    <div class="group relative flex flex-col glass-panel rounded-xl overflow-hidden glass-panel-hover order-6 md:order-6 lg:order-none lg:col-start-3 lg:row-start-3 h-full">
+                        <div class="h-32 bg-navy-900 relative overflow-hidden border-b border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-status-future/5"></div>
+                            <div class="orbit-system z-10">
+                                <div class="orbit-ring"></div>
+                                <div class="orbit-rotator">
+                                    <div class="orbit-satellite"></div>
+                                </div>
+                                <div class="orbit-core"></div>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-mono text-gray-400 tracking-wider">FUTURE CONCEPT</span>
+                                <span class="flex items-center gap-1.5 text-[10px] font-mono text-status-future border border-status-future/20 px-2 py-0.5 rounded bg-status-future/5">
+                                    FUTURE CONCEPT
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-2">VARUX ORBIT</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow">ORBIT is a future coordination concept for remote infrastructure, telemetry states and delayed decision support across unstable, high-latency or disconnected communication environments.</p>
+                            <a href="#registry" class="inline-flex items-center gap-2 text-xs font-mono text-white/70 hover:text-white transition-colors mt-auto">
+                                View ORBIT Concept <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CENTER SPINE (Desktop Only) -->
+                    <div class="hidden lg:flex flex-col items-center justify-between relative py-12 lg:col-start-2 lg:row-start-1 lg:row-span-3">
+                        <div class="absolute top-0 bottom-0 w-px bg-white/10 z-0"></div>
+                        
+                        <!-- Nodes -->
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-cyan-accent hover:text-cyan-accent transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute left-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-cyan-accent text-xs mb-1.5 tracking-wide">Deterministic Control</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Critical operations must pass through explicit rules, state validation and controlled execution boundaries.</p>
+                            </div>
+                        </div>
+
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-cyan-accent hover:text-cyan-accent transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-cyan-accent text-xs mb-1.5 tracking-wide">Bounded Autonomy</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Autonomous systems may act only inside verified operational envelopes.</p>
+                            </div>
+                        </div>
+
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-status-control hover:text-status-control transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute left-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-status-control text-xs mb-1.5 tracking-wide">Policy Arbitration</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Risky actions are resolved through policy, context, approval state and evidence requirements.</p>
+                            </div>
+                        </div>
+
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-cyan-accent hover:text-cyan-accent transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-cyan-accent text-xs mb-1.5 tracking-wide">Durable Evidence</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Every critical decision must leave verifiable records that survive restarts, failures and disputes.</p>
+                            </div>
+                        </div>
+
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-cyan-accent hover:text-cyan-accent transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute left-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-cyan-accent text-xs mb-1.5 tracking-wide">Infrastructure Resilience</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Systems should remain controlled under degraded, disconnected or uncertain conditions.</p>
+                            </div>
+                        </div>
+
+                        <div class="relative group z-20">
+                            <div class="w-6 h-6 rounded-full bg-navy-900 border border-white/20 text-white flex items-center justify-center cursor-help hover:border-cyan-accent hover:text-cyan-accent transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </div>
+                            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-64 p-4 glass-panel border-white/10 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                                <h4 class="font-mono text-cyan-accent text-xs mb-1.5 tracking-wide">Human Authority</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed">Automation can assist execution, but critical authority remains explicitly governed.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Architecture Section -->
+    <section id="architecture" class="py-24 border-b border-white/5 relative">
+        <div class="absolute left-0 top-1/4 w-1/3 h-full bg-status-control/5 blur-[150px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-12">
+                <h2 class="text-2xl font-medium text-white mb-2">Strategic Architecture</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide uppercase">Active Control Layer</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1: AXIS -->
+                <div class="border border-white/10 bg-navy-800/80 backdrop-blur-sm rounded-xl p-8 relative overflow-hidden group hover:border-white/20 transition-colors shadow-lg">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-status-active"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="database" class="w-5 h-5 text-status-active"></i>
+                        <h3 class="text-lg font-medium text-white">VARUX AXIS <span class="text-gray-500 font-normal text-sm block md:inline mt-1 md:mt-0">| Active Core</span></h3>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        AXIS controls risky database write-path operations before execution. It evaluates actor context, SQL intent, policy rules, approval state and audit requirements to prevent unsafe production changes without durable evidence.
+                    </p>
+                </div>
+
+                <!-- Card 2: ARBITER -->
+                <div class="border border-white/10 bg-navy-800/80 backdrop-blur-sm rounded-xl p-8 relative overflow-hidden group hover:border-status-control/40 transition-colors shadow-lg">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-status-control"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="git-merge" class="w-5 h-5 text-status-control"></i>
+                        <h3 class="text-lg font-medium text-white">VARUX ARBITER <span class="text-gray-500 font-normal text-sm block md:inline mt-1 md:mt-0">| Control Plane</span></h3>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        ARBITER turns raw operational intent into governed decisions. It combines policy rules, actor identity, environment context, risk classification, approval state and evidence requirements before authority is granted.
+                    </p>
+                </div>
+
+                <!-- Card 3: Lab -->
+                <div class="border border-white/10 bg-navy-800/80 backdrop-blur-sm rounded-xl p-8 relative overflow-hidden group hover:border-white/20 transition-colors shadow-lg md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-white/30"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="telescope" class="w-5 h-5 text-gray-300"></i>
+                        <h3 class="text-lg font-medium text-white">VARUX Lab <span class="text-gray-500 font-normal text-sm block md:inline mt-1 md:mt-0">| Future Layer</span></h3>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Extends the deterministic philosophy into autonomous platforms, remote infrastructure, monitoring intelligence and future critical systems design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Domains (Tag Cloud) -->
+    <section class="py-20 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="font-mono text-sm text-gray-500 mb-8 tracking-widest uppercase">Research & Engineering Domains</h3>
+            
+            <div class="flex flex-wrap justify-center gap-2.5 max-w-5xl mx-auto leading-relaxed">
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Deterministic Security</span>
+                <span class="px-3 py-1.5 border border-status-active/30 rounded bg-status-active/10 text-status-active font-mono text-[10px] sm:text-[11px] hover:border-status-active/60 hover:text-white transition-colors cursor-default shadow-[0_0_10px_rgba(0,255,102,0.05)]">Production Write-Path Control</span>
+                <span class="px-3 py-1.5 border border-status-control/30 rounded bg-status-control/10 text-status-control font-mono text-[10px] sm:text-[11px] hover:border-status-control/60 hover:text-white transition-colors cursor-default shadow-[0_0_10px_rgba(0,212,255,0.05)]">Policy Arbitration</span>
+                <span class="px-3 py-1.5 border border-status-control/30 rounded bg-status-control/10 text-status-control font-mono text-[10px] sm:text-[11px] hover:border-status-control/60 hover:text-white transition-colors cursor-default shadow-[0_0_10px_rgba(0,212,255,0.05)]">Data Control Plane</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Approval Boundaries</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Durable Audit Evidence</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Bounded Autonomy</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Mission Contracts</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Sensor Fusion</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Infrastructure Mapping</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Remote Telemetry</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Failure Mode Design</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Human-Supervised Control</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Critical System Monitoring</span>
+                <span class="px-3 py-1.5 border border-white/10 rounded bg-navy-800/50 text-gray-300 font-mono text-[10px] sm:text-[11px] hover:border-white/30 hover:text-white transition-colors cursor-default">Logic Drift Detection</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Registry Table -->
+    <section id="registry" class="py-24 border-b border-white/5 bg-[#020203]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-10">
+                <h2 class="text-2xl font-medium text-white mb-2">Project Registry</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide">SYSTEM INITIATIVES INDEX</p>
+            </div>
+
+            <div class="overflow-x-auto border border-white/10 rounded-xl bg-navy-800/40 backdrop-blur-sm">
+                <table class="w-full text-left border-collapse min-w-[900px]">
+                    <thead>
+                        <tr class="border-b border-white/10 text-gray-400 font-mono text-xs tracking-wider bg-navy-900/80">
+                            <th class="py-5 px-6 font-medium w-1/5">DESIGNATION</th>
+                            <th class="py-5 px-6 font-medium w-1/5">DOMAIN</th>
+                            <th class="py-5 px-6 font-medium w-1/6">STATUS</th>
+                            <th class="py-5 px-6 font-medium">CORE OBJECTIVE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <!-- AXIS -->
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX AXIS</td>
+                            <td class="py-4 px-6 text-gray-400">Production Write-Path Control</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-active">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-active"></span> HARDENED BASELINE
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">Deterministic control of risky production database operations.</td>
+                        </tr>
+                        <!-- ARBITER -->
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX ARBITER</td>
+                            <td class="py-4 px-6 text-gray-400">Policy Arbitration / Data Control</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-control">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-control"></span> CONTROL PLANE
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">ALLOW / BLOCK / APPROVAL decisions for sensitive operations.</td>
+                        </tr>
+                        <!-- ABYSS -->
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX ABYSS</td>
+                            <td class="py-4 px-6 text-gray-400">Bounded Maritime Autonomy</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-vision">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-vision"></span> VISION CONCEPT
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">Mission-bounded autonomy and safety control for unmanned maritime platforms.</td>
+                        </tr>
+                        <!-- ATLAS -->
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX ATLAS</td>
+                            <td class="py-4 px-6 text-gray-400">Infrastructure Intelligence</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-research">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-research"></span> RESEARCH DIRECTION
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">Mapping services, data flows, dependencies, risks and policy boundaries.</td>
+                        </tr>
+                        <!-- SENTINEL -->
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX SENTINEL</td>
+                            <td class="py-4 px-6 text-gray-400">Critical System Monitoring</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-anomaly">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-anomaly"></span> FUTURE CONCEPT
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">Detection of logic drift, abnormal behavior and unauthorized state transitions.</td>
+                        </tr>
+                        <!-- ORBIT -->
+                        <tr class="hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">VARUX ORBIT</td>
+                            <td class="py-4 px-6 text-gray-400">Remote Infrastructure Coordination</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-status-future">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-future"></span> FUTURE CONCEPT
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-400">Telemetry and decision support across unstable or delayed communication environments.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900 z-0"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-medium text-white mb-8 tracking-tight">The Future Needs Boundaries</h2>
+            <p class="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed font-light">
+                Critical systems require deterministic boundaries before intelligence scales. VARUX Lab exists to explore architectures where authority is explicit, risk is validated and every critical action can be governed, approved and evidenced.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center font-mono text-sm">
+                <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded">
+                    Explore Architecture
+                </a>
+                <a href="#registry" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10">
+                    View Registry
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020203] py-12 border-t border-white/5 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <div class="w-4 h-4 border border-gray-600 flex items-center justify-center rounded-sm">
+                        <div class="w-1 h-1 bg-gray-600"></div>
+                    </div>
+                    <span class="font-mono text-xs tracking-widest text-gray-400">VARUX <span class="text-gray-600">LAB</span></span>
+                </a>
+                <p class="text-xs text-gray-600 font-mono">Engineering deterministic boundaries for critical systems.</p>
+            </div>
+            
+            <div class="flex gap-6 font-mono text-xs text-gray-500">
+                <a href="#lab" class="hover:text-cyan-accent transition-colors">Manifesto</a>
+                <a href="#architecture" class="hover:text-cyan-accent transition-colors">Platform</a>
+                <a href="https://varuxcyber.com" class="hover:text-cyan-accent transition-colors">Contact</a>
+            </div>
+            
+            <div class="text-xs text-gray-600 font-mono">
+                &copy; 2026 VARUX Systems.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!isExpanded) {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>

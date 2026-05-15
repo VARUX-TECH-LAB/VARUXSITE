@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX ABYSS | Bounded Maritime Autonomy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#020203',
+                            800: '#060608',
+                            700: '#0a0a0d',
+                            600: '#111116',
+                        },
+                        cyan: {
+                            accent: '#00e5ff',
+                        },
+                        vision: {
+                            accent: '#b200ff',
+                        },
+                        status: {
+                            active: '#00ff66',
+                            control: '#00d4ff',
+                            research: '#0088ff',
+                            future: '#ffaa00',
+                            anomaly: '#ff3366',
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm39 39V1H1v38h38z' fill='rgba(255,255,255,0.015)' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/80 backdrop-blur-md border border-white/5;
+            }
+            .glass-panel-hover {
+                @apply hover:border-vision-accent/30 hover:bg-navy-700/80 transition-all duration-300;
+            }
+            .text-glow-vision {
+                text-shadow: 0 0 12px rgba(178, 0, 255, 0.4);
+            }
+        }
+
+        body {
+            background-color: #020203;
+            color: #d1d5db;
+        }
+
+        /* Anchor Offsets */
+        #concept,
+        #architecture,
+        #mission-flow,
+        #safety,
+        #failure-modes,
+        #varux-relation {
+            scroll-margin-top: 84px;
+        }
+
+        /* VARUX Themed Scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 229, 255, 0.45) #020203;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, #020203 0%, #060608 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(0, 212, 255, 0.22)), #111116;
+            border: 2px solid #020203;
+            border-radius: 999px;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.12);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.8), rgba(0, 212, 255, 0.35)), #111116;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #020203;
+        }
+
+        /* Abstract Visual Animations */
+        @keyframes sonar-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .sonar-sweep {
+            background: conic-gradient(from 0deg, transparent 70%, rgba(178, 0, 255, 0.25) 100%);
+            animation: sonar-spin 4s linear infinite;
+        }
+
+        @keyframes sonar-pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.6; box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.2); }
+            70% { transform: scale(1.5); opacity: 0; box-shadow: 0 0 0 15px rgba(0, 229, 255, 0); }
+            100% { transform: scale(1.5); opacity: 0; box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+        }
+        .sonar-pulse {
+            animation: sonar-pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes telemetry-flicker {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 8px rgba(0, 229, 255, 0.8); }
+        }
+        .telemetry-dot {
+            animation: telemetry-flicker 2s ease-in-out infinite;
+        }
+
+        @keyframes flow-line {
+            from { stroke-dashoffset: 24; }
+            to { stroke-dashoffset: 0; }
+        }
+        .animated-flow {
+            stroke-dasharray: 4 6;
+            animation: flow-line 2s linear infinite;
+        }
+
+        /* Accessibility: Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-vision-accent/20 selection:text-vision-accent flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- Global Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]">
+        <div class="absolute top-[10%] right-[10%] w-[600px] h-[600px] bg-vision-accent/5 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-[20%] left-[10%] w-[500px] h-[500px] bg-cyan-accent/5 rounded-full blur-[150px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5 border-t-0 border-x-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <div class="w-6 h-6 border-2 border-vision-accent/80 flex items-center justify-center rounded-sm">
+                    <div class="w-2 h-2 bg-vision-accent"></div>
+                </div>
+                <span class="font-mono text-sm tracking-widest text-white font-medium">VARUX <span class="text-gray-500">ABYSS</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide">
+                <a href="https://varuxcyber.com" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Lab</a>
+                <a href="#concept" class="text-gray-400 hover:text-white transition-colors">Concept</a>
+                <a href="#architecture" class="text-gray-400 hover:text-white transition-colors">Architecture</a>
+                <a href="#safety" class="text-gray-400 hover:text-white transition-colors">Safety Model</a>
+                <a href="#failure-modes" class="text-gray-400 hover:text-white transition-colors">Failure Modes</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-vision-accent/50 hover:bg-vision-accent/10 transition-all font-mono text-xs text-white rounded">
+                    Back to VARUX Lab <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+                <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-16 inset-x-0 bg-navy-900/95 backdrop-blur-md border-b border-white/5 shadow-2xl z-40 transition-all">
+        <div class="px-6 py-6 flex flex-col gap-2 font-mono text-sm">
+            <a href="https://varuxcyber.com" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Home</a>
+            <a href="index.html" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Lab</a>
+            <a href="#concept" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Concept</a>
+            <a href="#architecture" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Architecture</a>
+            <a href="#safety" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Safety Model</a>
+            <a href="#failure-modes" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Failure Modes</a>
+            <a href="index.html" class="mobile-link text-vision-accent hover:text-white transition-colors py-3 mt-2">Back to VARUX Lab <i data-lucide="arrow-right" class="w-3 h-3 inline"></i></a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 border-b border-white/5 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-vision-accent/30 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <!-- Left: Copy -->
+            <div class="flex-1 max-w-2xl z-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-vision-accent/5 border border-vision-accent/20 rounded-full mb-8 shadow-[0_0_10px_rgba(178,0,255,0.1)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vision-accent animate-pulse shadow-[0_0_8px_rgba(178,0,255,0.8)]"></span>
+                    <span class="font-mono text-[10px] sm:text-[11px] tracking-wider text-vision-accent">VARUX ABYSS / BOUNDED MARITIME AUTONOMY</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 tracking-tight leading-tight">
+                    Autonomy Below the Surface. <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Control Above Everything.</span>
+                </h1>
+                
+                <p class="text-xl font-light text-cyan-accent/80 mb-6 tracking-wide">
+                    Deterministic boundaries for unmanned maritime systems.
+                </p>
+                
+                <p class="text-base md:text-lg text-gray-400 mb-10 leading-relaxed font-light">
+                    VARUX ABYSS explores how unmanned maritime platforms can operate inside mission contracts, sensor-informed risk envelopes and human-governed authority without allowing autonomy to become uncontrolled behavior.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
+                    <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded">
+                        Explore Architecture <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#safety" class="inline-flex items-center justify-center gap-2 px-6 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded">
+                        View Safety Model
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Premium Sonar Visual -->
+            <div class="flex-1 w-full max-w-lg aspect-square relative flex items-center justify-center lg:ml-auto">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900/50 rounded-full z-10"></div>
+                <!-- Deep Ocean Rings -->
+                <div class="absolute w-[90%] h-[90%] border border-cyan-accent/10 rounded-full"></div>
+                <div class="absolute w-[70%] h-[70%] border border-cyan-accent/20 rounded-full"></div>
+                <div class="absolute w-[50%] h-[50%] border border-vision-accent/30 rounded-full border-dashed"></div>
+                <div class="absolute w-[30%] h-[30%] border border-vision-accent/50 rounded-full sonar-pulse"></div>
+                
+                <!-- Central Node -->
+                <div class="absolute w-8 h-8 bg-navy-900 border border-vision-accent flex items-center justify-center rounded-full z-20 shadow-[0_0_20px_rgba(178,0,255,0.4)]">
+                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+
+                <!-- Sonar Sweep -->
+                <div class="absolute w-full h-full rounded-full sonar-sweep opacity-40 z-0"></div>
+
+                <!-- Crosshairs & Boundary Envelopes -->
+                <div class="absolute w-full h-px bg-white/5 z-10"></div>
+                <div class="absolute h-full w-px bg-white/5 z-10"></div>
+                
+                <!-- Telemetry Dots -->
+                <div class="absolute top-[25%] left-[30%] w-1.5 h-1.5 bg-cyan-accent rounded-full telemetry-dot z-20"></div>
+                <div class="absolute bottom-[35%] right-[20%] w-1.5 h-1.5 bg-vision-accent rounded-full telemetry-dot z-20" style="animation-delay: 1s"></div>
+                <div class="absolute top-[60%] left-[15%] w-1 h-1 bg-white rounded-full telemetry-dot z-20" style="animation-delay: 0.5s"></div>
+                
+                <!-- Target Envelope Line -->
+                <svg class="absolute inset-0 w-full h-full z-10 opacity-30 pointer-events-none" viewBox="0 0 100 100">
+                    <path d="M 20 80 Q 50 10 80 20" stroke="#00e5ff" stroke-width="0.5" fill="none" class="animated-flow" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Overview Section -->
+    <section id="concept" class="py-24 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16 md:text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-medium text-white mb-4">Bounded Autonomy for Maritime Operations</h2>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    ABYSS is a concept architecture for unmanned maritime platforms where autonomous behavior is not trusted blindly. Autonomy is strictly allowed only inside validated mission contracts, risk thresholds and human authority boundaries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 rounded-xl glass-panel-hover border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-vision-accent/50 group-hover:bg-vision-accent transition-colors"></div>
+                    <div class="w-10 h-10 bg-navy-900 border border-vision-accent/30 rounded flex items-center justify-center mb-6 text-vision-accent">
+                        <i data-lucide="file-signature" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Mission Contracts</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Every mission is represented as an explicit contract defining objectives, allowed behaviors, restricted zones, abort conditions and authority requirements.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 rounded-xl glass-panel-hover border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-accent/50 group-hover:bg-cyan-accent transition-colors"></div>
+                    <div class="w-10 h-10 bg-navy-900 border border-cyan-accent/30 rounded flex items-center justify-center mb-6 text-cyan-accent">
+                        <i data-lucide="scan" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Operational Envelopes</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Autonomous decisions are constrained by validated envelopes covering location, sensor confidence, environmental state, platform health and communication status.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel p-8 rounded-xl glass-panel-hover border-white/10 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-white/30 group-hover:bg-white/70 transition-colors"></div>
+                    <div class="w-10 h-10 bg-navy-900 border border-white/20 rounded flex items-center justify-center mb-6 text-white">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Human-Governed Authority</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        ABYSS supports autonomy without removing human command authority from critical decisions, escalation paths or mission termination protocols.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="py-24 border-b border-white/5 relative bg-navy-900/50">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16">
+                <h2 class="text-2xl font-medium text-white mb-2">ABYSS Reference Architecture</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide">LAYERED BOUNDARY ENFORCEMENT</p>
+            </div>
+
+            <!-- Layered Diagram -->
+            <div class="max-w-4xl mx-auto relative">
+                <!-- Connecting Background Line -->
+                <div class="absolute left-[23px] md:left-1/2 top-8 bottom-8 w-px bg-white/10 md:-translate-x-1/2 z-0"></div>
+
+                <div class="flex flex-col gap-4 relative z-10">
+                    
+                    <!-- Layer 1 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-vision-accent flex items-center justify-center z-10 shadow-[0_0_15px_rgba(178,0,255,0.2)]">
+                            <span class="font-mono text-xs text-white">L1</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-vision-accent/20 group-hover:border-vision-accent/50 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Mission Contract Layer</h4>
+                            <p class="text-sm text-gray-400">Defines allowed mission objectives, zones, constraints, abort rules and escalation requirements.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-cyan-accent/80 flex items-center justify-center z-10">
+                            <span class="font-mono text-xs text-white">L2</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-white/10 group-hover:border-cyan-accent/30 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Sensor Fusion Layer</h4>
+                            <p class="text-sm text-gray-400">Combines sonar, radar, GPS, inertial state, environmental signals and platform telemetry into a unified operational picture.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-cyan-accent/80 flex items-center justify-center z-10">
+                            <span class="font-mono text-xs text-white">L3</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-white/10 group-hover:border-cyan-accent/30 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Risk Validation Layer</h4>
+                            <p class="text-sm text-gray-400">Evaluates whether current state remains inside the mission envelope using confidence thresholds, anomaly signals and environmental risk.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 4 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-vision-accent flex items-center justify-center z-10 shadow-[0_0_15px_rgba(178,0,255,0.2)]">
+                            <span class="font-mono text-xs text-white">L4</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-vision-accent/20 group-hover:border-vision-accent/50 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Autonomy Boundary Layer</h4>
+                            <p class="text-sm text-gray-400">Restricts autonomous decision-making to approved behaviors and blocks actions outside validated mission boundaries.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 5 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-white/50 flex items-center justify-center z-10">
+                            <span class="font-mono text-xs text-white">L5</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-white/10 group-hover:border-white/30 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Human Authority Layer</h4>
+                            <p class="text-sm text-gray-400">Routes critical or uncertain decisions to human review, remote command or mission abort procedures.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 6 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group">
+                        <div class="w-12 h-12 rounded-full bg-navy-800 border-2 border-gray-500 flex items-center justify-center z-10">
+                            <span class="font-mono text-xs text-white">L6</span>
+                        </div>
+                        <div class="flex-1 glass-panel p-6 rounded-lg border-white/10 group-hover:border-white/30 transition-colors w-full">
+                            <h4 class="font-medium text-white text-lg mb-2">Evidence & Audit Layer</h4>
+                            <p class="text-sm text-gray-400">Records mission state, decision paths, risk transitions, overrides and abort conditions as durable evidence.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Flow Section -->
+    <section id="mission-flow" class="py-24 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-12 md:text-center max-w-3xl mx-auto">
+                <h2 class="text-2xl font-medium text-white mb-4">Mission Decision Flow</h2>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base font-light">
+                    ABYSS does not treat autonomy as unlimited agency. Every proposed autonomous action must be evaluated deterministically against mission limits, real-time risk state and authority boundaries.
+                </p>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="max-w-5xl mx-auto glass-panel border-white/10 rounded-xl p-8 overflow-x-auto">
+                <div class="min-w-[800px] flex items-center justify-between font-mono text-xs text-center relative">
+                    
+                    <!-- Line connecting all -->
+                    <div class="absolute top-1/2 left-0 right-0 h-px bg-white/10 -translate-y-1/2 z-0"></div>
+
+                    <!-- Step 1 -->
+                    <div class="relative z-10 flex flex-col items-center gap-3 w-28">
+                        <div class="w-10 h-10 rounded bg-navy-900 border border-vision-accent/50 flex items-center justify-center text-vision-accent">1</div>
+                        <span class="text-gray-400">Contract Loaded</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white/20 relative z-10"></i>
+
+                    <!-- Step 2 -->
+                    <div class="relative z-10 flex flex-col items-center gap-3 w-28">
+                        <div class="w-10 h-10 rounded bg-navy-900 border border-white/20 flex items-center justify-center">2</div>
+                        <span class="text-gray-400">State Verified</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white/20 relative z-10"></i>
+
+                    <!-- Step 3 & 4 -->
+                    <div class="relative z-10 flex flex-col items-center gap-3 w-32">
+                        <div class="w-10 h-10 rounded bg-navy-900 border border-cyan-accent/50 flex items-center justify-center text-cyan-accent">3/4</div>
+                        <span class="text-gray-400">Risk Evaluated</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white/20 relative z-10"></i>
+
+                    <!-- Step 5 & 6 -->
+                    <div class="relative z-10 flex flex-col items-center gap-3 w-32">
+                        <div class="w-10 h-10 rounded bg-navy-900 border border-vision-accent flex items-center justify-center shadow-[0_0_10px_rgba(178,0,255,0.2)] text-white">5/6</div>
+                        <span class="text-white">Boundary Check</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white/20 relative z-10"></i>
+
+                    <!-- Step 7 Decisions -->
+                    <div class="relative z-10 flex flex-col gap-2">
+                        <div class="px-4 py-2 border border-status-active/40 bg-status-active/10 text-status-active rounded tracking-wider">ALLOW</div>
+                        <div class="px-4 py-2 border border-status-future/40 bg-status-future/10 text-status-future rounded tracking-wider">RESTRICT</div>
+                        <div class="px-4 py-2 border border-cyan-accent/40 bg-cyan-accent/10 text-cyan-accent rounded tracking-wider">ESCALATE</div>
+                        <div class="px-4 py-2 border border-status-anomaly/40 bg-status-anomaly/10 text-status-anomaly rounded tracking-wider">ABORT</div>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-white/20 relative z-10"></i>
+
+                    <!-- Step 8 -->
+                    <div class="relative z-10 flex flex-col items-center gap-3 w-28">
+                        <div class="w-10 h-10 rounded bg-navy-900 border border-gray-500 flex items-center justify-center text-gray-300">8</div>
+                        <span class="text-gray-400">Evidence Recorded</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Model Section -->
+    <section id="safety" class="py-24 border-b border-white/5 relative bg-[#040405]">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16 md:text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-medium text-white mb-4">Safety Model</h2>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    ABYSS is built around the assumption that autonomy will face uncertainty, degraded sensors, unstable communication and ambiguous environments. The architecture is designed to reduce authority under uncertainty, not expand it.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/[0.02] transition-colors border-white/5">
+                    <div class="w-10 h-10 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-4 text-cyan-accent">
+                        <i data-lucide="radar" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-medium text-white mb-2">Sensor Confidence</h4>
+                    <p class="text-sm text-gray-500">If the platform cannot trust its sensor picture, available autonomy must narrow.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/[0.02] transition-colors border-white/5">
+                    <div class="w-10 h-10 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-4 text-status-future">
+                        <i data-lucide="radio-tower" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-medium text-white mb-2">Communication State</h4>
+                    <p class="text-sm text-gray-500">Loss of communication changes the authority model and may trigger restricted behavior or mission abort logic.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/[0.02] transition-colors border-white/5">
+                    <div class="w-10 h-10 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-4 text-status-research">
+                        <i data-lucide="waves" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-medium text-white mb-2">Environmental Risk</h4>
+                    <p class="text-sm text-gray-500">Weather, current, obstacle density and navigation uncertainty affect mission envelope validity.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/[0.02] transition-colors border-white/5">
+                    <div class="w-10 h-10 bg-navy-700 border border-status-anomaly/30 rounded flex items-center justify-center mb-4 text-status-anomaly">
+                        <i data-lucide="octagon-alert" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-medium text-white mb-2">Abort Conditions</h4>
+                    <p class="text-sm text-gray-500">Predefined abort conditions prevent the system from improvising beyond approved operational boundaries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Failure Modes Section -->
+    <section id="failure-modes" class="py-24 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-10">
+                <h2 class="text-2xl font-medium text-white mb-2">Failure Modes Considered</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide">DETERMINISTIC DEGRADATION</p>
+            </div>
+
+            <div class="overflow-x-auto border border-white/10 rounded-xl bg-navy-800/50 backdrop-blur-sm">
+                <table class="w-full text-left border-collapse min-w-[900px]">
+                    <thead>
+                        <tr class="border-b border-white/10 text-gray-400 font-mono text-xs tracking-wider bg-navy-900/80">
+                            <th class="py-5 px-6 font-medium w-1/4">FAILURE MODE</th>
+                            <th class="py-5 px-6 font-medium w-1/3">RISK</th>
+                            <th class="py-5 px-6 font-medium">ABYSS RESPONSE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Sensor Degradation</td>
+                            <td class="py-4 px-6 text-status-anomaly/80">Platform acts on unreliable environmental data.</td>
+                            <td class="py-4 px-6 text-gray-400">Narrow autonomy, request validation, restrict high-risk maneuvers.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">GPS / Navigation Drift</td>
+                            <td class="py-4 px-6 text-status-anomaly/80">Platform location confidence becomes unstable.</td>
+                            <td class="py-4 px-6 text-gray-400">Reduce mission authority and trigger localization recovery or escalation.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Communication Loss</td>
+                            <td class="py-4 px-6 text-status-future/80">Human authority cannot be reached.</td>
+                            <td class="py-4 px-6 text-gray-400">Enter restricted envelope or abort depending on mission contract.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Conflicting Mission Signals</td>
+                            <td class="py-4 px-6 text-status-future/80">System receives inconsistent objectives or constraints.</td>
+                            <td class="py-4 px-6 text-gray-400">Freeze non-critical actions and escalate.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Unexpected Obstacle Density</td>
+                            <td class="py-4 px-6 text-status-future/80">Operational envelope becomes invalid.</td>
+                            <td class="py-4 px-6 text-gray-400">Recalculate risk state and restrict autonomous movement.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Platform Health Degradation</td>
+                            <td class="py-4 px-6 text-status-anomaly/80">Actuator, power or propulsion state becomes unreliable.</td>
+                            <td class="py-4 px-6 text-gray-400">Abort, surface, return or hold according to contract.</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Unclear Human Command State</td>
+                            <td class="py-4 px-6 text-status-future/80">Authority chain becomes ambiguous.</td>
+                            <td class="py-4 px-6 text-gray-400">Reject critical transitions until authority is verified.</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition-colors">
+                            <td class="py-4 px-6 font-medium text-white">Evidence Logging Failure</td>
+                            <td class="py-4 px-6 text-status-anomaly/80">Mission decisions cannot be proven later.</td>
+                            <td class="py-4 px-6 text-gray-400">Restrict or halt critical operations when durable evidence cannot be maintained.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Relation to VARUX Section -->
+    <section id="varux-relation" class="py-24 border-b border-white/5 relative bg-navy-900/30">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-12 md:text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-medium text-white mb-4">Where ABYSS Fits Inside VARUX</h2>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    ABYSS is not separate fantasy branding. It is a future application of VARUX’s core philosophy: deterministic boundaries before autonomous behavior.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="glass-panel p-6 rounded-lg border-white/5 flex flex-col h-full">
+                    <span class="text-[10px] font-mono text-status-active mb-2">HARDENED BASELINE</span>
+                    <h4 class="font-medium text-white mb-2">VARUX AXIS</h4>
+                    <p class="text-sm text-gray-400">Controls risky production database write-paths.</p>
+                </div>
+                
+                <div class="glass-panel p-6 rounded-lg border-white/5 flex flex-col h-full">
+                    <span class="text-[10px] font-mono text-status-control mb-2">CONTROL PLANE</span>
+                    <h4 class="font-medium text-white mb-2">VARUX ARBITER</h4>
+                    <p class="text-sm text-gray-400">Produces governed ALLOW / BLOCK / APPROVAL decisions.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg border-white/5 flex flex-col h-full">
+                    <span class="text-[10px] font-mono text-status-research mb-2">RESEARCH DIRECTION</span>
+                    <h4 class="font-medium text-white mb-2">VARUX ATLAS</h4>
+                    <p class="text-sm text-gray-400">Maps infrastructure, dependencies and policy boundaries.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg border-vision-accent/30 flex flex-col h-full shadow-[0_0_15px_rgba(178,0,255,0.05)]">
+                    <span class="text-[10px] font-mono text-vision-accent mb-2">VISION CONCEPT</span>
+                    <h4 class="font-medium text-white mb-2">VARUX ABYSS</h4>
+                    <p class="text-sm text-gray-400">Applies deterministic boundary thinking to unmanned maritime autonomy.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg border-white/5 flex flex-col h-full">
+                    <span class="text-[10px] font-mono text-status-anomaly mb-2">FUTURE CONCEPT</span>
+                    <h4 class="font-medium text-white mb-2">VARUX SENTINEL</h4>
+                    <p class="text-sm text-gray-400">Monitors logic drift, abnormal behavior and unauthorized state transitions.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg border-white/5 flex flex-col h-full">
+                    <span class="text-[10px] font-mono text-status-future mb-2">FUTURE CONCEPT</span>
+                    <h4 class="font-medium text-white mb-2">VARUX ORBIT</h4>
+                    <p class="text-sm text-gray-400">Coordinates remote telemetry and decision support in unstable communication environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Principles Section -->
+    <section class="py-24 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-12">
+                <h2 class="text-2xl font-medium text-white mb-2">Design Principles</h2>
+                <p class="text-gray-500 font-mono text-sm tracking-wide">FOUNDATIONAL LOGIC</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="bg-navy-800/50 p-5 rounded border border-white/5 hover:border-white/20 transition-colors">
+                    <h4 class="font-mono text-cyan-accent text-xs mb-2">1. Control Before Autonomy</h4>
+                    <p class="text-[13px] text-gray-400 leading-relaxed">Autonomous behavior must be constrained by explicit rules, context and mission contracts.</p>
+                </div>
+                <div class="bg-navy-800/50 p-5 rounded border border-white/5 hover:border-white/20 transition-colors">
+                    <h4 class="font-mono text-cyan-accent text-xs mb-2">2. Evidence Before Trust</h4>
+                    <p class="text-[13px] text-gray-400 leading-relaxed">Every critical decision should produce durable evidence for later verification.</p>
+                </div>
+                <div class="bg-navy-800/50 p-5 rounded border border-white/5 hover:border-white/20 transition-colors">
+                    <h4 class="font-mono text-cyan-accent text-xs mb-2">3. Authority Before Action</h4>
+                    <p class="text-[13px] text-gray-400 leading-relaxed">Critical transitions require clear authority, not assumed intent.</p>
+                </div>
+                <div class="bg-navy-800/50 p-5 rounded border border-white/5 hover:border-white/20 transition-colors">
+                    <h4 class="font-mono text-cyan-accent text-xs mb-2">4. Degrade Safely</h4>
+                    <p class="text-[13px] text-gray-400 leading-relaxed">When uncertainty rises, autonomy narrows.</p>
+                </div>
+                <div class="bg-navy-800/50 p-5 rounded border border-white/5 hover:border-white/20 transition-colors">
+                    <h4 class="font-mono text-cyan-accent text-xs mb-2">5. Boundaries Over Intelligence</h4>
+                    <p class="text-[13px] text-gray-400 leading-relaxed">More intelligence is not the objective. Safer, bounded behavior is.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900 z-0"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-medium text-white mb-8 tracking-tight">The Ocean Does Not Forgive Ambiguous Authority.</h2>
+            <p class="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed font-light">
+                ABYSS explores the control architecture required when autonomous systems operate in hostile, uncertain and communication-limited environments. The goal is not to make unmanned maritime platforms more independent at any cost. The goal is to keep autonomy governed, bounded and accountable.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center font-mono text-sm">
+                <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded">
+                    Back to VARUX Lab
+                </a>
+                <a href="https://varuxcyber.com" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10">
+                    Visit VARUX
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020203] py-12 border-t border-white/5 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <div class="w-4 h-4 border border-vision-accent flex items-center justify-center rounded-sm">
+                        <div class="w-1 h-1 bg-vision-accent"></div>
+                    </div>
+                    <span class="font-mono text-xs tracking-widest text-gray-400">VARUX <span class="text-gray-600">ABYSS</span></span>
+                </a>
+                <p class="text-xs text-gray-600 font-mono">Bounded autonomy research under VARUX Lab.</p>
+            </div>
+            
+            <div class="flex gap-6 font-mono text-xs text-gray-500">
+                <a href="https://varuxcyber.com" class="hover:text-vision-accent transition-colors">Home</a>
+                <a href="index.html" class="hover:text-vision-accent transition-colors">VARUX Lab</a>
+                <a href="#architecture" class="hover:text-vision-accent transition-colors">Architecture</a>
+                <a href="#safety" class="hover:text-vision-accent transition-colors">Safety Model</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!isExpanded) {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
