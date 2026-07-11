@@ -207,6 +207,7 @@
         }
 
         .hero-background,
+        .hero-video,
         .hero-grid,
         .hero-noise,
         .hero-vignette,
@@ -220,6 +221,17 @@
 
         .hero-background {
             overflow: hidden;
+            background: #020202;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            opacity: 0.78;
+            filter: brightness(0.62) contrast(1.08) saturate(0.88);
+            transform: scale(1.01);
         }
 
         .hero-grid {
@@ -265,7 +277,7 @@
         }
 
         .hero-readability {
-            background: linear-gradient(90deg, rgba(2, 2, 2, 0.96) 0%, rgba(2, 2, 2, 0.92) 34%, rgba(2, 2, 2, 0.66) 56%, rgba(2, 2, 2, 0.26) 78%, rgba(2, 2, 2, 0.08) 100%);
+            background: linear-gradient(90deg, rgba(2, 2, 2, 0.88) 0%, rgba(2, 2, 2, 0.78) 34%, rgba(2, 2, 2, 0.5) 56%, rgba(2, 2, 2, 0.2) 78%, rgba(2, 2, 2, 0.08) 100%);
         }
 
         .social-links {
@@ -610,9 +622,11 @@
     <!-- SECTION 2: HERO (Enhanced Animation - mouse interaction disabled) -->
     <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
         <div class="hero-background" aria-hidden="true">
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" tabindex="-1">
+                <source src="13394660_3840_21.mp4" type="video/mp4">
+            </video>
             <div class="hero-grid"></div>
             <div class="hero-noise"></div>
-            <canvas id="heroMesh" class="hero-canvas"></canvas>
             <div class="hero-core-halo"></div>
             <div class="hero-vignette"></div>
             <div class="hero-readability"></div>
