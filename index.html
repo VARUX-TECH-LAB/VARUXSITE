@@ -935,7 +935,10 @@
             object-position: center center !important;
             opacity: 1 !important;
             filter: none !important;
-            transform: none !important;
+            transform: translateZ(0) !important;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            contain: paint;
         }
 
         .hero-color-grade,
@@ -995,7 +998,8 @@
     <!-- SECTION 2: CINEMATIC HERO -->
     <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
         <div class="hero-background" aria-hidden="true">
-            <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true" tabindex="-1">
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./hero-poster.jpg" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" aria-hidden="true" tabindex="-1">
+                <source src="./hero-background-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
                 <source src="./12817774_3840_2160_30fps(2).mp4" type="video/mp4">
             </video>
         </div>
@@ -1906,7 +1910,7 @@
 
         if (cinematicVideo) {
             cinematicVideo.playbackRate = 1;
-            cinematicVideo.addEventListener('loadedmetadata', safelyPlayHeroVideo, { once: true });
+            cinematicVideo.addEventListener('canplay', safelyPlayHeroVideo, { once: true });
 
             if (motionReduced) {
                 cinematicVideo.pause();
