@@ -200,16 +200,18 @@
 
         .hero-stage {
             isolation: isolate;
-            background:
-                radial-gradient(circle at 76% 48%, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.03) 18%, transparent 38%),
-                radial-gradient(circle at 84% 78%, rgba(59, 130, 246, 0.04) 0%, transparent 34%),
-                linear-gradient(180deg, #060606 0%, #020202 46%, #010101 100%);
+            min-height: 100svh;
+            background: #020202;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .hero-background,
         .hero-video,
+        .hero-color-grade,
+        .hero-light-beam,
         .hero-grid,
         .hero-noise,
+        .hero-scanlines,
         .hero-vignette,
         .hero-readability,
         .hero-core-halo,
@@ -228,10 +230,37 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center center;
-            opacity: 0.78;
-            filter: brightness(0.62) contrast(1.08) saturate(0.88);
-            transform: scale(1.01);
+            object-position: center 50%;
+            opacity: 0.92;
+            filter: brightness(0.48) contrast(1.2) saturate(0.72) hue-rotate(-3deg);
+            transform: scale(1.055);
+            translate: 0 var(--hero-scroll-shift, 0%);
+            will-change: transform, translate;
+            animation: heroCinematicDrift 22s ease-in-out infinite alternate;
+        }
+
+        .hero-stage > .max-w-7xl {
+            transform: translateY(var(--hero-content-shift, 0px));
+            opacity: var(--hero-content-opacity, 1);
+            transition: opacity 80ms linear;
+            will-change: transform, opacity;
+        }
+
+        .hero-color-grade {
+            background:
+                linear-gradient(115deg, rgba(2, 2, 2, 0.95) 0%, rgba(2, 2, 2, 0.82) 30%, rgba(4, 10, 20, 0.38) 62%, rgba(4, 12, 24, 0.18) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, transparent 24%, transparent 68%, rgba(0, 0, 0, 0.86) 100%),
+                radial-gradient(circle at 78% 44%, rgba(58, 124, 255, 0.16) 0%, rgba(27, 72, 150, 0.06) 28%, transparent 52%);
+            mix-blend-mode: normal;
+        }
+
+        .hero-light-beam {
+            inset: -18% -12%;
+            background: linear-gradient(116deg, transparent 36%, rgba(110, 166, 255, 0.03) 45%, rgba(180, 210, 255, 0.11) 50%, rgba(110, 166, 255, 0.025) 55%, transparent 65%);
+            filter: blur(22px);
+            opacity: 0.72;
+            transform: translateX(-16%);
+            animation: heroBeam 13s ease-in-out infinite alternate;
         }
 
         .hero-grid {
@@ -277,7 +306,199 @@
         }
 
         .hero-readability {
-            background: linear-gradient(90deg, rgba(2, 2, 2, 0.88) 0%, rgba(2, 2, 2, 0.78) 34%, rgba(2, 2, 2, 0.5) 56%, rgba(2, 2, 2, 0.2) 78%, rgba(2, 2, 2, 0.08) 100%);
+            background:
+                linear-gradient(90deg, rgba(2, 2, 2, 0.97) 0%, rgba(2, 2, 2, 0.88) 27%, rgba(2, 2, 2, 0.58) 50%, rgba(2, 2, 2, 0.16) 78%, rgba(2, 2, 2, 0.08) 100%),
+                linear-gradient(180deg, rgba(2, 2, 2, 0.3) 0%, transparent 35%, rgba(2, 2, 2, 0.5) 100%);
+        }
+
+        .hero-scanlines {
+            opacity: 0.055;
+            background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 4px);
+            mix-blend-mode: soft-light;
+        }
+
+        .hero-film-grain {
+            position: absolute;
+            inset: -50%;
+            pointer-events: none;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+            animation: heroGrain 0.22s steps(2) infinite;
+            mix-blend-mode: soft-light;
+        }
+
+        .hero-cinematic-bar {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: clamp(10px, 1.5vw, 24px);
+            z-index: 8;
+            background: #000;
+            pointer-events: none;
+        }
+
+        .hero-cinematic-bar.top { top: 0; }
+        .hero-cinematic-bar.bottom { bottom: 0; }
+
+        .hero-content {
+            position: relative;
+            padding-left: clamp(0rem, 2vw, 1.4rem);
+        }
+
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
+            width: 1px;
+            height: min(72%, 29rem);
+            background: linear-gradient(180deg, rgba(96, 165, 250, 0.75), rgba(96, 165, 250, 0.08), transparent);
+            box-shadow: 0 0 24px rgba(59, 130, 246, 0.32);
+        }
+
+        .hero-eyebrow {
+            border-color: rgba(148, 163, 184, 0.2) !important;
+            background: rgba(2, 6, 14, 0.34) !important;
+            backdrop-filter: blur(14px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 50px rgba(0, 0, 0, 0.24);
+        }
+
+        .hero-title {
+            max-width: 980px;
+            font-size: clamp(3.7rem, 7.6vw, 7.5rem);
+            line-height: 0.86;
+            letter-spacing: -0.065em;
+            text-shadow: 0 10px 42px rgba(0, 0, 0, 0.7);
+            text-wrap: balance;
+        }
+
+        .hero-title span {
+            color: transparent !important;
+            background: linear-gradient(105deg, #5b6270 0%, #a1a8b5 42%, #4c5668 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .hero-description {
+            color: #8c929d !important;
+            max-width: 760px;
+            text-shadow: 0 5px 28px rgba(0, 0, 0, 0.82);
+        }
+
+        .hero-actions .hero-primary-cta {
+            position: relative;
+            overflow: hidden;
+            min-height: 58px;
+            box-shadow: 0 18px 55px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-actions .hero-primary-cta::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 24%, rgba(255, 255, 255, 0.65) 50%, transparent 76%);
+            transform: translateX(-130%);
+            transition: transform 0.8s ease;
+        }
+
+        .hero-actions .hero-primary-cta:hover::after { transform: translateX(130%); }
+
+        .hero-actions .hero-secondary-cta {
+            min-height: 58px;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            background: rgba(6, 8, 13, 0.24);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-actions .hero-secondary-cta:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.26) !important;
+        }
+
+        .hero-meta {
+            position: absolute;
+            right: clamp(1rem, 3.2vw, 3rem);
+            bottom: clamp(2.5rem, 5vw, 5rem);
+            z-index: 12;
+            display: flex;
+            align-items: flex-end;
+            gap: 1.2rem;
+            color: rgba(212, 218, 228, 0.42);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.23em;
+            text-transform: uppercase;
+        }
+
+        .hero-meta-line {
+            width: 64px;
+            height: 1px;
+            margin-bottom: 0.34rem;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.72));
+        }
+
+        .hero-scroll-cue {
+            position: absolute;
+            left: 50%;
+            bottom: 2.25rem;
+            z-index: 12;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.55rem;
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            transform: translateX(-50%);
+        }
+
+        .hero-scroll-cue::after {
+            content: "";
+            width: 1px;
+            height: 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent);
+            animation: heroScrollLine 1.8s ease-in-out infinite;
+        }
+
+        .hero-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: heroReveal 1s cubic-bezier(.2,.7,.2,1) forwards;
+        }
+
+        .hero-reveal-delay-1 { animation-delay: 0.16s; }
+        .hero-reveal-delay-2 { animation-delay: 0.34s; }
+        .hero-reveal-delay-3 { animation-delay: 0.52s; }
+        .hero-reveal-delay-4 { animation-delay: 0.72s; }
+
+        @keyframes heroCinematicDrift {
+            0% { transform: scale(1.055) translate3d(0, 0, 0); }
+            100% { transform: scale(1.105) translate3d(-0.7%, -0.45%, 0); }
+        }
+
+        @keyframes heroBeam {
+            0% { transform: translateX(-18%) rotate(-1deg); opacity: 0.35; }
+            100% { transform: translateX(17%) rotate(1deg); opacity: 0.8; }
+        }
+
+        @keyframes heroGrain {
+            0% { transform: translate3d(0, 0, 0); }
+            25% { transform: translate3d(3%, -2%, 0); }
+            50% { transform: translate3d(-2%, 3%, 0); }
+            75% { transform: translate3d(2%, 2%, 0); }
+            100% { transform: translate3d(-3%, -1%, 0); }
+        }
+
+        @keyframes heroReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heroScrollLine {
+            0%, 100% { opacity: 0.2; transform: scaleY(0.7); transform-origin: top; }
+            50% { opacity: 0.85; transform: scaleY(1); transform-origin: top; }
         }
 
         .social-links {
@@ -559,9 +780,41 @@
             }
         }
 
+        @media (max-width: 1024px) {
+            .hero-title { font-size: clamp(3.4rem, 9vw, 6rem); }
+            .hero-meta { display: none; }
+            .hero-content::before { height: 64%; }
+        }
+
+        @media (max-width: 767px) {
+            .hero-video {
+                object-position: 64% center;
+                opacity: 0.82;
+                filter: brightness(0.42) contrast(1.15) saturate(0.7);
+            }
+            .hero-readability {
+                background: linear-gradient(180deg, rgba(2, 2, 2, 0.82) 0%, rgba(2, 2, 2, 0.38) 38%, rgba(2, 2, 2, 0.82) 100%);
+            }
+            .hero-content { padding-left: 0; }
+            .hero-content::before { display: none; }
+            .hero-title {
+                font-size: clamp(3rem, 14vw, 4.8rem) !important;
+                line-height: 0.9;
+                letter-spacing: -0.055em;
+            }
+            .hero-description { max-width: 92%; }
+            .hero-scroll-cue { display: none; }
+            .hero-cinematic-bar { height: 8px; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .btn-premium,
             .product-card,
+            .hero-video,
+            .hero-light-beam,
+            .hero-film-grain,
+            .hero-reveal,
+            .hero-scroll-cue::after,
             section {
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
@@ -619,44 +872,55 @@
         </div>
     </nav>
 
-    <!-- SECTION 2: HERO (Enhanced Animation - mouse interaction disabled) -->
+    <!-- SECTION 2: CINEMATIC HERO -->
     <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
         <div class="hero-background" aria-hidden="true">
-            <video class="hero-video" autoplay muted loop playsinline preload="metadata" tabindex="-1">
+            <video class="hero-video" autoplay muted loop playsinline preload="auto" tabindex="-1">
                 <source src="13394660_3840_21.mp4" type="video/mp4">
             </video>
+            <div class="hero-color-grade"></div>
+            <div class="hero-light-beam"></div>
             <div class="hero-grid"></div>
             <div class="hero-noise"></div>
+            <div class="hero-scanlines"></div>
             <div class="hero-core-halo"></div>
             <div class="hero-vignette"></div>
             <div class="hero-readability"></div>
+            <div class="hero-film-grain"></div>
         </div>
+        <div class="hero-cinematic-bar top" aria-hidden="true"></div>
+        <div class="hero-cinematic-bar bottom" aria-hidden="true"></div>
         
         <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="max-w-5xl">
-                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-12">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <div class="max-w-5xl hero-content">
+                <div class="hero-eyebrow hero-reveal hero-reveal-delay-1 inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-12">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_16px_rgba(59,130,246,0.9)]"></span>
                     Pre-Execution Control for Autonomous Systems
                 </div>
                 
-                <h1 class="text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter text-white mb-10 leading-[0.9] lg:max-w-4xl">
+                <h1 class="hero-title hero-reveal hero-reveal-delay-2 text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter text-white mb-10 leading-[0.9] lg:max-w-4xl">
                     Execution Başlamadan Önce <span class="text-zinc-600 italic">Kontrol.</span>
                 </h1>
                 
-                <p class="text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
+                <p class="hero-description hero-reveal hero-reveal-delay-3 text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
                     Ajanlara, otomasyonlara ve kritik write işlemlerine deterministik policy uygulayın. 
                     Karar üretmek modele, yetki üretmek <span class="text-white font-medium italic">VARUX</span>'a aittir.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
-                    <button type="button" data-demo-open class="bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                    <a href="varuxlab" data-hero-secondary class="border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
+                <div class="hero-actions hero-reveal hero-reveal-delay-4 flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
+                    <button type="button" data-demo-open class="hero-primary-cta bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
+                    <a href="varuxlab" data-hero-secondary class="hero-secondary-cta border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
                         VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
                     </a>
                 </div>
-
             </div>
         </div>
+
+        <div class="hero-meta" aria-hidden="true">
+            <div class="hero-meta-line"></div>
+            <div>Control Layer / 01</div>
+        </div>
+        <div class="hero-scroll-cue" aria-hidden="true">Scroll</div>
     </header>
 
     <!-- SECTION 3: PROBLEM / THESIS -->
@@ -1506,6 +1770,39 @@
                     demoForm.reset();
                 });
             }
+        }
+
+        // Cinematic hero video behavior
+        const cinematicHero = document.querySelector('.hero-stage');
+        const cinematicVideo = document.querySelector('.hero-video');
+        const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (cinematicVideo) {
+            cinematicVideo.addEventListener('loadedmetadata', () => {
+                cinematicVideo.playbackRate = motionReduced ? 1 : 0.82;
+                const playbackPromise = cinematicVideo.play();
+                if (playbackPromise && typeof playbackPromise.catch === 'function') {
+                    playbackPromise.catch(() => {});
+                }
+            }, { once: true });
+        }
+
+        if (cinematicHero && cinematicVideo && !motionReduced) {
+            let heroTicking = false;
+            const updateHeroParallax = () => {
+                const rect = cinematicHero.getBoundingClientRect();
+                const progress = Math.min(Math.max(-rect.top / Math.max(rect.height, 1), 0), 1);
+                cinematicVideo.style.setProperty('--hero-scroll-shift', `${progress * 2.4}%`);
+                cinematicHero.style.setProperty('--hero-content-shift', `${progress * 24}px`);
+                cinematicHero.style.setProperty('--hero-content-opacity', `${1 - progress * 0.78}`);
+                heroTicking = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (!heroTicking) {
+                    heroTicking = true;
+                    requestAnimationFrame(updateHeroParallax);
+                }
+            }, { passive: true });
         }
 
         // Enhanced Hero Animation (mouse interaction disabled)
