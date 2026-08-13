@@ -1210,6 +1210,10 @@
                         <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
                             Back to VARUX Lab
                         </a>
+                        <a href="https://docs.varuxcyber.com/" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
+                            AXIS Docs
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1334,25 +1338,14 @@
                         <textarea id="cf-message" name="message" required rows="3" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring resize-none"></textarea>
                     </div>
 
-                    <div id="form-status" class="text-xs font-mono" role="status" aria-live="polite"></div>
+                    <div id="form-status" class="text-xs font-mono text-gray-400" role="status" aria-live="polite"></div>
 
                     <button type="submit" class="mt-2 w-full bg-cyan-accent text-navy-900 py-2.5 rounded font-medium hover:bg-cyan-accent/80 transition-colors focus-ring">
                         Prepare Email
                     </button>
                 </form>
 
-                <!-- Fallback Area (Hidden initially) -->
-                <div id="fallback-area" class="hidden mt-6 border-t border-white/10 pt-4">
-                    <p class="text-xs text-gray-400 mb-2">Your email client should open. If it does not, copy the prepared message below.</p>
-                    <div class="bg-[#020203] border border-white/5 rounded p-3 mb-3 h-32 overflow-y-auto">
-                        <pre id="fallback-text" class="text-[11px] font-mono text-gray-300 whitespace-pre-wrap"></pre>
-                    </div>
-                    <button type="button" id="copy-btn" class="w-full bg-white/10 text-white py-2 rounded text-sm hover:bg-white/20 transition-colors focus-ring flex items-center justify-center gap-2">
-                        <i data-lucide="copy" class="w-4 h-4"></i> Copy Message
-                    </button>
                 </div>
-
-            </div>
         </div>
     </div>
 
@@ -1435,19 +1428,18 @@
         // ----------------------------------------
         // Contact Modal Logic
         // ----------------------------------------
-        const CONTACT_EMAIL = "contact@varuxcyber.com";
         const modal = document.getElementById('contact-modal');
         const backdrop = document.getElementById('modal-backdrop');
-        const contactForm = document.getElementById('contact-form');
-        const fallbackArea = document.getElementById('fallback-area');
-        const fallbackText = document.getElementById('fallback-text');
-        const copyBtn = document.getElementById('copy-btn');
+        const formStatus = document.getElementById('form-status');
 
         function openContactModal() {
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // Lock scroll
             // reset state
-            fallbackArea.classList.add('hidden');
+            if (formStatus) {
+                formStatus.textContent = '';
+                formStatus.className = 'text-xs font-mono text-gray-400';
+            }
             setTimeout(() => {
                 document.getElementById('cf-name').focus();
             }, 100);
@@ -1469,57 +1461,6 @@
             }
         });
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Honeypot check
-            const honeypot = document.getElementById('website-url').value;
-            if (honeypot) {
-                // Silently succeed for bots
-                closeContactModal();
-                return;
-            }
-
-            const name = document.getElementById('cf-name').value.trim();
-            const email = document.getElementById('cf-email').value.trim();
-            const company = document.getElementById('cf-company').value.trim() || 'N/A';
-            const role = document.getElementById('cf-role').value.trim() || 'N/A';
-            const interest = document.getElementById('cf-interest').value;
-            const message = document.getElementById('cf-message').value.trim();
-
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            const subject = "VARUX AXIS Technical Review Request";
-            const body = `Name: ${name}\nRole: ${role}\nCompany: ${company}\nEmail: ${email}\nInterest: ${interest}\n\nMessage:\n${message}`;
-
-            const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Show fallback UI securely using textContent to prevent XSS
-            fallbackText.textContent = body;
-            fallbackArea.classList.remove('hidden');
-
-            // Attempt to open email client
-            window.location.href = mailtoLink;
-        });
-
-        copyBtn.addEventListener('click', () => {
-            const textToCopy = fallbackText.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Copied`;
-                lucide.createIcons();
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
-                    lucide.createIcons();
-                }, 1500);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert("Failed to copy message. Please copy manually.");
-            });
-        });
-    </script>
+        </script>
 </body>
 </html>
