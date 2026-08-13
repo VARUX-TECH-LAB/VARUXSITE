@@ -1355,7 +1355,8 @@
                 Kisa bilgilerinizi birakin. Ekibinizin agent, automation veya kritik write-path guvenligini nasil korumak istediginizi ogrenelim.
             </p>
 
-            <form id="demoRequestForm" class="mt-8">
+            <form id="demoRequestForm" action="https://formspree.io/f/mlgpjdyy" method="POST" class="mt-8">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
                 <div class="demo-form-grid demo-form-grid-two">
                     <div class="demo-field">
                         <label for="demoName">Ad Soyad</label>
@@ -1859,40 +1860,6 @@
                     closeDemoModal();
                 }
             });
-
-            if (demoForm) {
-                demoForm.addEventListener('submit', (event) => {
-                    event.preventDefault();
-
-                    if (!demoForm.checkValidity()) {
-                        demoForm.reportValidity();
-                        return;
-                    }
-
-                    const payload = Object.fromEntries(new FormData(demoForm).entries());
-                    const localizedMessages = currentLanguage === 'en'
-                        ? {
-                            success: 'Request captured. Details were saved in this browser.',
-                            fallback: 'The form is ready. A backend or CRM integration can be connected for live delivery.'
-                        }
-                        : {
-                            success: 'Talep kaydi alindi. Bilgiler bu tarayicida saklandi.',
-                            fallback: 'Talep hazir. Canli gonderim icin backend veya CRM baglantisi eklenebilir.'
-                        };
-
-                    try {
-                        window.localStorage.setItem('varux-demo-request', JSON.stringify({
-                            ...payload,
-                            createdAt: new Date().toISOString()
-                        }));
-                        demoStatus.textContent = localizedMessages.success;
-                    } catch (error) {
-                        demoStatus.textContent = localizedMessages.fallback;
-                    }
-
-                    demoForm.reset();
-                });
-            }
         }
 
         // Cinematic hero video behavior: avoid continuous scroll work and pause off-screen.
