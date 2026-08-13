@@ -1288,38 +1288,38 @@
                 <h3 id="modal-title" class="text-xl font-medium text-white mb-2">Request AXIS technical review</h3>
                 <p class="text-sm text-gray-400 mb-6">Use this panel to prepare an email for architecture review, controlled demo discussion or non-production pilot planning.</p>
 
-                <form id="contact-form" class="flex flex-col gap-4">
+                <form id="contact-form" action="https://formspree.io/f/mlgpjdyy" method="POST" class="flex flex-col gap-4">
                     <!-- Honeypot -->
                     <div class="hidden" aria-hidden="true">
                         <label for="website-url">Website</label>
-                        <input type="text" id="website-url" name="website-url" tabindex="-1" autocomplete="off">
+                        <input type="text" id="website-url" name="_gotcha" tabindex="-1" autocomplete="off">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-1.5">
                             <label for="cf-name" class="text-xs font-mono text-gray-300">Name</label>
-                            <input type="text" id="cf-name" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                            <input type="text" id="cf-name" name="name" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="cf-email" class="text-xs font-mono text-gray-300">Work Email</label>
-                            <input type="email" id="cf-email" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                            <input type="email" id="cf-email" name="email" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-1.5">
                             <label for="cf-company" class="text-xs font-mono text-gray-300">Company (Optional)</label>
-                            <input type="text" id="cf-company" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                            <input type="text" id="cf-company" name="company" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="cf-role" class="text-xs font-mono text-gray-300">Role (Optional)</label>
-                            <input type="text" id="cf-role" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                            <input type="text" id="cf-role" name="role" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label for="cf-interest" class="text-xs font-mono text-gray-300">Interest</label>
-                        <select id="cf-interest" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring appearance-none">
+                        <select id="cf-interest" name="interest" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring appearance-none">
                             <option value="Technical review">Technical review</option>
                             <option value="Non-production pilot discussion">Non-production pilot discussion</option>
                             <option value="Architecture feedback">Architecture feedback</option>
@@ -1331,8 +1331,10 @@
 
                     <div class="flex flex-col gap-1.5">
                         <label for="cf-message" class="text-xs font-mono text-gray-300">Message</label>
-                        <textarea id="cf-message" required rows="3" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring resize-none"></textarea>
+                        <textarea id="cf-message" name="message" required rows="3" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring resize-none"></textarea>
                     </div>
+
+                    <div id="form-status" class="text-xs font-mono" role="status" aria-live="polite"></div>
 
                     <button type="submit" class="mt-2 w-full bg-cyan-accent text-navy-900 py-2.5 rounded font-medium hover:bg-cyan-accent/80 transition-colors focus-ring">
                         Prepare Email
