@@ -1,1944 +1,1472 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>VARUX | Stop Post-Mortem. Start Pre-Execution Control.</title>
-    <meta name="description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin pre-execution control, deterministic policy enforcement ve enterprise governance platformudur.">
-    <meta name="keywords" content="VARUX, pre-execution control, policy enforcement, agent security, autonomous system governance, enterprise security, database write protection, Arbiter, Axis">
-    <meta name="author" content="VARUX">
-    <meta name="application-name" content="VARUX">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="theme-color" content="#020202">
-    <link rel="canonical" href="https://varuxcyber.com/">
-    <meta property="og:locale" content="tr_TR">
-    <meta property="og:locale:alternate" content="en_US">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX AXIS | Deterministic PostgreSQL Write-Path Control</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VARUX AXIS is a deterministic PostgreSQL write-path control layer for policy enforcement, approval workflows and durable audit evidence before risky database operations execute.">
+    <meta name="keywords" content="database security, PostgreSQL security, database write-path control, production database governance, SQL approval workflow, audit evidence, policy enforcement, database change control, AI agent database safety, VARUX AXIS, deterministic security">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://varuxcyber.com/axis">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="VARUX AXIS | Deterministic PostgreSQL Write-Path Control">
+    <meta property="og:description" content="VARUX AXIS is a deterministic PostgreSQL write-path control layer for policy enforcement, approval workflows and durable audit evidence before risky database operations execute.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://varuxcyber.com/axis">
     <meta property="og:site_name" content="VARUX">
-    <meta property="og:url" content="https://varuxcyber.com/">
     <meta property="og:image" content="https://varuxcyber.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="VARUX — pre-execution control for autonomous systems">
-    <meta property="og:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
-    <meta property="og:description" content="Kritik istekleri execution baslamadan once degerlendirin, yetkiyi policy ile sinirlayin ve denetlenebilir enforcement uygulayin.">
+    <meta property="og:image:alt" content="VARUX AXIS — deterministic PostgreSQL write-path control">
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@varuxtech">
-    <meta name="twitter:creator" content="@varuxtech">
+    <meta name="twitter:title" content="VARUX AXIS | Deterministic PostgreSQL Write-Path Control">
+    <meta name="twitter:description" content="VARUX AXIS is a deterministic PostgreSQL write-path control layer for policy enforcement, approval workflows and durable audit evidence before risky database operations execute.">
     <meta name="twitter:image" content="https://varuxcyber.com/og-image.png">
-    <meta name="twitter:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
-    <meta name="twitter:description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin deterministic control ve enforcement katmani sunar.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "VARUX",
-            "description": "Pre-execution control ve enforcement platformu. Agentler, otomasyonlar ve kritik write operasyonlari icin deterministic policy governance saglar.",
-            "sameAs": [
-                "https://github.com/VARUX-TECH-LAB",
-                "https://x.com/varuxtech",
-                "https://www.linkedin.com/company/varux"
-            ],
-            "knowsAbout": [
-                "Pre-execution control",
-                "Policy enforcement",
-                "Agent governance",
-                "Autonomous system security",
-                "Database write-path enforcement"
-            ]
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "VARUX",
-            "applicationCategory": "SecurityApplication",
-            "operatingSystem": "Web",
-            "description": "VARUX is a pre-execution control and enforcement platform for autonomous systems, agents, automation and critical write operations.",
-            "inLanguage": ["tr", "en"],
-            "featureList": [
-                "Pre-execution control",
-                "Deterministic policy enforcement",
-                "Agent governance",
-                "Database write-path protection",
-                "Evidence-oriented audit trails"
-            ],
-            "publisher": {
-                "@type": "Organization",
-                "name": "VARUX"
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#020203',
+                            800: '#060608',
+                            700: '#0a0a0d',
+                            600: '#111116',
+                        },
+                        cyan: {
+                            accent: '#00e5ff',
+                            dark: '#0088ff',
+                        },
+                        status: {
+                            active: '#00ff66',       /* ALLOW / ACTIVE */
+                            control: '#00d4ff',      /* POLICY / PLANE */
+                            warning: '#ffaa00',      /* REQUIRE_APPROVAL */
+                            blocked: '#ff3366',      /* BLOCK */
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm39 39V1H1v38h38z' fill='rgba(255,255,255,0.015)' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
             }
         }
     </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono&display=swap');
 
-        :root {
-            --bg: #020202;
-            --card: #080808;
-            --border: #121212;
-            --accent: #3b82f6;
-            --axis-accent: #10b981;
-            --arbiter-accent: #6366f1;
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/80 backdrop-blur-md border border-white/5;
+            }
+            .glass-panel-hover {
+                @apply hover:border-white/15 hover:bg-navy-700/80 transition-all duration-300;
+            }
+            .focus-ring {
+                @apply focus:outline-none focus:ring-2 focus:ring-cyan-accent focus:border-transparent transition-shadow;
+            }
         }
 
         body {
-            background-color: var(--bg);
-            color: #a1a1aa;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.5;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
+            background-color: #020203;
+            color: #d1d5db;
         }
 
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-        .brand-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
+        /* Anchor Offsets */
+        #product, #review-paths, #problem, #definition, #architecture, #decision-flow, 
+        #control-panel, #security-model, #evidence, #policy, #operating-modes, 
+        #pilot, #pilot-checklist, #review-questions, #current-limitations, #failure-model, #use-cases, #contact {
+            scroll-margin-top: 84px;
         }
 
-        .brand-mark-premium {
-            position: relative;
-            width: 1.65rem;
-            height: 1.65rem;
-            border-radius: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background:
-                linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(222, 232, 248, 0.9) 52%, rgba(132, 164, 213, 0.86) 100%);
-            box-shadow:
-                0 14px 32px rgba(0, 0, 0, 0.28),
-                inset 0 1px 0 rgba(255, 255, 255, 0.65),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.16);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-            overflow: hidden;
+        /* VARUX Themed Scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 229, 255, 0.45) #020203;
         }
 
-        .brand-mark-premium::before {
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, #020203 0%, #060608 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(0, 212, 255, 0.22)), #111116;
+            border: 2px solid #020203;
+            border-radius: 999px;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.12);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.8), rgba(0, 212, 255, 0.35)), #111116;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #020203;
+        }
+        
+        /* Details/Accordion native marker hide */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+
+        /* Abstract Visual Animations */
+        @keyframes flow-line {
+            from { stroke-dashoffset: 24; }
+            to { stroke-dashoffset: 0; }
+        }
+        .animated-flow {
+            stroke-dasharray: 4 6;
+            animation: flow-line 2s linear infinite;
+        }
+        .animated-flow-slow {
+            stroke-dasharray: 4 6;
+            animation: flow-line 4s linear infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+            50% { opacity: 1; box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
+        }
+        .pulse-active {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes axis-scan {
+            0% { transform: translateY(-120%); opacity: 0; }
+            12%, 78% { opacity: 0.75; }
+            100% { transform: translateY(120%); opacity: 0; }
+        }
+
+        @keyframes axis-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes axis-gate-ring {
+            0% { transform: scale(0.92); opacity: 0.5; }
+            70% { transform: scale(1.12); opacity: 0; }
+            100% { transform: scale(1.12); opacity: 0; }
+        }
+
+        @keyframes axis-label-blink {
+            0%, 100% { opacity: 0.52; }
+            50% { opacity: 1; }
+        }
+
+        .axis-hero-visual::before {
             content: "";
             position: absolute;
-            inset: 1px;
-            border-radius: 0.44rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            opacity: 0.75;
-        }
-
-        .brand-mark-premium::after {
-            content: "";
-            position: absolute;
-            top: -28%;
-            left: 48%;
-            width: 84%;
-            height: 84%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 72%);
-            transform: rotate(32deg);
-            opacity: 0.42;
-        }
-
-        .brand-mark-core {
-            position: relative;
-            width: 0.52rem;
-            height: 0.52rem;
-            border-radius: 0.14rem;
-            background: #050505;
-            box-shadow:
-                0 0 0 4px rgba(5, 5, 5, 0.08),
-                0 0 0 8px rgba(5, 5, 5, 0.04);
+            inset: -20%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 229, 255, 0.06) 46%, rgba(0, 229, 255, 0.2) 50%, rgba(0, 229, 255, 0.06) 54%, transparent 100%);
+            animation: axis-scan 6s ease-in-out infinite;
+            pointer-events: none;
             z-index: 1;
         }
 
-        .brand-link:hover .brand-mark-premium {
-            transform: translateY(-1px) scale(1.02);
-            box-shadow:
-                0 18px 40px rgba(0, 0, 0, 0.36),
-                inset 0 1px 0 rgba(255, 255, 255, 0.72),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.18);
-            filter: saturate(1.08);
+        .axis-node {
+            animation: axis-float 5s ease-in-out infinite;
         }
 
-        .lang-switch {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.25rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.03);
+        .axis-node-delay-1 {
+            animation-delay: 0.7s;
         }
 
-        .lang-button {
-            min-width: 2.4rem;
-            height: 2rem;
-            padding: 0 0.75rem;
-            border-radius: 999px;
-            color: #71717a;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            transition: all 0.25s ease;
+        .axis-node-delay-2 {
+            animation-delay: 1.4s;
         }
 
-        .lang-button:hover {
-            color: #ffffff;
-        }
-
-        .lang-button.is-active {
-            background: rgba(255, 255, 255, 0.94);
-            color: #050505;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
-        }
-
-        .glass {
-            background: rgba(10, 10, 10, 0.82);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-        }
-
-        .hero-stage {
-            isolation: isolate;
-            min-height: 100svh;
-            background: #020202;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .hero-background,
-        .hero-color-grade,
-        .hero-light-beam,
-        .hero-grid,
-        .hero-noise,
-        .hero-scanlines,
-        .hero-vignette,
-        .hero-readability,
-        .hero-core-halo,
-        .hero-canvas {
+        .axis-gate-pulse::after {
+            content: "";
             position: absolute;
-            inset: 0;
+            inset: -12px;
+            border: 1px solid rgba(0, 229, 255, 0.22);
+            border-radius: 0.75rem;
+            animation: axis-gate-ring 3.2s ease-out infinite;
             pointer-events: none;
         }
 
-        .hero-background {
-            overflow: hidden;
-            background: #020202;
+        .axis-database-pulse {
+            box-shadow: 0 0 0 1px rgba(0, 255, 102, 0.08), 0 0 30px rgba(0, 255, 102, 0.08);
+            animation: pulse-glow 4s ease-in-out infinite;
         }
 
-        .hero-canvas {
-            width: 100%;
-            height: 100%;
-            opacity: 0.9;
-            filter: blur(0px);
+        .axis-decision-label {
+            animation: axis-label-blink 3.6s ease-in-out infinite;
         }
 
-        .hero-stage > .max-w-7xl {
-            position: relative;
-        }
-
-        .hero-color-grade {
-            background:
-                linear-gradient(115deg, rgba(2, 2, 2, 0.95) 0%, rgba(2, 2, 2, 0.82) 30%, rgba(4, 10, 20, 0.38) 62%, rgba(4, 12, 24, 0.18) 100%),
-                linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, transparent 24%, transparent 68%, rgba(0, 0, 0, 0.86) 100%),
-                radial-gradient(circle at 78% 44%, rgba(58, 124, 255, 0.16) 0%, rgba(27, 72, 150, 0.06) 28%, transparent 52%);
-            mix-blend-mode: normal;
-        }
-
-        .hero-light-beam {
-            inset: -18% -12%;
-            background: linear-gradient(116deg, transparent 36%, rgba(110, 166, 255, 0.025) 45%, rgba(180, 210, 255, 0.08) 50%, rgba(110, 166, 255, 0.02) 55%, transparent 65%);
-            filter: blur(14px);
-            opacity: 0.42;
-            transform: translateX(-6%);
-        }
-
-        .hero-grid {
-            opacity: 0.25;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-            background-size: 68px 68px;
-            -webkit-mask-image: radial-gradient(circle at 76% 52%, black 18%, rgba(0, 0, 0, 0.82) 48%, transparent 100%);
-            mask-image: radial-gradient(circle at 76% 52%, black 18%, rgba(0, 0, 0, 0.82) 48%, transparent 100%);
-        }
-
-        .hero-noise {
-            opacity: 0.035;
-            background-image:
-                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18) 0.55px, transparent 0.8px),
-                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.15) 0.55px, transparent 0.85px),
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0.45px, transparent 0.75px),
-                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.16) 0.55px, transparent 0.85px);
-            background-size: 22px 22px, 28px 28px, 18px 18px, 24px 24px;
-            mix-blend-mode: screen;
-        }
-
-        .hero-core-halo {
-            background:
-                radial-gradient(circle at 72% 50%, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0.08) 10%, rgba(59, 130, 246, 0.035) 22%, transparent 40%),
-                radial-gradient(circle at 80% 64%, rgba(59, 130, 246, 0.05) 0%, transparent 34%);
-            filter: blur(12px);
-            opacity: 0.68;
-        }
-
-        .hero-vignette {
-            background:
-                radial-gradient(circle at center, transparent 52%, rgba(0, 0, 0, 0.28) 100%),
-                linear-gradient(180deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.06) 28%, rgba(0, 0, 0, 0.18) 100%);
-        }
-
-        .hero-readability {
-            background:
-                linear-gradient(90deg, rgba(2, 2, 2, 0.97) 0%, rgba(2, 2, 2, 0.88) 27%, rgba(2, 2, 2, 0.58) 50%, rgba(2, 2, 2, 0.16) 78%, rgba(2, 2, 2, 0.08) 100%),
-                linear-gradient(180deg, rgba(2, 2, 2, 0.3) 0%, transparent 35%, rgba(2, 2, 2, 0.5) 100%);
-        }
-
-        .hero-scanlines {
-            opacity: 0.025;
-            background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 4px);
-            mix-blend-mode: soft-light;
-        }
-
-        .hero-film-grain {
-            display: none;
-        }
-
-        .hero-cinematic-bar {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: clamp(10px, 1.5vw, 24px);
-            z-index: 8;
-            background: #000;
-            pointer-events: none;
-        }
-
-        .hero-cinematic-bar.top { top: 0; }
-        .hero-cinematic-bar.bottom { bottom: 0; }
-
-        .hero-content {
-            position: relative;
-            padding-left: clamp(0rem, 2vw, 1.4rem);
-        }
-
-        .hero-content::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.15rem;
-            width: 1px;
-            height: min(72%, 29rem);
-            background: linear-gradient(180deg, rgba(96, 165, 250, 0.75), rgba(96, 165, 250, 0.08), transparent);
-            box-shadow: 0 0 24px rgba(59, 130, 246, 0.32);
-        }
-
-        .hero-eyebrow {
-            border-color: rgba(148, 163, 184, 0.2) !important;
-            background: rgba(2, 6, 14, 0.34) !important;
-            backdrop-filter: blur(14px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 50px rgba(0, 0, 0, 0.24);
-        }
-
-        .hero-title {
-            max-width: 980px;
-            font-size: clamp(3.7rem, 7.6vw, 7.5rem);
-            line-height: 0.86;
-            letter-spacing: -0.065em;
-            text-shadow: 0 10px 42px rgba(0, 0, 0, 0.7);
-            text-wrap: balance;
-        }
-
-        .hero-title span {
-            color: transparent !important;
-            background: linear-gradient(105deg, #5b6270 0%, #a1a8b5 42%, #4c5668 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            text-shadow: none;
-        }
-
-        .hero-description {
-            color: #8c929d !important;
-            max-width: 760px;
-            text-shadow: 0 5px 28px rgba(0, 0, 0, 0.82);
-        }
-
-        .hero-actions .hero-primary-cta {
-            position: relative;
-            overflow: hidden;
-            min-height: 58px;
-            box-shadow: 0 18px 55px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
-        }
-
-        .hero-actions .hero-primary-cta::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(110deg, transparent 24%, rgba(255, 255, 255, 0.65) 50%, transparent 76%);
-            transform: translateX(-130%);
-            transition: transform 0.8s ease;
-        }
-
-        .hero-actions .hero-primary-cta:hover::after { transform: translateX(130%); }
-
-        .hero-actions .hero-secondary-cta {
-            min-height: 58px;
-            border-color: rgba(255, 255, 255, 0.14) !important;
-            background: rgba(6, 8, 13, 0.24);
-            backdrop-filter: blur(12px);
-        }
-
-        .hero-actions .hero-secondary-cta:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.26) !important;
-        }
-
-        .hero-meta {
-            position: absolute;
-            right: clamp(1rem, 3.2vw, 3rem);
-            bottom: clamp(2.5rem, 5vw, 5rem);
-            z-index: 12;
-            display: flex;
-            align-items: flex-end;
-            gap: 1.2rem;
-            color: rgba(212, 218, 228, 0.42);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            letter-spacing: 0.23em;
-            text-transform: uppercase;
-        }
-
-        .hero-meta-line {
-            width: 64px;
-            height: 1px;
-            margin-bottom: 0.34rem;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.72));
-        }
-
-        .hero-scroll-cue {
-            position: absolute;
-            left: 50%;
-            bottom: 2.25rem;
-            z-index: 12;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.55rem;
-            color: rgba(255, 255, 255, 0.38);
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            transform: translateX(-50%);
-        }
-
-        .hero-scroll-cue::after {
-            content: "";
-            width: 1px;
-            height: 32px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent);
-            animation: heroScrollLine 1.8s ease-in-out infinite;
-        }
-
-        .hero-reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            animation: heroReveal 1s cubic-bezier(.2,.7,.2,1) forwards;
-        }
-
-        .hero-reveal-delay-1 { animation-delay: 0.16s; }
-        .hero-reveal-delay-2 { animation-delay: 0.34s; }
-        .hero-reveal-delay-3 { animation-delay: 0.52s; }
-        .hero-reveal-delay-4 { animation-delay: 0.72s; }
-
-        @keyframes heroCinematicDrift {
-            0% { transform: scale(1.055) translate3d(0, 0, 0); }
-            100% { transform: scale(1.105) translate3d(-0.7%, -0.45%, 0); }
-        }
-
-        @keyframes heroBeam {
-            0% { transform: translateX(-18%) rotate(-1deg); opacity: 0.35; }
-            100% { transform: translateX(17%) rotate(1deg); opacity: 0.8; }
-        }
-
-        @keyframes heroGrain {
-            0% { transform: translate3d(0, 0, 0); }
-            25% { transform: translate3d(3%, -2%, 0); }
-            50% { transform: translate3d(-2%, 3%, 0); }
-            75% { transform: translate3d(2%, 2%, 0); }
-            100% { transform: translate3d(-3%, -1%, 0); }
-        }
-
-        @keyframes heroReveal {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes heroScrollLine {
-            0%, 100% { opacity: 0.2; transform: scaleY(0.7); transform-origin: top; }
-            50% { opacity: 0.85; transform: scaleY(1); transform-origin: top; }
-        }
-
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1.25rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.8rem 1rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
-            color: #a1a1aa;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            transition: all 0.25s ease;
-        }
-
-        .social-link:hover {
-            color: #ffffff;
-            border-color: rgba(59, 130, 246, 0.3);
-            background: rgba(59, 130, 246, 0.08);
-        }
-
-        .demo-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 80;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.78);
-            backdrop-filter: blur(18px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-
-        .demo-modal.is-open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .demo-modal-panel {
-            position: relative;
-            width: min(100%, 680px);
-            border-radius: 1.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: linear-gradient(180deg, rgba(13, 13, 13, 0.97) 0%, rgba(6, 6, 6, 0.98) 100%);
-            box-shadow: 0 30px 120px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-        }
-
-        .demo-modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 42px;
-            height: 42px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.03);
-            color: #ffffff;
-            transition: all 0.2s ease;
-        }
-
-        .demo-modal-close:hover {
-            background: rgba(59, 130, 246, 0.12);
-            border-color: rgba(59, 130, 246, 0.35);
-        }
-
-        .demo-kicker {
-            color: #60a5fa;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .demo-form-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .demo-form-grid-two {
-            grid-template-columns: 1fr;
-        }
-
-        .demo-field label {
-            display: block;
-            margin-bottom: 0.55rem;
-            color: #71717a;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-        }
-
-        .demo-input,
-        .demo-textarea {
-            width: 100%;
-            border-radius: 0.95rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.025);
-            color: #ffffff;
-            padding: 0.95rem 1rem;
-            outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        }
-
-        .demo-input:focus,
-        .demo-textarea:focus {
-            border-color: rgba(59, 130, 246, 0.45);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
-            background: rgba(255, 255, 255, 0.035);
-        }
-
-        .demo-textarea {
-            min-height: 96px;
-            resize: vertical;
-        }
-
-        .demo-form-actions {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .demo-status {
-            min-height: 1.5rem;
-            color: #93c5fd;
-            font-size: 0.92rem;
-        }
-
-        .modal-open {
-            overflow: hidden;
-        }
-
-        .btn-premium {
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-        }
-        
-        .btn-premium:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.4);
-        }
-
-        .product-card {
-            transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
-            border: 1px solid var(--border);
-        }
-
-        .product-card:hover {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(15, 15, 15, 0.5);
-        }
-
-        .flow-animate {
-            stroke-dasharray: 10;
-            animation: dash 20s linear infinite;
-        }
-
-        @keyframes dash {
-            to { stroke-dashoffset: -1000; }
-        }
-
-        section {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-            content-visibility: auto;
-            contain-intrinsic-size: 720px;
-        }
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        /* Responsive fine-tuning for all devices */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                background-size: 56px 56px;
-                opacity: 0.18;
-            }
-
-            .hero-readability {
-                background: linear-gradient(180deg, rgba(2, 2, 2, 0.62) 0%, rgba(2, 2, 2, 0.22) 44%, rgba(2, 2, 2, 0.72) 100%);
-            }
-
-            .hero-core-halo {
-                background:
-                    radial-gradient(circle at 72% 42%, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 22%, transparent 44%),
-                    radial-gradient(circle at 82% 76%, rgba(59, 130, 246, 0.05) 0%, transparent 28%);
-            }
-        }
-
-        @media (max-width: 767px) {
-            nav,
-            header,
-            section,
-            footer {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-
-            #navbar .max-w-7xl {
-                gap: 1rem;
-                align-items: flex-start;
-                flex-wrap: wrap;
-            }
-
-            .brand-mark-premium {
-                width: 1.45rem;
-                height: 1.45rem;
-            }
-
-            .brand-mark-core {
-                width: 0.46rem;
-                height: 0.46rem;
-            }
-
-            .hero-stage {
-                padding-top: 7.5rem !important;
-                min-height: auto;
-            }
-
-            .hero-stage h1 {
-                font-size: clamp(3rem, 14vw, 4.6rem);
-            }
-
-            .hero-stage p {
-                font-size: 1rem;
-            }
-
-            .demo-modal {
-                padding: 1rem;
-            }
-
-            .demo-modal-panel {
-                padding: 1.25rem;
-                border-radius: 1rem;
-            }
-
-            .social-links {
-                gap: 0.55rem;
-            }
-
-            .social-link {
-                padding: 0.72rem 0.88rem;
-                font-size: 10px;
-            }
-
-            header .flex.flex-col.sm\:flex-row button,
-            section .flex.flex-col.sm\:flex-row button {
-                width: 100%;
-            }
-
-            #urunler .product-card {
-                padding: 1.75rem;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            .hero-stage h1 {
-                font-size: clamp(2.5rem, 12vw, 3.5rem);
-            }
-            .hero-stage p {
-                font-size: 0.9rem;
-            }
-            .product-card {
-                padding: 1.25rem !important;
-            }
-            .product-card h3 {
-                font-size: 2rem !important;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .hero-title { font-size: clamp(3.4rem, 9vw, 6rem); }
-            .hero-meta { display: none; }
-            .hero-content::before { height: 64%; }
-        }
-
-        @media (max-width: 767px) {
-            .hero-canvas {
-                opacity: 0.85;
-            }
-            .hero-readability {
-                background: linear-gradient(180deg, rgba(2, 2, 2, 0.82) 0%, rgba(2, 2, 2, 0.38) 38%, rgba(2, 2, 2, 0.82) 100%);
-            }
-            .hero-content { padding-left: 0; }
-            .hero-content::before { display: none; }
-            .hero-title {
-                font-size: clamp(3rem, 14vw, 4.8rem) !important;
-                line-height: 0.9;
-                letter-spacing: -0.055em;
-            }
-            .hero-description { max-width: 92%; }
-            .hero-scroll-cue { display: none; }
-            .hero-cinematic-bar { height: 8px; }
-        }
-
-        @media (max-width: 1024px) {
-            .hero-light-beam,
-            .hero-noise,
-            .hero-scanlines,
-            .hero-film-grain {
-                display: none;
-            }
-
-            .glass,
-            .hero-eyebrow,
-            .hero-actions .hero-secondary-cta {
-                -webkit-backdrop-filter: none;
-                backdrop-filter: none;
-            }
-
-            .glass {
-                background: rgba(10, 10, 10, 0.94);
-            }
-        }
-
-        @media (max-width: 767px) {
-            .hero-stage {
-                min-height: 100svh;
-                padding-bottom: 3rem;
-            }
-
-            .hero-canvas {
-                opacity: 0.8;
-            }
-
-            .hero-grid,
-            .hero-core-halo {
-                display: none;
-            }
-
-            .hero-color-grade {
-                background:
-                    linear-gradient(180deg, rgba(2, 2, 2, 0.76) 0%, rgba(2, 2, 2, 0.3) 40%, rgba(2, 2, 2, 0.86) 100%),
-                    linear-gradient(90deg, rgba(2, 2, 2, 0.78) 0%, rgba(2, 2, 2, 0.28) 100%);
-            }
-
-            .hero-reveal {
-                transform: translateY(10px);
-                animation-duration: 0.55s;
-            }
-
-            section {
-                transform: translateY(8px);
-                transition-duration: 0.35s;
-                contain-intrinsic-size: 560px;
-            }
-
-            .btn-premium:hover,
-            .product-card:hover,
-            .brand-link:hover .brand-mark-premium {
-                transform: none;
-            }
-        }
-
-        @media (max-width: 380px) {
-            #navbar .max-w-7xl {
-                gap: 0.65rem;
-            }
-
-            .lang-button {
-                min-width: 2rem;
-                padding: 0 0.5rem;
-            }
-
-            [data-demo-open] {
-                padding-left: 0.75rem !important;
-                padding-right: 0.75rem !important;
-                letter-spacing: 0.08em !important;
-            }
-
-            .hero-title {
-                font-size: clamp(2.35rem, 12vw, 3.2rem) !important;
-            }
-        }
-
+        /* Accessibility: Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .btn-premium,
-            .product-card,
-            .hero-canvas,
-            .hero-light-beam,
-            .hero-film-grain,
-            .hero-reveal,
-            .hero-scroll-cue::after,
-            section {
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-            }
-
-            .hero-light-beam,
-            .hero-film-grain,
-            .hero-scroll-cue {
-                display: none !important;
-            }
-
-            section {
-                opacity: 1;
-                transform: none;
-                transition: none;
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
             }
         }
-
-        @media (min-width: 640px) {
-            .demo-form-grid-two {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-
-        /* Hero canvas background: cinematic layers blend the mesh animation with the page theme. */
-        .hero-canvas {
-            display: block !important;
-            width: 100% !important;
-            height: 100% !important;
-            filter: none !important;
-            transform: translateZ(0) !important;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            contain: paint;
-        }
-
     </style>
-</head>
-<body>
 
-    <!-- SECTION 1: NAVBAR -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 md:py-8 px-4 sm:px-6 lg:px-10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-6 lg:gap-14">
-                <a href="#" class="brand-link group">
-                    <span class="brand-mark-premium" aria-hidden="true">
-                        <span class="brand-mark-core"></span>
-                    </span>
-                    <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
-                </a>
-                <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-                    <div class="relative group cursor-pointer">
-                        <span class="hover:text-white transition-colors">Ürünler</span>
-                        <div class="absolute top-full left-0 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity">
-                            <div class="glass p-4 rounded-lg w-48 space-y-3">
-                                <a href="arbiter.html" class="block hover:text-white transition-colors">Arbiter</a>
-                                <a href="axis.html" class="block hover:text-white transition-colors">Axis</a>
-                                <a href="varuxlab.html" data-lab-link class="block hover:text-white transition-colors">VARUX Lab</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#nasil-calisir" class="hover:text-white transition-colors">Nasıl Çalışır</a>
-                    <a href="#kullanim-alanlari" class="hover:text-white transition-colors">Kullanım Alanları</a>
-                    <a href="varuxlab.html" data-lab-link class="hover:text-white transition-colors">VARUX Lab</a>
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VARUX AXIS",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Linux, Docker, PostgreSQL environments",
+      "description": "Deterministic database write-path control layer for PostgreSQL policy enforcement, approval workflows and durable audit evidence.",
+      "url": "https://varuxcyber.com/axis",
+      "creator": {
+        "@type": "Organization",
+        "name": "VARUX",
+        "url": "https://varuxcyber.com"
+      }
+    }
+    </script>
+</head>
+<body class="antialiased selection:bg-cyan-accent/20 selection:text-cyan-accent flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- Global Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]">
+        <div class="absolute top-[10%] right-[20%] w-[600px] h-[600px] bg-cyan-accent/5 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-[20%] left-[10%] w-[500px] h-[500px] bg-status-control/5 rounded-full blur-[150px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass-panel border-b border-white/5 border-t-0 border-x-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-3 hover:opacity-80 transition-opacity focus-ring rounded">
+                <div class="w-6 h-6 border-2 border-status-active/80 flex items-center justify-center rounded-sm">
+                    <div class="w-2 h-2 bg-status-active"></div>
                 </div>
+                <span class="font-mono text-sm tracking-widest text-white font-medium">VARUX <span class="text-gray-500">AXIS</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide">
+                <a href="https://varuxcyber.com" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Home</a>
+                <a href="#product" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Product</a>
+                <a href="#architecture" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Architecture</a>
+                <a href="#control-panel" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Control Panel</a>
+                <a href="#security-model" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Security Model</a>
+                <a href="#pilot" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Pilot</a>
             </div>
-            <div class="flex items-center gap-3 sm:gap-5">
-                <a href="varuxlab.html" data-lab-link class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">VARUX Lab</a>
-                <div class="lang-switch" aria-label="Language switcher">
-                    <button type="button" class="lang-button is-active" data-lang-switch="tr">TR</button>
-                    <button type="button" class="lang-button" data-lang-switch="en">EN</button>
-                </div>
-                <button type="button" data-demo-open class="bg-white text-black px-4 sm:px-7 py-3 rounded-sm text-[9px] sm:text-[10px] font-black uppercase tracking-widest btn-premium">Demo Talep Et</button>
+
+            <div class="flex items-center gap-4">
+                <button type="button" onclick="openContactModal()" class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan-accent/50 hover:bg-cyan-accent/10 transition-all font-mono text-xs text-white rounded focus-ring">
+                    Request Technical Review <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+                <button type="button" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-400 hover:text-white focus-ring rounded p-1">
+                    <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- SECTION 2: CINEMATIC HERO -->
-    <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
-        <div class="hero-background" aria-hidden="true">
-            <canvas id="heroMesh" class="hero-canvas" aria-hidden="true"></canvas>
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-16 inset-x-0 bg-navy-900/95 backdrop-blur-md border-b border-white/5 shadow-2xl z-30 transition-all">
+        <div class="px-6 py-6 flex flex-col gap-2 font-mono text-sm">
+            <a href="https://varuxcyber.com" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Home</a>
+            <a href="#product" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Product</a>
+            <a href="#architecture" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Architecture</a>
+            <a href="#control-panel" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Control Panel</a>
+            <a href="#security-model" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Security Model</a>
+            <a href="#pilot" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Pilot</a>
+            <button type="button" onclick="openContactModal(); closeMobileMenu();" class="text-cyan-accent hover:text-white transition-colors py-3 mt-2 text-left w-full focus-ring rounded flex items-center gap-2">Request Technical Review <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
-        
-        <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="max-w-5xl hero-content">
-                <div class="hero-eyebrow hero-reveal hero-reveal-delay-1 inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-12">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_16px_rgba(59,130,246,0.9)]"></span>
-                    Pre-Execution Control for Autonomous Systems
-                </div>
-                
-                <h1 class="hero-title hero-reveal hero-reveal-delay-2 text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter text-white mb-10 leading-[0.9] lg:max-w-4xl">
-                    Execution Başlamadan Önce <span class="text-zinc-600 italic">Kontrol.</span>
-                </h1>
-                
-                <p class="hero-description hero-reveal hero-reveal-delay-3 text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
-                    Ajanlara, otomasyonlara ve kritik write işlemlerine deterministik policy uygulayın. 
-                    Karar üretmek modele, yetki üretmek <span class="text-white font-medium italic">VARUX</span>'a aittir.
-                </p>
+    </div>
 
-                <div class="hero-actions hero-reveal hero-reveal-delay-4 flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
-                    <button type="button" data-demo-open class="hero-primary-cta bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                    <a href="varuxlab.html" data-hero-secondary class="hero-secondary-cta border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
-                        VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-meta" aria-hidden="true">
-            <div class="hero-meta-line"></div>
-            <div>Control Layer / 01</div>
-        </div>
-        <div class="hero-scroll-cue" aria-hidden="true">Scroll</div>
-    </header>
-
-    <!-- SECTION 3: PROBLEM / THESIS -->
-    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 border-y border-zinc-900 bg-black/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter mb-10 leading-none">Hata Execution'dan Sonra Değil, <br><span class="text-zinc-600">Önce Durmalı.</span></h2>
-                    <p class="text-zinc-400 text-lg mb-12 leading-relaxed font-light">
-                        Observability size neyin bozulduğunu söyler. Kontrol ise bozulmasına engel olur. 
-                        Kritik sistemlerde sorun <span class="italic text-white">niyet değil, yetkidir.</span> 
-                        Model doğru karar verebilir ancak bu karar yetki sınırları dışındaysa VARUX onu durdurur.
+    <main>
+        <!-- Hero Section -->
+        <section id="product" class="relative pt-28 pb-16 md:pt-40 md:pb-24 border-b border-white/5 overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <!-- Left: Copy -->
+                <div class="flex-1 max-w-2xl z-20">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-accent/5 border border-cyan-accent/20 rounded-full mb-6 shadow-[0_0_10px_rgba(0,229,255,0.05)]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_8px_rgba(0,229,255,0.8)]"></span>
+                        <span class="font-mono text-[10px] sm:text-[11px] tracking-wider text-cyan-accent">VARUX AXIS / DATABASE WRITE-PATH CONTROL</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 tracking-tight leading-tight">
+                        Stop risky production writes <br class="hidden lg:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">before they reach PostgreSQL.</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl font-light text-cyan-accent/80 mb-5 tracking-wide">
+                        Deterministic policy enforcement, approval workflows and durable audit evidence.
                     </p>
-                    <div class="grid sm:grid-cols-2 gap-10">
-                        <div class="space-y-4">
-                            <div class="w-8 h-[1px] bg-zinc-700"></div>
-                            <h4 class="text-white text-xs font-bold uppercase tracking-widest">Post-Mortem Risk</h4>
-                            <p class="text-zinc-500 text-xs">İşlem DB'ye ulaştıktan sonra atılan loglar zararı engellemez. Geri dönüş maliyeti yüksektir.</p>
+                    
+                    <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed font-light">
+                        VARUX AXIS is a control layer for PostgreSQL write paths. It evaluates actor context, SQL intent, policy rules, and approval state before risky UPDATE, DELETE or DDL operations execute.
+                    </p>
+
+                    <!-- Improved Status Strip -->
+                    <div class="glass-panel p-4 rounded-lg border-white/10 mb-2 font-mono flex flex-col md:flex-row gap-4 text-[11px]">
+                        <div class="flex-1 border-l-2 border-cyan-accent pl-3">
+                            <div class="text-gray-500 mb-1">Current milestone</div>
+                            <div class="text-cyan-accent font-medium text-[12px]">v0.6 Pilot Readiness</div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="w-8 h-[1px] bg-blue-500"></div>
-                            <h4 class="text-blue-500 text-xs font-bold uppercase tracking-widest">Pre-Execution Enforcement</h4>
-                            <p class="text-zinc-500 text-xs">Eylem hiç başlamadan policy kontrolü yapılır. Risk daha oluşmadan yok edilir.</p>
+                        <div class="flex-1 border-l-2 border-gray-600 pl-3">
+                            <div class="text-gray-500 mb-1">Suitable for</div>
+                            <div class="text-gray-300 leading-tight">Controlled demos · local review · non-production pilot</div>
+                        </div>
+                        <div class="flex-1 border-l-2 border-gray-600 pl-3">
+                            <div class="text-gray-500 mb-1">Not yet</div>
+                            <div class="text-gray-400 leading-tight">Compliance-certified enterprise production release</div>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-gray-500 font-mono mb-8 ml-1">Built for technical review before rollout.</div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
+                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded focus-ring">
+                            Request Technical Review <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-6 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded focus-ring">
+                            Explore Architecture
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Premium SVG Diagram -->
+                <div class="axis-hero-visual flex-1 w-full max-w-xl aspect-[4/3] relative flex items-center justify-center lg:ml-auto rounded-xl border border-white/5 bg-navy-900/50 p-6 overflow-hidden hidden md:flex">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900/80 z-0"></div>
+                    
+                    <!-- Diagram Container -->
+                    <div class="relative w-full h-full z-10 flex flex-col justify-between">
+                        <!-- Top: Clients -->
+                        <div class="flex justify-between items-center px-4">
+                            <div class="axis-node text-[10px] font-mono text-gray-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded flex items-center gap-2"><i data-lucide="bot" class="w-3 h-3"></i> AI Agents</div>
+                            <div class="axis-node axis-node-delay-1 text-[10px] font-mono text-gray-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded flex items-center gap-2"><i data-lucide="terminal" class="w-3 h-3"></i> Scripts</div>
+                            <div class="axis-node axis-node-delay-2 text-[10px] font-mono text-gray-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded flex items-center gap-2"><i data-lucide="users" class="w-3 h-3"></i> Apps</div>
+                        </div>
+
+                        <!-- Connections Down -->
+                        <div class="relative h-12 w-full flex justify-center">
+                            <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                                <path d="M 20% 0 L 50% 100%" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" class="animated-flow"/>
+                                <path d="M 50% 0 L 50% 100%" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" class="animated-flow"/>
+                                <path d="M 80% 0 L 50% 100%" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" class="animated-flow"/>
+                            </svg>
+                        </div>
+
+                        <!-- AXIS Gate -->
+                        <div class="axis-gate-pulse mx-auto w-3/4 bg-navy-800 border border-cyan-accent/40 rounded-lg p-4 flex flex-col items-center relative pulse-active">
+                            <div class="text-[11px] font-mono text-cyan-accent mb-1 tracking-widest">VARUX AXIS GATE</div>
+                            <div class="text-[10px] font-mono text-gray-400 flex gap-4 mt-2">
+                                <span>Context</span>
+                                <span>Policy</span>
+                                <span>Evidence</span>
+                            </div>
+                        </div>
+
+                        <!-- Decision Branches -->
+                        <div class="relative h-16 w-full flex justify-center mt-2">
+                            <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                                <!-- Block -->
+                                <path d="M 50% 0 L 20% 100%" stroke="#ff3366" stroke-width="1.5" stroke-dasharray="2 4" fill="none" />
+                                <!-- Allow -->
+                                <path d="M 50% 0 L 50% 100%" stroke="#00ff66" stroke-width="1.5" fill="none" class="animated-flow"/>
+                                <!-- Approval -->
+                                <path d="M 50% 0 L 80% 100%" stroke="#ffaa00" stroke-width="1.5" stroke-dasharray="2 4" fill="none" />
+                            </svg>
+                            <!-- Labels -->
+                            <div class="axis-decision-label absolute bottom-2 left-[10%] text-[9px] font-mono text-status-blocked bg-status-blocked/10 px-1 rounded">BLOCK</div>
+                            <div class="axis-decision-label absolute bottom-2 left-[44%] text-[9px] font-mono text-status-active bg-status-active/10 px-1 rounded">ALLOW</div>
+                            <div class="axis-decision-label absolute bottom-2 right-[5%] text-[9px] font-mono text-status-warning bg-status-warning/10 px-1 rounded">REQUIRE_APPROVAL</div>
+                        </div>
+
+                        <!-- PostgreSQL -->
+                        <div class="axis-database-pulse mx-auto w-1/2 bg-[#020a0f] border border-status-active/30 rounded-lg p-3 flex justify-center items-center gap-3">
+                            <i data-lucide="database" class="w-5 h-5 text-status-active"></i>
+                            <div class="text-xs font-mono text-white">PostgreSQL</div>
+                        </div>
+
+                        <div class="text-center mt-6 text-[10px] font-mono text-gray-500">
+                            "No protected production write without durable evidence."
                         </div>
                     </div>
                 </div>
-                <div class="glass p-1 rounded-2xl overflow-hidden grayscale opacity-60">
-                    <div class="bg-zinc-950 p-10 border border-zinc-900">
-                        <div class="text-[10px] font-mono text-zinc-600 mb-8 tracking-widest uppercase">// CONTROL_DIAGRAM_V2</div>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_10px_#f43f5e]"></div>
-                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
-                                <span class="text-[10px] font-mono text-zinc-500">REQUEST INTERCEPTED</span>
-                            </div>
-                            <div class="pl-7 border-l border-zinc-800 space-y-4 py-2">
-                                <div class="text-xs text-zinc-500">Reason: <span class="text-zinc-300">Unauthorized DELETE scope</span></div>
-                                <div class="text-xs text-zinc-500">Policy: <span class="text-zinc-300 font-mono">prod_write_v4</span></div>
-                                <div class="text-xs font-bold text-rose-500 uppercase tracking-widest">Decision: BLOCK</div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-3 h-3 rounded-full bg-zinc-800"></div>
-                                <div class="h-[1px] flex-1 bg-zinc-800"></div>
-                                <span class="text-[10px] font-mono text-zinc-600">ACTION_STOPPED</span>
-                            </div>
+            </div>
+        </section>
+
+        <!-- Review Paths Section -->
+        <section id="review-paths" class="py-20 border-b border-white/5 relative bg-navy-900/30">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-10">
+                    <h2 class="text-2xl font-medium text-white mb-2">Choose your review path.</h2>
+                    <p class="text-sm text-gray-400 font-light">AXIS is designed to be evaluated by different technical audiences without hiding its current limits.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Path 1 -->
+                    <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
+                        <div class="text-[10px] font-mono text-status-blocked mb-3">THREAT / EVIDENCE</div>
+                        <h3 class="text-base font-medium text-white mb-2">Security Reviewer</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Start with the security model, failure behavior, approval boundaries and audit evidence flow.</p>
+                        <div class="flex flex-col gap-2 text-xs font-mono">
+                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Security Model</a>
+                            <a href="#evidence" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Evidence</a>
+                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Failure Model</a>
+                        </div>
+                    </div>
+
+                    <!-- Path 2 -->
+                    <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
+                        <div class="text-[10px] font-mono text-status-control mb-3">ARCHITECTURE / OPERATIONS</div>
+                        <h3 class="text-base font-medium text-white mb-2">Platform Engineer</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Review the write-path placement, control plane expectations, rollout modes and operational constraints.</p>
+                        <div class="flex flex-col gap-2 text-xs font-mono">
+                            <a href="#architecture" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Architecture</a>
+                            <a href="#operating-modes" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Operating Modes</a>
+                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
+                        </div>
+                    </div>
+
+                    <!-- Path 3 -->
+                    <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
+                        <div class="text-[10px] font-mono text-status-active mb-3">LOCAL REVIEW / NON-PRODUCTION</div>
+                        <h3 class="text-base font-medium text-white mb-2">Pilot Evaluator</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Use the pilot checklist to prepare a staging or non-production evaluation with representative SQL operations.</p>
+                        <div class="flex flex-col gap-2 text-xs font-mono">
+                            <a href="#pilot" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Path</a>
+                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
+                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring"><i data-lucide="chevron-right" class="w-3 h-3"></i> Contact Team</button>
+                        </div>
+                    </div>
+
+                    <!-- Path 4 -->
+                    <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
+                        <div class="text-[10px] font-mono text-status-warning mb-3">PRODUCT / RISK</div>
+                        <h3 class="text-base font-medium text-white mb-2">Founder / CTO</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Understand what AXIS does, what it refuses to claim and where it fits in production database governance.</p>
+                        <div class="flex flex-col gap-2 text-xs font-mono">
+                            <a href="#definition" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> What AXIS Is</a>
+                            <a href="#current-limitations" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Current Limitations</a>
+                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring"><i data-lucide="chevron-right" class="w-3 h-3"></i> Request Tech Review</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECTION 4: NASIL ÇALIŞIR (UNIFIED MODEL) -->
-    <section id="nasil-calisir" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
-        <div class="max-w-7xl mx-auto mb-32 text-center">
-            <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">Deterministik Döngü</span>
-            <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter">Kontrol Mimarisi</h2>
-        </div>
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6">
-            <div class="p-10 glass rounded-xl space-y-8">
-                <div class="text-3xl font-black text-zinc-800 font-mono">01</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Intercept</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek execution başlamadan önce platform katmanında yakalanır. Bağlam ve kimlik bilgileri ayrıştırılır.</p>
-            </div>
-            <div class="p-10 glass rounded-xl space-y-8">
-                <div class="text-3xl font-black text-zinc-800 font-mono">02</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evaluate</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Policy Engine, aktif sürümdeki deterministik kuralları çalıştırır. Karar modeli rasyonel ve açıklanabilirdir.</p>
-            </div>
-            <div class="p-10 glass rounded-xl space-y-8 border-blue-500/30">
-                <div class="text-3xl font-black text-zinc-800 font-mono">03</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Decide</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">ALLOW, BLOCK veya REQUIRE_APPROVAL kararı verilir. Belirsizlik durumunda sistem "fail-closed" çalışır.</p>
-            </div>
-            <div class="p-10 glass rounded-xl space-y-8">
-                <div class="text-3xl font-black text-zinc-800 font-mono">04</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evidence</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar request_id ile imzalanır ve append-only denetim kayıtlarına kanıt olarak işlenir.</p>
-            </div>
-        </div>
-    </section>
+        <!-- Problem Section -->
+        <section id="problem" class="py-20 border-b border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-12 md:text-center max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-medium text-white mb-3">Production writes are still too easy to damage.</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light">
+                        Modern systems let internal tools, automation, scripts, and AI agents touch production databases. A single broad DELETE or unsafe DDL can become an incident if it bypasses policy, approval and evidence.
+                    </p>
+                </div>
 
-    <!-- SECTION 5: PRODUCTS (ARBITER & AXIS) -->
-    <section id="urunler" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 bg-[#040404]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-3xl md:text-5xl text-white font-medium tracking-tighter mb-6">İki Kritik Operasyonel Yüzey</h2>
-                <p class="text-zinc-500 text-lg max-w-2xl mx-auto font-light">VARUX kontrol modeli, sisteminizin iki hayati katmanında somut ürünlere dönüşür.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-panel p-5 rounded-lg border-status-blocked/20 hover:border-status-blocked/40 transition-colors">
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-status-blocked"></i> Broad DELETE / UPDATE</h3>
+                        <p class="text-xs text-gray-400">Batch writes and missing WHERE conditions create irreversible damage.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-lg border-status-warning/20 hover:border-status-warning/40 transition-colors">
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="table-properties" class="w-4 h-4 text-status-warning"></i> Unsafe DDL</h3>
+                        <p class="text-xs text-gray-400">Schema changes can break behavior when bypassing review.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-lg border-white/10 hover:border-cyan-accent/30 transition-colors">
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4 text-cyan-accent"></i> AI / automation access</h3>
+                        <p class="text-xs text-gray-400">Agents and scripts move faster than human review without boundaries.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-lg border-white/10 hover:border-white/30 transition-colors">
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="file-search" class="w-4 h-4 text-gray-300"></i> Missing durable evidence</h3>
+                        <p class="text-xs text-gray-400">App logs cannot reliably prove who attempted what and why.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Definition Section -->
+        <section id="definition" class="py-20 border-b border-white/5 relative bg-navy-900/30">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-12 md:text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-medium text-white mb-3">What AXIS Is</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light">
+                        AXIS is a controlled execution gateway. Clients submit write intent through AXIS. AXIS builds context, classifies SQL, evaluates deterministic policy, writes durable evidence and only then allows, blocks or routes the operation to approval.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-10 h-10 bg-navy-800 border border-white/10 rounded flex items-center justify-center text-white">
+                            <i data-lucide="door-closed" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-medium text-white">Gate</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Collects context, normalizes SQL, classifies READ/WRITE and extracts risk signals.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div class="w-10 h-10 bg-navy-800 border border-cyan-accent/30 rounded flex items-center justify-center text-cyan-accent">
+                            <i data-lucide="git-branch" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-medium text-white">Policy Engine</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Evaluates policies deterministically to ALLOW, BLOCK or REQUIRE_APPROVAL.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div class="w-10 h-10 bg-navy-800 border border-white/10 rounded flex items-center justify-center text-white">
+                            <i data-lucide="file-key" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-medium text-white">Evidence</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Records verifiable events so risky database operations can be reconstructed securely.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- AXIS Is / Is Not Block -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-4xl mx-auto">
+                    <div>
+                        <h4 class="text-status-active font-mono text-xs mb-3 border-b border-status-active/20 pb-2 flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4"></i> AXIS is:</h4>
+                        <ul class="text-xs text-gray-300 space-y-2">
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> deterministic PostgreSQL write-path control</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> controlled execution gateway</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> policy-enforced decision layer</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> approval boundary for risky operations</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> durable audit evidence generator</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> operator visibility and policy lifecycle surface</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-gray-500 font-mono text-xs mb-3 border-b border-white/10 pb-2 flex items-center gap-2"><i data-lucide="x-circle" class="w-4 h-4"></i> AXIS is not:</h4>
+                        <ul class="text-xs text-gray-400 space-y-2">
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> WAF, SIEM, or DLP</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> SQL injection detector</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> masking/encryption product</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> query optimizer</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> full drop-in PostgreSQL wire-protocol proxy</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> replacement for application authorization</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> compliance-certified release</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="py-24 border-b border-white/5 relative bg-navy-900/50">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-12 text-center max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-medium text-white mb-2">Deterministic Write-Path Architecture</h2>
+                    <p class="text-gray-500 font-mono text-xs tracking-wide uppercase">System Components</p>
+                </div>
+
+                <!-- Block Architecture Diagram -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                        <!-- Left: Sources -->
+                        <div class="md:col-span-3 flex flex-col gap-3">
+                            <div class="bg-navy-800 border border-white/10 p-3 rounded text-center text-xs font-mono text-gray-300">Clients / Services</div>
+                            <div class="bg-navy-800 border border-white/10 p-3 rounded text-center text-xs font-mono text-gray-300">Scripts / AI Agents</div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="hidden md:flex md:col-span-1 justify-center">
+                            <i data-lucide="arrow-right" class="text-white/20"></i>
+                        </div>
+
+                        <!-- Center: AXIS Core -->
+                        <div class="md:col-span-4 glass-panel border-cyan-accent/30 rounded-xl p-6 relative">
+                            <div class="absolute -top-3 left-4 bg-[#020203] px-2 text-[10px] font-mono text-cyan-accent">AXIS GATE</div>
+                            <div class="flex flex-col gap-2">
+                                <div class="bg-navy-900 border border-white/5 p-2 rounded text-center text-xs font-mono text-gray-300">Context Builder</div>
+                                <div class="bg-navy-900 border border-white/5 p-2 rounded text-center text-xs font-mono text-gray-300">SQL Classifier</div>
+                                <div class="bg-navy-900 border border-cyan-accent/20 p-2 rounded text-center text-xs font-mono text-cyan-accent">Policy Engine</div>
+                                <div class="bg-navy-900 border border-status-warning/20 p-2 rounded text-center text-xs font-mono text-status-warning">Approval Workflow</div>
+                                <div class="bg-navy-900 border border-white/5 p-2 rounded text-center text-xs font-mono text-gray-300">Audit / Evidence Store</div>
+                                <div class="bg-navy-900 border border-white/5 p-2 rounded text-center text-xs font-mono text-gray-300">DB Adapter</div>
+                            </div>
+                        </div>
+
+                        <!-- Arrows Right -->
+                        <div class="hidden md:flex md:col-span-1 flex-col justify-around h-full py-10 relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-full h-24" preserveAspectRatio="none">
+                                    <path d="M 0 10 L 100 10" stroke="#00ff66" stroke-width="1.5" fill="none" class="animated-flow"/>
+                                    <path d="M 0 50 L 100 50" stroke="#ffaa00" stroke-width="1.5" stroke-dasharray="2 4" fill="none" />
+                                    <path d="M 0 90 L 100 90" stroke="#ff3366" stroke-width="1.5" stroke-dasharray="2 4" fill="none" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Right: Outputs -->
+                        <div class="md:col-span-3 flex flex-col gap-4">
+                            <div class="bg-[#020a0f] border border-status-active/40 p-3 rounded text-center flex flex-col items-center gap-1">
+                                <span class="text-[9px] font-mono text-status-active bg-status-active/10 px-2 rounded">ALLOW</span>
+                                <i data-lucide="database" class="w-4 h-4 text-status-active mt-1"></i>
+                                <span class="text-[11px] font-mono text-white">PostgreSQL</span>
+                            </div>
+                            <div class="bg-navy-800 border border-status-warning/40 p-3 rounded text-center flex flex-col items-center gap-1">
+                                <span class="text-[9px] font-mono text-status-warning bg-status-warning/10 px-2 rounded">REQUIRE_APPROVAL</span>
+                                <i data-lucide="user-check" class="w-4 h-4 text-status-warning mt-1"></i>
+                                <span class="text-[11px] font-mono text-white">Human Queue</span>
+                            </div>
+                            <div class="bg-navy-800 border border-status-blocked/40 p-3 rounded text-center flex flex-col items-center gap-1">
+                                <span class="text-[9px] font-mono text-status-blocked bg-status-blocked/10 px-2 rounded">BLOCK</span>
+                                <i data-lucide="x-circle" class="w-4 h-4 text-status-blocked mt-1"></i>
+                                <span class="text-[11px] font-mono text-white">Controlled Error</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom: Control Plane -->
+                    <div class="mt-8 mx-auto w-full md:w-1/2 glass-panel border-white/10 rounded-lg p-3 text-center flex justify-center items-center gap-2">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 text-gray-400"></i>
+                        <span class="text-xs font-mono text-gray-300">Control Plane (Visibility, Policy, Evidence)</span>
+                    </div>
+
+                    <p class="text-center text-xs text-gray-500 mt-6 font-light italic max-w-md mx-auto">
+                        "Unsafe ambiguity must not silently proceed. Unknown or unsupported write-capable SQL should be blocked or routed to approval by policy."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Flow Section -->
+        <section id="decision-flow" class="py-20 border-b border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-medium text-white mb-2">Every write becomes context, decision and evidence.</h2>
+                    <p class="text-gray-400 text-sm font-light">
+                        AXIS decisions are deterministic. The same request context and policy version produce the same outcome.
+                    </p>
+                </div>
+
+                <!-- Linear Flow -->
+                <div class="max-w-5xl mx-auto glass-panel border-white/10 rounded-xl p-6 overflow-x-auto custom-scrollbar">
+                    <div class="min-w-[800px] flex items-center justify-between font-mono text-[10px] text-center relative">
+                        <div class="absolute top-1/2 left-0 right-0 h-px bg-white/10 -translate-y-1/2 z-0"></div>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-20">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">1</div>
+                            <span class="text-gray-400">Request</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-20">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">2</div>
+                            <span class="text-gray-400">Context</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-24">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">3</div>
+                            <span class="text-gray-400">Classification</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-24">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">4</div>
+                            <span class="text-gray-400">Risk Signals</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-24">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-cyan-accent flex items-center justify-center text-cyan-accent shadow-[0_0_10px_rgba(0,229,255,0.2)]">5</div>
+                            <span class="text-cyan-accent">Policy Eval</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col items-center gap-2 w-20">
+                            <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">6</div>
+                            <span class="text-gray-400">Evidence</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
+
+                        <div class="relative z-10 flex flex-col gap-1 text-[9px]">
+                            <div class="px-2 py-0.5 border border-status-active/40 bg-status-active/10 text-status-active rounded">ALLOW</div>
+                            <div class="px-2 py-0.5 border border-status-blocked/40 bg-status-blocked/10 text-status-blocked rounded">BLOCK</div>
+                            <div class="px-2 py-0.5 border border-status-warning/40 bg-status-warning/10 text-status-warning rounded">REQUIRE_APPROVAL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 mt-6 font-mono text-[9px] text-gray-500">
+                    <span class="bg-navy-800 px-2 py-1 rounded">request_id</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">actor</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">app</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">tenant</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">role</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">env</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">sql_fingerprint</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">operation</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded">risk_signals</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded border border-cyan-accent/20 text-cyan-accent/80">policy_version</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded border border-cyan-accent/20 text-cyan-accent/80">reason_code</span>
+                    <span class="bg-navy-800 px-2 py-1 rounded border border-cyan-accent/20 text-cyan-accent/80">decision</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Control Panel Preview Section -->
+        <section id="control-panel" class="py-24 border-b border-white/5 relative bg-[#040405]">
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-medium text-white mb-2">Control Plane Preview</h2>
+                        <p class="text-sm text-gray-400">Operational truth, not decorative confidence.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded bg-navy-800 max-w-xs text-right">
+                        Preview values only. A live deployment must bind these cards to real AXIS endpoints.
+                    </div>
+                </div>
+
+                <!-- Health Mini Cards Row -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                    <div class="glass-panel p-3 rounded-lg border-status-active/20">
+                        <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Audit Chain</div>
+                        <div class="text-status-active font-medium text-sm mb-1">Verified</div>
+                        <div class="text-[10px] text-gray-400 font-mono leading-tight">last_event: 9a3b…<br>checked_events: 128</div>
+                    </div>
+                    <div class="glass-panel p-3 rounded-lg border-cyan-accent/20">
+                        <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Evidence Store</div>
+                        <div class="text-cyan-accent font-medium text-sm mb-1">Healthy</div>
+                        <div class="text-[10px] text-gray-400 font-mono leading-tight">WAL projection up<br>malformed: 0</div>
+                    </div>
+                    <div class="glass-panel p-3 rounded-lg border-cyan-dark/40">
+                        <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Policy</div>
+                        <div class="text-cyan-dark font-medium text-sm mb-1">prod_main@1.0.0</div>
+                        <div class="text-[10px] text-gray-400 font-mono leading-tight">mode: enforce<br>defaults.write: BLOCK</div>
+                    </div>
+                    <div class="glass-panel p-3 rounded-lg border-status-warning/20">
+                        <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Approvals</div>
+                        <div class="text-status-warning font-medium text-sm mb-1">1 Pending</div>
+                        <div class="text-[10px] text-gray-400 font-mono leading-tight">oldest: 03m<br>TTL enforced</div>
+                    </div>
+                    <div class="glass-panel p-3 rounded-lg border-status-active/20 col-span-2 md:col-span-1">
+                        <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Runtime</div>
+                        <div class="text-status-active font-medium text-sm mb-1">Online</div>
+                        <div class="text-[10px] text-gray-400 font-mono leading-tight">backend: healthy<br>adapter: reachable</div>
+                    </div>
+                </div>
+
+                <!-- Fake UI Window -->
+                <div class="border border-white/10 rounded-xl bg-[#0b0c10] overflow-hidden shadow-2xl flex flex-col h-[400px]">
+                    <!-- Window Header / Tabs -->
+                    <div class="flex items-center gap-4 px-4 bg-navy-900 border-b border-white/5 font-mono text-[11px] h-10 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                        <button type="button" class="tab-btn active text-cyan-accent border-b-2 border-cyan-accent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-health">Health</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-live">Live Requests</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-approvals">Approvals <span class="bg-status-warning/20 text-status-warning px-1.5 py-0.5 rounded ml-1 text-[9px]">1</span></button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-evidence">Evidence</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-policy">Policy</button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="flex-1 overflow-auto p-4 custom-scrollbar bg-[#0b0c10] font-mono text-[11px] relative">
+                        
+                        <!-- Tab: Health -->
+                        <div id="tab-health" class="tab-content block text-gray-300">
+<pre><code><span class="text-cyan-accent">service</span>: axis-backend
+<span class="text-cyan-accent">status</span>: healthy
+<span class="text-cyan-accent">mode</span>: enforce
+<span class="text-cyan-accent">audit_integrity</span>: verified
+<span class="text-cyan-accent">policy_loaded</span>: true
+<span class="text-cyan-accent">policy_version</span>: prod_main@1.0.0
+<span class="text-cyan-accent">pending_approvals</span>: 1
+
+<span class="text-cyan-accent">decision_counts</span>:
+  <span class="text-status-active">ALLOW</span>: 18
+  <span class="text-status-blocked">BLOCK</span>: 6
+  <span class="text-status-warning">REQUIRE_APPROVAL</span>: 3
+
+<span class="text-cyan-accent">evidence_verification</span>:
+  <span class="text-gray-400">valid</span>: true
+  <span class="text-gray-400">verification_depth</span>: full_hash
+  <span class="text-gray-400">checked_events</span>: 128
+  <span class="text-gray-400">malformed_count</span>: 0
+  <span class="text-gray-400">last_event_hash</span>: 9a3b8c2d1e...
+</code></pre>
+                            <div class="absolute bottom-4 left-4 text-[10px] text-gray-600">Health values are static previews.</div>
+                        </div>
+
+                        <!-- Tab: Live Requests -->
+                        <div id="tab-live" class="tab-content hidden">
+                            <table class="w-full text-left border-collapse min-w-[700px]">
+                                <thead>
+                                    <tr class="text-gray-500 border-b border-white/5">
+                                        <th class="pb-2 font-normal">request_id</th>
+                                        <th class="pb-2 font-normal">actor</th>
+                                        <th class="pb-2 font-normal">operation</th>
+                                        <th class="pb-2 font-normal">target</th>
+                                        <th class="pb-2 font-normal">decision</th>
+                                        <th class="pb-2 font-normal">reason_code</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5 hover:bg-white/[0.02] cursor-default transition-colors text-gray-300">
+                                        <td class="py-2 pr-2">req_7f31</td>
+                                        <td class="py-2 pr-2">service.billing</td>
+                                        <td class="py-2 pr-2 text-status-blocked">DELETE</td>
+                                        <td class="py-2 pr-2">public.invoices</td>
+                                        <td class="py-2 pr-2"><span class="bg-status-blocked/10 text-status-blocked px-1.5 py-0.5 rounded">BLOCK</span></td>
+                                        <td class="py-2 text-gray-500">unsafe_delete_scope</td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/[0.02] cursor-default transition-colors text-gray-300">
+                                        <td class="py-2 pr-2">req_82aa</td>
+                                        <td class="py-2 pr-2">ops.admin</td>
+                                        <td class="py-2 pr-2 text-status-warning">UPDATE</td>
+                                        <td class="py-2 pr-2">public.customers</td>
+                                        <td class="py-2 pr-2"><span class="bg-status-warning/10 text-status-warning px-1.5 py-0.5 rounded">REQUIRE_APPROVAL</span></td>
+                                        <td class="py-2 text-gray-500">approval_required_batch</td>
+                                    </tr>
+                                    <tr class="hover:bg-white/[0.02] cursor-default transition-colors text-gray-300">
+                                        <td class="py-2 pr-2">req_91bc</td>
+                                        <td class="py-2 pr-2">app.orders</td>
+                                        <td class="py-2 pr-2 text-cyan-accent">UPDATE</td>
+                                        <td class="py-2 pr-2">public.orders</td>
+                                        <td class="py-2 pr-2"><span class="bg-status-active/10 text-status-active px-1.5 py-0.5 rounded">ALLOW</span></td>
+                                        <td class="py-2 text-gray-500">scoped_write_allowed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Tab: Approvals -->
+                        <div id="tab-approvals" class="tab-content hidden">
+                            <div class="border border-status-warning/20 rounded bg-navy-800/30 p-3 max-w-md">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <div class="text-white mb-0.5">Approval ID: <span class="text-status-warning">apr_2048</span></div>
+                                        <div class="text-gray-400 text-[9px]">Policy: prod_main@1.0.0</div>
+                                    </div>
+                                    <span class="bg-status-warning/10 text-status-warning px-1.5 py-0.5 rounded text-[9px]">PENDING</span>
+                                </div>
+                                
+                                <div class="bg-[#020203] p-2 rounded border border-white/5 mb-3 text-gray-300 text-[10px]">
+                                    <span class="text-gray-500">Actor:</span> ops.admin<br>
+                                    <span class="text-gray-500">Operation:</span> UPDATE public.customers<br>
+                                    <span class="text-gray-500">Risk:</span> Batch update detected without specific WHERE scope.<br>
+                                    <div class="h-px bg-white/5 my-1.5"></div>
+                                    <span class="text-gray-500">hash:</span> sha256:ab128f9...<br>
+                                    <span class="text-gray-500">approver_group:</span> db-ops-review<br>
+                                    <span class="text-gray-500">expires_in:</span> 14m
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button type="button" onclick="showDemoNotice()" class="bg-status-active/20 text-status-active hover:bg-status-active/30 border border-status-active/30 px-3 py-1 rounded transition-colors focus-ring">Approve</button>
+                                    <button type="button" onclick="showDemoNotice()" class="bg-status-blocked/20 text-status-blocked hover:bg-status-blocked/30 border border-status-blocked/30 px-3 py-1 rounded transition-colors focus-ring">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab: Evidence -->
+                        <div id="tab-evidence" class="tab-content hidden text-gray-400">
+                            <div class="flex gap-3 mb-1.5">
+                                <div class="w-20 text-right text-gray-500">14:02:10.112</div>
+                                <div><span class="text-cyan-accent">request_received</span> <span class="text-gray-600">[req_82aa]</span></div>
+                            </div>
+                            <div class="flex gap-3 mb-1.5">
+                                <div class="w-20 text-right text-gray-500">14:02:10.115</div>
+                                <div><span class="text-cyan-accent">decision_made</span> <span class="text-status-warning">REQUIRE_APPROVAL</span></div>
+                            </div>
+                            <div class="flex gap-3 mb-1.5">
+                                <div class="w-20 text-right text-gray-500">14:02:10.116</div>
+                                <div><span class="text-cyan-accent">approval_requested</span> <span class="text-gray-600">[apr_2048]</span> created</div>
+                            </div>
+                            <div class="flex gap-3 mb-1.5 opacity-50">
+                                <div class="w-20 text-right text-gray-600">--:--:--.---</div>
+                                <div class="text-gray-600">approval_resolved (waiting)</div>
+                            </div>
+                            
+                            <div class="mt-4 border-t border-white/5 pt-3 text-gray-500 bg-navy-900/50 p-2 rounded max-w-sm">
+                                <span class="text-gray-400">event_hash:</span> 9a3b2c1d8f...<br>
+                                <span class="text-gray-400">previous_hash:</span> 7c4f9a0b12...<br>
+                                <span class="text-gray-400">policy:</span> prod_main@1.0.0
+                            </div>
+                        </div>
+
+                        <!-- Tab: Policy -->
+                        <div id="tab-policy" class="tab-content hidden">
+<pre class="text-gray-300"><code><span class="text-cyan-accent">active_policy</span>: "prod_main@1.0.0"
+<span class="text-cyan-accent">candidate_policy</span>: "none"
+<span class="text-cyan-accent">mode</span>: "enforce"
+
+<span class="text-cyan-accent">defaults</span>:
+  <span class="text-gray-300">write</span>: <span class="text-status-blocked">BLOCK</span>
+  <span class="text-gray-300">ddl</span>: <span class="text-status-warning">REQUIRE_APPROVAL</span>
+
+<span class="text-cyan-accent">last_dry_run</span>: safe
+<span class="text-cyan-accent">rollback_available</span>: true
+</code></pre>
+                            <div class="flex gap-2 mt-4">
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Simulate</button>
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Activate</button>
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Rollback</button>
+                            </div>
+                            <div class="mt-3 text-[9px] text-gray-600">Policy lifecycle actions should be validated, diffed, dry-run and rollback-safe.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notice Toast (Hidden) -->
+                <div id="demo-notice" class="fixed bottom-4 right-4 bg-navy-800 border border-cyan-accent/40 text-cyan-accent px-4 py-2 rounded text-sm font-mono opacity-0 transition-opacity z-50 pointer-events-none">
+                    Demo preview only. No backend request was sent.
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Model Section -->
+        <section id="security-model" class="py-20 border-b border-white/5 relative bg-navy-900/30">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-medium text-white mb-2">Security Model</h2>
+                    <p class="text-sm text-gray-400 font-light">Architectural principles protecting the database write-path.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-white/5">
+                        <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-cyan-accent">
+                            <i data-lucide="crosshair" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-sm font-medium text-white mb-1">Deterministic Enforcement</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Explicit policy rules and versioned metadata, not probabilistic guesswork.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-white/5">
+                        <div class="w-8 h-8 bg-navy-700 border border-status-blocked/20 rounded flex items-center justify-center mb-3 text-status-blocked">
+                            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-sm font-medium text-white mb-1">Fail-Safe Defaults</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Unsafe ambiguity or internal policy failure must not silently proceed to the DB.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-white/5">
+                        <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-white">
+                            <i data-lucide="file-key" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-sm font-medium text-white mb-1">Durable Evidence</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Every critical write-path decision is securely recorded before action is taken.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-white/5">
+                        <div class="w-8 h-8 bg-navy-700 border border-status-warning/20 rounded flex items-center justify-center mb-3 text-status-warning">
+                            <i data-lucide="git-pull-request" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-sm font-medium text-white mb-1">Approval Boundaries</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Risky operations routed to human approval bounded by strict policy_version and TTL.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-white/5 lg:col-span-2">
+                        <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-gray-300">
+                            <i data-lucide="network" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-sm font-medium text-white mb-1">Bypass Control</h4>
+                        <p class="text-xs text-gray-400 mb-3">Protected write paths must route through AXIS. A real pilot must review:</p>
+                        <ul class="text-[11px] text-gray-400 space-y-1.5 list-disc list-inside">
+                            <li>App connection strings point to AXIS/Gate</li>
+                            <li>Direct DB port is restricted from non-Gate workloads</li>
+                            <li>Emergency direct write path requires audit event</li>
+                            <li>Drift detection reports unexpected DB clients</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audit & Evidence Section -->
+        <section id="evidence" class="py-20 border-b border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-10 items-center">
+                <div class="flex-1">
+                    <h2 class="text-2xl font-medium text-white mb-3">Evidence that survives the incident review.</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light mb-4">
+                        Application logs explain what an app <i>thinks</i> happened. AXIS evidence definitively explains what the production write-path allowed, blocked or escalated.
+                    </p>
+                    <ul class="font-mono text-[11px] text-gray-300 space-y-1.5 border-l border-cyan-accent/30 pl-3">
+                        <li><span class="text-cyan-accent">request_received</span></li>
+                        <li><span class="text-cyan-accent">decision_made</span></li>
+                        <li><span class="text-cyan-accent">approval_requested</span></li>
+                        <li><span class="text-cyan-accent">approval_resolved</span></li>
+                        <li><span class="text-cyan-accent">query_executed</span></li>
+                        <li><span class="text-status-blocked">error_returned</span></li>
+                    </ul>
+                </div>
+                
+                <div class="flex-1 w-full">
+                    <div class="bg-[#0b0c10] border border-white/10 rounded-xl p-5 font-mono text-[11px] sm:text-xs overflow-x-auto">
+<pre class="text-gray-300"><code>{
+  <span class="text-cyan-accent">"request_id"</span>: "req_82aa",
+  <span class="text-cyan-accent">"event_type"</span>: "decision_made",
+  <span class="text-cyan-accent">"actor"</span>: "ops.admin",
+  <span class="text-cyan-accent">"operation"</span>: "UPDATE",
+  <span class="text-cyan-accent">"target"</span>: "public.customers",
+  <span class="text-cyan-accent">"decision"</span>: <span class="text-status-warning">"REQUIRE_APPROVAL"</span>,
+  <span class="text-cyan-accent">"reason_code"</span>: "approval_required_batch",
+  <span class="text-cyan-accent">"policy_version"</span>: "prod_main@1.0.0"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operating Modes & Policy Section -->
+        <section id="operating-modes" class="py-20 border-b border-white/5 relative bg-navy-900/30">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-medium text-white mb-2">Operating modes for controlled rollout.</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-panel p-5 rounded border-white/5 hover:border-white/20 transition-colors">
+                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500"></div> Observe / Shadow</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">Record decisions without blocking writes. Useful for evaluation.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded border-white/5 hover:border-status-warning/30 transition-colors">
+                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-warning"></div> Approval-first</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">Route risky writes into workflows before strict automated blocking.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded border-white/5 hover:border-status-active/30 transition-colors">
+                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active"></div> Enforce</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">Apply policy deterministically to ALLOW, BLOCK or REQUIRE_APPROVAL.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded border-status-blocked/10 hover:border-status-blocked/30 transition-colors">
+                        <h4 class="font-medium text-status-blocked mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-blocked"></div> Emergency Bypass</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">Scoped, time-limited auditable exception. Not an escape hatch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilot / Review Section -->
+        <section id="pilot" class="py-20 border-b border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-10">
+                <div class="flex-1">
+                    <h2 class="text-2xl font-medium text-white mb-3">Pilot and Technical Review Path</h2>
+                    <p class="text-sm text-gray-400 font-light mb-6">
+                        Evaluating AXIS follows a structured customer review path designed for security and platform engineering teams.
+                    </p>
+                    
+                    <div class="flex flex-col gap-3 font-mono text-xs mb-8">
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">1</div> <span class="text-gray-300">Understand architecture</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">2</div> <span class="text-gray-300">Run local evaluation</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">3</div> <span class="text-gray-300">Inspect decisions & evidence</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">4</div> <span class="text-gray-300">Review pilot limitations</span></div>
+                    </div>
+                </div>
+                
+                <div class="flex-1 flex flex-col gap-5">
+                    <div class="border-l-2 border-cyan-accent pl-5 py-1">
+                        <h4 class="text-cyan-accent font-mono text-[10px] mb-1">CURRENT POSTURE</h4>
+                        <p class="text-xs text-gray-300 leading-relaxed">AXIS v0.6 is suitable for controlled demos, local technical evaluation, architecture review and non-production pilot planning.</p>
+                    </div>
+                    <div class="border-l-2 border-gray-600 pl-5 py-1">
+                        <h4 class="text-gray-500 font-mono text-[10px] mb-1">NOT YET</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Not yet an enterprise production-ready distributed deployment or compliance-certified release.</p>
+                    </div>
+                    
+                    <div class="mt-2">
+                        <h4 class="text-white text-sm font-medium mb-3">Pilot Success Examples:</h4>
+                        <ul class="text-xs text-gray-400 space-y-1.5 list-disc list-inside">
+                            <li>Dangerous DELETE blocked before PostgreSQL.</li>
+                            <li>Approved bulk operation traced by request_id.</li>
+                            <li>Decision shows reason_code and policy_version.</li>
+                            <li>Audit timeline reconstructs write attempt.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilot Checklist & Questions Section -->
+        <section id="pilot-checklist" class="py-20 border-b border-white/5 relative bg-navy-900/30">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-medium text-white mb-2">Pilot readiness checklist</h2>
+                    <p class="text-sm text-gray-400 font-light">Before a technical review or pilot, prepare the inputs that make AXIS evaluation realistic.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-navy-800/50 p-4 rounded border border-white/5">
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1">1. Non-production DB</div>
+                        <p class="text-xs text-gray-400 leading-snug">Use staging or a local database. Do not start with production.</p>
+                    </div>
+                    <div class="bg-navy-800/50 p-4 rounded border border-white/5">
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1">2. Representative SQL</div>
+                        <p class="text-xs text-gray-400 leading-snug">Collect realistic UPDATE, DELETE, DDL operations.</p>
+                    </div>
+                    <div class="bg-navy-800/50 p-4 rounded border border-white/5">
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1">3. Policy requirements</div>
+                        <p class="text-xs text-gray-400 leading-snug">Define examples of allowed and blocked writes.</p>
+                    </div>
+                    <div class="bg-navy-800/50 p-4 rounded border border-white/5">
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1">4. Approval rules</div>
+                        <p class="text-xs text-gray-400 leading-snug">Identify test approvers and workflow expectations.</p>
+                    </div>
+                </div>
+
+                <!-- Review Questions Accordion -->
+                <details class="group border border-white/10 rounded-lg bg-navy-800/30 overflow-hidden max-w-4xl">
+                    <summary class="cursor-pointer p-4 font-medium text-sm text-white flex justify-between items-center focus-ring">
+                        <span class="flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-cyan-accent"></i> Questions a serious reviewer should ask</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="p-4 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Which SQL forms expand the classifier test corpus?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What identity model binds request fields to principals?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What transport security is required for the pilot?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Should evidence be exported to an append-only archive?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What KMS-backed verification is required later?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">How do instances coordinate policy and continuity?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Which operator actions require a dedicated audit stream?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What latency budget is acceptable for write-path enforcement?</p></div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Current Limitations Section -->
+        <section id="current-limitations" class="py-20 border-b border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-medium text-white mb-2">Current limitations are part of the review.</h2>
+                    <p class="text-sm text-gray-400 font-light">
+                        Security products lose trust when gaps are hidden. Evaluate AXIS v0.6 with clear boundaries.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-5xl mx-auto">
+                    <div>
+                        <h4 class="text-status-active font-mono text-[11px] mb-4 border-b border-status-active/20 pb-2">Implemented today</h4>
+                        <ul class="text-xs text-gray-300 space-y-2.5">
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Rust backend service with Axum API</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> PostgreSQL-focused SQL classification</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy engine (ALLOW/BLOCK/APPROVAL)</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Local JSONL store approval workflow</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Audit evidence generation with hash-chain</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Evidence verification & visibility endpoints</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy validation, dry-run, and rollback</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-gray-500 font-mono text-[11px] mb-4 border-b border-white/10 pb-2">Not implemented yet</h4>
+                        <ul class="text-xs text-gray-400 space-y-2.5">
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Full RBAC or SSO</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Complete TLS/mTLS deployment story</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Distributed consensus coordination</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> External KMS signed policy distribution</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Tamper-proof external audit ledger</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Formal compliance mapping or certification</li>
+                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> SaaS control plane</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="text-center text-[10px] text-gray-500 mt-6 font-mono">
+                    This section is intentionally explicit so pilot discussions start from engineering reality, not marketing fog.
+                </p>
+            </div>
+        </section>
+
+        <!-- Final CTA Section (Replaces Old Contact + Closing) -->
+        <section id="contact" class="py-24 border-t border-white/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy-900/20 to-[#020203]"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+                
+                <!-- Left Column -->
+                <div>
+                    <div class="font-mono text-xs text-cyan-accent mb-4 tracking-widest uppercase">
+                        VARUX AXIS / TECHNICAL REVIEW
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-5">
+                        Production writes should not depend on hope.
+                    </h2>
+
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl mb-8">
+                        Request a technical review of AXIS for architecture review, controlled demo discussion or non-production pilot planning.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
+                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-cyan-accent text-navy-900 hover:bg-cyan-accent/80 transition-colors font-medium rounded focus-ring shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                            Request Technical Review
+                        </button>
+                        <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
+                            Back to VARUX Lab
+                        </a>
+                        <a href="https://docs.varuxcyber.com/" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
+                            AXIS Docs
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column (Review Snapshot) -->
+                <div class="glass-panel rounded-xl border-white/10 p-6 lg:ml-auto w-full max-w-md">
+                    <div class="text-[11px] font-mono text-gray-500 mb-5 tracking-wider">REVIEW SNAPSHOT</div>
+
+                    <div class="space-y-3 font-mono text-[11px] sm:text-xs">
+                        <div class="flex justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500">Current</span>
+                            <span class="text-cyan-accent">v0.6 Pilot Readiness</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500">Scope</span>
+                            <span class="text-gray-300">PostgreSQL write-path</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500">Decisions</span>
+                            <span class="text-gray-300">ALLOW / BLOCK / APPROVAL</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500">Evidence</span>
+                            <span class="text-gray-300">Durable audit trail</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Pilot</span>
+                            <span class="text-status-warning">Non-production planning</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#020203] py-10 border-t border-white/5 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col items-center md:items-start gap-1">
+                <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-2 hover:opacity-80 transition-opacity focus-ring rounded">
+                    <div class="w-4 h-4 border border-status-active flex items-center justify-center rounded-sm">
+                        <div class="w-1 h-1 bg-status-active"></div>
+                    </div>
+                    <span class="font-mono text-xs tracking-widest text-gray-400">VARUX <span class="text-gray-600">AXIS</span></span>
+                </a>
+                <p class="text-[11px] text-gray-600 font-mono">Deterministic database write-path control under VARUX.</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-10">
-                <!-- ARBITER -->
-                <div id="arbiter" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 bg-arbiter-accent/10 text-arbiter-accent rounded flex items-center justify-center mb-10 text-xl border border-arbiter-accent/20">
-                            <i class="fa-solid fa-code-branch"></i>
-                        </div>
-                        <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Arbiter</h3>
-                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Tool & Action Governance</p>
-                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
-                            Ajanların, otomasyonların ve servislerin hangi araçları, hangi parametrelerle ve hangi kapsamda kullanabileceğini yönetir. Ajan karar üretebilir ama yetki üretemez ilkesini uygular.
-                        </p>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Pre-execution action gate</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Resource scope enforcement</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Default-deny tool usage</li>
-                        </ul>
-                    </div>
-                    <a href="arbiter.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-arbiter-accent hover:text-white transition-all flex items-center justify-center text-center">Arbiter'ı İncele</a>
-                </div>
-
-                <!-- AXIS -->
-                <div id="axis" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 bg-axis-accent/10 text-axis-accent rounded flex items-center justify-center mb-10 text-xl border border-axis-accent/20">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Axis</h3>
-                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Database Write-Path Enforcement</p>
-                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
-                            Kritik sistemlere yönelen UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce durdurur. İnsan veya yazılım fark etmeksizin tüm write-path trafiğini policy katmanına zorlar.
-                        </p>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Real-time write interceptor</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Approval-gated destructive actions</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> No direct write principle</li>
-                        </ul>
-                    </div>
-                    <a href="axis.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-axis-accent hover:text-white transition-all flex items-center justify-center text-center">Axis'i İncele</a>
-                </div>
+            <div class="flex flex-wrap justify-center gap-5 font-mono text-xs text-gray-500">
+                <a href="https://varuxcyber.com" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Home</a>
+                <a href="index.html" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">VARUX Lab</a>
+                <a href="#architecture" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Architecture</a>
+                <a href="#security-model" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Security Model</a>
+                <button type="button" onclick="openContactModal()" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Contact</button>
             </div>
-
-            <div id="varux-lab" class="mt-12 md:mt-16 border border-zinc-900 bg-black/50 rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between">
-                <div class="max-w-3xl">
-                    <span class="lab-kicker text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-5 block">VARUX LAB</span>
-                    <h3 class="lab-title text-3xl md:text-5xl text-white font-medium tracking-tighter mb-5">Gelecek Sistemler Araştırması</h3>
-                    <p class="lab-description text-zinc-500 text-base leading-relaxed font-light">
-                        VARUX Lab, AXIS ve ARBITER kontrol çekirdeğini gelecekteki otonom sistem senaryoları, araştırma prototipleri ve konsept mimarilerle aynı çatı altında toplar.
-                    </p>
-                </div>
-                <a href="varuxlab.html" data-lab-cta class="shrink-0 border border-zinc-800 text-white py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all inline-flex items-center justify-center gap-3">
-                    VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 6: POLICY & DETERMINISM -->
-    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
-            <div class="terminal-window">
-                <div class="px-5 py-3 border-b border-zinc-900 flex justify-between items-center bg-zinc-950">
-                    <div class="flex gap-1.5">
-                        <div class="w-2 h-2 rounded-full bg-zinc-800"></div>
-                        <div class="w-2 h-2 rounded-full bg-zinc-800"></div>
-                    </div>
-                    <span class="text-[9px] font-mono text-zinc-700 tracking-[0.2em]">AXIS_POLICY_V4.YAML</span>
-                </div>
-                <div class="p-8 font-mono text-[13px] text-zinc-400 leading-relaxed">
-                    <div><span class="text-blue-500">scope:</span> "production-cluster"</div>
-                    <div><span class="text-blue-500">default_action:</span> "BLOCK"</div>
-                    <div class="mt-4"><span class="text-blue-500">rules:</span></div>
-                    <div class="pl-4">- <span class="text-zinc-200">action:</span> "DELETE"</div>
-                    <div class="pl-8"><span class="text-blue-500">condition:</span> "bulk_limit > 100"</div>
-                    <div class="pl-8 text-emerald-500"><span class="text-blue-500">result:</span> "REQUIRE_APPROVAL"</div>
-                    <div class="pl-8"><span class="text-blue-500">approver_group:</span> "platform-leads"</div>
-                    <div class="mt-8 border-t border-zinc-900 pt-6">
-                        <div class="text-rose-500 text-[10px] font-bold mb-2">INTERCEPT_EVENT:</div>
-                        <div class="text-zinc-500 text-[11px]">User 'agent-03' attempted 'DROP TABLE legacy_users'</div>
-                        <div class="text-rose-500 font-black mt-1">DECISION -> BLOCK (Reason: ForbiddenAction)</div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h2 class="text-4xl md:text-5xl text-white font-medium tracking-tighter mb-10 leading-none italic">Policy Yoksa <br><span class="text-zinc-600">İzin Yok.</span></h2>
-                <p class="text-zinc-500 text-lg mb-12 font-light">
-                    VARUX, belirsizlikte sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif policy sürümüne bağlıdır. Tahmin yürütmez, kural işletir.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <div class="px-5 py-2 border border-emerald-500/20 bg-emerald-500/5 text-emerald-500 text-[10px] font-black uppercase tracking-widest rounded">ALLOW</div>
-                    <div class="px-5 py-2 border border-rose-500/20 bg-rose-500/5 text-rose-500 text-[10px] font-black uppercase tracking-widest rounded">BLOCK</div>
-                    <div class="px-5 py-2 border border-blue-500/20 bg-blue-500/5 text-blue-500 text-[10px] font-black uppercase tracking-widest rounded">REQUIRE_APPROVAL</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 7: WHAT VARUX IS NOT -->
-    <section class="py-24 md:py-32 px-4 sm:px-6 lg:px-10 bg-zinc-950 border-y border-zinc-900">
-        <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Threat Boundary</h3>
-            <div class="grid md:grid-cols-2 gap-16 text-left">
-                <div class="space-y-4">
-                    <h4 class="text-white text-xs font-black uppercase tracking-widest text-zinc-600">VARUX Ne Değildir?</h4>
-                    <ul class="text-zinc-500 text-sm space-y-3 font-light">
-                        <li>- Model doğruluğunu artıran bir araç değildir.</li>
-                        <li>- Halüsinasyon düzelten bir chatbot değildir.</li>
-                        <li>- Klasik observability veya logging platformu değildir.</li>
-                        <li>- Business logic katmanı değildir.</li>
-                    </ul>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="text-white text-xs font-black uppercase tracking-widest text-blue-500">VARUX Ne Yapar?</h4>
-                    <ul class="text-zinc-300 text-sm space-y-3 font-light">
-                        <li>+ Eylem başlamadan yetkiyi policy ile sınırlar.</li>
-                        <li>+ Kritik write-path'i fiziksel olarak gate eder.</li>
-                        <li>+ Riskli aksiyonları insan onayına (Approval) bağlar.</li>
-                        <li>+ Her kararı audit-ready kanıta dönüştürür.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 8: FOR WHOM -->
-    <section id="kullanim-alanlari" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl text-white font-medium tracking-tighter mb-20 text-center uppercase tracking-[0.2em]">Kime Hitap Ediyoruz?</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Platform & Infra</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Üretim ortamındaki kritik sistemleri otonom veya manuel hatalardan korumak isteyen ekipler.</p>
-                </div>
-                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">AI Engineering</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Ajanlarının yeteneklerini artırırken güvenliği son karara değil, ilk adıma (gate) koymak isteyenler.</p>
-                </div>
-                <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Security & Compliance</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Kritik eylemler için değiştirilemez kanıt (evidence) ve insan onayı döngüsü kurmak zorunda olanlar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 9: FINAL CTA -->
-    <section id="contact" class="py-32 md:py-44 lg:py-60 px-4 sm:px-6 lg:px-10 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#3b82f60d_0%,transparent_60%)]"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-5xl md:text-8xl text-white font-medium tracking-tighter mb-16 leading-tight italic">Son Kararı <br><span class="text-zinc-700">Modele Bırakmayın.</span></h2>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <button type="button" data-demo-open class="bg-white text-black py-5 px-14 text-[10px] font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                <a href="varuxlab.html" data-final-secondary class="border border-zinc-800 text-white py-5 px-14 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all inline-flex items-center justify-center">VARUX Lab'i Aç</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 10: FOOTER -->
-    <footer class="py-16 md:py-24 border-t border-zinc-900 px-4 sm:px-6 lg:px-10 bg-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 md:gap-16 mb-24">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-3 mb-10">
-                        <span class="brand-mark-premium" aria-hidden="true">
-                            <span class="brand-mark-core"></span>
-                        </span>
-                        <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
-                    </div>
-                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose">
-                        Pre-execution control architecture <br>for autonomous operations.
-                    </p>
-                    <div class="social-links">
-                        <a class="social-link" href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub">
-                            <i class="fa-brands fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a class="social-link" href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>X</span>
-                        </a>
-                        <a class="social-link" href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Ürünler</h5>
-                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
-                        <li class="hover:text-white cursor-pointer transition-colors">Arbiter</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">Axis</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">VARUX Lab</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Kaynaklar</h5>
-                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
-                        <li class="hover:text-white cursor-pointer transition-colors">Güvenlik</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">Demo</li>
-                        <li class="hover:text-white cursor-pointer transition-colors">İletişim</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col items-start md:items-end">
-                    <div class="flex gap-6 mb-10">
-                        <a href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                    <div class="text-[9px] font-mono text-zinc-900 uppercase tracking-widest">© 2026 VARUX INC. PROD-ENV READY.</div>
-                </div>
+            
+            <div class="text-[11px] text-gray-600 font-mono">
+                &copy; 2026 VARUX Systems.
             </div>
         </div>
     </footer>
 
-    <div id="demoModal" class="demo-modal" data-demo-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
-        <div class="demo-modal-panel">
-            <button type="button" class="demo-modal-close" data-demo-close aria-label="Formu kapat">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="demo-kicker">Demo Talep</div>
-            <h2 id="demoModalTitle" class="text-3xl md:text-4xl text-white font-semibold tracking-tighter mb-4">VARUX ile iletisime gecin</h2>
-            <p class="text-zinc-400 text-base leading-relaxed max-w-2xl">
-                Kisa bilgilerinizi birakin. Ekibinizin agent, automation veya kritik write-path guvenligini nasil korumak istediginizi ogrenelim.
-            </p>
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="modal-backdrop" aria-hidden="true"></div>
+        
+        <!-- Modal Content -->
+        <div class="absolute inset-0 overflow-y-auto pt-20 pb-10 px-4 flex justify-center pointer-events-none">
+            <div class="bg-navy-900 border border-white/10 rounded-xl shadow-2xl w-full max-w-lg p-6 relative pointer-events-auto h-fit">
+                
+                <button type="button" onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors focus-ring rounded p-1" aria-label="Close modal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
 
-            <form id="demoRequestForm" action="https://formspree.io/f/mlgpjdyy" method="POST" class="mt-8">
-                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
-                <div class="demo-form-grid demo-form-grid-two">
-                    <div class="demo-field">
-                        <label for="demoName">Ad Soyad</label>
-                        <input id="demoName" name="name" type="text" class="demo-input" placeholder="Adiniz Soyadiniz" required>
-                    </div>
-                    <div class="demo-field">
-                        <label for="demoCompany">Sirket</label>
-                        <input id="demoCompany" name="company" type="text" class="demo-input" placeholder="Sirket adiniz" required>
-                    </div>
-                </div>
+                <h3 id="modal-title" class="text-xl font-medium text-white mb-2">Request AXIS technical review</h3>
+                <p class="text-sm text-gray-400 mb-6">Use this panel to prepare an email for architecture review, controlled demo discussion or non-production pilot planning.</p>
 
-                <div class="demo-form-grid mt-4">
-                    <div class="demo-field">
-                        <label for="demoEmail">Mail</label>
-                        <input id="demoEmail" name="email" type="email" class="demo-input" placeholder="ornek@sirket.com" required>
+                <form id="contact-form" action="https://formspree.io/f/mlgpjdyy" method="POST" class="flex flex-col gap-4">
+                    <!-- Honeypot -->
+                    <div class="hidden" aria-hidden="true">
+                        <label for="website-url">Website</label>
+                        <input type="text" id="website-url" name="_gotcha" tabindex="-1" autocomplete="off">
                     </div>
-                </div>
 
-                <div class="demo-form-grid mt-4">
-                    <div class="demo-field">
-                        <label for="demoMessage">Talep veya Mesaj</label>
-                        <textarea id="demoMessage" name="message" class="demo-textarea" placeholder="Kisa ihtiyacinizi yazin"></textarea>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label for="cf-name" class="text-xs font-mono text-gray-300">Name</label>
+                            <input type="text" id="cf-name" name="name" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label for="cf-email" class="text-xs font-mono text-gray-300">Work Email</label>
+                            <input type="email" id="cf-email" name="email" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                        </div>
                     </div>
-                </div>
 
-                <div class="demo-form-actions">
-                    <div id="demoFormStatus" class="demo-status" role="status" aria-live="polite"></div>
-                    <button type="submit" class="bg-white text-black py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] btn-premium rounded-sm">Talebi Gonder</button>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label for="cf-company" class="text-xs font-mono text-gray-300">Company (Optional)</label>
+                            <input type="text" id="cf-company" name="company" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label for="cf-role" class="text-xs font-mono text-gray-300">Role (Optional)</label>
+                            <input type="text" id="cf-role" name="role" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label for="cf-interest" class="text-xs font-mono text-gray-300">Interest</label>
+                        <select id="cf-interest" name="interest" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring appearance-none">
+                            <option value="Technical review">Technical review</option>
+                            <option value="Non-production pilot discussion">Non-production pilot discussion</option>
+                            <option value="Architecture feedback">Architecture feedback</option>
+                            <option value="Security review">Security review</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label for="cf-message" class="text-xs font-mono text-gray-300">Message</label>
+                        <textarea id="cf-message" name="message" required rows="3" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring resize-none"></textarea>
+                    </div>
+
+                    <div id="form-status" class="text-xs font-mono text-gray-400" role="status" aria-live="polite"></div>
+
+                    <button type="submit" class="mt-2 w-full bg-cyan-accent text-navy-900 py-2.5 rounded font-medium hover:bg-cyan-accent/80 transition-colors focus-ring">
+                        Prepare Email
+                    </button>
+                </form>
+
                 </div>
-            </form>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
-        // Intersection Observer for section entry animations
-        const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -8% 0px' };
-        const observer = new IntersectionObserver((entries, sectionObserver) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    sectionObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        // ----------------------------------------
+        // Mobile Menu Logic
+        // ----------------------------------------
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Compact Navbar on Scroll (requestAnimationFrame throttled)
-        const nav = document.getElementById('navbar');
-        let navbarTicking = false;
-        const updateNavbar = () => {
-            const compact = window.scrollY > 100;
-            nav.classList.toggle('bg-black/80', compact);
-            nav.classList.toggle('backdrop-blur-md', compact);
-            nav.classList.toggle('border-b', compact);
-            nav.classList.toggle('border-zinc-900', compact);
-            nav.classList.toggle('py-5', compact);
-            nav.classList.toggle('py-8', !compact);
-            navbarTicking = false;
-        };
-        window.addEventListener('scroll', () => {
-            if (!navbarTicking) {
-                navbarTicking = true;
-                requestAnimationFrame(updateNavbar);
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!isExpanded) {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
             }
-        }, { passive: true });
-        updateNavbar();
+            lucide.createIcons();
+        }
 
-        // Smooth Scroll Logic
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+        function closeMobileMenu() {
+            if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
+                toggleMobileMenu();
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // ----------------------------------------
+        // Control Panel Tabs Logic
+        // ----------------------------------------
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
                 
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                // Reset styling
+                tabBtns.forEach(t => {
+                    t.classList.remove('active', 'text-cyan-accent', 'border-cyan-accent');
+                    t.classList.add('text-gray-400', 'border-transparent');
+                });
+                tabContents.forEach(c => {
+                    c.classList.remove('block');
+                    c.classList.add('hidden');
+                });
+
+                // Apply active styling
+                btn.classList.add('active', 'text-cyan-accent', 'border-cyan-accent');
+                btn.classList.remove('text-gray-400', 'border-transparent');
+                document.getElementById(targetId).classList.remove('hidden');
+                document.getElementById(targetId).classList.add('block');
             });
         });
 
-        // Language support (identical to original, but kept for completeness)
-        const pageSections = Array.from(document.querySelectorAll('section'));
-        const navProductsLabel = document.querySelector('#navbar .hidden.lg\\:flex .relative > span');
-        const navProductLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex .relative a'));
-        const navMainLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex > a'));
-        const navLabLinks = Array.from(document.querySelectorAll('[data-lab-link]'));
-        const langButtons = Array.from(document.querySelectorAll('[data-lang-switch]'));
-        const demoButtons = Array.from(document.querySelectorAll('[data-demo-open]'));
-        const heroSecondaryLink = document.querySelector('[data-hero-secondary]');
-        const productsSection = document.getElementById('urunler');
-        const problemCards = Array.from(pageSections[0]?.querySelectorAll('.grid.sm\\:grid-cols-2 > div') || []);
-        const controlCards = Array.from(document.querySelectorAll('#nasil-calisir .p-10.glass.rounded-xl'));
-        const arbiterCard = document.getElementById('arbiter');
-        const axisCard = document.getElementById('axis');
-        const labPanel = document.getElementById('varux-lab');
-        const policySection = pageSections[3];
-        const threatSection = pageSections[4];
-        const audienceSection = pageSections[5];
-        const finalCtaSection = pageSections[6];
-        const finalSecondaryLink = document.querySelector('[data-final-secondary]');
-        const audienceCards = Array.from(audienceSection?.querySelectorAll('.p-10.border') || []);
-        const footerHeadings = Array.from(document.querySelectorAll('footer h5'));
-        const footerLists = Array.from(document.querySelectorAll('footer ul'));
-        const footerIntro = document.querySelector('footer .col-span-2 p');
-        const modalTitle = document.getElementById('demoModalTitle');
-        const modalDescription = document.querySelector('#demoModal p');
-        const modalLabels = {
-            name: document.querySelector('label[for="demoName"]'),
-            company: document.querySelector('label[for="demoCompany"]'),
-            email: document.querySelector('label[for="demoEmail"]'),
-            message: document.querySelector('label[for="demoMessage"]')
-        };
-        const modalInputs = {
-            name: document.getElementById('demoName'),
-            company: document.getElementById('demoCompany'),
-            email: document.getElementById('demoEmail'),
-            message: document.getElementById('demoMessage')
-        };
-        const modalKicker = document.querySelector('.demo-kicker');
-        const modalSubmitButton = document.querySelector('#demoRequestForm button[type="submit"]');
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogLocale = document.querySelector('meta[property="og:locale"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-        const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+        function showDemoNotice() {
+            const notice = document.getElementById('demo-notice');
+            notice.classList.remove('opacity-0');
+            notice.classList.add('opacity-100');
+            setTimeout(() => {
+                notice.classList.remove('opacity-100');
+                notice.classList.add('opacity-0');
+            }, 3000);
+        }
 
-        const originalLanguageContent = {
-            lang: document.documentElement.lang,
-            title: document.title,
-            metaDescription: metaDescription?.getAttribute('content') || '',
-            ogLocale: ogLocale?.getAttribute('content') || '',
-            ogTitle: ogTitle?.getAttribute('content') || '',
-            ogDescription: ogDescription?.getAttribute('content') || '',
-            twitterTitle: twitterTitle?.getAttribute('content') || '',
-            twitterDescription: twitterDescription?.getAttribute('content') || '',
-            navProductsLabel: navProductsLabel?.innerHTML || '',
-            navMainLinks: navMainLinks.map((item) => item.innerHTML),
-            navLabLinks: navLabLinks.map((item) => item.innerHTML),
-            demoButtons: demoButtons.map((item) => item.innerHTML),
-            heroTitle: document.querySelector('header h1')?.innerHTML || '',
-            heroDescription: document.querySelector('header p')?.innerHTML || '',
-            heroLabButton: heroSecondaryLink?.innerHTML || '',
-            problemTitle: pageSections[0]?.querySelector('h2')?.innerHTML || '',
-            problemDescription: pageSections[0]?.querySelector('p')?.innerHTML || '',
-            problemCards: problemCards.map((card) => ({
-                title: card.querySelector('h4')?.innerHTML || '',
-                text: card.querySelector('p')?.innerHTML || ''
-            })),
-            controlKicker: document.querySelector('#nasil-calisir span.block')?.innerHTML || '',
-            controlTitle: document.querySelector('#nasil-calisir h2')?.innerHTML || '',
-            controlCards: controlCards.map((card) => ({
-                title: card.querySelector('h3')?.innerHTML || '',
-                text: card.querySelector('p')?.innerHTML || ''
-            })),
-            productsTitle: productsSection?.querySelector('h2')?.innerHTML || '',
-            productsDescription: productsSection?.querySelector('.text-center p')?.innerHTML || '',
-            arbiterDescription: arbiterCard?.querySelectorAll('p')[1]?.innerHTML || '',
-            arbiterButton: arbiterCard?.querySelector('.product-cta')?.innerHTML || '',
-            axisDescription: axisCard?.querySelectorAll('p')[1]?.innerHTML || '',
-            axisButton: axisCard?.querySelector('.product-cta')?.innerHTML || '',
-            labKicker: labPanel?.querySelector('.lab-kicker')?.innerHTML || '',
-            labTitle: labPanel?.querySelector('.lab-title')?.innerHTML || '',
-            labDescription: labPanel?.querySelector('.lab-description')?.innerHTML || '',
-            labButton: labPanel?.querySelector('[data-lab-cta]')?.innerHTML || '',
-            policyTitle: policySection?.querySelector('h2')?.innerHTML || '',
-            policyDescription: policySection?.querySelector('p')?.innerHTML || '',
-            threatTitle: threatSection?.querySelector('h3')?.innerHTML || '',
-            threatHeadings: Array.from(threatSection?.querySelectorAll('h4') || []).map((item) => item.innerHTML),
-            threatLists: Array.from(threatSection?.querySelectorAll('ul') || []).map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
-            audienceTitle: audienceSection?.querySelector('h2')?.innerHTML || '',
-            audienceCards: audienceCards.map((card) => ({
-                title: card.querySelector('h4')?.innerHTML || '',
-                text: card.querySelector('p')?.innerHTML || ''
-            })),
-            finalTitle: finalCtaSection?.querySelector('h2')?.innerHTML || '',
-            finalLabButton: finalSecondaryLink?.innerHTML || '',
-            footerIntro: footerIntro?.innerHTML || '',
-            footerHeadings: footerHeadings.map((item) => item.innerHTML),
-            footerLists: footerLists.map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
-            modalKicker: modalKicker?.innerHTML || '',
-            modalTitle: modalTitle?.innerHTML || '',
-            modalDescription: modalDescription?.innerHTML || '',
-            modalLabels: {
-                name: modalLabels.name?.innerHTML || '',
-                company: modalLabels.company?.innerHTML || '',
-                email: modalLabels.email?.innerHTML || '',
-                message: modalLabels.message?.innerHTML || ''
-            },
-            modalPlaceholders: {
-                name: modalInputs.name?.getAttribute('placeholder') || '',
-                company: modalInputs.company?.getAttribute('placeholder') || '',
-                email: modalInputs.email?.getAttribute('placeholder') || '',
-                message: modalInputs.message?.getAttribute('placeholder') || ''
-            },
-            modalSubmitButton: modalSubmitButton?.innerHTML || ''
-        };
+        // ----------------------------------------
+        // Contact Modal Logic
+        // ----------------------------------------
+        const modal = document.getElementById('contact-modal');
+        const backdrop = document.getElementById('modal-backdrop');
+        const formStatus = document.getElementById('form-status');
 
-        const englishLanguageContent = {
-            lang: 'en',
-            title: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            metaDescription: 'VARUX is a pre-execution control and deterministic enforcement platform for agents, automation and critical write operations.',
-            ogLocale: 'en_US',
-            ogTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            ogDescription: 'Evaluate critical requests before execution, constrain authority with policy and apply enterprise-grade enforcement.',
-            twitterTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            twitterDescription: 'VARUX delivers deterministic control and enforcement for agents, automation and critical write paths.',
-            navProductsLabel: 'Products',
-            navMainLinks: ['How It Works', 'Use Cases', 'VARUX Lab'],
-            navLabLinks: ['VARUX Lab', 'VARUX Lab', 'VARUX Lab'],
-            demoButtons: ['Request Demo', 'Request Demo', 'Request Demo'],
-            heroTitle: 'Control <span class="text-zinc-600 italic">Before Execution.</span>',
-            heroDescription: 'Apply deterministic policy to agents, automation and critical write operations. The model can generate decisions; <span class="text-white font-medium italic">VARUX</span> generates authority.',
-            heroLabButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
-            problemTitle: 'Failure should stop <br><span class="text-zinc-600">before execution.</span>',
-            problemDescription: 'Observability tells you what broke. Control prevents it from breaking. In critical systems, the problem is not intent; it is authority. A model may choose a valid action, but VARUX stops it when that action exceeds policy boundaries.',
-            problemCards: [
-                {
-                    title: 'Post-Mortem Risk',
-                    text: 'Logs emitted after a database write do not prevent damage. Recovery is expensive and slow.'
-                },
-                {
-                    title: 'Pre-Execution Enforcement',
-                    text: 'Policy is evaluated before any action begins. Risk is removed before it materializes.'
-                }
-            ],
-            controlKicker: 'Deterministic Loop',
-            controlTitle: 'Control Architecture',
-            controlCards: [
-                {
-                    title: 'Intercept',
-                    text: 'The request is intercepted at the platform layer before execution starts. Identity, context and scope are extracted.'
-                },
-                {
-                    title: 'Evaluate',
-                    text: 'The Policy Engine executes active deterministic rules. The decision model is rational, consistent and explainable.'
-                },
-                {
-                    title: 'Decide',
-                    text: 'The platform returns ALLOW, BLOCK or REQUIRE_APPROVAL. Under uncertainty, the system remains fail-closed.'
-                },
-                {
-                    title: 'Evidence',
-                    text: 'Every decision is signed with a request id and written into append-only audit records as evidence.'
-                }
-            ],
-            productsTitle: 'Two Critical Operational Surfaces',
-            productsDescription: 'The VARUX control model becomes concrete products across the two most sensitive layers of your system.',
-            arbiterDescription: 'Governs which tools, parameters and scopes agents, automation and services may use. It enforces the principle that a model can generate decisions but cannot generate authority.',
-            arbiterButton: 'Explore Arbiter',
-            axisDescription: 'Stops UPDATE, DELETE and DDL traffic aimed at critical systems before it reaches the database. It forces every write path through policy enforcement.',
-            axisButton: 'Explore Axis',
-            labKicker: 'VARUX LAB',
-            labTitle: 'Future Systems Research',
-            labDescription: 'VARUX Lab brings the AXIS and ARBITER control core together with future autonomous-system scenarios, research prototypes and concept architectures.',
-            labButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
-            policyTitle: 'Without policy, <br><span class="text-zinc-600">there is no permission.</span>',
-            policyDescription: 'VARUX halts the system under uncertainty with fail-closed behavior. Every decision is deterministic and bound to the active policy version. It does not guess; it enforces rules.',
-            threatTitle: 'Threat Boundary',
-            threatHeadings: ['What VARUX Is Not', 'What VARUX Does'],
-            threatLists: [
-                [
-                    '- It is not a tool that improves model accuracy.',
-                    '- It is not a chatbot that fixes hallucinations.',
-                    '- It is not a traditional observability or logging platform.',
-                    '- It is not a business logic layer.'
-                ],
-                [
-                    '+ It constrains authority with policy before an action begins.',
-                    '+ It physically gates the critical write path.',
-                    '+ It routes high-risk actions to approval flows.',
-                    '+ It converts every decision into audit-ready evidence.'
-                ]
-            ],
-            audienceTitle: 'Who Is It For?',
-            audienceCards: [
-                {
-                    title: 'Platform & Infra',
-                    text: 'Teams that need to protect production-critical systems from autonomous or manual mistakes.'
-                },
-                {
-                    title: 'AI Engineering',
-                    text: 'Teams that want to place security at the first gate, not at the final model decision.'
-                },
-                {
-                    title: 'Security & Compliance',
-                    text: 'Teams that require immutable evidence and human approval loops for critical actions.'
-                }
-            ],
-            finalTitle: 'Do not leave the final decision <br><span class="text-zinc-700">to the model.</span>',
-            finalLabButton: 'Open VARUX Lab',
-            footerIntro: 'Pre-execution control architecture <br>for autonomous operations.',
-            footerHeadings: ['Products', 'Resources'],
-            footerLists: [
-                ['Arbiter', 'Axis', 'VARUX Lab'],
-                ['Security', 'Demo', 'Contact']
-            ],
-            modalKicker: 'Request Demo',
-            modalTitle: 'Get in touch with VARUX',
-            modalDescription: 'Leave your details. Let us understand how your team wants to secure agents, automation and critical write paths.',
-            modalLabels: {
-                name: 'Full Name',
-                company: 'Company',
-                email: 'Email',
-                message: 'Request or Message'
-            },
-            modalPlaceholders: {
-                name: 'Your full name',
-                company: 'Your company',
-                email: 'name@company.com',
-                message: 'Write a short note about your needs'
-            },
-            modalSubmitButton: 'Send Request'
-        };
-
-        let currentLanguage = originalLanguageContent.lang || 'tr';
-
-        const setHtml = (element, value) => {
-            if (element && typeof value === 'string') {
-                element.innerHTML = value;
+        function openContactModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Lock scroll
+            // reset state
+            if (formStatus) {
+                formStatus.textContent = '';
+                formStatus.className = 'text-xs font-mono text-gray-400';
             }
-        };
+            setTimeout(() => {
+                document.getElementById('cf-name').focus();
+            }, 100);
+        }
 
-        const setManyHtml = (elements, values) => {
-            elements.forEach((element, index) => {
-                if (typeof values[index] === 'string') {
-                    setHtml(element, values[index]);
+        function closeContactModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Unlock scroll
+        }
+
+        backdrop.addEventListener('click', closeContactModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+                if (!modal.classList.contains('hidden')) {
+                    closeContactModal();
                 }
-            });
-        };
-
-        const setPlaceholder = (element, value) => {
-            if (element && typeof value === 'string') {
-                element.setAttribute('placeholder', value);
             }
-        };
-
-        const applyLanguage = (lang) => {
-            const source = lang === 'en' ? englishLanguageContent : originalLanguageContent;
-
-            currentLanguage = lang === 'en' ? 'en' : originalLanguageContent.lang || 'tr';
-            document.documentElement.lang = currentLanguage;
-            document.title = source.title;
-
-            if (metaDescription) metaDescription.setAttribute('content', source.metaDescription);
-            if (ogLocale) ogLocale.setAttribute('content', source.ogLocale);
-            if (ogTitle) ogTitle.setAttribute('content', source.ogTitle);
-            if (ogDescription) ogDescription.setAttribute('content', source.ogDescription);
-            if (twitterTitle) twitterTitle.setAttribute('content', source.twitterTitle);
-            if (twitterDescription) twitterDescription.setAttribute('content', source.twitterDescription);
-
-            setHtml(navProductsLabel, source.navProductsLabel);
-            setManyHtml(navMainLinks, source.navMainLinks);
-            setManyHtml(navLabLinks, source.navLabLinks);
-            setManyHtml(demoButtons, source.demoButtons);
-
-            setHtml(document.querySelector('header h1'), source.heroTitle);
-            setHtml(document.querySelector('header p'), source.heroDescription);
-            setHtml(heroSecondaryLink, source.heroLabButton);
-
-            setHtml(pageSections[0]?.querySelector('h2'), source.problemTitle);
-            setHtml(pageSections[0]?.querySelector('p'), source.problemDescription);
-            problemCards.forEach((card, index) => {
-                setHtml(card.querySelector('h4'), source.problemCards[index]?.title || '');
-                setHtml(card.querySelector('p'), source.problemCards[index]?.text || '');
-            });
-
-            setHtml(document.querySelector('#nasil-calisir span.block'), source.controlKicker);
-            setHtml(document.querySelector('#nasil-calisir h2'), source.controlTitle);
-            controlCards.forEach((card, index) => {
-                setHtml(card.querySelector('h3'), source.controlCards[index]?.title || '');
-                setHtml(card.querySelector('p'), source.controlCards[index]?.text || '');
-            });
-
-            setHtml(productsSection?.querySelector('h2'), source.productsTitle);
-            setHtml(productsSection?.querySelector('.text-center p'), source.productsDescription);
-            setHtml(arbiterCard?.querySelectorAll('p')[1], source.arbiterDescription);
-            setHtml(arbiterCard?.querySelector('.product-cta'), source.arbiterButton);
-            setHtml(axisCard?.querySelectorAll('p')[1], source.axisDescription);
-            setHtml(axisCard?.querySelector('.product-cta'), source.axisButton);
-            setHtml(labPanel?.querySelector('.lab-kicker'), source.labKicker);
-            setHtml(labPanel?.querySelector('.lab-title'), source.labTitle);
-            setHtml(labPanel?.querySelector('.lab-description'), source.labDescription);
-            setHtml(labPanel?.querySelector('[data-lab-cta]'), source.labButton);
-
-            setHtml(policySection?.querySelector('h2'), source.policyTitle);
-            setHtml(policySection?.querySelector('p'), source.policyDescription);
-
-            setHtml(threatSection?.querySelector('h3'), source.threatTitle);
-            Array.from(threatSection?.querySelectorAll('h4') || []).forEach((item, index) => {
-                setHtml(item, source.threatHeadings[index] || '');
-            });
-            Array.from(threatSection?.querySelectorAll('ul') || []).forEach((list, listIndex) => {
-                Array.from(list.querySelectorAll('li')).forEach((item, itemIndex) => {
-                    setHtml(item, source.threatLists[listIndex]?.[itemIndex] || '');
-                });
-            });
-
-            setHtml(audienceSection?.querySelector('h2'), source.audienceTitle);
-            audienceCards.forEach((card, index) => {
-                setHtml(card.querySelector('h4'), source.audienceCards[index]?.title || '');
-                setHtml(card.querySelector('p'), source.audienceCards[index]?.text || '');
-            });
-
-            setHtml(finalCtaSection?.querySelector('h2'), source.finalTitle);
-            setHtml(finalSecondaryLink, source.finalLabButton);
-
-            setHtml(footerIntro, source.footerIntro);
-            setManyHtml(footerHeadings, source.footerHeadings);
-            footerLists.forEach((list, index) => {
-                const listItems = Array.from(list.querySelectorAll('li'));
-                setManyHtml(listItems, source.footerLists[index] || []);
-            });
-
-            setHtml(modalKicker, source.modalKicker);
-            setHtml(modalTitle, source.modalTitle);
-            setHtml(modalDescription, source.modalDescription);
-            setHtml(modalLabels.name, source.modalLabels.name);
-            setHtml(modalLabels.company, source.modalLabels.company);
-            setHtml(modalLabels.email, source.modalLabels.email);
-            setHtml(modalLabels.message, source.modalLabels.message);
-            setPlaceholder(modalInputs.name, source.modalPlaceholders.name);
-            setPlaceholder(modalInputs.company, source.modalPlaceholders.company);
-            setPlaceholder(modalInputs.email, source.modalPlaceholders.email);
-            setPlaceholder(modalInputs.message, source.modalPlaceholders.message);
-            setHtml(modalSubmitButton, source.modalSubmitButton);
-            if (document.getElementById('demoFormStatus')) {
-                document.getElementById('demoFormStatus').textContent = '';
-            }
-
-            langButtons.forEach((button) => {
-                button.classList.toggle('is-active', button.dataset.langSwitch === currentLanguage);
-            });
-
-            try {
-                window.localStorage.setItem('varux-language', currentLanguage);
-            } catch (error) {
-                // Ignore storage access issues.
-            }
-        };
-
-        langButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                applyLanguage(button.dataset.langSwitch === 'en' ? 'en' : 'tr');
-            });
         });
 
-        try {
-            const savedLanguage = window.localStorage.getItem('varux-language');
-            if (savedLanguage === 'en') {
-                applyLanguage('en');
-            }
-        } catch (error) {
-            // Ignore storage access issues.
-        }
-
-        // Demo request modal (same as original)
-        const demoModal = document.querySelector('[data-demo-modal]');
-        if (demoModal) {
-            const demoForm = document.getElementById('demoRequestForm');
-            const demoStatus = document.getElementById('demoFormStatus');
-            const demoFirstField = document.getElementById('demoName');
-            const openDemoButtons = document.querySelectorAll('[data-demo-open]');
-            const closeDemoButtons = demoModal.querySelectorAll('[data-demo-close]');
-
-            const openDemoModal = () => {
-                demoModal.classList.add('is-open');
-                demoModal.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('modal-open');
-                if (demoStatus) demoStatus.textContent = '';
-                window.setTimeout(() => {
-                    if (demoFirstField) demoFirstField.focus();
-                }, 40);
-            };
-
-            const closeDemoModal = () => {
-                demoModal.classList.remove('is-open');
-                demoModal.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('modal-open');
-                if (demoStatus) demoStatus.textContent = '';
-            };
-
-            openDemoButtons.forEach((button) => {
-                button.addEventListener('click', openDemoModal);
-            });
-
-            closeDemoButtons.forEach((button) => {
-                button.addEventListener('click', closeDemoModal);
-            });
-
-            demoModal.addEventListener('click', (event) => {
-                if (event.target === demoModal) {
-                    closeDemoModal();
-                }
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && demoModal.classList.contains('is-open')) {
-                    closeDemoModal();
-                }
-            });
-        }
-
-        // Hero starfield animation: pause off-screen to avoid continuous scroll work.
-        const heroMeshStage = document.querySelector('.hero-stage');
-
-        // Starfield animation (background stars only)
-        const heroCanvas = document.getElementById('heroMesh');
-        if (heroCanvas) {
-            const ctx = heroCanvas.getContext('2d');
-            let width, height;
-            let animationFrame;
-            let time = 0;
-
-            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const lowPower = reducedMotion || (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-
-            const stars = [];
-
-            // Generate background stars
-            const starCount = lowPower ? 100 : 180;
-            for (let i = 0; i < starCount; i++) {
-                stars.push({
-                    x: Math.random(),
-                    y: Math.random(),
-                    size: 0.5 + Math.random() * 1.6,
-                    alpha: 0.15 + Math.random() * 0.5,
-                    twinkleSpeed: 0.2 + Math.random() * 0.8,
-                    twinklePhase: Math.random() * Math.PI * 2,
-                    vx: (Math.random() - 0.5) * 0.0016,
-                    vy: (Math.random() - 0.5) * 0.0016
-                });
-            }
-
-            function resize() {
-                const rect = heroCanvas.getBoundingClientRect();
-                width = rect.width;
-                height = rect.height;
-                heroCanvas.width = width * window.devicePixelRatio;
-                heroCanvas.height = height * window.devicePixelRatio;
-                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-
-            window.addEventListener('resize', resize);
-
-            function draw() {
-                if (!ctx || width === 0 || height === 0) return;
-                ctx.clearRect(0, 0, width, height);
-
-                time += 0.008;
-                if (reducedMotion) time *= 0.2;
-
-                // Background stars with gentle drift and twinkle
-                stars.forEach(star => {
-                    if (!reducedMotion) {
-                        star.x += star.vx;
-                        star.y += star.vy;
-                        if (star.x < -0.02) star.x = 1.02;
-                        if (star.x > 1.02) star.x = -0.02;
-                        if (star.y < -0.02) star.y = 1.02;
-                        if (star.y > 1.02) star.y = -0.02;
-                    }
-                    const twinkle = 0.5 + 0.5 * Math.sin(time * star.twinkleSpeed + star.twinklePhase);
-                    ctx.fillStyle = `rgba(255, 240, 200, ${star.alpha * (0.6 + twinkle * 0.4)})`;
-                    ctx.beginPath();
-                    ctx.arc(star.x * width, star.y * height, star.size, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-            }
-
-            function animate() {
-                if (reducedMotion) {
-                    draw();
-                    return;
-                }
-                draw();
-                animationFrame = requestAnimationFrame(animate);
-            }
-
-            function pauseMesh() {
-                if (animationFrame) {
-                    cancelAnimationFrame(animationFrame);
-                    animationFrame = null;
-                }
-            }
-
-            function resumeMesh() {
-                if (reducedMotion) return;
-                if (!animationFrame && !document.hidden) {
-                    animate();
-                }
-            }
-
-            if (heroMeshStage && 'IntersectionObserver' in window) {
-                const meshObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            resumeMesh();
-                        } else {
-                            pauseMesh();
-                        }
-                    });
-                }, { threshold: 0.02, rootMargin: '120px 0px' });
-                meshObserver.observe(heroMeshStage);
-            }
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    pauseMesh();
-                } else {
-                    resumeMesh();
-                }
-            });
-
-            resize();
-            animate();
-        }
-    </script>
+        </script>
 </body>
 </html>
