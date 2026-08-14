@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX ORBIT | Remote Infrastructure Coordination</title>
+
+    <!-- SEO -->
+    <meta name="description" content="ORBIT is a VARUX Lab future concept: a coordination concept for remote infrastructure, telemetry states and delayed decision support across unstable, high-latency or disconnected communication environments. Concept material — not a released product.">
+    <meta name="keywords" content="VARUX Lab, ORBIT, remote infrastructure, telemetry, delayed communication, high latency, disconnected operation, command windows, deferred decisions, future concept">
+    <meta name="author" content="VARUX">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#020203">
+    <link rel="canonical" href="https://varuxcyber.com/orbit.html">
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VARUX">
+    <meta property="og:title" content="VARUX ORBIT | Remote Infrastructure Coordination">
+    <meta property="og:description" content="VARUX Lab future concept. ORBIT is a coordination concept for remote infrastructure, telemetry states and delayed decision support across unstable, high-latency or disconnected communication environments.">
+    <meta property="og:url" content="https://varuxcyber.com/orbit.html">
+    <meta property="og:image" content="https://varuxcyber.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="VARUX ORBIT — remote infrastructure coordination concept">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@varuxtech">
+    <meta name="twitter:title" content="VARUX ORBIT | Remote Infrastructure Coordination">
+    <meta name="twitter:description" content="VARUX Lab future concept. ORBIT coordinates remote infrastructure, telemetry states and delayed decisions across unstable communication environments.">
+    <meta name="twitter:image" content="https://varuxcyber.com/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchProject",
+      "name": "VARUX ORBIT",
+      "alternateName": "VARUX-ORBIT-01",
+      "description": "ORBIT is a future coordination concept for remote infrastructure, telemetry states and delayed decision support across unstable, high-latency or disconnected communication environments. Future concept of VARUX Lab — concept material, not a released product.",
+      "url": "https://varuxcyber.com/orbit.html",
+      "status": "https://schema.org/ProposedAction",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "VARUX Lab",
+        "url": "https://varuxcyber.com/varuxlab.html"
+      }
+    }
+    </script>
+
+    <!-- Fonts (progressive enhancement; pages remain usable with system fallbacks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARUX ORBIT — Remote Infrastructure Coordination
+           Research surface · Communication / link identity
+           ============================================================ */
+
+        :root {
+            --bg: #020203;
+            --bg-2: #060608;
+            --bg-3: #0a0a0d;
+            --line: rgba(255, 255, 255, 0.07);
+            --line-strong: rgba(255, 255, 255, 0.14);
+            --text: #e6e8ee;
+            --muted: #9aa2b0;
+            --faint: #6f7683;
+            --acc: #ffaa00;              /* future concept amber */
+            --acc-hi: #ffc24d;
+            --acc-dim: rgba(255, 170, 0, 0.12);
+            --ok: #7ee2a8;
+            --bad: #ff5c5c;
+            --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+            --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+        ::selection { background: rgba(255, 170, 0, 0.28); color: #fff; }
+
+        :focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+        section[id] { scroll-margin-top: 84px; }
+
+        /* Scrollbar — VARUX cyan family */
+        html { scrollbar-width: thin; scrollbar-color: rgba(0, 229, 255, 0.45) var(--bg); }
+        ::-webkit-scrollbar { width: 9px; height: 9px; }
+        ::-webkit-scrollbar-track { background: var(--bg); border-left: 1px solid rgba(255,255,255,0.04); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.35); border: 2px solid var(--bg); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,229,255,0.55); }
+
+        .skip-link {
+            position: absolute; left: 16px; top: 12px; transform: translateY(-200%);
+            background: #fff; color: #020203; padding: 8px 14px; z-index: 100;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+            transition: transform 180ms var(--ease);
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 4vw, 48px);
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(2, 2, 3, 0.86);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+        .header-inner {
+            height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+        }
+        .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+        .brand .mark {
+            width: 18px; height: 18px; flex: 0 0 auto;
+            border: 1.5px solid var(--acc);
+            display: grid; place-items: center;
+        }
+        .brand .mark i { width: 6px; height: 6px; background: var(--acc); }
+        .brand-text {
+            font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+            white-space: nowrap;
+        }
+        .brand-text b { font-weight: 500; color: #fff; }
+        .brand-text span { color: var(--acc); }
+        .brand-text em { font-style: normal; color: var(--faint); }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+            color: var(--muted); transition: color 160ms var(--ease);
+        }
+        .nav-links a:hover, .nav-links a:focus-visible { color: #fff; }
+        .nav-links a[aria-current="page"] { color: var(--acc-hi); }
+
+        .back-lab {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+            border: 1px solid var(--line-strong); color: var(--muted);
+            padding: 7px 12px; transition: border-color 160ms var(--ease), color 160ms var(--ease);
+        }
+        .back-lab:hover { border-color: var(--acc); color: var(--acc-hi); }
+
+        .menu-btn {
+            display: none; place-items: center; padding: 6px;
+            border: 1px solid var(--line-strong); color: var(--muted);
+        }
+        .menu-btn svg { width: 18px; height: 18px; }
+
+        .mobile-menu {
+            display: none; border-top: 1px solid var(--line);
+            background: rgba(2, 2, 3, 0.97); padding: 8px 0 16px;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block; padding: 13px 0; font-family: var(--mono); font-size: 12px;
+            letter-spacing: 0.1em; color: var(--muted);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .mobile-menu a[aria-current="page"] { color: var(--acc-hi); }
+        .mobile-menu .back-lab { display: inline-block; margin-top: 14px; }
+
+        @media (max-width: 980px) {
+            .nav-links { display: none; }
+            .menu-btn { display: grid; }
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            position: relative; overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            padding: clamp(80px, 12vh, 130px) 0 0;
+        }
+        .hero::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 46px 46px;
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 60% 20%, #000 20%, transparent 78%);
+            mask-image: radial-gradient(ellipse 90% 80% at 60% 20%, #000 20%, transparent 78%);
+        }
+        .hero::after {
+            content: ""; position: absolute; top: -30%; right: -10%;
+            width: 520px; height: 520px; pointer-events: none;
+            background: radial-gradient(circle, rgba(255,170,0,0.08), transparent 65%);
+            filter: blur(60px);
+        }
+
+        .hero-grid {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1.02fr 0.98fr;
+            gap: clamp(36px, 5vw, 76px); align-items: center;
+            padding-bottom: clamp(56px, 8vh, 96px);
+        }
+        @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+
+        .eyebrow {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+            color: var(--muted); margin-bottom: 28px;
+        }
+        .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 8px var(--acc); animation: hb 2s ease-in-out infinite; }
+        .status-chip {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+            color: var(--acc-hi); border: 1px solid rgba(255,170,0,0.35);
+            background: var(--acc-dim); padding: 4px 9px; margin-left: 6px;
+        }
+        @keyframes hb { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+        .hero h1 {
+            font-weight: 500; letter-spacing: -0.02em; line-height: 1.06;
+            font-size: clamp(2.5rem, 6.4vw, 4.6rem);
+            color: #fff; margin-bottom: 26px;
+        }
+        .hero h1 .dim { color: var(--muted); }
+
+        .hero .lead {
+            font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 300;
+            color: var(--acc-hi); letter-spacing: 0.005em; line-height: 1.5;
+            max-width: 30em; margin-bottom: 16px;
+        }
+        .hero .sub {
+            color: var(--muted); font-size: 0.95rem; font-weight: 300;
+            max-width: 34em; line-height: 1.65;
+        }
+
+        /* Hero visual — remote link diagram (decorative) */
+        .hero-visual {
+            position: relative; border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(6,6,8,0.6), rgba(2,2,3,0.9));
+            padding: 18px;
+        }
+        .hero-visual svg { width: 100%; height: auto; display: block; }
+        .hero-visual .frame-label {
+            display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em;
+            color: var(--faint); padding-top: 12px; border-top: 1px solid var(--line);
+            margin-top: 14px;
+        }
+        .hero-visual .frame-label span b { color: var(--acc-hi); font-weight: 500; }
+
+        .h-link { stroke: rgba(255,170,0,0.5); stroke-width: 1.2; fill: none; }
+        .h-link.weak { stroke: rgba(255,170,0,0.3); stroke-dasharray: 3 5; }
+        .h-node { fill: #0a0a0d; stroke: rgba(255,255,255,0.3); stroke-width: 1.2; }
+        .h-node.core { stroke: rgba(255,170,0,0.6); }
+        .h-node-core { fill: var(--acc); }
+        .h-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; fill: var(--faint); }
+        .h-lat { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.08em; fill: var(--acc-hi); }
+        .h-packet { fill: var(--acc); }
+        .h-hb { fill: var(--acc); animation: hb 2s ease-in-out infinite; }
+
+        /* ===================== METADATA STRIP ===================== */
+        .meta-strip { border-bottom: 1px solid var(--line); background: rgba(6,6,8,0.5); }
+        .meta-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-left: 1px solid var(--line);
+        }
+        .meta-item {
+            padding: 18px clamp(14px, 2vw, 26px); border-right: 1px solid var(--line);
+            border-top: 1px solid var(--line); margin-top: -1px;
+        }
+        .meta-k { display: block; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--faint); margin-bottom: 7px; }
+        .meta-v { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; color: var(--text); line-height: 1.5; }
+        .meta-v.accent { color: var(--acc-hi); }
+        @media (max-width: 820px) { .meta-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .meta-grid { grid-template-columns: 1fr; } }
+
+        /* ===================== SECTIONS ===================== */
+        .segment { position: relative; padding: clamp(72px, 10vh, 118px) 0; border-bottom: 1px solid var(--line); }
+        .segment.alt { background: rgba(255,255,255,0.012); }
+
+        .seg-tag {
+            display: flex; align-items: center; gap: 14px;
+            font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+            color: var(--faint); margin-bottom: 34px;
+        }
+        .seg-tag::after { content: ""; height: 1px; flex: 0 0 48px; background: rgba(255,170,0,0.35); }
+        .seg-tag .num { color: var(--acc-hi); }
+
+        .seg-head { max-width: 720px; margin-bottom: 44px; }
+        .seg-head h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 500; letter-spacing: -0.015em;
+            color: #fff; line-height: 1.15; margin-bottom: 14px;
+        }
+        .seg-head p { color: var(--muted); font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
+
+        .grid-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        .cell { background: var(--bg-2); padding: 22px; }
+        .cell h3 { font-size: 0.95rem; font-weight: 500; color: #fff; margin-bottom: 9px; font-family: var(--mono); letter-spacing: 0.06em; }
+        .cell h3 .idx { color: var(--acc); margin-right: 8px; }
+        .cell p { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.65; }
+
+        .split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+        @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+
+        .statement {
+            border-left: 2px solid var(--acc); padding: 4px 0 4px 22px;
+            font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 300; line-height: 1.5;
+            color: var(--text);
+        }
+        .statement b { color: #fff; font-weight: 500; }
+
+        .prose p { color: var(--muted); font-size: 0.93rem; font-weight: 300; line-height: 1.75; margin-bottom: 16px; }
+        .prose p:last-child { margin-bottom: 0; }
+        .prose .mono-note {
+            font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.06em;
+            border: 1px dashed var(--line-strong); padding: 12px 14px; margin-top: 18px; line-height: 1.7;
+        }
+
+        /* link-state chips */
+        .link-states { display: flex; flex-wrap: wrap; gap: 10px; }
+        .ls-chip {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+            border: 1px solid var(--line-strong); color: var(--muted);
+            padding: 8px 12px;
+        }
+        .ls-chip b { color: #fff; font-weight: 500; }
+        .ls-chip.on { border-color: rgba(255,170,0,0.45); color: var(--acc-hi); background: var(--acc-dim); }
+
+        /* reference architecture — segments */
+        .chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 900px) { .chain { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 560px) { .chain { grid-template-columns: 1fr; } }
+        .hop { background: var(--bg-2); padding: 20px 16px; position: relative; }
+        .hop .h-num { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--faint); display: block; margin-bottom: 8px; }
+        .hop h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: #fff; margin-bottom: 7px; }
+        .hop p { font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+        .hop.auth { background: var(--acc-dim); border-top: 2px solid var(--acc); }
+        .hop.auth h3 { color: var(--acc-hi); }
+
+        /* control model */
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        .card { background: var(--bg-2); padding: 24px; }
+        .card .k {
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--acc-hi);
+            display: block; margin-bottom: 12px;
+        }
+        .card h3 { font-size: 1rem; font-weight: 500; color: #fff; margin-bottom: 8px; }
+        .card p { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.65; }
+        .card .rule { border-top: 1px dashed var(--line-strong); margin-top: 16px; padding-top: 12px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.05em; }
+
+        /* degradation table */
+        .table-scroll { overflow-x: auto; border: 1px solid var(--line); }
+        .table-scroll::-webkit-scrollbar { height: 6px; }
+        .band-table { border: 0; width: 100%; min-width: 620px; border-collapse: collapse; }
+        .band-table th {
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; font-weight: 500;
+            color: var(--faint); text-align: left; padding: 13px 16px;
+            border-bottom: 1px solid var(--line); background: var(--bg-2);
+        }
+        .band-table td {
+            font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.04em;
+            padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); background: var(--bg-3);
+            vertical-align: top;
+        }
+        .band-table tr:last-child td { border-bottom: 0; }
+        .band-table td.state { color: var(--acc-hi); white-space: nowrap; }
+        .band-table td.state.down { color: var(--bad); }
+
+        /* is / is not */
+        .isnot { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 800px) { .isnot { grid-template-columns: 1fr; } }
+        .isnot .col { background: var(--bg-2); padding: 28px; }
+        .isnot h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+        .isnot .yes h3 { color: var(--acc-hi); border-bottom-color: rgba(255,170,0,0.35); }
+        .isnot .no h3 { color: var(--faint); }
+        .isnot ul { list-style: none; }
+        .isnot li {
+            display: flex; gap: 10px; align-items: baseline;
+            font-size: 0.87rem; color: var(--muted); font-weight: 300;
+            padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .isnot li:last-child { border-bottom: 0; }
+        .isnot li .tick { font-family: var(--mono); font-size: 10px; color: var(--acc-hi); }
+        .isnot .no li .tick { color: var(--faint); }
+
+        /* research directions */
+        .dirs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 900px) { .dirs { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .dirs { grid-template-columns: 1fr; } }
+        .dir { background: var(--bg-2); padding: 20px; }
+        .dir .d-code { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; color: var(--faint); display: block; margin-bottom: 9px; }
+        .dir h3 { font-size: 0.92rem; font-weight: 500; color: #fff; margin-bottom: 7px; }
+        .dir p { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+        /* ===================== INTERACTIVE DEMO ===================== */
+        .demo-wrap { border: 1px solid var(--line); background: var(--bg-2); }
+        .demo-head {
+            display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+            border-bottom: 1px solid var(--line); padding: 13px 18px;
+        }
+        .demo-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: #fff; }
+        .demo-mode {
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+            color: var(--acc-hi); border: 1px solid rgba(255,170,0,0.3); background: var(--acc-dim); padding: 3px 8px;
+        }
+
+        .demo-main { display: grid; grid-template-columns: 1fr 300px; gap: 0; }
+        @media (max-width: 920px) { .demo-main { grid-template-columns: 1fr; } }
+
+        /* network diagram */
+        .net-panel { border-right: 1px solid var(--line); padding: 18px; }
+        @media (max-width: 920px) { .net-panel { border-right: 0; border-bottom: 1px solid var(--line); } }
+        .net-panel svg { display: block; width: 100%; height: auto; }
+
+        .link { stroke: var(--acc); stroke-width: 1.4; fill: none; transition: stroke 300ms var(--ease), opacity 300ms var(--ease); }
+        .link.weak { stroke-width: 1; }
+        .net-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; fill: var(--faint); }
+        .net-node-title { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; fill: #fff; }
+        .net-node-sub { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em; fill: var(--faint); }
+        .net-node { fill: #0a0a0d; stroke: rgba(255,255,255,0.3); stroke-width: 1.2; transition: stroke 300ms var(--ease); }
+        .net-node.control { stroke: rgba(255,170,0,0.6); }
+        .net-core { fill: var(--acc); }
+        .lat-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; fill: var(--acc-hi); }
+        .packet { fill: var(--acc); }
+        .packet.tel { fill: rgba(255,255,255,0.5); }
+        .hb-dot { fill: var(--acc); animation: hb 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+        .xmark { font-family: var(--mono); font-size: 12px; fill: var(--bad); opacity: 0; transition: opacity 300ms var(--ease); }
+
+        /* link state styling applied on the svg root class */
+        .state-degraded .link { stroke-dasharray: 7 5; opacity: 0.75; }
+        .state-delayed .link { stroke-dasharray: 2 7; opacity: 0.55; }
+        .state-disconnected .link { stroke: var(--bad); stroke-dasharray: 4 4; opacity: 0.45; }
+        .state-disconnected .packet, .state-disconnected .packet.tel { opacity: 0; }
+        .state-disconnected .xmark { opacity: 1; }
+        .state-disconnected .net-node { stroke: rgba(255,92,92,0.6); }
+
+        .net-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+        .net-legend span { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--faint); display: inline-flex; align-items: center; gap: 7px; }
+        .net-legend i { width: 18px; height: 0; border-top: 1px solid var(--acc); display: inline-block; }
+        .net-legend i.tel { border-color: rgba(255,255,255,0.45); }
+        .net-legend i.w { border-color: rgba(255,170,0,0.35); border-style: dashed; }
+
+        /* telemetry panel */
+        .telemetry { display: flex; flex-direction: column; }
+        .tel-head { padding: 14px 18px 10px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--faint); border-bottom: 1px solid var(--line); }
+        .tel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+        .tel { background: var(--bg-3); padding: 12px 14px; }
+        .tel.wide { grid-column: 1 / -1; }
+        .tel .t-k { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.16em; color: var(--faint); margin-bottom: 6px; }
+        .tel .t-v { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; color: var(--text); }
+        .tel .t-v.ok { color: var(--ok); }
+        .tel .t-v.warn { color: var(--acc-hi); }
+        .tel .t-v.bad { color: var(--bad); }
+
+        .sync-row { padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+        .sync-k { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.16em; color: var(--faint); margin-bottom: 7px; display: flex; justify-content: space-between; }
+        .sync-bar { height: 6px; background: rgba(255,255,255,0.07); border: 1px solid var(--line); }
+        .sync-bar i { display: block; height: 100%; width: 100%; background: var(--acc); transition: width 600ms var(--ease), background 600ms var(--ease); }
+
+        .queue-panel { padding: 14px 18px; border-bottom: 1px solid var(--line); flex: 1 1 auto; }
+        .queue-head { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; color: var(--faint); margin-bottom: 10px; }
+        .queue-list { list-style: none; max-height: 120px; overflow-y: auto; }
+        .queue-list li {
+            display: flex; justify-content: space-between; gap: 10px;
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em;
+            color: var(--muted); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .queue-list li .q-id { color: var(--acc-hi); }
+        .queue-empty { font-size: 0.78rem; color: var(--faint); font-weight: 300; }
+
+        .sim-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+        .btn {
+            font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+            border: 1px solid var(--line-strong); color: var(--muted);
+            padding: 8px 13px; transition: border-color 160ms var(--ease), color 160ms var(--ease), background 160ms var(--ease);
+        }
+        .btn:hover { border-color: var(--acc); color: var(--acc-hi); }
+        .btn.primary { border-color: rgba(255,170,0,0.4); color: var(--acc-hi); background: var(--acc-dim); }
+        .btn.primary:hover { background: rgba(255,170,0,0.22); color: #fff; }
+        .btn.active { border-color: var(--acc); color: var(--acc-hi); background: var(--acc-dim); }
+
+        .sim-status { padding: 12px 18px; font-family: var(--mono); font-size: 10px; line-height: 1.7; color: var(--muted); letter-spacing: 0.05em; border-bottom: 1px solid var(--line); min-height: 46px; }
+        .demo-note { padding: 12px 18px; font-size: 0.78rem; color: var(--faint); font-weight: 300; line-height: 1.6; }
+
+        /* ===================== STATUS / FINAL ===================== */
+        .status-band { padding: clamp(64px, 9vh, 100px) 0; border-bottom: 1px solid var(--line); background: rgba(255,170,0,0.025); }
+        .status-inner { display: flex; gap: clamp(24px, 4vw, 60px); align-items: flex-start; flex-wrap: wrap; }
+        .status-chip-lg {
+            font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+            color: var(--acc-hi); border: 1px solid rgba(255,170,0,0.4);
+            background: var(--acc-dim); padding: 10px 16px; white-space: nowrap;
+        }
+        .status-inner p { flex: 1; min-width: 260px; color: var(--muted); font-size: 0.93rem; font-weight: 300; line-height: 1.7; max-width: 640px; }
+        .status-inner p b { color: #fff; font-weight: 500; }
+
+        .final { padding: clamp(90px, 14vh, 150px) 0; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+        .final::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 46px 46px;
+            -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 10%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 10%, transparent 75%);
+        }
+        .final .container { position: relative; z-index: 1; text-align: center; }
+        .final h2 {
+            font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 500; letter-spacing: -0.02em;
+            color: #fff; line-height: 1.1; margin-bottom: 22px;
+        }
+        .final h2 .acc { color: var(--acc-hi); }
+        .final p { color: var(--muted); max-width: 620px; margin: 0 auto 40px; font-weight: 300; line-height: 1.75; }
+        .final-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .final-actions .btn { padding: 12px 22px; }
+        .siblings { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-top: 44px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; }
+        .siblings a { color: var(--faint); transition: color 160ms var(--ease); }
+        .siblings a:hover { color: #fff; }
+        .siblings a b { color: var(--muted); font-weight: 500; }
+        .siblings .sep { color: rgba(255,255,255,0.15); }
+
+        /* footer */
+        .site-footer { padding: 56px 0 72px; }
+        .footer-grid { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+        .footer-brand { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--faint); line-height: 2; max-width: 380px; }
+        .footer-brand b { color: var(--muted); font-weight: 500; }
+        .footer-links { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; }
+        .footer-links a { color: var(--muted); transition: color 160ms var(--ease); }
+        .footer-links a:hover { color: #fff; }
+
+        /* accessibility: reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a class="skip-link" href="#main">SKIP TO CONTENT</a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="varuxlab.html" aria-label="VARUX Lab — back to research surface">
+                <span class="mark" aria-hidden="true"><i></i></span>
+                <span class="brand-text"><b>VARUX</b> <em>/</em> <span>LAB</span> <em>/ ORBIT</em></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB</a>
+                <a href="atlas.html">ATLAS</a>
+                <a href="sentinel.html">SENTINEL</a>
+                <a href="orbit.html" aria-current="page">ORBIT</a>
+            </nav>
+
+            <a class="back-lab" href="varuxlab.html">← BACK TO LAB</a>
+
+            <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+            <div class="container">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB — RESEARCH SURFACE</a>
+                <a href="atlas.html">ATLAS — INFRASTRUCTURE INTELLIGENCE</a>
+                <a href="sentinel.html">SENTINEL — CRITICAL SYSTEM MONITORING</a>
+                <a href="orbit.html" aria-current="page">ORBIT — REMOTE INFRASTRUCTURE COORDINATION</a>
+                <a class="back-lab" href="varuxlab.html">← BACK TO LAB</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" aria-label="VARUX ORBIT introduction">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span>VARUX LAB / REMOTE INFRASTRUCTURE COORDINATION</span>
+                        <span class="status-chip">FUTURE CONCEPT</span>
+                    </div>
+
+                    <h1>Remote infrastructure cannot assume<br><span class="dim">a continuous connection.</span></h1>
+
+                    <p class="lead">ORBIT is a future coordination concept for remote infrastructure, telemetry states and delayed decision support across unstable, high-latency or disconnected communication environments.</p>
+
+                    <p class="sub">A future concept for designing coordination around degraded links first — commands, telemetry and authority that survive delay and disconnection.</p>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <svg viewBox="0 0 640 340" role="img" aria-label="Illustrative remote link diagram: control node, relay and two remote nodes with latency badges.">
+                        <defs>
+                            <pattern id="og" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                            </pattern>
+                        </defs>
+                        <rect width="640" height="340" fill="url(#og)"/>
+                        <!-- links -->
+                        <line class="h-link" x1="130" y1="170" x2="310" y2="170"/>
+                        <line class="h-link" x1="350" y1="170" x2="540" y2="110"/>
+                        <line class="h-link weak" x1="350" y1="170" x2="540" y2="250"/>
+                        <!-- packets -->
+                        <circle class="h-packet" r="4"><animateMotion dur="4s" repeatCount="indefinite" path="M130,170 L310,170"/></circle>
+                        <circle class="h-packet" r="4"><animateMotion dur="5s" repeatCount="indefinite" path="M350,170 L540,110"/></circle>
+                        <circle class="h-packet tel" r="3"><animateMotion dur="7s" repeatCount="indefinite" path="M540,250 L350,170"/></circle>
+                        <!-- latency badges -->
+                        <text class="h-lat" x="220" y="160" text-anchor="middle">42ms</text>
+                        <text class="h-lat" x="445" y="128" text-anchor="middle">420ms</text>
+                        <text class="h-lat" x="445" y="238" text-anchor="middle">intermittent</text>
+                        <!-- nodes -->
+                        <g>
+                            <rect class="h-node core" x="88" y="140" width="84" height="60"/>
+                            <circle class="h-node-core" cx="104" cy="158" r="3"/>
+                            <text class="net-node-title" x="112" y="163">CONTROL NODE</text>
+                            <text class="net-node-sub" x="112" y="178">AUTHORITY SIDE</text>
+                        </g>
+                        <g>
+                            <rect class="h-node" x="290" y="145" width="80" height="50"/>
+                            <text class="net-node-title" x="302" y="166">RELAY</text>
+                            <text class="net-node-sub" x="302" y="180">SEGMENT 2</text>
+                        </g>
+                        <g>
+                            <rect class="h-node" x="520" y="85" width="86" height="50"/>
+                            <circle class="h-hb" cx="534" cy="103" r="3"/>
+                            <text class="net-node-title" x="542" y="107">REMOTE A</text>
+                            <text class="net-node-sub" x="542" y="121">STATE: STABLE</text>
+                        </g>
+                        <g>
+                            <rect class="h-node" x="520" y="225" width="86" height="50"/>
+                            <text class="net-node-title" x="542" y="247">REMOTE B</text>
+                            <text class="net-node-sub" x="542" y="261">STATE: LAST KNOWN</text>
+                        </g>
+                        <text class="h-label" x="600" y="326" text-anchor="end">SIMULATED LINK · ILLUSTRATIVE</text>
+                    </svg>
+                    <div class="frame-label">
+                        <span>LINK MODEL — <b>3 SEGMENTS</b></span>
+                        <span>MODE: <b>DEGRADED · DELAYED SUPPORT</b></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metadata -->
+        <div class="meta-strip">
+            <div class="container">
+                <div class="meta-grid">
+                    <div class="meta-item"><span class="meta-k">DESIGNATION</span><span class="meta-v">VARUX-ORBIT-01</span></div>
+                    <div class="meta-item"><span class="meta-k">DOMAIN</span><span class="meta-v">REMOTE INFRASTRUCTURE COORDINATION</span></div>
+                    <div class="meta-item"><span class="meta-k">STATUS</span><span class="meta-v accent">FUTURE CONCEPT</span></div>
+                    <div class="meta-item"><span class="meta-k">CORE OBJECTIVE</span><span class="meta-v">TELEMETRY · DELAY · SYNC · AUTHORITY</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== SEGMENT 01 — PREMISE ===================== -->
+        <section id="premise" class="segment" aria-labelledby="premise-h">
+            <div class="container split">
+                <div>
+                    <div class="seg-tag"><span class="num">SEGMENT 01</span> PREMISE</div>
+                    <p class="statement">A link that works today is a <b>temporary condition</b>, not an architectural assumption.</p>
+                    <div class="link-states" style="margin-top:30px" aria-label="Link states modeled by ORBIT">
+                        <span class="ls-chip on">STATE: <b>CONNECTED</b></span>
+                        <span class="ls-chip">STATE: <b>DEGRADED</b></span>
+                        <span class="ls-chip">STATE: <b>DELAYED</b></span>
+                        <span class="ls-chip">STATE: <b>DISCONNECTED</b></span>
+                    </div>
+                </div>
+                <div class="prose">
+                    <p>Remote infrastructure — field systems, edge nodes, relayed platforms — operates on links that degrade silently. Latency rises, heartbeats stretch, telemetry goes stale, and a command issued at the wrong moment times out against an outdated picture of the remote system.</p>
+                    <p>Coordination logic written for continuous connectivity fails exactly when it is needed most: under delay and disconnection. ORBIT conceptualizes the inverse — coordination designed around the degraded link first, where connected operation is treated as the best case, not the baseline.</p>
+                    <p class="mono-note">ORBIT is a future concept. It proposes coordination surfaces — it does not ship a network product, a mesh, or a remote-access tool.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 02 — COORDINATION SURFACES ===================== -->
+        <section id="surfaces" class="segment alt" aria-labelledby="surfaces-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 02</span> COORDINATION SURFACES</div>
+                <div class="seg-head">
+                    <h2 id="surfaces-h">What ORBIT coordinates.</h2>
+                    <p>Five surfaces a coordination concept must govern when the link cannot be trusted — each is about time and state, not just transport.</p>
+                </div>
+                <div class="grid-cells">
+                    <div class="cell"><h3><span class="idx">01</span>TELEMETRY STATE</h3><p>Remote state arrives with age attached. A value is never shown without its staleness — freshness is part of the datum.</p></div>
+                    <div class="cell"><h3><span class="idx">02</span>COMMAND WINDOWS</h3><p>A command is valid only inside an envelope of time, state and authority. Outside the window, it is held, not fired.</p></div>
+                    <div class="cell"><h3><span class="idx">03</span>DELAYED COMMANDS</h3><p>Decisions issued under degraded links are queued and sequenced — so intent survives until the link can carry it.</p></div>
+                    <div class="cell"><h3><span class="idx">04</span>STATE SYNC</h3><p>Remote and control-side state converge when possible and diverge knowingly when not. Sync is explicit, never assumed.</p></div>
+                    <div class="cell"><h3><span class="idx">05</span>DISCONNECTED OPERATION</h3><p>With no link at all, the concept still defines what the remote may do, what it must refuse, and what waits for authority.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 03 — REFERENCE ARCHITECTURE ===================== -->
+        <section id="architecture" class="segment" aria-labelledby="arch-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 03</span> REFERENCE ARCHITECTURE</div>
+                <div class="seg-head">
+                    <h2 id="arch-h">Five segments from intent to authority.</h2>
+                    <p>This is a conceptual chain for discussion — not an implemented stack.</p>
+                </div>
+                <div class="chain">
+                    <div class="hop"><span class="h-num">SEG 01</span><h3>INTENT</h3><p>An operator or control system expresses what should happen at the remote site — including why and by whose authority.</p></div>
+                    <div class="hop"><span class="h-num">SEG 02</span><h3>COMMAND WINDOW</h3><p>The intent is framed in time and state: valid from, valid until, acceptable remote states, refusal conditions.</p></div>
+                    <div class="hop"><span class="h-num">SEG 03</span><h3>TRANSPORT</h3><p>The framed command travels over whatever link exists — live, queued, or deferred. Transport never fabricates delivery.</p></div>
+                    <div class="hop"><span class="h-num">SEG 04</span><h3>STATE SYNC</h3><p>Remote state, acknowledgements and telemetry reconcile with the control side — with divergence reported, not hidden.</p></div>
+                    <div class="hop auth"><span class="h-num">SEG 05</span><h3>AUTHORITY</h3><p>Commands that cross risk thresholds wait for human authority. The queue is the boundary where automation stops.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 04 — CONTROL MODEL ===================== -->
+        <section id="control" class="segment alt" aria-labelledby="control-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 04</span> CONTROL MODEL</div>
+                <div class="seg-head">
+                    <h2 id="control-h">What ORBIT constrains: the command.</h2>
+                    <p>Three mechanisms keep remote coordination deterministic when the link is not.</p>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <span class="k">COMMAND WINDOW</span>
+                        <h3>Bound every command in time and state.</h3>
+                        <p>A command carries validity conditions. If the remote state at delivery no longer matches the window, the command is refused — not executed against stale intent.</p>
+                        <div class="rule">PREVENTS: stale intent execution</div>
+                    </div>
+                    <div class="card">
+                        <span class="k">OPERATIONAL ENVELOPE</span>
+                        <h3>Define what the remote may do alone.</h3>
+                        <p>The remote node holds a declared envelope of permitted autonomous behavior. Outside it, it must stop, hold or wait — never improvise.</p>
+                        <div class="rule">PREVENTS: unbounded remote autonomy</div>
+                    </div>
+                    <div class="card">
+                        <span class="k">HUMAN AUTHORITY</span>
+                        <h3>Keep the boundary at the queue.</h3>
+                        <p>Deferred decisions accumulate as a queue that only a human may release. Automation can hold; it cannot authorize.</p>
+                        <div class="rule">PREVENTS: unattended escalation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 05 — DEGRADATION MODEL ===================== -->
+        <section id="degradation" class="segment" aria-labelledby="degrad-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 05</span> DEGRADATION MODEL</div>
+                <div class="seg-head">
+                    <h2 id="degrad-h">Four link states, one coordination model.</h2>
+                    <p>ORBIT treats link condition as a first-class state. Behavior is defined per band — nothing depends on "the link will probably be fine".</p>
+                </div>
+                <div class="table-scroll">
+                <table class="band-table">
+                    <thead>
+                        <tr><th scope="col">LINK STATE</th><th scope="col">LATENCY</th><th scope="col">SYNC CADENCE</th><th scope="col">COMMAND BEHAVIOR</th><th scope="col">TELEMETRY</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="state">CONNECTED</td><td>low</td><td>continuous</td><td>commands flow with confirmation</td><td>live</td></tr>
+                        <tr><td class="state">DEGRADED</td><td>elevated</td><td>reduced</td><td>commands are queued, sent in windows</td><td>fresh with age tags</td></tr>
+                        <tr><td class="state">DELAYED</td><td>high</td><td>occasional</td><td>commands held; only envelope-valid ones advance</td><td>stale, marked stale</td></tr>
+                        <tr><td class="state down">DISCONNECTED</td><td>—</td><td>none</td><td>nothing sent; remote operates inside its envelope only</td><td>none; last known state shown</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 06 — HUMAN AUTHORITY ===================== -->
+        <section id="authority" class="segment alt" aria-labelledby="authority-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 06</span> HUMAN AUTHORITY</div>
+                <div class="seg-head">
+                    <h2 id="authority-h">The queue is where automation stops.</h2>
+                    <p>Deferred decisions are the core of ORBIT's authority model: when the link degrades, intent does not vanish — it waits. And what it waits for is a human, not a retry loop.</p>
+                </div>
+                <div class="grid-cells">
+                    <div class="cell"><h3><span class="idx">H1</span>DEFERRED DECISIONS</h3><p>Risk-bearing commands enter a decision queue the moment the link cannot carry them safely, with full context attached.</p></div>
+                    <div class="cell"><h3><span class="idx">H2</span>HUMAN RELEASE</h3><p>Only an authorized operator releases a queued decision. The concept never upgrades a held command into an autonomous one.</p></div>
+                    <div class="cell"><h3><span class="idx">H3</span>AUDITABLE HOLD</h3><p>Every hold, release and refusal is a record — so the history of a delayed command is as explicit as the command itself.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 07 — RESEARCH DIRECTIONS ===================== -->
+        <section id="research" class="segment" aria-labelledby="research-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 07</span> RESEARCH DIRECTIONS</div>
+                <div class="seg-head">
+                    <h2 id="research-h">Open surfaces for future work.</h2>
+                    <p>Directions ORBIT could explore next — each stated as a question, not a roadmap.</p>
+                </div>
+                <div class="dirs">
+                    <div class="dir"><span class="d-code">ORB-R-01</span><h3>Command window design</h3><p>How validity windows should be expressed — in time, remote state, or both — so a delayed command is never executed against stale intent.</p></div>
+                    <div class="dir"><span class="d-code">ORB-R-02</span><h3>State sync under loss</h3><p>Reconciling remote and control-side state when syncs are partial, out of order or absent — with divergence always reported.</p></div>
+                    <div class="dir"><span class="d-code">ORB-R-03</span><h3>Deferred decision queues</h3><p>Ordering, priority and expiry of held commands, so the queue stays reviewable and never silently grows unbounded.</p></div>
+                    <div class="dir"><span class="d-code">ORB-R-04</span><h3>Link health estimation</h3><p>Estimating latency, heartbeat and sync cadence from noisy, intermittent observations — without pretending precision.</p></div>
+                    <div class="dir"><span class="d-code">ORB-R-05</span><h3>Operational envelopes</h3><p>Declaring what a remote may do alone during disconnection, and how the envelope is validated before it is trusted.</p></div>
+                    <div class="dir"><span class="d-code">ORB-R-06</span><h3>Authority under delay</h3><p>How human authority should be asserted and evidenced when decisions must survive long, silent gaps.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 08 — IS / IS NOT ===================== -->
+        <section id="scope" class="segment alt" aria-labelledby="scope-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 08</span> SCOPE</div>
+                <div class="seg-head">
+                    <h2 id="scope-h">What this concept is — and is not.</h2>
+                </div>
+                <div class="isnot">
+                    <div class="col yes">
+                        <h3>ORBIT IS</h3>
+                        <ul>
+                            <li><span class="tick">▸</span> a remote infrastructure coordination future concept</li>
+                            <li><span class="tick">▸</span> a telemetry state concept</li>
+                            <li><span class="tick">▸</span> a delayed command and deferred decision concept</li>
+                            <li><span class="tick">▸</span> a degraded-mode design concept</li>
+                            <li><span class="tick">▸</span> a command window and authority surface</li>
+                            <li><span class="tick">▸</span> an illustration of human-supervised remote control</li>
+                        </ul>
+                    </div>
+                    <div class="col no">
+                        <h3>ORBIT IS NOT</h3>
+                        <ul>
+                            <li><span class="tick">✕</span> a remote access tool</li>
+                            <li><span class="tick">✕</span> a mesh VPN or link technology</li>
+                            <li><span class="tick">✕</span> a fleet management product</li>
+                            <li><span class="tick">✕</span> an orchestration platform</li>
+                            <li><span class="tick">✕</span> a satellite communication product</li>
+                            <li><span class="tick">✕</span> a released product, deployment or benchmark</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGMENT 09 — INTERACTIVE DEMONSTRATION ===================== -->
+        <section id="demo" class="segment" aria-labelledby="demo-h">
+            <div class="container">
+                <div class="seg-tag"><span class="num">SEGMENT 09</span> INTERACTIVE DEMONSTRATION</div>
+                <div class="seg-head">
+                    <h2 id="demo-h">Link state simulator — concept simulation.</h2>
+                    <p>Switch the link between CONNECTED, DEGRADED, DELAYED and DISCONNECTED and watch telemetry, sync and the decision queue respond. Everything here is simulated locally — no network telemetry is involved.</p>
+                </div>
+
+                <div class="demo-wrap">
+                    <div class="demo-head">
+                        <span class="demo-title">ORBIT — LINK STATE SIMULATOR</span>
+                        <span class="demo-mode">LOCAL SIMULATION · NO LIVE TELEMETRY</span>
+                    </div>
+
+                    <div class="demo-main">
+                        <!-- network diagram -->
+                        <div class="net-panel">
+                            <svg id="orbit-net" viewBox="0 0 760 400" role="group"
+                                 aria-label="Simulated remote network. Control node linked to relay, relay linked to remote nodes A and B. Link state is controlled below.">
+                                <defs>
+                                    <pattern id="og2" width="38" height="38" patternUnits="userSpaceOnUse">
+                                        <path d="M38 0H0V38" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="760" height="400" fill="url(#og2)"/>
+                                <text x="14" y="22" font-family="var(--mono)" font-size="9" letter-spacing="2" fill="#6f7683">LINK MODEL — 3 SEGMENTS · ILLUSTRATIVE</text>
+
+                                <!-- links -->
+                                <line class="link" id="link-1" x1="150" y1="200" x2="360" y2="200"/>
+                                <line class="link" id="link-2" x1="400" y1="200" x2="640" y2="130"/>
+                                <line class="link weak" id="link-3" x1="400" y1="200" x2="640" y2="280"/>
+                                <text class="lat-badge" id="lat-1" x="255" y="188" text-anchor="middle">42ms</text>
+                                <text class="lat-badge" id="lat-2" x="520" y="150" text-anchor="middle">42ms</text>
+                                <text class="lat-badge" id="lat-3" x="520" y="255" text-anchor="middle">42ms · weak</text>
+                                <!-- disconnect marks -->
+                                <text class="xmark" id="x-1" x="255" y="196" text-anchor="middle">✕</text>
+                                <text class="xmark" id="x-2" x="520" y="158" text-anchor="middle">✕</text>
+                                <text class="xmark" id="x-3" x="520" y="263" text-anchor="middle">✕</text>
+
+                                <!-- packets (SMIL animation; paused via begin="indefinite" in JS) -->
+                                <circle class="packet" r="4"><animateMotion id="pm-1" dur="3s" repeatCount="indefinite" path="M150,200 L360,200"/></circle>
+                                <circle class="packet" r="4"><animateMotion id="pm-2" dur="4s" repeatCount="indefinite" path="M400,200 L640,130"/></circle>
+                                <circle class="packet" r="3.5"><animateMotion id="pm-3" dur="5s" repeatCount="indefinite" path="M400,200 L640,280"/></circle>
+                                <circle class="packet tel" r="3"><animateMotion id="pm-4" dur="6s" repeatCount="indefinite" path="M640,280 L400,200"/></circle>
+                                <circle class="packet tel" r="3"><animateMotion id="pm-5" dur="5s" repeatCount="indefinite" path="M640,130 L400,200"/></circle>
+
+                                <!-- control node -->
+                                <g>
+                                    <rect class="net-node control" x="100" y="165" width="100" height="70"/>
+                                    <circle class="net-core" cx="116" cy="185" r="3.5"/>
+                                    <text class="net-node-title" x="126" y="189">CONTROL NODE</text>
+                                    <text class="net-node-sub" x="126" y="206">AUTHORITY SIDE</text>
+                                </g>
+                                <!-- relay -->
+                                <g>
+                                    <rect class="net-node" x="355" y="172" width="90" height="56"/>
+                                    <text class="net-node-title" x="368" y="195">RELAY</text>
+                                    <text class="net-node-sub" x="368" y="210">SEGMENT 2</text>
+                                </g>
+                                <!-- remote a -->
+                                <g>
+                                    <rect class="net-node" x="620" y="105" width="96" height="52"/>
+                                    <circle class="hb-dot" id="hb-a" cx="634" cy="123" r="3.5"/>
+                                    <text class="net-node-title" x="642" y="127">REMOTE A</text>
+                                    <text class="net-node-sub" x="642" y="141">STATE: STABLE</text>
+                                </g>
+                                <!-- remote b -->
+                                <g>
+                                    <rect class="net-node" x="620" y="255" width="96" height="52"/>
+                                    <text class="net-node-title" x="642" y="277">REMOTE B</text>
+                                    <text class="net-node-sub" x="642" y="291">STATE: LAST KNOWN</text>
+                                </g>
+                            </svg>
+                            <div class="net-legend">
+                                <span><i></i> COMMAND FLOW</span>
+                                <span><i class="tel"></i> TELEMETRY FLOW</span>
+                                <span><i class="w"></i> WEAK LINK</span>
+                                <span id="legend-state">LINK STATE: CONNECTED</span>
+                            </div>
+                        </div>
+
+                        <!-- telemetry -->
+                        <aside class="telemetry" aria-label="Simulated telemetry panel">
+                            <div class="tel-head">TELEMETRY — SIMULATED</div>
+                            <div class="tel-grid">
+                                <div class="tel wide"><span class="t-k">LINK STATE</span><span class="t-v ok" id="tel-state">CONNECTED</span></div>
+                                <div class="tel"><span class="t-k">LATENCY</span><span class="t-v" id="tel-lat">42ms</span></div>
+                                <div class="tel"><span class="t-k">HEARTBEAT</span><span class="t-v" id="tel-hb">1s</span></div>
+                                <div class="tel"><span class="t-k">LAST SYNC</span><span class="t-v" id="tel-sync">NOW</span></div>
+                                <div class="tel"><span class="t-k">REMOTE STATE</span><span class="t-v" id="tel-remote">STABLE</span></div>
+                                <div class="tel wide"><span class="t-k">DECISION QUEUE</span><span class="t-v" id="tel-queue">00 PENDING</span></div>
+                            </div>
+                            <div class="sync-row">
+                                <div class="sync-k"><span>STATE SYNC</span><span id="sync-label">100%</span></div>
+                                <div class="sync-bar"><i id="sync-fill"></i></div>
+                            </div>
+                            <div class="queue-panel">
+                                <div class="queue-head">PENDING DECISIONS — HUMAN RELEASE REQUIRED</div>
+                                <ul class="queue-list" id="queue-list" aria-live="polite">
+                                    <li class="queue-empty" id="queue-empty">No pending decisions.</li>
+                                </ul>
+                            </div>
+                            <div class="sim-controls">
+                                <span class="ctrl-label" style="font-family:var(--mono);font-size:9px;letter-spacing:0.18em;color:#6f7683">LINK STATE</span>
+                                <button class="btn active" data-state="connected" type="button" aria-pressed="true">CONNECTED</button>
+                                <button class="btn" data-state="degraded" type="button" aria-pressed="false">DEGRADED</button>
+                                <button class="btn" data-state="delayed" type="button" aria-pressed="false">DELAYED</button>
+                                <button class="btn" data-state="disconnected" type="button" aria-pressed="false">DISCONNECTED</button>
+                            </div>
+                            <div class="sim-controls" style="border-top:1px solid var(--line)">
+                                <button class="btn primary" id="btn-queue" type="button">QUEUE COMMAND</button>
+                                <button class="btn" id="btn-send" type="button">SEND PENDING</button>
+                            </div>
+                            <div class="sim-status" id="sim-status" aria-live="polite">STATUS: link CONNECTED. Queue a command to observe deferred-decision behavior.</div>
+                            <p class="demo-note">Illustrative link-state simulation. Latency, sync and queue values are synthetic and change only with this interface — this is not a real network and reflects no real deployment.</p>
+                        </aside>
+                    </div>
+                </div>
+                <noscript><p style="margin-top:14px;font-family:var(--mono);font-size:11px;color:#6f7683">JAVASCRIPT REQUIRED FOR LINK SIMULATION — THE DIAGRAM REMAINS STATIC WITHOUT IT.</p></noscript>
+            </div>
+        </section>
+
+        <!-- ===================== STATUS ===================== -->
+        <section id="status" class="status-band" aria-labelledby="status-h">
+            <div class="container status-inner">
+                <span class="status-chip-lg" id="status-h">STATUS — FUTURE CONCEPT</span>
+                <p><b>ORBIT is a future concept.</b> It is a concept for remote infrastructure coordination — not a released product, not a deployed system, not a benchmarked implementation. This page documents the concept and its proposed shape.</p>
+            </div>
+        </section>
+
+        <!-- ===================== FINAL ===================== -->
+        <section class="final" aria-labelledby="final-h">
+            <div class="container">
+                <h2 id="final-h">The Future Needs <span class="acc">Boundaries.</span></h2>
+                <p>Critical systems require deterministic boundaries before intelligence scales. ORBIT is a research surface for keeping authority explicit and decisions deferred — across links that cannot be trusted to stay connected.</p>
+                <div class="final-actions">
+                    <a class="btn primary" href="varuxlab.html">← BACK TO VARUX LAB</a>
+                    <a class="btn" href="sentinel.html">VIEW SENTINEL →</a>
+                </div>
+                <nav class="siblings" aria-label="Related research concepts">
+                    <a href="sentinel.html">PREV CONCEPT: <b>SENTINEL</b></a>
+                    <span class="sep">/</span>
+                    <a href="varuxlab.html">RESEARCH MAP</a>
+                    <span class="sep">/</span>
+                    <a href="atlas.html">PREV CONCEPT: <b>ATLAS</b></a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <b>VARUX — LAB RESEARCH SURFACE</b><br>
+                ATLAS, SENTINEL and ORBIT are research directions and future concepts of VARUX Lab. They are not released products, deployments or benchmarked systems. Concept material for architectural discussion.
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB</a>
+                <a href="axis.html">AXIS</a>
+                <a href="arbiter.html">ARBITER</a>
+                <a href="varuxabyss.html">ABYSS</a>
+                <a href="atlas.html">ATLAS</a>
+                <a href="sentinel.html">SENTINEL</a>
+                <a href="orbit.html" aria-current="page">ORBIT</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+    /* ============================================================
+       ORBIT — link state simulator (local simulation)
+       ============================================================ */
+    (function () {
+        'use strict';
+
+        /* ---- per-state telemetry configuration (all simulated) ---- */
+        var STATES = {
+            connected: {
+                label: 'CONNECTED', latency: '42ms',  hb: '1s',     sync: 'NOW',          remote: 'STABLE',              pct: 100, dur: [3, 4, 5, 6, 5],  cls: 'ok',   note: 'LINK STABLE'
+            },
+            degraded: {
+                label: 'DEGRADED',  latency: '420ms', hb: '5s',     sync: '00:12 AGO',    remote: 'STABLE',              pct: 84,  dur: [8, 11, 14, 16, 13], cls: 'warn', note: 'LINK DEGRADED — COMMANDS QUEUED'
+            },
+            delayed: {
+                label: 'DELAYED',   latency: '1240ms',hb: '20s',    sync: '03:42 — STALE', remote: 'STABLE (LAST KNOWN)', pct: 52,  dur: [16, 22, 30, 34, 26], cls: 'warn', note: 'LINK DELAYED — STALE TELEMETRY'
+            },
+            disconnected: {
+                label: 'DISCONNECTED', latency: '—',  hb: 'LOST',   sync: '03:42 — NONE', remote: 'UNKNOWN',             pct: 0,   dur: null,                    cls: 'bad',  note: 'NO LINK — REMOTE OPERATES INSIDE ENVELOPE ONLY'
+            }
+        };
+
+        var current = 'connected';
+        var queue = [];        // pending decisions: { id, label }
+        var seq = 17;          // decision id counter (illustrative)
+
+        var net = document.getElementById('orbit-net');
+        var statusEl = document.getElementById('sim-status');
+        var stateButtons = document.querySelectorAll('button[data-state]');
+
+        function el(id) { return document.getElementById(id); }
+
+        /* ---- apply a link state ---- */
+        function setState(key) {
+            current = key;
+            var cfg = STATES[key];
+
+            /* svg root class drives link styling + packet visibility */
+            net.setAttribute('class', 'state-' + key);
+
+            /* packet speed / pause */
+            var packets = [el('pm-1'), el('pm-2'), el('pm-3'), el('pm-4'), el('pm-5')];
+            for (var i = 0; i < packets.length; i++) {
+                if (!packets[i]) { continue; }
+                if (cfg.dur === null) {
+                    packets[i].setAttribute('begin', 'indefinite');   // pause
+                } else {
+                    packets[i].setAttribute('dur', cfg.dur[i] + 's');
+                    packets[i].setAttribute('begin', '0s');           // (re)start
+                }
+            }
+
+            /* heartbeat dot on REMOTE A */
+            var hb = el('hb-a');
+            if (hb) {
+                if (key === 'disconnected') {
+                    hb.style.animationDuration = '0s';
+                    hb.style.opacity = '0.25';
+                } else {
+                    var hbSec = parseInt(cfg.hb, 10) || 1;
+                    hb.style.animationDuration = hbSec + 's';
+                    hb.style.opacity = '1';
+                }
+            }
+
+            /* latency badges */
+            el('lat-1').textContent = cfg.latency;
+            el('lat-2').textContent = cfg.latency;
+            el('lat-3').textContent = cfg.latency + ' · weak';
+
+            /* telemetry cells */
+            setVal('tel-state', cfg.label, cfg.cls);
+            el('tel-lat').textContent = cfg.latency;
+            el('tel-hb').textContent = cfg.hb;
+            el('tel-sync').textContent = cfg.sync;
+            setVal('tel-remote', cfg.remote, cfg.cls);
+
+            /* sync bar */
+            el('sync-fill').style.width = cfg.pct + '%';
+            el('sync-label').textContent = cfg.pct + '%';
+
+            /* buttons */
+            for (var b = 0; b < stateButtons.length; b++) {
+                var on = stateButtons[b].getAttribute('data-state') === key;
+                stateButtons[b].classList.toggle('active', on);
+                stateButtons[b].setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+
+            el('legend-state').textContent = 'LINK STATE: ' + cfg.label;
+
+            renderQueue();
+            statusEl.textContent = 'STATUS: link ' + cfg.label + '. ' + cfg.note + '.';
+        }
+
+        function setVal(id, text, cls) {
+            var node = el(id);
+            node.textContent = text;
+            node.className = 't-v ' + (cls === 'ok' ? 'ok' : cls === 'warn' ? 'warn' : 'bad');
+        }
+
+        /* ---- decision queue ---- */
+        function queueCommand() {
+            seq += 1;
+            queue.push({ id: 'DEC-0' + seq, label: 'AUTHORITY REQUIRED' });
+            renderQueue();
+            statusEl.textContent = 'STATUS: command DEC-0' + seq + ' queued. Waits for a usable link and human release.';
+        }
+
+        function sendPending() {
+            if (queue.length === 0) {
+                statusEl.textContent = 'STATUS: queue empty. Nothing to send.';
+                return;
+            }
+            if (current === 'disconnected') {
+                statusEl.textContent = 'STATUS: send blocked — no link. ' + queue.length + ' decision(s) remain queued.';
+                return;
+            }
+            if (current === 'degraded' || current === 'delayed') {
+                statusEl.textContent = 'STATUS: held — link ' + STATES[current].label + '. Decisions stay queued until the link stabilizes.';
+                return;
+            }
+            var item = queue.shift();
+            renderQueue();
+            statusEl.textContent = 'STATUS: ' + item.id + ' delivered over stable link with acknowledgement.';
+        }
+
+        function renderQueue() {
+            var list = el('queue-list');
+            var empty = el('queue-empty');
+            var count = el('tel-queue');
+
+            count.textContent = (queue.length < 10 ? '0' : '') + queue.length + ' PENDING';
+            count.className = 't-v ' + (queue.length ? 'warn' : 'ok');
+
+            list.innerHTML = '';
+            if (queue.length === 0) {
+                var li = document.createElement('li');
+                li.className = 'queue-empty';
+                li.textContent = 'No pending decisions.';
+                list.appendChild(li);
+                return;
+            }
+            queue.forEach(function (item) {
+                var row = document.createElement('li');
+                row.innerHTML = '<span class="q-id">' + item.id + '</span><span>' + item.label + '</span>';
+                list.appendChild(row);
+            });
+        }
+
+        /* ---- wire state buttons ---- */
+        for (var b = 0; b < stateButtons.length; b++) {
+            (function (btn) {
+                btn.addEventListener('click', function () {
+                    setState(btn.getAttribute('data-state'));
+                });
+            })(stateButtons[b]);
+        }
+        el('btn-queue').addEventListener('click', queueCommand);
+        el('btn-send').addEventListener('click', sendPending);
+
+        /* ---- mobile menu ---- */
+        var menuBtn = document.getElementById('menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', function () {
+            var open = mobileMenu.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                mobileMenu.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        /* initial state */
+        setState('connected');
+    })();
+    </script>
+</body>
+</html>

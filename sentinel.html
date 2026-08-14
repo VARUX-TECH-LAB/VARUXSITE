@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARUX SENTINEL | Critical System Monitoring</title>
+
+    <!-- SEO -->
+    <meta name="description" content="SENTINEL is a VARUX Lab future concept: a monitoring intelligence concept for detecting logic drift, abnormal behavior, unauthorized state transitions and emerging risk patterns in critical system control loops. Concept material — not a released product.">
+    <meta name="keywords" content="VARUX Lab, SENTINEL, critical system monitoring, logic drift, behavioral anomaly, unauthorized state transition, control loop, deviation detection, future concept">
+    <meta name="author" content="VARUX">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#020203">
+    <link rel="canonical" href="https://varuxcyber.com/sentinel.html">
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VARUX">
+    <meta property="og:title" content="VARUX SENTINEL | Critical System Monitoring">
+    <meta property="og:description" content="VARUX Lab future concept. SENTINEL is a monitoring intelligence concept for detecting logic drift, abnormal behavior, unauthorized state transitions and emerging risk patterns in critical system control loops.">
+    <meta property="og:url" content="https://varuxcyber.com/sentinel.html">
+    <meta property="og:image" content="https://varuxcyber.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="VARUX SENTINEL — critical system monitoring concept">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@varuxtech">
+    <meta name="twitter:title" content="VARUX SENTINEL | Critical System Monitoring">
+    <meta name="twitter:description" content="VARUX Lab future concept. SENTINEL detects logic drift, abnormal behavior and unauthorized state transitions in critical system control loops.">
+    <meta name="twitter:image" content="https://varuxcyber.com/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchProject",
+      "name": "VARUX SENTINEL",
+      "alternateName": "VARUX-SENTINEL-01",
+      "description": "SENTINEL is a monitoring intelligence concept for detecting logic drift, abnormal behavior, unauthorized state transitions and emerging risk patterns in critical system control loops. Future concept of VARUX Lab — concept material, not a released product.",
+      "url": "https://varuxcyber.com/sentinel.html",
+      "status": "https://schema.org/ProposedAction",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "VARUX Lab",
+        "url": "https://varuxcyber.com/varuxlab.html"
+      }
+    }
+    </script>
+
+    <!-- Fonts (progressive enhancement; pages remain usable with system fallbacks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARUX SENTINEL — Critical System Monitoring
+           Research surface · Temporal / timeline identity
+           ============================================================ */
+
+        :root {
+            --bg: #020203;
+            --bg-2: #060608;
+            --bg-3: #0a0a0d;
+            --line: rgba(255, 255, 255, 0.07);
+            --line-strong: rgba(255, 255, 255, 0.14);
+            --text: #e6e8ee;
+            --muted: #9aa2b0;
+            --faint: #6f7683;
+            --acc: #ff3366;              /* anomaly red */
+            --acc-hi: #ff6b8d;
+            --acc-dim: rgba(255, 51, 102, 0.13);
+            --ok: #7ee2a8;               /* nominal green */
+            --warn: #ffc24d;             /* watch amber */
+            --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+            --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+        ::selection { background: rgba(255, 51, 102, 0.3); color: #fff; }
+
+        :focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+        section[id] { scroll-margin-top: 84px; }
+
+        /* Scrollbar — VARUX cyan family */
+        html { scrollbar-width: thin; scrollbar-color: rgba(0, 229, 255, 0.45) var(--bg); }
+        ::-webkit-scrollbar { width: 9px; height: 9px; }
+        ::-webkit-scrollbar-track { background: var(--bg); border-left: 1px solid rgba(255,255,255,0.04); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.35); border: 2px solid var(--bg); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,229,255,0.55); }
+
+        .skip-link {
+            position: absolute; left: 16px; top: 12px; transform: translateY(-200%);
+            background: #fff; color: #020203; padding: 8px 14px; z-index: 100;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+            transition: transform 180ms var(--ease);
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 4vw, 48px);
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(2, 2, 3, 0.86);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+        .header-inner {
+            height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+        }
+        .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+        .brand .mark {
+            width: 18px; height: 18px; flex: 0 0 auto;
+            border: 1.5px solid var(--acc);
+            display: grid; place-items: center;
+        }
+        .brand .mark i { width: 6px; height: 6px; background: var(--acc); }
+        .brand-text {
+            font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+            white-space: nowrap;
+        }
+        .brand-text b { font-weight: 500; color: #fff; }
+        .brand-text span { color: var(--acc); }
+        .brand-text em { font-style: normal; color: var(--faint); }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+            color: var(--muted); transition: color 160ms var(--ease);
+        }
+        .nav-links a:hover, .nav-links a:focus-visible { color: #fff; }
+        .nav-links a[aria-current="page"] { color: var(--acc-hi); }
+
+        .back-lab {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+            border: 1px solid var(--line-strong); color: var(--muted);
+            padding: 7px 12px; transition: border-color 160ms var(--ease), color 160ms var(--ease);
+        }
+        .back-lab:hover { border-color: var(--acc); color: var(--acc-hi); }
+
+        .menu-btn {
+            display: none; place-items: center; padding: 6px;
+            border: 1px solid var(--line-strong); color: var(--muted);
+        }
+        .menu-btn svg { width: 18px; height: 18px; }
+
+        .mobile-menu {
+            display: none; border-top: 1px solid var(--line);
+            background: rgba(2, 2, 3, 0.97); padding: 8px 0 16px;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block; padding: 13px 0; font-family: var(--mono); font-size: 12px;
+            letter-spacing: 0.1em; color: var(--muted);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .mobile-menu a[aria-current="page"] { color: var(--acc-hi); }
+        .mobile-menu .back-lab { display: inline-block; margin-top: 14px; }
+
+        @media (max-width: 980px) {
+            .nav-links { display: none; }
+            .menu-btn { display: grid; }
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            position: relative; overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            padding: clamp(80px, 12vh, 130px) 0 0;
+        }
+        .hero::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 46px 46px;
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 40% 20%, #000 20%, transparent 78%);
+            mask-image: radial-gradient(ellipse 90% 80% at 40% 20%, #000 20%, transparent 78%);
+        }
+        .hero::after {
+            content: ""; position: absolute; top: -30%; left: -10%;
+            width: 520px; height: 520px; pointer-events: none;
+            background: radial-gradient(circle, rgba(255,51,102,0.09), transparent 65%);
+            filter: blur(60px);
+        }
+
+        .hero-grid {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1.02fr 0.98fr;
+            gap: clamp(36px, 5vw, 76px); align-items: center;
+            padding-bottom: clamp(56px, 8vh, 96px);
+        }
+        @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+
+        .eyebrow {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+            color: var(--muted); margin-bottom: 28px;
+        }
+        .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 8px var(--acc); animation: blink 2.4s ease-in-out infinite; }
+        .status-chip {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+            color: var(--acc-hi); border: 1px solid rgba(255,51,102,0.35);
+            background: var(--acc-dim); padding: 4px 9px; margin-left: 6px;
+        }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+        .hero h1 {
+            font-weight: 500; letter-spacing: -0.02em; line-height: 1.06;
+            font-size: clamp(2.5rem, 6.4vw, 4.6rem);
+            color: #fff; margin-bottom: 26px;
+        }
+        .hero h1 .dim { color: var(--muted); }
+
+        .hero .lead {
+            font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 300;
+            color: var(--acc-hi); letter-spacing: 0.005em; line-height: 1.5;
+            max-width: 30em; margin-bottom: 16px;
+        }
+        .hero .sub {
+            color: var(--muted); font-size: 0.95rem; font-weight: 300;
+            max-width: 34em; line-height: 1.65;
+        }
+
+        /* Hero visual — observation window (decorative) */
+        .hero-visual {
+            position: relative; border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(6,6,8,0.6), rgba(2,2,3,0.9));
+            padding: 18px;
+        }
+        .hero-visual svg { width: 100%; height: auto; display: block; }
+        .hero-visual .frame-label {
+            display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em;
+            color: var(--faint); padding-top: 12px; border-top: 1px solid var(--line);
+            margin-top: 14px;
+        }
+        .hero-visual .frame-label span b { color: var(--acc-hi); font-weight: 500; }
+
+        .h-wave { fill: none; stroke-width: 1.4; }
+        .h-wave.base { stroke: rgba(255,255,255,0.4); }
+        .h-wave.drift { stroke: var(--acc); }
+        .h-rail { stroke: rgba(255,255,255,0.09); stroke-width: 1; }
+        .h-mark { fill: rgba(255,51,102,0.85); }
+        .h-scan { fill: rgba(255,51,102,0.06); transform-box: fill-box; transform-origin: center; animation: scan-x 6s ease-in-out infinite; }
+        .h-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; fill: var(--faint); }
+        @keyframes scan-x { 0%,100% { transform: translateX(-12%); opacity: 0; } 15%,80% { opacity: 1; } 50% { transform: translateX(86%); } }
+
+        /* ===================== METADATA STRIP ===================== */
+        .meta-strip { border-bottom: 1px solid var(--line); background: rgba(6,6,8,0.5); }
+        .meta-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-left: 1px solid var(--line);
+        }
+        .meta-item {
+            padding: 18px clamp(14px, 2vw, 26px); border-right: 1px solid var(--line);
+            border-top: 1px solid var(--line); margin-top: -1px;
+        }
+        .meta-k { display: block; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--faint); margin-bottom: 7px; }
+        .meta-v { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; color: var(--text); line-height: 1.5; }
+        .meta-v.accent { color: var(--acc-hi); }
+        @media (max-width: 820px) { .meta-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .meta-grid { grid-template-columns: 1fr; } }
+
+        /* ===================== SECTIONS ===================== */
+        .trace { position: relative; padding: clamp(72px, 10vh, 118px) 0; border-bottom: 1px solid var(--line); }
+        .trace.alt { background: rgba(255,255,255,0.012); }
+
+        .trace-tag {
+            display: flex; align-items: center; gap: 14px;
+            font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+            color: var(--faint); margin-bottom: 34px;
+        }
+        .trace-tag::after { content: ""; height: 1px; flex: 0 0 48px; background: rgba(255,51,102,0.35); }
+        .trace-tag .num { color: var(--acc-hi); }
+
+        .trace-head { max-width: 720px; margin-bottom: 44px; }
+        .trace-head h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 500; letter-spacing: -0.015em;
+            color: #fff; line-height: 1.15; margin-bottom: 14px;
+        }
+        .trace-head p { color: var(--muted); font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
+
+        .grid-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        .cell { background: var(--bg-2); padding: 22px; }
+        .cell h3 { font-size: 0.95rem; font-weight: 500; color: #fff; margin-bottom: 9px; font-family: var(--mono); letter-spacing: 0.06em; }
+        .cell h3 .idx { color: var(--acc); margin-right: 8px; }
+        .cell p { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.65; }
+
+        .split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+        @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+
+        .statement {
+            border-left: 2px solid var(--acc); padding: 4px 0 4px 22px;
+            font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 300; line-height: 1.5;
+            color: var(--text);
+        }
+        .statement b { color: #fff; font-weight: 500; }
+
+        .prose p { color: var(--muted); font-size: 0.93rem; font-weight: 300; line-height: 1.75; margin-bottom: 16px; }
+        .prose p:last-child { margin-bottom: 0; }
+        .prose .mono-note {
+            font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.06em;
+            border: 1px dashed var(--line-strong); padding: 12px 14px; margin-top: 18px; line-height: 1.7;
+        }
+
+        /* before / after trace comparison */
+        .traces { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 800px) { .traces { grid-template-columns: 1fr; } }
+        .trace-card { background: var(--bg-2); padding: 24px; }
+        .trace-card .tc-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; margin-bottom: 16px; }
+        .trace-card.nominal .tc-k { color: var(--ok); }
+        .trace-card.drifted .tc-k { color: var(--acc-hi); }
+        .trace-card svg { width: 100%; height: auto; display: block; }
+        .trace-card .tc-foot { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; color: var(--faint); margin-top: 12px; line-height: 1.7; }
+
+        /* reference architecture — temporal pipeline */
+        .pipeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); position: relative; }
+        @media (max-width: 900px) { .pipeline { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 520px) { .pipeline { grid-template-columns: 1fr; } }
+        .stage { background: var(--bg-2); padding: 20px 16px; }
+        .stage .s-num { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--faint); display: block; margin-bottom: 8px; }
+        .stage h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: #fff; margin-bottom: 7px; }
+        .stage p { font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+        .stage.flag { background: var(--acc-dim); border-top: 2px solid var(--acc); }
+        .stage.flag h3 { color: var(--acc-hi); }
+
+        /* control model */
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        .card { background: var(--bg-2); padding: 24px; }
+        .card .k {
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--acc-hi);
+            display: block; margin-bottom: 12px;
+        }
+        .card h3 { font-size: 1rem; font-weight: 500; color: #fff; margin-bottom: 8px; }
+        .card p { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.65; }
+        .card .rule { border-top: 1px dashed var(--line-strong); margin-top: 16px; padding-top: 12px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.05em; }
+
+        /* is / is not */
+        .isnot { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 800px) { .isnot { grid-template-columns: 1fr; } }
+        .isnot .col { background: var(--bg-2); padding: 28px; }
+        .isnot h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+        .isnot .yes h3 { color: var(--acc-hi); border-bottom-color: rgba(255,51,102,0.35); }
+        .isnot .no h3 { color: var(--faint); }
+        .isnot ul { list-style: none; }
+        .isnot li {
+            display: flex; gap: 10px; align-items: baseline;
+            font-size: 0.87rem; color: var(--muted); font-weight: 300;
+            padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .isnot li:last-child { border-bottom: 0; }
+        .isnot li .tick { font-family: var(--mono); font-size: 10px; color: var(--acc-hi); }
+        .isnot .no li .tick { color: var(--faint); }
+
+        /* research directions */
+        .dirs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        @media (max-width: 900px) { .dirs { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .dirs { grid-template-columns: 1fr; } }
+        .dir { background: var(--bg-2); padding: 20px; }
+        .dir .d-code { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; color: var(--faint); display: block; margin-bottom: 9px; }
+        .dir h3 { font-size: 0.92rem; font-weight: 500; color: #fff; margin-bottom: 7px; }
+        .dir p { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+        /* ===================== INTERACTIVE DEMO ===================== */
+        .demo-wrap { border: 1px solid var(--line); background: var(--bg-2); }
+        .demo-head {
+            display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+            border-bottom: 1px solid var(--line); padding: 13px 18px;
+        }
+        .demo-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: #fff; }
+        .demo-mode {
+            font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+            color: var(--acc-hi); border: 1px solid rgba(255,51,102,0.3); background: var(--acc-dim); padding: 3px 8px;
+        }
+        .demo-phase {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+            color: var(--muted); border: 1px solid var(--line-strong); padding: 4px 10px;
+        }
+        .demo-phase.live { color: var(--acc-hi); border-color: rgba(255,51,102,0.4); }
+
+        /* state readouts */
+        .readout { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+        @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } .readout .ro:first-child { grid-column: 1 / -1; } }
+        .ro { background: var(--bg-3); padding: 14px 16px; }
+        .ro .ro-k { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--faint); margin-bottom: 8px; }
+        .ro .ro-v { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--text); }
+        .ro .ro-v.ok { color: var(--ok); }
+        .ro .ro-v.warn { color: var(--warn); }
+        .ro .ro-v.alarm { color: var(--acc-hi); }
+
+        .demo-main { display: grid; grid-template-columns: 1fr 320px; gap: 0; }
+        @media (max-width: 920px) { .demo-main { grid-template-columns: 1fr; } }
+
+        .timeline-panel { border-right: 1px solid var(--line); padding: 18px; }
+        @media (max-width: 920px) { .timeline-panel { border-right: 0; border-bottom: 1px solid var(--line); } }
+        .timeline-panel svg { display: block; width: 100%; height: auto; }
+
+        .t-wave { fill: none; stroke-width: 1.5; transition: opacity 300ms var(--ease); }
+        .t-wave.base { stroke: rgba(255,255,255,0.4); }
+        .t-wave.drift { stroke: var(--acc); opacity: 0; }
+        .t-wave.drift.on { opacity: 1; }
+        .t-rail { stroke: rgba(255,255,255,0.09); stroke-width: 1; }
+        .t-grid { stroke: rgba(255,255,255,0.04); stroke-width: 1; }
+        .t-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; fill: var(--faint); }
+        .t-mark { cursor: pointer; }
+        .t-mark circle { fill: var(--bg-3); stroke: rgba(255,255,255,0.4); stroke-width: 1.2; transition: fill 200ms var(--ease), stroke 200ms var(--ease); }
+        .t-mark .tk { stroke: rgba(255,255,255,0.25); stroke-width: 1; }
+        .t-mark:hover circle { stroke: #fff; }
+        .t-mark:focus-visible circle { stroke: var(--acc); stroke-width: 2; }
+        .t-mark.active circle { fill: rgba(255,51,102,0.2); stroke: var(--acc); }
+        .t-mark.alarm circle { stroke: var(--acc); }
+        .t-mark .mt { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; fill: var(--muted); pointer-events: none; }
+
+        .scan-line { stroke: var(--acc); stroke-width: 1.2; stroke-dasharray: 2 3; }
+        #scan-g { transition: transform 1.5s linear; }
+        .scan-line.hidden { opacity: 0; }
+
+        .t-scale {
+            display: flex; justify-content: space-between; margin-top: 8px;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--faint);
+        }
+
+        .stream-panel { display: flex; flex-direction: column; max-height: 520px; }
+        .stream-head { padding: 14px 18px 10px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--faint); border-bottom: 1px solid var(--line); }
+        .stream { list-style: none; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
+        .stream li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .stream button {
+            display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; align-items: center;
+            width: 100%; text-align: left; padding: 11px 18px;
+            font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.04em;
+            transition: background 160ms var(--ease);
+        }
+        .stream button:hover { background: rgba(255,255,255,0.03); }
+        .stream button.active { background: var(--acc-dim); color: #fff; }
+        .stream .st-time { color: var(--faint); }
+        .stream .sev {
+            font-size: 8.5px; letter-spacing: 0.12em; padding: 2px 6px; border: 1px solid var(--line-strong);
+        }
+        .stream .sev.info { color: var(--faint); }
+        .stream .sev.drift { color: var(--warn); border-color: rgba(255,194,77,0.35); }
+        .stream .sev.deviation { color: var(--acc-hi); border-color: rgba(255,51,102,0.4); }
+        .stream .sev.block { color: var(--acc-hi); border-color: var(--acc); background: var(--acc-dim); }
+        .stream .sev.review { color: var(--ok); border-color: rgba(126,226,168,0.35); }
+
+        .details { padding: 16px 18px; border-top: 1px solid var(--line); background: rgba(2,2,3,0.6); flex: 0 0 auto; }
+        .details .d-head { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; color: var(--faint); margin-bottom: 10px; }
+        .details dl { display: grid; grid-template-columns: 92px 1fr; gap: 5px 10px; }
+        .details dt { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--faint); }
+        .details dd { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+        .details dd b { color: #fff; font-weight: 500; }
+        .details .d-note { margin-top: 10px; font-size: 0.75rem; color: var(--faint); font-weight: 300; line-height: 1.6; }
+
+        .sim-controls {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+            padding: 14px 18px; border-top: 1px solid var(--line);
+        }
+        .btn {
+            font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+            border: 1px solid var(--line-strong); color: var(--muted);
+            padding: 8px 16px; transition: border-color 160ms var(--ease), color 160ms var(--ease), background 160ms var(--ease);
+        }
+        .btn:hover { border-color: var(--acc); color: var(--acc-hi); }
+        .btn.primary { border-color: rgba(255,51,102,0.4); color: var(--acc-hi); background: var(--acc-dim); }
+        .btn.primary:hover { background: rgba(255,51,102,0.22); color: #fff; }
+        .btn.active { border-color: var(--acc); color: var(--acc-hi); background: var(--acc-dim); }
+
+        .conf { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+        .conf span { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: var(--faint); }
+        .conf-bar { width: 120px; height: 5px; background: rgba(255,255,255,0.08); border: 1px solid var(--line); }
+        .conf-bar i { display: block; height: 100%; width: 98%; background: var(--ok); transition: width 600ms var(--ease), background 600ms var(--ease); }
+        .conf b { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 500; }
+
+        .demo-note { padding: 12px 18px; font-size: 0.78rem; color: var(--faint); font-weight: 300; line-height: 1.6; border-top: 1px solid var(--line); }
+
+        /* ===================== STATUS / FINAL ===================== */
+        .status-band { padding: clamp(64px, 9vh, 100px) 0; border-bottom: 1px solid var(--line); background: rgba(255,51,102,0.025); }
+        .status-inner { display: flex; gap: clamp(24px, 4vw, 60px); align-items: flex-start; flex-wrap: wrap; }
+        .status-chip-lg {
+            font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+            color: var(--acc-hi); border: 1px solid rgba(255,51,102,0.4);
+            background: var(--acc-dim); padding: 10px 16px; white-space: nowrap;
+        }
+        .status-inner p { flex: 1; min-width: 260px; color: var(--muted); font-size: 0.93rem; font-weight: 300; line-height: 1.7; max-width: 640px; }
+        .status-inner p b { color: #fff; font-weight: 500; }
+
+        .final { padding: clamp(90px, 14vh, 150px) 0; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+        .final::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 46px 46px;
+            -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 10%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 10%, transparent 75%);
+        }
+        .final .container { position: relative; z-index: 1; text-align: center; }
+        .final h2 {
+            font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 500; letter-spacing: -0.02em;
+            color: #fff; line-height: 1.1; margin-bottom: 22px;
+        }
+        .final h2 .acc { color: var(--acc-hi); }
+        .final p { color: var(--muted); max-width: 620px; margin: 0 auto 40px; font-weight: 300; line-height: 1.75; }
+        .final-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .final-actions .btn { padding: 12px 22px; }
+        .siblings { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-top: 44px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; }
+        .siblings a { color: var(--faint); transition: color 160ms var(--ease); }
+        .siblings a:hover { color: #fff; }
+        .siblings a b { color: var(--muted); font-weight: 500; }
+        .siblings .sep { color: rgba(255,255,255,0.15); }
+
+        /* footer */
+        .site-footer { padding: 56px 0 72px; }
+        .footer-grid { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+        .footer-brand { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--faint); line-height: 2; max-width: 380px; }
+        .footer-brand b { color: var(--muted); font-weight: 500; }
+        .footer-links { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; }
+        .footer-links a { color: var(--muted); transition: color 160ms var(--ease); }
+        .footer-links a:hover { color: #fff; }
+
+        /* accessibility: reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a class="skip-link" href="#main">SKIP TO CONTENT</a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="varuxlab.html" aria-label="VARUX Lab — back to research surface">
+                <span class="mark" aria-hidden="true"><i></i></span>
+                <span class="brand-text"><b>VARUX</b> <em>/</em> <span>LAB</span> <em>/ SENTINEL</em></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB</a>
+                <a href="atlas.html">ATLAS</a>
+                <a href="sentinel.html" aria-current="page">SENTINEL</a>
+                <a href="orbit.html">ORBIT</a>
+            </nav>
+
+            <a class="back-lab" href="varuxlab.html">← BACK TO LAB</a>
+
+            <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+            <div class="container">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB — RESEARCH SURFACE</a>
+                <a href="atlas.html">ATLAS — INFRASTRUCTURE INTELLIGENCE</a>
+                <a href="sentinel.html" aria-current="page">SENTINEL — CRITICAL SYSTEM MONITORING</a>
+                <a href="orbit.html">ORBIT — REMOTE INFRASTRUCTURE COORDINATION</a>
+                <a class="back-lab" href="varuxlab.html">← BACK TO LAB</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" aria-label="VARUX SENTINEL introduction">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span>VARUX LAB / CRITICAL SYSTEM MONITORING</span>
+                        <span class="status-chip">FUTURE CONCEPT</span>
+                    </div>
+
+                    <h1>A system can fail while<br><span class="dim">it appears to work.</span></h1>
+
+                    <p class="lead">SENTINEL is a monitoring intelligence concept for detecting logic drift, abnormal behavior, unauthorized state transitions and emerging risk patterns in critical system control loops.</p>
+
+                    <p class="sub">A future concept for watching behavior, not just signals — so a control loop that quietly changes its logic does not pass unnoticed.</p>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <svg viewBox="0 0 640 340" role="img" aria-label="Illustrative observation window: nominal waveform, anomaly spike and scan line.">
+                        <defs>
+                            <pattern id="sg" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                            </pattern>
+                        </defs>
+                        <rect width="640" height="340" fill="url(#sg)"/>
+                        <!-- rails -->
+                        <line class="h-rail" x1="30" y1="70" x2="610" y2="70"/>
+                        <line class="h-rail" x1="30" y1="280" x2="610" y2="280"/>
+                        <text class="h-label" x="30" y="60">SIGNAL RAIL</text>
+                        <text class="h-label" x="30" y="297">BASELINE RAIL</text>
+                        <!-- baseline waveform -->
+                        <path class="h-wave base" d="M40 180 Q 70 160 100 180 T 160 180 T 220 180 T 280 180 T 340 180 T 400 180 T 460 180 T 520 180 T 580 180"/>
+                        <!-- drifted waveform -->
+                        <path class="h-wave drift" d="M330 180 Q 360 132 390 180 T 450 180 T 510 180 T 570 180 T 610 180"/>
+                        <!-- anomaly marker -->
+                        <circle class="h-mark" cx="380" cy="180" r="5"/>
+                        <line class="h-mark" x1="380" y1="70" x2="380" y2="280" stroke="rgba(255,51,102,0.4)" stroke-width="1"/>
+                        <!-- scan -->
+                        <rect class="h-scan" x="0" y="60" width="14" height="220"/>
+                        <text class="h-label" x="600" y="326" text-anchor="end">WINDOW 14:02:05 → 14:02:40</text>
+                    </svg>
+                    <div class="frame-label">
+                        <span>OBSERVATION WINDOW — <b>W-0142</b></span>
+                        <span>STATE: <b>NOMINAL → DEVIATION</b></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metadata -->
+        <div class="meta-strip">
+            <div class="container">
+                <div class="meta-grid">
+                    <div class="meta-item"><span class="meta-k">DESIGNATION</span><span class="meta-v">VARUX-SENTINEL-01</span></div>
+                    <div class="meta-item"><span class="meta-k">DOMAIN</span><span class="meta-v">CRITICAL SYSTEM MONITORING</span></div>
+                    <div class="meta-item"><span class="meta-k">STATUS</span><span class="meta-v accent">FUTURE CONCEPT</span></div>
+                    <div class="meta-item"><span class="meta-k">CORE OBJECTIVE</span><span class="meta-v">DRIFT · ANOMALY · TRANSITION · RISK PATTERN</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== TRACE 01 — PREMISE ===================== -->
+        <section id="premise" class="trace" aria-labelledby="premise-h">
+            <div class="container split">
+                <div>
+                    <div class="trace-tag"><span class="num">TRACE 01</span> PREMISE</div>
+                    <p class="statement">System failure is not only a crash. It is also a control loop that keeps running — <b>with its logic quietly changed.</b></p>
+                </div>
+                <div class="prose">
+                    <p>Monitoring usually watches for the loud failures: a process that dies, an error rate that spikes, a resource that saturates. Those are signal-level failures. But in a critical system, the dangerous deviation is behavioral: a threshold that was silently relaxed, a transition taken outside policy, a rule that no longer matches its own documentation.</p>
+                    <p>The system still returns results. The dashboards still update. The logic, however, has drifted. SENTINEL conceptualizes detection at this level — comparing observed behavior against an established baseline, and treating a quiet deviation as an event, not a coincidence.</p>
+                    <p class="mono-note">SENTINEL is a future concept. It proposes detection surfaces — it does not ship a detector, an agent or an alerting product.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 02 — THE TRACE ===================== -->
+        <section id="trace" class="trace alt" aria-labelledby="trace-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 02</span> THE SIGNAL</div>
+                <div class="trace-head">
+                    <h2 id="trace-h">What the same loop looks like, before and after drift.</h2>
+                    <p>Two illustrative traces of the same control loop. One follows its established pattern. The other is still running — but its behavior no longer matches the baseline.</p>
+                </div>
+                <div class="traces">
+                    <div class="trace-card nominal">
+                        <div class="tc-k">TRACE A — BASELINE</div>
+                        <svg viewBox="0 0 300 90" aria-hidden="true">
+                            <line x1="8" y1="45" x2="292" y2="45" stroke="rgba(255,255,255,0.08)"/>
+                            <path d="M8 50 Q 26 40 44 50 T 80 50 T 116 50 T 152 50 T 188 50 T 224 50 T 260 50 T 292 50" fill="none" stroke="rgba(126,226,168,0.7)" stroke-width="1.4"/>
+                        </svg>
+                        <div class="tc-foot">PATTERN: STABLE · PERIOD: CONSISTENT · STATE: NOMINAL</div>
+                    </div>
+                    <div class="trace-card drifted">
+                        <div class="tc-k">TRACE B — DRIFTED</div>
+                        <svg viewBox="0 0 300 90" aria-hidden="true">
+                            <line x1="8" y1="45" x2="292" y2="45" stroke="rgba(255,255,255,0.08)"/>
+                            <path d="M8 50 Q 26 40 44 50 T 80 50 T 116 50 T 152 50" fill="none" stroke="rgba(126,226,168,0.7)" stroke-width="1.4"/>
+                            <path d="M152 50 Q 174 22 196 50 T 240 50 T 284 50 T 292 50" fill="none" stroke="#ff3366" stroke-width="1.4"/>
+                            <circle cx="152" cy="50" r="3" fill="#ff3366"/>
+                        </svg>
+                        <div class="tc-foot">PATTERN: SHIFTED · PERIOD: CHANGED · STATE: DEVIATION</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 03 — DETECTION TARGETS ===================== -->
+        <section id="targets" class="trace" aria-labelledby="targets-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 03</span> DETECTION TARGETS</div>
+                <div class="trace-head">
+                    <h2 id="targets-h">What SENTINEL watches for.</h2>
+                    <p>Five deviation classes a monitoring intelligence concept would need to distinguish. Each is a different failure of behavior, not of process.</p>
+                </div>
+                <div class="grid-cells">
+                    <div class="cell"><h3><span class="idx">01</span>LOGIC DRIFT</h3><p>The control loop's decision logic changes over time while outputs remain plausible. The rule is no longer the rule.</p></div>
+                    <div class="cell"><h3><span class="idx">02</span>BEHAVIORAL ANOMALY</h3><p>Observable behavior departs from the established pattern — cadence, amplitude or sequence — without a declared cause.</p></div>
+                    <div class="cell"><h3><span class="idx">03</span>UNAUTHORIZED TRANSITION</h3><p>The system moves between states through a path that policy does not permit, even if the end state is valid.</p></div>
+                    <div class="cell"><h3><span class="idx">04</span>POLICY DEVIATION</h3><p>Behavior that violates a declared boundary — a threshold bypassed, an approval skipped, an envelope exceeded.</p></div>
+                    <div class="cell"><h3><span class="idx">05</span>CONTROL-LOOP DEGRADATION</h3><p>The loop's responsiveness or stability decays gradually — slower correction, wider oscillation, growing lag.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 04 — REFERENCE ARCHITECTURE ===================== -->
+        <section id="architecture" class="trace alt" aria-labelledby="arch-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 04</span> REFERENCE ARCHITECTURE</div>
+                <div class="trace-head">
+                    <h2 id="arch-h">A temporal pipeline, not a dashboard.</h2>
+                    <p>Six conceptual stages from observation to escalation. This is a reference model for discussion — not an implemented stack.</p>
+                </div>
+                <div class="pipeline">
+                    <div class="stage"><span class="s-num">STAGE 01</span><h3>OBSERVE</h3><p>Collect state transitions, execution traces and control-loop outputs into an ordered record.</p></div>
+                    <div class="stage"><span class="s-num">STAGE 02</span><h3>BASELINE</h3><p>Establish what "normal" means for this specific loop — its pattern, cadence and valid transitions.</p></div>
+                    <div class="stage"><span class="s-num">STAGE 03</span><h3>COMPARE</h3><p>Evaluate observed behavior against the baseline, in sequence, not in aggregate.</p></div>
+                    <div class="stage"><span class="s-num">STAGE 04</span><h3>CORRELATE</h3><p>Link individual deviations into patterns: does this drift recur, spread, or align with policy changes?</p></div>
+                    <div class="stage flag"><span class="s-num">STAGE 05</span><h3>FLAG</h3><p>Surface a deviation as a reviewable event with confidence, provenance and affected transitions.</p></div>
+                    <div class="stage"><span class="s-num">STAGE 06</span><h3>ESCALATE</h3><p>Route to a human operator with the evidence required to decide. Detection ends where decision begins.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 05 — CONTROL MODEL ===================== -->
+        <section id="control" class="trace" aria-labelledby="control-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 05</span> CONTROL MODEL</div>
+                <div class="trace-head">
+                    <h2 id="control-h">What SENTINEL constrains: the state transition.</h2>
+                    <p>The unit of control is the transition between system states. SENTINEL conceptualizes three ways to act on it — always visible, never silent.</p>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <span class="k">VALIDATE</span>
+                        <h3>Confirm the path.</h3>
+                        <p>Every transition is checked against the set of permitted paths for the current policy. A valid transition in an invalid order is still flagged.</p>
+                        <div class="rule">TARGET: transition sequence</div>
+                    </div>
+                    <div class="card">
+                        <span class="k">FLAG</span>
+                        <h3>Make deviation visible.</h3>
+                        <p>A detected deviation becomes a reviewable event with confidence and provenance — a record a human can inspect, not a buried log line.</p>
+                        <div class="rule">TARGET: operator awareness</div>
+                    </div>
+                    <div class="card">
+                        <span class="k">BLOCK</span>
+                        <h3>Hold the boundary.</h3>
+                        <p>An unauthorized state transition is refused at the boundary and held for review. The system does not repair itself; it stops, and reports.</p>
+                        <div class="rule">TARGET: unauthorized transitions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 06 — DEGRADATION MODEL ===================== -->
+        <section id="degradation" class="trace alt" aria-labelledby="degrad-h">
+            <div class="container split">
+                <div class="prose">
+                    <div class="trace-tag"><span class="num">TRACE 06</span> DEGRADATION MODEL</div>
+                    <p class="statement">A detector that cannot state its own uncertainty is just <b>a louder alarm.</b></p>
+                    <p>SENTINEL's value depends on honest degradation: confidence must decay as baselines age, as coverage shrinks, or as the system under observation changes faster than the baseline can be re-established.</p>
+                    <p>A monitoring intelligence concept that reports its own confidence is a decision support surface. One that does not is a liability — it trains operators to ignore it.</p>
+                    <p class="mono-note">PROPOSED: CONFIDENCE IS PART OF EVERY EVENT — never a separate "health score".</p>
+                </div>
+                <div class="grid-cells">
+                    <div class="cell"><h3><span class="idx">D1</span>BASELINE UNCERTAINTY</h3><p>A weak or aging baseline weakens every comparison. Detection confidence must track baseline confidence.</p></div>
+                    <div class="cell"><h3><span class="idx">D2</span>SILENT BASELINE DRIFT</h3><p>If "normal" shifts slowly, deviations stop looking like deviations. SENTINEL must detect drift in its own baseline.</p></div>
+                    <div class="cell"><h3><span class="idx">D3</span>COVERAGE LOSS</h3><p>When observation stops seeing part of the loop, the gap is reported as reduced confidence — not as continued normalcy.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 07 — HUMAN AUTHORITY ===================== -->
+        <section id="authority" class="trace" aria-labelledby="authority-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 07</span> HUMAN AUTHORITY</div>
+                <div class="trace-head">
+                    <h2 id="authority-h">Detection informs. Humans decide.</h2>
+                    <p>Nothing in this concept self-remediates. A flagged deviation is an evidence package delivered to an operator — who decides whether it is a real drift, a legitimate change or a false baseline.</p>
+                </div>
+                <div class="grid-cells">
+                    <div class="cell"><h3><span class="idx">H1</span>EVIDENCE FIRST</h3><p>Every flag carries the trace, the confidence and the affected transitions — enough for a human to reproduce the reasoning.</p></div>
+                    <div class="cell"><h3><span class="idx">H2</span>NO AUTO-REMEDIATION</h3><p>SENTINEL conceptualizes detection and holding. Recovery, policy changes and re-baselining remain human actions.</p></div>
+                    <div class="cell"><h3><span class="idx">H3</span>REVIEW LOOPS</h3><p>Flagged events feed review, and review feeds the baseline — so human judgment becomes part of the model, not a workaround for it.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 08 — RESEARCH DIRECTIONS ===================== -->
+        <section id="research" class="trace alt" aria-labelledby="research-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 08</span> RESEARCH DIRECTIONS</div>
+                <div class="trace-head">
+                    <h2 id="research-h">Open surfaces for future work.</h2>
+                    <p>Directions SENTINEL could explore next — each stated as a question, not a roadmap.</p>
+                </div>
+                <div class="dirs">
+                    <div class="dir"><span class="d-code">SEN-R-01</span><h3>Baseline drift estimation</h3><p>How to detect that "normal" itself has moved — without mistaking a legitimate change for a deviation.</p></div>
+                    <div class="dir"><span class="d-code">SEN-R-02</span><h3>Event correlation</h3><p>Linking separate deviations into a single emerging pattern, rather than treating each signal in isolation.</p></div>
+                    <div class="dir"><span class="d-code">SEN-R-03</span><h3>Detection confidence models</h3><p>Calibrated confidence that operators can rely on — including explicit statements of when detection is unsure.</p></div>
+                    <div class="dir"><span class="d-code">SEN-R-04</span><h3>Control-loop degradation signatures</h3><p>Characteristic patterns of a loop losing responsiveness, before any single threshold is violated.</p></div>
+                    <div class="dir"><span class="d-code">SEN-R-05</span><h3>State history retention</h3><p>How much transition history a reviewable record requires — and how it survives restarts and disputes.</p></div>
+                    <div class="dir"><span class="d-code">SEN-R-06</span><h3>Escalation policy</h3><p>Which flags reach humans, in what form, and how review outcomes re-tune the detector.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 09 — IS / IS NOT ===================== -->
+        <section id="scope" class="trace" aria-labelledby="scope-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 09</span> SCOPE</div>
+                <div class="trace-head">
+                    <h2 id="scope-h">What this concept is — and is not.</h2>
+                </div>
+                <div class="isnot">
+                    <div class="col yes">
+                        <h3>SENTINEL IS</h3>
+                        <ul>
+                            <li><span class="tick">▸</span> a monitoring intelligence future concept</li>
+                            <li><span class="tick">▸</span> a logic drift detection concept</li>
+                            <li><span class="tick">▸</span> a behavioral anomaly concept</li>
+                            <li><span class="tick">▸</span> a state transition validation concept</li>
+                            <li><span class="tick">▸</span> a detection / decision separation surface</li>
+                            <li><span class="tick">▸</span> an illustration of evidence-first monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="col no">
+                        <h3>SENTINEL IS NOT</h3>
+                        <ul>
+                            <li><span class="tick">✕</span> a SIEM</li>
+                            <li><span class="tick">✕</span> a traditional APM or observability product</li>
+                            <li><span class="tick">✕</span> an intrusion detection system</li>
+                            <li><span class="tick">✕</span> an auto-remediation engine</li>
+                            <li><span class="tick">✕</span> an alert spam generator</li>
+                            <li><span class="tick">✕</span> a released product, deployment or benchmark</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRACE 10 — INTERACTIVE DEMONSTRATION ===================== -->
+        <section id="demo" class="trace alt" aria-labelledby="demo-h">
+            <div class="container">
+                <div class="trace-tag"><span class="num">TRACE 10</span> INTERACTIVE DEMONSTRATION</div>
+                <div class="trace-head">
+                    <h2 id="demo-h">Event replay — concept simulation.</h2>
+                    <p>An illustrative replay of a deviation sequence inside a critical control loop. Play it, step through it, or click an event to inspect it. Everything here is simulated — no live telemetry is involved.</p>
+                </div>
+
+                <div class="demo-wrap">
+                    <div class="demo-head">
+                        <span class="demo-title">SENTINEL — EVENT REPLAY</span>
+                        <span class="demo-phase" id="demo-phase" aria-live="polite">PHASE: BASELINE</span>
+                        <span class="demo-mode">LOCAL SIMULATION · NO LIVE TELEMETRY</span>
+                    </div>
+
+                    <!-- state readouts -->
+                    <div class="readout" id="readout" aria-live="polite">
+                        <div class="ro"><span class="ro-k">SYSTEM STATE</span><span class="ro-v ok" id="ro-sys">STABLE</span></div>
+                        <div class="ro"><span class="ro-k">BEHAVIOR</span><span class="ro-v ok" id="ro-beh">NOMINAL</span></div>
+                        <div class="ro"><span class="ro-k">POLICY</span><span class="ro-v ok" id="ro-pol">UNCHANGED</span></div>
+                        <div class="ro"><span class="ro-k">STATE TRANSITION</span><span class="ro-v ok" id="ro-tr">NONE</span></div>
+                        <div class="ro"><span class="ro-k">RISK</span><span class="ro-v ok" id="ro-risk">LOW</span></div>
+                    </div>
+
+                    <div class="demo-main">
+                        <!-- timeline -->
+                        <div class="timeline-panel">
+                            <svg id="sentinel-timeline" viewBox="0 0 760 240" role="img"
+                                 aria-label="Event replay timeline from 14:02:05 to 14:02:40 with deviation events at 14:02:18, 14:02:21 and 14:02:23.">
+                                <defs>
+                                    <pattern id="tg" width="36" height="36" patternUnits="userSpaceOnUse">
+                                        <path d="M36 0H0V36" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="760" height="240" fill="url(#tg)"/>
+                                <!-- time grid -->
+                                <line class="t-grid" x1="157" y1="40" x2="157" y2="210"/>
+                                <line class="t-grid" x1="293" y1="40" x2="293" y2="210"/>
+                                <line class="t-grid" x1="351" y1="40" x2="351" y2="210"/>
+                                <line class="t-grid" x1="390" y1="40" x2="390" y2="210"/>
+                                <line class="t-grid" x1="526" y1="40" x2="526" y2="210"/>
+                                <!-- rails -->
+                                <line class="t-rail" x1="40" y1="60" x2="720" y2="60"/>
+                                <line class="t-rail" x1="40" y1="200" x2="720" y2="200"/>
+                                <text class="t-label" x="40" y="52">SIGNAL RAIL</text>
+                                <!-- waveforms -->
+                                <path class="t-wave base" d="M40 132 Q 70 112 100 132 T 160 132 T 220 132 T 280 132 T 340 132 T 400 132 T 460 132 T 520 132 T 580 132 T 640 132 T 700 132 T 720 132"/>
+                                <path class="t-wave drift" id="wave-drift" d="M293 132 Q 320 88 348 132 T 400 132 T 452 132 T 504 132 T 556 132 T 608 132 T 660 132 T 712 132"/>
+                                <!-- scan line -->
+                                <g id="scan-g"><line class="scan-line" id="scan-line" x1="40" y1="40" x2="40" y2="200"/></g>
+                                <!-- event markers -->
+                                <g class="t-mark" id="mark-0" role="button" tabindex="0" aria-label="Event 1 — 14:02:05 observation window opened">
+                                    <line class="tk" x1="40" y1="60" x2="40" y2="200"/>
+                                    <circle cx="40" cy="60" r="5"/>
+                                    <text class="mt" x="40" y="222" text-anchor="middle">14:02:05</text>
+                                </g>
+                                <g class="t-mark" id="mark-1" role="button" tabindex="0" aria-label="Event 2 — 14:02:11 normal state">
+                                    <line class="tk" x1="157" y1="60" x2="157" y2="200"/>
+                                    <circle cx="157" cy="60" r="4"/>
+                                </g>
+                                <g class="t-mark alarm" id="mark-2" role="button" tabindex="0" aria-label="Event 3 — 14:02:18 execution pattern changed">
+                                    <line class="tk" x1="293" y1="60" x2="293" y2="200"/>
+                                    <circle cx="293" cy="60" r="5"/>
+                                    <text class="mt" x="293" y="222" text-anchor="middle">14:02:18</text>
+                                </g>
+                                <g class="t-mark alarm" id="mark-3" role="button" tabindex="0" aria-label="Event 4 — 14:02:21 policy deviation detected">
+                                    <line class="tk" x1="351" y1="60" x2="351" y2="200"/>
+                                    <circle cx="351" cy="60" r="5"/>
+                                    <text class="mt" x="351" y="222" text-anchor="middle">14:02:21</text>
+                                </g>
+                                <g class="t-mark alarm" id="mark-4" role="button" tabindex="0" aria-label="Event 5 — 14:02:23 state transition blocked and flagged">
+                                    <line class="tk" x1="390" y1="60" x2="390" y2="200"/>
+                                    <circle cx="390" cy="60" r="5"/>
+                                    <text class="mt" x="390" y="222" text-anchor="middle">14:02:23</text>
+                                </g>
+                                <g class="t-mark" id="mark-5" role="button" tabindex="0" aria-label="Event 6 — 14:02:30 operator review">
+                                    <line class="tk" x1="526" y1="60" x2="526" y2="200"/>
+                                    <circle cx="526" cy="60" r="4"/>
+                                    <text class="mt" x="526" y="222" text-anchor="middle">14:02:30</text>
+                                </g>
+                                <g class="t-mark" id="mark-6" role="button" tabindex="0" aria-label="Event 7 — 14:02:40 recovery window">
+                                    <line class="tk" x1="720" y1="60" x2="720" y2="200"/>
+                                    <circle cx="720" cy="60" r="4"/>
+                                    <text class="mt" x="720" y="222" text-anchor="middle">14:02:40</text>
+                                </g>
+                            </svg>
+                            <div class="t-scale" aria-hidden="true">
+                                <span>WINDOW OPEN</span><span>DEVIATION</span><span>BLOCKED</span><span>REVIEW</span>
+                            </div>
+                        </div>
+
+                        <!-- event stream + details -->
+                        <aside class="stream-panel" aria-label="Event stream and details">
+                            <div class="stream-head">EVENT STREAM</div>
+                            <ol class="stream" id="stream" aria-label="Replayable event list"></ol>
+                            <div class="details" id="details">
+                                <div class="d-head">EVENT DETAILS — SELECT AN EVENT</div>
+                                <p style="font-size:0.8rem;color:#6f7683;font-weight:300">Play the replay or click an event to inspect its simulated record.</p>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <div class="sim-controls">
+                        <button class="btn primary" id="btn-play" type="button">PLAY</button>
+                        <button class="btn" id="btn-step" type="button">STEP</button>
+                        <button class="btn" id="btn-reset" type="button">RESET</button>
+                        <div class="conf">
+                            <span>DETECTION CONFIDENCE</span>
+                            <div class="conf-bar"><i id="conf-fill"></i></div>
+                            <b id="conf-val">0.98</b>
+                        </div>
+                    </div>
+                    <p class="demo-note">Illustrative replay of a deviation sequence. All timestamps, event identifiers and confidence values are simulated for demonstration — this is not a live monitoring system and reflects no real system.</p>
+                </div>
+                <noscript><p style="margin-top:14px;font-family:var(--mono);font-size:11px;color:#6f7683">JAVASCRIPT REQUIRED FOR REPLAY INTERACTION — THE TIMELINE REMAINS STATIC WITHOUT IT.</p></noscript>
+            </div>
+        </section>
+
+        <!-- ===================== STATUS ===================== -->
+        <section id="status" class="status-band" aria-labelledby="status-h">
+            <div class="container status-inner">
+                <span class="status-chip-lg" id="status-h">STATUS — FUTURE CONCEPT</span>
+                <p><b>SENTINEL is a future concept.</b> It is a concept for monitoring intelligence — not a released product, not a deployed system, not a benchmarked implementation. This page documents the concept and its proposed shape.</p>
+            </div>
+        </section>
+
+        <!-- ===================== FINAL ===================== -->
+        <section class="final" aria-labelledby="final-h">
+            <div class="container">
+                <h2 id="final-h">The Future Needs <span class="acc">Boundaries.</span></h2>
+                <p>Critical systems require deterministic boundaries before intelligence scales. SENTINEL is a research surface for detecting when a system crosses its own boundaries — quietly, while still appearing to work.</p>
+                <div class="final-actions">
+                    <a class="btn primary" href="varuxlab.html">← BACK TO VARUX LAB</a>
+                    <a class="btn" href="orbit.html">VIEW ORBIT →</a>
+                </div>
+                <nav class="siblings" aria-label="Related research concepts">
+                    <a href="atlas.html">PREV CONCEPT: <b>ATLAS</b></a>
+                    <span class="sep">/</span>
+                    <a href="varuxlab.html">RESEARCH MAP</a>
+                    <span class="sep">/</span>
+                    <a href="orbit.html">NEXT CONCEPT: <b>ORBIT</b></a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <b>VARUX — LAB RESEARCH SURFACE</b><br>
+                ATLAS, SENTINEL and ORBIT are research directions and future concepts of VARUX Lab. They are not released products, deployments or benchmarked systems. Concept material for architectural discussion.
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">HOME</a>
+                <a href="varuxlab.html">LAB</a>
+                <a href="axis.html">AXIS</a>
+                <a href="arbiter.html">ARBITER</a>
+                <a href="varuxabyss.html">ABYSS</a>
+                <a href="atlas.html">ATLAS</a>
+                <a href="sentinel.html" aria-current="page">SENTINEL</a>
+                <a href="orbit.html">ORBIT</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+    /* ============================================================
+       SENTINEL — event replay console (local simulation)
+       ============================================================ */
+    (function () {
+        'use strict';
+
+        /* ---- simulated event sequence ---- */
+        var EVENTS = [
+            { t: '14:02:05', label: 'observation window opened',   kind: 'info',      state: { sys: 'STABLE',  beh: 'NOMINAL',            pol: 'UNCHANGED',    tr: 'NONE',   risk: 'LOW' },      conf: 0.98, src: 'observer-01', sig: 'baseline established',                    act: 'MONITOR',  id: 'SEN-2026-0140-A1' },
+            { t: '14:02:11', label: 'normal state',                kind: 'info',      state: { sys: 'STABLE',  beh: 'NOMINAL',            pol: 'UNCHANGED',    tr: 'NONE',   risk: 'LOW' },      conf: 0.98, src: 'observer-01', sig: 'sequence within baseline',                act: 'MONITOR',  id: 'SEN-2026-0140-A2' },
+            { t: '14:02:18', label: 'execution pattern changed',   kind: 'drift',     state: { sys: 'STABLE',  beh: 'DEVIATION DETECTED', pol: 'UNCHANGED',    tr: 'NONE',   risk: 'WATCH' },   conf: 0.86, src: 'loop-02',     sig: 'cadence shift, amplitude delta +38%',     act: 'FLAG',     id: 'SEN-2026-0140-B1' },
+            { t: '14:02:21', label: 'policy deviation detected',   kind: 'deviation', state: { sys: 'STABLE',  beh: 'DEVIATION DETECTED', pol: 'VIOLATION FLAGGED', tr: 'NONE', risk: 'ELEVATED' }, conf: 0.79, src: 'policy-01',   sig: 'threshold bypass on write path',         act: 'FLAG',     id: 'SEN-2026-0140-B2' },
+            { t: '14:02:23', label: 'state transition blocked / flagged', kind: 'block', state: { sys: 'GUARDED', beh: 'DEVIATION DETECTED', pol: 'VIOLATION FLAGGED', tr: 'BLOCKED', risk: 'ELEVATED' }, conf: 0.74, src: 'transition-03', sig: 'transition T7 taken outside policy',     act: 'BLOCK',    id: 'SEN-2026-0140-B3' },
+            { t: '14:02:30', label: 'operator review — deviation isolated', kind: 'review', state: { sys: 'GUARDED', beh: 'REVIEW', pol: 'HOLD', tr: 'BLOCKED', risk: 'MONITOR' }, conf: 0.66, src: 'operator-09', sig: 'deviation confirmed, cause under review',  act: 'HOLD',     id: 'SEN-2026-0140-C1' },
+            { t: '14:02:40', label: 'recovery window — monitored', kind: 'recover',  state: { sys: 'STABLE',  beh: 'NOMINAL',            pol: 'UNCHANGED',    tr: 'LOGGED', risk: 'LOW' },      conf: 0.92, src: 'observer-01', sig: 'baseline re-established after review',    act: 'MONITOR',  id: 'SEN-2026-0140-C2' }
+        ];
+
+        /* event x positions on the timeline (14:02:05 -> x=40, 14:02:40 -> x=720)
+           seconds are seconds-of-day; 14:02:05 = 50525 */
+        function xPos(seconds) { return 40 + ((seconds - 50525) * 680) / 35; }
+
+        var stateNames = { sys: 'ro-sys', beh: 'ro-beh', pol: 'ro-pol', tr: 'ro-tr', risk: 'ro-risk' };
+        var idx = 0;
+        var playing = false;
+        var timer = null;
+
+        var playBtn = document.getElementById('btn-play');
+        var stepBtn = document.getElementById('btn-step');
+        var resetBtn = document.getElementById('btn-reset');
+        var phaseEl = document.getElementById('demo-phase');
+        var streamEl = document.getElementById('stream');
+        var detailsEl = document.getElementById('details');
+        var scanG = document.getElementById('scan-g');
+        var waveDrift = document.getElementById('wave-drift');
+        var confFill = document.getElementById('conf-fill');
+        var confVal = document.getElementById('conf-val');
+
+        /* ---- build the stream list ---- */
+        EVENTS.forEach(function (ev, i) {
+            var li = document.createElement('li');
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'stream-item';
+            btn.setAttribute('data-idx', i);
+            btn.innerHTML =
+                '<span class="st-time">' + ev.t + '</span>' +
+                '<span class="st-label">' + ev.label + '</span>' +
+                '<span class="sev ' + ev.kind + '">' + ev.kind.toUpperCase() + '</span>';
+            btn.addEventListener('click', function () { jumpTo(i); });
+            li.appendChild(btn);
+            streamEl.appendChild(li);
+        });
+
+        var streamButtons = streamEl.querySelectorAll('.stream-item');
+
+        /* ---- set visual state for one event ---- */
+        function applyEvent(i) {
+            var ev = EVENTS[i];
+
+            /* readouts */
+            for (var key in stateNames) {
+                var cell = document.getElementById(stateNames[key]);
+                var val = ev.state[key];
+                cell.textContent = val;
+                cell.className = 'ro-v ' + stateClass(val, key);
+            }
+
+            /* phase chip */
+            var phaseNames = ['BASELINE', 'BASELINE', 'DRIFT DETECTED', 'DEVIATION', 'TRANSITION BLOCKED', 'OPERATOR REVIEW', 'RECOVERY'];
+            phaseEl.textContent = 'PHASE: ' + phaseNames[i];
+            phaseEl.className = 'demo-phase' + (i >= 2 && i <= 4 ? ' live' : '');
+
+            /* scan line position */
+            var x = xPos(parseSeconds(ev.t));
+            scanG.style.transform = 'translate(' + x + 'px, 0)';
+            scanG.classList.remove('hidden');
+
+            /* drift waveform visible from the drift event onward */
+            if (i >= 2) { waveDrift.classList.add('on'); } else { waveDrift.classList.remove('on'); }
+
+            /* confidence */
+            var conf = ev.conf;
+            confFill.style.width = (conf * 100).toFixed(0) + '%';
+            confFill.style.background = conf >= 0.9 ? '#7ee2a8' : (conf >= 0.75 ? '#ffc24d' : '#ff3366');
+            confVal.textContent = conf.toFixed(2);
+
+            /* stream highlight */
+            for (var j = 0; j < streamButtons.length; j++) {
+                streamButtons[j].classList.toggle('active', j === i);
+            }
+            /* timeline markers */
+            for (var m = 0; m < 7; m++) {
+                var mark = document.getElementById('mark-' + m);
+                if (mark) { mark.classList.toggle('active', m === i); }
+            }
+
+            renderDetails(ev);
+        }
+
+        function stateClass(val, key) {
+            if (key === 'risk') {
+                if (val === 'LOW') { return 'ok'; }
+                if (val === 'WATCH' || val === 'MONITOR') { return 'warn'; }
+                return 'alarm';
+            }
+            if (val === 'STABLE' || val === 'NOMINAL' || val === 'UNCHANGED' || val === 'NONE' || val === 'LOGGED') { return 'ok'; }
+            if (val === 'GUARDED' || val === 'HOLD' || val === 'REVIEW') { return 'warn'; }
+            if (val === 'DEVIATION DETECTED' || val === 'VIOLATION FLAGGED' || val === 'BLOCKED' || val === 'ELEVATED') { return 'alarm'; }
+            return '';
+        }
+
+        function renderDetails(ev) {
+            detailsEl.innerHTML =
+                '<div class="d-head">EVENT DETAILS — <b>' + ev.id + '</b></div>' +
+                '<dl>' +
+                    '<dt>TIME</dt><dd>' + ev.t + '</dd>' +
+                    '<dt>SOURCE</dt><dd>' + ev.src + '</dd>' +
+                    '<dt>SIGNAL</dt><dd>' + ev.sig + '</dd>' +
+                    '<dt>CONFIDENCE</dt><dd><b>' + ev.conf.toFixed(2) + '</b> (simulated)</dd>' +
+                    '<dt>ACTION</dt><dd>' + ev.act + '</dd>' +
+                '</dl>' +
+                '<p class="d-note">Simulated record for demonstration. Event identifiers and values are illustrative, not production data.</p>';
+        }
+
+        function parseSeconds(t) {
+            var p = t.split(':');
+            return (+p[0]) * 3600 + (+p[1]) * 60 + (+p[2]);
+        }
+
+        /* ---- controls ---- */
+        function stop() {
+            playing = false;
+            if (timer) { clearInterval(timer); timer = null; }
+            playBtn.textContent = 'PLAY';
+        }
+
+        function play() {
+            if (playing) { stop(); return; }
+            if (idx >= EVENTS.length - 1) { idx = 0; }
+            playing = true;
+            playBtn.textContent = 'PAUSE';
+            timer = setInterval(function () {
+                if (idx >= EVENTS.length - 1) {
+                    stop();
+                    phaseEl.textContent = 'PHASE: REPLAY COMPLETE';
+                    return;
+                }
+                idx++;
+                applyEvent(idx);
+            }, 1500);
+        }
+
+        function step() {
+            stop();
+            if (idx >= EVENTS.length - 1) { idx = 0; }
+            idx++;
+            applyEvent(idx);
+        }
+
+        function reset() {
+            stop();
+            idx = 0;
+            applyEvent(0);
+            scanG.classList.add('hidden');
+            phaseEl.textContent = 'PHASE: BASELINE';
+        }
+
+        function jumpTo(i) {
+            stop();
+            idx = i;
+            applyEvent(i);
+        }
+
+        playBtn.addEventListener('click', play);
+        stepBtn.addEventListener('click', step);
+        resetBtn.addEventListener('click', reset);
+
+        /* timeline markers are also clickable */
+        for (var k = 0; k < 7; k++) {
+            (function (n) {
+                var mark = document.getElementById('mark-' + n);
+                if (!mark) { return; }
+                mark.addEventListener('click', function () { jumpTo(n); });
+                mark.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jumpTo(n); }
+                });
+            })(k);
+        }
+
+        /* reduced motion: no auto-advance heartbeat animation is fine, but
+           respect the preference by making PLAY step instantly readable */
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // shorter, less animated replay cadence
+            // (interval stays; CSS transitions are already disabled by the media query)
+        }
+
+        /* ---- mobile menu ---- */
+        var menuBtn = document.getElementById('menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', function () {
+            var open = mobileMenu.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                mobileMenu.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        /* initial state */
+        reset();
+    })();
+    </script>
+</body>
+</html>
