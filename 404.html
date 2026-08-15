@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VARUX page not found. Return to the homepage to continue browsing.">
+    <meta name="description" content="VARUX page not found. The requested route was intercepted by the control layer. Return to the homepage to continue browsing.">
     <meta name="robots" content="noindex, follow">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
@@ -15,192 +15,635 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
     <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#0a0a0a">
-    <title>404 - Page Not Found</title>
+    <meta name="theme-color" content="#020202">
+    <title>404 - Route Intercepted | VARUX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        :root {
+            --bg: #020202;
+            --border: rgba(255, 255, 255, 0.08);
+            --blue: #3b82f6;
+            --blue-soft: #60a5fa;
+        }
+
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #27272a #020202;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020202; border-left: 1px solid #121212; }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 8px;
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
+            background-color: var(--bg);
             overflow-x: hidden;
             margin: 0;
             color: white;
             min-height: 100dvh;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
-            z-index: -1;
-        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        .glitch {
-            font-size: clamp(4.5rem, 22vw, 12rem);
-            font-weight: 900;
-            position: relative;
-            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                         0.025em 0.04em 0 #fffc00;
-            animation: glitch 725ms infinite;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
-            15% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
-            16% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
-            49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
-            50% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
-            99% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
-            100% { text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.03em 0 #fffc00; }
-        }
-
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .btn-primary {
-            background: white;
-            color: black;
-            padding: 1rem 2rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
-        }
-
-        .motion-ready {
-            will-change: transform;
-        }
-
-        .orb-particles {
+        /* ---- Ambient layered background (VARUX cinematic) ---- */
+        .page-ambient,
+        .ambient-color-grade,
+        .ambient-grid,
+        .ambient-noise,
+        .ambient-scanlines,
+        .ambient-core-halo,
+        .ambient-vignette,
+        .ambient-canvas {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
         }
 
-        .orb-particle {
+        .page-ambient { background: var(--bg); }
+
+        .ambient-color-grade {
+            background:
+                linear-gradient(115deg, rgba(2, 2, 2, 0.96) 0%, rgba(2, 2, 2, 0.84) 34%, rgba(4, 10, 20, 0.4) 64%, rgba(4, 12, 24, 0.18) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.9) 100%),
+                radial-gradient(circle at 74% 42%, rgba(58, 124, 255, 0.16) 0%, rgba(27, 72, 150, 0.06) 30%, transparent 54%);
+        }
+
+        .ambient-grid {
+            opacity: 0.22;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 68px 68px;
+            -webkit-mask-image: radial-gradient(circle at 72% 48%, black 16%, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+            mask-image: radial-gradient(circle at 72% 48%, black 16%, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+        }
+
+        .ambient-noise {
+            opacity: 0.04;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18) 0.55px, transparent 0.8px),
+                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.15) 0.55px, transparent 0.85px),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0.45px, transparent 0.75px),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.16) 0.55px, transparent 0.85px);
+            background-size: 22px 22px, 28px 28px, 18px 18px, 24px 24px;
+            mix-blend-mode: screen;
+        }
+
+        .ambient-scanlines {
+            opacity: 0.03;
+            background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 4px);
+            mix-blend-mode: soft-light;
+        }
+
+        .ambient-core-halo {
+            background:
+                radial-gradient(circle at 70% 46%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.08) 10%, rgba(59, 130, 246, 0.03) 24%, transparent 44%),
+                radial-gradient(circle at 82% 66%, rgba(59, 130, 246, 0.05) 0%, transparent 36%);
+            filter: blur(14px);
+            opacity: 0.7;
+        }
+
+        .ambient-vignette {
+            background:
+                radial-gradient(circle at center, transparent 46%, rgba(0, 0, 0, 0.3) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.05) 26%, rgba(0, 0, 0, 0.22) 100%);
+        }
+
+        .ambient-canvas {
+            width: 100%;
+            height: 100%;
+            opacity: 0.85;
+        }
+
+        .cinematic-bar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: clamp(10px, 1.5vw, 22px);
+            background: #000;
+            z-index: 30;
+            pointer-events: none;
+        }
+        .cinematic-bar.top { top: 0; }
+        .cinematic-bar.bottom { bottom: 0; }
+
+        /* ---- Brand ---- */
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .brand-mark-premium {
+            position: relative;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(222, 232, 248, 0.9) 52%, rgba(132, 164, 213, 0.86) 100%);
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            overflow: hidden;
+        }
+
+        .brand-mark-premium::before {
+            content: "";
             position: absolute;
+            inset: 1px;
+            border-radius: 0.44rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.75;
+        }
+
+        .brand-mark-premium::after {
+            content: "";
+            position: absolute;
+            top: -28%;
+            left: 48%;
+            width: 84%;
+            height: 84%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 72%);
+            transform: rotate(32deg);
+            opacity: 0.42;
+        }
+
+        .brand-mark-core {
+            position: relative;
+            width: 0.52rem;
+            height: 0.52rem;
+            border-radius: 0.14rem;
+            background: #050505;
+            box-shadow:
+                0 0 0 4px rgba(5, 5, 5, 0.08),
+                0 0 0 8px rgba(5, 5, 5, 0.04);
+            z-index: 1;
+        }
+
+        .brand-link:hover .brand-mark-premium {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.36),
+                inset 0 1px 0 rgba(255, 255, 255, 0.72),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+            filter: saturate(1.08);
+        }
+
+        /* ---- Central content ---- */
+        .error-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 999px;
+            background: rgba(2, 6, 14, 0.34);
+            backdrop-filter: blur(14px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 50px rgba(0, 0, 0, 0.24);
+        }
+
+        .error-eyebrow .pulse-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
-            animation: drift 12s linear infinite;
+            background: var(--blue-soft);
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.9);
+            animation: pulseDot 1.6s ease-in-out infinite;
         }
 
-        @keyframes drift {
-            0% { transform: translate3d(0, 0, 0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.6; }
-            100% { transform: translate3d(30px, -120px, 0); opacity: 0; }
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.35; transform: scale(0.82); }
+            50% { opacity: 1; transform: scale(1.12); }
         }
+
+        .error-code {
+            font-size: clamp(6rem, 22vw, 13rem);
+            line-height: 0.8;
+            letter-spacing: -0.07em;
+            font-weight: 900;
+            text-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+        }
+
+        .error-code .num {
+            color: transparent !important;
+            background: linear-gradient(105deg, #5b6270 0%, #a1a8b5 42%, #4c5668 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .error-code .num-accent {
+            color: transparent !important;
+            background: linear-gradient(105deg, #60a5fa 0%, #93c5fd 45%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .error-subtitle {
+            color: #c6ccd6;
+            letter-spacing: -0.02em;
+        }
+
+        .error-description {
+            color: #8c929d;
+            text-shadow: 0 5px 28px rgba(0, 0, 0, 0.82);
+        }
+
+        /* ---- Terminal ---- */
+        .terminal-card {
+            background: rgba(6, 8, 13, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 1rem;
+            backdrop-filter: blur(14px);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .term-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+        .term-dot.a { background: #f87171; opacity: 0.8; }
+        .term-dot.b { background: #fbbf24; opacity: 0.8; }
+        .term-dot.c { background: #34d399; opacity: 0.8; }
+
+        .terminal-title {
+            margin-left: 0.4rem;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            color: rgba(212, 218, 228, 0.45);
+            text-transform: uppercase;
+        }
+
+        .terminal-body {
+            padding: 1.1rem 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .term-line {
+            display: flex;
+            gap: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .term-line .t-key {
+            color: rgba(212, 218, 228, 0.55);
+            min-width: 8.2rem;
+        }
+
+        .term-line .t-val {
+            color: rgba(212, 218, 228, 0.92);
+        }
+
+        .term-line .t-val.blue { color: var(--blue-soft); }
+        .term-line .t-val.dim { color: rgba(212, 218, 228, 0.45); }
+        .term-line .t-val.red { color: #fca5a5; }
+
+        .term-line .t-cursor {
+            display: inline-block;
+            width: 7px;
+            height: 13px;
+            background: var(--blue-soft);
+            vertical-align: text-bottom;
+            animation: cursorBlink 1.05s steps(2, start) infinite;
+        }
+
+        @keyframes cursorBlink {
+            to { visibility: hidden; }
+        }
+
+        /* ---- Buttons ---- */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            min-height: 58px;
+            padding: 0 2rem;
+            background: white;
+            color: #050505;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            box-shadow: 0 18px 55px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 24%, rgba(255, 255, 255, 0.65) 50%, transparent 76%);
+            transform: translateX(-130%);
+            transition: transform 0.8s ease;
+        }
+
+        .btn-primary:hover::after { transform: translateX(130%); }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 70px rgba(255, 255, 255, 0.14), 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            min-height: 58px;
+            padding: 0 2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(6, 8, 13, 0.24);
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.26) !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary .mono-arrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--blue-soft);
+        }
+
+        /* ---- Corner metadata ---- */
+        .corner-meta {
+            position: fixed;
+            z-index: 20;
+            color: rgba(212, 218, 228, 0.4);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.23em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .corner-meta.tl { top: 1.6rem; left: clamp(1rem, 3.2vw, 3rem); }
+        .corner-meta.br {
+            bottom: 1.6rem;
+            right: clamp(1rem, 3.2vw, 3rem);
+            display: flex;
+            align-items: flex-end;
+            gap: 1.2rem;
+        }
+
+        .corner-meta .meta-line {
+            width: 64px;
+            height: 1px;
+            margin-bottom: 0.34rem;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.72));
+        }
+
+        .bottom-line {
+            color: rgba(212, 218, 228, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        /* ---- Reveal ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: reveal 1s cubic-bezier(.2,.7,.2,1) forwards;
+        }
+        .reveal-d1 { animation-delay: 0.14s; }
+        .reveal-d2 { animation-delay: 0.3s; }
+        .reveal-d3 { animation-delay: 0.46s; }
+        .reveal-d4 { animation-delay: 0.64s; }
+        .reveal-d5 { animation-delay: 0.82s; }
+
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .motion-ready { will-change: transform; }
 
         @media (prefers-reduced-motion: reduce) {
-            .glitch,
-            .floating {
+            .reveal {
                 animation: none;
+                opacity: 1;
+                transform: none;
             }
-            .orb-particle {
-                animation: none;
+            .pulse-dot,
+            .btn-primary::after,
+            .t-cursor {
+                animation: none !important;
             }
+        }
+
+        @media (max-width: 640px) {
+            .corner-meta.tl { top: 1.1rem; left: 1rem; }
+            .corner-meta.br { display: none; }
+            .term-line { white-space: normal; }
+            .term-line .t-key { min-width: 7.4rem; }
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-6">
-    <div class="gradient-bg" id="bg"></div>
-    <div class="orb-particles" id="orbParticles" aria-hidden="true"></div>
 
-    <div class="text-center z-10">
-        <div class="floating">
-            <h1 class="glitch mb-4 select-none">404</h1>
+    <!-- Ambient layered background -->
+    <div class="page-ambient" aria-hidden="true">
+        <canvas class="ambient-canvas" id="ambientCanvas" aria-hidden="true"></canvas>
+        <div class="ambient-color-grade"></div>
+        <div class="ambient-grid"></div>
+        <div class="ambient-noise"></div>
+        <div class="ambient-scanlines"></div>
+        <div class="ambient-core-halo"></div>
+        <div class="ambient-vignette"></div>
+    </div>
+
+    <div class="cinematic-bar top" aria-hidden="true"></div>
+    <div class="cinematic-bar bottom" aria-hidden="true"></div>
+
+    <!-- Brand -->
+    <div class="corner-meta tl" role="navigation" aria-label="Home">
+        <a href="/" class="brand-link" style="pointer-events: auto;">
+            <span class="brand-mark-premium" aria-hidden="true">
+                <span class="brand-mark-core"></span>
+            </span>
+            <span class="leading-none">
+                <span class="block text-sm font-bold tracking-[0.32em] text-white" style="pointer-events:none;">VARUX</span>
+                <span class="block font-mono text-[9px] tracking-[0.28em] text-slate-400 mt-1" style="pointer-events:none;">CYBER CONTROL</span>
+            </span>
+        </a>
+    </div>
+
+    <!-- Corner metadata -->
+    <div class="corner-meta br" aria-hidden="true">
+        <span>ERROR_CODE // NOT_FOUND</span>
+        <span class="meta-line"></span>
+        <span>POLICY // REQUEST_BLOCKED</span>
+    </div>
+
+    <!-- Main content -->
+    <main class="relative z-10 w-full max-w-2xl mx-auto text-center py-24" id="main-content">
+
+        <div class="reveal mb-8">
+            <span class="error-eyebrow font-mono text-[10px] tracking-[0.26em] text-slate-300 uppercase">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                VARUX Control Layer
+            </span>
         </div>
-        
-        <h2 class="text-2xl md:text-4xl font-bold mb-6 text-gray-200">It seems you have strayed off course.</h2>
-        
-        <p class="text-gray-400 mb-10 max-w-md mx-auto leading-relaxed">
-            The page you are looking for may have been moved or lost in digital space. Don't worry, we can take you back to a safe place.
+
+        <h1 class="error-code select-none reveal reveal-d1 mb-8" aria-label="404">
+            <span class="num">4</span><span class="num-accent">0</span><span class="num">4</span>
+        </h1>
+
+        <h2 class="reveal reveal-d2 text-2xl md:text-3xl font-bold mb-5 error-subtitle">
+            Route intercepted by the control layer.
+        </h2>
+
+        <p class="reveal reveal-d3 error-description text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            The page you requested does not exist, has moved, or was never granted execution.
+            VARUX policy blocks unknown routes before they reach the surface.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="/" class="btn-primary">Back to Homepage</a>
-            <button type="button" id="goBackBtn" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                <span>←</span> Go Back
+        <div class="reveal reveal-d4 mb-12 text-left mx-auto max-w-md">
+            <div class="terminal-card" role="status" aria-live="polite">
+                <div class="terminal-bar">
+                    <span class="term-dot a" aria-hidden="true"></span>
+                    <span class="term-dot b" aria-hidden="true"></span>
+                    <span class="term-dot c" aria-hidden="true"></span>
+                    <span class="terminal-title">varux://control-layer/request.log</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="term-line"><span class="t-key">&gt; SESSION</span><span class="t-val dim">ANONYMOUS // STATIC</span></div>
+                    <div class="term-line"><span class="t-key">&gt; ROUTE</span><span class="t-val">[404] NOT_FOUND</span></div>
+                    <div class="term-line"><span class="t-key">&gt; POLICY</span><span class="t-val blue">REQUEST_BLOCKED</span></div>
+                    <div class="term-line"><span class="t-key">&gt; ACTION</span><span class="t-val red">EXECUTION_DENIED</span></div>
+                    <div class="term-line"><span class="t-key">&gt; RESOLUTION</span><span class="t-val">RETURN_TO_BASE<span class="t-cursor" aria-hidden="true"></span></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal reveal-d5 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/" class="btn-primary">Return to Homepage</a>
+            <button type="button" id="goBackBtn" class="btn-secondary">
+                <span class="mono-arrow" aria-hidden="true">&#8592;</span>
+                Go Back
             </button>
         </div>
-    </div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute bottom-10 left-10 text-xs text-gray-600 uppercase tracking-widest hidden md:block">
-        Error Code: NULL_POINTER_EXCEPTION
-    </div>
-    
-    <div class="absolute top-10 right-10 flex gap-4 opacity-30">
-        <div class="w-12 h-12 rounded-full border border-white"></div>
-        <div class="w-12 h-12 rounded-full border border-white rotate-45"></div>
-    </div>
+        <p class="bottom-line mt-14" aria-hidden="true">
+            Policy before execution &middot; varuxcyber.com
+        </p>
+    </main>
 
     <script>
-        const bg = document.getElementById('bg');
-        const goBackBtn = document.getElementById('goBackBtn');
-        const orbParticles = document.getElementById('orbParticles');
         const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        const goBackBtn = document.getElementById('goBackBtn');
         if (goBackBtn) {
-            goBackBtn.addEventListener('click', () => window.history.back());
+            goBackBtn.addEventListener('click', () => {
+                if (document.referrer && document.referrer.startsWith(window.location.origin)) {
+                    window.history.back();
+                } else {
+                    window.location.href = '/';
+                }
+            });
         }
 
-        if (orbParticles && !prefersReduced) {
-            for (let i = 0; i < 14; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'orb-particle';
-                dot.style.left = `${Math.random() * 100}%`;
-                dot.style.top = `${30 + Math.random() * 70}%`;
-                dot.style.animationDelay = `${(Math.random() * 8).toFixed(2)}s`;
-                dot.style.animationDuration = `${(10 + Math.random() * 8).toFixed(2)}s`;
-                orbParticles.appendChild(dot);
+        // Ambient starfield (slow, VARUX hero language)
+        const canvas = document.getElementById('ambientCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width, height, raf;
+            const stars = [];
+            const layers = [
+                { count: prefersReduced ? 20 : 45, size: [0.4, 0.9], alpha: [0.08, 0.22], speed: 0.00015, depth: 0.25 },
+                { count: prefersReduced ? 25 : 55, size: [0.6, 1.4], alpha: [0.16, 0.4], speed: 0.0003, depth: 0.55 },
+                { count: prefersReduced ? 15 : 35, size: [1.0, 2.0], alpha: [0.3, 0.7], speed: 0.0005, depth: 1.0 }
+            ];
+
+            function resize() {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
             }
+
+            layers.forEach((layer) => {
+                for (let i = 0; i < layer.count; i++) {
+                    stars.push({
+                        x: Math.random(),
+                        y: Math.random(),
+                        size: layer.size[0] + Math.random() * (layer.size[1] - layer.size[0]),
+                        alpha: layer.alpha[0] + Math.random() * (layer.alpha[1] - layer.alpha[0]),
+                        twinkleSpeed: 0.05 + Math.random() * 0.3,
+                        twinklePhase: Math.random() * Math.PI * 2,
+                        speed: layer.speed,
+                        depth: layer.depth
+                    });
+                }
+            });
+
+            const draw = (now) => {
+                const t = now / 1000;
+                ctx.clearRect(0, 0, width, height);
+                for (const s of stars) {
+                    s.y += s.speed * 60 / 1000 * (s.depth * 2 + 0.6);
+                    if (s.y > 1.02) { s.y = -0.02; s.x = Math.random(); }
+                    const tw = 0.55 + 0.45 * Math.sin(t * s.twinkleSpeed * 4 + s.twinklePhase);
+                    ctx.beginPath();
+                    ctx.arc(s.x * width, s.y * height, s.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(220, 228, 240, ${(s.alpha * tw).toFixed(3)})`;
+                    ctx.fill();
+                }
+                if (!prefersReduced) raf = requestAnimationFrame(draw);
+            };
+
+            resize();
+            if (prefersReduced) {
+                draw({ now: 0 });
+            } else {
+                raf = requestAnimationFrame(draw);
+            }
+            window.addEventListener('resize', resize);
         }
 
-        let pointerX = 50;
-        let pointerY = 50;
-        let currentX = 50;
-        let currentY = 50;
-
-        document.addEventListener('mousemove', (e) => {
-            pointerX = (e.clientX / window.innerWidth) * 100;
-            pointerY = (e.clientY / window.innerHeight) * 100;
-        }, { passive: true });
-
-        const animateGlow = () => {
-            currentX += (pointerX - currentX) * 0.12;
-            currentY += (pointerY - currentY) * 0.12;
-            bg.style.setProperty('--x', currentX.toFixed(2) + '%');
-            bg.style.setProperty('--y', currentY.toFixed(2) + '%');
-            requestAnimationFrame(animateGlow);
-        };
-        requestAnimationFrame(animateGlow);
-
-        if (!prefersReduced) {
-            const motionTargets = document.querySelectorAll('.btn-primary, #goBackBtn');
-            motionTargets.forEach((el) => {
+        // Interactive button tilt (desktop only)
+        if (!prefersReduced && window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach((el) => {
                 el.classList.add('motion-ready');
                 let raf = 0;
                 el.addEventListener('pointermove', (event) => {
