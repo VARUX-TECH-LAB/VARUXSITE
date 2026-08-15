@@ -222,12 +222,34 @@
             animation: axis-label-blink 3.6s ease-in-out infinite;
         }
 
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-d1 {
+            transition-delay: 0.12s;
+        }
+        .reveal-d2 {
+            transition-delay: 0.24s;
+        }
+
         /* Accessibility: Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
                 scroll-behavior: auto !important;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
         }
     </style>
@@ -261,7 +283,7 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-40 glass-panel border-b border-white/5 border-t-0 border-x-0 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-3 hover:opacity-80 transition-opacity focus-ring rounded">
+            <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" data-i18n-aria="nav.homeAria" class="flex items-center gap-3 hover:opacity-80 transition-opacity focus-ring rounded">
                 <div class="w-6 h-6 border-2 border-status-active/80 flex items-center justify-center rounded-sm">
                     <div class="w-2 h-2 bg-status-active"></div>
                 </div>
@@ -269,16 +291,16 @@
             </a>
             
             <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide">
-                <a href="https://varuxcyber.com" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Home</a>
-                <a href="#product" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Product</a>
-                <a href="#architecture" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Architecture</a>
-                <a href="#control-panel" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Control Panel</a>
-                <a href="#security-model" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Security Model</a>
-                <a href="#pilot" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1">Pilot</a>
+                <a href="https://varuxcyber.com" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.home">Home</a>
+                <a href="#product" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.product">Product</a>
+                <a href="#architecture" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.architecture">Architecture</a>
+                <a href="#control-panel" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.controlPanel">Control Panel</a>
+                <a href="#security-model" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.securityModel">Security Model</a>
+                <a href="#pilot" class="text-gray-400 hover:text-white transition-colors focus-ring rounded px-2 py-1" data-i18n="nav.pilot">Pilot</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <button type="button" onclick="openContactModal()" class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan-accent/50 hover:bg-cyan-accent/10 transition-all font-mono text-xs text-white rounded focus-ring">
+                <button type="button" onclick="openContactModal()" class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan-accent/50 hover:bg-cyan-accent/10 transition-all font-mono text-xs text-white rounded focus-ring" data-i18n-html="nav.requestReview">
                     Request Technical Review <i data-lucide="arrow-right" class="w-3 h-3"></i>
                 </button>
                 <button type="button" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-400 hover:text-white focus-ring rounded p-1">
@@ -291,13 +313,13 @@
     <!-- Mobile Dropdown Menu -->
     <div id="mobile-menu" class="hidden md:hidden fixed top-16 inset-x-0 bg-navy-900/95 backdrop-blur-md border-b border-white/5 shadow-2xl z-30 transition-all">
         <div class="px-6 py-6 flex flex-col gap-2 font-mono text-sm">
-            <a href="https://varuxcyber.com" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Home</a>
-            <a href="#product" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Product</a>
-            <a href="#architecture" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Architecture</a>
-            <a href="#control-panel" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Control Panel</a>
-            <a href="#security-model" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Security Model</a>
-            <a href="#pilot" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5">Pilot</a>
-            <button type="button" onclick="openContactModal(); closeMobileMenu();" class="text-cyan-accent hover:text-white transition-colors py-3 mt-2 text-left w-full focus-ring rounded flex items-center gap-2">Request Technical Review <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+            <a href="https://varuxcyber.com" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.home">Home</a>
+            <a href="#product" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.product">Product</a>
+            <a href="#architecture" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.architecture">Architecture</a>
+            <a href="#control-panel" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.controlPanel">Control Panel</a>
+            <a href="#security-model" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.securityModel">Security Model</a>
+            <a href="#pilot" class="mobile-link text-gray-300 hover:text-white transition-colors py-3 border-b border-white/5" data-i18n="nav.pilot">Pilot</a>
+            <button type="button" onclick="openContactModal(); closeMobileMenu();" class="text-cyan-accent hover:text-white transition-colors py-3 mt-2 text-left w-full focus-ring rounded flex items-center gap-2" data-i18n-html="nav.requestReview">Request Technical Review <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
     </div>
 
@@ -312,44 +334,44 @@
                 <div class="flex-1 max-w-2xl z-20">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-accent/5 border border-cyan-accent/20 rounded-full mb-6 shadow-[0_0_10px_rgba(0,229,255,0.05)]">
                         <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_8px_rgba(0,229,255,0.8)]"></span>
-                        <span class="font-mono text-[10px] sm:text-[11px] tracking-wider text-cyan-accent">VARUX AXIS / DATABASE WRITE-PATH CONTROL</span>
+                        <span class="font-mono text-[10px] sm:text-[11px] tracking-wider text-cyan-accent" data-i18n="hero.badge">VARUX AXIS / DATABASE WRITE-PATH CONTROL</span>
                     </div>
                     
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 tracking-tight leading-tight">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 tracking-tight leading-tight" data-i18n-html="hero.h1">
                         Stop risky production writes <br class="hidden lg:block"/>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">before they reach PostgreSQL.</span>
                     </h1>
                     
-                    <p class="text-lg md:text-xl font-light text-cyan-accent/80 mb-5 tracking-wide">
+                    <p class="text-lg md:text-xl font-light text-cyan-accent/80 mb-5 tracking-wide" data-i18n="hero.sub">
                         Deterministic policy enforcement, approval workflows and durable audit evidence.
                     </p>
                     
-                    <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed font-light">
+                    <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed font-light" data-i18n="hero.desc">
                         VARUX AXIS is a control layer for PostgreSQL write paths. It evaluates actor context, SQL intent, policy rules, and approval state before risky UPDATE, DELETE or DDL operations execute.
                     </p>
 
                     <!-- Improved Status Strip -->
                     <div class="glass-panel p-4 rounded-lg border-white/10 mb-2 font-mono flex flex-col md:flex-row gap-4 text-[11px]">
                         <div class="flex-1 border-l-2 border-cyan-accent pl-3">
-                            <div class="text-gray-500 mb-1">Current milestone</div>
+                            <div class="text-gray-500 mb-1" data-i18n="hero.milestoneLabel">Current milestone</div>
                             <div class="text-cyan-accent font-medium text-[12px]">v0.6 Pilot Readiness</div>
                         </div>
                         <div class="flex-1 border-l-2 border-gray-600 pl-3">
-                            <div class="text-gray-500 mb-1">Suitable for</div>
-                            <div class="text-gray-300 leading-tight">Controlled demos · local review · non-production pilot</div>
+                            <div class="text-gray-500 mb-1" data-i18n="hero.suitableLabel">Suitable for</div>
+                            <div class="text-gray-300 leading-tight" data-i18n="hero.suitableValue">Controlled demos · local review · non-production pilot</div>
                         </div>
                         <div class="flex-1 border-l-2 border-gray-600 pl-3">
-                            <div class="text-gray-500 mb-1">Not yet</div>
-                            <div class="text-gray-400 leading-tight">Compliance-certified enterprise production release</div>
+                            <div class="text-gray-500 mb-1" data-i18n="hero.notYetLabel">Not yet</div>
+                            <div class="text-gray-400 leading-tight" data-i18n="hero.notYetValue">Compliance-certified enterprise production release</div>
                         </div>
                     </div>
-                    <div class="text-[10px] text-gray-500 font-mono mb-8 ml-1">Built for technical review before rollout.</div>
+                    <div class="text-[10px] text-gray-500 font-mono mb-8 ml-1" data-i18n="hero.techReviewNote">Built for technical review before rollout.</div>
                     
                     <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
-                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded focus-ring">
+                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-medium rounded focus-ring" data-i18n-html="hero.ctaReview">
                             Request Technical Review <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
-                        <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-6 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded focus-ring">
+                        <a href="#architecture" class="inline-flex items-center justify-center gap-2 px-6 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded focus-ring" data-i18n="hero.ctaArch">
                             Explore Architecture
                         </a>
                     </div>
@@ -420,57 +442,57 @@
         <!-- Review Paths Section -->
         <section id="review-paths" class="py-20 border-b border-white/5 relative bg-navy-900/30">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-10">
-                    <h2 class="text-2xl font-medium text-white mb-2">Choose your review path.</h2>
-                    <p class="text-sm text-gray-400 font-light">AXIS is designed to be evaluated by different technical audiences without hiding its current limits.</p>
+                <div class="mb-10 reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="paths.h2">Choose your review path.</h2>
+                    <p class="text-sm text-gray-400 font-light" data-i18n="paths.sub">AXIS is designed to be evaluated by different technical audiences without hiding its current limits.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
                     <!-- Path 1 -->
                     <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
                         <div class="text-[10px] font-mono text-status-blocked mb-3">THREAT / EVIDENCE</div>
-                        <h3 class="text-base font-medium text-white mb-2">Security Reviewer</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Start with the security model, failure behavior, approval boundaries and audit evidence flow.</p>
+                        <h3 class="text-base font-medium text-white mb-2" data-i18n="paths.reviewer.title">Security Reviewer</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow" data-i18n="paths.reviewer.desc">Start with the security model, failure behavior, approval boundaries and audit evidence flow.</p>
                         <div class="flex flex-col gap-2 text-xs font-mono">
-                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Security Model</a>
-                            <a href="#evidence" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Evidence</a>
-                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Failure Model</a>
+                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.reviewer.link1"><i data-lucide="chevron-right" class="w-3 h-3"></i> Security Model</a>
+                            <a href="#evidence" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.reviewer.link2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Evidence</a>
+                            <a href="#security-model" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.reviewer.link3"><i data-lucide="chevron-right" class="w-3 h-3"></i> Failure Model</a>
                         </div>
                     </div>
 
                     <!-- Path 2 -->
                     <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
                         <div class="text-[10px] font-mono text-status-control mb-3">ARCHITECTURE / OPERATIONS</div>
-                        <h3 class="text-base font-medium text-white mb-2">Platform Engineer</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Review the write-path placement, control plane expectations, rollout modes and operational constraints.</p>
+                        <h3 class="text-base font-medium text-white mb-2" data-i18n="paths.engineer.title">Platform Engineer</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow" data-i18n="paths.engineer.desc">Review the write-path placement, control plane expectations, rollout modes and operational constraints.</p>
                         <div class="flex flex-col gap-2 text-xs font-mono">
-                            <a href="#architecture" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Architecture</a>
-                            <a href="#operating-modes" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Operating Modes</a>
-                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
+                            <a href="#architecture" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.engineer.link1"><i data-lucide="chevron-right" class="w-3 h-3"></i> Architecture</a>
+                            <a href="#operating-modes" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.engineer.link2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Operating Modes</a>
+                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.engineer.link3"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
                         </div>
                     </div>
 
                     <!-- Path 3 -->
                     <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
                         <div class="text-[10px] font-mono text-status-active mb-3">LOCAL REVIEW / NON-PRODUCTION</div>
-                        <h3 class="text-base font-medium text-white mb-2">Pilot Evaluator</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Use the pilot checklist to prepare a staging or non-production evaluation with representative SQL operations.</p>
+                        <h3 class="text-base font-medium text-white mb-2" data-i18n="paths.pilot.title">Pilot Evaluator</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow" data-i18n="paths.pilot.desc">Use the pilot checklist to prepare a staging or non-production evaluation with representative SQL operations.</p>
                         <div class="flex flex-col gap-2 text-xs font-mono">
-                            <a href="#pilot" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Path</a>
-                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
-                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring"><i data-lucide="chevron-right" class="w-3 h-3"></i> Contact Team</button>
+                            <a href="#pilot" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.pilot.link1"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Path</a>
+                            <a href="#pilot-checklist" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.pilot.link2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Pilot Checklist</a>
+                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring" data-i18n-html="paths.pilot.link3"><i data-lucide="chevron-right" class="w-3 h-3"></i> Contact Team</button>
                         </div>
                     </div>
 
                     <!-- Path 4 -->
                     <div class="glass-panel p-6 rounded-lg border-white/5 hover:border-cyan-accent/30 transition-colors flex flex-col h-full">
                         <div class="text-[10px] font-mono text-status-warning mb-3">PRODUCT / RISK</div>
-                        <h3 class="text-base font-medium text-white mb-2">Founder / CTO</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow">Understand what AXIS does, what it refuses to claim and where it fits in production database governance.</p>
+                        <h3 class="text-base font-medium text-white mb-2" data-i18n="paths.cto.title">Founder / CTO</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-6 flex-grow" data-i18n="paths.cto.desc">Understand what AXIS does, what it refuses to claim and where it fits in production database governance.</p>
                         <div class="flex flex-col gap-2 text-xs font-mono">
-                            <a href="#definition" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> What AXIS Is</a>
-                            <a href="#current-limitations" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Current Limitations</a>
-                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring"><i data-lucide="chevron-right" class="w-3 h-3"></i> Request Tech Review</button>
+                            <a href="#definition" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.cto.link1"><i data-lucide="chevron-right" class="w-3 h-3"></i> What AXIS Is</a>
+                            <a href="#current-limitations" class="text-gray-300 hover:text-cyan-accent flex items-center gap-2" data-i18n-html="paths.cto.link2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Current Limitations</a>
+                            <button type="button" onclick="openContactModal()" class="text-cyan-accent hover:text-white flex items-center gap-2 text-left focus-ring" data-i18n-html="paths.cto.link3"><i data-lucide="chevron-right" class="w-3 h-3"></i> Request Tech Review</button>
                         </div>
                     </div>
                 </div>
@@ -480,29 +502,29 @@
         <!-- Problem Section -->
         <section id="problem" class="py-20 border-b border-white/5 relative">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-12 md:text-center max-w-2xl mx-auto">
-                    <h2 class="text-3xl font-medium text-white mb-3">Production writes are still too easy to damage.</h2>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">
+                <div class="mb-12 md:text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-3xl font-medium text-white mb-3" data-i18n="problem.h2">Production writes are still too easy to damage.</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light" data-i18n="problem.sub">
                         Modern systems let internal tools, automation, scripts, and AI agents touch production databases. A single broad DELETE or unsafe DDL can become an incident if it bypasses policy, approval and evidence.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto reveal reveal-d1">
                     <div class="glass-panel p-5 rounded-lg border-status-blocked/20 hover:border-status-blocked/40 transition-colors">
-                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-status-blocked"></i> Broad DELETE / UPDATE</h3>
-                        <p class="text-xs text-gray-400">Batch writes and missing WHERE conditions create irreversible damage.</p>
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2" data-i18n-html="problem.card1.title"><i data-lucide="alert-triangle" class="w-4 h-4 text-status-blocked"></i> Broad DELETE / UPDATE</h3>
+                        <p class="text-xs text-gray-400" data-i18n="problem.card1.desc">Batch writes and missing WHERE conditions create irreversible damage.</p>
                     </div>
                     <div class="glass-panel p-5 rounded-lg border-status-warning/20 hover:border-status-warning/40 transition-colors">
-                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="table-properties" class="w-4 h-4 text-status-warning"></i> Unsafe DDL</h3>
-                        <p class="text-xs text-gray-400">Schema changes can break behavior when bypassing review.</p>
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2" data-i18n-html="problem.card2.title"><i data-lucide="table-properties" class="w-4 h-4 text-status-warning"></i> Unsafe DDL</h3>
+                        <p class="text-xs text-gray-400" data-i18n="problem.card2.desc">Schema changes can break behavior when bypassing review.</p>
                     </div>
                     <div class="glass-panel p-5 rounded-lg border-white/10 hover:border-cyan-accent/30 transition-colors">
-                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4 text-cyan-accent"></i> AI / automation access</h3>
-                        <p class="text-xs text-gray-400">Agents and scripts move faster than human review without boundaries.</p>
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2" data-i18n-html="problem.card3.title"><i data-lucide="bot" class="w-4 h-4 text-cyan-accent"></i> AI / automation access</h3>
+                        <p class="text-xs text-gray-400" data-i18n="problem.card3.desc">Agents and scripts move faster than human review without boundaries.</p>
                     </div>
                     <div class="glass-panel p-5 rounded-lg border-white/10 hover:border-white/30 transition-colors">
-                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2"><i data-lucide="file-search" class="w-4 h-4 text-gray-300"></i> Missing durable evidence</h3>
-                        <p class="text-xs text-gray-400">App logs cannot reliably prove who attempted what and why.</p>
+                        <h3 class="text-sm font-medium text-white mb-1 flex items-center gap-2" data-i18n-html="problem.card4.title"><i data-lucide="file-search" class="w-4 h-4 text-gray-300"></i> Missing durable evidence</h3>
+                        <p class="text-xs text-gray-400" data-i18n="problem.card4.desc">App logs cannot reliably prove who attempted what and why.</p>
                     </div>
                 </div>
             </div>
@@ -511,20 +533,20 @@
         <!-- Product Definition Section -->
         <section id="definition" class="py-20 border-b border-white/5 relative bg-navy-900/30">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-12 md:text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-medium text-white mb-3">What AXIS Is</h2>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light">
+                <div class="mb-12 md:text-center max-w-3xl mx-auto reveal">
+                    <h2 class="text-3xl font-medium text-white mb-3" data-i18n="def.h2">What AXIS Is</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light" data-i18n="def.sub">
                         AXIS is a controlled execution gateway. Clients submit write intent through AXIS. AXIS builds context, classifies SQL, evaluates deterministic policy, writes durable evidence and only then allows, blocks or routes the operation to approval.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 reveal">
                     <div class="flex flex-col gap-3">
                         <div class="w-10 h-10 bg-navy-800 border border-white/10 rounded flex items-center justify-center text-white">
                             <i data-lucide="door-closed" class="w-5 h-5"></i>
                         </div>
                         <h3 class="text-base font-medium text-white">Gate</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="def.gate.desc">
                             Collects context, normalizes SQL, classifies READ/WRITE and extracts risk signals.
                         </p>
                     </div>
@@ -533,7 +555,7 @@
                             <i data-lucide="git-branch" class="w-5 h-5"></i>
                         </div>
                         <h3 class="text-base font-medium text-white">Policy Engine</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="def.policy.desc">
                             Evaluates policies deterministically to ALLOW, BLOCK or REQUIRE_APPROVAL.
                         </p>
                     </div>
@@ -542,35 +564,35 @@
                             <i data-lucide="file-key" class="w-5 h-5"></i>
                         </div>
                         <h3 class="text-base font-medium text-white">Evidence</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="def.evidence.desc">
                             Records verifiable events so risky database operations can be reconstructed securely.
                         </p>
                     </div>
                 </div>
 
                 <!-- AXIS Is / Is Not Block -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-4xl mx-auto reveal reveal-d1">
                     <div>
-                        <h4 class="text-status-active font-mono text-xs mb-3 border-b border-status-active/20 pb-2 flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4"></i> AXIS is:</h4>
+                        <h4 class="text-status-active font-mono text-xs mb-3 border-b border-status-active/20 pb-2 flex items-center gap-2" data-i18n-html="def.isTitle"><i data-lucide="check-circle-2" class="w-4 h-4"></i> AXIS is:</h4>
                         <ul class="text-xs text-gray-300 space-y-2">
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> deterministic PostgreSQL write-path control</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> controlled execution gateway</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> policy-enforced decision layer</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> approval boundary for risky operations</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> durable audit evidence generator</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> operator visibility and policy lifecycle surface</li>
+                            <li class="flex gap-2" data-i18n-html="def.is1"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> deterministic PostgreSQL write-path control</li>
+                            <li class="flex gap-2" data-i18n-html="def.is2"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> controlled execution gateway</li>
+                            <li class="flex gap-2" data-i18n-html="def.is3"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> policy-enforced decision layer</li>
+                            <li class="flex gap-2" data-i18n-html="def.is4"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> approval boundary for risky operations</li>
+                            <li class="flex gap-2" data-i18n-html="def.is5"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> durable audit evidence generator</li>
+                            <li class="flex gap-2" data-i18n-html="def.is6"><div class="w-1.5 h-1.5 rounded-full bg-status-active mt-1 shrink-0"></div> operator visibility and policy lifecycle surface</li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-gray-500 font-mono text-xs mb-3 border-b border-white/10 pb-2 flex items-center gap-2"><i data-lucide="x-circle" class="w-4 h-4"></i> AXIS is not:</h4>
+                        <h4 class="text-gray-500 font-mono text-xs mb-3 border-b border-white/10 pb-2 flex items-center gap-2" data-i18n-html="def.notTitle"><i data-lucide="x-circle" class="w-4 h-4"></i> AXIS is not:</h4>
                         <ul class="text-xs text-gray-400 space-y-2">
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> WAF, SIEM, or DLP</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> SQL injection detector</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> masking/encryption product</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> query optimizer</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> full drop-in PostgreSQL wire-protocol proxy</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> replacement for application authorization</li>
-                            <li class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> compliance-certified release</li>
+                            <li class="flex gap-2" data-i18n-html="def.not1"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> WAF, SIEM, or DLP</li>
+                            <li class="flex gap-2" data-i18n-html="def.not2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> SQL injection detector</li>
+                            <li class="flex gap-2" data-i18n-html="def.not3"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> masking/encryption product</li>
+                            <li class="flex gap-2" data-i18n-html="def.not4"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> query optimizer</li>
+                            <li class="flex gap-2" data-i18n-html="def.not5"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> full drop-in PostgreSQL wire-protocol proxy</li>
+                            <li class="flex gap-2" data-i18n-html="def.not6"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> replacement for application authorization</li>
+                            <li class="flex gap-2" data-i18n-html="def.not7"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1 shrink-0"></div> compliance-certified release</li>
                         </ul>
                     </div>
                 </div>
@@ -580,13 +602,13 @@
         <!-- Architecture Section -->
         <section id="architecture" class="py-24 border-b border-white/5 relative bg-navy-900/50">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-12 text-center max-w-2xl mx-auto">
-                    <h2 class="text-2xl font-medium text-white mb-2">Deterministic Write-Path Architecture</h2>
-                    <p class="text-gray-500 font-mono text-xs tracking-wide uppercase">System Components</p>
+                <div class="mb-12 text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="arch.h2">Deterministic Write-Path Architecture</h2>
+                    <p class="text-gray-500 font-mono text-xs tracking-wide uppercase" data-i18n="arch.sub">System Components</p>
                 </div>
 
                 <!-- Block Architecture Diagram -->
-                <div class="max-w-5xl mx-auto">
+                <div class="max-w-5xl mx-auto reveal reveal-d1">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                         <!-- Left: Sources -->
                         <div class="md:col-span-3 flex flex-col gap-3">
@@ -649,7 +671,7 @@
                         <span class="text-xs font-mono text-gray-300">Control Plane (Visibility, Policy, Evidence)</span>
                     </div>
 
-                    <p class="text-center text-xs text-gray-500 mt-6 font-light italic max-w-md mx-auto">
+                    <p class="text-center text-xs text-gray-500 mt-6 font-light italic max-w-md mx-auto" data-i18n="arch.quote">
                         "Unsafe ambiguity must not silently proceed. Unknown or unsupported write-capable SQL should be blocked or routed to approval by policy."
                     </p>
                 </div>
@@ -659,39 +681,39 @@
         <!-- Decision Flow Section -->
         <section id="decision-flow" class="py-20 border-b border-white/5 relative">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-10 md:text-center max-w-2xl mx-auto">
-                    <h2 class="text-2xl font-medium text-white mb-2">Every write becomes context, decision and evidence.</h2>
-                    <p class="text-gray-400 text-sm font-light">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="flow.h2">Every write becomes context, decision and evidence.</h2>
+                    <p class="text-gray-400 text-sm font-light" data-i18n="flow.sub">
                         AXIS decisions are deterministic. The same request context and policy version produce the same outcome.
                     </p>
                 </div>
 
                 <!-- Linear Flow -->
-                <div class="max-w-5xl mx-auto glass-panel border-white/10 rounded-xl p-6 overflow-x-auto custom-scrollbar">
+                <div class="max-w-5xl mx-auto glass-panel border-white/10 rounded-xl p-6 overflow-x-auto custom-scrollbar reveal reveal-d1">
                     <div class="min-w-[800px] flex items-center justify-between font-mono text-[10px] text-center relative">
                         <div class="absolute top-1/2 left-0 right-0 h-px bg-white/10 -translate-y-1/2 z-0"></div>
 
                         <div class="relative z-10 flex flex-col items-center gap-2 w-20">
                             <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">1</div>
-                            <span class="text-gray-400">Request</span>
+                            <span class="text-gray-400" data-i18n="flow.step1">Request</span>
                         </div>
                         <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
 
                         <div class="relative z-10 flex flex-col items-center gap-2 w-20">
                             <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">2</div>
-                            <span class="text-gray-400">Context</span>
+                            <span class="text-gray-400" data-i18n="flow.step2">Context</span>
                         </div>
                         <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
 
                         <div class="relative z-10 flex flex-col items-center gap-2 w-24">
                             <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">3</div>
-                            <span class="text-gray-400">Classification</span>
+                            <span class="text-gray-400" data-i18n="flow.step3">Classification</span>
                         </div>
                         <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
 
                         <div class="relative z-10 flex flex-col items-center gap-2 w-24">
                             <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">4</div>
-                            <span class="text-gray-400">Risk Signals</span>
+                            <span class="text-gray-400" data-i18n="flow.step4">Risk Signals</span>
                         </div>
                         <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
 
@@ -703,7 +725,7 @@
 
                         <div class="relative z-10 flex flex-col items-center gap-2 w-20">
                             <div class="w-6 h-6 rounded bg-navy-900 border border-white/20 flex items-center justify-center">6</div>
-                            <span class="text-gray-400">Evidence</span>
+                            <span class="text-gray-400" data-i18n="flow.step6">Evidence</span>
                         </div>
                         <i data-lucide="arrow-right" class="w-3 h-3 text-white/20 relative z-10"></i>
 
@@ -715,7 +737,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-2 mt-6 font-mono text-[9px] text-gray-500">
+                <div class="flex flex-wrap justify-center gap-2 mt-6 font-mono text-[9px] text-gray-500 reveal reveal-d2">
                     <span class="bg-navy-800 px-2 py-1 rounded">request_id</span>
                     <span class="bg-navy-800 px-2 py-1 rounded">actor</span>
                     <span class="bg-navy-800 px-2 py-1 rounded">app</span>
@@ -735,18 +757,18 @@
         <!-- Mini Control Panel Preview Section -->
         <section id="control-panel" class="py-24 border-b border-white/5 relative bg-[#040405]">
             <div class="max-w-6xl mx-auto px-6 relative z-10">
-                <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 reveal">
                     <div>
-                        <h2 class="text-2xl font-medium text-white mb-2">Control Plane Preview</h2>
-                        <p class="text-sm text-gray-400">Operational truth, not decorative confidence.</p>
+                        <h2 class="text-2xl font-medium text-white mb-2" data-i18n="panel.h2">Control Plane Preview</h2>
+                        <p class="text-sm text-gray-400" data-i18n="panel.sub">Operational truth, not decorative confidence.</p>
                     </div>
-                    <div class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded bg-navy-800 max-w-xs text-right">
+                    <div class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded bg-navy-800 max-w-xs text-right" data-i18n="panel.note">
                         Preview values only. A live deployment must bind these cards to real AXIS endpoints.
                     </div>
                 </div>
 
                 <!-- Health Mini Cards Row -->
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6 reveal reveal-d1">
                     <div class="glass-panel p-3 rounded-lg border-status-active/20">
                         <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Audit Chain</div>
                         <div class="text-status-active font-medium text-sm mb-1">Verified</div>
@@ -775,14 +797,14 @@
                 </div>
 
                 <!-- Fake UI Window -->
-                <div class="border border-white/10 rounded-xl bg-[#0b0c10] overflow-hidden shadow-2xl flex flex-col h-[400px]">
+                <div class="border border-white/10 rounded-xl bg-[#0b0c10] overflow-hidden shadow-2xl flex flex-col h-[400px] reveal reveal-d2">
                     <!-- Window Header / Tabs -->
                     <div class="flex items-center gap-4 px-4 bg-navy-900 border-b border-white/5 font-mono text-[11px] h-10 overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        <button type="button" class="tab-btn active text-cyan-accent border-b-2 border-cyan-accent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-health">Health</button>
-                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-live">Live Requests</button>
-                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-approvals">Approvals <span class="bg-status-warning/20 text-status-warning px-1.5 py-0.5 rounded ml-1 text-[9px]">1</span></button>
-                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-evidence">Evidence</button>
-                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-policy">Policy</button>
+                        <button type="button" class="tab-btn active text-cyan-accent border-b-2 border-cyan-accent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-health" data-i18n="tab.health">Health</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-live" data-i18n="tab.live">Live Requests</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-approvals" data-i18n-html="tab.approvals">Approvals <span class="bg-status-warning/20 text-status-warning px-1.5 py-0.5 rounded ml-1 text-[9px]">1</span></button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-evidence" data-i18n="tab.evidence">Evidence</button>
+                        <button type="button" class="tab-btn text-gray-400 hover:text-white border-b-2 border-transparent h-full px-2 flex-shrink-0 focus-ring" data-target="tab-policy" data-i18n="tab.policy">Policy</button>
                     </div>
 
                     <!-- Tab Contents -->
@@ -877,8 +899,8 @@
                                 </div>
 
                                 <div class="flex gap-2">
-                                    <button type="button" onclick="showDemoNotice()" class="bg-status-active/20 text-status-active hover:bg-status-active/30 border border-status-active/30 px-3 py-1 rounded transition-colors focus-ring">Approve</button>
-                                    <button type="button" onclick="showDemoNotice()" class="bg-status-blocked/20 text-status-blocked hover:bg-status-blocked/30 border border-status-blocked/30 px-3 py-1 rounded transition-colors focus-ring">Reject</button>
+                                    <button type="button" onclick="showDemoNotice()" class="bg-status-active/20 text-status-active hover:bg-status-active/30 border border-status-active/30 px-3 py-1 rounded transition-colors focus-ring" data-i18n="sim.approve">Approve</button>
+                                    <button type="button" onclick="showDemoNotice()" class="bg-status-blocked/20 text-status-blocked hover:bg-status-blocked/30 border border-status-blocked/30 px-3 py-1 rounded transition-colors focus-ring" data-i18n="sim.reject">Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -923,9 +945,9 @@
 <span class="text-cyan-accent">rollback_available</span>: true
 </code></pre>
                             <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Simulate</button>
-                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Activate</button>
-                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring">Rollback</button>
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring" data-i18n="sim.simulate">Simulate</button>
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring" data-i18n="sim.activate">Activate</button>
+                                <button type="button" onclick="showDemoNotice()" class="bg-navy-800 text-gray-300 hover:text-white border border-white/20 px-2 py-1 rounded transition-colors focus-ring" data-i18n="sim.rollback">Rollback</button>
                             </div>
                             <div class="mt-3 text-[9px] text-gray-600">Policy lifecycle actions should be validated, diffed, dry-run and rollback-safe.</div>
                         </div>
@@ -942,55 +964,55 @@
         <!-- Security Model Section -->
         <section id="security-model" class="py-20 border-b border-white/5 relative bg-navy-900/30">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-10 md:text-center max-w-2xl mx-auto">
-                    <h2 class="text-2xl font-medium text-white mb-2">Security Model</h2>
-                    <p class="text-sm text-gray-400 font-light">Architectural principles protecting the database write-path.</p>
+                <div class="mb-10 md:text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="sec.h2">Security Model</h2>
+                    <p class="text-sm text-gray-400 font-light" data-i18n="sec.sub">Architectural principles protecting the database write-path.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 reveal reveal-d1">
                     <div class="glass-panel p-5 rounded-xl border-white/5">
                         <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-cyan-accent">
                             <i data-lucide="crosshair" class="w-4 h-4"></i>
                         </div>
-                        <h4 class="text-sm font-medium text-white mb-1">Deterministic Enforcement</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed">Explicit policy rules and versioned metadata, not probabilistic guesswork.</p>
+                        <h4 class="text-sm font-medium text-white mb-1" data-i18n="sec.card1.title">Deterministic Enforcement</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="sec.card1.desc">Explicit policy rules and versioned metadata, not probabilistic guesswork.</p>
                     </div>
 
                     <div class="glass-panel p-5 rounded-xl border-white/5">
                         <div class="w-8 h-8 bg-navy-700 border border-status-blocked/20 rounded flex items-center justify-center mb-3 text-status-blocked">
                             <i data-lucide="shield-alert" class="w-4 h-4"></i>
                         </div>
-                        <h4 class="text-sm font-medium text-white mb-1">Fail-Safe Defaults</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed">Unsafe ambiguity or internal policy failure must not silently proceed to the DB.</p>
+                        <h4 class="text-sm font-medium text-white mb-1" data-i18n="sec.card2.title">Fail-Safe Defaults</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="sec.card2.desc">Unsafe ambiguity or internal policy failure must not silently proceed to the DB.</p>
                     </div>
 
                     <div class="glass-panel p-5 rounded-xl border-white/5">
                         <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-white">
                             <i data-lucide="file-key" class="w-4 h-4"></i>
                         </div>
-                        <h4 class="text-sm font-medium text-white mb-1">Durable Evidence</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed">Every critical write-path decision is securely recorded before action is taken.</p>
+                        <h4 class="text-sm font-medium text-white mb-1" data-i18n="sec.card3.title">Durable Evidence</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="sec.card3.desc">Every critical write-path decision is securely recorded before action is taken.</p>
                     </div>
 
                     <div class="glass-panel p-5 rounded-xl border-white/5">
                         <div class="w-8 h-8 bg-navy-700 border border-status-warning/20 rounded flex items-center justify-center mb-3 text-status-warning">
                             <i data-lucide="git-pull-request" class="w-4 h-4"></i>
                         </div>
-                        <h4 class="text-sm font-medium text-white mb-1">Approval Boundaries</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed">Risky operations routed to human approval bounded by strict policy_version and TTL.</p>
+                        <h4 class="text-sm font-medium text-white mb-1" data-i18n="sec.card4.title">Approval Boundaries</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="sec.card4.desc">Risky operations routed to human approval bounded by strict policy_version and TTL.</p>
                     </div>
 
                     <div class="glass-panel p-5 rounded-xl border-white/5 lg:col-span-2">
                         <div class="w-8 h-8 bg-navy-700 border border-white/10 rounded flex items-center justify-center mb-3 text-gray-300">
                             <i data-lucide="network" class="w-4 h-4"></i>
                         </div>
-                        <h4 class="text-sm font-medium text-white mb-1">Bypass Control</h4>
-                        <p class="text-xs text-gray-400 mb-3">Protected write paths must route through AXIS. A real pilot must review:</p>
+                        <h4 class="text-sm font-medium text-white mb-1" data-i18n="sec.card5.title">Bypass Control</h4>
+                        <p class="text-xs text-gray-400 mb-3" data-i18n="sec.card5.desc">Protected write paths must route through AXIS. A real pilot must review:</p>
                         <ul class="text-[11px] text-gray-400 space-y-1.5 list-disc list-inside">
-                            <li>App connection strings point to AXIS/Gate</li>
-                            <li>Direct DB port is restricted from non-Gate workloads</li>
-                            <li>Emergency direct write path requires audit event</li>
-                            <li>Drift detection reports unexpected DB clients</li>
+                            <li data-i18n="sec.bypass1">App connection strings point to AXIS/Gate</li>
+                            <li data-i18n="sec.bypass2">Direct DB port is restricted from non-Gate workloads</li>
+                            <li data-i18n="sec.bypass3">Emergency direct write path requires audit event</li>
+                            <li data-i18n="sec.bypass4">Drift detection reports unexpected DB clients</li>
                         </ul>
                     </div>
                 </div>
@@ -1000,9 +1022,9 @@
         <!-- Audit & Evidence Section -->
         <section id="evidence" class="py-20 border-b border-white/5 relative">
             <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-10 items-center">
-                <div class="flex-1">
-                    <h2 class="text-2xl font-medium text-white mb-3">Evidence that survives the incident review.</h2>
-                    <p class="text-sm text-gray-400 leading-relaxed font-light mb-4">
+                <div class="flex-1 reveal">
+                    <h2 class="text-2xl font-medium text-white mb-3" data-i18n="ev.h2">Evidence that survives the incident review.</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light mb-4" data-i18n-html="ev.sub">
                         Application logs explain what an app <i>thinks</i> happened. AXIS evidence definitively explains what the production write-path allowed, blocked or escalated.
                     </p>
                     <ul class="font-mono text-[11px] text-gray-300 space-y-1.5 border-l border-cyan-accent/30 pl-3">
@@ -1015,7 +1037,7 @@
                     </ul>
                 </div>
                 
-                <div class="flex-1 w-full">
+                <div class="flex-1 w-full reveal reveal-d1">
                     <div class="bg-[#0b0c10] border border-white/10 rounded-xl p-5 font-mono text-[11px] sm:text-xs overflow-x-auto">
 <pre class="text-gray-300"><code>{
   <span class="text-cyan-accent">"request_id"</span>: "req_82aa",
@@ -1035,26 +1057,26 @@
         <!-- Operating Modes & Policy Section -->
         <section id="operating-modes" class="py-20 border-b border-white/5 relative bg-navy-900/30">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-10 md:text-center max-w-2xl mx-auto">
-                    <h2 class="text-2xl font-medium text-white mb-2">Operating modes for controlled rollout.</h2>
+                <div class="mb-10 md:text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="modes.h2">Operating modes for controlled rollout.</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 reveal reveal-d1">
                     <div class="glass-panel p-5 rounded border-white/5 hover:border-white/20 transition-colors">
-                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500"></div> Observe / Shadow</h4>
-                        <p class="text-[11px] text-gray-400 leading-relaxed">Record decisions without blocking writes. Useful for evaluation.</p>
+                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2" data-i18n-html="modes.m1.title"><div class="w-1.5 h-1.5 rounded-full bg-gray-500"></div> Observe / Shadow</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed" data-i18n="modes.m1.desc">Record decisions without blocking writes. Useful for evaluation.</p>
                     </div>
                     <div class="glass-panel p-5 rounded border-white/5 hover:border-status-warning/30 transition-colors">
-                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-warning"></div> Approval-first</h4>
-                        <p class="text-[11px] text-gray-400 leading-relaxed">Route risky writes into workflows before strict automated blocking.</p>
+                        <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2" data-i18n-html="modes.m2.title"><div class="w-1.5 h-1.5 rounded-full bg-status-warning"></div> Approval-first</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed" data-i18n="modes.m2.desc">Route risky writes into workflows before strict automated blocking.</p>
                     </div>
                     <div class="glass-panel p-5 rounded border-white/5 hover:border-status-active/30 transition-colors">
                         <h4 class="font-medium text-white mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-active"></div> Enforce</h4>
-                        <p class="text-[11px] text-gray-400 leading-relaxed">Apply policy deterministically to ALLOW, BLOCK or REQUIRE_APPROVAL.</p>
+                        <p class="text-[11px] text-gray-400 leading-relaxed" data-i18n="modes.m3.desc">Apply policy deterministically to ALLOW, BLOCK or REQUIRE_APPROVAL.</p>
                     </div>
                     <div class="glass-panel p-5 rounded border-status-blocked/10 hover:border-status-blocked/30 transition-colors">
-                        <h4 class="font-medium text-status-blocked mb-1 text-xs flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-status-blocked"></div> Emergency Bypass</h4>
-                        <p class="text-[11px] text-gray-400 leading-relaxed">Scoped, time-limited auditable exception. Not an escape hatch.</p>
+                        <h4 class="font-medium text-status-blocked mb-1 text-xs flex items-center gap-2" data-i18n-html="modes.m4.title"><div class="w-1.5 h-1.5 rounded-full bg-status-blocked"></div> Emergency Bypass</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed" data-i18n="modes.m4.desc">Scoped, time-limited auditable exception. Not an escape hatch.</p>
                     </div>
                 </div>
             </div>
@@ -1063,37 +1085,37 @@
         <!-- Pilot / Review Section -->
         <section id="pilot" class="py-20 border-b border-white/5 relative">
             <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-10">
-                <div class="flex-1">
-                    <h2 class="text-2xl font-medium text-white mb-3">Pilot and Technical Review Path</h2>
-                    <p class="text-sm text-gray-400 font-light mb-6">
+                <div class="flex-1 reveal">
+                    <h2 class="text-2xl font-medium text-white mb-3" data-i18n="pilot.h2">Pilot and Technical Review Path</h2>
+                    <p class="text-sm text-gray-400 font-light mb-6" data-i18n="pilot.sub">
                         Evaluating AXIS follows a structured customer review path designed for security and platform engineering teams.
                     </p>
                     
                     <div class="flex flex-col gap-3 font-mono text-xs mb-8">
-                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">1</div> <span class="text-gray-300">Understand architecture</span></div>
-                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">2</div> <span class="text-gray-300">Run local evaluation</span></div>
-                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">3</div> <span class="text-gray-300">Inspect decisions & evidence</span></div>
-                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">4</div> <span class="text-gray-300">Review pilot limitations</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">1</div> <span class="text-gray-300" data-i18n="pilot.step1">Understand architecture</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">2</div> <span class="text-gray-300" data-i18n="pilot.step2">Run local evaluation</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">3</div> <span class="text-gray-300" data-i18n="pilot.step3">Inspect decisions & evidence</span></div>
+                        <div class="flex items-center gap-3 bg-navy-800/50 p-2.5 rounded border border-white/5"><div class="w-5 h-5 rounded bg-navy-900 border border-white/20 flex items-center justify-center text-gray-400">4</div> <span class="text-gray-300" data-i18n="pilot.step4">Review pilot limitations</span></div>
                     </div>
                 </div>
                 
-                <div class="flex-1 flex flex-col gap-5">
+                <div class="flex-1 flex flex-col gap-5 reveal reveal-d1">
                     <div class="border-l-2 border-cyan-accent pl-5 py-1">
                         <h4 class="text-cyan-accent font-mono text-[10px] mb-1">CURRENT POSTURE</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">AXIS v0.6 is suitable for controlled demos, local technical evaluation, architecture review and non-production pilot planning.</p>
+                        <p class="text-xs text-gray-300 leading-relaxed" data-i18n="pilot.posture">AXIS v0.6 is suitable for controlled demos, local technical evaluation, architecture review and non-production pilot planning.</p>
                     </div>
                     <div class="border-l-2 border-gray-600 pl-5 py-1">
                         <h4 class="text-gray-500 font-mono text-[10px] mb-1">NOT YET</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed">Not yet an enterprise production-ready distributed deployment or compliance-certified release.</p>
+                        <p class="text-xs text-gray-400 leading-relaxed" data-i18n="pilot.notYet">Not yet an enterprise production-ready distributed deployment or compliance-certified release.</p>
                     </div>
                     
                     <div class="mt-2">
-                        <h4 class="text-white text-sm font-medium mb-3">Pilot Success Examples:</h4>
+                        <h4 class="text-white text-sm font-medium mb-3" data-i18n="pilot.examplesTitle">Pilot Success Examples:</h4>
                         <ul class="text-xs text-gray-400 space-y-1.5 list-disc list-inside">
-                            <li>Dangerous DELETE blocked before PostgreSQL.</li>
-                            <li>Approved bulk operation traced by request_id.</li>
-                            <li>Decision shows reason_code and policy_version.</li>
-                            <li>Audit timeline reconstructs write attempt.</li>
+                            <li data-i18n="pilot.ex1">Dangerous DELETE blocked before PostgreSQL.</li>
+                            <li data-i18n="pilot.ex2">Approved bulk operation traced by request_id.</li>
+                            <li data-i18n="pilot.ex3">Decision shows reason_code and policy_version.</li>
+                            <li data-i18n="pilot.ex4">Audit timeline reconstructs write attempt.</li>
                         </ul>
                     </div>
                 </div>
@@ -1103,45 +1125,45 @@
         <!-- Pilot Checklist & Questions Section -->
         <section id="pilot-checklist" class="py-20 border-b border-white/5 relative bg-navy-900/30">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-8">
-                    <h2 class="text-2xl font-medium text-white mb-2">Pilot readiness checklist</h2>
-                    <p class="text-sm text-gray-400 font-light">Before a technical review or pilot, prepare the inputs that make AXIS evaluation realistic.</p>
+                <div class="mb-8 reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="checklist.h2">Pilot readiness checklist</h2>
+                    <p class="text-sm text-gray-400 font-light" data-i18n="checklist.sub">Before a technical review or pilot, prepare the inputs that make AXIS evaluation realistic.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 reveal reveal-d1">
                     <div class="bg-navy-800/50 p-4 rounded border border-white/5">
-                        <div class="text-cyan-accent font-mono text-[11px] mb-1">1. Non-production DB</div>
-                        <p class="text-xs text-gray-400 leading-snug">Use staging or a local database. Do not start with production.</p>
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1" data-i18n="checklist.c1.t">1. Non-production DB</div>
+                        <p class="text-xs text-gray-400 leading-snug" data-i18n="checklist.c1.d">Use staging or a local database. Do not start with production.</p>
                     </div>
                     <div class="bg-navy-800/50 p-4 rounded border border-white/5">
-                        <div class="text-cyan-accent font-mono text-[11px] mb-1">2. Representative SQL</div>
-                        <p class="text-xs text-gray-400 leading-snug">Collect realistic UPDATE, DELETE, DDL operations.</p>
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1" data-i18n="checklist.c2.t">2. Representative SQL</div>
+                        <p class="text-xs text-gray-400 leading-snug" data-i18n="checklist.c2.d">Collect realistic UPDATE, DELETE, DDL operations.</p>
                     </div>
                     <div class="bg-navy-800/50 p-4 rounded border border-white/5">
-                        <div class="text-cyan-accent font-mono text-[11px] mb-1">3. Policy requirements</div>
-                        <p class="text-xs text-gray-400 leading-snug">Define examples of allowed and blocked writes.</p>
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1" data-i18n="checklist.c3.t">3. Policy requirements</div>
+                        <p class="text-xs text-gray-400 leading-snug" data-i18n="checklist.c3.d">Define examples of allowed and blocked writes.</p>
                     </div>
                     <div class="bg-navy-800/50 p-4 rounded border border-white/5">
-                        <div class="text-cyan-accent font-mono text-[11px] mb-1">4. Approval rules</div>
-                        <p class="text-xs text-gray-400 leading-snug">Identify test approvers and workflow expectations.</p>
+                        <div class="text-cyan-accent font-mono text-[11px] mb-1" data-i18n="checklist.c4.t">4. Approval rules</div>
+                        <p class="text-xs text-gray-400 leading-snug" data-i18n="checklist.c4.d">Identify test approvers and workflow expectations.</p>
                     </div>
                 </div>
 
                 <!-- Review Questions Accordion -->
-                <details class="group border border-white/10 rounded-lg bg-navy-800/30 overflow-hidden max-w-4xl">
+                <details class="group border border-white/10 rounded-lg bg-navy-800/30 overflow-hidden max-w-4xl reveal reveal-d2">
                     <summary class="cursor-pointer p-4 font-medium text-sm text-white flex justify-between items-center focus-ring">
-                        <span class="flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-cyan-accent"></i> Questions a serious reviewer should ask</span>
+                        <span class="flex items-center gap-2" data-i18n-html="checklist.summary"><i data-lucide="help-circle" class="w-4 h-4 text-cyan-accent"></i> Questions a serious reviewer should ask</span>
                         <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform"></i>
                     </summary>
                     <div class="p-4 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Which SQL forms expand the classifier test corpus?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What identity model binds request fields to principals?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What transport security is required for the pilot?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Should evidence be exported to an append-only archive?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What KMS-backed verification is required later?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">How do instances coordinate policy and continuity?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">Which operator actions require a dedicated audit stream?</p></div>
-                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400">What latency budget is acceptable for write-path enforcement?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q1">Which SQL forms expand the classifier test corpus?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q2">What identity model binds request fields to principals?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q3">What transport security is required for the pilot?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q4">Should evidence be exported to an append-only archive?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q5">What KMS-backed verification is required later?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q6">How do instances coordinate policy and continuity?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q7">Which operator actions require a dedicated audit stream?</p></div>
+                        <div class="flex gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-600 mt-1.5 shrink-0"></div><p class="text-xs text-gray-400" data-i18n="checklist.q8">What latency budget is acceptable for write-path enforcement?</p></div>
                     </div>
                 </details>
             </div>
@@ -1150,41 +1172,45 @@
         <!-- Current Limitations Section -->
         <section id="current-limitations" class="py-20 border-b border-white/5 relative">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="mb-10 md:text-center max-w-2xl mx-auto">
-                    <h2 class="text-2xl font-medium text-white mb-2">Current limitations are part of the review.</h2>
-                    <p class="text-sm text-gray-400 font-light">
+                <div class="mb-10 md:text-center max-w-2xl mx-auto reveal">
+                    <h2 class="text-2xl font-medium text-white mb-2" data-i18n="lim.h2">Current limitations are part of the review.</h2>
+                    <p class="text-sm text-gray-400 font-light" data-i18n="lim.sub">
                         Security products lose trust when gaps are hidden. Evaluate AXIS v0.6 with clear boundaries.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 glass-panel p-6 rounded-xl border-white/5 max-w-5xl mx-auto reveal reveal-d1">
                     <div>
-                        <h4 class="text-status-active font-mono text-[11px] mb-4 border-b border-status-active/20 pb-2">Implemented today</h4>
+                        <h4 class="text-status-active font-mono text-[11px] mb-4 border-b border-status-active/20 pb-2" data-i18n="lim.impl">Implemented today</h4>
                         <ul class="text-xs text-gray-300 space-y-2.5">
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Rust backend service with Axum API</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> PostgreSQL-focused SQL classification</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy engine (ALLOW/BLOCK/APPROVAL)</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Local JSONL store approval workflow</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Audit evidence generation with hash-chain</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Evidence verification & visibility endpoints</li>
-                            <li class="flex gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy validation, dry-run, and rollback</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i1"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Rust backend service with Axum API</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i2"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> PostgreSQL-focused SQL classification</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i3"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy engine (ALLOW/BLOCK/APPROVAL)</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i4"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Local JSONL store approval workflow</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i5"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Audit evidence generation with hash-chain</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i6"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Evidence verification & visibility endpoints</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i7"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Policy validation, dry-run, and rollback</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i8"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Client and upstream mTLS across the full write-path (native pgwire forwarder, CancelRequest path, and API DbPool), verified with certificate-verification-bypass mutation tests (invalid CA, hostname-only bypass, disabled verification) &mdash; all detected/killed, not just encryption without verification</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i9"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Extended Query Protocol / ORM ground-truth compatibility verified end-to-end for Prisma (OID-less bind inference) and Hibernate + pgjdbc (explicit-OID binds, batch, savepoint/rollback), including positive and negative policy-enforcement controls with signed audit evidence</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i10"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Read-only decision traceability with WAL-backed explanation of recorded decisions</li>
+                            <li class="flex gap-2" data-i18n-html="lim.i11"><i data-lucide="check" class="w-3.5 h-3.5 text-status-active shrink-0 mt-0.5"></i> Central structured error taxonomy with operator actions and safe Control Plane rendering</li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-gray-500 font-mono text-[11px] mb-4 border-b border-white/10 pb-2">Not implemented yet</h4>
+                        <h4 class="text-gray-500 font-mono text-[11px] mb-4 border-b border-white/10 pb-2" data-i18n="lim.notImpl">Not implemented yet</h4>
                         <ul class="text-xs text-gray-400 space-y-2.5">
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Full RBAC or SSO</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Complete TLS/mTLS deployment story</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Distributed consensus coordination</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> External KMS signed policy distribution</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Tamper-proof external audit ledger</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Formal compliance mapping or certification</li>
-                            <li class="flex gap-2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> SaaS control plane</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n1"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Full RBAC or SSO</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n2"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Some protocol-edge compatibility gaps remain under active hardening: unknown portal/statement handling, SQLSTATE redaction on certain error codes, named-portal re-Bind semantics, and DECLARE CURSOR support</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n3"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Distributed consensus coordination</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n4"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> External KMS signed policy distribution</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n5"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Tamper-proof external audit ledger</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n6"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> Formal compliance mapping or certification</li>
+                            <li class="flex gap-2" data-i18n-html="lim.n7"><i data-lucide="minus" class="w-3.5 h-3.5 text-gray-600 shrink-0 mt-0.5"></i> SaaS control plane</li>
                         </ul>
                     </div>
                 </div>
                 
-                <p class="text-center text-[10px] text-gray-500 mt-6 font-mono">
+                <p class="text-center text-[10px] text-gray-500 mt-6 font-mono" data-i18n="lim.note">
                     This section is intentionally explicit so pilot discussions start from engineering reality, not marketing fog.
                 </p>
             </div>
@@ -1196,27 +1222,27 @@
             <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
                 
                 <!-- Left Column -->
-                <div>
-                    <div class="font-mono text-xs text-cyan-accent mb-4 tracking-widest uppercase">
+                <div class="reveal">
+                    <div class="font-mono text-xs text-cyan-accent mb-4 tracking-widest uppercase" data-i18n="cta.kicker">
                         VARUX AXIS / TECHNICAL REVIEW
                     </div>
 
-                    <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-5">
+                    <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-5" data-i18n="cta.h2">
                         Production writes should not depend on hope.
                     </h2>
 
-                    <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl mb-8">
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl mb-8" data-i18n="cta.sub">
                         Request a technical review of AXIS for architecture review, controlled demo discussion or non-production pilot planning.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
-                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-cyan-accent text-navy-900 hover:bg-cyan-accent/80 transition-colors font-medium rounded focus-ring shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                        <button type="button" onclick="openContactModal()" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-cyan-accent text-navy-900 hover:bg-cyan-accent/80 transition-colors font-medium rounded focus-ring shadow-[0_0_15px_rgba(0,229,255,0.2)]" data-i18n="cta.btnReview">
                             Request Technical Review
                         </button>
-                        <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
+                        <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring" data-i18n="cta.btnBack">
                             Back to VARUX Lab
                         </a>
-                        <a href="https://docs.varuxcyber.com/" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring">
+                        <a href="https://docs.varuxcyber.com/" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass-panel hover:bg-white/10 transition-colors text-white rounded border-white/10 focus-ring" data-i18n-html="cta.btnDocs">
                             AXIS Docs
                             <i data-lucide="external-link" class="w-4 h-4"></i>
                         </a>
@@ -1224,29 +1250,29 @@
                 </div>
 
                 <!-- Right Column (Review Snapshot) -->
-                <div class="glass-panel rounded-xl border-white/10 p-6 lg:ml-auto w-full max-w-md">
-                    <div class="text-[11px] font-mono text-gray-500 mb-5 tracking-wider">REVIEW SNAPSHOT</div>
+                <div class="glass-panel rounded-xl border-white/10 p-6 lg:ml-auto w-full max-w-md reveal reveal-d1">
+                    <div class="text-[11px] font-mono text-gray-500 mb-5 tracking-wider" data-i18n="cta.snapshot">REVIEW SNAPSHOT</div>
 
                     <div class="space-y-3 font-mono text-[11px] sm:text-xs">
                         <div class="flex justify-between border-b border-white/5 pb-3">
-                            <span class="text-gray-500">Current</span>
+                            <span class="text-gray-500" data-i18n="cta.snap.current">Current</span>
                             <span class="text-cyan-accent">v0.6 Pilot Readiness</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-3">
-                            <span class="text-gray-500">Scope</span>
-                            <span class="text-gray-300">PostgreSQL write-path</span>
+                            <span class="text-gray-500" data-i18n="cta.snap.scope">Scope</span>
+                            <span class="text-gray-300" data-i18n="cta.snap.scopeVal">PostgreSQL write-path</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-3">
-                            <span class="text-gray-500">Decisions</span>
+                            <span class="text-gray-500" data-i18n="cta.snap.decisions">Decisions</span>
                             <span class="text-gray-300">ALLOW / BLOCK / APPROVAL</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-3">
-                            <span class="text-gray-500">Evidence</span>
-                            <span class="text-gray-300">Durable audit trail</span>
+                            <span class="text-gray-500" data-i18n="cta.snap.evidence">Evidence</span>
+                            <span class="text-gray-300" data-i18n="cta.snap.evidenceVal">Durable audit trail</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-500">Pilot</span>
-                            <span class="text-status-warning">Non-production planning</span>
+                            <span class="text-gray-500" data-i18n="cta.snap.pilot">Pilot</span>
+                            <span class="text-status-warning" data-i18n="cta.snap.pilotVal">Non-production planning</span>
                         </div>
                     </div>
                 </div>
@@ -1259,21 +1285,21 @@
     <footer class="bg-[#020203] py-10 border-t border-white/5 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex flex-col items-center md:items-start gap-1">
-                <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" class="flex items-center gap-2 hover:opacity-80 transition-opacity focus-ring rounded">
+                <a href="https://varuxcyber.com" aria-label="Go to VARUX homepage" data-i18n-aria="nav.homeAria" class="flex items-center gap-2 hover:opacity-80 transition-opacity focus-ring rounded">
                     <div class="w-4 h-4 border border-status-active flex items-center justify-center rounded-sm">
                         <div class="w-1 h-1 bg-status-active"></div>
                     </div>
                     <span class="font-mono text-xs tracking-widest text-gray-400">VARUX <span class="text-gray-600">AXIS</span></span>
                 </a>
-                <p class="text-[11px] text-gray-600 font-mono">Deterministic database write-path control under VARUX.</p>
+                <p class="text-[11px] text-gray-600 font-mono" data-i18n="footer.tagline">Deterministic database write-path control under VARUX.</p>
             </div>
             
             <div class="flex flex-wrap justify-center gap-5 font-mono text-xs text-gray-500">
-                <a href="https://varuxcyber.com" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Home</a>
-                <a href="index.html" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">VARUX Lab</a>
-                <a href="#architecture" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Architecture</a>
-                <a href="#security-model" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Security Model</a>
-                <button type="button" onclick="openContactModal()" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1">Contact</button>
+                <a href="https://varuxcyber.com" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1" data-i18n="nav.home">Home</a>
+                <a href="index.html" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1" data-i18n="footer.lab">VARUX Lab</a>
+                <a href="#architecture" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1" data-i18n="nav.architecture">Architecture</a>
+                <a href="#security-model" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1" data-i18n="nav.securityModel">Security Model</a>
+                <button type="button" onclick="openContactModal()" class="hover:text-cyan-accent transition-colors focus-ring rounded px-1" data-i18n="footer.contact">Contact</button>
             </div>
             
             <div class="text-[11px] text-gray-600 font-mono">
@@ -1291,12 +1317,12 @@
         <div class="absolute inset-0 overflow-y-auto pt-20 pb-10 px-4 flex justify-center pointer-events-none">
             <div class="bg-navy-900 border border-white/10 rounded-xl shadow-2xl w-full max-w-lg p-6 relative pointer-events-auto h-fit">
                 
-                <button type="button" onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors focus-ring rounded p-1" aria-label="Close modal">
+                <button type="button" onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors focus-ring rounded p-1" aria-label="Close modal" data-i18n-aria="modal.closeAria">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
 
-                <h3 id="modal-title" class="text-xl font-medium text-white mb-2">Request AXIS technical review</h3>
-                <p class="text-sm text-gray-400 mb-6">Use this panel to prepare an email for architecture review, controlled demo discussion or non-production pilot planning.</p>
+                <h3 id="modal-title" class="text-xl font-medium text-white mb-2" data-i18n="modal.title">Request AXIS technical review</h3>
+                <p class="text-sm text-gray-400 mb-6" data-i18n="modal.sub">Use this panel to prepare an email for architecture review, controlled demo discussion or non-production pilot planning.</p>
 
                 <form id="contact-form" action="https://formspree.io/f/mlgpjdyy" method="POST" class="flex flex-col gap-4">
                     <!-- Honeypot -->
@@ -1307,46 +1333,46 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-1.5">
-                            <label for="cf-name" class="text-xs font-mono text-gray-300">Name</label>
+                            <label for="cf-name" class="text-xs font-mono text-gray-300" data-i18n="form.name.label">Name</label>
                             <input type="text" id="cf-name" name="name" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                         <div class="flex flex-col gap-1.5">
-                            <label for="cf-email" class="text-xs font-mono text-gray-300">Work Email</label>
+                            <label for="cf-email" class="text-xs font-mono text-gray-300" data-i18n="form.email.label">Work Email</label>
                             <input type="email" id="cf-email" name="email" required class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-1.5">
-                            <label for="cf-company" class="text-xs font-mono text-gray-300">Company (Optional)</label>
+                            <label for="cf-company" class="text-xs font-mono text-gray-300" data-i18n="form.company.label">Company (Optional)</label>
                             <input type="text" id="cf-company" name="company" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                         <div class="flex flex-col gap-1.5">
-                            <label for="cf-role" class="text-xs font-mono text-gray-300">Role (Optional)</label>
+                            <label for="cf-role" class="text-xs font-mono text-gray-300" data-i18n="form.role.label">Role (Optional)</label>
                             <input type="text" id="cf-role" name="role" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring">
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-1.5">
-                        <label for="cf-interest" class="text-xs font-mono text-gray-300">Interest</label>
+                        <label for="cf-interest" class="text-xs font-mono text-gray-300" data-i18n="form.interest.label">Interest</label>
                         <select id="cf-interest" name="interest" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring appearance-none">
-                            <option value="Technical review">Technical review</option>
-                            <option value="Non-production pilot discussion">Non-production pilot discussion</option>
-                            <option value="Architecture feedback">Architecture feedback</option>
-                            <option value="Security review">Security review</option>
-                            <option value="Partnership">Partnership</option>
-                            <option value="Other">Other</option>
+                            <option value="Technical review" data-i18n="form.interest.opt1">Technical review</option>
+                            <option value="Non-production pilot discussion" data-i18n="form.interest.opt2">Non-production pilot discussion</option>
+                            <option value="Architecture feedback" data-i18n="form.interest.opt3">Architecture feedback</option>
+                            <option value="Security review" data-i18n="form.interest.opt4">Security review</option>
+                            <option value="Partnership" data-i18n="form.interest.opt5">Partnership</option>
+                            <option value="Other" data-i18n="form.interest.opt6">Other</option>
                         </select>
                     </div>
 
                     <div class="flex flex-col gap-1.5">
-                        <label for="cf-message" class="text-xs font-mono text-gray-300">Message</label>
+                        <label for="cf-message" class="text-xs font-mono text-gray-300" data-i18n="form.message.label">Message</label>
                         <textarea id="cf-message" name="message" required rows="3" class="bg-navy-800 border border-white/10 rounded px-3 py-2 text-sm text-white focus-ring resize-none"></textarea>
                     </div>
 
                     <div id="form-status" class="text-xs font-mono text-gray-400" role="status" aria-live="polite"></div>
 
-                    <button type="submit" class="mt-2 w-full bg-cyan-accent text-navy-900 py-2.5 rounded font-medium hover:bg-cyan-accent/80 transition-colors focus-ring">
+                    <button type="submit" class="mt-2 w-full bg-cyan-accent text-navy-900 py-2.5 rounded font-medium hover:bg-cyan-accent/80 transition-colors focus-ring" data-i18n="form.submit">
                         Prepare Email
                     </button>
                 </form>
@@ -1467,6 +1493,237 @@
             }
         });
 
+        // ----------------------------------------
+        // Scroll Reveal (slow, subtle)
+        // ----------------------------------------
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
         </script>
+
+    <script src="i18n.js"></script>
+    <script>I18N.register('tr', {
+        'nav.homeAria': 'VARUX ana sayfasına git',
+        'nav.home': 'Ana Sayfa',
+        'nav.product': 'Ürün',
+        'nav.architecture': 'Mimari',
+        'nav.controlPanel': 'Kontrol Paneli',
+        'nav.securityModel': 'Güvenlik Modeli',
+        'nav.pilot': 'Pilot',
+        'nav.requestReview': 'Teknik İnceleme Talep Et',
+        'hero.badge': 'VARUX AXIS / VERİTABANI YAZMA YOLU KONTROLÜ',
+        'hero.h1': "Tehlikeli üretim yazmalarını durdurun <br class=\"hidden lg:block\"/> <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500\">PostgreSQL'e ulaşmadan önce.</span>",
+        'hero.sub': 'Deterministik policy enforcement, approval iş akışları ve kalıcı denetim kanıtı.',
+        'hero.desc': 'VARUX AXIS, PostgreSQL yazma yolları için bir kontrol katmanıdır. Riskli UPDATE, DELETE veya DDL işlemleri yürütülmeden önce actor context, SQL niyeti, policy kuralları ve approval durumunu değerlendirir.',
+        'hero.milestoneLabel': 'Güncel kilometre taşı',
+        'hero.suitableLabel': 'Uygun olduğu alanlar',
+        'hero.suitableValue': 'Kontrollü demolar · yerel inceleme · üretim dışı pilot',
+        'hero.notYetLabel': 'Henüz değil',
+        'hero.notYetValue': 'Uyumluluk sertifikalı kurumsal üretim sürümü',
+        'hero.techReviewNote': 'Çıktıdan önce teknik inceleme için tasarlandı.',
+        'hero.ctaReview': 'Teknik İnceleme Talep Et',
+        'hero.ctaArch': 'Mimariyi İncele',
+        'paths.h2': 'İnceleme yolunuzu seçin.',
+        'paths.sub': 'AXIS, mevcut sınırlarını gizlemeden farklı teknik kitleler tarafından değerlendirilebilecek şekilde tasarlanmıştır.',
+        'paths.reviewer.title': 'Güvenlik İncelemecisi',
+        'paths.reviewer.desc': 'Güvenlik modeli, hata davranışı, approval sınırları ve denetim kanıtı akışıyla başlayın.',
+        'paths.reviewer.link1': 'Güvenlik Modeli',
+        'paths.reviewer.link2': 'Kanıt',
+        'paths.reviewer.link3': 'Hata Modeli',
+        'paths.engineer.title': 'Platform Mühendisi',
+        'paths.engineer.desc': 'Yazma-yolu yerleşimi, control plane beklentileri, çıktı modları ve operasyonel kısıtları inceleyin.',
+        'paths.engineer.link1': 'Mimari',
+        'paths.engineer.link2': 'İşletim Modları',
+        'paths.engineer.link3': 'Pilot Kontrol Listesi',
+        'paths.pilot.title': 'Pilot Değerlendiricisi',
+        'paths.pilot.desc': 'Temsilî SQL işlemleriyle bir staging ya da üretim dışı değerlendirme hazırlamak için pilot kontrol listesini kullanın.',
+        'paths.pilot.link1': 'Pilot Yolu',
+        'paths.pilot.link2': 'Pilot Kontrol Listesi',
+        'paths.pilot.link3': 'Ekip ile İletişime Geç',
+        'paths.cto.title': 'Kurucu / CTO',
+        'paths.cto.desc': 'AXIS\'in ne yaptığını, neyi iddia etmeyi reddettiğini ve üretim veritabanı yönetişiminde nereye oturduğunu anlayın.',
+        'paths.cto.link1': 'AXIS Nedir',
+        'paths.cto.link2': 'Mevcut Sınırlamalar',
+        'paths.cto.link3': 'Teknik İnceleme Talep Et',
+        'problem.h2': 'Üretim yazmalarının hasar görmesi hâlâ çok kolay.',
+        'problem.sub': "Modern sistemler; iç araçların, otomasyonların, script'lerin ve AI ajanlarının üretim veritabanlarına erişmesine izin veriyor. Tek bir geniş kapsamlı DELETE ya da güvencesiz DDL; policy, approval ve kanıtı atlarsa olaya dönüşebilir.",
+        'problem.card1.title': 'Geniş Kapsamlı DELETE / UPDATE',
+        'problem.card1.desc': 'Toplu yazmalar ve eksik WHERE koşulları geri döndürülemez hasar yaratır.',
+        'problem.card2.title': 'Güvencesiz DDL',
+        'problem.card2.desc': 'İncelemeyi atlayan şema değişiklikleri davranışı bozabilir.',
+        'problem.card3.title': 'AI / otomasyon erişimi',
+        'problem.card3.desc': "Ajanlar ve script'ler, sınırlar olmadan insan incelemesinden daha hızlı hareket eder.",
+        'problem.card4.title': 'Kalıcı kanıt eksikliği',
+        'problem.card4.desc': 'Uygulama logları, kimin neyi ve neden denediğini güvenilir şekilde kanıtlayamaz.',
+        'def.h2': 'AXIS Nedir',
+        'def.sub': "AXIS kontrollü bir execution gateway'dir. İstemciler yazma niyetini AXIS üzerinden iletir. AXIS context oluşturur, SQL'i sınıflandırır, deterministik policy'yi değerlendirir, kalıcı kanıt yazar ve ancak o zaman işleme izin verir, işlemi bloklar ya da onaya yönlendirir.",
+        'def.gate.desc': "Context toplar, SQL'i normalleştirir, READ/WRITE sınıflandırması yapar ve risk sinyalleri çıkarır.",
+        'def.policy.desc': "Policy'leri deterministik olarak değerlendirip ALLOW, BLOCK ya da REQUIRE_APPROVAL üretir.",
+        'def.evidence.desc': 'Doğrulanabilir olayları kaydeder; böylece riskli veritabanı işlemleri güvenli şekilde yeniden kurgulanabilir.',
+        'def.isTitle': 'AXIS şudur:',
+        'def.is1': 'deterministik PostgreSQL yazma-yolu kontrolü',
+        'def.is2': 'kontrollü execution gateway',
+        'def.is3': 'policy destekli karar katmanı',
+        'def.is4': 'riskli işlemler için approval sınırı',
+        'def.is5': 'kalıcı denetim kanıtı üreteci',
+        'def.is6': 'operatör görünürlüğü ve policy yaşam döngüsü yüzeyi',
+        'def.notTitle': 'AXIS şu değildir:',
+        'def.not1': 'WAF, SIEM ya da DLP',
+        'def.not2': 'SQL injection dedektörü',
+        'def.not3': 'masking/şifreleme ürünü',
+        'def.not4': "sorgu optimizer'ı",
+        'def.not5': "birebir takılan PostgreSQL wire-protocol proxy'si",
+        'def.not6': 'uygulama yetkilendirmesinin yerine geçmez',
+        'def.not7': 'uyumluluk sertifikalı sürüm',
+        'arch.h2': 'Deterministik Yazma-Yolu Mimarisi',
+        'arch.sub': 'Sistem Bileşenleri',
+        'arch.quote': '"Güvencesiz belirsizlik sessizce ilerlememelidir. Bilinmeyen ya da desteklenmeyen yazma kapasiteli SQL, policy gereği bloklanmalı ya da onaya yönlendirilmelidir."',
+        'flow.h2': 'Her yazma; context, karar ve kanıta dönüşür.',
+        'flow.sub': 'AXIS kararları deterministiktir. Aynı request context ve policy sürümü her zaman aynı sonucu üretir.',
+        'flow.step1': 'İstek',
+        'flow.step2': 'Bağlam',
+        'flow.step3': 'Sınıflandırma',
+        'flow.step4': 'Risk Sinyalleri',
+        'flow.step6': 'Kanıt',
+        'panel.h2': 'Control Plane Önizlemesi',
+        'panel.sub': 'Operasyonel gerçek, dekoratif güven değil.',
+        'panel.note': 'Yalnızca önizleme değerleri. Canlı bir dağıtım bu kartları gerçek AXIS uçlarına bağlamalıdır.',
+        'tab.health': 'Sağlık',
+        'tab.live': 'Canlı İstekler',
+        'tab.approvals': 'Onaylar <span class="bg-status-warning/20 text-status-warning px-1.5 py-0.5 rounded ml-1 text-[9px]">1</span>',
+        'tab.evidence': 'Kanıt',
+        'tab.policy': 'Policy',
+        'sim.approve': 'Onayla',
+        'sim.reject': 'Reddet',
+        'sim.simulate': 'Simüle Et',
+        'sim.activate': 'Etkinleştir',
+        'sim.rollback': 'Geri Al',
+        'sec.h2': 'Güvenlik Modeli',
+        'sec.sub': 'Veritabanı yazma yolunu koruyan mimari ilkeler.',
+        'sec.card1.title': 'Deterministik Uygulama',
+        'sec.card1.desc': 'Açık policy kuralları ve sürümlü metadata; olasılıksal tahmin değil.',
+        'sec.card2.title': 'Fail-Safe Varsayılanlar',
+        'sec.card2.desc': 'Güvencesiz belirsizlik ya da iç policy hatası sessizce veritabanına ilerlememelidir.',
+        'sec.card3.title': 'Kalıcı Kanıt',
+        'sec.card3.desc': 'Her kritik yazma-yolu kararı, işlem yapılmadan önce güvenli şekilde kaydedilir.',
+        'sec.card4.title': 'Onay Sınırları',
+        'sec.card4.desc': 'Riskli işlemler; katı policy_version ve TTL ile sınırlanmış insan onayına yönlendirilir.',
+        'sec.card5.title': 'Bypass Kontrolü',
+        'sec.card5.desc': 'Korumalı yazma yolları AXIS üzerinden geçmelidir. Gerçek bir pilot şunları gözden geçirmelidir:',
+        'sec.bypass1': "Uygulama bağlantı dizgeleri AXIS/Gate'i işaret eder",
+        'sec.bypass2': 'Doğrudan DB portu, Gate dışı iş yüklerinden kısıtlanır',
+        'sec.bypass3': 'Acil doğrudan yazma yolu denetim olayı gerektirir',
+        'sec.bypass4': 'Drift algılama, beklenmeyen DB istemcilerini raporlar',
+        'ev.h2': 'Olay incelemesinden sağ çıkan kanıt.',
+        'ev.sub': 'Uygulama logları, bir uygulamanın ne olduğunu <i>düşündüğünü</i> açıklar. AXIS kanıtı ise üretim yazma yolunun neye izin verdiğini, neyi blokladığını ya da neyi yükselttiğini kesin olarak açıklar.',
+        'modes.h2': 'Kontrollü devreye alma için işletim modları.',
+        'modes.m1.title': 'Gözlemle / Shadow',
+        'modes.m1.desc': 'Yazmaları bloklamadan kararları kaydeder. Değerlendirme için faydalıdır.',
+        'modes.m2.title': 'Approval Öncelikli',
+        'modes.m2.desc': 'Riskli yazmaları katı otomatik bloklamadan önce iş akışlarına yönlendirir.',
+        'modes.m3.desc': 'Policy\'yi deterministik olarak uygulayıp ALLOW, BLOCK ya da REQUIRE_APPROVAL üretir.',
+        'modes.m4.title': 'Acil Bypass',
+        'modes.m4.desc': 'Kapsamı sınırlı, süre sınırlı ve denetlenebilir istisna. Kaçış kapısı değildir.',
+        'pilot.h2': 'Pilot ve Teknik İnceleme Yolu',
+        'pilot.sub': "AXIS'i değerlendirmek; güvenlik ve platform mühendislik ekipleri için tasarlanmış yapılandırılmış bir müşteri inceleme yolu izler.",
+        'pilot.step1': 'Mimariyi anlayın',
+        'pilot.step2': 'Yerel değerlendirme çalıştırın',
+        'pilot.step3': 'Kararları ve kanıtı inceleyin',
+        'pilot.step4': 'Pilot sınırlamalarını gözden geçirin',
+        'pilot.posture': 'AXIS v0.6; kontrollü demolar, yerel teknik değerlendirme, mimari inceleme ve üretim dışı pilot planlaması için uygundur.',
+        'pilot.notYet': 'Henüz kurumsal üretime hazır dağıtık bir dağıtım ya da uyumluluk sertifikalı sürüm değildir.',
+        'pilot.examplesTitle': 'Pilot Başarı Örnekleri:',
+        'pilot.ex1': "Tehlikeli DELETE, PostgreSQL'den önce bloklandı.",
+        'pilot.ex2': 'Onaylanan toplu işlem request_id ile izlendi.',
+        'pilot.ex3': 'Karar, reason_code ve policy_version gösterir.',
+        'pilot.ex4': 'Denetim zaman çizelgesi yazma girişimini yeniden kurgular.',
+        'checklist.h2': 'Pilot hazırlık kontrol listesi',
+        'checklist.sub': 'Teknik inceleme ya da pilot öncesinde, AXIS değerlendirmesini gerçekçi kılan girdileri hazırlayın.',
+        'checklist.c1.t': '1. Üretim dışı DB',
+        'checklist.c1.d': 'Staging ya da yerel bir veritabanı kullanın. Üretimle başlamayın.',
+        'checklist.c2.t': '2. Temsilî SQL',
+        'checklist.c2.d': 'Gerçekçi UPDATE, DELETE, DDL işlemleri toplayın.',
+        'checklist.c3.t': '3. Policy gereksinimleri',
+        'checklist.c3.d': 'İzin verilen ve bloklanan yazma örnekleri tanımlayın.',
+        'checklist.c4.t': '4. Approval kuralları',
+        'checklist.c4.d': 'Test onaylayıcılarını ve iş akışı beklentilerini belirleyin.',
+        'checklist.summary': 'Ciddi bir incelemecinin sorması gereken sorular',
+        'checklist.q1': 'Hangi SQL biçimleri sınıflandırıcı test külliyatını genişletir?',
+        'checklist.q2': 'Hangi kimlik modeli request alanlarını temel öznelere bağlar?',
+        'checklist.q3': 'Pilot için hangi taşıma güvenliği gereklidir?',
+        'checklist.q4': 'Kanıt, yalnızca-eklenebilir bir arşive dışa aktarılmalı mı?',
+        'checklist.q5': 'Daha sonra hangi KMS destekli doğrulama gerekir?',
+        'checklist.q6': 'Örnekler policy ve sürekliliği nasıl koordine eder?',
+        'checklist.q7': 'Hangi operatör eylemleri özel bir denetim akışı gerektirir?',
+        'checklist.q8': "Yazma-yolu enforcement'ı için kabul edilebilir gecikme bütçesi nedir?",
+        'lim.h2': 'Mevcut sınırlamalar da incelemenin parçasıdır.',
+        'lim.sub': "Güvenlik ürünleri, boşluklar gizlendiğinde güven kaybeder. AXIS v0.6'yı net sınırlarla değerlendirin.",
+        'lim.impl': 'Bugün uygulandı',
+        'lim.i1': "Axum API'li Rust backend servisi",
+        'lim.i2': 'PostgreSQL odaklı SQL sınıflandırması',
+        'lim.i3': 'Policy engine (ALLOW/BLOCK/APPROVAL)',
+        'lim.i4': 'Yerel JSONL depolu approval iş akışı',
+        'lim.i5': 'Hash zincirli denetim kanıtı üretimi',
+        'lim.i6': 'Kanıt doğrulama ve görünürlük uçları',
+        'lim.i7': 'Policy doğrulama, dry-run ve rollback',
+        'lim.i8': "Client ve upstream mTLS, tüm yazma yolu boyunca (native pgwire forwarder, CancelRequest yolu ve API DbPool) — sertifika-doğrulama-bypass mutasyon testleriyle doğrulanmıştır (geçersiz CA, yalnızca hostname bypass'ı, devre dışı doğrulama) &mdash; hepsi tespit edildi/öldürüldü; yalnızca doğrulamasız şifreleme değil",
+        'lim.i9': "Extended Query Protocol / ORM ground-truth uyumluluğu, Prisma (OID'siz bind çıkarımı) ve Hibernate + pgjdbc (açık-OID bind'ler, batch, savepoint/rollback) için uçtan uca doğrulandı; imzalı denetim kanıtıyla pozitif ve negatif policy-enforcement kontrolleri dahil",
+        'lim.i10': 'Kaydedilen kararların WAL destekli açıklamasıyla salt-okunur karar izlenebilirliği',
+        'lim.i11': 'Operatör eylemleri ve güvenli Control Plane gösterimi içeren merkezi yapılandırılmış hata taksonomisi',
+        'lim.notImpl': 'Henüz uygulanmadı',
+        'lim.n1': 'Tam RBAC ya da SSO',
+        'lim.n2': 'Bazı protokol-kenar uyumluluk boşlukları aktif sertleştirme altında: bilinmeyen portal/statement işleme, bazı hata kodlarında SQLSTATE redaksiyonu, adlandırılmış portal re-Bind semantiği ve DECLARE CURSOR desteği',
+        'lim.n3': 'Dağıtık consensus koordinasyonu',
+        'lim.n4': 'Harici KMS imzalı policy dağıtımı',
+        'lim.n5': 'Kurcalamaya dayanıklı harici denetim defteri',
+        'lim.n6': 'Resmî uyumluluk eşlemesi ya da sertifikasyonu',
+        'lim.n7': 'SaaS control plane',
+        'lim.note': 'Bu bölüm, pilot görüşmelerinin pazarlama sisiyle değil mühendislik gerçeğiyle başlaması için bilinçli olarak açıktır.',
+        'cta.kicker': 'VARUX AXIS / TEKNİK İNCELEME',
+        'cta.h2': 'Üretim yazmaları umuda bağlı olmamalı.',
+        'cta.sub': 'Mimari inceleme, kontrollü demo görüşmesi ya da üretim dışı pilot planlaması için AXIS teknik incelemesi talep edin.',
+        'cta.btnReview': 'Teknik İnceleme Talep Et',
+        'cta.btnBack': "VARUX Lab'e Dön",
+        'cta.btnDocs': 'AXIS Dokümanları',
+        'cta.snapshot': 'İNCELEME ÖZETİ',
+        'cta.snap.current': 'Güncel',
+        'cta.snap.scope': 'Kapsam',
+        'cta.snap.scopeVal': 'PostgreSQL yazma yolu',
+        'cta.snap.decisions': 'Kararlar',
+        'cta.snap.evidence': 'Kanıt',
+        'cta.snap.evidenceVal': 'Kalıcı denetim izi',
+        'cta.snap.pilot': 'Pilot',
+        'cta.snap.pilotVal': 'Üretim dışı planlama',
+        'footer.tagline': 'VARUX altında deterministik veritabanı yazma-yolu kontrolü.',
+        'footer.lab': 'VARUX Lab',
+        'footer.contact': 'İletişim',
+        'modal.closeAria': 'Modalı kapat',
+        'modal.title': 'AXIS teknik incelemesi talep et',
+        'modal.sub': 'Mimari inceleme, kontrollü demo görüşmesi ya da üretim dışı pilot planlaması için e-posta hazırlamak üzere bu paneli kullanın.',
+        'form.name.label': 'İsim',
+        'form.email.label': 'İş E-postası',
+        'form.company.label': 'Şirket (İsteğe Bağlı)',
+        'form.role.label': 'Görev (İsteğe Bağlı)',
+        'form.interest.label': 'İlgi Alanı',
+        'form.interest.opt1': 'Teknik inceleme',
+        'form.interest.opt2': 'Üretim dışı pilot görüşmesi',
+        'form.interest.opt3': 'Mimari geri bildirimi',
+        'form.interest.opt4': 'Güvenlik incelemesi',
+        'form.interest.opt5': 'İş ortaklığı',
+        'form.interest.opt6': 'Diğer',
+        'form.message.label': 'Mesaj',
+        'form.submit': 'E-postayı Hazırla',
+        '_meta': {
+            'title': 'VARUX AXIS | Deterministik PostgreSQL Yazma-Yolu Kontrolü',
+            'description': 'VARUX AXIS, riskli veritabanı işlemleri yürütülmeden önce policy enforcement, approval iş akışları ve kalıcı denetim kanıtı sağlayan deterministik bir PostgreSQL yazma-yolu kontrol katmanıdır.'
+        }
+    });</script>
 </body>
 </html>
