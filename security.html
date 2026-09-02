@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="tr" data-lang="tr" data-ui-lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>VARUX | Güvenlik ve Açıklama / Security & Disclosure</title>
+    <meta name="description" content="VARUX güvenlik sayfasi: web sitesi guvenlik acigi bildirme sureci, yanit sureleri, kapsam disi bulgular, iyi niyet korumasi ve koordineli aciklama.">
+    <meta name="keywords" content="VARUX, güvenlik, security, güvenlik açığı bildirimi, vulnerability disclosure, responsible disclosure, coordinated disclosure, safe harbor">
+    <meta name="author" content="VARUX">
+    <meta name="publisher" content="VARUX">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#020202">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
+    <link rel="canonical" href="https://varuxcyber.com/security.html">
+    <link rel="alternate" hreflang="tr" href="https://varuxcyber.com/security.html">
+    <link rel="alternate" hreflang="en" href="https://varuxcyber.com/security.html">
+    <link rel="alternate" hreflang="x-default" href="https://varuxcyber.com/security.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:site_name" content="VARUX">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://varuxcyber.com/security.html">
+    <meta property="og:title" content="VARUX | Güvenlik ve Açıklama / Security & Disclosure">
+    <meta property="og:description" content="VARUX güvenlik sayfasi: web sitesi guvenlik acigi bildirme sureci, yanit sureleri, kapsam disi bulgular, iyi niyet korumasi ve koordineli aciklama.">
+    <meta property="og:image" content="https://varuxcyber.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VARUX | Güvenlik ve Açıklama / Security & Disclosure">
+    <meta name="twitter:description" content="VARUX güvenlik sayfasi: web sitesi guvenlik acigi bildirme sureci, yanit sureleri, kapsam disi bulgular, iyi niyet korumasi ve koordineli aciklama.">
+    <meta name="twitter:image" content="https://varuxcyber.com/og-image.png">
+    <meta name="twitter:site" content="@varuxtech">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://varuxcyber.com/#org",
+          "name": "VARUX",
+          "url": "https://varuxcyber.com/",
+          "logo": "https://varuxcyber.com/favicon-512.png",
+          "sameAs": [
+            "https://github.com/VARUX-TECH-LAB",
+            "https://x.com/varuxtech",
+            "https://www.linkedin.com/company/varux"
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://varuxcyber.com/security.html#webpage",
+          "url": "https://varuxcyber.com/security.html",
+          "name": "VARUX | Güvenlik ve Açıklama / Security & Disclosure",
+          "isPartOf": { "@id": "https://varuxcyber.com/#website" },
+          "about": { "@id": "https://varuxcyber.com/#org" },
+          "inLanguage": ["tr", "en"],
+          "description": "VARUX güvenlik sayfasi: web sitesi guvenlik acigi bildirme sureci, yanit sureleri, kapsam disi bulgular, iyi niyet korumasi ve koordineli aciklama."
+        }
+      ]
+    }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono&display=swap');
+
+        :root {
+            --bg: #020202;
+            --card: #080808;
+            --border: #121212;
+            --accent: #3b82f6;
+            --axis-accent: #10b981;
+            --arbiter-accent: #6366f1;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #a1a1aa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-mark-premium {
+            position: relative;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(222, 232, 248, 0.9) 52%, rgba(132, 164, 213, 0.86) 100%);
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            overflow: hidden;
+        }
+
+        .brand-mark-premium::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: 0.44rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.75;
+        }
+
+        .brand-mark-premium::after {
+            content: "";
+            position: absolute;
+            top: -28%;
+            left: 48%;
+            width: 84%;
+            height: 84%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 72%);
+            transform: rotate(32deg);
+            opacity: 0.42;
+        }
+
+        .brand-mark-core {
+            position: relative;
+            width: 0.52rem;
+            height: 0.52rem;
+            border-radius: 0.14rem;
+            background: #050505;
+            box-shadow:
+                0 0 0 4px rgba(5, 5, 5, 0.08),
+                0 0 0 8px rgba(5, 5, 5, 0.04);
+            z-index: 1;
+        }
+
+        .brand-link:hover .brand-mark-premium {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.36),
+                inset 0 1px 0 rgba(255, 255, 255, 0.72),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+            filter: saturate(1.08);
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .lang-button {
+            min-width: 2.4rem;
+            height: 2rem;
+            padding: 0 0.75rem;
+            border-radius: 999px;
+            color: #71717a;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+        }
+
+        .lang-button:hover { color: #ffffff; }
+
+        .lang-button.is-active {
+            background: rgba(255, 255, 255, 0.94);
+            color: #050505;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        }
+
+        .glass {
+            background: rgba(10, 10, 10, 0.82);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+        }
+
+        .btn-premium {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.4);
+        }
+
+        .placeholder {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78em;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.07);
+            border: 1px dashed rgba(251, 191, 36, 0.35);
+            border-radius: 0.375rem;
+            padding: 1px 7px;
+            vertical-align: baseline;
+        }
+
+        .policy-card {
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+        }
+        .policy-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .doc-tables table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .doc-tables th {
+            text-align: left;
+            padding: 0.9rem 1.1rem;
+            color: #71717a;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border-bottom: 1px solid #1a1a1a;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.015);
+        }
+        .doc-tables td {
+            padding: 0.95rem 1.1rem;
+            border-bottom: 1px solid #121212;
+            vertical-align: top;
+            color: #a1a1aa;
+            line-height: 1.65;
+        }
+        .doc-tables tr:last-child td { border-bottom: 0; }
+        .doc-tables tr:hover td { background: rgba(255, 255, 255, 0.015); }
+
+        .kvkk-tag, .gdpr-tag {
+            display: inline-flex;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .kvkk-tag {
+            color: #93c5fd;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+        .gdpr-tag {
+            color: #6ee7b7;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .legal-title span {
+            color: transparent !important;
+            background: linear-gradient(105deg, #5b6270 0%, #a1a8b5 42%, #4c5668 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .section-anchor {
+            scroll-margin-top: 110px;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 767px) {
+            nav,
+            header,
+            section,
+            footer {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+            section { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* Dil görünürlük kuralları */
+        html[data-ui-lang="tr"] [data-lang="en"] {
+            display: none !important;
+        }
+        html[data-ui-lang="en"] [data-lang="tr"] {
+            display: none !important;
+        }
+</style>
+</head>
+<body data-ui-lang="tr">
+
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4 md:py-5 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-6 lg:gap-14">
+                <a href="index.html" class="brand-link group">
+                    <span class="brand-mark-premium" aria-hidden="true">
+                        <span class="brand-mark-core"></span>
+                    </span>
+                    <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-5">
+                <a href="mailto:legal@varuxcyber.com" class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">legal@varuxcyber.com</a>
+                <div class="lang-switch" aria-label="Language switcher">
+                    <button type="button" class="lang-button is-active" data-lang-switch="tr">TR</button>
+                    <button type="button" class="lang-button" data-lang-switch="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <header class="relative pt-36 md:pt-44 pb-16 md:pb-24 px-4 sm:px-6 lg:px-10 border-b border-zinc-900 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute inset-0" style="background:
+                radial-gradient(900px 420px at 78% -10%, rgba(59,130,246,0.08), transparent 60%),
+                radial-gradient(700px 380px at 8% 4%, rgba(59,130,246,0.05), transparent 60%);"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-end">
+                <div>
+                    <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_16px_rgba(59,130,246,0.9)]"></span>
+                        <span data-lang="tr">Güvenlik · Açıklama Süreci</span>
+                        <span data-lang="en">Security · Disclosure Process</span>
+                    </div>
+
+                    <h1 class="legal-title text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-white mb-8 leading-[0.92]">
+                        <span data-lang="tr">Güvenlik ve <span class="text-zinc-600 italic">Açıklama.</span></span>
+                        <span data-lang="en">Security &amp; <span class="text-zinc-600 italic">Disclosure.</span></span>
+                    </h1>
+
+                    <div class="hero-meta-line mt-10 hidden sm:block" style="width:64px;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,0.72));"></div>
+                </div>
+
+                <!-- DOC META -->
+                <div class="glass p-1 rounded-2xl">
+                    <div class="bg-zinc-950 p-8 border border-zinc-900 rounded-xl">
+                        <div class="text-[10px] font-mono text-zinc-600 mb-6 tracking-widest uppercase">// DOC_META</div>
+                        <div class="space-y-5">
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="tr">Sürüm</span>
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="en">Version</span>
+                                <span class="text-xs font-mono text-white">1.0</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="tr">Yürürlük</span>
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="en">Effective</span>
+                                <span class="text-xs font-mono text-white">14.08.2026</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="tr">Yargı Alanı</span>
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="en">Jurisdiction</span>
+                                <span class="text-xs font-mono text-white">TR · EU/EEA</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="tr">Kapsam</span>
+                                <span class="text-[9px] font-mono uppercase tracking-widest text-zinc-600" data-lang="en">Scope</span>
+                                <span class="text-xs font-mono text-white">Web · B2B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NOTICE STRIP -->
+    <section class="py-10 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="border border-amber-500/20 bg-amber-500/[0.04] rounded-xl p-6 flex items-start gap-4">
+                <span class="text-amber-400 text-xs font-black tracking-[0.2em] uppercase shrink-0 pt-0.5" data-lang="tr">Önemli</span>
+                <span class="text-amber-400 text-xs font-black tracking-[0.2em] uppercase shrink-0 pt-0.5" data-lang="en">Important</span>
+                <p class="text-zinc-500 text-sm leading-relaxed" data-lang="tr">Bu sayfa web sitesi kapsamındaki açık bildirimlerini düzenler. Acil ve aktif bir istismar gözlemliyorsanız konu satırına "URGENT" yazınız.</p>
+                <p class="text-zinc-500 text-sm leading-relaxed" data-lang="en">This page governs vulnerability reports for the website scope. If you observe an urgent, active exploitation, add "URGENT" to your subject line.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <main class="pb-24 px-4 sm:px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-[280px_1fr] gap-10 items-start">
+
+            <!-- POLICY INDEX -->
+            <aside class="glass rounded-xl p-6 sticky top-28 hidden lg:block">
+                <div class="text-[10px] font-mono text-zinc-600 mb-6 tracking-widest uppercase">// POLICY_INDEX</div>
+                <nav class="space-y-1">
+                    <a href="#kapsam" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Kapsam</span><span data-lang="en">Scope</span><span class="font-mono text-zinc-700 text-[9px]">01</span></a>
+                    <a href="#bildirim" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Açık Bildirme</span><span data-lang="en">Reporting</span><span class="font-mono text-zinc-700 text-[9px]">02</span></a>
+                    <a href="#sureler" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Yanıt Süreleri</span><span data-lang="en">Response Windows</span><span class="font-mono text-zinc-700 text-[9px]">03</span></a>
+                    <a href="#kapsam-disi" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Kapsam Dışı</span><span data-lang="en">Out of Scope</span><span class="font-mono text-zinc-700 text-[9px]">04</span></a>
+                    <a href="#iyi-niyet" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">İyi Niyet Koruması</span><span data-lang="en">Safe Harbor</span><span class="font-mono text-zinc-700 text-[9px]">05</span></a>
+                    <a href="#aciklama" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Koordineli Açıklama</span><span data-lang="en">Coordinated Disclosure</span><span class="font-mono text-zinc-700 text-[9px]">06</span></a>
+                    <a href="#onlemler" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Site Güvenliği</span><span data-lang="en">Site Security</span><span class="font-mono text-zinc-700 text-[9px]">07</span></a>
+                    <a href="#urun" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">Ürün Güvenliği</span><span data-lang="en">Product Security</span><span class="font-mono text-zinc-700 text-[9px]">08</span></a>
+                    <a href="#iletisim" class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-[11px] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-colors"><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span><span class="font-mono text-zinc-700 text-[9px]">09</span></a>
+                </nav>
+            </aside>
+
+            <div class="space-y-10">
+
+                <!-- 01 KAPSAM -->
+                <section id="kapsam" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Sınır</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Boundary</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Kapsam</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Scope</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">01</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bu sayfa <span class="text-white">varuxcyber.com</span> web sitesi, alt sayfaları ve burada yayınlanan varlıklar için güvenlik açığı bildirme sürecini açıklar.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">This page explains the vulnerability reporting process for the <span class="text-white">varuxcyber.com</span> website, its subpages and the assets published here.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">AXIS ve ARBITER ürünlerinin müşteri ortamlarındaki güvenlik konuları, sözleşmesel destek kanalları üzerinden yürütülür. Aşağıdaki süreç site kapsamı içindir.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">Security matters concerning AXIS and ARBITER inside customer environments are handled through contractual support channels. The process below applies to the website scope.</p>
+
+                    </div>
+                </section>
+
+                <!-- 02 BILDIRIM -->
+                <section id="bildirim" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Bildirim</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Reporting</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Güvenlik Açığı Bildirme</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Reporting a Vulnerability</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">02</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bir güvenlik açığı tespit ederseniz bize <a href="mailto:security@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">security@varuxcyber.com</a> adresinden yazın. Bildiriminize şunları ekleyin:</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">If you discover a vulnerability, write to us at <a href="mailto:security@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">security@varuxcyber.com</a>. Please include:</p>
+<ul class="text-zinc-400 text-sm space-y-3 font-light mb-6"><li data-lang="tr">- Etkilenen sayfa veya uç nokta (URL) ve açığın türü.</li><li data-lang="en">- The affected page or endpoint (URL) and the vulnerability type.</li><li data-lang="tr">- Yeniden üretim adımları veya kavram kanıtı (sadece doğrulamak için yeterli olan).</li><li data-lang="en">- Reproduction steps or a proof of concept (only what is needed to verify).</li><li data-lang="tr">- Etki değerlendirmeniz ve varsa önerdiğiniz düzeltme.</li><li data-lang="en">- Your impact assessment and, if available, a suggested fix.</li></ul>                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Şifreli iletişim gerekiyorsa, ilk e-postanızda size özel bir anahtar paylaşım kanalı talep edin. Hassas veri içeren kanıtlar göndermeyin.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">If encrypted communication is needed, request a dedicated key-sharing channel in your first email. Do not send evidence containing sensitive data.</p>
+
+                    </div>
+                </section>
+
+                <!-- 03 SURELER -->
+                <section id="sureler" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">SLA</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">SLA</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Yanıt Süreleri</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Response Windows</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">03</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bildirimleri öncelik sırasına göre işleriz ve şeffaflık için hedef sürelerimiz aşağıdadır:</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">We triage reports by priority and publish our target windows below for transparency:</p>
+                        <div class="doc-tables overflow-x-auto rounded-xl border border-zinc-900">
+                            <table>
+                                <thead>
+                                    <tr><th data-lang="tr">Aşama</th><th data-lang="tr">Hedef Süre</th><th data-lang="tr">Açıklama</th><th data-lang="en">Stage</th><th data-lang="en">Target</th><th data-lang="en">Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-lang="tr">Kabul bildirimi</td><td data-lang="tr"><span class="font-mono text-emerald-500 text-xs">72 saat</span></td><td data-lang="tr">Bildirimin alındığına dair ilk yanıt.</td><td data-lang="en">Acknowledgement</td><td data-lang="en"><span class="font-mono text-emerald-500 text-xs">72 hours</span></td><td data-lang="en">First response confirming receipt of the report.</td></tr>
+                                    <tr><td data-lang="tr">İlk değerlendirme</td><td data-lang="tr"><span class="font-mono text-white text-xs">7 gün</span></td><td data-lang="tr">Önem derecesi ve geçerlilik hakkında durum güncellemesi.</td><td data-lang="en">Initial assessment</td><td data-lang="en"><span class="font-mono text-white text-xs">7 days</span></td><td data-lang="en">Status update on validity and severity.</td></tr>
+                                    <tr><td data-lang="tr">Düzeltme hedefi</td><td data-lang="tr"><span class="font-mono text-white text-xs">Önem derecesine göre</span></td><td data-lang="tr">Kritik: 30 gün · Yüksek: 60 gün · Orta/Düşük: 90 gün.</td><td data-lang="en">Remediation target</td><td data-lang="en"><span class="font-mono text-white text-xs">By severity</span></td><td data-lang="en">Critical: 30 days · High: 60 days · Medium/Low: 90 days.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-zinc-600 text-xs font-mono mt-6" data-lang="tr">// Hedefler taahhüt değil çabadır; karmaşık vakalarda sizi bilgilendirerek süre uzatılabilir.</p>
+                        <p class="text-zinc-600 text-xs font-mono mt-6" data-lang="en">// These targets are efforts, not commitments; complex cases may be extended with notice to you.</p>
+
+                    </div>
+                </section>
+
+                <!-- 04 KAPSAM-DISI -->
+                <section id="kapsam-disi" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Sınırlar</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Limits</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Kapsam Dışı Bulunanlar</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Out of Scope</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">04</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Aşağıdaki bulgular güvenlik programı kapsamı dışındadır:</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">The following findings are out of scope for our security program:</p>
+<ul class="text-zinc-400 text-sm space-y-3 font-light mb-6"><li data-lang="tr">- Hizmet reddi (DoS/DDoS), kaynak tüketimi veya spam amaçlı testler.</li><li data-lang="en">- Denial of service (DoS/DDoS), resource exhaustion or spam-oriented testing.</li><li data-lang="tr">- Sosyal mühendislik, kimlik avı veya fiziksel erişim denemeleri.</li><li data-lang="en">- Social engineering, phishing or physical access attempts.</li><li data-lang="tr">- Otomatik tarayıcıların ürettiği hacimsel/düşük bağlamlı raporlar (banner sürümü, TLS tercihi vb. en iyi pratik önerileri).</li><li data-lang="en">- Volumetric or low-context reports produced by automated scanners (banner versions, TLS preference and similar hardening suggestions).</li><li data-lang="tr">- Kendi hesabınızla sınırlı, etkisi kanıtlanmamış teorik saldırılar.</li><li data-lang="en">- Theoretical attacks limited to your own account without demonstrated impact.</li></ul>
+                    </div>
+                </section>
+
+                <!-- 05 IYI-NIYET -->
+                <section id="iyi-niyet" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Koruma</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Protection</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">İyi Niyet Koruması</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Safe Harbor</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">05</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bu kurallara uyduğunuz sürece, yalnızca güvenlik araştırması amacıyla yaptığınız makul ve orantılı incelemeler için VARUX sizin aleyhinize hukuki işlem başlatmaz.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">As long as you comply with these rules, VARUX will not pursue legal action against you for reasonable and proportionate research conducted solely for security investigation purposes.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bu koruma; veri tahribatı, hizmet kesintisi, kişisel verilere izinsiz erişim veya açıklama yasağı ihlali içeren eylemleri kapsamaz.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">This protection does not cover actions involving data destruction, service disruption, unauthorized access to personal data or breach of confidentiality.</p>
+
+                    </div>
+                </section>
+
+                <!-- 06 ACIKLAMA -->
+                <section id="aciklama" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Süreç</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Process</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Koordineli Açıklama</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Coordinated Disclosure</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">06</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bildirilen açıklar düzeltilene kadar gizli tutulur. Varsayılan açıklama penceresi <span class="text-white">90 gündür</span>; düzeltme sürümü yayınlandıktan sonra bilgilendirme içeriğini sizinle paylaşırız.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">Reported vulnerabilities are kept confidential until remedied. The default disclosure window is <span class="text-white">90 days</span>; after a fix is released we coordinate public communication with you.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Geçerli ve anlamlı katkılar için isteğiniz üzerine bildiriminize sitede teşekkür edebiliriz.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">For valid and significant contributions, we can credit your report on this site at your request.</p>
+
+                    </div>
+                </section>
+
+                <!-- 07 ONLEMLER -->
+                <section id="onlemler" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Uygulama</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Implementation</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Site Güvenliği Önlemleri</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Site Security Measures</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">07</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Bu sitede uygulanan kontrollerden başlıcaları:</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">Key controls applied on this site include:</p>
+<ul class="text-zinc-400 text-sm space-y-3 font-light mb-6"><li data-lang="tr">- İçerik Güvenlik Politikası (CSP), Referrer-Policy ve Permissions-Policy başlıkları.</li><li data-lang="en">- Content Security Policy (CSP), Referrer-Policy and Permissions-Policy headers.</li><li data-lang="tr">- Üçüncü taraf kaynakların CSP ile sınırlanması; frame-ancestors 'none' ile tıklama korsanlığına karşı koruma.</li><li data-lang="en">- Third-party origins restricted via CSP; clickjacking protection via frame-ancestors 'none'.</li><li data-lang="tr">- Form gönderimleri üçüncü taraf işleyici (Formspree) üzerinden alınır; sunucu tarafı özel veri depolama yoktur.</li><li data-lang="en">- Form submissions are received via a third-party processor (Formspree); there is no server-side custom data store.</li><li data-lang="tr">- İstemci tarafında yalnızca zorunlu dil tercihi anahtarları saklanır (bkz. Çerez Politikası).</li><li data-lang="en">- Only strictly necessary language preference keys are stored client-side (see the Cookie Policy).</li></ul>
+                    </div>
+                </section>
+
+                <!-- 08 URUN -->
+                <section id="urun" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">Ürünler</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Products</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">Ürün Güvenliği Soruşturmaları</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Product Security Inquiries</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">08</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">AXIS veya ARBITER dağıtımlarındaki olası açıklar, müşteri sözleşmesindeki güvenlik ve destek kanallarından bildirilmelidir. Kurumsal güvenlik incelemeleri ve DPA kapsamındaki talepler için <a href="mailto:legal@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">legal@varuxcyber.com</a> ile iletişime geçiniz.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">Potential issues in AXIS or ARBITER deployments must be reported through the security and support channels defined in the customer agreement. For enterprise security reviews and DPA-related requests, contact <a href="mailto:legal@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">legal@varuxcyber.com</a>.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Genel mimari sorular ve dokümantasyon talepleri için teknik inceleme paketi sayfasına göz atabilirsiniz.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">For general architecture questions and documentation requests, see the technical review pack page.</p>
+
+                    </div>
+                </section>
+
+                <!-- 09 ILETISIM -->
+                <section id="iletisim" class="section-anchor">
+                    <div class="glass rounded-2xl p-8 md:p-12 policy-card">
+                        <div class="flex items-start justify-between gap-6 mb-8">
+                            <div>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="tr">İletişim</span>
+                                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-5" data-lang="en">Contact</span>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="tr">İletişim</h2>
+                                <h2 class="text-3xl md:text-4xl text-white font-medium tracking-tighter mb-4" data-lang="en">Contact</h2>
+                            </div>
+                            <div class="text-4xl font-black text-zinc-800 font-mono shrink-0">09</div>
+                        </div>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="tr">Güvenlik bildirimleri: <a href="mailto:security@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">security@varuxcyber.com</a></p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 " data-lang="en">Security reports: <a href="mailto:security@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">security@varuxcyber.com</a></p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 mb-0" data-lang="tr">Yasal ve veri koruma konuları: <a href="mailto:legal@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">legal@varuxcyber.com</a> — bkz. <a href="privacy.html" class="text-blue-500 hover:text-blue-400">Gizlilik Politikası</a>.</p>
+                        <p class="text-zinc-400 text-base leading-relaxed font-light mb-6 mb-0" data-lang="en">Legal and data protection matters: <a href="mailto:legal@varuxcyber.com" class="text-blue-500 hover:text-blue-400 font-mono text-sm">legal@varuxcyber.com</a> — see the <a href="privacy.html" class="text-blue-500 hover:text-blue-400">Privacy Policy</a>.</p>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-16 md:py-20 border-t border-zinc-900 px-4 sm:px-6 lg:px-10 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 md:gap-16 mb-20">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-10">
+                        <span class="brand-mark-premium" aria-hidden="true">
+                            <span class="brand-mark-core"></span>
+                        </span>
+                        <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
+                    </div>
+                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose" data-lang="tr">Pre-execution control architecture · Yasal ve Gizlilik</p>
+                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose" data-lang="en">Pre-execution control architecture · Legal &amp; Privacy</p>
+                    <div class="social-links flex flex-wrap gap-2 mt-5">
+                        <a class="social-link inline-flex items-center gap-2 px-4 py-3 rounded-full border border-white/10 bg-white/[0.02] text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/10 transition-all" href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+                        <a class="social-link inline-flex items-center gap-2 px-4 py-3 rounded-full border border-white/10 bg-white/[0.02] text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/10 transition-all" href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X"><i class="fa-brands fa-x-twitter"></i><span>X</span></a>
+                        <a class="social-link inline-flex items-center gap-2 px-4 py-3 rounded-full border border-white/10 bg-white/[0.02] text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white hover:border-blue-500/30 hover:bg-blue-500/10 transition-all" href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8" data-lang="tr">Ürünler</h5>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8" data-lang="en">Products</h5>
+                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
+                        <li><a href="arbiter.html" class="hover:text-white transition-colors">Arbiter</a></li>
+                        <li><a href="axis.html" class="hover:text-white transition-colors">Axis</a></li>
+                        <li><a href="varuxlab.html" class="hover:text-white transition-colors">VARUX Lab</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8" data-lang="tr">Yasal</h5>
+                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8" data-lang="en">Legal</h5>
+                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
+                        <li><a href="privacy.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="tr">Gizlilik Politikası</a><a href="privacy.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="en">Privacy Policy</a></li>
+                        <li><a href="cookies.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="tr">Çerez Politikası</a><a href="cookies.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="en">Cookie Policy</a></li>
+                        <li><a href="terms.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="tr">Kullanım Koşulları</a><a href="terms.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="en">Terms of Use</a></li>
+                        <li><a href="security.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="tr">Güvenlik ve Açıklama</a><a href="security.html" class="text-zinc-400 hover:text-white transition-colors" data-lang="en">Security &amp; Disclosure</a></li>
+                        <li><a href="mailto:legal@varuxcyber.com" class="hover:text-white transition-colors" data-lang="tr">Yasal İletişim</a><a href="mailto:legal@varuxcyber.com" class="hover:text-white transition-colors" data-lang="en">Legal Contact</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col items-start md:items-end">
+                    <div class="flex gap-6 mb-10">
+                        <a href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub" class="text-zinc-800 hover:text-white transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X" class="text-zinc-800 hover:text-white transition-colors text-xl"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn" class="text-zinc-800 hover:text-white transition-colors text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <a href="privacy.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="tr">Privacy / Gizlilik</a>
+                    <a href="privacy.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="en">Privacy / Gizlilik</a>
+                    <a href="cookies.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="tr">Cookies / Çerezler</a>
+                    <a href="cookies.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="en">Cookies / Çerezler</a>
+                    <a href="terms.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="tr">Terms / Koşullar</a>
+                    <a href="terms.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="en">Terms / Koşullar</a>
+                    <a href="security.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="tr">Security / Güvenlik</a>
+                    <a href="security.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2" data-lang="en">Security / Güvenlik</a>
+                    <div class="text-[9px] font-mono text-zinc-900 uppercase tracking-widest">© 2026 VARUX INC. PROD-ENV READY.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const langButtons = Array.from(document.querySelectorAll('[data-lang-switch]'));
+            let currentLanguage = root.getAttribute('data-ui-lang') || 'tr';
+
+            function applyLanguage(lang) {
+                currentLanguage = lang;
+                root.setAttribute('data-ui-lang', lang);
+                root.setAttribute('lang', lang);
+                document.body.setAttribute('data-ui-lang', lang);
+                langButtons.forEach((btn) => {
+                    const active = btn.dataset.langSwitch === lang;
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+                try { localStorage.setItem('varux-lang', lang); } catch (e) {}
+            }
+
+            let saved = null;
+            try { saved = localStorage.getItem('varux-lang'); } catch (e) {}
+            if (saved === 'tr' || saved === 'en') {
+                applyLanguage(saved);
+            } else {
+                applyLanguage(currentLanguage);
+            }
+
+            langButtons.forEach((btn) => {
+                btn.addEventListener('click', () => applyLanguage(btn.dataset.langSwitch));
+            });
+
+            const navbar = document.getElementById('navbar');
+            const onScroll = () => {
+                if (window.scrollY > 24) {
+                    navbar.classList.add('glass');
+                    navbar.classList.remove('py-4', 'md:py-5');
+                    navbar.classList.add('py-3', 'md:py-4');
+                } else {
+                    navbar.classList.remove('glass');
+                    navbar.classList.add('py-4', 'md:py-5');
+                    navbar.classList.remove('py-3', 'md:py-4');
+                }
+                document.querySelectorAll('section').forEach((sec) => {
+                    const r = sec.getBoundingClientRect();
+                    if (r.top < window.innerHeight - 60) sec.classList.add('visible');
+                });
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('section').forEach((sec) => observer.observe(sec));
+        })();
+    </script>
+
+</body>
+</html>
