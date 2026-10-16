@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <script>document.documentElement.classList.add('js');</script>
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
     <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
-    <title>VARUX | Stop Post-Mortem. Start Pre-Execution Control.</title>
-    <meta name="description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin pre-execution control, deterministic policy enforcement ve enterprise governance platformudur.">
-    <meta name="keywords" content="VARUX, pre-execution control, policy enforcement, agent security, autonomous system governance, enterprise security, database write protection, Arbiter, Axis">
+    <title>VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi</title>
+    <meta name="description" content="VARUX; ajanlar, otomasyonlar ve kritik yazma işlemleri için yürütme öncesi kontrol, deterministik politika denetimi ve kurumsal yönetişim platformudur.">
+    <meta name="keywords" content="VARUX, yürütme öncesi kontrol, politika denetimi, ajan güvenliği, otonom sistem yönetişimi, kurumsal güvenlik, veritabanı yazma koruması, Arbiter, Axis">
     <meta name="author" content="VARUX">
     <meta name="application-name" content="VARUX">
     <meta name="format-detection" content="telephone=no">
@@ -21,23 +22,28 @@
     <link rel="apple-touch-icon" sizes="1024x1024" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="canonical" href="https://varuxcyber.com/">
+    <link rel="alternate" hreflang="tr" href="https://varuxcyber.com/">
+    <link rel="alternate" hreflang="en" href="https://varuxcyber.com/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://varuxcyber.com/">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="VARUX">
     <meta property="og:url" content="https://varuxcyber.com/">
     <meta property="og:image" content="https://varuxcyber.com/og-image.png">
+    <meta property="og:image:secure_url" content="https://varuxcyber.com/og-image.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="VARUX — pre-execution control for autonomous systems">
-    <meta property="og:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
-    <meta property="og:description" content="Kritik istekleri execution baslamadan once degerlendirin, yetkiyi policy ile sinirlayin ve denetlenebilir enforcement uygulayin.">
+    <meta property="og:image:alt" content="VARUX — otonom sistemler için yürütme öncesi kontrol">
+    <meta property="og:title" content="VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi">
+    <meta property="og:description" content="Kritik istekleri yürütme başlamadan önce değerlendirin, yetkiyi politika ile sınırlayın ve denetlenebilir bir kontrol katmanı uygulayın.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@varuxtech">
     <meta name="twitter:creator" content="@varuxtech">
     <meta name="twitter:image" content="https://varuxcyber.com/og-image.png">
-    <meta name="twitter:title" content="VARUX | Pre-Execution Control, Policy Enforcement ve Agent Governance">
-    <meta name="twitter:description" content="VARUX; agentler, otomasyonlar ve kritik write operasyonlari icin deterministic control ve enforcement katmani sunar.">
+    <meta name="twitter:title" content="VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi">
+    <meta name="twitter:description" content="VARUX; ajanlar, otomasyonlar ve kritik yazma işlemleri için deterministik bir kontrol ve denetim katmanı sunar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -47,8 +53,11 @@
         {
             "@context": "https://schema.org",
             "@type": "Organization",
+            "@id": "https://varuxcyber.com/#organization",
             "name": "VARUX",
-            "description": "Pre-execution control ve enforcement platformu. Agentler, otomasyonlar ve kritik write operasyonlari icin deterministic policy governance saglar.",
+            "url": "https://varuxcyber.com/",
+            "description": "Yürütme öncesi kontrol ve politika denetimi platformu. Ajanlar, otomasyonlar ve kritik yazma işlemleri için deterministik politika denetimi ve yönetişim sağlar.",
+            "inLanguage": "tr",
             "sameAs": [
                 "https://github.com/VARUX-TECH-LAB",
                 "https://x.com/varuxtech",
@@ -67,6 +76,7 @@
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
+            "@id": "https://varuxcyber.com/#software",
             "name": "VARUX",
             "applicationCategory": "SecurityApplication",
             "operatingSystem": "Web",
@@ -80,8 +90,42 @@
                 "Evidence-oriented audit trails"
             ],
             "publisher": {
-                "@type": "Organization",
-                "name": "VARUX"
+                "@id": "https://varuxcyber.com/#organization"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://varuxcyber.com/#website",
+            "url": "https://varuxcyber.com/",
+            "name": "VARUX",
+            "description": "Yürütme öncesi kontrol ve politika denetimi platformu.",
+            "inLanguage": "tr",
+            "publisher": {
+                "@id": "https://varuxcyber.com/#organization"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://varuxcyber.com/#webpage",
+            "url": "https://varuxcyber.com/",
+            "name": "VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi",
+            "description": "VARUX; ajanlar, otomasyonlar ve kritik yazma işlemleri için yürütme öncesi kontrol, deterministik politika denetimi ve kurumsal yönetişim platformudur.",
+            "inLanguage": "tr-TR",
+            "isPartOf": {
+                "@id": "https://varuxcyber.com/#website"
+            },
+            "about": {
+                "@id": "https://varuxcyber.com/#organization"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://varuxcyber.com/og-image.png"
             }
         }
     </script>
@@ -97,6 +141,29 @@
             --arbiter-accent: #6366f1;
         }
 
+        html, body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        input, textarea, select, option,
+        [contenteditable="true"], [contenteditable=""],
+        [contenteditable="plaintext-only"], [data-allow-select] {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+            -webkit-touch-callout: default;
+        }
+
+        img, svg, canvas {
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
         body {
             background-color: var(--bg);
             color: #a1a1aa;
@@ -105,16 +172,45 @@
             line-height: 1.5;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 100;
+            transform: translateY(-160%);
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: #0b0b0b;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        section[id],
+        main[id] {
+            scroll-margin-top: 6.5rem;
         }
 
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Custom themed scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -305,6 +401,7 @@
             filter: blur(14px);
             opacity: 0.42;
             transform: translateX(-6%);
+            animation: heroBeamEntrance 1.8s cubic-bezier(.16,1,.3,1) forwards;
         }
 
         .hero-grid {
@@ -334,6 +431,7 @@
                 radial-gradient(circle at 80% 64%, rgba(59, 130, 246, 0.05) 0%, transparent 34%);
             filter: blur(12px);
             opacity: 0.68;
+            animation: heroHaloEntrance 2s cubic-bezier(.16,1,.3,1) forwards;
         }
 
         .hero-vignette {
@@ -383,6 +481,20 @@
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 50px rgba(0, 0, 0, 0.24);
         }
 
+        .hero-eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.14);
+            animation: eyebrowPulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes eyebrowPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(0.85); }
+        }
+
         .hero-title {
             max-width: 980px;
             font-size: clamp(3.7rem, 7.6vw, 7.5rem);
@@ -404,6 +516,10 @@
             color: #8c929d !important;
             max-width: 760px;
             text-shadow: 0 5px 28px rgba(0, 0, 0, 0.82);
+        }
+
+        .hero-description.hero-reveal {
+            animation-name: heroRevealBlur;
         }
 
         .hero-actions .hero-primary-cta {
@@ -485,14 +601,14 @@
 
         .hero-reveal {
             opacity: 0;
-            transform: translateY(24px);
-            animation: heroReveal 1s cubic-bezier(.2,.7,.2,1) forwards;
+            transform: translateY(24px) scale(0.98);
+            animation: heroReveal 1.25s cubic-bezier(.16,1,.3,1) forwards;
         }
 
-        .hero-reveal-delay-1 { animation-delay: 0.16s; }
-        .hero-reveal-delay-2 { animation-delay: 0.34s; }
-        .hero-reveal-delay-3 { animation-delay: 0.52s; }
-        .hero-reveal-delay-4 { animation-delay: 0.72s; }
+        .hero-reveal-delay-1 { animation-delay: 0.15s; }
+        .hero-reveal-delay-2 { animation-delay: 0.30s; }
+        .hero-reveal-delay-3 { animation-delay: 0.48s; }
+        .hero-reveal-delay-4 { animation-delay: 0.65s; }
 
         @keyframes heroCinematicDrift {
             0% { transform: scale(1.055) translate3d(0, 0, 0); }
@@ -504,6 +620,16 @@
             100% { transform: translateX(17%) rotate(1deg); opacity: 0.8; }
         }
 
+        @keyframes heroBeamEntrance {
+            0% { opacity: 0; transform: translateX(-12%); }
+            100% { opacity: 0.42; transform: translateX(-6%); }
+        }
+
+        @keyframes heroHaloEntrance {
+            0% { opacity: 0; }
+            100% { opacity: 0.68; }
+        }
+
         @keyframes heroGrain {
             0% { transform: translate3d(0, 0, 0); }
             25% { transform: translate3d(3%, -2%, 0); }
@@ -513,7 +639,12 @@
         }
 
         @keyframes heroReveal {
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes heroRevealBlur {
+            0% { opacity: 0; transform: translateY(24px) scale(0.98); filter: blur(4px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
 
         @keyframes heroScrollLine {
@@ -665,6 +796,14 @@
             font-size: 0.92rem;
         }
 
+        .demo-status.is-success {
+            color: #6ee7b7;
+        }
+
+        .demo-status.is-error {
+            color: #fda4af;
+        }
+
         .modal-open {
             overflow: hidden;
         }
@@ -705,16 +844,15 @@
             user-select: text;
         }
 
-        section {
+        .js section {
             opacity: 0;
             transform: translateY(14px);
             transition: opacity 0.55s ease, transform 0.55s ease;
             content-visibility: auto;
             contain-intrinsic-size: 720px;
         }
-        section.visible { opacity: 1; transform: translateY(0); }
+        .js section.visible { opacity: 1; transform: translateY(0); }
 
-        /* Responsive fine-tuning for all devices */
         @media (max-width: 1024px) {
             .hero-grid {
                 background-size: 56px 56px;
@@ -798,7 +936,6 @@
             }
         }
 
-        /* Extra small devices */
         @media (max-width: 480px) {
             .hero-stage h1 {
                 font-size: clamp(2.5rem, 12vw, 3.5rem);
@@ -879,11 +1016,11 @@
             }
 
             .hero-reveal {
-                transform: translateY(10px);
-                animation-duration: 0.55s;
+                transform: translateY(10px) scale(0.99);
+                animation-duration: 0.7s;
             }
 
-            section {
+            .js section {
                 transform: translateY(8px);
                 transition-duration: 0.35s;
                 contain-intrinsic-size: 560px;
@@ -922,10 +1059,17 @@
             .product-card,
             .hero-canvas,
             .hero-light-beam,
+            .hero-core-halo,
             .hero-film-grain,
             .hero-reveal,
             .hero-scroll-cue::after,
-            section {
+            .skip-link,
+            .mobile-nav,
+            .nav-toggle-bars,
+            .nav-toggle-bars::before,
+            .nav-toggle-bars::after,
+            .hero-eyebrow-dot,
+            .js section {
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
             }
@@ -936,7 +1080,7 @@
                 display: none !important;
             }
 
-            section {
+            .js section {
                 opacity: 1;
                 transform: none;
                 transition: none;
@@ -949,8 +1093,6 @@
             }
         }
 
-
-        /* Hero canvas background: cinematic layers blend the mesh animation with the page theme. */
         .hero-canvas {
             display: block !important;
             width: 100% !important;
@@ -962,13 +1104,186 @@
             contain: paint;
         }
 
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .nav-toggle-bars {
+            position: relative;
+            display: block;
+            width: 16px;
+            height: 1px;
+            background: currentColor;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-toggle-bars::before,
+        .nav-toggle-bars::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 1px;
+            background: currentColor;
+            transition: transform 0.25s ease, top 0.25s ease;
+        }
+
+        .nav-toggle-bars::before { top: -5px; }
+        .nav-toggle-bars::after { top: 5px; }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
+
+        .mobile-nav {
+            position: absolute;
+            top: 100%;
+            left: 1rem;
+            right: 1rem;
+            max-height: calc(100vh - 8rem);
+            overflow-y: auto;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(6, 6, 6, 0.97);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+            display: none;
+        }
+
+        .mobile-nav.is-open { display: block; }
+
+        .mobile-nav-group-label {
+            margin-bottom: 0.85rem;
+            color: #71717a;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 0.7rem 0.35rem;
+            border-radius: 0.5rem;
+            color: #d4d4d8;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .mobile-nav-divider {
+            height: 1px;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .footer-legal-link {
+            color: #71717a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal-link:hover { color: #ffffff; }
+
+        .footer-credit {
+            color: #52525b;
+            font-size: 11px;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-top: 1.25rem;
+            max-width: 26rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid rgba(59, 130, 246, 0.28);
+            background: rgba(59, 130, 246, 0.07);
+            color: #93c5fd;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+        }
+
+        .tech-card {
+            border: 1px solid var(--border);
+            border-radius: 0.85rem;
+            background: rgba(8, 8, 8, 0.72);
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .tech-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(14, 14, 14, 0.8);
+        }
+
+        .diagram-frame {
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background:
+                radial-gradient(circle at 22% 45%, rgba(59, 130, 246, 0.07) 0%, transparent 58%),
+                #050505;
+            padding: 1.25rem;
+        }
+
+        .diagram-frame svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Burada bakılacak bir şey yok. Neden burayı inceliyorsun? -->
+    <a class="skip-link" href="#main" data-skip-link>İçeriğe geç</a>
 
-    <!-- SECTION 1: NAVBAR -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 md:py-8 px-4 sm:px-6 lg:px-10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-6 lg:gap-14">
@@ -996,66 +1311,93 @@
             </div>
             <div class="flex items-center gap-3 sm:gap-5">
                 <a href="varuxlab.html" data-lab-link class="hidden sm:block text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">VARUX Lab</a>
-                <div class="lang-switch" aria-label="Language switcher">
-                    <button type="button" class="lang-button is-active" data-lang-switch="tr">TR</button>
-                    <button type="button" class="lang-button" data-lang-switch="en">EN</button>
+                <div class="lang-switch" role="group" data-lang-group aria-label="Dil seçimi">
+                    <button type="button" class="lang-button is-active" data-lang-switch="tr" aria-pressed="true">TR</button>
+                    <button type="button" class="lang-button" data-lang-switch="en" aria-pressed="false">EN</button>
                 </div>
                 <button type="button" data-demo-open class="bg-white text-black px-4 sm:px-7 py-3 rounded-sm text-[9px] sm:text-[10px] font-black uppercase tracking-widest btn-premium">Demo Talep Et</button>
+                <button type="button" class="nav-toggle lg:hidden" data-nav-toggle aria-expanded="false" aria-controls="mobileNav" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
+                    <span class="nav-toggle-bars" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileNav" class="mobile-nav lg:hidden" data-mobile-nav>
+            <p class="mobile-nav-group-label" data-mobile-nav-group>Ürünler</p>
+            <div class="mobile-nav-links">
+                <a href="arbiter.html">Arbiter</a>
+                <a href="axis.html">Axis</a>
+                <a href="varuxlab.html">VARUX Lab</a>
+            </div>
+            <div class="mobile-nav-divider" aria-hidden="true"></div>
+            <div class="mobile-nav-links">
+                <a href="#nasil-calisir" data-mobile-nav-link>Nasıl Çalışır</a>
+                <a href="#kullanim-alanlari" data-mobile-nav-link>Kullanım Alanları</a>
             </div>
         </div>
     </nav>
 
-    <!-- SECTION 2: CINEMATIC HERO -->
+    <main id="main">
+
     <header class="hero-stage relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden px-4 sm:px-6 lg:px-10">
         <div class="hero-background" aria-hidden="true">
             <canvas id="heroMesh" class="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero-color-grade"></div>
+            <div class="hero-light-beam"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-noise"></div>
+            <div class="hero-scanlines"></div>
+            <div class="hero-core-halo"></div>
+            <div class="hero-vignette"></div>
+            <div class="hero-readability"></div>
         </div>
+        <div class="hero-cinematic-bar top" aria-hidden="true"></div>
+        <div class="hero-cinematic-bar bottom" aria-hidden="true"></div>
         
         <div class="max-w-7xl mx-auto w-full relative z-10">
             <div class="max-w-5xl hero-content">
                 
                 <h1 class="hero-title hero-reveal hero-reveal-delay-1 text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter text-white mb-10 leading-[0.9] lg:max-w-4xl">
-                    Execution Başlamadan Önce <span class="text-zinc-600 italic">Kontrol.</span>
+                    Yürütme Başlamadan Önce <span class="text-zinc-600 italic">Kontrol.</span>
                 </h1>
                 
                 <p class="hero-description hero-reveal hero-reveal-delay-2 text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
-                    Ajanlara, otomasyonlara ve kritik write işlemlerine deterministik policy uygulayın. 
-                    Karar üretmek modele, yetki üretmek <span class="text-white font-medium italic">VARUX</span>'a aittir.
+                    Ajanlara, otomasyonlara ve kritik yazma işlemlerine deterministik politika uygulayın. 
+                    Kararı model üretir, yetkiyi yalnızca <span class="text-white font-medium italic">VARUX</span> verir.
                 </p>
 
                 <div class="hero-actions hero-reveal hero-reveal-delay-3 flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
-                    <button type="button" data-demo-open class="hero-primary-cta bg-white text-black py-4.5 px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
-                    <a href="varuxlab.html" data-hero-secondary class="hero-secondary-cta border border-zinc-800 text-white py-4.5 px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
-                        VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+                    <button type="button" data-demo-open class="hero-primary-cta bg-white text-black py-[1.125rem] px-12 text-xs font-black uppercase tracking-[0.2em] btn-premium">Demo Talep Et</button>
+                    <a href="varuxlab.html" data-hero-secondary class="hero-secondary-cta border border-zinc-800 text-white py-[1.125rem] px-12 text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
+                        VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="hero-scroll-cue" aria-hidden="true">Scroll</div>
+        <div class="hero-scroll-cue" aria-hidden="true" data-hero-scroll-cue>Kaydır</div>
     </header>
 
-    <!-- SECTION 3: PROBLEM / THESIS -->
-    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 border-y border-zinc-900 bg-black/40">
+    <section id="problem" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 border-y border-zinc-900 bg-black/40">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter mb-10 leading-none">Hata Execution'dan Sonra Değil, <br><span class="text-zinc-600">Önce Durmalı.</span></h2>
+                    <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter mb-10 leading-none">Hata, Yürütmeden Sonra Değil <br><span class="text-zinc-600">Önce Durmalı.</span></h2>
                     <p class="text-zinc-400 text-lg mb-12 leading-relaxed font-light">
-                        Observability size neyin bozulduğunu söyler. Kontrol ise bozulmasına engel olur. 
+                        Gözlemlenebilirlik size neyin bozulduğunu söyler; kontrol ise bozulmasını engeller. 
                         Kritik sistemlerde sorun <span class="italic text-white">niyet değil, yetkidir.</span> 
-                        Model doğru karar verebilir ancak bu karar yetki sınırları dışındaysa VARUX onu durdurur.
+                        Model doğru karar üretebilir; ancak bu karar yetki sınırlarının dışındaysa VARUX onu durdurur.
                     </p>
                     <div class="grid sm:grid-cols-2 gap-10">
                         <div class="space-y-4">
                             <div class="w-8 h-[1px] bg-zinc-700"></div>
-                            <h4 class="text-white text-xs font-bold uppercase tracking-widest">Post-Mortem Risk</h4>
-                            <p class="text-zinc-500 text-xs">İşlem DB'ye ulaştıktan sonra atılan loglar zararı engellemez. Geri dönüş maliyeti yüksektir.</p>
+                            <h4 class="text-white text-xs font-bold uppercase tracking-widest">Olay Sonrası Risk</h4>
+                            <p class="text-zinc-500 text-xs">İşlem veritabanına ulaştıktan sonra tutulan kayıtlar zararı engellemez. Geri dönüş maliyetli ve yavaştır.</p>
                         </div>
                         <div class="space-y-4">
                             <div class="w-8 h-[1px] bg-blue-500"></div>
-                            <h4 class="text-blue-500 text-xs font-bold uppercase tracking-widest">Pre-Execution Enforcement</h4>
-                            <p class="text-zinc-500 text-xs">Eylem hiç başlamadan policy kontrolü yapılır. Risk daha oluşmadan yok edilir.</p>
+                            <h4 class="text-blue-500 text-xs font-bold uppercase tracking-widest">Yürütme Öncesi Denetim</h4>
+                            <p class="text-zinc-500 text-xs">Eylem daha başlamadan politika kontrolü yapılır. Risk oluşmadan ortadan kaldırılır.</p>
                         </div>
                     </div>
                 </div>
@@ -1066,17 +1408,17 @@
                             <div class="flex items-center gap-4">
                                 <div class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_10px_#f43f5e]"></div>
                                 <div class="h-[1px] flex-1 bg-zinc-800"></div>
-                                <span class="text-[10px] font-mono text-zinc-500">REQUEST INTERCEPTED</span>
+                                <span class="text-[10px] font-mono text-zinc-500" data-diagram-label="intercepted">İSTEK YAKALANDI</span>
                             </div>
                             <div class="pl-7 border-l border-zinc-800 space-y-4 py-2">
-                                <div class="text-xs text-zinc-500">Reason: <span class="text-zinc-300">Unauthorized DELETE scope</span></div>
-                                <div class="text-xs text-zinc-500">Policy: <span class="text-zinc-300 font-mono">prod_write_v4</span></div>
-                                <div class="text-xs font-bold text-rose-500 uppercase tracking-widest">Decision: BLOCK</div>
+                                <div class="text-xs text-zinc-500"><span data-diagram-label="reasonLabel">Gerekçe:</span> <span class="text-zinc-300" data-diagram-label="reasonValue">Yetkisiz DELETE kapsamı</span></div>
+                                <div class="text-xs text-zinc-500"><span data-diagram-label="policyLabel">Politika:</span> <span class="text-zinc-300 font-mono">prod_write_v4</span></div>
+                                <div class="text-xs font-bold text-rose-500 uppercase tracking-widest"><span data-diagram-label="decisionLabel">Karar:</span> <span data-diagram-label="decisionValue">BLOCK</span></div>
                             </div>
                             <div class="flex items-center gap-4">
                                 <div class="w-3 h-3 rounded-full bg-zinc-800"></div>
                                 <div class="h-[1px] flex-1 bg-zinc-800"></div>
-                                <span class="text-[10px] font-mono text-zinc-600">ACTION_STOPPED</span>
+                                <span class="text-[10px] font-mono text-zinc-600" data-diagram-label="halted">EYLEM DURDURULDU</span>
                             </div>
                         </div>
                     </div>
@@ -1085,7 +1427,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: NASIL ÇALIŞIR (UNIFIED MODEL) -->
     <section id="nasil-calisir" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
         <div class="max-w-7xl mx-auto mb-32 text-center">
             <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">Deterministik Döngü</span>
@@ -1094,28 +1435,27 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6">
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">01</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Intercept</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek execution başlamadan önce platform katmanında yakalanır. Bağlam ve kimlik bilgileri ayrıştırılır.</p>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Yakala</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek, yürütme başlamadan önce platform katmanında yakalanır. Kimlik, bağlam ve kapsam bilgileri ayrıştırılır.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">02</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evaluate</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Policy Engine, aktif sürümdeki deterministik kuralları çalıştırır. Karar modeli rasyonel ve açıklanabilirdir.</p>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Değerlendir</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Politika Motoru, aktif sürümdeki deterministik kuralları çalıştırır. Karar modeli rasyonel, tutarlı ve açıklanabilirdir.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8 border-blue-500/30">
                 <div class="text-3xl font-black text-zinc-800 font-mono">03</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Decide</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">ALLOW, BLOCK veya REQUIRE_APPROVAL kararı verilir. Belirsizlik durumunda sistem "fail-closed" çalışır.</p>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Karar Ver</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">İZİN VER, ENGELLE veya ONAY GEREKTİR kararı döner. Belirsizlik durumunda sistem kapalı-güvenli (fail-closed) çalışır.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">04</div>
-                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Evidence</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar request_id ile imzalanır ve append-only denetim kayıtlarına kanıt olarak işlenir.</p>
+                <h3 class="text-white font-bold text-xs uppercase tracking-widest">Kanıt</h3>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar bir istek kimliğiyle imzalanır ve yalnızca eklenebilir denetim kayıtlarına kanıt olarak yazılır.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: PRODUCTS (ARBITER & AXIS) -->
     <section id="urunler" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10 bg-[#040404]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-24">
@@ -1124,41 +1464,39 @@
             </div>
             
             <div class="grid lg:grid-cols-2 gap-10">
-                <!-- ARBITER -->
                 <div id="arbiter" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
                     <div>
                         <div class="w-14 h-14 bg-arbiter-accent/10 text-arbiter-accent rounded flex items-center justify-center mb-10 text-xl border border-arbiter-accent/20">
-                            <i class="fa-solid fa-code-branch"></i>
+                            <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Arbiter</h3>
-                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Tool & Action Governance</p>
-                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
+                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8" data-product-subtitle="arbiter">Araç ve Eylem Yönetişimi</p>
+                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light" data-product-description="arbiter">
                             Ajanların, otomasyonların ve servislerin hangi araçları, hangi parametrelerle ve hangi kapsamda kullanabileceğini yönetir. Ajan karar üretebilir ama yetki üretemez ilkesini uygular.
                         </p>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Pre-execution action gate</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Resource scope enforcement</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent"></i> Default-deny tool usage</li>
+                        <ul class="space-y-4 mb-12" data-product-features="arbiter">
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Yürütme öncesi eylem denetimi</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Kaynak kapsamı denetimi</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Varsayılan red politikası</li>
                         </ul>
                     </div>
                     <a href="arbiter.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-arbiter-accent hover:text-white transition-all flex items-center justify-center text-center">Arbiter'ı İncele</a>
                 </div>
 
-                <!-- AXIS -->
                 <div id="axis" class="product-card p-12 rounded-2xl flex flex-col justify-between group">
                     <div>
                         <div class="w-14 h-14 bg-axis-accent/10 text-axis-accent rounded flex items-center justify-center mb-10 text-xl border border-axis-accent/20">
-                            <i class="fa-solid fa-database"></i>
+                            <i class="fa-solid fa-database" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Axis</h3>
-                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8">Database Write-Path Enforcement</p>
-                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light">
-                            Kritik sistemlere yönelen UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce durdurur. İnsan veya yazılım fark etmeksizin tüm write-path trafiğini policy katmanına zorlar.
+                        <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8" data-product-subtitle="axis">Veritabanı Yazma Yolu Denetimi</p>
+                        <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light" data-product-description="axis">
+                            Kritik sistemlere yönelen UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce durdurur. İnsan ya da yazılım fark etmeksizin tüm yazma trafiğini politika katmanından geçmeye zorlar.
                         </p>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Real-time write interceptor</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> Approval-gated destructive actions</li>
-                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent"></i> No direct write principle</li>
+                        <ul class="space-y-4 mb-12" data-product-features="axis">
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Gerçek zamanlı yazma denetimi</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Onaya bağlı yıkıcı eylemler</li>
+                            <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Doğrudan yazma yasağı</li>
                         </ul>
                     </div>
                     <a href="axis.html" class="product-cta w-full border border-zinc-800 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-axis-accent hover:text-white transition-all flex items-center justify-center text-center">Axis'i İncele</a>
@@ -1174,14 +1512,13 @@
                     </p>
                 </div>
                 <a href="varuxlab.html" data-lab-cta class="shrink-0 border border-zinc-800 text-white py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all inline-flex items-center justify-center gap-3">
-                    VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
+                    VARUX Lab'i Aç <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6: POLICY & DETERMINISM -->
-    <section class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
+    <section id="policy" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
             <div class="terminal-window">
                 <div class="px-5 py-3 border-b border-zinc-900 flex justify-between items-center bg-zinc-950">
@@ -1207,9 +1544,9 @@
                 </div>
             </div>
             <div>
-                <h2 class="text-4xl md:text-5xl text-white font-medium tracking-tighter mb-10 leading-none italic">Policy Yoksa <br><span class="text-zinc-600">İzin Yok.</span></h2>
+                <h2 class="text-4xl md:text-5xl text-white font-medium tracking-tighter mb-10 leading-none italic">Politika Yoksa <br><span class="text-zinc-600">İzin Yok.</span></h2>
                 <p class="text-zinc-500 text-lg mb-12 font-light">
-                    VARUX, belirsizlikte sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif policy sürümüne bağlıdır. Tahmin yürütmez, kural işletir.
+                    VARUX, belirsizlik durumunda sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif politika sürümüne bağlıdır. Tahmin yürütmez; kuralı uygular.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <div class="px-5 py-2 border border-emerald-500/20 bg-emerald-500/5 text-emerald-500 text-[10px] font-black uppercase tracking-widest rounded">ALLOW</div>
@@ -1220,57 +1557,54 @@
         </div>
     </section>
 
-    <!-- SECTION 7: WHAT VARUX IS NOT -->
-    <section class="py-24 md:py-32 px-4 sm:px-6 lg:px-10 bg-zinc-950 border-y border-zinc-900">
+    <section id="threat" class="py-24 md:py-32 px-4 sm:px-6 lg:px-10 bg-zinc-950 border-y border-zinc-900">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Threat Boundary</h3>
+            <h2 class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Tehdit Sınırı</h2>
             <div class="grid md:grid-cols-2 gap-16 text-left">
                 <div class="space-y-4">
                     <h4 class="text-white text-xs font-black uppercase tracking-widest text-zinc-600">VARUX Ne Değildir?</h4>
                     <ul class="text-zinc-500 text-sm space-y-3 font-light">
                         <li>- Model doğruluğunu artıran bir araç değildir.</li>
-                        <li>- Halüsinasyon düzelten bir chatbot değildir.</li>
-                        <li>- Klasik observability veya logging platformu değildir.</li>
-                        <li>- Business logic katmanı değildir.</li>
+                        <li>- Halüsinasyon düzelten bir sohbet botu değildir.</li>
+                        <li>- Klasik gözlemlenebilirlik veya loglama platformu değildir.</li>
+                        <li>- İş mantığı katmanı değildir.</li>
                     </ul>
                 </div>
                 <div class="space-y-4">
                     <h4 class="text-white text-xs font-black uppercase tracking-widest text-blue-500">VARUX Ne Yapar?</h4>
                     <ul class="text-zinc-300 text-sm space-y-3 font-light">
-                        <li>+ Eylem başlamadan yetkiyi policy ile sınırlar.</li>
-                        <li>+ Kritik write-path'i fiziksel olarak gate eder.</li>
-                        <li>+ Riskli aksiyonları insan onayına (Approval) bağlar.</li>
-                        <li>+ Her kararı audit-ready kanıta dönüştürür.</li>
+                        <li>+ Eylem başlamadan yetkiyi politika ile sınırlar.</li>
+                        <li>+ Kritik yazma işlemlerini veritabanına ulaşmadan engeller.</li>
+                        <li>+ Riskli eylemleri insan onayına bağlar.</li>
+                        <li>+ Her kararı denetime hazır kanıta dönüştürür.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 8: FOR WHOM -->
     <section id="kullanim-alanlari" class="py-24 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-10">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl text-white font-medium tracking-tighter mb-20 text-center uppercase tracking-[0.2em]">Kime Hitap Ediyoruz?</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Platform & Infra</h4>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Platform ve Altyapı</h4>
                     <p class="text-zinc-500 text-xs leading-relaxed">Üretim ortamındaki kritik sistemleri otonom veya manuel hatalardan korumak isteyen ekipler.</p>
                 </div>
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">AI Engineering</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Ajanlarının yeteneklerini artırırken güvenliği son karara değil, ilk adıma (gate) koymak isteyenler.</p>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Yapay Zekâ Mühendisliği</h4>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Ajanların yeteneklerini artırırken güvenliği son karara değil, ilk adıma koymak isteyen ekipler.</p>
                 </div>
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Security & Compliance</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Kritik eylemler için değiştirilemez kanıt (evidence) ve insan onayı döngüsü kurmak zorunda olanlar.</p>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-widest">Güvenlik ve Uyum</h4>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Kritik eylemler için değiştirilemez kanıt ve insan onayı döngüsü kurması gereken ekipler.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 9: FINAL CTA -->
     <section id="contact" class="py-32 md:py-44 lg:py-60 px-4 sm:px-6 lg:px-10 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#3b82f60d_0%,transparent_60%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#3b82f60d_0%,transparent_60%)]" aria-hidden="true"></div>
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <h2 class="text-5xl md:text-8xl text-white font-medium tracking-tighter mb-16 leading-tight italic">Son Kararı <br><span class="text-zinc-700">Modele Bırakmayın.</span></h2>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
@@ -1280,79 +1614,57 @@
         </div>
     </section>
 
-    <!-- SECTION 10: FOOTER -->
+    </main>
+
     <footer class="py-16 md:py-24 border-t border-zinc-900 px-4 sm:px-6 lg:px-10 bg-black">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 md:gap-16 mb-24">
-                <div class="col-span-2">
+            <div class="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-16 mb-20">
+                <div class="md:col-span-7">
                     <div class="flex items-center gap-3 mb-10">
                         <span class="brand-mark-premium" aria-hidden="true">
                             <span class="brand-mark-core"></span>
                         </span>
                         <span class="text-white font-black tracking-tighter text-xl">VARUX</span>
                     </div>
-                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose">
-                        Pre-execution control architecture <br>for autonomous operations.
+                    <p class="text-zinc-600 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-md" data-footer-intro>
+                        Otonom operasyonlar için <br>yürütme öncesi kontrol mimarisi.
+                    </p>
+                    <p class="footer-credit" data-footer-credit>
+                        Selman Vural tarafından geliştirilen bağımsız bir siber güvenlik ve altyapı girişimi. İletişim: <a href="mailto:security@varuxcyber.com" class="text-zinc-400 hover:text-white transition-colors">security@varuxcyber.com</a>
                     </p>
                     <div class="social-links">
                         <a class="social-link" href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub">
-                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
                             <span>GitHub</span>
                         </a>
                         <a class="social-link" href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X">
-                            <i class="fa-brands fa-x-twitter"></i>
+                            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
                             <span>X</span>
                         </a>
                         <a class="social-link" href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
+                            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                             <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
-                <div>
-                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Ürünler</h5>
-                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
+                <div class="md:col-span-5 md:justify-self-end">
+                    <h3 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8" data-footer-heading>Ürünler</h3>
+                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter" data-footer-list>
                         <li><a href="arbiter.html" class="hover:text-white transition-colors">Arbiter</a></li>
                         <li><a href="axis.html" class="hover:text-white transition-colors">Axis</a></li>
                         <li><a href="varuxlab.html" class="hover:text-white transition-colors">VARUX Lab</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h5 class="text-zinc-400 font-bold text-[9px] uppercase tracking-widest mb-8">Yasal / Legal</h5>
-                    <ul class="text-zinc-600 text-[11px] font-medium space-y-4 uppercase tracking-tighter">
-                        <li><a href="privacy.html" class="text-zinc-400 hover:text-white transition-colors">Gizlilik Politikası / Privacy</a></li>
-                        <li><a href="cookies.html" class="text-zinc-400 hover:text-white transition-colors">Çerez Politikası / Cookies</a></li>
-                        <li><a href="terms.html" class="text-zinc-400 hover:text-white transition-colors">Kullanım Koşulları / Terms</a></li>
-                        <li><a href="security.html" class="text-zinc-400 hover:text-white transition-colors">Güvenlik / Security</a></li>
-                        <li><a href="mailto:legal@varuxcyber.com" class="hover:text-white transition-colors">Yasal İletişim / Legal</a></li>
-                    </ul>
-                </div>
-                <div class="flex flex-col items-start md:items-end">
-                    <div class="flex gap-6 mb-10">
-                        <a href="https://github.com/VARUX-TECH-LAB" target="_blank" rel="noopener noreferrer" aria-label="VARUX GitHub" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://x.com/varuxtech" target="_blank" rel="noopener noreferrer" aria-label="VARUX X" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/varux" target="_blank" rel="noopener noreferrer" aria-label="VARUX LinkedIn" class="text-zinc-800 hover:text-white transition-colors text-xl">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                    <a href="privacy.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2">Privacy / Gizlilik</a>
-                    <a href="cookies.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2">Cookies / Çerezler</a>
-                    <a href="terms.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2">Terms / Koşullar</a>
-                    <a href="security.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors mb-2">Security / Güvenlik</a>
-                </div>
             </div>
-            <div class="border-t border-zinc-900 pt-8 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="text-[9px] font-mono text-zinc-700 uppercase tracking-widest">© 2026 VARUX INC. PROD-ENV READY.</div>
-                <div class="flex items-center gap-6">
-                    <a href="privacy.html" class="text-[9px] font-mono text-zinc-400 uppercase tracking-widest hover:text-white transition-colors"><i class="fa-solid fa-shield-halved mr-1.5 text-[8px]"></i>Privacy / Gizlilik</a>
-                    <a href="cookies.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">Cookies</a>
-                    <a href="terms.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">Terms</a>
-                    <a href="security.html" class="text-[9px] font-mono text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">Security</a>
-                </div>
+            <div class="border-t border-zinc-900 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <p class="text-[9px] font-mono text-zinc-700 uppercase tracking-widest" data-footer-copyright>© 2026 VARUX. Tüm hakları saklıdır.</p>
+                <nav class="flex flex-wrap items-center gap-x-6 gap-y-3" data-footer-legal-nav aria-label="Yasal">
+                    <a href="privacy.html" class="footer-legal-link" data-footer-legal-link>Gizlilik Politikası</a>
+                    <a href="cookies.html" class="footer-legal-link" data-footer-legal-link>Çerez Politikası</a>
+                    <a href="terms.html" class="footer-legal-link" data-footer-legal-link>Kullanım Koşulları</a>
+                    <a href="security.html" class="footer-legal-link" data-footer-legal-link>Güvenlik</a>
+                    <a href="mailto:security@varuxcyber.com" class="footer-legal-link" data-footer-legal-link>security@varuxcyber.com</a>
+                </nav>
             </div>
         </div>
     </footer>
@@ -1360,12 +1672,12 @@
     <div id="demoModal" class="demo-modal" data-demo-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
         <div class="demo-modal-panel">
             <button type="button" class="demo-modal-close" data-demo-close aria-label="Formu kapat">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
-            <div class="demo-kicker">Demo Talep</div>
-            <h2 id="demoModalTitle" class="text-3xl md:text-4xl text-white font-semibold tracking-tighter mb-4">VARUX ile iletisime gecin</h2>
+            <div class="demo-kicker">Demo Talebi</div>
+            <h2 id="demoModalTitle" class="text-3xl md:text-4xl text-white font-semibold tracking-tighter mb-4">VARUX ile iletişime geçin</h2>
             <p class="text-zinc-400 text-base leading-relaxed max-w-2xl">
-                Kisa bilgilerinizi birakin. Ekibinizin agent, automation veya kritik write-path guvenligini nasil korumak istediginizi ogrenelim.
+                Kısa bilgilerinizi bırakın. Ekibinizin ajan, otomasyon ve kritik yazma yolu güvenliğini nasıl korumak istediğini konuşalım.
             </p>
 
             <form id="demoRequestForm" action="https://formspree.io/f/mlgpjdyy" method="POST" class="mt-8">
@@ -1373,89 +1685,119 @@
                 <div class="demo-form-grid demo-form-grid-two">
                     <div class="demo-field">
                         <label for="demoName">Ad Soyad</label>
-                        <input id="demoName" name="name" type="text" class="demo-input" placeholder="Adiniz Soyadiniz" required>
+                        <input id="demoName" name="name" type="text" class="demo-input" placeholder="Adınız Soyadınız" autocomplete="name" maxlength="120" required>
                     </div>
                     <div class="demo-field">
-                        <label for="demoCompany">Sirket</label>
-                        <input id="demoCompany" name="company" type="text" class="demo-input" placeholder="Sirket adiniz" required>
+                        <label for="demoCompany">Şirket</label>
+                        <input id="demoCompany" name="company" type="text" class="demo-input" placeholder="Şirket adınız" autocomplete="organization" maxlength="120" required>
                     </div>
                 </div>
 
                 <div class="demo-form-grid mt-4">
                     <div class="demo-field">
-                        <label for="demoEmail">Mail</label>
-                        <input id="demoEmail" name="email" type="email" class="demo-input" placeholder="ornek@sirket.com" required>
+                        <label for="demoEmail">E-posta</label>
+                        <input id="demoEmail" name="email" type="email" class="demo-input" placeholder="ornek@sirket.com" autocomplete="email" maxlength="160" required>
                     </div>
                 </div>
 
                 <div class="demo-form-grid mt-4">
                     <div class="demo-field">
                         <label for="demoMessage">Talep veya Mesaj</label>
-                        <textarea id="demoMessage" name="message" class="demo-textarea" placeholder="Kisa ihtiyacinizi yazin"></textarea>
+                        <textarea id="demoMessage" name="message" class="demo-textarea" placeholder="Kısa ihtiyacınızı yazın" maxlength="2000"></textarea>
                     </div>
                 </div>
 
                 <div class="demo-form-actions">
                     <div id="demoFormStatus" class="demo-status" role="status" aria-live="polite"></div>
-                    <button type="submit" class="bg-white text-black py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] btn-premium rounded-sm">Talebi Gonder</button>
+                    <button type="submit" data-modal-submit class="bg-white text-black py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] btn-premium rounded-sm">Talebi Gönder</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Intersection Observer for section entry animations
-        const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -8% 0px' };
-        const observer = new IntersectionObserver((entries, sectionObserver) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    sectionObserver.unobserve(entry.target);
+        const revealSections = Array.from(document.querySelectorAll('section'));
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, sectionObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+
+            revealSections.forEach(section => observer.observe(section));
+        } else {
+            revealSections.forEach(section => section.classList.add('visible'));
+        }
+
+        const nav = document.getElementById('navbar');
+        if (nav) {
+            let navbarTicking = false;
+            const updateNavbar = () => {
+                const compact = window.scrollY > 100;
+                nav.classList.toggle('bg-black/80', compact);
+                nav.classList.toggle('backdrop-blur-md', compact);
+                nav.classList.toggle('border-b', compact);
+                nav.classList.toggle('border-zinc-900', compact);
+                nav.classList.toggle('py-5', compact);
+                nav.classList.toggle('py-8', !compact);
+                navbarTicking = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (!navbarTicking) {
+                    navbarTicking = true;
+                    requestAnimationFrame(updateNavbar);
+                }
+            }, { passive: true });
+            updateNavbar();
+        }
+
+        const mobileNavPanel = document.querySelector('[data-mobile-nav]');
+        const navToggleButton = document.querySelector('[data-nav-toggle]');
+
+        function syncNavToggleLabel() {
+            if (!navToggleButton) return;
+            const expanded = navToggleButton.getAttribute('aria-expanded') === 'true';
+            const label = expanded ? navToggleButton.dataset.labelClose : navToggleButton.dataset.labelOpen;
+            if (label) navToggleButton.setAttribute('aria-label', label);
+        }
+
+        const setMobileNav = (open) => {
+            if (!mobileNavPanel || !navToggleButton) return;
+            mobileNavPanel.classList.toggle('is-open', open);
+            navToggleButton.setAttribute('aria-expanded', String(open));
+            syncNavToggleLabel();
+        };
+
+        if (mobileNavPanel && navToggleButton) {
+            navToggleButton.addEventListener('click', () => {
+                setMobileNav(!mobileNavPanel.classList.contains('is-open'));
+            });
+
+            mobileNavPanel.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => setMobileNav(false));
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && mobileNavPanel.classList.contains('is-open')) {
+                    setMobileNav(false);
+                    navToggleButton.focus();
                 }
             });
-        }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+            document.addEventListener('click', (event) => {
+                if (!mobileNavPanel.classList.contains('is-open')) return;
+                if (mobileNavPanel.contains(event.target) || navToggleButton.contains(event.target)) return;
+                setMobileNav(false);
+            });
 
-        // Copy protection: block text selection, copying, cut, drag and context menu
-        document.addEventListener('copy', (e) => {
-            if (!e.target.closest('input, textarea')) e.preventDefault();
-        });
-        document.addEventListener('cut', (e) => {
-            if (!e.target.closest('input, textarea')) e.preventDefault();
-        });
-        document.addEventListener('contextmenu', (e) => {
-            if (!e.target.closest('input, textarea')) e.preventDefault();
-        });
-        document.addEventListener('dragstart', (e) => {
-            if (!e.target.closest('input, textarea')) e.preventDefault();
-        });
-        document.addEventListener('selectstart', (e) => {
-            if (!e.target.closest('input, textarea')) e.preventDefault();
-        });
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) setMobileNav(false);
+            });
+        }
 
-        // Compact Navbar on Scroll (requestAnimationFrame throttled)
-        const nav = document.getElementById('navbar');
-        let navbarTicking = false;
-        const updateNavbar = () => {
-            const compact = window.scrollY > 100;
-            nav.classList.toggle('bg-black/80', compact);
-            nav.classList.toggle('backdrop-blur-md', compact);
-            nav.classList.toggle('border-b', compact);
-            nav.classList.toggle('border-zinc-900', compact);
-            nav.classList.toggle('py-5', compact);
-            nav.classList.toggle('py-8', !compact);
-            navbarTicking = false;
-        };
-        window.addEventListener('scroll', () => {
-            if (!navbarTicking) {
-                navbarTicking = true;
-                requestAnimationFrame(updateNavbar);
-            }
-        }, { passive: true });
-        updateNavbar();
-
-        // Smooth Scroll Logic
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -1469,30 +1811,38 @@
             });
         });
 
-        // Language support (identical to original, but kept for completeness)
-        const pageSections = Array.from(document.querySelectorAll('section'));
         const navProductsLabel = document.querySelector('#navbar .hidden.lg\\:flex .relative > span');
-        const navProductLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex .relative a'));
         const navMainLinks = Array.from(document.querySelectorAll('#navbar .hidden.lg\\:flex > a'));
         const navLabLinks = Array.from(document.querySelectorAll('[data-lab-link]'));
         const langButtons = Array.from(document.querySelectorAll('[data-lang-switch]'));
         const demoButtons = Array.from(document.querySelectorAll('[data-demo-open]'));
         const heroSecondaryLink = document.querySelector('[data-hero-secondary]');
         const productsSection = document.getElementById('urunler');
-        const problemCards = Array.from(pageSections[0]?.querySelectorAll('.grid.sm\\:grid-cols-2 > div') || []);
+        const problemSection = document.getElementById('problem');
+        const policySection = document.getElementById('policy');
+        const threatSection = document.getElementById('threat');
+        const audienceSection = document.getElementById('kullanim-alanlari');
+        const finalCtaSection = document.getElementById('contact');
+        const problemCards = Array.from(problemSection?.querySelectorAll('.grid.sm\\:grid-cols-2 > div') || []);
         const controlCards = Array.from(document.querySelectorAll('#nasil-calisir .p-10.glass.rounded-xl'));
         const arbiterCard = document.getElementById('arbiter');
         const axisCard = document.getElementById('axis');
         const labPanel = document.getElementById('varux-lab');
-        const policySection = pageSections[3];
-        const threatSection = pageSections[4];
-        const audienceSection = pageSections[5];
-        const finalCtaSection = pageSections[6];
         const finalSecondaryLink = document.querySelector('[data-final-secondary]');
         const audienceCards = Array.from(audienceSection?.querySelectorAll('.p-10.border') || []);
-        const footerHeadings = Array.from(document.querySelectorAll('footer h5'));
-        const footerLists = Array.from(document.querySelectorAll('footer ul'));
-        const footerIntro = document.querySelector('footer .col-span-2 p');
+        const footerHeadings = Array.from(document.querySelectorAll('[data-footer-heading]'));
+        const footerLists = Array.from(document.querySelectorAll('[data-footer-list]'));
+        const footerIntro = document.querySelector('[data-footer-intro]');
+        const footerCredit = document.querySelector('[data-footer-credit]');
+        const footerCopyright = document.querySelector('[data-footer-copyright]');
+        const footerLegalNav = document.querySelector('[data-footer-legal-nav]');
+        const footerLegalLinks = Array.from(document.querySelectorAll('[data-footer-legal-link]'));
+        const skipLink = document.querySelector('[data-skip-link]');
+        const langSwitchGroup = document.querySelector('[data-lang-group]');
+        const mobileNavGroupLabel = document.querySelector('[data-mobile-nav-group]');
+        const mobileNavLinks = Array.from(document.querySelectorAll('[data-mobile-nav-link]'));
+        const heroScrollCue = document.querySelector('[data-hero-scroll-cue]');
+        const modalCloseButton = document.querySelector('.demo-modal-close');
         const modalTitle = document.getElementById('demoModalTitle');
         const modalDescription = document.querySelector('#demoModal p');
         const modalLabels = {
@@ -1513,8 +1863,23 @@
         const ogLocale = document.querySelector('meta[property="og:locale"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+
+        const arbiterSubtitleEl = document.querySelector('[data-product-subtitle="arbiter"]');
+        const arbiterDescriptionEl = document.querySelector('[data-product-description="arbiter"]');
+        const arbiterFeatureEls = Array.from(document.querySelectorAll('[data-product-features="arbiter"] li'));
+        const axisSubtitleEl = document.querySelector('[data-product-subtitle="axis"]');
+        const axisDescriptionEl = document.querySelector('[data-product-description="axis"]');
+        const axisFeatureEls = Array.from(document.querySelectorAll('[data-product-features="axis"] li'));
+        const diagramInterceptedEl = document.querySelector('[data-diagram-label="intercepted"]');
+        const diagramReasonLabelEl = document.querySelector('[data-diagram-label="reasonLabel"]');
+        const diagramReasonValueEl = document.querySelector('[data-diagram-label="reasonValue"]');
+        const diagramPolicyLabelEl = document.querySelector('[data-diagram-label="policyLabel"]');
+        const diagramDecisionLabelEl = document.querySelector('[data-diagram-label="decisionLabel"]');
+        const diagramDecisionValueEl = document.querySelector('[data-diagram-label="decisionValue"]');
+        const diagramHaltedEl = document.querySelector('[data-diagram-label="halted"]');
 
         const originalLanguageContent = {
             lang: document.documentElement.lang,
@@ -1523,6 +1888,7 @@
             ogLocale: ogLocale?.getAttribute('content') || '',
             ogTitle: ogTitle?.getAttribute('content') || '',
             ogDescription: ogDescription?.getAttribute('content') || '',
+            ogImageAlt: ogImageAlt?.getAttribute('content') || '',
             twitterTitle: twitterTitle?.getAttribute('content') || '',
             twitterDescription: twitterDescription?.getAttribute('content') || '',
             navProductsLabel: navProductsLabel?.innerHTML || '',
@@ -1532,12 +1898,21 @@
             heroTitle: document.querySelector('header h1')?.innerHTML || '',
             heroDescription: document.querySelector('header p')?.innerHTML || '',
             heroLabButton: heroSecondaryLink?.innerHTML || '',
-            problemTitle: pageSections[0]?.querySelector('h2')?.innerHTML || '',
-            problemDescription: pageSections[0]?.querySelector('p')?.innerHTML || '',
+            problemTitle: problemSection?.querySelector('h2')?.innerHTML || '',
+            problemDescription: problemSection?.querySelector('p')?.innerHTML || '',
             problemCards: problemCards.map((card) => ({
                 title: card.querySelector('h4')?.innerHTML || '',
                 text: card.querySelector('p')?.innerHTML || ''
             })),
+            diagram: {
+                intercepted: diagramInterceptedEl?.innerHTML || '',
+                reasonLabel: diagramReasonLabelEl?.innerHTML || '',
+                reasonValue: diagramReasonValueEl?.innerHTML || '',
+                policyLabel: diagramPolicyLabelEl?.innerHTML || '',
+                decisionLabel: diagramDecisionLabelEl?.innerHTML || '',
+                decisionValue: diagramDecisionValueEl?.innerHTML || '',
+                halted: diagramHaltedEl?.innerHTML || ''
+            },
             controlKicker: document.querySelector('#nasil-calisir span.block')?.innerHTML || '',
             controlTitle: document.querySelector('#nasil-calisir h2')?.innerHTML || '',
             controlCards: controlCards.map((card) => ({
@@ -1546,9 +1921,13 @@
             })),
             productsTitle: productsSection?.querySelector('h2')?.innerHTML || '',
             productsDescription: productsSection?.querySelector('.text-center p')?.innerHTML || '',
-            arbiterDescription: arbiterCard?.querySelectorAll('p')[1]?.innerHTML || '',
+            arbiterSubtitle: arbiterSubtitleEl?.innerHTML || '',
+            arbiterFeatures: arbiterFeatureEls.map((item) => item.innerHTML),
+            arbiterDescription: arbiterDescriptionEl?.innerHTML || '',
             arbiterButton: arbiterCard?.querySelector('.product-cta')?.innerHTML || '',
-            axisDescription: axisCard?.querySelectorAll('p')[1]?.innerHTML || '',
+            axisSubtitle: axisSubtitleEl?.innerHTML || '',
+            axisFeatures: axisFeatureEls.map((item) => item.innerHTML),
+            axisDescription: axisDescriptionEl?.innerHTML || '',
             axisButton: axisCard?.querySelector('.product-cta')?.innerHTML || '',
             labKicker: labPanel?.querySelector('.lab-kicker')?.innerHTML || '',
             labTitle: labPanel?.querySelector('.lab-title')?.innerHTML || '',
@@ -1556,7 +1935,7 @@
             labButton: labPanel?.querySelector('[data-lab-cta]')?.innerHTML || '',
             policyTitle: policySection?.querySelector('h2')?.innerHTML || '',
             policyDescription: policySection?.querySelector('p')?.innerHTML || '',
-            threatTitle: threatSection?.querySelector('h3')?.innerHTML || '',
+            threatTitle: threatSection?.querySelector('h2')?.innerHTML || '',
             threatHeadings: Array.from(threatSection?.querySelectorAll('h4') || []).map((item) => item.innerHTML),
             threatLists: Array.from(threatSection?.querySelectorAll('ul') || []).map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
             audienceTitle: audienceSection?.querySelector('h2')?.innerHTML || '',
@@ -1567,8 +1946,25 @@
             finalTitle: finalCtaSection?.querySelector('h2')?.innerHTML || '',
             finalLabButton: finalSecondaryLink?.innerHTML || '',
             footerIntro: footerIntro?.innerHTML || '',
+            footerCredit: footerCredit?.innerHTML || '',
+            footerCopyright: footerCopyright?.textContent.trim() || '',
+            footerLegalNavLabel: footerLegalNav?.getAttribute('aria-label') || '',
+            footerLegalLinks: footerLegalLinks.map((item) => item.innerHTML),
             footerHeadings: footerHeadings.map((item) => item.innerHTML),
             footerLists: footerLists.map((list) => Array.from(list.querySelectorAll('li')).map((item) => item.innerHTML)),
+            skipLink: skipLink?.innerHTML || '',
+            langSwitchLabel: langSwitchGroup?.getAttribute('aria-label') || '',
+            navToggleLabels: {
+                open: navToggleButton?.dataset.labelOpen || '',
+                close: navToggleButton?.dataset.labelClose || ''
+            },
+            mobileNavGroup: mobileNavGroupLabel?.innerHTML || '',
+            mobileNavLinks: mobileNavLinks.map((item) => item.innerHTML),
+            heroScrollCue: heroScrollCue?.textContent.trim() || '',
+            modalCloseLabel: modalCloseButton?.getAttribute('aria-label') || '',
+            formSubmitting: 'Gönderiliyor…',
+            formSuccess: 'Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.',
+            formError: 'Bir hata oluştu. Lütfen tekrar deneyin.',
             modalKicker: modalKicker?.innerHTML || '',
             modalTitle: modalTitle?.innerHTML || '',
             modalDescription: modalDescription?.innerHTML || '',
@@ -1594,6 +1990,7 @@
             ogLocale: 'en_US',
             ogTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
             ogDescription: 'Evaluate critical requests before execution, constrain authority with policy and apply enterprise-grade enforcement.',
+            ogImageAlt: 'VARUX — pre-execution control for autonomous systems',
             twitterTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
             twitterDescription: 'VARUX delivers deterministic control and enforcement for agents, automation and critical write paths.',
             navProductsLabel: 'Products',
@@ -1602,7 +1999,7 @@
             demoButtons: ['Request Demo', 'Request Demo', 'Request Demo'],
             heroTitle: 'Control <span class="text-zinc-600 italic">Before Execution.</span>',
             heroDescription: 'Apply deterministic policy to agents, automation and critical write operations. The model can generate decisions; <span class="text-white font-medium italic">VARUX</span> generates authority.',
-            heroLabButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
+            heroLabButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>',
             problemTitle: 'Failure should stop <br><span class="text-zinc-600">before execution.</span>',
             problemDescription: 'Observability tells you what broke. Control prevents it from breaking. In critical systems, the problem is not intent; it is authority. A model may choose a valid action, but VARUX stops it when that action exceeds policy boundaries.',
             problemCards: [
@@ -1615,6 +2012,15 @@
                     text: 'Policy is evaluated before any action begins. Risk is removed before it materializes.'
                 }
             ],
+            diagram: {
+                intercepted: 'REQUEST INTERCEPTED',
+                reasonLabel: 'Reason:',
+                reasonValue: 'Unauthorized DELETE scope',
+                policyLabel: 'Policy:',
+                decisionLabel: 'Decision:',
+                decisionValue: 'BLOCK',
+                halted: 'ACTION HALTED'
+            },
             controlKicker: 'Deterministic Loop',
             controlTitle: 'Control Architecture',
             controlCards: [
@@ -1637,14 +2043,26 @@
             ],
             productsTitle: 'Two Critical Operational Surfaces',
             productsDescription: 'The VARUX control model becomes concrete products across the two most sensitive layers of your system.',
+            arbiterSubtitle: 'Tool & Action Governance',
+            arbiterFeatures: [
+                '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Pre-execution action enforcement',
+                '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Resource scope enforcement',
+                '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Default-deny policy'
+            ],
             arbiterDescription: 'Governs which tools, parameters and scopes agents, automation and services may use. It enforces the principle that a model can generate decisions but cannot generate authority.',
             arbiterButton: 'Explore Arbiter',
+            axisSubtitle: 'Database Write-Path Enforcement',
+            axisFeatures: [
+                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Real-time write enforcement',
+                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Approval-gated destructive actions',
+                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Direct write prohibition'
+            ],
             axisDescription: 'Stops UPDATE, DELETE and DDL traffic aimed at critical systems before it reaches the database. It forces every write path through policy enforcement.',
             axisButton: 'Explore Axis',
             labKicker: 'VARUX LAB',
             labTitle: 'Future Systems Research',
             labDescription: 'VARUX Lab brings the AXIS and ARBITER control core together with future autonomous-system scenarios, research prototypes and concept architectures.',
-            labButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]"></i>',
+            labButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>',
             policyTitle: 'Without policy, <br><span class="text-zinc-600">there is no permission.</span>',
             policyDescription: 'VARUX halts the system under uncertainty with fail-closed behavior. Every decision is deterministic and bound to the active policy version. It does not guess; it enforces rules.',
             threatTitle: 'Threat Boundary',
@@ -1658,7 +2076,7 @@
                 ],
                 [
                     '+ It constrains authority with policy before an action begins.',
-                    '+ It physically gates the critical write path.',
+                    '+ It blocks critical writes before they reach the database.',
                     '+ It routes high-risk actions to approval flows.',
                     '+ It converts every decision into audit-ready evidence.'
                 ]
@@ -1681,21 +2099,34 @@
             finalTitle: 'Do not leave the final decision <br><span class="text-zinc-700">to the model.</span>',
             finalLabButton: 'Open VARUX Lab',
             footerIntro: 'Pre-execution control architecture <br>for autonomous operations.',
-            footerHeadings: ['Products', 'Legal'],
+            footerCredit: 'An independent cybersecurity and infrastructure initiative developed by Selman Vural. Contact: <a href="mailto:security@varuxcyber.com" class="text-zinc-400 hover:text-white transition-colors">security@varuxcyber.com</a>',
+            footerCopyright: '© 2026 VARUX. All rights reserved.',
+            footerLegalNavLabel: 'Legal',
+            footerLegalLinks: [
+                'Privacy Policy',
+                'Cookie Policy',
+                'Terms of Use',
+                'Security',
+                'security@varuxcyber.com'
+            ],
+            footerHeadings: ['Products'],
             footerLists: [
                 [
                     '<a href="arbiter.html" class="hover:text-white transition-colors">Arbiter</a>',
                     '<a href="axis.html" class="hover:text-white transition-colors">Axis</a>',
                     '<a href="varuxlab.html" class="hover:text-white transition-colors">VARUX Lab</a>'
-                ],
-                [
-                    '<a href="privacy.html" class="text-zinc-400 hover:text-white transition-colors">Privacy Policy</a>',
-                    '<a href="cookies.html" class="text-zinc-400 hover:text-white transition-colors">Cookie Policy</a>',
-                    '<a href="terms.html" class="text-zinc-400 hover:text-white transition-colors">Terms of Use</a>',
-                    '<a href="security.html" class="text-zinc-400 hover:text-white transition-colors">Security &amp; Disclosure</a>',
-                    '<a href="mailto:legal@varuxcyber.com" class="hover:text-white transition-colors">Legal Contact</a>'
                 ]
             ],
+            skipLink: 'Skip to content',
+            langSwitchLabel: 'Language selection',
+            navToggleLabels: { open: 'Open menu', close: 'Close menu' },
+            mobileNavGroup: 'Products',
+            mobileNavLinks: ['How It Works', 'Use Cases'],
+            heroScrollCue: 'Scroll',
+            modalCloseLabel: 'Close form',
+            formSubmitting: 'Sending…',
+            formSuccess: 'Your request has been received. We will contact you shortly.',
+            formError: 'An error occurred. Please try again.',
             modalKicker: 'Request Demo',
             modalTitle: 'Get in touch with VARUX',
             modalDescription: 'Leave your details. Let us understand how your team wants to secure agents, automation and critical write paths.',
@@ -1715,6 +2146,9 @@
         };
 
         let currentLanguage = originalLanguageContent.lang || 'tr';
+        let formSubmittingText = originalLanguageContent.formSubmitting;
+        let formSuccessText = originalLanguageContent.formSuccess;
+        let formErrorText = originalLanguageContent.formError;
 
         const setHtml = (element, value) => {
             if (element && typeof value === 'string') {
@@ -1747,6 +2181,7 @@
             if (ogLocale) ogLocale.setAttribute('content', source.ogLocale);
             if (ogTitle) ogTitle.setAttribute('content', source.ogTitle);
             if (ogDescription) ogDescription.setAttribute('content', source.ogDescription);
+            if (ogImageAlt) ogImageAlt.setAttribute('content', source.ogImageAlt);
             if (twitterTitle) twitterTitle.setAttribute('content', source.twitterTitle);
             if (twitterDescription) twitterDescription.setAttribute('content', source.twitterDescription);
 
@@ -1759,12 +2194,20 @@
             setHtml(document.querySelector('header p'), source.heroDescription);
             setHtml(heroSecondaryLink, source.heroLabButton);
 
-            setHtml(pageSections[0]?.querySelector('h2'), source.problemTitle);
-            setHtml(pageSections[0]?.querySelector('p'), source.problemDescription);
+            setHtml(problemSection?.querySelector('h2'), source.problemTitle);
+            setHtml(problemSection?.querySelector('p'), source.problemDescription);
             problemCards.forEach((card, index) => {
                 setHtml(card.querySelector('h4'), source.problemCards[index]?.title || '');
                 setHtml(card.querySelector('p'), source.problemCards[index]?.text || '');
             });
+
+            setHtml(diagramInterceptedEl, source.diagram.intercepted);
+            setHtml(diagramReasonLabelEl, source.diagram.reasonLabel);
+            setHtml(diagramReasonValueEl, source.diagram.reasonValue);
+            setHtml(diagramPolicyLabelEl, source.diagram.policyLabel);
+            setHtml(diagramDecisionLabelEl, source.diagram.decisionLabel);
+            setHtml(diagramDecisionValueEl, source.diagram.decisionValue);
+            setHtml(diagramHaltedEl, source.diagram.halted);
 
             setHtml(document.querySelector('#nasil-calisir span.block'), source.controlKicker);
             setHtml(document.querySelector('#nasil-calisir h2'), source.controlTitle);
@@ -1775,9 +2218,13 @@
 
             setHtml(productsSection?.querySelector('h2'), source.productsTitle);
             setHtml(productsSection?.querySelector('.text-center p'), source.productsDescription);
-            setHtml(arbiterCard?.querySelectorAll('p')[1], source.arbiterDescription);
+            setHtml(arbiterSubtitleEl, source.arbiterSubtitle);
+            setManyHtml(arbiterFeatureEls, source.arbiterFeatures);
+            setHtml(arbiterDescriptionEl, source.arbiterDescription);
             setHtml(arbiterCard?.querySelector('.product-cta'), source.arbiterButton);
-            setHtml(axisCard?.querySelectorAll('p')[1], source.axisDescription);
+            setHtml(axisSubtitleEl, source.axisSubtitle);
+            setManyHtml(axisFeatureEls, source.axisFeatures);
+            setHtml(axisDescriptionEl, source.axisDescription);
             setHtml(axisCard?.querySelector('.product-cta'), source.axisButton);
             setHtml(labPanel?.querySelector('.lab-kicker'), source.labKicker);
             setHtml(labPanel?.querySelector('.lab-title'), source.labTitle);
@@ -1787,7 +2234,7 @@
             setHtml(policySection?.querySelector('h2'), source.policyTitle);
             setHtml(policySection?.querySelector('p'), source.policyDescription);
 
-            setHtml(threatSection?.querySelector('h3'), source.threatTitle);
+            setHtml(threatSection?.querySelector('h2'), source.threatTitle);
             Array.from(threatSection?.querySelectorAll('h4') || []).forEach((item, index) => {
                 setHtml(item, source.threatHeadings[index] || '');
             });
@@ -1807,11 +2254,29 @@
             setHtml(finalSecondaryLink, source.finalLabButton);
 
             setHtml(footerIntro, source.footerIntro);
+            setHtml(footerCredit, source.footerCredit);
             setManyHtml(footerHeadings, source.footerHeadings);
             footerLists.forEach((list, index) => {
                 const listItems = Array.from(list.querySelectorAll('li'));
                 setManyHtml(listItems, source.footerLists[index] || []);
             });
+            if (footerCopyright) footerCopyright.textContent = source.footerCopyright;
+            if (footerLegalNav) footerLegalNav.setAttribute('aria-label', source.footerLegalNavLabel);
+            setManyHtml(footerLegalLinks, source.footerLegalLinks);
+            setHtml(skipLink, source.skipLink);
+            if (langSwitchGroup) langSwitchGroup.setAttribute('aria-label', source.langSwitchLabel);
+            setHtml(mobileNavGroupLabel, source.mobileNavGroup);
+            setManyHtml(mobileNavLinks, source.mobileNavLinks);
+            if (heroScrollCue) heroScrollCue.textContent = source.heroScrollCue;
+            if (modalCloseButton) modalCloseButton.setAttribute('aria-label', source.modalCloseLabel);
+            formSubmittingText = source.formSubmitting;
+            formSuccessText = source.formSuccess;
+            formErrorText = source.formError;
+            if (navToggleButton) {
+                navToggleButton.dataset.labelOpen = source.navToggleLabels.open;
+                navToggleButton.dataset.labelClose = source.navToggleLabels.close;
+                syncNavToggleLabel();
+            }
 
             setHtml(modalKicker, source.modalKicker);
             setHtml(modalTitle, source.modalTitle);
@@ -1826,17 +2291,21 @@
             setPlaceholder(modalInputs.message, source.modalPlaceholders.message);
             setHtml(modalSubmitButton, source.modalSubmitButton);
             if (document.getElementById('demoFormStatus')) {
-                document.getElementById('demoFormStatus').textContent = '';
+                const statusEl = document.getElementById('demoFormStatus');
+                statusEl.textContent = '';
+                statusEl.classList.remove('is-success', 'is-error');
             }
 
             langButtons.forEach((button) => {
-                button.classList.toggle('is-active', button.dataset.langSwitch === currentLanguage);
+                const isActive = button.dataset.langSwitch === currentLanguage;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
             });
 
             try {
                 window.localStorage.setItem('varux-language', currentLanguage);
             } catch (error) {
-                // Ignore storage access issues.
+                void 0;
             }
         };
 
@@ -1846,29 +2315,47 @@
             });
         });
 
-        try {
-            const savedLanguage = window.localStorage.getItem('varux-language');
-            if (savedLanguage === 'en') {
-                applyLanguage('en');
+        const requestedLanguage = (() => {
+            try {
+                const param = new URLSearchParams(window.location.search).get('lang');
+                if (param === 'en' || param === 'tr') return param;
+            } catch (error) {
+                void 0;
             }
-        } catch (error) {
-            // Ignore storage access issues.
+            try {
+                const saved = window.localStorage.getItem('varux-language');
+                if (saved === 'en' || saved === 'tr') return saved;
+            } catch (error) {
+                void 0;
+            }
+            return null;
+        })();
+
+        if (requestedLanguage && requestedLanguage !== currentLanguage) {
+            applyLanguage(requestedLanguage);
         }
 
-        // Demo request modal (same as original)
         const demoModal = document.querySelector('[data-demo-modal]');
         if (demoModal) {
             const demoForm = document.getElementById('demoRequestForm');
             const demoStatus = document.getElementById('demoFormStatus');
             const demoFirstField = document.getElementById('demoName');
+            const demoPanel = demoModal.querySelector('.demo-modal-panel');
             const openDemoButtons = document.querySelectorAll('[data-demo-open]');
             const closeDemoButtons = demoModal.querySelectorAll('[data-demo-close]');
+            const focusableSelector = 'a[href], button:not([disabled]), input:not([type="hidden"]), textarea, select, [tabindex]:not([tabindex="-1"])';
+            let lastFocusedElement = null;
 
             const openDemoModal = () => {
+                lastFocusedElement = document.activeElement;
                 demoModal.classList.add('is-open');
                 demoModal.setAttribute('aria-hidden', 'false');
                 document.body.classList.add('modal-open');
-                if (demoStatus) demoStatus.textContent = '';
+                setMobileNav(false);
+                if (demoStatus) {
+                    demoStatus.textContent = '';
+                    demoStatus.classList.remove('is-success', 'is-error');
+                }
                 window.setTimeout(() => {
                     if (demoFirstField) demoFirstField.focus();
                 }, 40);
@@ -1878,7 +2365,14 @@
                 demoModal.classList.remove('is-open');
                 demoModal.setAttribute('aria-hidden', 'true');
                 document.body.classList.remove('modal-open');
-                if (demoStatus) demoStatus.textContent = '';
+                if (demoStatus) {
+                    demoStatus.textContent = '';
+                    demoStatus.classList.remove('is-success', 'is-error');
+                }
+                if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                    lastFocusedElement.focus();
+                }
+                lastFocusedElement = null;
             };
 
             openDemoButtons.forEach((button) => {
@@ -1896,16 +2390,79 @@
             });
 
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && demoModal.classList.contains('is-open')) {
+                if (!demoModal.classList.contains('is-open')) return;
+
+                if (event.key === 'Escape') {
                     closeDemoModal();
+                    return;
+                }
+
+                if (event.key !== 'Tab' || !demoPanel) return;
+
+                const focusable = Array.from(demoPanel.querySelectorAll(focusableSelector));
+                if (focusable.length === 0) return;
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
                 }
             });
+
+            if (demoForm) {
+                demoForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const submitButton = demoForm.querySelector('[data-modal-submit]');
+                    if (demoStatus) {
+                        demoStatus.textContent = formSubmittingText;
+                        demoStatus.classList.remove('is-success', 'is-error');
+                    }
+                    if (submitButton) {
+                        submitButton.style.opacity = '0.7';
+                        submitButton.disabled = true;
+                        submitButton.setAttribute('aria-busy', 'true');
+                    }
+                    try {
+                        const formData = new FormData(demoForm);
+                        const response = await fetch(demoForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (response.ok) {
+                            if (demoStatus) {
+                                demoStatus.textContent = formSuccessText;
+                                demoStatus.classList.remove('is-error');
+                                demoStatus.classList.add('is-success');
+                            }
+                            demoForm.reset();
+                        } else {
+                            throw new Error('Submission failed');
+                        }
+                    } catch (error) {
+                        if (demoStatus) {
+                            demoStatus.textContent = formErrorText;
+                            demoStatus.classList.remove('is-success');
+                            demoStatus.classList.add('is-error');
+                        }
+                    } finally {
+                        if (submitButton) {
+                            submitButton.style.opacity = '';
+                            submitButton.disabled = false;
+                            submitButton.removeAttribute('aria-busy');
+                        }
+                    }
+                });
+            }
         }
 
-        // Hero starfield animation: pause off-screen to avoid continuous scroll work.
         const heroMeshStage = document.querySelector('.hero-stage');
 
-        // Starfield animation: layered parallax, glowing accents and shooting meteors.
         const heroCanvas = document.getElementById('heroMesh');
         if (heroCanvas) {
             const ctx = heroCanvas.getContext('2d');
@@ -1922,7 +2479,6 @@
             const meteors = [];
             let meteorTimer = 0;
 
-            // Depth-layered starfield (parallax by layer depth)
             const layers = [
                 { count: lowPower ? 30 : 60, size: [0.4, 0.9], alpha: [0.1, 0.28], speed: 0.00015, depth: 0.25 },
                 { count: lowPower ? 35 : 70, size: [0.6, 1.4], alpha: [0.2, 0.45], speed: 0.0003, depth: 0.55 },
@@ -1990,7 +2546,6 @@
                 const offsetX = (pointerX - 0.5) * 22;
                 const offsetY = (pointerY - 0.5) * 16;
 
-                // Stars: drift, twinkle, depth parallax and glow accents
                 stars.forEach(star => {
                     if (!reducedMotion) {
                         star.x += star.vx;
@@ -2023,7 +2578,6 @@
                     ctx.fill();
                 });
 
-                // Occasional shooting meteors with tapered, realistic tails
                 if (!reducedMotion && !lowPower) {
                     meteorTimer -= 0.008;
                     if (meteorTimer <= 0 && meteors.length < 2) {
@@ -2125,6 +2679,55 @@
             resize();
             animate();
         }
+
+        /* ===== Text-copy deterrence (delegated, capture-phase, non-intrusive) ===== */
+        (() => {
+            const ALLOW = 'input, textarea, select, option, [contenteditable="true"], [contenteditable=""], [contenteditable="plaintext-only"], [data-allow-select]';
+            const isAllowed = (target) => {
+                if (!target) return false;
+                const el = target.nodeType === 1 ? target : target.parentElement;
+                if (!el || typeof el.closest !== 'function') return false;
+                return !!el.closest(ALLOW);
+            };
+
+            document.addEventListener('contextmenu', (e) => {
+                if (isAllowed(e.target)) return;
+                e.preventDefault();
+            }, { capture: true });
+
+            document.addEventListener('copy', (e) => {
+                if (isAllowed(e.target)) return;
+                e.preventDefault();
+            }, { capture: true });
+
+            document.addEventListener('cut', (e) => {
+                if (isAllowed(e.target)) return;
+                e.preventDefault();
+            }, { capture: true });
+
+            document.addEventListener('selectstart', (e) => {
+                if (isAllowed(e.target)) return;
+                e.preventDefault();
+            }, { capture: true });
+
+            document.addEventListener('dragstart', (e) => {
+                const t = e.target;
+                if (isAllowed(t)) return;
+                if (t && typeof t.closest === 'function' && t.closest('a')) return;
+                e.preventDefault();
+            }, { capture: true });
+
+            const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
+            document.addEventListener('keydown', (e) => {
+                const mod = isMac ? e.metaKey : e.ctrlKey;
+                if (!mod) return;
+                if (isAllowed(e.target)) return;
+                const k = (e.key || '').toLowerCase();
+                if (k === 'c' || k === 'x' || k === 'a' || k === 'u') {
+                    e.preventDefault();
+                }
+            }, { capture: true });
+        })();
     </script>
 </body>
 </html>
