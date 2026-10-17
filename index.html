@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <script>document.documentElement.classList.add('js');</script>
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
-    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi</title>
     <meta name="description" content="VARUX; ajanlar, otomasyonlar ve kritik yazma işlemleri için yürütme öncesi kontrol, deterministik politika denetimi ve kurumsal yönetişim platformudur.">
     <meta name="keywords" content="VARUX, yürütme öncesi kontrol, politika denetimi, ajan güvenliği, otonom sistem yönetişimi, kurumsal güvenlik, veritabanı yazma koruması, Arbiter, Axis">
@@ -37,7 +36,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="VARUX — otonom sistemler için yürütme öncesi kontrol">
     <meta property="og:title" content="VARUX | Yürütme Öncesi Kontrol ve Politika Denetimi">
-    <meta property="og:description" content="Kritik istekleri yürütme başlamadan önce değerlendirin, yetkiyi politika ile sınırlayın ve denetlenebilir bir kontrol katmanı uygulayın.">
+    <meta property="og:description" content="Kritik istekleri yürütme başlamadan önce değerlendirin, yetkiyi politikayla sınırlayın ve denetlenebilir bir kontrol katmanı uygulayın.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@varuxtech">
     <meta name="twitter:creator" content="@varuxtech">
@@ -139,24 +138,6 @@
             --accent: #3b82f6;
             --axis-accent: #10b981;
             --arbiter-accent: #6366f1;
-        }
-
-        html, body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-        }
-
-        input, textarea, select, option,
-        [contenteditable="true"], [contenteditable=""],
-        [contenteditable="plaintext-only"], [data-allow-select] {
-            -webkit-user-select: text !important;
-            -moz-user-select: text !important;
-            -ms-user-select: text !important;
-            user-select: text !important;
-            -webkit-touch-callout: default;
         }
 
         img, svg, canvas {
@@ -790,6 +771,25 @@
             margin-top: 1.5rem;
         }
 
+        .demo-privacy-note {
+            margin-top: 1rem;
+            color: #71717a;
+            font-size: 11px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .demo-privacy-note a {
+            color: #a1a1aa;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .demo-privacy-note a:hover {
+            color: #ffffff;
+        }
+
         .demo-status {
             min-height: 1.5rem;
             color: #93c5fd;
@@ -1362,8 +1362,8 @@
                 </h1>
                 
                 <p class="hero-description hero-reveal hero-reveal-delay-2 text-lg sm:text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mb-14 leading-relaxed">
-                    Ajanlara, otomasyonlara ve kritik yazma işlemlerine deterministik politika uygulayın. 
-                    Kararı model üretir, yetkiyi yalnızca <span class="text-white font-medium italic">VARUX</span> verir.
+                    Ajanlara, otomasyonlara ve kritik yazma işlemlerine deterministik politika uygulayın.
+                    Kararı model üretebilir; yetkiyi yalnızca <span class="text-white font-medium italic">VARUX</span> verir.
                 </p>
 
                 <div class="hero-actions hero-reveal hero-reveal-delay-3 flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 sm:mb-24">
@@ -1384,20 +1384,20 @@
                 <div>
                     <h2 class="text-4xl md:text-6xl text-white font-medium tracking-tighter mb-10 leading-none">Hata, Yürütmeden Sonra Değil <br><span class="text-zinc-600">Önce Durmalı.</span></h2>
                     <p class="text-zinc-400 text-lg mb-12 leading-relaxed font-light">
-                        Gözlemlenebilirlik size neyin bozulduğunu söyler; kontrol ise bozulmasını engeller. 
-                        Kritik sistemlerde sorun <span class="italic text-white">niyet değil, yetkidir.</span> 
-                        Model doğru karar üretebilir; ancak bu karar yetki sınırlarının dışındaysa VARUX onu durdurur.
+                        Gözlemlenebilirlik neyin bozulduğunu gösterir; kontrol bozulmasını engeller.
+                        Kritik sistemlerde asıl sorun <span class="italic text-white">niyet değil, yetkidir.</span>
+                        Model geçerli bir eylem önerebilir; bu eylem politika sınırlarını aşıyorsa VARUX onu durdurur.
                     </p>
                     <div class="grid sm:grid-cols-2 gap-10">
                         <div class="space-y-4">
                             <div class="w-8 h-[1px] bg-zinc-700"></div>
                             <h4 class="text-white text-xs font-bold uppercase tracking-widest">Olay Sonrası Risk</h4>
-                            <p class="text-zinc-500 text-xs">İşlem veritabanına ulaştıktan sonra tutulan kayıtlar zararı engellemez. Geri dönüş maliyetli ve yavaştır.</p>
+                            <p class="text-zinc-500 text-xs">Veritabanına yazıldıktan sonra tutulan loglar zararı engellemez. Geri alma maliyetli ve yavaştır.</p>
                         </div>
                         <div class="space-y-4">
                             <div class="w-8 h-[1px] bg-blue-500"></div>
                             <h4 class="text-blue-500 text-xs font-bold uppercase tracking-widest">Yürütme Öncesi Denetim</h4>
-                            <p class="text-zinc-500 text-xs">Eylem daha başlamadan politika kontrolü yapılır. Risk oluşmadan ortadan kaldırılır.</p>
+                            <p class="text-zinc-500 text-xs">Eylem başlamadan önce politika kontrol edilir. Risk oluşmadan ortadan kalkar.</p>
                         </div>
                     </div>
                 </div>
@@ -1436,22 +1436,22 @@
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">01</div>
                 <h3 class="text-white font-bold text-xs uppercase tracking-widest">Yakala</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek, yürütme başlamadan önce platform katmanında yakalanır. Kimlik, bağlam ve kapsam bilgileri ayrıştırılır.</p>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">İstek, yürütme başlamadan önce platform katmanında yakalanır. Kimlik, bağlam ve kapsam ayrıştırılır.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">02</div>
                 <h3 class="text-white font-bold text-xs uppercase tracking-widest">Değerlendir</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Politika Motoru, aktif sürümdeki deterministik kuralları çalıştırır. Karar modeli rasyonel, tutarlı ve açıklanabilirdir.</p>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Politika motoru, aktif sürümdeki deterministik kuralları çalıştırır. Sonuç tutarlı, açıklanabilir ve sürüme bağlıdır.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8 border-blue-500/30">
                 <div class="text-3xl font-black text-zinc-800 font-mono">03</div>
                 <h3 class="text-white font-bold text-xs uppercase tracking-widest">Karar Ver</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">İZİN VER, ENGELLE veya ONAY GEREKTİR kararı döner. Belirsizlik durumunda sistem kapalı-güvenli (fail-closed) çalışır.</p>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">ALLOW, BLOCK veya REQUIRE_APPROVAL döner. Belirsizlikte sistem fail-closed (kapalı-güvenli) kalır.</p>
             </div>
             <div class="p-10 glass rounded-xl space-y-8">
                 <div class="text-3xl font-black text-zinc-800 font-mono">04</div>
                 <h3 class="text-white font-bold text-xs uppercase tracking-widest">Kanıt</h3>
-                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar bir istek kimliğiyle imzalanır ve yalnızca eklenebilir denetim kayıtlarına kanıt olarak yazılır.</p>
+                <p class="text-zinc-500 text-[13px] leading-relaxed">Her karar bir istek kimliğiyle imzalanır ve yalnızca eklenebilir (append-only) denetim kayıtlarına yazılır.</p>
             </div>
         </div>
     </section>
@@ -1472,7 +1472,7 @@
                         <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Arbiter</h3>
                         <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8" data-product-subtitle="arbiter">Araç ve Eylem Yönetişimi</p>
                         <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light" data-product-description="arbiter">
-                            Ajanların, otomasyonların ve servislerin hangi araçları, hangi parametrelerle ve hangi kapsamda kullanabileceğini yönetir. Ajan karar üretebilir ama yetki üretemez ilkesini uygular.
+                            Ajanların, otomasyonların ve servislerin hangi araçları, hangi parametrelerle ve hangi kapsamda kullanabileceğini yönetir. Model karar üretebilir; yetki üretemez.
                         </p>
                         <ul class="space-y-4 mb-12" data-product-features="arbiter">
                             <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Yürütme öncesi eylem denetimi</li>
@@ -1491,7 +1491,7 @@
                         <h3 class="text-4xl text-white font-semibold tracking-tighter mb-4">Axis</h3>
                         <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest mb-8" data-product-subtitle="axis">Veritabanı Yazma Yolu Denetimi</p>
                         <p class="text-zinc-400 text-base leading-relaxed mb-10 font-light" data-product-description="axis">
-                            Kritik sistemlere yönelen UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce durdurur. İnsan ya da yazılım fark etmeksizin tüm yazma trafiğini politika katmanından geçmeye zorlar.
+                            Kritik sistemlere giden UPDATE, DELETE ve DDL isteklerini veritabanına ulaşmadan önce politikayla değerlendirir; izin verir, engeller ya da insan onayına bağlar. PostgreSQL protokolünde çalışan bir proxy olarak, kendisinden geçen tüm yazma trafiğine politika uygular.
                         </p>
                         <ul class="space-y-4 mb-12" data-product-features="axis">
                             <li class="flex items-center gap-3 text-xs text-zinc-500"><i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Gerçek zamanlı yazma denetimi</li>
@@ -1508,7 +1508,7 @@
                     <span class="lab-kicker text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-5 block">VARUX LAB</span>
                     <h3 class="lab-title text-3xl md:text-5xl text-white font-medium tracking-tighter mb-5">Gelecek Sistemler Araştırması</h3>
                     <p class="lab-description text-zinc-500 text-base leading-relaxed font-light">
-                        VARUX Lab, AXIS ve ARBITER kontrol çekirdeğini gelecekteki otonom sistem senaryoları, araştırma prototipleri ve konsept mimarilerle aynı çatı altında toplar.
+                        VARUX Lab, Axis ve Arbiter kontrol çekirdeğini gelecekteki otonom sistem senaryoları, araştırma prototipleri ve konsept mimarilerle aynı çatı altında toplar.
                     </p>
                 </div>
                 <a href="varuxlab.html" data-lab-cta class="shrink-0 border border-zinc-800 text-white py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all inline-flex items-center justify-center gap-3">
@@ -1546,7 +1546,7 @@
             <div>
                 <h2 class="text-4xl md:text-5xl text-white font-medium tracking-tighter mb-10 leading-none italic">Politika Yoksa <br><span class="text-zinc-600">İzin Yok.</span></h2>
                 <p class="text-zinc-500 text-lg mb-12 font-light">
-                    VARUX, belirsizlik durumunda sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif politika sürümüne bağlıdır. Tahmin yürütmez; kuralı uygular.
+                    Belirsizlikte VARUX sistemi durdurur (fail-closed). Her karar deterministiktir ve aktif politika sürümüne bağlıdır. Tahmin etmez; kuralı uygular.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <div class="px-5 py-2 border border-emerald-500/20 bg-emerald-500/5 text-emerald-500 text-[10px] font-black uppercase tracking-widest rounded">ALLOW</div>
@@ -1565,15 +1565,16 @@
                     <h4 class="text-white text-xs font-black uppercase tracking-widest text-zinc-600">VARUX Ne Değildir?</h4>
                     <ul class="text-zinc-500 text-sm space-y-3 font-light">
                         <li>- Model doğruluğunu artıran bir araç değildir.</li>
-                        <li>- Halüsinasyon düzelten bir sohbet botu değildir.</li>
+                        <li>- Halüsinasyonu düzelten bir sohbet botu değildir.</li>
                         <li>- Klasik gözlemlenebilirlik veya loglama platformu değildir.</li>
                         <li>- İş mantığı katmanı değildir.</li>
+                        <li>- AXIS'i atlayan doğrudan veritabanı erişimini tek başına kapatmaz; veritabanına ağ erişimi yalnızca AXIS'e açık olmalıdır.</li>
                     </ul>
                 </div>
                 <div class="space-y-4">
                     <h4 class="text-white text-xs font-black uppercase tracking-widest text-blue-500">VARUX Ne Yapar?</h4>
                     <ul class="text-zinc-300 text-sm space-y-3 font-light">
-                        <li>+ Eylem başlamadan yetkiyi politika ile sınırlar.</li>
+                        <li>+ Eylem başlamadan yetkiyi politikayla sınırlar.</li>
                         <li>+ Kritik yazma işlemlerini veritabanına ulaşmadan engeller.</li>
                         <li>+ Riskli eylemleri insan onayına bağlar.</li>
                         <li>+ Her kararı denetime hazır kanıta dönüştürür.</li>
@@ -1589,15 +1590,15 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
                     <h4 class="text-white font-bold text-xs uppercase tracking-widest">Platform ve Altyapı</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Üretim ortamındaki kritik sistemleri otonom veya manuel hatalardan korumak isteyen ekipler.</p>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Üretimdeki kritik sistemleri otonom veya insan kaynaklı hatalardan korumak isteyen ekipler.</p>
                 </div>
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
                     <h4 class="text-white font-bold text-xs uppercase tracking-widest">Yapay Zekâ Mühendisliği</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Ajanların yeteneklerini artırırken güvenliği son karara değil, ilk adıma koymak isteyen ekipler.</p>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Ajan yeteneklerini artırırken güvenliği son karara değil, ilk kapıya koyan ekipler.</p>
                 </div>
                 <div class="p-10 border border-zinc-900 rounded-xl space-y-6">
                     <h4 class="text-white font-bold text-xs uppercase tracking-widest">Güvenlik ve Uyum</h4>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Kritik eylemler için değiştirilemez kanıt ve insan onayı döngüsü kurması gereken ekipler.</p>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Prod veritabanında kimin ne yaptığını denetçiye imzalı, değişikliği fark edilebilir kayıtla göstermesi ve kritik eylemlere insan onayı koyması gereken ekipler.</p>
                 </div>
             </div>
         </div>
@@ -1677,7 +1678,7 @@
             <div class="demo-kicker">Demo Talebi</div>
             <h2 id="demoModalTitle" class="text-3xl md:text-4xl text-white font-semibold tracking-tighter mb-4">VARUX ile iletişime geçin</h2>
             <p class="text-zinc-400 text-base leading-relaxed max-w-2xl">
-                Kısa bilgilerinizi bırakın. Ekibinizin ajan, otomasyon ve kritik yazma yolu güvenliğini nasıl korumak istediğini konuşalım.
+                Kısa bilgilerinizi bırakın. Ekibinizin ajan, otomasyon ve kritik yazma yolu güvenliğini nasıl güçlendirmek istediğini konuşalım.
             </p>
 
             <form id="demoRequestForm" action="https://formspree.io/f/mlgpjdyy" method="POST" class="mt-8">
@@ -1711,6 +1712,7 @@
                     <div id="demoFormStatus" class="demo-status" role="status" aria-live="polite"></div>
                     <button type="submit" data-modal-submit class="bg-white text-black py-4 px-10 text-[10px] font-black uppercase tracking-[0.2em] btn-premium rounded-sm">Talebi Gönder</button>
                 </div>
+                <p class="demo-privacy-note" data-modal-privacy>Formu göndererek bilgilerinizin talebinize yanıt verilmesi amacıyla işlenmesini kabul edersiniz. Ayrıntılar: <a href="privacy.html">Gizlilik Politikası</a></p>
             </form>
         </div>
     </div>
@@ -1859,6 +1861,7 @@
         };
         const modalKicker = document.querySelector('.demo-kicker');
         const modalSubmitButton = document.querySelector('#demoRequestForm button[type="submit"]');
+        const modalPrivacyNote = document.querySelector('[data-modal-privacy]');
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogLocale = document.querySelector('meta[property="og:locale"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -1980,36 +1983,37 @@
                 email: modalInputs.email?.getAttribute('placeholder') || '',
                 message: modalInputs.message?.getAttribute('placeholder') || ''
             },
-            modalSubmitButton: modalSubmitButton?.innerHTML || ''
+            modalSubmitButton: modalSubmitButton?.innerHTML || '',
+            modalPrivacyNote: modalPrivacyNote?.innerHTML || ''
         };
 
         const englishLanguageContent = {
             lang: 'en',
-            title: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            metaDescription: 'VARUX is a pre-execution control and deterministic enforcement platform for agents, automation and critical write operations.',
+            title: 'VARUX | Pre-Execution Control & Policy Enforcement',
+            metaDescription: 'VARUX is a pre-execution control platform that applies deterministic policy to agents, automation, and critical write operations.',
             ogLocale: 'en_US',
-            ogTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            ogDescription: 'Evaluate critical requests before execution, constrain authority with policy and apply enterprise-grade enforcement.',
+            ogTitle: 'VARUX | Pre-Execution Control & Policy Enforcement',
+            ogDescription: 'Evaluate critical requests before they run, constrain authority with policy, and enforce an auditable control layer.',
             ogImageAlt: 'VARUX — pre-execution control for autonomous systems',
-            twitterTitle: 'VARUX | Pre-Execution Control, Policy Enforcement and Agent Governance',
-            twitterDescription: 'VARUX delivers deterministic control and enforcement for agents, automation and critical write paths.',
+            twitterTitle: 'VARUX | Pre-Execution Control & Policy Enforcement',
+            twitterDescription: 'Deterministic control and enforcement for agents, automation, and critical write paths.',
             navProductsLabel: 'Products',
             navMainLinks: ['How It Works', 'Use Cases', 'VARUX Lab'],
             navLabLinks: ['VARUX Lab', 'VARUX Lab', 'VARUX Lab'],
             demoButtons: ['Request Demo', 'Request Demo', 'Request Demo'],
             heroTitle: 'Control <span class="text-zinc-600 italic">Before Execution.</span>',
-            heroDescription: 'Apply deterministic policy to agents, automation and critical write operations. The model can generate decisions; <span class="text-white font-medium italic">VARUX</span> generates authority.',
+            heroDescription: 'Apply deterministic policy to agents, automation, and critical write operations. The model may decide; only <span class="text-white font-medium italic">VARUX</span> grants authority.',
             heroLabButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>',
             problemTitle: 'Failure should stop <br><span class="text-zinc-600">before execution.</span>',
-            problemDescription: 'Observability tells you what broke. Control prevents it from breaking. In critical systems, the problem is not intent; it is authority. A model may choose a valid action, but VARUX stops it when that action exceeds policy boundaries.',
+            problemDescription: 'Observability tells you what broke. Control stops it from breaking. In critical systems the issue is not intent — it is authority. A model can propose a valid action; VARUX blocks it when that action exceeds policy.',
             problemCards: [
                 {
-                    title: 'Post-Mortem Risk',
-                    text: 'Logs emitted after a database write do not prevent damage. Recovery is expensive and slow.'
+                    title: 'After-the-Fact Risk',
+                    text: 'Logs written after a database change do not prevent damage. Recovery is costly and slow.'
                 },
                 {
-                    title: 'Pre-Execution Enforcement',
-                    text: 'Policy is evaluated before any action begins. Risk is removed before it materializes.'
+                    title: 'Pre-Execution Control',
+                    text: 'Policy is checked before any action starts. Risk is removed before it can occur.'
                 }
             ],
             diagram: {
@@ -2026,80 +2030,81 @@
             controlCards: [
                 {
                     title: 'Intercept',
-                    text: 'The request is intercepted at the platform layer before execution starts. Identity, context and scope are extracted.'
+                    text: 'The request is captured at the platform layer before execution begins. Identity, context, and scope are extracted.'
                 },
                 {
                     title: 'Evaluate',
-                    text: 'The Policy Engine executes active deterministic rules. The decision model is rational, consistent and explainable.'
+                    text: 'The policy engine runs the active deterministic rules. Outcomes are consistent, explainable, and version-bound.'
                 },
                 {
                     title: 'Decide',
-                    text: 'The platform returns ALLOW, BLOCK or REQUIRE_APPROVAL. Under uncertainty, the system remains fail-closed.'
+                    text: 'The platform returns ALLOW, BLOCK, or REQUIRE_APPROVAL. Under uncertainty it stays fail-closed.'
                 },
                 {
                     title: 'Evidence',
-                    text: 'Every decision is signed with a request id and written into append-only audit records as evidence.'
+                    text: 'Every decision is signed with a request ID and written to append-only audit records.'
                 }
             ],
             productsTitle: 'Two Critical Operational Surfaces',
-            productsDescription: 'The VARUX control model becomes concrete products across the two most sensitive layers of your system.',
+            productsDescription: 'The VARUX control model becomes concrete products on the two most sensitive layers of your stack.',
             arbiterSubtitle: 'Tool & Action Governance',
             arbiterFeatures: [
-                '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Pre-execution action enforcement',
+                '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Pre-execution action checks',
                 '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Resource scope enforcement',
                 '<i class="fa-solid fa-check text-arbiter-accent" aria-hidden="true"></i> Default-deny policy'
             ],
-            arbiterDescription: 'Governs which tools, parameters and scopes agents, automation and services may use. It enforces the principle that a model can generate decisions but cannot generate authority.',
+            arbiterDescription: 'Controls which tools, parameters, and scopes agents, automation, and services may use. A model can generate decisions; it cannot generate authority.',
             arbiterButton: 'Explore Arbiter',
-            axisSubtitle: 'Database Write-Path Enforcement',
+            axisSubtitle: 'Database Write-Path Control',
             axisFeatures: [
-                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Real-time write enforcement',
+                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Real-time write checks',
                 '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Approval-gated destructive actions',
-                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> Direct write prohibition'
+                '<i class="fa-solid fa-check text-axis-accent" aria-hidden="true"></i> No direct writes to critical paths'
             ],
-            axisDescription: 'Stops UPDATE, DELETE and DDL traffic aimed at critical systems before it reaches the database. It forces every write path through policy enforcement.',
+            axisDescription: 'Evaluates UPDATE, DELETE and DDL requests to critical systems against policy before they reach the database: allow, block, or require human approval. As a PostgreSQL wire-protocol proxy, it applies policy to all write traffic that passes through it.',
             axisButton: 'Explore Axis',
             labKicker: 'VARUX LAB',
             labTitle: 'Future Systems Research',
-            labDescription: 'VARUX Lab brings the AXIS and ARBITER control core together with future autonomous-system scenarios, research prototypes and concept architectures.',
+            labDescription: 'VARUX Lab unites the Axis and Arbiter control core with future autonomous-system scenarios, research prototypes, and concept architectures.',
             labButton: 'Open VARUX Lab <i class="fa-solid fa-arrow-right-long text-[10px]" aria-hidden="true"></i>',
             policyTitle: 'Without policy, <br><span class="text-zinc-600">there is no permission.</span>',
-            policyDescription: 'VARUX halts the system under uncertainty with fail-closed behavior. Every decision is deterministic and bound to the active policy version. It does not guess; it enforces rules.',
+            policyDescription: 'Under uncertainty VARUX fails closed. Every decision is deterministic and tied to the active policy version. It does not guess — it enforces rules.',
             threatTitle: 'Threat Boundary',
             threatHeadings: ['What VARUX Is Not', 'What VARUX Does'],
             threatLists: [
                 [
-                    '- It is not a tool that improves model accuracy.',
+                    '- It does not improve model accuracy.',
                     '- It is not a chatbot that fixes hallucinations.',
                     '- It is not a traditional observability or logging platform.',
-                    '- It is not a business logic layer.'
+                    '- It is not a business-logic layer.',
+                    '- It does not, by itself, close direct database access that bypasses AXIS; network access to the database should be open only to AXIS.'
                 ],
                 [
-                    '+ It constrains authority with policy before an action begins.',
+                    '+ It limits authority with policy before an action starts.',
                     '+ It blocks critical writes before they reach the database.',
-                    '+ It routes high-risk actions to approval flows.',
-                    '+ It converts every decision into audit-ready evidence.'
+                    '+ It routes high-risk actions to human approval.',
+                    '+ It turns every decision into audit-ready evidence.'
                 ]
             ],
             audienceTitle: 'Who Is It For?',
             audienceCards: [
                 {
-                    title: 'Platform & Infra',
-                    text: 'Teams that need to protect production-critical systems from autonomous or manual mistakes.'
+                    title: 'Platform & Infrastructure',
+                    text: 'Teams that need to protect production systems from autonomous or human error.'
                 },
                 {
                     title: 'AI Engineering',
-                    text: 'Teams that want to place security at the first gate, not at the final model decision.'
+                    text: 'Teams that put security at the first gate — not at the model’s final answer.'
                 },
                 {
                     title: 'Security & Compliance',
-                    text: 'Teams that require immutable evidence and human approval loops for critical actions.'
+                    text: 'Teams that must show auditors who did what on production databases with signed, tamper-evident records, and put human approval on critical actions.'
                 }
             ],
             finalTitle: 'Do not leave the final decision <br><span class="text-zinc-700">to the model.</span>',
             finalLabButton: 'Open VARUX Lab',
             footerIntro: 'Pre-execution control architecture <br>for autonomous operations.',
-            footerCredit: 'An independent cybersecurity and infrastructure initiative developed by Selman Vural. Contact: <a href="mailto:security@varuxcyber.com" class="text-zinc-400 hover:text-white transition-colors">security@varuxcyber.com</a>',
+            footerCredit: 'An independent cybersecurity and infrastructure initiative by Selman Vural. Contact: <a href="mailto:security@varuxcyber.com" class="text-zinc-400 hover:text-white transition-colors">security@varuxcyber.com</a>',
             footerCopyright: '© 2026 VARUX. All rights reserved.',
             footerLegalNavLabel: 'Legal',
             footerLegalLinks: [
@@ -2125,24 +2130,25 @@
             heroScrollCue: 'Scroll',
             modalCloseLabel: 'Close form',
             formSubmitting: 'Sending…',
-            formSuccess: 'Your request has been received. We will contact you shortly.',
-            formError: 'An error occurred. Please try again.',
+            formSuccess: 'Your request has been received. We will get back to you shortly.',
+            formError: 'Something went wrong. Please try again.',
             modalKicker: 'Request Demo',
             modalTitle: 'Get in touch with VARUX',
-            modalDescription: 'Leave your details. Let us understand how your team wants to secure agents, automation and critical write paths.',
+            modalDescription: 'Share a few details. We will discuss how your team can secure agents, automation, and critical write paths.',
             modalLabels: {
-                name: 'Full Name',
+                name: 'Full name',
                 company: 'Company',
-                email: 'Email',
-                message: 'Request or Message'
+                email: 'Work email',
+                message: 'Message'
             },
             modalPlaceholders: {
                 name: 'Your full name',
-                company: 'Your company',
+                company: 'Company name',
                 email: 'name@company.com',
-                message: 'Write a short note about your needs'
+                message: 'Briefly describe your needs'
             },
-            modalSubmitButton: 'Send Request'
+            modalSubmitButton: 'Send request',
+            modalPrivacyNote: 'By submitting this form you agree that your details are processed to respond to your request. Details: <a href="privacy.html">Privacy Policy</a>'
         };
 
         let currentLanguage = originalLanguageContent.lang || 'tr';
@@ -2290,6 +2296,7 @@
             setPlaceholder(modalInputs.email, source.modalPlaceholders.email);
             setPlaceholder(modalInputs.message, source.modalPlaceholders.message);
             setHtml(modalSubmitButton, source.modalSubmitButton);
+            setHtml(modalPrivacyNote, source.modalPrivacyNote);
             if (document.getElementById('demoFormStatus')) {
                 const statusEl = document.getElementById('demoFormStatus');
                 statusEl.textContent = '';
@@ -2679,55 +2686,6 @@
             resize();
             animate();
         }
-
-        /* ===== Text-copy deterrence (delegated, capture-phase, non-intrusive) ===== */
-        (() => {
-            const ALLOW = 'input, textarea, select, option, [contenteditable="true"], [contenteditable=""], [contenteditable="plaintext-only"], [data-allow-select]';
-            const isAllowed = (target) => {
-                if (!target) return false;
-                const el = target.nodeType === 1 ? target : target.parentElement;
-                if (!el || typeof el.closest !== 'function') return false;
-                return !!el.closest(ALLOW);
-            };
-
-            document.addEventListener('contextmenu', (e) => {
-                if (isAllowed(e.target)) return;
-                e.preventDefault();
-            }, { capture: true });
-
-            document.addEventListener('copy', (e) => {
-                if (isAllowed(e.target)) return;
-                e.preventDefault();
-            }, { capture: true });
-
-            document.addEventListener('cut', (e) => {
-                if (isAllowed(e.target)) return;
-                e.preventDefault();
-            }, { capture: true });
-
-            document.addEventListener('selectstart', (e) => {
-                if (isAllowed(e.target)) return;
-                e.preventDefault();
-            }, { capture: true });
-
-            document.addEventListener('dragstart', (e) => {
-                const t = e.target;
-                if (isAllowed(t)) return;
-                if (t && typeof t.closest === 'function' && t.closest('a')) return;
-                e.preventDefault();
-            }, { capture: true });
-
-            const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
-            document.addEventListener('keydown', (e) => {
-                const mod = isMac ? e.metaKey : e.ctrlKey;
-                if (!mod) return;
-                if (isAllowed(e.target)) return;
-                const k = (e.key || '').toLowerCase();
-                if (k === 'c' || k === 'x' || k === 'a' || k === 'u') {
-                    e.preventDefault();
-                }
-            }, { capture: true });
-        })();
     </script>
 </body>
 </html>
